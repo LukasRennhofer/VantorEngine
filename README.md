@@ -40,7 +40,7 @@ Written in [C++](https://cplusplus.com/) and utilizing [Lua](https://www.lua.org
 - **Free and Open Source**: CHIFEngine is licensed under the MIT License, allowing complete freedom with no royalties or hidden fees, just the same License.
 - **Developer-Friendly**: Easy-to-learn Lua scripting paired with C++ ensures both beginner and advanced developers feel at home.
 
-> *"Powering the next Dimension. Faster than C itself."*
+> *"Any sufficiently advanced technology is indistinguishable from magic." – Arthur C. Clarke*
 
 ---
 
