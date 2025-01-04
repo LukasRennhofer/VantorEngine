@@ -84,7 +84,7 @@ You can download the latest version of CHIFEngine from:
 2. Navigate to the project directory and generate Visual Studio project files:
 
    ```bash
-   cd CHIF-Engine/CHIFEngineMain
+   cd CHIF-Engine
    cmake -B Build
    cd Build
    make
