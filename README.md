@@ -29,9 +29,9 @@
 
 ## About CHIFEngine
 
-[CHIFEngine](https://github.com/LL-Program/CHIF-Engine) is a versatile and feature-packed game engine designed to create stunning 3D games and immersive scenes. With a lightweight rendering core and a streamlined interface, it empowers developers to focus on creativity and performance.
+[CHIFEngine](https://github.com/LL-Program/CHIF-Engine) is a versatile and feature-packed game engine designed to create stunning 3D AAA games and immersive scenes. With a lightweight rendering core and a streamlined interface, it empowers developers to focus on creativity and performance.
 
-Written in [C++](https://cplusplus.com/) and utilizing [Lua](https://www.lua.org/) for scripting production renders and its [C++ API](https://github.com/LL-Program/CHIF-Engine/tree/main/CHIFEngine) for Game Dev, CHIFEngine combines efficiency with simplicity, ensuring developers can create powerful games without overloading system resources.
+Written in [C++](https://cplusplus.com/) and utilizing [Lua](https://www.lua.org/) for scripting production renders and its [C++ API](https://github.com/LL-Program/CHIF-Engine/tree/main/CHIFEngine) for powerfull Game Dev, CHIFEngine combines efficiency with simplicity, ensuring developers can create powerful games without overloading system resources.
 
 ---
 
