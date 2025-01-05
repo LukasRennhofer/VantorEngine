@@ -112,7 +112,7 @@ You can download the latest version of CHIFEngine from:
 ## IMGUI Integration for Devs
 
 - **Easy Integration of IMGUI for development and perfect workflow**:
-- Check out the **IMGUI Demo Implementation** in thier on [Templates Directory](https://github.com/LL-Program/CHIF-Engine/tree/main)
+- Check out the **IMGUI Demo Implementation** in their own [Templates Directory](https://github.com/LL-Program/CHIF-Engine/tree/main)
 
 ---
 
