@@ -136,10 +136,7 @@ We extend our gratitude to the following individuals for their efforts and contr
 | Name                      | GitHub Handle   | Contributions                     | 
 | ------------------------- | --------------- | --------------------------------- |
 | **Lukas Rennhofer**       | @LL-Program     | Maintainer, Engine Logic, Physics |
-| **Maximilian Panzenböck** | @CraftMasterMax | GUI Implementation (No Commit)    |
 | **Moritz Rottensteiner**  | @Alyopolo       | 3D Assets and Game Development    |
-| **Matteo Prader**         | @matm5          | GUI Implementation (No Commit)    |
-| **Dominik Pascher**       | @Lama222222     | GUI Implementation (No Commit)    | 
 
 ---
 
