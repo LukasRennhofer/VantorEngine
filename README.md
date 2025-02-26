@@ -145,7 +145,7 @@ We extend our gratitude to the following individuals for their efforts and contr
 
 | Name                      | GitHub Handle   | Contributions                     | 
 | ------------------------- | --------------- | --------------------------------- |
-| **Lukas Rennhofer**       | @LL-Program     | Maintainer, Engine Logic, Physics |
+| **Lukas Rennhofer**       | @LL-Program     | **Maintainer**, Engine Logic, Physics |
 | **Moritz Rottensteiner**  | @Alyopolo       | 3D Assets and Game Development    |
 
 ---
