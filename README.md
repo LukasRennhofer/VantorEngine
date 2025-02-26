@@ -128,6 +128,16 @@ You can download the latest version of CHIFEngine from:
 Check out our [Todo List](Ressources/Pages/Todo.md) for upcoming features and tasks.
 
 ---
+## Q&A
+
+ - "When will the public-use version be published?"
+      - When its ready
+ - "Why does the Project takes so long to be complete?"
+      - rome wasn't built in a day
+ - "How can I simply make games with it?"
+      - The Engine is specified for complex open-world games only.
+ - "Will there be a build for MacOS?"
+      - Yeah, right after Apple learns to not be a sandbox for overpriced toys.
 
 ## Contributors
 
