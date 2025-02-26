@@ -131,9 +131,9 @@ Check out our [Todo List](Ressources/Pages/Todo.md) for upcoming features and ta
 ## Q&A
 
  - "When will the public-use version be published?"
-      - When its ready
+      - When its ready.
  - "Why does the Project takes so long to be complete?"
-      - rome wasn't built in a day
+      - Rome wasn't built in a day.
  - "How can I simply make games with it?"
       - The Engine is specified for complex open-world games only.
  - "Will there be a build for MacOS?"
