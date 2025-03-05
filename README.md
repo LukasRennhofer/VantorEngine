@@ -1,61 +1,158 @@
-
-# CHIF Game Engine 
-An Complex Multi-Platform 3D Game Engine made by Lukas R. and Moritz Rottensteiner based on the Wicked Rendering Core and Jolt Phyics
+# CHIFEngine
 
 <p align="center">
-  <a href="https://chifengine.netlify.app">
-    <img src="https://github.com/LL-Program/CHIF-Engine/blob/main/GitPage/CHIFEngineLogoMain.png?raw=true" width="1080" alt="CHIFEngine logo">
+  <a href="https://chifengine.netlify.app/">
+    <img src="https://github.com/LL-Program/CHIF-Engine/blob/main/GitPage/Banners/CHIFEngineV0.0.3Logo.png?raw=true" width="1080" alt="CHIFEngine logo">
   </a>
 </p>
 
-## Powerful and lightweight 3D Engine  
+---
 
-[CHIFEngine](https://github.com/LL-Program/CHIF-Engine) is a feature-packed, cross-platform game engine to create 3D games and scenes from a unified interface. It provides a powerful and lightweight Rendering Core and is written in [Rust](https://www.rust-lang.org/) and [Cython](https://cython.org/), so that users can focus on making powerful games without using much ressources and using simple syntax.
+<p align="center">
+  <img alt="GitHub Release" src="https://img.shields.io/github/v/release/LL-Program/CHIF-Engine">
+  <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/LL-Program/CHIF-Engine">
+  <img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/t/LL-Program/CHIF-Engine">
+  <img alt="GitHub contributors" src="https://img.shields.io/github/contributors/LL-Program/CHIF-Engine">
+  <img alt="GitHub Downloads (all assets, all releases)" src="https://img.shields.io/github/downloads/LL-Program/CHIF-Engine/total">
+  
+</p>
 
-## Free and open source
+<br>
 
-CHIFEngine is completely free and open source under the very permissive GNU Public license v.3.0. No strings attached, no royalties, nothing. The users' games are theirs, down to the last line of engine code. CHIFEngine's development is fully independent and a hobby of us developers, empowering users to help shape their engine to match their imagination and expectations.
+<p align="center">
+  <img alt="GitHub Sponsors" src="https://img.shields.io/github/sponsors/LL-Program">
+  <img alt="GitHub Issues or Pull Requests" src="https://img.shields.io/github/issues/LL-Program/CHIF-Engine">
+  <img alt="Website" src="https://img.shields.io/website?url=https%3A%2F%2Fchifengine.netlify.app%2F">
+</p>
 
-This Repo. is Maintained by Lukas R. and code by the CHIFEngine Class mates and the Maintainer, to create a good Gaming experience
-![App Screenshot1](https://github.com/LL-Program/CHIF-Engine/blob/main/GitPage/Screenshots/Screenshot%202024-10-30%20172322.png?raw=true)
+---
 
-## Getting the Engine
+## About CHIFEngine
 
-Download the engine executables from our Website(not done) or from the [Releases Tab](https://github.com/LL-Program/CHIF-Engine/releases)
-It is currently only Windows supported due to the small development of the Engine.
+[CHIFEngine](https://github.com/LL-Program/CHIF-Engine) is a versatile and feature-packed game engine designed to create stunning 3D AAA games and immersive scenes. With a lightweight rendering core and a streamlined interface, it empowers developers to focus on creativity and performance.
 
-## Run the Engine Locally
+Written in [C++](https://cplusplus.com/) and utilizing [Lua](https://www.lua.org/) for scripting production renders and its [C++ API](https://github.com/LL-Program/CHIF-Engine/tree/main/CHIFEngine) for powerfull Game Dev, CHIFEngine combines efficiency with simplicity, ensuring developers can create powerful games without overloading system resources.
 
- - Clone the project
+---
 
-- Windows:
-```bash
-  run.bat
-```
+## Why CHIFEngine?
 
-- Linux (Not supported now, can cause lots of Errors):
+- **Free and Open Source**: CHIFEngine is licensed under the MIT License, allowing complete freedom with no royalties or hidden fees, just the same License.
+- **Developer-Friendly**: Easy-to-learn Lua scripting paired with C++ ensures both beginner and advanced developers feel at home.
 
-```bash
-  pip install -r requirements.txt
-  python mainEngineRuntime.py
-```
- - MacOS: 🤷 Why do you use MacOS for Coding??? - (not implemented)
+> *"Any sufficiently advanced technology is indistinguishable from magic." – Arthur C. Clarke*
 
-## Todos
+---
 
- - [Todos Page](Ressources/Pages/Todo.md)
+## Screenshots
 
-## Documentation and demos
+<p align="center">
+  <a href="https://chifengine.netlify.app/">
+    <img src="https://github.com/LL-Program/CHIF-Engine/blob/main/GitPage/Screenshots/drone1.png?raw=true" width="1080" alt="CHIFEngine logo">
+  </a>
+</p>
 
-The official documentation is hosted on [<not avalible now, we are woking on it>]().
-It is maintained by LL-Program and its [GitHub repository](https://github.com/LL-Program/CHIF-Engine/).
+<p align="center">
+  <a href="https://chifengine.netlify.app/">
+    <img src="https://github.com/LL-Program/CHIF-Engine/blob/main/GitPage/Screenshots/sponza1.png?raw=true" width="1080" alt="CHIFEngine logo">
+  </a>
+</p>
 
-We also maintain official demos in their own [GitHub repository](https://github.com/LL-Program/CHIF-Engine/tree/main/Demos/).
+---
+
+## Getting Started
+
+### Download
+
+You can download the latest version of CHIFEngine from:
+
+- Our [Website](https://chifengine.netlify.app)
+- The [Releases Tab](https://github.com/LL-Program/CHIF-Engine/releases)
+
+> **Note**: Currently, CHIFEngine supports only Windows x64 systems.
+
+### Build Instructions
+
+#### Windows
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/LL-Program/CHIF-Engine.git
+   ```
+
+2. Navigate to the project directory and generate Visual Studio project files:
+
+   ```bash
+   cd CHIF-Engine
+   cmake -B Build
+   cd Build
+   make
+   cd ..
+   ./setup v2022
+   ```
+
+3. Open the generated project in Visual Studio 2017, 2019, or 2022 and build the solution.
+
+#### Linux
+
+- **Status**: Not currently supported. Building on Linux may lead to errors due to limited development resources.
+
+---
+
+## Features
+
+- Cross-platform (Windows, with future plans for Linux , MacOS, PS5, XBOX, SWITCH?).
+- Lua scripting recommended for Animations and general Rendering Productions.
+- C++ Engine API for AAA titles.
+- Lightweight yet robust rendering core.
+- Modular design for flexibility and scalability.
+
+---
+## IMGUI Integration for Devs
+
+- **Easy Integration of IMGUI for development and perfect workflow**:
+- Check out the **IMGUI Demo Implementation** in their own [Templates Directory](https://github.com/LL-Program/CHIF-Engine/tree/main)
+
+---
+
+## Documentation & Demos
+
+- **Documentation**: *Currently in progress.* Stay tuned for updates.
+- **Demos**: Explore sample projects in our [Demos Directory](https://github.com/LL-Program/CHIF-Engine/tree/main).
+
+---
+
+## Roadmap & Todos
+
+Check out our [Todo List](Ressources/Pages/Todo.md) for upcoming features and tasks.
+
+---
+## Q&A
+
+ - "When will the public-use version be published?"
+      - When its ready.
+ - "Why does the Project takes so long to be complete?"
+      - Rome wasn't built in a day.
+ - "How can I simply make games with it?"
+      - The Engine is specified for complex open-world games only.
+ - "Will there be a build for MacOS?"
+      - Yeah, right after Apple learns to not be a sandbox for overpriced toys.
 
 ## Contributors
 
- - Lukas Rennhofer / @LL-Program (Maintainer, Engine Logic, Physics)
- - Maximilian Panzenböck / @CraftMasterMax (GUI)
- - Moritz Rottensteiner / @Alyopolo (SpexImplemetation)
- - Matteo Prader / @matm5 (GUI)
- - Dominik Pascher / @Lama222222 (GUI)
+We extend our gratitude to the following individuals for their efforts and contributions:
+
+| Name                      | GitHub Handle   | Contributions                     | 
+| ------------------------- | --------------- | --------------------------------- |
+| **Lukas Rennhofer**       | @LL-Program     | **Maintainer**, Engine Logic, Physics |
+| **Moritz Rottensteiner**  | @Alyopolo       | 3D Assets and Game Development    |
+
+---
+
+## Stay Connected
+
+- Visit our [Website](https://chifengine.netlify.app/).
+- Give us a star on [GitHub](https://github.com/LL-Program/CHIF-Engine) for the latest updates.
+
+---
