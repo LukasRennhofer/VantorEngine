@@ -1,0 +1,7 @@
+/mnt/f/CHIFEngine/CHIF-Engine/build/CMakeFiles/common_headers.dir
+/mnt/f/CHIFEngine/CHIF-Engine/build/CMakeFiles/edit_cache.dir
+/mnt/f/CHIFEngine/CHIF-Engine/build/CMakeFiles/rebuild_cache.dir
+/mnt/f/CHIFEngine/CHIF-Engine/build/src/core/CMakeFiles/copy_shaders_core.dir
+/mnt/f/CHIFEngine/CHIF-Engine/build/src/core/CMakeFiles/core.dir
+/mnt/f/CHIFEngine/CHIF-Engine/build/src/core/CMakeFiles/edit_cache.dir
+/mnt/f/CHIFEngine/CHIF-Engine/build/src/core/CMakeFiles/rebuild_cache.dir

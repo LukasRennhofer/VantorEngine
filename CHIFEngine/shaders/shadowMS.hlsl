@@ -1,4 +1,0 @@
-#define OBJECTSHADER_COMPILE_MS
-#define OBJECTSHADER_LAYOUT_SHADOW
-#define OBJECTSHADER_USE_VIEWPORTARRAYINDEX
-#include "objectHF_mesh_shading.hlsli"
