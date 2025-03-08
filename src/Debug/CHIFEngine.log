@@ -1,0 +1,43 @@
+﻿  Main.cpp
+F:\CHIFEngine\CHIFEngine\TerrainEngine-OpenGL\Include\camera.h(125,13): warning C4305: "=": Verkürzung von "double" in "T"
+F:\CHIFEngine\CHIFEngine\TerrainEngine-OpenGL\Include\camera.h(125,13): warning C4305:         with
+F:\CHIFEngine\CHIFEngine\TerrainEngine-OpenGL\Include\camera.h(125,13): warning C4305:         [
+F:\CHIFEngine\CHIFEngine\TerrainEngine-OpenGL\Include\camera.h(125,13): warning C4305:             T=float
+F:\CHIFEngine\CHIFEngine\TerrainEngine-OpenGL\Include\camera.h(125,13): warning C4305:         ]
+  (Quelldatei „Main.cpp“ wird kompiliert)
+  
+F:\CHIFEngine\CHIFEngine\TerrainEngine-OpenGL\Include\camera.h(126,13): warning C4305: "=": Verkürzung von "double" in "T"
+F:\CHIFEngine\CHIFEngine\TerrainEngine-OpenGL\Include\camera.h(126,13): warning C4305:         with
+F:\CHIFEngine\CHIFEngine\TerrainEngine-OpenGL\Include\camera.h(126,13): warning C4305:         [
+F:\CHIFEngine\CHIFEngine\TerrainEngine-OpenGL\Include\camera.h(126,13): warning C4305:             T=float
+F:\CHIFEngine\CHIFEngine\TerrainEngine-OpenGL\Include\camera.h(126,13): warning C4305:         ]
+  (Quelldatei „Main.cpp“ wird kompiliert)
+  
+F:\CHIFEngine\CHIFEngine\TerrainEngine-OpenGL\Include\camera.h(127,13): warning C4305: "=": Verkürzung von "double" in "T"
+F:\CHIFEngine\CHIFEngine\TerrainEngine-OpenGL\Include\camera.h(127,13): warning C4305:         with
+F:\CHIFEngine\CHIFEngine\TerrainEngine-OpenGL\Include\camera.h(127,13): warning C4305:         [
+F:\CHIFEngine\CHIFEngine\TerrainEngine-OpenGL\Include\camera.h(127,13): warning C4305:             T=float
+F:\CHIFEngine\CHIFEngine\TerrainEngine-OpenGL\Include\camera.h(127,13): warning C4305:         ]
+  (Quelldatei „Main.cpp“ wird kompiliert)
+  
+F:\CHIFEngine\CHIFEngine\TerrainEngine-OpenGL\Include\camera.h(128,13): warning C4305: "=": Verkürzung von "double" in "T"
+F:\CHIFEngine\CHIFEngine\TerrainEngine-OpenGL\Include\camera.h(128,13): warning C4305:         with
+F:\CHIFEngine\CHIFEngine\TerrainEngine-OpenGL\Include\camera.h(128,13): warning C4305:         [
+F:\CHIFEngine\CHIFEngine\TerrainEngine-OpenGL\Include\camera.h(128,13): warning C4305:             T=float
+F:\CHIFEngine\CHIFEngine\TerrainEngine-OpenGL\Include\camera.h(128,13): warning C4305:         ]
+  (Quelldatei „Main.cpp“ wird kompiliert)
+  
+F:\CHIFEngine\CHIFEngine\TerrainEngine-OpenGL\Include\camera.h(132,14): warning C4244: "Initialisierung": Konvertierung von "double" in "float", möglicher Datenverlust
+  (Quelldatei „Main.cpp“ wird kompiliert)
+  
+F:\CHIFEngine\CHIFEngine\TerrainEngine-OpenGL\Include\camera.h(149,28): warning C4305: "Argument": Verkürzung von "double" in "float"
+  (Quelldatei „Main.cpp“ wird kompiliert)
+  
+F:\CHIFEngine\CHIFEngine\TerrainEngine-OpenGL\Engine\ScreenSpaceShader.h(17,9): warning C4227: Anachronismus verwendet: Qualifizierer auf Verweise werden ignoriert
+  (Quelldatei „Main.cpp“ wird kompiliert)
+  
+F:\CHIFEngine\CHIFEngine\TerrainEngine-OpenGL\DrawableObjects\Terrain.h(34,30): warning C4244: "Initialisierung": Konvertierung von "double" in "const int", möglicher Datenverlust
+  (Quelldatei „Main.cpp“ wird kompiliert)
+  
+F:\CHIFEngine\CHIFEngine\TerrainEngine-OpenGL\Main.cpp(82,35): warning C4244: "Argument": Konvertierung von "int" in "float", möglicher Datenverlust
+  CHIFEngine.vcxproj -> F:\CHIFEngine\CHIFEngine\TerrainEngine-OpenGL\x64\Debug\CHIFEngine.exe

@@ -1,0 +1,245 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\imgui">
+      <UniqueIdentifier>{8c75c035-cb21-47cf-a729-d402e3ed0863}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Engine">
+      <UniqueIdentifier>{761a4834-d073-4498-9cad-c74a2611cd30}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine">
+      <UniqueIdentifier>{4236da97-8cf1-4236-9e25-bd1aa2bf5732}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Compile">
+      <UniqueIdentifier>{76d81740-ae83-4668-bf69-662a3dc034b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\DrawableObjects">
+      <UniqueIdentifier>{b10b0930-6777-4514-a13f-850db274ba5d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\DrawableObjects">
+      <UniqueIdentifier>{9797f9dd-b364-4086-8700-df4e1f9229d4}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Include\camera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imgui_impl_glfw.h">
+      <Filter>Source Files\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imgui_impl_opengl3.h">
+      <Filter>Source Files\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imgui_internal.h">
+      <Filter>Source Files\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imstb_rectpack.h">
+      <Filter>Source Files\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imstb_textedit.h">
+      <Filter>Source Files\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imstb_truetype.h">
+      <Filter>Source Files\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imconfig.h">
+      <Filter>Source Files\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imgui.h">
+      <Filter>Source Files\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Window.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\BaseShader.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\buffers.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\glError.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\texture.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Shader.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\utils.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="DrawableObjects\Skybox.h">
+      <Filter>Header Files\DrawableObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="DrawableObjects\Terrain.h">
+      <Filter>Header Files\DrawableObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="DrawableObjects\VolumetricClouds.h">
+      <Filter>Header Files\DrawableObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="DrawableObjects\Water.h">
+      <Filter>Header Files\DrawableObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="DrawableObjects\drawableObject.h">
+      <Filter>Header Files\DrawableObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="DrawableObjects\sceneElements.h">
+      <Filter>Header Files\DrawableObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="DrawableObjects\CloudsModel.h">
+      <Filter>Header Files\DrawableObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="DrawableObjects\GUI.h">
+      <Filter>Header Files\DrawableObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\ScreenSpaceShader.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui_impl_glfw.cpp">
+      <Filter>Source Files\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui_impl_opengl3.cpp">
+      <Filter>Source Files\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui_widgets.cpp">
+      <Filter>Source Files\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui.cpp">
+      <Filter>Source Files\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui_demo.cpp">
+      <Filter>Source Files\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui_draw.cpp">
+      <Filter>Source Files\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Window.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\BaseShader.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\buffers.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\glError.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\texture.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Shader.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\utils.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Compile\glad.c">
+      <Filter>Source Files\Compile</Filter>
+    </ClCompile>
+    <ClCompile Include="Compile\stb_image.cpp">
+      <Filter>Source Files\Compile</Filter>
+    </ClCompile>
+    <ClCompile Include="Compile\stb_image_write.cpp">
+      <Filter>Source Files\Compile</Filter>
+    </ClCompile>
+    <ClCompile Include="DrawableObjects\Terrain.cpp">
+      <Filter>Source Files\DrawableObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="DrawableObjects\VolumetricClouds.cpp">
+      <Filter>Source Files\DrawableObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="DrawableObjects\Water.cpp">
+      <Filter>Source Files\DrawableObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="DrawableObjects\drawableObject.cpp">
+      <Filter>Source Files\DrawableObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="DrawableObjects\Skybox.cpp">
+      <Filter>Source Files\DrawableObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="DrawableObjects\CloudsModel.cpp">
+      <Filter>Source Files\DrawableObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="DrawableObjects\GUI.cpp">
+      <Filter>Source Files\DrawableObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\ScreenSpaceShader.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="shaders\skyboxVert.vert">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="shaders\screen.vert">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="shaders\screen.frag">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="shaders\post_processing.frag">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="shaders\weather.comp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="shaders\worley.comp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="shaders\perlinworley.comp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="shaders\copyFrame.frag">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="shaders\clouds_post.frag">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="shaders\visualizeFbo.frag">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="shaders\volumetric_clouds.comp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="shaders\terrain.tcs">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="shaders\terrain.tes">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="shaders\terrain.frag">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="shaders\terrain.vert">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="shaders\water.frag">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="shaders\water.vert">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="shaders\sky.frag">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+</Project>

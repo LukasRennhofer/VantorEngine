@@ -1,0 +1,7 @@
+/mnt/f/CHIFEngine/CHIFEngine/build/linux/CMakeFiles/common_headers.dir
+/mnt/f/CHIFEngine/CHIFEngine/build/linux/CMakeFiles/edit_cache.dir
+/mnt/f/CHIFEngine/CHIFEngine/build/linux/CMakeFiles/rebuild_cache.dir
+/mnt/f/CHIFEngine/CHIFEngine/build/linux/src/core/CMakeFiles/copy_shaders_core.dir
+/mnt/f/CHIFEngine/CHIFEngine/build/linux/src/core/CMakeFiles/core.dir
+/mnt/f/CHIFEngine/CHIFEngine/build/linux/src/core/CMakeFiles/edit_cache.dir
+/mnt/f/CHIFEngine/CHIFEngine/build/linux/src/core/CMakeFiles/rebuild_cache.dir

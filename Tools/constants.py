@@ -1,7 +1,12 @@
+"""
+ * CHIFEngine 0.0.4 *
+Written by Lukas Rennhofer @2025
+"""
+
 SRC_DIR = "CHIFEngine"
 
 TEST_ENV_DIR =  "Test"
-GLOBAL_VERSION = "0.0.3"
+GLOBAL_VERSION = "0.0.4"
 
 MAINTAIN_AUTHOR = "Lukas Rennhofer"
 
