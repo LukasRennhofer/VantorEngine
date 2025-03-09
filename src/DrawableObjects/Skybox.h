@@ -52,4 +52,6 @@ private:
 	FrameBufferObject * skyboxFBO;
 
 	colorPreset presetSunset, highSunPreset;
+
+	bool lensFlareOn = true;
 };

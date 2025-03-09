@@ -12,7 +12,6 @@
  * File: BaseShader.cpp
  * Last Change: 
  */
- 
 
 #include "BaseShader.h"
 #include <iostream>
@@ -20,22 +19,7 @@
 #include <sstream>
 
 
-BaseShader::BaseShader(const char * shaderPath)
-{
-	path = std::string(shaderPath);
-	std::string shaderCode = loadShaderFromFile(shaderPath);
-	const char * shaderString = shaderCode.c_str();
-
-	shadType = getShaderType(shaderPath);
-	shad = glCreateShader(shadType.type);
-	glShaderSource(shad, 1, &shaderString, NULL);
-	glCompileShader(shad);
-	checkCompileErrors(shad, shadType.name.c_str(), getShaderName(shaderPath));
-
-}
-
-
-bool checkCompileErrors(unsigned int shader, std::string type, std::string shaderName)
+bool checkCompileErrors(unsigned int shader, const std::string &type, const std::string &shaderName)
 {
 	int success;
 	char infoLog[1024];
@@ -45,7 +29,8 @@ bool checkCompileErrors(unsigned int shader, std::string type, std::string shade
 		if (!success)
 		{
 			glGetShaderInfoLog(shader, 1024, NULL, infoLog);
-			std::cout << "ERROR: SHADER" << shaderName << "COMPILATION ERROR of type: " << type << "\n" << infoLog << "\n -- --------------------------------------------------- -- " << std::endl;
+			std::cout << "ERROR: SHADER " << shaderName << " COMPILATION ERROR of type: " << type << "\n"
+					  << infoLog << "\n -- --------------------------------------------------- -- " << std::endl;
 		}
 	}
 	else
@@ -54,38 +39,15 @@ bool checkCompileErrors(unsigned int shader, std::string type, std::string shade
 		if (!success)
 		{
 			glGetProgramInfoLog(shader, 1024, NULL, infoLog);
-			std::cout << "ERROR::PROGRAM_LINKING_ERROR of type: " << type << "\n" << infoLog << "\n -- --------------------------------------------------- -- " << std::endl;
+			std::cout << "ERROR::PROGRAM_LINKING_ERROR of type: " << type << "\n"
+					  << infoLog << "\n -- --------------------------------------------------- -- " << std::endl;
 		}
 	}
-
-	//if (success) {
-	//	std::cout << type + " SHADER SUCCESSFULLY COMPILED AND/OR LINKED!" << std::endl;
-	//}
 	return success;
 }
 
-std::string BaseShader::loadShaderFromFile(const char* shaderPath) {
-	std::string shaderCode;
-	std::ifstream shaderFile;
-	shaderFile.exceptions(std::ifstream::failbit | std::ifstream::badbit);
-	try
-	{
-		shaderFile.open(shaderPath);
-		std::stringstream shaderStream;
-
-		shaderStream << shaderFile.rdbuf();
-		shaderFile.close();
-		shaderCode = shaderStream.str();
-	}
-	catch (std::ifstream::failure e)
-	{
-		std::cout << "ERROR::SHADER " << getShaderName(shaderPath) << " FILE_NOT_SUCCESFULLY_READ" << std::endl;
-	}
-	return shaderCode;
-
-}
-
-std::string getShaderName(const char* path) {
+std::string getShaderName(const char *path)
+{
 	std::string pathstr = std::string(path);
 	const size_t last_slash_idx = pathstr.find_last_of("/");
 	if (std::string::npos != last_slash_idx)
@@ -94,7 +56,9 @@ std::string getShaderName(const char* path) {
 	}
 	return pathstr;
 }
-shaderType getShaderType(const char* path) {
+
+shaderType getShaderType(const char *path)
+{
 	std::string type = getShaderName(path);
 	const size_t last_slash_idx = type.find_last_of(".");
 	if (std::string::npos != last_slash_idx)
@@ -112,11 +76,49 @@ shaderType getShaderType(const char* path) {
 	if (type == "geom")
 		return shaderType(GL_GEOMETRY_SHADER, "GEOMETRY");
 	if (type == "comp")
-		return shaderType(GL_COMPUTE_SHADER, "COMPUTE") ;
+		return shaderType(GL_COMPUTE_SHADER, "COMPUTE");
 }
 
+BaseShader::BaseShader(const char *shaderPath)
+{
+	path = std::string(shaderPath);
+	std::string shaderCode = loadShaderFromFile(shaderPath);
+	const char *shaderString = shaderCode.c_str();
+
+	shadType = getShaderType(shaderPath);
+	shad = glCreateShader(shadType.type);
+	glShaderSource(shad, 1, &shaderString, NULL);
+	glCompileShader(shad);
+	checkCompileErrors(shad, shadType.name.c_str(), getShaderName(shaderPath));
+}
+
+std::string BaseShader::loadShaderFromFile(const char *shaderPath)
+{
+	std::string shaderCode;
+	std::ifstream shaderFile;
+	shaderFile.exceptions(std::ifstream::failbit | std::ifstream::badbit);
+
+	try
+	{
+		shaderFile.open(shaderPath);
+		std::stringstream shaderStream;
+		shaderStream << shaderFile.rdbuf();
+		shaderFile.close();
+		shaderCode = shaderStream.str();
+	}
+	catch (std::ifstream::failure e)
+	{
+		std::cout << "ERROR::SHADER " << getShaderName(shaderPath) << " FILE_NOT_SUCCESFULLY_READ" << std::endl;
+	}
+	return shaderCode;
+}
 
 BaseShader::~BaseShader()
 {
-	//glDeleteShader(shad);
+	// glDeleteShader(shad); 
+}
+
+unsigned int BaseShader::getShad()
+{
+	return shad;
 }

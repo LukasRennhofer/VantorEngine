@@ -24,6 +24,8 @@
 #include "Engine/shader.h"
 #include "Engine/ScreenSpaceShader.h"
 #include "Engine/texture.h"
+#include "Engine/version.h"
+#include "Engine/constants.h"
 
 #include "DrawableObjects/VolumetricClouds.h"
 #include "DrawableObjects/Terrain.h"
@@ -214,7 +216,9 @@ int main()
 		fboVisualizerShader.setSampler2D("fboTex", volumetricClouds.getCloudsTexture(), 0);
 		// fboVisualizer.draw(); //Debugging
 
-		gui.draw();
+		if (SHOW_IMGUI) {
+			gui.draw();
+		}
 
 		window.swapBuffersAndPollEvents();
 	}

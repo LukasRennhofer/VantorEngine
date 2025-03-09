@@ -29,16 +29,14 @@
 
 ## About CHIFEngine
 
-[CHIFEngine](https://github.com/LL-Program/CHIF-Engine) is a versatile and feature-packed game engine designed to create stunning 3D AAA games and immersive scenes. With a lightweight rendering core and a streamlined interface, it empowers developers to focus on creativity and performance.
-
-Written in [C++](https://cplusplus.com/) and utilizing [Lua](https://www.lua.org/) for scripting production renders and its [C++ API](https://github.com/LL-Program/CHIF-Engine/tree/main/CHIFEngine) for powerfull Game Dev, CHIFEngine combines efficiency with simplicity, ensuring developers can create powerful games without overloading system resources.
+[CHIFEngine](https://github.com/LL-Program/CHIFEngine) is a powerful ... TODO
 
 ---
 
 ## Why CHIFEngine?
 
 - **Free and Open Source**: CHIFEngine is licensed under the MIT License, allowing complete freedom with no royalties or hidden fees, just the same License.
-- **Developer-Friendly**: Easy-to-learn Lua scripting paired with C++ ensures both beginner and advanced developers feel at home.
+- **Developer-Friendly**: TODO
 
 > *"Any sufficiently advanced technology is indistinguishable from magic." – Arthur C. Clarke*
 
@@ -58,18 +56,21 @@ Written in [C++](https://cplusplus.com/) and utilizing [Lua](https://www.lua.org
   </a>
 </p>
 
+TODO
+
 ---
 
 ## Getting Started
 
 ### Download
-
+TODO
 You can download the latest version of CHIFEngine from:
 
 - Our [Website](https://chifengine.netlify.app)
 - The [Releases Tab](https://github.com/LL-Program/CHIF-Engine/releases)
 
 > **Note**: Currently, CHIFEngine supports only Windows x64 systems.
+
 
 ### Build Instructions
 

@@ -90,7 +90,7 @@ void VolumetricClouds::draw() {
 
 	if (model->postProcess) {
 		cloudsPostProcessingFBO->bind();
-		Shader& cloudsPPShader = model->postProcessingShader->getShader();
+		Shader &cloudsPPShader = model->postProcessingShader->getShader();
 
 		cloudsPPShader.use();
 

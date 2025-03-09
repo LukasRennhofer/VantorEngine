@@ -29,7 +29,8 @@ public:
 		return shad;
 	}
 
-	Shader & const getShader() {
+	Shader &getShader()
+	{
 		return *shad;
 	}
 

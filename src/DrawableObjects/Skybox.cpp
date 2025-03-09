@@ -37,6 +37,7 @@ void Skybox::setGui() {
 	ImGui::TextColored(ImVec4(1, 1, 0, 1), "Sky colors controls");
 	ImGui::ColorEdit3("Sky top color", (float*)&skyColorTop);
 	ImGui::ColorEdit3("Sky bottom color", (float*)&skyColorBottom);
+	ImGui::Checkbox("Lens Flare Enabled", &lensFlareOn);
 	ImGui::End();
 }
 
@@ -114,6 +115,8 @@ void Skybox::draw() {
 
 	shader.setVec3("skyColorTop", skyColorTop);
 	shader.setVec3("skyColorBottom", skyColorBottom);
+
+	shader.setBool("enableLensFlare", lensFlareOn);
 
 	skyboxShader->draw();
 }
