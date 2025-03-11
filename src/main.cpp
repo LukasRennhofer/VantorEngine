@@ -7,10 +7,10 @@
  * Licensed under the MIT License. See LICENSE file for more details.
  *
  * Author: Lukas Rennhofer
- * Date: 2025-03-08
+ * Date: 2025-03-11
  *
  * File: main.cpp
- * Last Change: 
+ * Last Change: Added Nintendo Switch (Homebrew) Files for Init
 */
 
 #ifndef GLAD_H
@@ -20,9 +20,7 @@
 #include <switch.h>
 #include <EGL/egl.h>	// EGL library for Switch
 #include <EGL/eglext.h> // EGL extensions
-#include <glad/glad.h>	// OpenGL ES (ensure glad is built with GLES support)
 #else
-#include <glad/glad.h>
 #include <GLFW/glfw3.h> // Only for desktop (Windows/Linux)
 #endif
 
@@ -51,6 +49,8 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 #include <glm/gtc/random.hpp>
+
+#include <glad/glad.h>
 
 // Error handling
 #include "Engine/glError.h"
