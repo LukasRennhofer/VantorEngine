@@ -12,14 +12,23 @@
  * File: main.cpp
  * Last Change: 
 */
- 
+
 #ifndef GLAD_H
 #define GLAD_H
 
+#ifdef __SWITCH__
+#include <switch.h>
+#include <EGL/egl.h>	// EGL library for Switch
+#include <EGL/eglext.h> // EGL extensions
+#include <glad/glad.h>	// OpenGL ES (ensure glad is built with GLES support)
+#else
 #include <glad/glad.h>
+#include <GLFW/glfw3.h> // Only for desktop (Windows/Linux)
 #endif
-#include <GLFW/glfw3.h>
 
+#endif // GLAD_H
+
+// Engine headers
 #include "Engine/Window.h"
 #include "Engine/shader.h"
 #include "Engine/ScreenSpaceShader.h"
@@ -27,12 +36,14 @@
 #include "Engine/version.h"
 #include "Engine/constants.h"
 
+// Drawable objects
 #include "DrawableObjects/VolumetricClouds.h"
 #include "DrawableObjects/Terrain.h"
 #include "DrawableObjects/Skybox.h"
 #include "DrawableObjects/Water.h"
 #include "DrawableObjects/CloudsModel.h"
 
+// Third-party libraries
 #include <camera.h>
 #include <stb_image.h>
 
@@ -41,19 +52,29 @@
 #include <glm/gtc/type_ptr.hpp>
 #include <glm/gtc/random.hpp>
 
+// Error handling
 #include "Engine/glError.h"
 
+// Scene objects
 #include "DrawableObjects/sceneElements.h"
 #include "DrawableObjects/drawableObject.h"
 #include "DrawableObjects/GUI.h"
 
+// Standard libraries
 #include <iostream>
 #include <vector>
 #include <functional>
 
+// ImGui setup (only for desktop)
+#ifndef __SWITCH__
 #include "../imgui/imgui.h"
 #include "../imgui/imgui_impl_glfw.h"
 #include "../imgui/imgui_impl_opengl3.h"
+#else
+// ImGui for Switch should use an EGL-compatible backend
+#include "../imgui/imgui.h"
+#include "../imgui/imgui_impl_opengl3.h"
+#endif
 
 int main()
 {

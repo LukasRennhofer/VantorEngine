@@ -1,7 +1,6 @@
 set(CMAKE_SYSTEM_NAME Windows)
 set(CMAKE_SYSTEM_PROCESSOR x86_64)
 
-# Adjust this path to point to your MinGW-w64 installation
 set(TOOLCHAIN_DIR "C:/msys64/mingw64/bin")
 
 set(CMAKE_C_COMPILER "${TOOLCHAIN_DIR}/gcc.exe")

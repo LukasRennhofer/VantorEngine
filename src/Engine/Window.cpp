@@ -49,6 +49,7 @@ Window::Window(int& success, unsigned int scrW, unsigned int scrH, std::string n
 		success = 0;
 		return;
 	}
+	
 	glfwMakeContextCurrent(this->w);
 	glfwSetFramebufferSizeCallback(this->w, &Window::framebuffer_size_callback);
 	glfwSetCursorPosCallback(this->w, &Window::mouse_callback);

@@ -43,7 +43,7 @@ set(SOURCES
 # Platform-specific handling
 if(WIN32)
     set(CMAKE_MAKE_PROGRAM "compToolchain/windows/make.exe")
-    # Windows-specific setup (e.g., linking libraries)
+    # Windows-specific setup
     message(STATUS "Compiling for Windows")
     set(WINDOWS_LIBRARIES
         glfw3
@@ -83,13 +83,45 @@ elseif(UNIX)
         gbm
         drm
     )
+
+elseif(SWITCH)
+    # Switch-specific setup
+    message(STATUS "Compiling for Nintendo Switch (Homebrew)")
+
+    set(CMAKE_SYSTEM_NAME Switch)
+    set(CMAKE_SYSTEM_PROCESSOR aarch64)
+
+    # Set toolchain paths
+    set(DEVKITPRO $ENV{DEVKITPRO})
+    set(DEVKITA64 $ENV{DEVKITA64})
+    set(CMAKE_C_COMPILER ${DEVKITA64}/bin/aarch64-none-elf-gcc)
+    set(CMAKE_CXX_COMPILER ${DEVKITA64}/bin/aarch64-none-elf-g++)
+
+    # Include directories for Switch
+    include_directories(
+        ${DEVKITPRO}/libnx/include
+        ${DEVKITPRO}/portlibs/switch/include
+    )
+
+    link_directories(
+        ${DEVKITPRO}/libnx/lib
+        ${DEVKITPRO}/portlibs/switch/lib
+    )
+
+    set(SWITCH_LIBRARIES
+        nx
+        EGL
+        GLESv2
+        drm_nouveau
+        mesa
+    )
+
+    add_definitions(-D__SWITCH__)
 endif()
 
 # Create the executable
 add_executable(CHIFEngine ${SOURCES} src/stb_image_impl.cpp)
 
 # Link platform-specific libraries
-target_link_libraries(CHIFEngine ${LINUX_LIBRARIES} ${WINDOWS_LIBRARIES})
-
-# Optionally, specify compile options
+target_link_libraries(CHIFEngine ${LINUX_LIBRARIES} ${WINDOWS_LIBRARIES} ${SWITCH_LIBRARIES})
 target_compile_options(CHIFEngine PRIVATE -Wall -Wextra)
