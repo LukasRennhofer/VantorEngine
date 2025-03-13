@@ -27,11 +27,10 @@ GUI::GUI(Window& window)
 	ImGui_ImplGlfw_InitForOpenGL(window.getWindow(), true);
 	ImGui_ImplOpenGL3_Init("#version 130");
 
-	// Use Custom Fonts
-	ImGuiIO &io = ImGui::GetIO();
-	io.Fonts->AddFontFromFileTTF("resources/UI/Roboto-Regular.ttf", 18.0f); // Adding Main Font
-
-	io.Fonts->Build();
+	// Use Custom Fonts - TODO: Working for Linux!!
+	// ImGuiIO &io = ImGui::GetIO();
+	// io.Fonts->AddFontFromFileTTF("resources/UI/Roboto-Regular.ttf", 18.0f); // Adding Main Font
+	// io.Fonts->Build();
 
 	// Set Custom Styles
 	ImGuiStyle &style = ImGui::GetStyle();

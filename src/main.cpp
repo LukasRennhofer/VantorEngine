@@ -16,6 +16,14 @@
 #ifndef GLAD_H
 #define GLAD_H
 
+// Engine headers
+#include "Engine/Window.h"
+#include "Engine/shader.h"
+#include "Engine/ScreenSpaceShader.h"
+#include "Engine/texture.h"
+#include "Engine/version.h"
+#include "Engine/constants.h"
+
 #ifdef __SWITCH__
 #include <switch.h>
 #include <EGL/egl.h>	// EGL library for Switch
@@ -25,14 +33,6 @@
 #endif
 
 #endif // GLAD_H
-
-// Engine headers
-#include "Engine/Window.h"
-#include "Engine/shader.h"
-#include "Engine/ScreenSpaceShader.h"
-#include "Engine/texture.h"
-#include "Engine/version.h"
-#include "Engine/constants.h"
 
 // Drawable objects
 #include "DrawableObjects/VolumetricClouds.h"
