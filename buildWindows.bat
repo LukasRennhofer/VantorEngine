@@ -23,4 +23,5 @@ xcopy /e /i /h ..\..\src\shaders shaders
 xcopy /e /i /h ..\..\src\libraries libraries
 
 echo Build complete!
+start "" CHIFEngine.exe
 pause

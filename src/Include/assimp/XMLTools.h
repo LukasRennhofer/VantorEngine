@@ -1,24 +1,8 @@
-
-/*
- *    				~ CHIFEngine ~
- *               
- * Copyright (c) 2025 Lukas Rennhofer
- *
- * Licensed under the MIT License. See LICENSE file for more details.
- *
- * Author: Lukas Rennhofer
- * Date: 2025-03-08
- *
- * File: XMLTools.h
- * Last Change: 
- */
- 
-
 /*
 Open Asset Import Library (assimp)
 ----------------------------------------------------------------------
 
-Copyright (c) 2006-2018, assimp team
+Copyright (c) 2006-2024, assimp team
 
 
 All rights reserved.
@@ -56,8 +40,13 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ----------------------------------------------------------------------
 */
 
+#pragma once
 #ifndef INCLUDED_ASSIMP_XML_TOOLS_H
 #define INCLUDED_ASSIMP_XML_TOOLS_H
+
+#ifdef __GNUC__
+#   pragma GCC system_header
+#endif
 
 #include <string>
 

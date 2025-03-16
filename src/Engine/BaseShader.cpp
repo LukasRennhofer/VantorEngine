@@ -29,7 +29,7 @@ bool checkCompileErrors(unsigned int shader, const std::string &type, const std:
 		if (!success)
 		{
 			glGetShaderInfoLog(shader, 1024, NULL, infoLog);
-			std::cout << "ERROR: SHADER " << shaderName << " COMPILATION ERROR of type: " << type << "\n"
+			std::cout << "[ERROR::SHADER] SHADER \"" << shaderName << "\" COMPILATION ERROR of type: \"" << type << "\"\n"
 					  << infoLog << "\n -- --------------------------------------------------- -- " << std::endl;
 		}
 	}
@@ -39,7 +39,7 @@ bool checkCompileErrors(unsigned int shader, const std::string &type, const std:
 		if (!success)
 		{
 			glGetProgramInfoLog(shader, 1024, NULL, infoLog);
-			std::cout << "ERROR::PROGRAM_LINKING_ERROR of type: " << type << "\n"
+			std::cout << "[ERROR::SHADER] PROGRAM_LINKING_ERROR of type: \"" << type << "\"\n"
 					  << infoLog << "\n -- --------------------------------------------------- -- " << std::endl;
 		}
 	}
@@ -108,7 +108,7 @@ std::string BaseShader::loadShaderFromFile(const char *shaderPath)
 	}
 	catch (std::ifstream::failure e)
 	{
-		std::cout << "ERROR::SHADER " << getShaderName(shaderPath) << " FILE_NOT_SUCCESFULLY_READ" << std::endl;
+		std::cout << "[ERROR::SHADER] SHADER \"" << getShaderName(shaderPath) << "\" FILE_NOT_SUCCESFULLY_READ" << std::endl;
 	}
 	return shaderCode;
 }

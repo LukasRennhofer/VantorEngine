@@ -1,27 +1,9 @@
-
-/*
- *    				~ CHIFEngine ~
- *               
- * Copyright (c) 2025 Lukas Rennhofer
- *
- * Licensed under the MIT License. See LICENSE file for more details.
- *
- * Author: Lukas Rennhofer
- * Date: 2025-03-08
- *
- * File: cfileio.h
- * Last Change: 
- */
- 
-
 /*
 ---------------------------------------------------------------------------
 Open Asset Import Library (assimp)
 ---------------------------------------------------------------------------
 
-Copyright (c) 2006-2018, assimp team
-
-
+Copyright (c) 2006-2024, assimp team
 
 All rights reserved.
 
@@ -64,10 +46,16 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #ifndef AI_FILEIO_H_INC
 #define AI_FILEIO_H_INC
 
+#ifdef __GNUC__
+#   pragma GCC system_header
+#endif
+
 #include <assimp/types.h>
+
 #ifdef __cplusplus
 extern "C" {
 #endif
+
 struct aiFileIO;
 struct aiFile;
 
@@ -116,8 +104,7 @@ struct aiFileIO
  *  the CRT. However, you can supply a custom implementation to Assimp by
  *  delivering a custom aiFileIO. Use this to enable reading from other sources,
  *  such as ZIP archives or memory locations. */
-struct aiFile
-{
+struct aiFile {
     /** Callback to read from a file */
     aiFileReadProc ReadProc;
 

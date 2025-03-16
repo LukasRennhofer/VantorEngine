@@ -22,6 +22,7 @@
 #include <iostream>
 
 #include "version.h"
+#include "constants.h"
 
 class Window
 {

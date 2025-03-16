@@ -148,7 +148,7 @@ void FrameBufferObject::bind() {
 
 unsigned int FrameBufferObject::getColorAttachmentTex(int i) {
 	if (i < 0 || i > nColorAttachments) {
-		std::cout << "COLOR ATTACHMENT OUT OF RANGE" << std::endl;
+		std::cout << "[ERROR::BUFFER] COLOR ATTACHMENT OUT OF RANGE" << std::endl;
 		return 0;
 	}
 	return colorAttachments[i];
@@ -168,7 +168,7 @@ TextureSet::TextureSet(int W, int H, int num)
 
 unsigned int TextureSet::getColorAttachmentTex(int i) {
 	if (i < 0 || i > nTextures) {
-		std::cout << "COLOR ATTACHMENT OUT OF RANGE" << std::endl;
+		std::cout << "[ERROR::BUFFER] COLOR ATTACHMENT OUT OF RANGE" << std::endl;
 		return 0;
 	}
 	return texture[i];

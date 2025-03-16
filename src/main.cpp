@@ -59,6 +59,7 @@
 #include "DrawableObjects/sceneElements.h"
 #include "DrawableObjects/drawableObject.h"
 #include "DrawableObjects/GUI.h"
+#include <model.h>
 
 // Standard libraries
 #include <iostream>
@@ -125,12 +126,17 @@ int main()
 	VolumetricClouds reflectionVolumetricClouds(1280, 720, &cloudsModel); // (expected) lower resolution framebuffers, so the rendering will be faster
 	
 	gui.subscribe(&terrain)
-		.subscribe(&skybox)
-		.subscribe(&cloudsModel)
-		.subscribe(&water);
+	 	.subscribe(&skybox)
+	 	.subscribe(&cloudsModel)
+	 	.subscribe(&water);
 
 	ScreenSpaceShader PostProcessing("shaders/post_processing.frag");
 	ScreenSpaceShader fboVisualizer("shaders/visualizeFbo.frag");
+
+	// Model Loading
+	stbi_set_flip_vertically_on_load(true); // Tell STB_IMAGE to flip it vertically on y axis (Glaube halt Vertikal)
+	ModelShader MeshModelShader("shaders/model.vs", "shaders/model.fs");
+	Model ourModel("resources/objects/backpack/backpack.obj");
 
 	while (window.continueLoop())
 	{
@@ -176,6 +182,7 @@ int main()
 		
 		terrain.up = 1.0;
 		terrain.draw();
+
 		FrameBufferObject const& reflFBO = water.getReflectionFBO();
 		
 		ScreenSpaceShader::disableTests();
@@ -183,7 +190,6 @@ int main()
 		reflectionVolumetricClouds.draw();
 		water.bindReflectionFBO();
 
-		
 		Shader& post = PostProcessing.getShader();
 		post.use();
 		post.setVec2("resolution", glm::vec2(1280, 720));
@@ -209,13 +215,26 @@ int main()
 		terrain.draw();
 		water.draw();
 
+		// TODO: chif::model instance
+		// Model Rendering and Loading (Nur Test Version)
+		MeshModelShader.use();
+		MeshModelShader.setMat4("projection", scene.projMatrix);
+        MeshModelShader.setMat4("view", view);
+
+        // Render the loaded model
+        glm::mat4 model = glm::mat4(1.0f);
+        model = glm::translate(model, glm::vec3(0.0f, 800.0f, 0.0f));
+        model = glm::scale(model, glm::vec3(10.0f, 10.0f, 10.0f)); // Too Big
+        MeshModelShader.setMat4("model", model);
+        ourModel.Draw(MeshModelShader);
+
 		ScreenSpaceShader::disableTests();
 
 		volumetricClouds.draw();
 		skybox.draw();
 
+
 		unbindCurrentFrameBuffer();
-		//Shader& post = PostProcessing.getShader();
 		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
 		post.use();

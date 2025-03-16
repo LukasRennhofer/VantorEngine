@@ -1,25 +1,8 @@
-
-/*
- *    				~ CHIFEngine ~
- *               
- * Copyright (c) 2025 Lukas Rennhofer
- *
- * Licensed under the MIT License. See LICENSE file for more details.
- *
- * Author: Lukas Rennhofer
- * Date: 2025-03-08
- *
- * File: SGSpatialSort.h
- * Last Change: 
- */
- 
-
 /*
 Open Asset Import Library (assimp)
 ----------------------------------------------------------------------
 
-Copyright (c) 2006-2018, assimp team
-
+Copyright (c) 2006-2024, assimp team
 
 All rights reserved.
 
@@ -58,8 +41,13 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 /** Small helper classes to optimize finding vertices close to a given location
  */
+#pragma once
 #ifndef AI_D3DSSPATIALSORT_H_INC
 #define AI_D3DSSPATIALSORT_H_INC
+
+#ifdef __GNUC__
+#   pragma GCC system_header
+#endif
 
 #include <assimp/types.h>
 #include <vector>
@@ -74,10 +62,8 @@ namespace Assimp    {
  *  implementation to handle all details of its file format correctly.
  */
 // ----------------------------------------------------------------------------------
-class ASSIMP_API SGSpatialSort
-{
+class ASSIMP_API SGSpatialSort {
 public:
-
     SGSpatialSort();
 
     // -------------------------------------------------------------------
@@ -101,7 +87,7 @@ public:
     void Prepare();
 
     /** Destructor */
-    ~SGSpatialSort();
+    ~SGSpatialSort() = default;
 
     // -------------------------------------------------------------------
     /** Returns an iterator for all positions close to the given position.
@@ -127,26 +113,34 @@ protected:
 
     // -------------------------------------------------------------------
     /** An entry in a spatially sorted position array. Consists of a
-     *  vertex index, its position and its precalculated distance from
+     *  vertex index, its position and its pre-calculated distance from
      *  the reference plane */
     // -------------------------------------------------------------------
-    struct Entry
-    {
+    struct Entry {
         unsigned int mIndex;    ///< The vertex referred by this entry
         aiVector3D mPosition;   ///< Position
         uint32_t mSmoothGroups;
         float mDistance;        ///< Distance of this vertex to the sorting plane
 
-        Entry() { /** intentionally not initialized.*/ }
-        Entry( unsigned int pIndex, const aiVector3D& pPosition, float pDistance,uint32_t pSG)
-        :
-            mIndex( pIndex),
-            mPosition( pPosition),
-            mSmoothGroups (pSG),
-            mDistance( pDistance)
-            {   }
+        Entry() AI_NO_EXCEPT
+        : mIndex(0)
+        , mPosition()
+        , mSmoothGroups(0)
+        , mDistance(0.0f) {
+            // empty
+        }
 
-        bool operator < (const Entry& e) const { return mDistance < e.mDistance; }
+        Entry( unsigned int pIndex, const aiVector3D& pPosition, float pDistance,uint32_t pSG)
+        : mIndex( pIndex)
+        , mPosition( pPosition)
+        , mSmoothGroups(pSG)
+        , mDistance( pDistance) {
+            // empty
+        }
+
+        bool operator < (const Entry& e) const {
+            return mDistance < e.mDistance;
+        }
     };
 
     // all positions, sorted by distance to the sorting plane

@@ -40,32 +40,7 @@ set(SOURCES
     src/Compile/glad.c
 )
 
-# Cross-Compilation-Linux
-if(CMAKE_SYSTEM_NAME STREQUAL "Windows")
-    set(CMAKE_C_COMPILER x86_64-w64-mingw32-gcc)
-    set(CMAKE_CXX_COMPILER x86_64-w64-mingw32-g++)
-    set(CMAKE_RC_COMPILER x86_64-w64-mingw32-windres)
-
-    set(WINDOWS_LIBRARIES
-        glfw3
-        opengl32
-        gdi32
-        user32
-        imm32
-        shell32
-    )
-
-    set(GLFW_LIB_DIR "${CMAKE_SOURCE_DIR}/src/Libraries")
-    set(GLFW_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/src/Include/GLFW")
-
-    include_directories(${GLFW_INCLUDE_DIR})
-    link_directories(${GLFW_LIB_DIR})
-    
-    # Set Windows-specific flags
-    add_definitions(-D_WIN32)
-
-# Platform-specific handling
-elseif(WIN32)
+if(WIN32)
     set(CMAKE_MAKE_PROGRAM "compToolchain/windows/make.exe")
     # Windows-specific setup
     message(STATUS "Compiling for Windows")
@@ -76,6 +51,7 @@ elseif(WIN32)
         user32
         imm32
         shell32
+        assimp
     )
 
     set(GLFW_LIB_DIR "${CMAKE_SOURCE_DIR}/src/Libraries")
@@ -84,6 +60,12 @@ elseif(WIN32)
     include_directories(${GLFW_INCLUDE_DIR})
     link_directories(${GLFW_LIB_DIR})
 
+    set(ASSIMP_LIB "${CMAKE_SOURCE_DIR}/src/Libraries")
+    set(ASSIMP_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/src/Include/assimp")
+
+    include_directories(${ASSIMP_INCLUDE_DIR})
+    link_directories(${ASSIMP_LIB})
+    
 
 
 elseif(UNIX)

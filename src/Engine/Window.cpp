@@ -30,7 +30,7 @@ bool Window::mouseCursorDisabled = true;
 
 Window::Window(int& success, unsigned int scrW, unsigned int scrH, std::string name) : name(name)
 {
-	std::cout << "Using CHIFEngine Core " << chif::version::GetVersionString() << std::endl;
+	std::cout << "[INIT::CORE] Using CHIFEngine Core " << chif::version::GetVersionString() << std::endl;
 	Window::SCR_WIDTH = scrW;
 	Window::SCR_HEIGHT = scrH;
 	success = 1;
@@ -44,7 +44,7 @@ Window::Window(int& success, unsigned int scrW, unsigned int scrH, std::string n
 	this->w = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, name.c_str(), NULL, NULL);
 	if (!this->w)
 	{
-		std::cout << "Failed to create GLFW window" << std::endl;
+		std::cout << "[ERROR::WINDOW] Failed to create GLFW window" << std::endl;
 		glfwTerminate();
 		success = 0;
 		return;
@@ -70,7 +70,7 @@ Window::Window(int& success, unsigned int scrW, unsigned int scrH, std::string n
 
 	success = gladLoader() && success;
 	if (success) {
-		std::cout << "GLFW window correctly initialized!" << std::endl;
+		std::cout << "[INFO::WINDOW] GLFW window correctly initialized!" << std::endl;
 	}
 }
 
@@ -80,7 +80,7 @@ int Window::gladLoader() {
 
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
 	{
-		std::cout << "Failed to initialize GLAD" << std::endl;
+		std::cout << "[ERROR::WINDOW] Failed to initialize GLAD" << std::endl;
 		return 0;
 	}
 
@@ -116,43 +116,76 @@ void Window::framebuffer_size_callback(GLFWwindow* window, int width, int height
 }
  
 void Window::processInput(float frameTime) {
-	if (glfwGetKey(this->w, GLFW_KEY_ESCAPE) == GLFW_PRESS)
-		glfwSetWindowShouldClose(this->w, true);
+    // Handle Keyboard Input
+    if (glfwGetKey(this->w, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+        glfwSetWindowShouldClose(this->w, true);
 
-	if (glfwGetKey(this->w, GLFW_KEY_W) == GLFW_PRESS)
-		camera->ProcessKeyboard(FORWARD, frameTime);
-	if (glfwGetKey(this->w, GLFW_KEY_S) == GLFW_PRESS)
-		camera->ProcessKeyboard(BACKWARD, frameTime);
-	if (glfwGetKey(this->w, GLFW_KEY_A) == GLFW_PRESS)
-		camera->ProcessKeyboard(LEFT, frameTime);
-	if (glfwGetKey(this->w, GLFW_KEY_D) == GLFW_PRESS)
-		camera->ProcessKeyboard(RIGHT, frameTime);
-	
-	newState = glfwGetMouseButton(this->w, GLFW_MOUSE_BUTTON_RIGHT);
+    if (glfwGetKey(this->w, GLFW_KEY_W) == GLFW_PRESS)
+        camera->ProcessKeyboard(FORWARD, frameTime);
+    if (glfwGetKey(this->w, GLFW_KEY_S) == GLFW_PRESS)
+        camera->ProcessKeyboard(BACKWARD, frameTime);
+    if (glfwGetKey(this->w, GLFW_KEY_A) == GLFW_PRESS)
+        camera->ProcessKeyboard(LEFT, frameTime);
+    if (glfwGetKey(this->w, GLFW_KEY_D) == GLFW_PRESS)
+        camera->ProcessKeyboard(RIGHT, frameTime);
 
-	if (newState == GLFW_RELEASE && oldState == GLFW_PRESS) {
-		glfwSetInputMode(this->w, GLFW_CURSOR, (mouseCursorDisabled
-		? GLFW_CURSOR_DISABLED : GLFW_CURSOR_NORMAL));
-		mouseCursorDisabled = !mouseCursorDisabled;
-		if (mouseCursorDisabled)
-			firstMouse = true;
-		//std::cout << "MOUSE R PRESSED!" << std::endl;
-	}
+    // Handle Mouse Input
+    newState = glfwGetMouseButton(this->w, GLFW_MOUSE_BUTTON_RIGHT);
+    if (newState == GLFW_RELEASE && oldState == GLFW_PRESS) {
+        glfwSetInputMode(this->w, GLFW_CURSOR, (mouseCursorDisabled ? GLFW_CURSOR_DISABLED : GLFW_CURSOR_NORMAL));
+        mouseCursorDisabled = !mouseCursorDisabled;
+        if (mouseCursorDisabled)
+            firstMouse = true;
+    }
+    oldState = newState;
 
-	oldState = newState;
-	
-	// WIREFRAME
-	if (glfwGetKey(this->w, GLFW_KEY_T) == GLFW_PRESS) {
-		if (keyBools[4] == false) {
-			//std::cout << "WIREFRAME" << std::endl;
-			wireframe = !wireframe;
-			keyBools[4] = true;
-		}
-	}
-	else if (glfwGetKey(this->w, GLFW_KEY_T) == GLFW_RELEASE) {
-		if (keyBools[4] == true) { keyBools[4] = false; }
-	}
+    // Handle WIREFRAME Toggle (T key)
+    if (glfwGetKey(this->w, GLFW_KEY_T) == GLFW_PRESS) {
+        if (keyBools[4] == false) {
+            wireframe = !wireframe;
+            keyBools[4] = true;
+        }
+    } else if (glfwGetKey(this->w, GLFW_KEY_T) == GLFW_RELEASE) {
+        if (keyBools[4] == true) { 
+            keyBools[4] = false; 
+        }
+    }
+
+    // Handle Controller Input
+    for (int joystickID = GLFW_JOYSTICK_1; joystickID <= GLFW_JOYSTICK_LAST; ++joystickID) {
+        if (glfwJoystickPresent(joystickID)) {
+            // Get axes data (left thumbstick, right thumbstick, etc.)
+            int axisCount;
+            const float* axes = glfwGetJoystickAxes(joystickID, &axisCount);
+
+            // Left stick vertical (W/S)
+            if (axisCount > 1 && axes[1] < -0.2f) { // Up (W)
+                camera->ProcessKeyboard(FORWARD, frameTime);
+            }
+            if (axisCount > 1 && axes[1] > 0.2f) { // Down (S)
+                camera->ProcessKeyboard(BACKWARD, frameTime);
+            }
+
+            // Left stick horizontal (A/D)
+            if (axisCount > 0 && axes[0] < -0.2f) { // Left (A)
+                camera->ProcessKeyboard(LEFT, frameTime);
+            }
+            if (axisCount > 0 && axes[0] > 0.2f) { // Right (D)
+                camera->ProcessKeyboard(RIGHT, frameTime);
+            }
+
+            // Get button states (e.g., A/B/X/Y, etc.)
+            int buttonCount;
+            const unsigned char* buttons = glfwGetJoystickButtons(joystickID, &buttonCount);
+
+            // // Example: Button A (usually 0) for some action
+            // if (buttonCount > 0 && buttons[GLFW_GAMEPAD_BUTTON_A] == GLFW_PRESS) {
+            //     wireframe = !wireframe;
+			// }
+        }
+    }
 }
+
 
 Window::~Window()
 {

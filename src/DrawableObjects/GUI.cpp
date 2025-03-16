@@ -28,9 +28,9 @@ GUI::GUI(Window& window)
 	ImGui_ImplOpenGL3_Init("#version 130");
 
 	// Use Custom Fonts - TODO: Working for Linux!!
-	// ImGuiIO &io = ImGui::GetIO();
-	// io.Fonts->AddFontFromFileTTF("resources/UI/Roboto-Regular.ttf", 18.0f); // Adding Main Font
-	// io.Fonts->Build();
+	ImGuiIO &io = ImGui::GetIO();
+	io.Fonts->AddFontFromFileTTF("resources/UI/Roboto-Regular.ttf", 18.0f); // Adding Main Font
+	io.Fonts->Build();
 
 	// Set Custom Styles
 	ImGuiStyle &style = ImGui::GetStyle();
@@ -81,6 +81,21 @@ GUI::GUI(Window& window)
 
 void GUI::draw()
 {
+		// TODO ? Or for CHIFEngine Studio
+		// if (ImGui::Begin("Example Window", nullptr, ImGuiWindowFlags_MenuBar)) {
+
+		// 	// Create a menu bar
+		// 	if (ImGui::BeginMenuBar())
+		// 	{
+		// 		if (ImGui::BeginMenu("Menu"))
+		// 		{
+		// 			ImGui::MenuItem("Console");
+		// 		}
+		
+		// 		ImGui::EndMenuBar();
+		// 	}
+		// 	ImGui::End();
+		// }
 	
 		sceneElements& scene = *this->scene;
 
@@ -136,6 +151,53 @@ void GUI::draw()
 		ImGui::Begin("Profiler");
 		ImGui::PlotLines("FPS", fps_history.data(), fps_history.size(), 0, NULL, 0.0f, 144.0f, ImVec2(0, 80));
 		ImGui::End();
+		
+		// CONTROLLER INPUTS : TODO, JUST PROTOTYPE
+		ImGui::Begin("Controller Input");
+
+		for (int joystickID = GLFW_JOYSTICK_1; joystickID <= GLFW_JOYSTICK_LAST; ++joystickID) {
+			if (glfwJoystickPresent(joystickID)) {
+				// Header for each connected joystick
+				ImGui::PushID(joystickID);
+				ImGui::TextColored(ImVec4(1, 1, 0, 1), "Joystick %d is connected!", joystickID);
+
+				// Add some spacing
+				ImGui::Spacing();
+				
+				// Get axes data (e.g., left and right thumbsticks)
+				int axisCount;
+				const float* axes = glfwGetJoystickAxes(joystickID, &axisCount);
+				ImGui::Text("Available Axes: %d", axisCount);
+				
+				// List all axes
+				for (int i = 0; i < axisCount; ++i) {
+					ImGui::Indent();
+					ImGui::Text("Axis %d: %.2f", i, axes[i]);  // Show float values for axes
+					ImGui::Unindent();
+				}
+
+				ImGui::Spacing();  // Add space between axes and buttons
+
+				// Get button states (e.g., A/B/X/Y)
+				int buttonCount;
+				const unsigned char* buttons = glfwGetJoystickButtons(joystickID, &buttonCount);
+				ImGui::Text("Available Buttons: %d", buttonCount);
+
+				// List all buttons
+				for (int i = 0; i < buttonCount; ++i) {
+					ImGui::Indent();
+					ImGui::Text("Button %d: %s", i, buttons[i] == GLFW_PRESS ? "Pressed" : "Released");
+					ImGui::Unindent();
+				}
+
+				// Add some spacing between joystick sections
+				ImGui::Spacing();
+				ImGui::PopID();
+			}
+		}
+
+		ImGui::End();
+
 
 		ImGui::Render();
 		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());

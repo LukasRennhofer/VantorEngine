@@ -56,6 +56,7 @@ std::string getShaderName(const char* path) {
 	}
 	return pathstr;
 }
+
 shaderType getShaderType(const char* path) {
 	std::string type = getShaderName(path);
 	const size_t last_slash_idx = type.find_last_of(".");

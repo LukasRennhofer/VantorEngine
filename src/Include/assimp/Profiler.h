@@ -1,24 +1,8 @@
-
-/*
- *    				~ CHIFEngine ~
- *               
- * Copyright (c) 2025 Lukas Rennhofer
- *
- * Licensed under the MIT License. See LICENSE file for more details.
- *
- * Author: Lukas Rennhofer
- * Date: 2025-03-08
- *
- * File: Profiler.h
- * Last Change: 
- */
- 
-
 /*
 Open Asset Import Library (assimp)
 ----------------------------------------------------------------------
 
-Copyright (c) 2006-2018, assimp team
+Copyright (c) 2006-2024, assimp team
 
 
 All rights reserved.
@@ -59,12 +43,17 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 /** @file Profiler.h
  *  @brief Utility to measure the respective runtime of each import step
  */
-#ifndef INCLUDED_PROFILER_H
-#define INCLUDED_PROFILER_H
+#pragma once
+#ifndef AI_INCLUDED_PROFILER_H
+#define AI_INCLUDED_PROFILER_H
+
+#ifdef __GNUC__
+#   pragma GCC system_header
+#endif
 
 #include <chrono>
 #include <assimp/DefaultLogger.hpp>
-#include "TinyFormatter.h"
+#include <assimp/TinyFormatter.h>
 
 #include <map>
 
@@ -79,16 +68,13 @@ using namespace Formatter;
  */
 class Profiler {
 public:
-    Profiler() {
-        // empty
-    }
+    Profiler() = default;
 
-public:
 
     /** Start a named timer */
     void BeginRegion(const std::string& region) {
         regions[region] = std::chrono::system_clock::now();
-        ASSIMP_LOG_DEBUG((format("START `"),region,"`"));
+        ASSIMP_LOG_DEBUG("START `",region,"`");
     }
 
 
@@ -100,7 +86,7 @@ public:
         }
 
         std::chrono::duration<double> elapsedSeconds = std::chrono::system_clock::now() - regions[region];
-        ASSIMP_LOG_DEBUG((format("END   `"),region,"`, dt= ", elapsedSeconds.count()," s"));
+        ASSIMP_LOG_DEBUG("END   `",region,"`, dt= ", elapsedSeconds.count()," s");
     }
 
 private:
@@ -111,4 +97,5 @@ private:
 }
 }
 
-#endif
+#endif // AI_INCLUDED_PROFILER_H
+

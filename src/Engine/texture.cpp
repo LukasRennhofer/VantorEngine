@@ -51,7 +51,7 @@ unsigned int TextureFromFile(const char *path, const string &directory, bool gam
 	}
 	else
 	{
-		std::cout << "Texture failed to load at path: " << path << std::endl;
+		std::cout << "[ERROR::TEXTURE] Texture failed to load at path: \"" << path << "\"" << std::endl;
 		stbi_image_free(data);
 	}
 
@@ -74,7 +74,7 @@ unsigned int loadCubemap(vector<std::string> faces) {
 		}
 		else
 		{
-			std::cout << "Cubemap texture failed to load at path: " << faces[i] << std::endl;
+			std::cout << "[ERROR::TEXTURE]  Cubemap texture failed to load at path: \"" << faces[i] << "\"" << std::endl;
 			stbi_image_free(data);
 		}
 	}

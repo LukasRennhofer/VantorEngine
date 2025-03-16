@@ -10,7 +10,7 @@
  * Date: 2025-03-08
  *
  * File: CloudsModel.cpp
- * Last Change: 
+ * Last Change: Updatet Debugging System
  */
  
 
@@ -81,13 +81,13 @@ void CloudsModel::generateModelTextures()
 
 		comp.use();
 		comp.setVec3("u_resolution", glm::vec3(128, 128, 128));
-		std::cout << "computing perlinworley!" << std::endl;
+		std::cout << "[PROCESS::CLOUDS] Computing \"perlinworley\"" << std::endl;
 		glActiveTexture(GL_TEXTURE0);
 		comp.setInt("outVolTex", 0);
 		glBindTexture(GL_TEXTURE_3D, this->perlinTex);
 	  	glBindImageTexture(0, this->perlinTex, 0, GL_TRUE, 0, GL_READ_WRITE, GL_RGBA8);
 		glDispatchCompute(INT_CEIL(128, 4), INT_CEIL(128, 4), INT_CEIL(128, 4));
-		std::cout << "computed!!" << std::endl;
+		std::cout << "[PROCESS::CLOUDS] Finished computing perlinworley" << std::endl;
 		//glMemoryBarrier(GL_SHADER_IMAGE_ACCESS_BARRIER_BIT);
 		glGenerateMipmap(GL_TEXTURE_3D);
 	}
@@ -104,9 +104,9 @@ void CloudsModel::generateModelTextures()
 		glActiveTexture(GL_TEXTURE0);
 	  	glBindTexture(GL_TEXTURE_3D, this->worley32);
 	  	glBindImageTexture(0, this->worley32, 0, GL_TRUE, 0, GL_READ_WRITE, GL_RGBA8);
-		std::cout << "computing worley 32!" << std::endl;
+		std::cout << "[PROCESS::CLOUDS] Computing \"worley 32\"" << std::endl;
 		glDispatchCompute(INT_CEIL(32, 4), INT_CEIL(32, 4), INT_CEIL(32, 4));
-		std::cout << "computed!!" << std::endl;
+		std::cout << "[PROCESS::CLOUDS] Finished computing \"worley 32\"" << std::endl;
 		glGenerateMipmap(GL_TEXTURE_3D);
 	}
 
@@ -141,9 +141,9 @@ void CloudsModel::generateWeatherMap() {
 	weatherShader->use();
 	weatherShader->setVec3("seed", scene->seed);
 	weatherShader->setFloat("perlinFrequency", perlinFrequency);
-	std::cout << "computing weather!" << std::endl;
+	std::cout << "[PROCESS::CLOUDS] Computing \"weather\"" << std::endl;
 	glDispatchCompute(INT_CEIL(1024, 8), INT_CEIL(1024, 8), 1);
-	std::cout << "weather computed!!" << std::endl;
+	std::cout << "[PROCESS::CLOUDS] Finished computing \"weather\"" << std::endl;
 
 	glMemoryBarrier(GL_SHADER_IMAGE_ACCESS_BARRIER_BIT);
 }

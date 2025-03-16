@@ -1,25 +1,8 @@
-
-/*
- *    				~ CHIFEngine ~
- *               
- * Copyright (c) 2025 Lukas Rennhofer
- *
- * Licensed under the MIT License. See LICENSE file for more details.
- *
- * Author: Lukas Rennhofer
- * Date: 2025-03-08
- *
- * File: RemoveComments.h
- * Last Change: 
- */
- 
-
 /*
 Open Asset Import Library (assimp)
 ----------------------------------------------------------------------
 
-Copyright (c) 2006-2018, assimp team
-
+Copyright (c) 2006-2024, assimp team
 
 All rights reserved.
 
@@ -59,9 +42,13 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 /** @file Declares a helper class, "CommentRemover", which can be
  *  used to remove comments (single and multi line) from a text file.
  */
+#pragma once
 #ifndef AI_REMOVE_COMMENTS_H_INC
 #define AI_REMOVE_COMMENTS_H_INC
 
+#ifdef __GNUC__
+#   pragma GCC system_header
+#endif
 
 #include <assimp/defs.h>
 
@@ -74,8 +61,7 @@ namespace Assimp    {
  *  to those in C or C++ so this code has been moved to a separate
  *  module.
  */
-class ASSIMP_API CommentRemover
-{
+class ASSIMP_API CommentRemover {
     // class cannot be instanced
     CommentRemover() {}
 
