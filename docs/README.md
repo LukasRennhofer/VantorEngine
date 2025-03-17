@@ -97,7 +97,7 @@ You can download the latest binaries of CHIFEngine from:
 
 ## Documentation & Demos
 
-- **Documentation**: *Currently in progress.* Stay tuned for updates.
+- **Documentation**: [Doc Site](https://lukasrennhofer.github.io/CHIFEngine/#/).
 - **Demos**: *Currently in progress.* Stay tuned for updates.
 
 ---
@@ -130,7 +130,6 @@ We extend our gratitude to the following individuals for their efforts and contr
 ---
 
 ## Stay Connected
-
 - Visit our [Website](https://voronoid.tech/).
 - Give us a star on [GitHub](https://github.com/LukasRennhofer/CHIFEngine) for the latest updates.
 
