@@ -1,76 +1,54 @@
-# CHIFEngine
-
 <p align="center">
-  <a href="https://chifengine.netlify.app/">
-    <img src="https://github.com/LL-Program/CHIF-Engine/blob/main/GitPage/Banners/CHIFEngineV0.0.3Logo.png?raw=true" width="1080" alt="CHIFEngine logo">
+  <a href="https://voronoid.tech/">
+    <img src="https://raw.githubusercontent.com/LukasRennhofer/CHIFEngine/refs/heads/main/config/assets/CHIFEngine_Logo_2_wbg.png" width="200" alt="CHIFEngine logo">
   </a>
 </p>
-
----
+<p align="center">
+<img src="https://raw.githubusercontent.com/LukasRennhofer/CHIFEngine/refs/heads/main/config/assets/gif1.gif" alt="GIF Show Background" style="">
+</p>
 
 <p align="center">
-  <img alt="GitHub Release" src="https://img.shields.io/github/v/release/LL-Program/CHIF-Engine">
-  <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/LL-Program/CHIF-Engine">
-  <img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/t/LL-Program/CHIF-Engine">
-  <img alt="GitHub contributors" src="https://img.shields.io/github/contributors/LL-Program/CHIF-Engine">
-  <img alt="GitHub Downloads (all assets, all releases)" src="https://img.shields.io/github/downloads/LL-Program/CHIF-Engine/total">
+  <img alt="GitHub Release" src="https://img.shields.io/github/v/release/LukasRennhofer/CHIFEngine">
+  <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/LukasRennhofer/CHIFEngine">
+  <img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/t/LukasRennhofer/CHIFEngine">
+  <img alt="GitHub contributors" src="https://img.shields.io/github/contributors/LukasRennhofer/CHIFEngine">
+  <img alt="GitHub Downloads (all assets, all releases)" src="https://img.shields.io/github/downloads/LukasRennhofer/CHIFEngine/total">
   
 </p>
 
 <br>
 
 <p align="center">
-  <img alt="GitHub Sponsors" src="https://img.shields.io/github/sponsors/LL-Program">
-  <img alt="GitHub Issues or Pull Requests" src="https://img.shields.io/github/issues/LL-Program/CHIF-Engine">
-  <img alt="Website" src="https://img.shields.io/website?url=https%3A%2F%2Fchifengine.netlify.app%2F">
+  <img alt="GitHub Sponsors" src="https://img.shields.io/github/sponsors/LukasRennhofer">
+  <img alt="GitHub Issues or Pull Requests" src="https://img.shields.io/github/issues/LukasRennhofer/CHIFEngine">
+  <img alt="Website" src="https://img.shields.io/website?url=https%3A%2F%2Fvoronoid.tech%2F">
 </p>
 
 ---
 
 ## About CHIFEngine
 
-[CHIFEngine](https://github.com/LL-Program/CHIFEngine) is a powerful ... TODO
+[CHIFEngine](https://github.com/LukasRennhofer/CHIFEngine) is a low-level, high-performance game engine designed for **large-scale Open-World games**. Built from the ground up with **OpenGL** and custom rendering techniques, it provides fine-grained control over every aspect of game development while maintaining **maximum efficiency**. Unlike high-level game engines, the engine is designed to be **lightweight**, **modular**, and **fully extensible**, allowing developers to directly manipulate rendering, physics, and memory management **without unnecessary abstractions**.
 
 ---
 
 ## Why CHIFEngine?
 
 - **Free and Open Source**: CHIFEngine is licensed under the MIT License, allowing complete freedom with no royalties or hidden fees, just the same License.
-- **Developer-Friendly**: TODO
+- **Hobby Project for Open-World Game**: As a hobby project, **CHIFEngine** was created with a passion for building a custom low-level game engine to support large-scale open-world games. While it may not offer the conveniences of commercial engines, it provides an invaluable opportunity for hands-on learning, deep customization, and experimenting with game engine design.
 
-> *"Any sufficiently advanced technology is indistinguishable from magic." – Arthur C. Clarke*
-
----
-
-## Screenshots
-
-<p align="center">
-  <a href="https://chifengine.netlify.app/">
-    <img src="https://github.com/LL-Program/CHIF-Engine/blob/main/GitPage/Screenshots/drone1.png?raw=true" width="1080" alt="CHIFEngine logo">
-  </a>
-</p>
-
-<p align="center">
-  <a href="https://chifengine.netlify.app/">
-    <img src="https://github.com/LL-Program/CHIF-Engine/blob/main/GitPage/Screenshots/sponza1.png?raw=true" width="1080" alt="CHIFEngine logo">
-  </a>
-</p>
-
-TODO
+> *"Open source is about collaborating; not competing." – **Kelsey Hightower**, technologist at google and open-source advocate*
 
 ---
 
 ## Getting Started
 
 ### Download
-TODO
-You can download the latest version of CHIFEngine from:
+You can download the latest binaries of CHIFEngine from:
 
-- Our [Website](https://chifengine.netlify.app)
-- The [Releases Tab](https://github.com/LL-Program/CHIF-Engine/releases)
+- The [Releases Tab](https://github.com/LukasRennhofer/CHIFEngine/releases)
 
-> **Note**: Currently, CHIFEngine supports only Windows x64 systems.
-
+> **Note**: Currently, CHIFEngine supports only Windows x64 and Nintendo Switch (Homebrew) systems.
 
 ### Build Instructions
 
@@ -79,54 +57,54 @@ You can download the latest version of CHIFEngine from:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/LL-Program/CHIF-Engine.git
+   git clone https://github.com/LukasRennhofer/CHIFEngine.git
    ```
 
-2. Navigate to the project directory and generate Visual Studio project files:
+2. Install the Dependencies
 
    ```bash
-   cd CHIF-Engine
-   cmake -B Build
-   cd Build
-   make
-   cd ..
-   ./setup v2022
+      CMake: ^3.27.0
+
+      OpenGL: ^4.6
+
+      GLFW: ^3.3.8
+
+      GLAD: ^2.2.0
+
+      GLM: ^0.9.9.8
+
+      Assimp: ^5.2.5
    ```
 
-3. Open the generated project in Visual Studio 2017, 2019, or 2022 and build the solution.
+3. Build it with the Windows BAT File
+  ```bash
+    ./buildWindows.bat
+   ```
 
 #### Linux
 
 - **Status**: Not currently supported. Building on Linux may lead to errors due to limited development resources.
+  - Needs Dependencies of the ```CMakeLists.txt``` file and can be build with ```./buildLinux.sh```, but not supported⚠️
 
 ---
 
 ## Features
 
-- Cross-platform (Windows, with future plans for Linux , MacOS, PS5, XBOX, SWITCH?).
-- Lua scripting recommended for Animations and general Rendering Productions.
-- C++ Engine API for AAA titles.
-- Lightweight yet robust rendering core.
-- Modular design for flexibility and scalability.
-
----
-## IMGUI Integration for Devs
-
-- **Easy Integration of IMGUI for development and perfect workflow**:
-- Check out the **IMGUI Demo Implementation** in their own [Templates Directory](https://github.com/LL-Program/CHIF-Engine/tree/main)
-
+- **Cross-Platform Support** – Runs on PC and supports Nintendo Switch Homebrew, making it suitable for both modern and embedded hardware
+- **Minimal External Dependencies** – Designed to be self-contained, avoiding reliance on bulky third-party libraries while giving developers direct access to OpenGL, Vulkan (experimental), and custom math libraries.
+- **Custom OpenGL (Vulkan not yet) Rendering Pipeline** – Uses modern graphics techniques such as deferred shading, GPU-driven culling, and physically-based rendering (PBR) in the future to handle complex environments efficiently.
 ---
 
 ## Documentation & Demos
 
 - **Documentation**: *Currently in progress.* Stay tuned for updates.
-- **Demos**: Explore sample projects in our [Demos Directory](https://github.com/LL-Program/CHIF-Engine/tree/main).
+- **Demos**: *Currently in progress.* Stay tuned for updates.
 
 ---
 
 ## Roadmap & Todos
 
-Check out our [Todo List](Ressources/Pages/Todo.md) for upcoming features and tasks.
+Check out our [Todo List](Todo.md) for upcoming features and tasks.
 
 ---
 ## Q&A
@@ -146,14 +124,14 @@ We extend our gratitude to the following individuals for their efforts and contr
 
 | Name                      | GitHub Handle   | Contributions                     | 
 | ------------------------- | --------------- | --------------------------------- |
-| **Lukas Rennhofer**       | @LL-Program     | **Maintainer**, Engine Logic, Physics |
+| **Lukas Rennhofer**       | @LukasRennhofer     | **Maintainer**, Engine Logic, Physics |
 | **Moritz Rottensteiner**  | @Alyopolo       | 3D Assets and Game Development    |
 
 ---
 
 ## Stay Connected
 
-- Visit our [Website](https://chifengine.netlify.app/).
-- Give us a star on [GitHub](https://github.com/LL-Program/CHIF-Engine) for the latest updates.
+- Visit our [Website](https://voronoid.tech/).
+- Give us a star on [GitHub](https://github.com/LukasRennhofer/CHIFEngine) for the latest updates.
 
 ---
