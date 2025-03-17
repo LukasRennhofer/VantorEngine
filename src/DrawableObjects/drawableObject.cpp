@@ -16,4 +16,6 @@
 
 #include "drawableObject.h"
 
-sceneElements* drawableObject::scene = 0;
+namespace chif {
+    sceneElements* drawableObject::scene = 0;
+} // NAMESPACE CHIF

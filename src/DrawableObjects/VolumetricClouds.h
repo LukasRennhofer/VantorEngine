@@ -26,36 +26,38 @@
 #include "drawableObject.h"
 #include "CloudsModel.h"
 
-class VolumetricClouds : public drawableObject
-{
-public:
-	VolumetricClouds(int SW, int SH, CloudsModel * model);
-	virtual void draw();
-	~VolumetricClouds();
+namespace chif::weather {
+	class VolumetricClouds : public drawableObject
+	{
+	public:
+		VolumetricClouds(int SW, int SH, CloudsModel * model);
+		virtual void draw();
+		~VolumetricClouds();
 
-	enum cloudsTextureNames {fragColor, bloom, alphaness, cloudDistance};
+		enum cloudsTextureNames {fragColor, bloom, alphaness, cloudDistance};
 
-	void generateWeatherMap();
+		void generateWeatherMap();
 
-	unsigned int getCloudsTexture() { 
-		return (model->postProcess ? cloudsPostProcessingFBO->getColorAttachmentTex(0) : getCloudsRawTexture());
-	}
+		unsigned int getCloudsTexture() { 
+			return (model->postProcess ? cloudsPostProcessingFBO->getColorAttachmentTex(0) : getCloudsRawTexture());
+		}
 
-	unsigned int getCloudsTexture(int i) {
-		return cloudsFBO->getColorAttachmentTex(i);
-	}
+		unsigned int getCloudsTexture(int i) {
+			return cloudsFBO->getColorAttachmentTex(i);
+		}
 
-	unsigned int getCloudsRawTexture(){
-		return cloudsFBO->getColorAttachmentTex(0);
-	}
+		unsigned int getCloudsRawTexture(){
+			return cloudsFBO->getColorAttachmentTex(0);
+		}
 
 
 
-private:
-	int SCR_WIDTH, SCR_HEIGHT;
+	private:
+		int SCR_WIDTH, SCR_HEIGHT;
 
-	TextureSet * cloudsFBO;
-	FrameBufferObject *cloudsPostProcessingFBO;
+		chif::Buffer::TextureSet * cloudsFBO;
+		chif::Buffer::FrameBufferObject *cloudsPostProcessingFBO;
 
-	CloudsModel * model;
-};
+		CloudsModel * model;
+	};
+} // NAMESPACE CHIF::WEATHER

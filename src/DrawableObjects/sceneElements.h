@@ -22,13 +22,14 @@
 #include "../Engine/buffers.h"
 #include <random>
 
-struct sceneElements {
+namespace chif {
+	struct sceneElements {
 
-	glm::vec3 lightPos, lightColor, lightDir, fogColor, seed;
-	glm::mat4 projMatrix;
-	Camera * cam;
-	FrameBufferObject * sceneFBO;
-	bool wireframe = false;
-};
-
+		glm::vec3 lightPos, lightColor, lightDir, fogColor, seed;
+		glm::mat4 projMatrix;
+		Camera * cam;
+		chif::Buffer::FrameBufferObject * sceneFBO;
+		bool wireframe = false;
+	};
+} // NAMESPACE CHIF
 #endif

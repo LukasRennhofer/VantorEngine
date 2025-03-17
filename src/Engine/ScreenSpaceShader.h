@@ -19,39 +19,41 @@
 #include <glad/glad.h>
 #include "../DrawableObjects/drawableObject.h"
 
-class ScreenSpaceShader : drawableObject
-{
-public:
-	ScreenSpaceShader(const char * fragmentPath);
-	~ScreenSpaceShader();
-
-	Shader * const getShaderPtr() {
-		return shad;
-	}
-
-	Shader &getShader()
+namespace chif::Shader {
+	class ScreenSpaceShader : drawableObject
 	{
-		return *shad;
-	}
+	public:
+		ScreenSpaceShader(const char * fragmentPath);
+		~ScreenSpaceShader();
 
-	virtual void draw();
-	static void drawQuad();
+		Shader * const getShaderPtr() {
+			return shad;
+		}
 
-	static void disableTests() {
-		//glDisable(GL_CLIP_DISTANCE0);
-		glDisable(GL_DEPTH_TEST);
-	}
+		Shader &getShader()
+		{
+			return *shad;
+		}
 
-	static void enableTests() {
-		glEnable(GL_DEPTH_TEST);
-	}
+		virtual void draw();
+		static void drawQuad();
+
+		static void disableTests() {
+			//glDisable(GL_CLIP_DISTANCE0);
+			glDisable(GL_DEPTH_TEST);
+		}
+
+		static void enableTests() {
+			glEnable(GL_DEPTH_TEST);
+		}
 
 
 
-private:
-	Shader * shad;
-	static unsigned int quadVAO, quadVBO;
-	static bool initialized;
+	private:
+		Shader * shad;
+		static unsigned int quadVAO, quadVBO;
+		static bool initialized;
 
-	void initializeQuad();
-};
+		void initializeQuad();
+	};
+} // NAMESPACE CHIF::SHADER

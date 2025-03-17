@@ -24,55 +24,57 @@
 #include "version.h"
 #include "constants.h"
 
-class Window
-{
-public:
-	Window(int& success, unsigned int SCR_WIDTH = 1600, unsigned int SCR_HEIGHT = 900, std::string name = "CHIFEngine");
-	~Window();
-	GLFWwindow * w;
-	GLFWwindow * getWindow() const { return w; }
+namespace chif {
+	class Window
+	{
+	public:
+		Window(int& success, unsigned int SCR_WIDTH = 1600, unsigned int SCR_HEIGHT = 900, std::string name = "CHIFEngine");
+		~Window();
+		GLFWwindow * w;
+		GLFWwindow * getWindow() const { return w; }
 
-	void processInput(float frameTime); //input handler
+		void processInput(float frameTime); //input handler
 
-	static unsigned int SCR_WIDTH;
-	static unsigned int SCR_HEIGHT;
+		static unsigned int SCR_WIDTH;
+		static unsigned int SCR_HEIGHT;
 
-	void terminate() {
-		glfwTerminate();
-	}
+		void terminate() {
+			glfwTerminate();
+		}
 
-	bool isWireframeActive() {
-		return Window::wireframe;
-	}
+		bool isWireframeActive() {
+			return Window::wireframe;
+		}
 
-	bool continueLoop() {
-		return !glfwWindowShouldClose(this->w);
-	}
+		bool continueLoop() {
+			return !glfwWindowShouldClose(this->w);
+		}
 
-	void swapBuffersAndPollEvents() {
-		glfwSwapBuffers(this->w);
-		glfwPollEvents();
-	}
+		void swapBuffersAndPollEvents() {
+			glfwSwapBuffers(this->w);
+			glfwPollEvents();
+		}
 
-	static Camera * camera;
+		static Camera * camera;
 
-private:
-	int oldState, newState;
-	int gladLoader();
+	private:
+		int oldState, newState;
+		int gladLoader();
 
-	static void framebuffer_size_callback(GLFWwindow* window, int width, int height);
-	static void mouse_callback(GLFWwindow* window, double xpos, double ypos);
-	static void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
+		static void framebuffer_size_callback(GLFWwindow* window, int width, int height);
+		static void mouse_callback(GLFWwindow* window, double xpos, double ypos);
+		static void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
 
-	static bool keyBools[10];
+		static bool keyBools[10];
 
-	static bool mouseCursorDisabled;
+		static bool mouseCursorDisabled;
 
-	static bool wireframe;
+		static bool wireframe;
 
-	static bool firstMouse;// = true;
-	static float lastX;
-	static float lastY;
+		static bool firstMouse;// = true;
+		static float lastX;
+		static float lastY;
 
-	std::string name;
-};
+		std::string name;
+	};
+} // NAMESPACE CHIF

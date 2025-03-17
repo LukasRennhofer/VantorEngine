@@ -21,11 +21,12 @@
 #include "drawableObject.h"
 #include <glm/gtc/matrix_transform.hpp>
 
+namespace chif::Render3D {
 struct colorPreset {
 	glm::vec3 cloudColorBottom, skyColorTop, skyColorBottom, lightColor, fogColor;
 };
 
-class Skybox : public drawableObject {
+class Skybox : public chif::drawableObject {
 public:
 	friend class VolumetricClouds;
 	Skybox();
@@ -44,14 +45,14 @@ public:
 	unsigned int getSkyTexture() {
 		return skyboxFBO->tex;
 	}
-
-private:
+	
 	glm::vec3 skyColorTop, skyColorBottom;
 
-	ScreenSpaceShader * skyboxShader;
-	FrameBufferObject * skyboxFBO;
+	chif::Shader::ScreenSpaceShader * skyboxShader;
+	chif::Buffer::FrameBufferObject * skyboxFBO;
 
 	colorPreset presetSunset, highSunPreset;
 
 	bool lensFlareOn = true;
 };
+} // NAMESPACE CHIF::RENDER3D

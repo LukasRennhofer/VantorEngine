@@ -19,15 +19,17 @@
 
 #include "sceneElements.h"
 
-class drawableObject
-{
-public:
-	virtual void draw() = 0;
-	virtual void setGui() {};
+namespace chif {
+	class drawableObject
+	{
+	public:
+		virtual void draw() = 0;
+		virtual void setGui() {};
 
-	virtual void update() {};
+		virtual void update() {};
 
-	static sceneElements* scene;
-};
+		static sceneElements* scene;
+	};
+} // NAMESPACE CHIF
 
 #endif

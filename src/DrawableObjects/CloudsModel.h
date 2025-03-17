@@ -24,42 +24,42 @@
 
 #define INT_CEIL(n,d) (int)ceil((float)n/d)
 
-class CloudsModel : public drawableObject
-{
-public:
-	friend class VolumetricClouds;
+namespace chif::weather {
+	class CloudsModel : public drawableObject
+	{
+		public:
+			friend class VolumetricClouds;
 
-	CloudsModel(sceneElements * scene, Skybox * sky);
-	~CloudsModel();
-	
-	virtual void draw() {};
+			CloudsModel(sceneElements * scene, chif::Render3D::Skybox * sky);
+			~CloudsModel();
+			
+			virtual void draw() {};
 
-	virtual void update();
-	virtual void setGui();
+			virtual void update();
+			virtual void setGui();
 
-private:
-	Shader * volumetricCloudsShader, *weatherShader;
-	ScreenSpaceShader * postProcessingShader;
+		private:
+			chif::Shader::Shader * volumetricCloudsShader, *weatherShader;
+			chif::Shader::ScreenSpaceShader * postProcessingShader;
 
-	float coverage, cloudSpeed, crispiness, curliness, density, absorption;
-	float earthRadius, sphereInnerRadius, sphereOuterRadius;
-	float perlinFrequency;
-	bool enableGodRays;
-	bool enablePowder;
-	bool postProcess;
+			float coverage, cloudSpeed, crispiness, curliness, density, absorption;
+			float earthRadius, sphereInnerRadius, sphereOuterRadius;
+			float perlinFrequency;
+			bool enableGodRays;
+			bool enablePowder;
+			bool postProcess;
 
-	glm::vec3 cloudColorTop, cloudColorBottom;
+			glm::vec3 cloudColorTop, cloudColorBottom;
 
-	glm::vec3 seed, oldSeed;
-	unsigned int perlinTex, worley32, weatherTex;
+			glm::vec3 seed, oldSeed;
+			unsigned int perlinTex, worley32, weatherTex;
 
-	sceneElements * scene;
-	Skybox * sky;
+			sceneElements * scene;
+			chif::Render3D::Skybox * sky;
 
-	void generateWeatherMap();
-	void generateModelTextures();
-	void initVariables();
-	void initShaders();
-
-
-};
+			void generateWeatherMap();
+			void generateModelTextures();
+			void initVariables();
+			void initShaders();
+	};
+} // NAMESPACE CHIF::WEATHER

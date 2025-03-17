@@ -15,6 +15,7 @@
  
 
 #pragma once
+
 #include "../Engine/Window.h"
 #include "drawableObject.h"
 
@@ -27,22 +28,24 @@
 #include <vector>
 #include <format> 
 
-class GUI : public drawableObject
-{
-public:
-	GUI(Window& w);
-	~GUI();
+namespace chif::gui{
+	class GUI : public chif::drawableObject
+	{
+	public:
+		GUI(Window& w);
+		~GUI();
 
-	virtual void draw();
-	virtual void update();
+		virtual void draw();
+		virtual void update();
 
-	GUI& subscribe(drawableObject* subscriber);
+		GUI& subscribe(chif::drawableObject* subscriber);
 
-	// FPS Values
-	static std::vector<float> fps_history;
-	int index = 0;
+		// FPS Values
+		static std::vector<float> fps_history;
+		int index = 0;
 
-private:
-	std::list<drawableObject*> subscribers;
+	private:
+		std::list<chif::drawableObject*> subscribers;
 
-};
+	};
+} // CHIF::GUI
