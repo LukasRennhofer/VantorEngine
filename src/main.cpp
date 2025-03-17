@@ -17,12 +17,12 @@
 #define GLAD_H
 
 // Engine headers
-#include "Engine/Window.h"
+#include "platform/Window.h"
 #include "Engine/shader.h"
 #include "Engine/ScreenSpaceShader.h"
-#include "Engine/texture.h"
-#include "Engine/version.h"
-#include "Engine/constants.h"
+#include "utilities/texture/texture.h"
+#include "core/version.h"
+#include "utilities/constants.h"
 
 #ifdef __SWITCH__
 #include <switch.h>
@@ -35,11 +35,11 @@
 #endif // GLAD_H
 
 // Drawable objects
-#include "DrawableObjects/VolumetricClouds.h"
-#include "DrawableObjects/Terrain.h"
-#include "DrawableObjects/Skybox.h"
-#include "DrawableObjects/Water.h"
-#include "DrawableObjects/CloudsModel.h"
+#include "graphics/VolumetricClouds.h"
+#include "utilities/terrain/Terrain.h"
+#include "graphics/Skybox.h"
+#include "graphics/Water.h"
+#include "graphics/CloudsModel.h"
 
 // Third-party libraries
 #include <camera.h>
@@ -53,12 +53,12 @@
 #include <glad/glad.h>
 
 // Error handling
-#include "Engine/glError.h"
+#include "platform/glError.h"
 
 // Scene objects
-#include "DrawableObjects/sceneElements.h"
-#include "DrawableObjects/drawableObject.h"
-#include "DrawableObjects/GUI.h"
+#include "Engine/sceneElements.h"
+#include "graphics/drawableObject.h"
+#include "gui/ImguiGUI.h"
 #include <model.h>
 
 // Standard libraries
@@ -68,13 +68,13 @@
 
 // ImGui setup (only for desktop)
 #ifndef __SWITCH__
-#include "../imgui/imgui.h"
-#include "../imgui/imgui_impl_glfw.h"
-#include "../imgui/imgui_impl_opengl3.h"
+#include "external/imgui/imgui.h"
+#include "external/imgui/imgui_impl_glfw.h"
+#include "external/imgui/imgui_impl_opengl3.h"
 #else
 // ImGui for Switch should use an EGL-compatible backend
-#include "../imgui/imgui.h"
-#include "../imgui/imgui_impl_opengl3.h"
+#include "external/imgui/imgui.h"
+#include "external/imgui/imgui_impl_opengl3.h"
 #endif
 
 int main()

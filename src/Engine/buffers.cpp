@@ -15,7 +15,7 @@
  
 
 #include "buffers.h"
-#include "texture.h"
+#include "../utilities/texture/texture.h"
 
 namespace chif::Buffer {
 	void bindFrameBuffer(int frameBuffer, int width, int height) {

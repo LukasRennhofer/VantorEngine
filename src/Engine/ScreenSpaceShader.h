@@ -17,7 +17,7 @@
 #pragma once
 #include "shader.h"
 #include <glad/glad.h>
-#include "../DrawableObjects/drawableObject.h"
+#include "../graphics/drawableObject.h"
 
 namespace chif::Shader {
 	class ScreenSpaceShader : drawableObject

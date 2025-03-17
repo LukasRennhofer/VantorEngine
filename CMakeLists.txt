@@ -7,37 +7,43 @@ project(CHIFEngine)
 set(CMAKE_CXX_STANDARD 17)
 
 # Include directories
-include_directories(
-    src/Include
-    src/imgui
-    src/Compile
-)
+include_directories(src/external)
 
 # Add source files
 set(SOURCES
-    src/Engine/Window.cpp
-    src/Engine/utils.cpp
-    src/Engine/texture.cpp
-    src/Engine/shader.cpp
-    src/Engine/ScreenSpaceShader.cpp
-    src/Engine/glError.cpp
+    # src
+    src/main.cpp
+    src/stb_image_impl.cpp
+    # Engine
     src/Engine/buffers.cpp
     src/Engine/BaseShader.cpp
-    src/Engine/version.cpp
-    src/DrawableObjects/Water.cpp
-    src/DrawableObjects/VolumetricClouds.cpp
-    src/DrawableObjects/Terrain.cpp
-    src/DrawableObjects/Skybox.cpp
-    src/DrawableObjects/GUI.cpp
-    src/DrawableObjects/drawableObject.cpp
-    src/DrawableObjects/CloudsModel.cpp
-    src/imgui/imgui.cpp
-    src/imgui/imgui_draw.cpp
-    src/imgui/imgui_impl_opengl3.cpp
-    src/imgui/imgui_widgets.cpp
-    src/imgui/imgui_impl_glfw.cpp
-    src/main.cpp
-    src/Compile/glad.c
+    src/Engine/shader.cpp
+    src/Engine/ScreenSpaceShader.cpp
+    # externals
+    src/external/imgui/imgui_draw.cpp
+    src/external/imgui/imgui_demo.cpp
+    src/external/imgui/imgui_impl_glfw.cpp
+    src/external/imgui/imgui_impl_opengl3.cpp
+    src/external/imgui/imgui_widgets.cpp
+    src/external/imgui/imgui.cpp
+    src/external/glad.c
+    # graphics
+    src/graphics/drawableObject.cpp
+    src/graphics/CloudsModel.cpp
+    src/graphics/Skybox.cpp
+    src/graphics/VolumetricClouds.cpp
+    src/graphics/Water.cpp
+    # platform
+    src/platform/Window.cpp
+    src/platform/glError.cpp
+    # gui
+    src/gui/ImguiGUI.cpp
+    # core
+    src/core/version.cpp
+    # utilities
+    src/utilities/utils.cpp
+    src/utilities/terrain/Terrain.cpp
+    src/utilities/texture/texture.cpp
 )
 
 if(WIN32)
@@ -54,14 +60,14 @@ if(WIN32)
         assimp
     )
 
-    set(GLFW_LIB_DIR "${CMAKE_SOURCE_DIR}/src/Libraries")
-    set(GLFW_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/src/Include/GLFW")
+    set(GLFW_LIB_DIR "${CMAKE_SOURCE_DIR}/src/lib")
+    set(GLFW_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/src/externals/GLFW")
 
     include_directories(${GLFW_INCLUDE_DIR})
     link_directories(${GLFW_LIB_DIR})
 
-    set(ASSIMP_LIB "${CMAKE_SOURCE_DIR}/src/Libraries")
-    set(ASSIMP_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/src/Include/assimp")
+    set(ASSIMP_LIB "${CMAKE_SOURCE_DIR}/src/lib")
+    set(ASSIMP_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/src/externals/assimp")
 
     include_directories(${ASSIMP_INCLUDE_DIR})
     link_directories(${ASSIMP_LIB})

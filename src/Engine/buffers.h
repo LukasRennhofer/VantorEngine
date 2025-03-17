@@ -16,7 +16,7 @@
 
 #pragma once
 #include <glad/glad.h>
-#include "Window.h"
+#include "../platform/Window.h"
 
 namespace chif::Buffer {
 	void bindFrameBuffer(int frameBuffer, int width, int height);

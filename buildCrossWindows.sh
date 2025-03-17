@@ -16,12 +16,12 @@ make -j$(nproc)
 echo "Creating output directories..."
 mkdir -p resources
 mkdir -p shaders
-mkdir -p libraries
+mkdir -p lib
 
 echo "Copying Assets and Shaders..."
 cp -r ../../src/resources resources
 cp -r ../../src/shaders shaders
-cp -r ../../src/libraries libraries
+cp -r ../../src/lib lib
 
 cp $(x86_64-w64-mingw32-gcc -print-file-name=libgcc_s_seh-1.dll) ../windows
 cp $(x86_64-w64-mingw32-gcc -print-file-name=libstdc++-6.dll) ../windows

@@ -15,12 +15,12 @@ make
 echo Creating output directories...
 mkdir \resources
 mkdir \shaders
-mkdir \libraries
+mkdir \lib
 
 echo Copying Assets and Shaders...
 xcopy /e /i /h ..\..\src\resources resources
 xcopy /e /i /h ..\..\src\shaders shaders
-xcopy /e /i /h ..\..\src\libraries libraries
+xcopy /e /i /h ..\..\src\lib lib
 
 echo Build complete!
 start "" CHIFEngine.exe

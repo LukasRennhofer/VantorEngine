@@ -59,3 +59,25 @@
     │
     ├── 
     ```
+
+ - engine
+ - graphics
+ - audio
+ - physics
+ - core
+ - gui
+ - shaders
+ - resources
+ - utilities
+ - platform
+ - external
+    - includes
+    - Compile
+    - imgui
+    - lib
+ - CHIFEngine.h ?
+ - imgui.ini
+ - stb_image_impl.cpp
+ - Own CMakeLists.txt
+
+- Get-ChildItem -Recurse -Path .\src\ -Filter *.c | ForEach-Object { $_.FullName.Replace((Get-Location).Path + '\', '') }

@@ -15,12 +15,12 @@ make -j$(nproc)
 echo "Creating output directories..."
 mkdir -p resources
 mkdir -p shaders
-mkdir -p libraries
+mkdir -p lib
 
 echo "Copying Assets and Shaders..."
 cp -r ../../src/resources resources
 cp -r ../../src/shaders shaders
-cp -r ../../src/libraries libraries
+cp -r ../../src/lib lib
 
 echo "Build complete!"
 read -p "Press any key to continue..."
