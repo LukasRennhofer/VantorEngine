@@ -1,4 +1,3 @@
-
 /*
  *    				~ CHIFEngine ~
  *               
@@ -17,11 +16,6 @@
 
 #ifndef CHIFENGINE
 #define CHIFENGINE
-#define CHIF_ENGINE
-
-#include <camera.h>
-#include <mesh.h>
-#include <model.h>
 
 #include "core/version.h"
 
@@ -36,14 +30,19 @@
 #include "graphics/VolumetricClouds.h"
 #include "graphics/Water.h"
 
-#include "gui/ImguiGUI.h"
-
-#include "platform/glError.h"
 #include "platform/Window.h"
+#include "platform/glError.h"
+
+#include "gui/ImguiGUI.h"
+#include "gui/font.h"
 
 #include "utilities/utils.h"
 #include "utilities/constants.h"
 #include "utilities/terrain/Terrain.h"
 #include "utilities/texture/texture.h"
+
+#include <camera.h>
+#include <mesh.h>
+#include <model.h>
 
 #endif // CHIFENGINE

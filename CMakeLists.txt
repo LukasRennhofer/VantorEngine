@@ -38,6 +38,7 @@ set(SOURCES
     src/platform/glError.cpp
     # gui
     src/gui/ImguiGUI.cpp
+    # src/gui/font.cpp
     # core
     src/core/version.cpp
     # utilities
@@ -58,6 +59,7 @@ if(WIN32)
         imm32
         shell32
         assimp
+        freetype
     )
 
     set(GLFW_LIB_DIR "${CMAKE_SOURCE_DIR}/src/lib")

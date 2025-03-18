@@ -1,5 +1,4 @@
-﻿
-/*
+﻿/*
  *    				~ CHIFEngine ~
  *               
  * Copyright (c) 2025 Lukas Rennhofer
@@ -16,50 +15,48 @@
 #ifndef GLAD_H
 #define GLAD_H
 
-// Engine headers
-#include "platform/Window.h"
-#include "Engine/shader.h"
-#include "Engine/ScreenSpaceShader.h"
-#include "utilities/texture/texture.h"
-#include "core/version.h"
-#include "utilities/constants.h"
+#include <stb_image.h>
+#include <glad/glad.h>
 
 #ifdef __SWITCH__
 #include <switch.h>
 #include <EGL/egl.h>	// EGL library for Switch
 #include <EGL/eglext.h> // EGL extensions
 #else
-#include <GLFW/glfw3.h> // Only for desktop (Windows/Linux)
+#include <GLFW/glfw3.h>
 #endif
-
 #endif // GLAD_H
 
-// Drawable objects
-#include "graphics/VolumetricClouds.h"
-#include "utilities/terrain/Terrain.h"
-#include "graphics/Skybox.h"
-#include "graphics/Water.h"
-#include "graphics/CloudsModel.h"
+// Engine Header
+#include "platform/Window.h"
+#include "platform/glError.h"
 
-// Third-party libraries
 #include <camera.h>
-#include <stb_image.h>
+#include <mesh.h>
+#include <model.h>
+
+#include "Engine/BaseShader.h"
+#include "Engine/buffers.h"
+#include "Engine/sceneElements.h"
+#include "Engine/ScreenSpaceShader.h"
+#include "Engine/shader.h"
+
+#include "graphics/CloudsModel.h"
+#include "graphics/drawableObject.h"
+#include "graphics/VolumetricClouds.h"
+#include "graphics/Water.h"
+
+#include "gui/ImguiGUI.h"
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 #include <glm/gtc/random.hpp>
 
-#include <glad/glad.h>
-
-// Error handling
-#include "platform/glError.h"
-
-// Scene objects
-#include "Engine/sceneElements.h"
-#include "graphics/drawableObject.h"
-#include "gui/ImguiGUI.h"
-#include <model.h>
+#include "utilities/utils.h"
+#include "utilities/constants.h"
+#include "utilities/terrain/Terrain.h"
+#include "utilities/texture/texture.h"
 
 // Standard libraries
 #include <iostream>
@@ -129,6 +126,18 @@ int main()
 	 	.subscribe(&skybox)
 	 	.subscribe(&cloudsModel)
 	 	.subscribe(&water);
+
+	// FONT
+
+	// if (!chif::gui::font::initFont()) {
+	// 	return 0; 
+	// }
+
+	// if (!chif::gui::font::setFont("resources/calibri.ttf")) {
+	// 	return 0;
+	// }
+
+	// chif::gui::font::destroyFont();
 
 	chif::Shader::ScreenSpaceShader PostProcessing("shaders/post_processing.frag");
 	chif::Shader::ScreenSpaceShader fboVisualizer("shaders/visualizeFbo.frag");
@@ -255,6 +264,9 @@ int main()
 		fboVisualizerShader.use();
 		fboVisualizerShader.setSampler2D("fboTex", volumetricClouds.getCloudsTexture(), 0);
 		// fboVisualizer.draw(); //Debugging
+
+		// FONT 2
+		// chif::gui::font::RenderText2D("Hello, World!", 25.0f, 25.0f, 1.0f, glm::vec3(0.5, 0.8f, 0.2f));
 
 		if (SHOW_IMGUI) {
 			gui.draw();
