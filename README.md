@@ -44,7 +44,7 @@
 ## Getting Started
 
 ### Download
-You can download the latest binaries of CHIFEngine from:
+You can download the latest binaries of CHIFEngine from [the website](https://lukasrennhofer.github.io/CHIFEngine/#/).
 
 - The [Releases Tab](https://github.com/LukasRennhofer/CHIFEngine/releases)
 
@@ -54,26 +54,22 @@ You can download the latest binaries of CHIFEngine from:
 
 #### Windows
 
+0. Install Mingw Msys x64 from [their website](https://www.msys2.org/).
+
 1. Clone the repository:
 
    ```bash
    git clone https://github.com/LukasRennhofer/CHIFEngine.git
    ```
 
-2. Install the Dependencies
+2. Install the Dependencies with Msys2:
 
    ```bash
-      CMake: ^3.27.0
-
-      OpenGL: ^4.6
-
-      GLFW: ^3.3.8
-
-      GLAD: ^2.2.0
-
-      GLM: ^0.9.9.8
-
-      Assimp: ^5.2.5
+      pacman -S mingw-w64-x86_64-toolchain
+      pacman -S cmake
+      pacman -S mingw-w64-x86_64-freeglut
+      pacman -S assimp
+      pacman -S mingw-w64-x86_64-glfw
    ```
 
 3. Build it with the Windows BAT File
