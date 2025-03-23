@@ -105,7 +105,7 @@ namespace chif::Render3D {
 		shad->setInt("depthMap", 4);
 
 		float waveSpeed = 0.25;
-		float time = glfwGetTime();
+		float time = sdlUtilGetTime();
 
 		float moveFactor = waveSpeed * time;
 		shad->setFloat("moveFactor", moveFactor);

@@ -16,7 +16,7 @@
 
 #include "VolumetricClouds.h"
 
-#define TIMETO(CODE, TASK) 	t1 = glfwGetTime(); CODE; t2 = glfwGetTime(); std::cout << "Time to " + std::string(TASK) + " :" << (t2 - t1)*1e3 << "ms" << std::endl;
+#define TIMETO(CODE, TASK) 	t1 = sdlUtilGetTime(); CODE; t2 = sdlUtilGetTime(); std::cout << "[INFO::CLOUDS] Time to " + std::string(TASK) + " :" << (t2 - t1)*1e3 << "ms" << std::endl;
 
 namespace chif::weather {
 	VolumetricClouds::VolumetricClouds(int SW, int SH, chif::weather::CloudsModel * model): SCR_WIDTH(SW), SCR_HEIGHT(SH), model(model) {
@@ -43,7 +43,7 @@ namespace chif::weather {
 		cloudsShader.use();
 
 		cloudsShader.setVec2("iResolution", glm::vec2(SCR_WIDTH, SCR_HEIGHT));
-		cloudsShader.setFloat("iTime", glfwGetTime());
+		cloudsShader.setFloat("iTime", sdlUtilGetTime());
 		cloudsShader.setMat4("inv_proj", glm::inverse(s->projMatrix));
 		cloudsShader.setMat4("inv_view", glm::inverse(s->cam->GetViewMatrix()));
 		cloudsShader.setVec3("cameraPosition", s->cam->Position);
@@ -120,7 +120,7 @@ namespace chif::weather {
 			cloudsPPShader.setBool("enableGodRays", model->enableGodRays);
 			cloudsPPShader.setFloat("lightDotCameraFront", lightDotCameraFront);
 
-			cloudsPPShader.setFloat("time", glfwGetTime());
+			cloudsPPShader.setFloat("time", sdlUtilGetTime());
 			if (!s->wireframe)
 				model->postProcessingShader->draw();
 		}

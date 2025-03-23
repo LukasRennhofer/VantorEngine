@@ -1,82 +1,85 @@
 /*
- *    				~ CHIFEngine ~
+ *                  ~ CHIFEngine ~
  *               
  * Copyright (c) 2025 Lukas Rennhofer
  *
  * Licensed under the MIT License. See LICENSE file for more details.
  *
  * Author: Lukas Rennhofer
- * Date: 2025-03-08
+ * Date: 2025-03-21
  *
- * File: Window.h
+ * File: Window.h (SDL2 port)
  * Last Change: 
- */
- 
+*/
 
 #pragma once
 
 #include <glad/glad.h>
-
-#define GLFW_INCLUDE_NONE
-#include <GLFW/glfw3.h>
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_opengl.h>
+#include <iostream>
 
 #include <camera.h>
-#include <iostream>
 
 #include "../core/version.h"
 #include "../utilities/constants.h"
 
 namespace chif {
-	class Window
-	{
-	public:
-		Window(int& success, unsigned int SCR_WIDTH = 1600, unsigned int SCR_HEIGHT = 900, std::string name = "CHIFEngine");
-		~Window();
-		GLFWwindow * w;
-		GLFWwindow * getWindow() const { return w; }
+    class Window
+    {
+    public:
+        Window(int& success, unsigned int SCR_WIDTH = 1600, unsigned int SCR_HEIGHT = 900, std::string name = "CHIFEngine");
+        ~Window();
 
-		void processInput(float frameTime); //input handler
+        // Replacing GLFWwindow* with SDL_Window*
+        SDL_Window* w;
+        SDL_Window* getWindow() const { return w; }
 
-		static unsigned int SCR_WIDTH;
-		static unsigned int SCR_HEIGHT;
+        void processInput(float frameTime); // input handler
 
-		void terminate() {
-			glfwTerminate();
-		}
+        static unsigned int SCR_WIDTH;
+        static unsigned int SCR_HEIGHT;
 
-		bool isWireframeActive() {
-			return Window::wireframe;
-		}
+        void terminate() {
+            SDL_Quit();
+        }
 
-		bool continueLoop() {
-			return !glfwWindowShouldClose(this->w);
-		}
+        bool isWireframeActive() {
+            return Window::wireframe;
+        }
 
-		void swapBuffersAndPollEvents() {
-			glfwSwapBuffers(this->w);
-			glfwPollEvents();
-		}
+        bool continueLoop() {
+            return !quit;
+        }
 
-		static Camera * camera;
+        void swapBuffersAndPollEvents() {
+            SDL_GL_SwapWindow(this->w);
+            SDL_PumpEvents();
+        }
 
-	private:
-		int oldState, newState;
-		int gladLoader();
+        static Camera* camera;
+		static SDL_GLContext glContext;
 
-		static void framebuffer_size_callback(GLFWwindow* window, int width, int height);
-		static void mouse_callback(GLFWwindow* window, double xpos, double ypos);
-		static void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
+    private:
+        int oldState, newState;
+        int gladLoader();
 
-		static bool keyBools[10];
+        // SDL uses its event system instead of GLFW callbacks
+        static void framebuffer_size_callback(SDL_Window* window, int width, int height);
+        static void mouse_callback(SDL_Window* window, double xpos, double ypos);
+        static void scroll_callback(SDL_Window* window, double xoffset, double yoffset);
 
-		static bool mouseCursorDisabled;
+        static bool keyBools[10];
 
-		static bool wireframe;
+        static bool mouseCursorDisabled;
 
-		static bool firstMouse;// = true;
-		static float lastX;
-		static float lastY;
+        static bool wireframe;
 
-		std::string name;
-	};
-} // NAMESPACE CHIF
+        static bool firstMouse;
+        static float lastX;
+        static float lastY;
+
+        std::string name;
+        bool quit = false; // SDL-specific loop flag
+    };
+}

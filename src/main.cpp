@@ -1,6 +1,6 @@
 ﻿/*
  *    				~ CHIFEngine ~
- *               
+ *
  * Copyright (c) 2025 Lukas Rennhofer
  *
  * Licensed under the MIT License. See LICENSE file for more details.
@@ -10,7 +10,7 @@
  *
  * File: main.cpp
  * Last Change: Added Nintendo Switch (Homebrew) Files for Init
-*/
+ */
 
 #ifndef GLAD_H
 #define GLAD_H
@@ -23,40 +23,13 @@
 #include <EGL/egl.h>	// EGL library for Switch
 #include <EGL/eglext.h> // EGL extensions
 #else
-#include <GLFW/glfw3.h>
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_opengl.h>
 #endif
 #endif // GLAD_H
 
 // Engine Header
-#include "platform/Window.h"
-#include "platform/glError.h"
-
-#include <camera.h>
-#include <mesh.h>
-#include <model.h>
-
-#include "Engine/BaseShader.h"
-#include "Engine/buffers.h"
-#include "Engine/sceneElements.h"
-#include "Engine/ScreenSpaceShader.h"
-#include "Engine/shader.h"
-
-#include "graphics/CloudsModel.h"
-#include "graphics/drawableObject.h"
-#include "graphics/VolumetricClouds.h"
-#include "graphics/Water.h"
-
-#include "gui/ImguiGUI.h"
-
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtc/type_ptr.hpp>
-#include <glm/gtc/random.hpp>
-
-#include "utilities/utils.h"
-#include "utilities/constants.h"
-#include "utilities/terrain/Terrain.h"
-#include "utilities/texture/texture.h"
+#include "CHIFEngine.h"
 
 // Standard libraries
 #include <iostream>
@@ -66,7 +39,7 @@
 // ImGui setup (only for desktop)
 #ifndef __SWITCH__
 #include "external/imgui/imgui.h"
-#include "external/imgui/imgui_impl_glfw.h"
+#include "external/imgui/imgui_impl_sdl2.h"
 #include "external/imgui/imgui_impl_opengl3.h"
 #else
 // ImGui for Switch should use an EGL-compatible backend
@@ -74,7 +47,7 @@
 #include "external/imgui/imgui_impl_opengl3.h"
 #endif
 
-int main()
+extern "C" int main(int argc, char **argv)
 {
 
 	glm::vec3 startPosition(0.0f, 800.0f, 0.0f);
@@ -82,13 +55,14 @@ int main()
 
 	int success;
 	chif::Window window(success, 1920, 1800);
-	if (!success) return -1;
+	if (!success)
+		return -1;
 
 	window.camera = &camera;
 
 	chif::gui::GUI gui(window);
 
-	glm::vec3 fogColor(0.5,0.6,0.7);
+	glm::vec3 fogColor(0.5, 0.6, 0.7);
 	glm::vec3 lightColor(255, 255, 230);
 	lightColor /= 255.0;
 
@@ -118,19 +92,19 @@ int main()
 
 	chif::Render3D::Skybox skybox;
 	chif::weather::CloudsModel cloudsModel(&scene, &skybox);
-	
+
 	chif::weather::VolumetricClouds volumetricClouds(chif::Window::SCR_WIDTH, chif::Window::SCR_HEIGHT, &cloudsModel);
 	chif::weather::VolumetricClouds reflectionVolumetricClouds(1280, 720, &cloudsModel); // (expected) lower resolution framebuffers, so the rendering will be faster
-	
+
 	gui.subscribe(&terrain)
-	 	.subscribe(&skybox)
-	 	.subscribe(&cloudsModel)
-	 	.subscribe(&water);
+		.subscribe(&skybox)
+		.subscribe(&cloudsModel)
+		.subscribe(&water);
 
 	// FONT
 
 	// if (!chif::gui::font::initFont()) {
-	// 	return 0; 
+	// 	return 0;
 	// }
 
 	// if (!chif::gui::font::setFont("resources/calibri.ttf")) {
@@ -150,7 +124,7 @@ int main()
 	while (window.continueLoop())
 	{
 		scene.lightDir = glm::normalize(scene.lightDir);
-		scene.lightPos = scene.lightDir*1e6f + camera.Position;
+		scene.lightPos = scene.lightDir * 1e6f + camera.Position;
 
 		float frametime = 1 / ImGui::GetIO().Framerate;
 		window.processInput(frametime);
@@ -169,18 +143,18 @@ int main()
 		glClearColor(fogColor[0], fogColor[1], fogColor[2], 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-
-		if (scene.wireframe) {
+		if (scene.wireframe)
+		{
 			glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 		}
-		else {
+		else
+		{
 			glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 		}
 
 		glm::mat4 view = scene.cam->GetViewMatrix();
-		scene.projMatrix = glm::perspective(glm::radians(camera.Zoom), (float)chif::Window::SCR_WIDTH / (float)chif::Window::SCR_HEIGHT, 5.f,10000000.0f);
+		scene.projMatrix = glm::perspective(glm::radians(camera.Zoom), (float)chif::Window::SCR_WIDTH / (float)chif::Window::SCR_HEIGHT, 5.f, 10000000.0f);
 
-	
 		water.bindReflectionFBO();
 		glEnable(GL_DEPTH_TEST);
 		glEnable(GL_CULL_FACE);
@@ -188,18 +162,18 @@ int main()
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		scene.cam->invertPitch();
 		scene.cam->Position.y -= 2 * (scene.cam->Position.y - water.getHeight());
-		
+
 		terrain.up = 1.0;
 		terrain.draw();
 
-		chif::Buffer::FrameBufferObject const& reflFBO = water.getReflectionFBO();
-		
+		chif::Buffer::FrameBufferObject const &reflFBO = water.getReflectionFBO();
+
 		chif::Shader::ScreenSpaceShader::disableTests();
 
 		reflectionVolumetricClouds.draw();
 		water.bindReflectionFBO();
 
-		chif::Shader::Shader& post = PostProcessing.getShader();
+		chif::Shader::Shader &post = PostProcessing.getShader();
 		post.use();
 		post.setVec2("resolution", glm::vec2(1280, 720));
 		post.setSampler2D("screenTexture", reflFBO.tex, 0);
@@ -208,7 +182,7 @@ int main()
 		PostProcessing.draw();
 
 		chif::Shader::ScreenSpaceShader::enableTests();
-		
+
 		scene.cam->invertPitch();
 		scene.cam->Position.y += 2 * abs(scene.cam->Position.y - water.getHeight());
 
@@ -228,20 +202,19 @@ int main()
 		// Model Rendering and Loading (Nur Test Version)
 		MeshModelShader.use();
 		MeshModelShader.setMat4("projection", scene.projMatrix);
-        MeshModelShader.setMat4("view", view);
+		MeshModelShader.setMat4("view", view);
 
-        // Render the loaded model
-        glm::mat4 model = glm::mat4(1.0f);
-        model = glm::translate(model, glm::vec3(0.0f, 800.0f, 0.0f));
-        model = glm::scale(model, glm::vec3(10.0f, 10.0f, 10.0f)); // Too Big
-        MeshModelShader.setMat4("model", model);
-        ourModel.Draw(MeshModelShader);
+		// Render the loaded model
+		glm::mat4 model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(0.0f, 800.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(10.0f, 10.0f, 10.0f)); // Too Big
+		MeshModelShader.setMat4("model", model);
+		ourModel.Draw(MeshModelShader);
 
 		chif::Shader::ScreenSpaceShader::disableTests();
 
 		volumetricClouds.draw();
 		skybox.draw();
-
 
 		chif::Buffer::unbindCurrentFrameBuffer();
 		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
@@ -259,8 +232,7 @@ int main()
 		post.setMat4("VP", scene.projMatrix * view);
 		PostProcessing.draw();
 
-
-		chif::Shader::Shader& fboVisualizerShader = fboVisualizer.getShader();
+		chif::Shader::Shader &fboVisualizerShader = fboVisualizer.getShader();
 		fboVisualizerShader.use();
 		fboVisualizerShader.setSampler2D("fboTex", volumetricClouds.getCloudsTexture(), 0);
 		// fboVisualizer.draw(); //Debugging
@@ -268,7 +240,8 @@ int main()
 		// FONT 2
 		// chif::gui::font::RenderText2D("Hello, World!", 25.0f, 25.0f, 1.0f, glm::vec3(0.5, 0.8f, 0.2f));
 
-		if (SHOW_IMGUI) {
+		if (SHOW_IMGUI)
+		{
 			gui.draw();
 		}
 

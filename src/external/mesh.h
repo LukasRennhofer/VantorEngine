@@ -27,6 +27,8 @@
 #include <sstream>
 #include <iostream>
 #include <vector>
+#include <unordered_map>
+
 
 using namespace std;
 
@@ -232,6 +234,7 @@ public:
 		unsigned int specularNr = 1;
 		unsigned int normalNr = 1;
 		unsigned int heightNr = 1;
+        
 		for (unsigned int i = 0; i < textures.size(); i++)
 		{
 			glActiveTexture(GL_TEXTURE0 + i); // active proper texture unit before binding
@@ -262,43 +265,48 @@ public:
 		// always good practice to set everything back to defaults once configured.
 		glActiveTexture(GL_TEXTURE0);
 	}
-	void DrawIstances(ModelShader shader, unsigned int drawMode = GL_TRIANGLES, unsigned int nIstances = 1)
-	{
-		// bind appropriate textures
-		unsigned int diffuseNr = 1;
-		unsigned int specularNr = 1;
-		unsigned int normalNr = 1;
-		unsigned int heightNr = 1;
-		for (unsigned int i = 0; i < textures.size(); i++)
-		{
-			glActiveTexture(GL_TEXTURE0 + i); // active proper texture unit before binding
-											  // retrieve texture number (the N in diffuse_textureN)
-			string number;
-			string name = textures[i].type;
-			if (name == "texture_diffuse")
-				number = std::to_string(diffuseNr++);
-			else if (name == "texture_specular")
-				number = std::to_string(specularNr++); // transfer unsigned int to stream
-			else if (name == "texture_normal")
-				number = std::to_string(normalNr++); // transfer unsigned int to stream
-			else if (name == "texture_height")
-				number = std::to_string(heightNr++); // transfer unsigned int to stream
+	
+    void DrawInstances(ModelShader& shader, unsigned int drawMode = GL_TRIANGLES, unsigned int nInstances = 1)
+    {
+        // Bind textures and set texture units for each texture type only once per type
+        unsigned int diffuseNr = 1, specularNr = 1, normalNr = 1, heightNr = 1;
 
-			// now set the sampler to the correct texture unit
-			shader.setInt((name + number).c_str(), i);
-			// and finally bind the texture
-			glBindTexture(GL_TEXTURE_2D, textures[i].id);
-		}
+        // Group textures by their types
+        std::unordered_map<std::string, unsigned int> textureUnitMap;
+        for (unsigned int i = 0; i < textures.size(); i++)
+        {
+            string name = textures[i].type;
+            unsigned int textureUnit = 0;
 
-		// draw mesh
-		glBindVertexArray(VAO);
-		//shader.use();
-		glDrawElementsInstanced(drawMode, indices.size(), GL_UNSIGNED_INT, 0, nIstances);
-		glBindVertexArray(0);
+            // Determine texture unit based on the type of texture
+            if (name == "texture_diffuse")
+                textureUnit = diffuseNr++;
+            else if (name == "texture_specular")
+                textureUnit = specularNr++;
+            else if (name == "texture_normal")
+                textureUnit = normalNr++;
+            else if (name == "texture_height")
+                textureUnit = heightNr++;
 
-		// always good practice to set everything back to defaults once configured.
-		glActiveTexture(GL_TEXTURE0);
-	}
+            // Only set and bind textures if this texture hasn't been used for the same texture unit
+            if (textureUnitMap.find(name) == textureUnitMap.end())
+            {
+                glActiveTexture(GL_TEXTURE0 + textureUnitMap.size()); // Set proper texture unit
+                shader.setInt((name + std::to_string(textureUnit)).c_str(), textureUnitMap.size());
+                glBindTexture(GL_TEXTURE_2D, textures[i].id);
+                textureUnitMap[name] = textureUnit;
+            }
+        }
+
+        // Now draw the instances using glDrawArraysInstanced (no index buffer)
+        glBindVertexArray(VAO); // Bind the VAO once
+        glDrawArraysInstanced(drawMode, 0, vertices.size(), nInstances); // Draw the vertices directly
+        glBindVertexArray(0); // Unbind VAO
+
+        // Reset texture unit back to 0 after drawing
+        glActiveTexture(GL_TEXTURE0);
+    }
+
 
 private:
 	/*  Render data  */

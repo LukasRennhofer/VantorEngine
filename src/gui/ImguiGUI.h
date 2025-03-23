@@ -20,7 +20,7 @@
 #include "../graphics/drawableObject.h"
 
 #include "../external/imgui/imgui.h"
-#include "../external/imgui/imgui_impl_glfw.h"
+#include "../external/imgui/imgui_impl_sdl2.h"
 #include "../external/imgui/imgui_impl_opengl3.h"
 #include "../utilities/utils.h"
 

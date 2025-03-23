@@ -20,9 +20,9 @@
 //#include <model.h>
 #include "../Engine/shader.h"
 #include "../Engine/buffers.h"
-#include <GLFW/glfw3.h>
 #include "../platform/Window.h"
 #include "drawableObject.h"
+#include "../utilities/sdl2Utils.h"
 
 namespace chif::Render3D {
 	class Water : public drawableObject

@@ -39,6 +39,7 @@ namespace chif::Render3D {
 		ImGui::ColorEdit3("Sky top color", (float*)&skyColorTop);
 		ImGui::ColorEdit3("Sky bottom color", (float*)&skyColorBottom);
 		ImGui::Checkbox("Lens Flare Enabled", &lensFlareOn);
+		ImGui::Separator();
 		ImGui::End();
 	}
 

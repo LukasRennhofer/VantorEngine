@@ -25,6 +25,7 @@
 #include <algorithm>
 #include "drawableObject.h"
 #include "CloudsModel.h"
+#include "../utilities/sdl2Utils.h"
 
 namespace chif::weather {
 	class VolumetricClouds : public drawableObject

@@ -21,9 +21,9 @@ namespace chif::version
     // Main Core
     const int major = 0;
     // minor features, major updates
-    const int minor = 10;
+    const int minor = 13;
     // minor bug fixes, alterations, refactors, updates
-    const int revision = 4;
+    const int revision = 2;
     // Version String
     const std::string version_string = std::to_string(major) + "." + std::to_string(minor) + "." + std::to_string(revision);
 

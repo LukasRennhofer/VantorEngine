@@ -1,4 +1,3 @@
-
 /*
  *    				~ CHIFEngine ~
  *
@@ -24,8 +23,7 @@ namespace chif::gui {
 		// GUI
 		ImGui::CreateContext();
 		ImGui::StyleColorsDark();
-
-		ImGui_ImplGlfw_InitForOpenGL(window.getWindow(), true);
+		ImGui_ImplSDL2_InitForOpenGL(window.getWindow(), chif::Window::glContext);
 		ImGui_ImplOpenGL3_Init("#version 130");
 
 		// Use Custom Fonts - TODO: Working for Linux!!
@@ -42,7 +40,7 @@ namespace chif::gui {
 		style.Colors[ImGuiCol_Text] = ImVec4(0.00f, 0.00f, 0.00f, 1.00f);
 		style.Colors[ImGuiCol_TextDisabled] = ImVec4(0.60f, 0.60f, 0.60f, 1.00f);
 		style.Colors[ImGuiCol_WindowBg] = ImVec4(0.94f, 0.94f, 0.94f, 0.94f);
-		style.Colors[ImGuiCol_ChildWindowBg] = ImVec4(0.00f, 0.00f, 0.00f, 0.00f);
+		style.Colors[ImGuiCol_WindowBg] = ImVec4(0.00f, 0.00f, 0.00f, 0.00f);
 		style.Colors[ImGuiCol_PopupBg] = ImVec4(1.00f, 1.00f, 1.00f, 0.94f);
 		style.Colors[ImGuiCol_Border] = ImVec4(0.00f, 0.00f, 0.00f, 0.39f);
 		style.Colors[ImGuiCol_BorderShadow] = ImVec4(1.00f, 1.00f, 1.00f, 0.10f);
@@ -66,9 +64,9 @@ namespace chif::gui {
 		style.Colors[ImGuiCol_Header] = ImVec4(0.26f, 0.59f, 0.98f, 0.31f);
 		style.Colors[ImGuiCol_HeaderHovered] = ImVec4(0.26f, 0.59f, 0.98f, 0.80f);
 		style.Colors[ImGuiCol_HeaderActive] = ImVec4(0.26f, 0.59f, 0.98f, 1.00f);
-		style.Colors[ImGuiCol_Column] = ImVec4(0.39f, 0.39f, 0.39f, 1.00f);
-		style.Colors[ImGuiCol_ColumnHovered] = ImVec4(0.26f, 0.59f, 0.98f, 0.78f);
-		style.Colors[ImGuiCol_ColumnActive] = ImVec4(0.26f, 0.59f, 0.98f, 1.00f);
+		style.Colors[ImGuiCol_Button] = ImVec4(0.39f, 0.39f, 0.39f, 1.00f);
+		style.Colors[ImGuiCol_ButtonHovered] = ImVec4(0.26f, 0.59f, 0.98f, 0.78f);
+		style.Colors[ImGuiCol_ButtonActive] = ImVec4(0.26f, 0.59f, 0.98f, 1.00f);
 		style.Colors[ImGuiCol_ResizeGrip] = ImVec4(1.00f, 1.00f, 1.00f, 0.50f);
 		style.Colors[ImGuiCol_ResizeGripHovered] = ImVec4(0.26f, 0.59f, 0.98f, 0.67f);
 		style.Colors[ImGuiCol_ResizeGripActive] = ImVec4(0.26f, 0.59f, 0.98f, 0.95f);
@@ -77,7 +75,7 @@ namespace chif::gui {
 		style.Colors[ImGuiCol_PlotHistogram] = ImVec4(0.90f, 0.70f, 0.00f, 1.00f);
 		style.Colors[ImGuiCol_PlotHistogramHovered] = ImVec4(1.00f, 0.60f, 0.00f, 1.00f);
 		style.Colors[ImGuiCol_TextSelectedBg] = ImVec4(0.26f, 0.59f, 0.98f, 0.35f);
-		style.Colors[ImGuiCol_ModalWindowDarkening] = ImVec4(0.20f, 0.20f, 0.20f, 0.35f);
+		style.Colors[ImGuiCol_ModalWindowDimBg] = ImVec4(0.20f, 0.20f, 0.20f, 0.35f);
 	}
 
 	void GUI::draw()
@@ -125,7 +123,7 @@ namespace chif::gui {
 			//ImGui::SameLine();
 			//ImGui::Text("Generate a new seed");
 			ImGui::SameLine();
-			if (ImGui::Button("Use default seed"))
+			if (ImGui::Button("Use default seed")) 
 				scene.seed = glm::vec3(0.0, 0.0, 0.0);
 
 			/*ImGui::SameLine();
@@ -154,51 +152,6 @@ namespace chif::gui {
 			ImGui::End();
 			
 			// CONTROLLER INPUTS : TODO, JUST PROTOTYPE
-			ImGui::Begin("Controller Input");
-
-			for (int joystickID = GLFW_JOYSTICK_1; joystickID <= GLFW_JOYSTICK_LAST; ++joystickID) {
-				if (glfwJoystickPresent(joystickID)) {
-					// Header for each connected joystick
-					ImGui::PushID(joystickID);
-					ImGui::TextColored(ImVec4(1, 1, 0, 1), "Joystick %d is connected!", joystickID);
-
-					// Add some spacing
-					ImGui::Spacing();
-					
-					// Get axes data (e.g., left and right thumbsticks)
-					int axisCount;
-					const float* axes = glfwGetJoystickAxes(joystickID, &axisCount);
-					ImGui::Text("Available Axes: %d", axisCount);
-					
-					// List all axes
-					for (int i = 0; i < axisCount; ++i) {
-						ImGui::Indent();
-						ImGui::Text("Axis %d: %.2f", i, axes[i]);  // Show float values for axes
-						ImGui::Unindent();
-					}
-
-					ImGui::Spacing();  // Add space between axes and buttons
-
-					// Get button states (e.g., A/B/X/Y)
-					int buttonCount;
-					const unsigned char* buttons = glfwGetJoystickButtons(joystickID, &buttonCount);
-					ImGui::Text("Available Buttons: %d", buttonCount);
-
-					// List all buttons
-					for (int i = 0; i < buttonCount; ++i) {
-						ImGui::Indent();
-						ImGui::Text("Button %d: %s", i, buttons[i] == GLFW_PRESS ? "Pressed" : "Released");
-						ImGui::Unindent();
-					}
-
-					// Add some spacing between joystick sections
-					ImGui::Spacing();
-					ImGui::PopID();
-				}
-			}
-
-			ImGui::End();
-
 
 			ImGui::Render();
 			ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
@@ -206,8 +159,28 @@ namespace chif::gui {
 
 	void GUI::update()
 	{
+		SDL_Event event;
+		while (SDL_PollEvent(&event)) {
+			// Pass events to ImGui
+			ImGui_ImplSDL2_ProcessEvent(&event);
+
+			// Handle SDL_QUIT event to properly close the application
+			if (event.type == SDL_QUIT) {
+				// Set a flag to quit the application (if applicable)
+				// Example: quit = true;
+			}
+
+			// Handle window resizing
+			if (event.type == SDL_WINDOWEVENT && event.window.event == SDL_WINDOWEVENT_RESIZED) {
+				int width = event.window.data1;
+				int height = event.window.data2;
+				glViewport(0, 0, width, height);
+			}
+		}
+
+		// Start a new ImGui frame
 		ImGui_ImplOpenGL3_NewFrame();
-		ImGui_ImplGlfw_NewFrame();
+		ImGui_ImplSDL2_NewFrame();
 		ImGui::NewFrame();
 	}
 
@@ -222,7 +195,7 @@ namespace chif::gui {
 	GUI::~GUI()
 	{
 		ImGui_ImplOpenGL3_Shutdown();
-		ImGui_ImplGlfw_Shutdown();
+		ImGui_ImplSDL2_Shutdown();
 		ImGui::DestroyContext();
 	}
 } // NAMESPACE CHIF::GUI

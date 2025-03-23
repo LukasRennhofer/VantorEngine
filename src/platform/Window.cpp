@@ -10,185 +10,183 @@
  *
  * File: Window.cpp
  * Last Change: 
- */
- 
+*/
 
 #include "Window.h"
 
 namespace chif {
-	unsigned int Window::SCR_WIDTH = 1600;
-	unsigned int Window::SCR_HEIGHT = 900;
+    unsigned int Window::SCR_WIDTH = 1600;
+    unsigned int Window::SCR_HEIGHT = 900;
 
-	Camera * Window::camera = 0;
-	bool Window::keyBools[10] = { false, false,false, false, false, false, false, false, false, false };
-	bool Window::wireframe = false;
-	bool Window::firstMouse = true;
-	float Window::lastX = SCR_WIDTH / 2.0f;
-	float Window::lastY = SCR_HEIGHT / 2.0f;
+    Camera* Window::camera = nullptr;
+    SDL_GLContext chif::Window::glContext = nullptr;
 
-	bool Window::mouseCursorDisabled = true;
+    bool Window::keyBools[10] = { false };
+    bool Window::wireframe = false;
+    bool Window::firstMouse = true;
+    float Window::lastX = SCR_WIDTH / 2.0f;
+    float Window::lastY = SCR_HEIGHT / 2.0f;
+    bool Window::mouseCursorDisabled = true;
 
-	Window::Window(int& success, unsigned int scrW, unsigned int scrH, std::string name) : name(name)
-	{
-		std::cout << "[INIT::CORE] Using CHIFEngine Core " << chif::version::GetVersionString() << std::endl;
-		Window::SCR_WIDTH = scrW;
-		Window::SCR_HEIGHT = scrH;
-		success = 1;
-		glfwInit();
-		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 4);
-		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-		glfwWindowHint(GLFW_SAMPLES, 4);
-		//glfwWindowHint(GLFW_DOUBLEBUFFER, GL_FALSE);
-										
-		this->w = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, name.c_str(), NULL, NULL);
-		if (!this->w)
-		{
-			std::cout << "[ERROR::WINDOW] Failed to create GLFW window" << std::endl;
-			glfwTerminate();
-			success = 0;
-			return;
-		}
-		
-		glfwMakeContextCurrent(this->w);
-		glfwSetFramebufferSizeCallback(this->w, &Window::framebuffer_size_callback);
-		glfwSetCursorPosCallback(this->w, &Window::mouse_callback);
-		glfwSetScrollCallback(this->w, &Window::scroll_callback);
+    Window::Window(int& success, unsigned int scrW, unsigned int scrH, std::string name) : name(name) {
+        std::cout << "[INIT::CORE] Using CHIFEngine Core " << chif::version::GetVersionString() << std::endl;
+        Window::SCR_WIDTH = scrW;
+        Window::SCR_HEIGHT = scrH;
 
-		Window::camera = 0;
-		oldState = newState = GLFW_RELEASE;
-		
-		/*
-		for (int i = 0; i < 10; i++) {
-			Window::keyBools[i] = false;
-		}
-		Window::wireframe = false;
-		Window::firstMouse = true;
-		Window::lastX = SCR_WIDTH / 2.0f;
-		Window::lastY = SCR_HEIGHT / 2.0f;
-		*/
+        if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_JOYSTICK | SDL_INIT_GAMECONTROLLER) < 0) {
+            std::cout << "[ERROR::WINDOW] SDL could not initialize! SDL_Error: " << SDL_GetError() << std::endl;
+            success = 0;
+            return;
+        }
 
-		success = gladLoader() && success;
-		if (success) {
-			std::cout << "[INFO::WINDOW] GLFW window correctly initialized!" << std::endl;
-		}
-	}
+        // Set SDL OpenGL attributes
+        SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4);
+        SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 4);
+        SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
+        SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 1);
+        SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 4);
 
-	int Window::gladLoader() {
+        this->w = SDL_CreateWindow(name.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
+                                   SCR_WIDTH, SCR_HEIGHT, SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE);
+        if (!this->w) {
+            std::cout << "[ERROR::WINDOW] Failed to create SDL window: " << SDL_GetError() << std::endl;
+            success = 0;
+            return;
+        }
 
-		glfwSetInputMode(this->w, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
+        glContext = SDL_GL_CreateContext(this->w);
+        if (!glContext) {
+            std::cout << "[ERROR::WINDOW] Failed to create OpenGL context: " << SDL_GetError() << std::endl;
+            success = 0;
+            return;
+        }
 
-		if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
-		{
-			std::cout << "[ERROR::WINDOW] Failed to initialize GLAD" << std::endl;
-			return 0;
-		}
+        SDL_GL_SetSwapInterval(0); // Enable VSync / Disable VSync
 
-		return 1;
-	}
+        Window::camera = nullptr;
+        oldState = newState = 0;
 
-	void Window::mouse_callback(GLFWwindow* window, double xpos, double ypos)
-	{
-		if (firstMouse)
-		{
-			lastX = xpos;
-			lastY = ypos;
-			firstMouse = false;
-		}
+        success = gladLoader();
+        if (success) {
+            std::cout << "[INFO::WINDOW] SDL2 window and OpenGL context correctly initialized!" << std::endl;
+        }
+    }
 
-		float xoffset = xpos - lastX;
-		float yoffset = lastY - ypos;
+    int Window::gladLoader() {
+        SDL_ShowCursor(SDL_DISABLE);
+        if (!gladLoadGLLoader((GLADloadproc)SDL_GL_GetProcAddress)) {
+            std::cout << "[ERROR::WINDOW] Failed to initialize GLAD" << std::endl;
+            return 0;
+        }
+        return 1;
+    }
 
-		lastX = xpos;
-		lastY = ypos;
-		if(!mouseCursorDisabled)
-			Window::camera->ProcessMouseMovement(xoffset, yoffset);
-	}
+    void Window::mouse_callback(SDL_Window* window, double xpos, double ypos) {
+        if (firstMouse) {
+            lastX = xpos;
+            lastY = ypos;
+            firstMouse = false;
+        }
 
-	void Window::scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
-	{
-		Window::camera->ProcessMouseScroll(yoffset);
-	}
+        float xoffset = xpos - lastX;
+        float yoffset = lastY - ypos;
 
-	void Window::framebuffer_size_callback(GLFWwindow* window, int width, int height)
-	{
-		glViewport(0, 0, width, height);
-	}
-	
-	void Window::processInput(float frameTime) {
-		// Handle Keyboard Input
-		if (glfwGetKey(this->w, GLFW_KEY_ESCAPE) == GLFW_PRESS)
-			glfwSetWindowShouldClose(this->w, true);
+        lastX = xpos;
+        lastY = ypos;
 
-		if (glfwGetKey(this->w, GLFW_KEY_W) == GLFW_PRESS)
-			camera->ProcessKeyboard(FORWARD, frameTime);
-		if (glfwGetKey(this->w, GLFW_KEY_S) == GLFW_PRESS)
-			camera->ProcessKeyboard(BACKWARD, frameTime);
-		if (glfwGetKey(this->w, GLFW_KEY_A) == GLFW_PRESS)
-			camera->ProcessKeyboard(LEFT, frameTime);
-		if (glfwGetKey(this->w, GLFW_KEY_D) == GLFW_PRESS)
-			camera->ProcessKeyboard(RIGHT, frameTime);
+        if (!mouseCursorDisabled && Window::camera) {
+            Window::camera->ProcessMouseMovement(xoffset, yoffset);
+        }
+    }
 
-		// Handle Mouse Input
-		newState = glfwGetMouseButton(this->w, GLFW_MOUSE_BUTTON_RIGHT);
-		if (newState == GLFW_RELEASE && oldState == GLFW_PRESS) {
-			glfwSetInputMode(this->w, GLFW_CURSOR, (mouseCursorDisabled ? GLFW_CURSOR_DISABLED : GLFW_CURSOR_NORMAL));
-			mouseCursorDisabled = !mouseCursorDisabled;
-			if (mouseCursorDisabled)
-				firstMouse = true;
-		}
-		oldState = newState;
+    void Window::scroll_callback(SDL_Window* window, double xoffset, double yoffset) {
+        if (Window::camera)
+            Window::camera->ProcessMouseScroll(yoffset);
+    }
 
-		// Handle WIREFRAME Toggle (T key)
-		if (glfwGetKey(this->w, GLFW_KEY_T) == GLFW_PRESS) {
-			if (keyBools[4] == false) {
-				wireframe = !wireframe;
-				keyBools[4] = true;
-			}
-		} else if (glfwGetKey(this->w, GLFW_KEY_T) == GLFW_RELEASE) {
-			if (keyBools[4] == true) { 
-				keyBools[4] = false; 
-			}
-		}
+    void Window::framebuffer_size_callback(SDL_Window* window, int width, int height) {
+        glViewport(0, 0, width, height);
+    }
 
-		// Handle Controller Input
-		for (int joystickID = GLFW_JOYSTICK_1; joystickID <= GLFW_JOYSTICK_LAST; ++joystickID) {
-			if (glfwJoystickPresent(joystickID)) {
-				// Get axes data (left thumbstick, right thumbstick, etc.)
-				int axisCount;
-				const float* axes = glfwGetJoystickAxes(joystickID, &axisCount);
+    void Window::processInput(float frameTime) {
+        SDL_Event event;
+        while (SDL_PollEvent(&event)) {
+            // Handle quit event
+            if (event.type == SDL_QUIT) {
+                quit = true;
+            }
 
-				// Left stick vertical (W/S)
-				if (axisCount > 1 && axes[1] < -0.2f) { // Up (W)
-					camera->ProcessKeyboard(FORWARD, frameTime);
-				}
-				if (axisCount > 1 && axes[1] > 0.2f) { // Down (S)
-					camera->ProcessKeyboard(BACKWARD, frameTime);
-				}
+            // Handle keyboard input
+            const Uint8* currentKeyStates = SDL_GetKeyboardState(NULL);
+            if (camera) {
+                if (currentKeyStates[SDL_SCANCODE_W]) {
+                    camera->ProcessKeyboard(FORWARD, frameTime);
+                }
+                if (currentKeyStates[SDL_SCANCODE_S]) {
+                    camera->ProcessKeyboard(BACKWARD, frameTime);
+                }
+                if (currentKeyStates[SDL_SCANCODE_A]) {
+                    camera->ProcessKeyboard(LEFT, frameTime);
+                }
+                if (currentKeyStates[SDL_SCANCODE_D]) {
+                    camera->ProcessKeyboard(RIGHT, frameTime);
+                }
+            }
 
-				// Left stick horizontal (A/D)
-				if (axisCount > 0 && axes[0] < -0.2f) { // Left (A)
-					camera->ProcessKeyboard(LEFT, frameTime);
-				}
-				if (axisCount > 0 && axes[0] > 0.2f) { // Right (D)
-					camera->ProcessKeyboard(RIGHT, frameTime);
-				}
+            // Handle mouse motion
+            if (event.type == SDL_MOUSEMOTION) {
+                mouse_callback(this->w, event.motion.x, event.motion.y);
+            }
 
-				// Get button states (e.g., A/B/X/Y, etc.)
-				int buttonCount;
-				const unsigned char* buttons = glfwGetJoystickButtons(joystickID, &buttonCount);
+            // Handle mouse button events
+            if (event.type == SDL_MOUSEBUTTONDOWN || event.type == SDL_MOUSEBUTTONUP) {
+                if (event.button.button == SDL_BUTTON_RIGHT) {
+                    newState = (event.type == SDL_MOUSEBUTTONDOWN) ? 1 : 0;
+                    if (newState == 0 && oldState == 1) {
+                        mouseCursorDisabled = !mouseCursorDisabled;
+                        SDL_ShowCursor(mouseCursorDisabled ? SDL_DISABLE : SDL_ENABLE);
+                        if (mouseCursorDisabled) firstMouse = true;
+                    }
+                    oldState = newState;
+                }
+            }
 
-				// // Example: Button A (usually 0) for some action
-				// if (buttonCount > 0 && buttons[GLFW_GAMEPAD_BUTTON_A] == GLFW_PRESS) {
-				//     wireframe = !wireframe;
-				// }
-			}
-		}
-	}
+            // Handle mouse wheel scrolling
+            if (event.type == SDL_MOUSEWHEEL) {
+                scroll_callback(this->w, event.wheel.x, event.wheel.y);
+            }
 
+            // Handle window resizing
+            if (event.type == SDL_WINDOWEVENT && event.window.event == SDL_WINDOWEVENT_RESIZED) {
+                framebuffer_size_callback(this->w, event.window.data1, event.window.data2);
+            }
+        }
 
-	Window::~Window()
-	{
-		this->terminate();
-	}
-} // NAMESPACE CHIF
+        // Handle controller/joystick input
+        for (int i = 0; i < SDL_NumJoysticks(); ++i) {
+            if (SDL_IsGameController(i)) {
+                SDL_GameController* controller = SDL_GameControllerOpen(i);
+                if (controller) {
+                    Sint16 axisLeftY = SDL_GameControllerGetAxis(controller, SDL_CONTROLLER_AXIS_LEFTY);
+                    Sint16 axisLeftX = SDL_GameControllerGetAxis(controller, SDL_CONTROLLER_AXIS_LEFTX);
+
+                    if (camera) {
+                        const int DEADZONE = 8000; // Deadzone to prevent accidental movement
+                        if (axisLeftY < -DEADZONE) camera->ProcessKeyboard(FORWARD, frameTime);
+                        if (axisLeftY > DEADZONE) camera->ProcessKeyboard(BACKWARD, frameTime);
+                        if (axisLeftX < -DEADZONE) camera->ProcessKeyboard(LEFT, frameTime);
+                        if (axisLeftX > DEADZONE) camera->ProcessKeyboard(RIGHT, frameTime);
+                    }
+
+                    SDL_GameControllerClose(controller);
+                }
+            }
+        }
+    }
+
+    Window::~Window() {
+        SDL_GL_DeleteContext(glContext);
+        SDL_DestroyWindow(this->w);
+        this->terminate();
+    }
+}

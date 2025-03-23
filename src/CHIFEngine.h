@@ -1,6 +1,6 @@
 /*
  *    				~ CHIFEngine ~
- *               
+ *
  * Copyright (c) 2025 Lukas Rennhofer
  *
  * Licensed under the MIT License. See LICENSE file for more details.
@@ -10,9 +10,7 @@
  *
  * File: CHIFEngine.h
  * Last Change: Added Nintendo Switch (Homebrew) Files for Init
-*/
-
-// TODO: CMake file for compiling the CHIFEngine Library
+ */
 
 #ifndef CHIFENGINE
 #define CHIFENGINE
@@ -34,7 +32,6 @@
 #include "platform/glError.h"
 
 #include "gui/ImguiGUI.h"
-#include "gui/font.h"
 
 #include "utilities/utils.h"
 #include "utilities/constants.h"

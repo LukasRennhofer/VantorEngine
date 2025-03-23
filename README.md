@@ -33,7 +33,7 @@
 ---
 
 ## Why CHIFEngine?
-
+> ***C***ross-Platform ***H***igh-Performance ***I***nterface ***F***ramework Engine
 - **Free and Open Source**: CHIFEngine is licensed under the MIT License, allowing complete freedom with no royalties or hidden fees, just the same License.
 - **Hobby Project for Open-World Game**: As a hobby project, **CHIFEngine** was created with a passion for building a custom low-level game engine to support large-scale open-world games. While it may not offer the conveniences of commercial engines, it provides an invaluable opportunity for hands-on learning, deep customization, and experimenting with game engine design.
 

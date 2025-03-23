@@ -17,4 +17,3 @@
 
 #define DEBUG_MODE true
 #define SHOW_IMGUI true
-#define GLFW_GAMEPAD_BUTTON_A 0

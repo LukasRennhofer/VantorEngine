@@ -37,32 +37,32 @@ namespace chif::Buffer {
 	unsigned int createRenderBufferAttachment(int width, int height);
 
 	class FrameBufferObject {
-	public:
-		FrameBufferObject(int W, int H);
-		FrameBufferObject(int W, int H, int numColorAttachments);
-		unsigned int FBO, renderBuffer, depthTex;
-		unsigned int tex;
-		unsigned int getColorAttachmentTex(int i);
-		void bind();
-	private:
-		int W, H;
-		int nColorAttachments;
-		unsigned int * colorAttachments;
+		public:
+			FrameBufferObject(int W, int H);
+			FrameBufferObject(int W, int H, int numColorAttachments);
+			unsigned int FBO, renderBuffer, depthTex;
+			unsigned int tex;
+			unsigned int getColorAttachmentTex(int i);
+			void bind();
+		private:
+			int W, H;
+			int nColorAttachments;
+			unsigned int * colorAttachments;
 	};
 
 	class TextureSet { //for drawing compute shader
-	public:
-		TextureSet(int W, int H, int num);
-		void bindTexture(int i, int unit);
-		unsigned int getColorAttachmentTex(int i);
-		int getNTextures() const {
-			return nTextures;
-		}
+		public:
+			TextureSet(int W, int H, int num);
+			void bindTexture(int i, int unit);
+			unsigned int getColorAttachmentTex(int i);
+			int getNTextures() const {
+				return nTextures;
+			}
 
-		void bind();
-		
-	private:
-		int nTextures;
-		unsigned int * texture;
+			void bind();
+			
+		private:
+			int nTextures;
+			unsigned int * texture;
 	};
 } // NAMESPACE CHIF::BUFFER
