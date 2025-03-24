@@ -49,29 +49,28 @@
 
 extern "C" int main(int argc, char **argv)
 {
-
 	glm::vec3 startPosition(0.0f, 800.0f, 0.0f);
 	Camera camera(startPosition);
 
 	int success;
-	chif::Window window(success, 1920, 1800);
+	chif::Platform::Window window(success, 1920, 1800);
 	if (!success)
 		return -1;
 
 	window.camera = &camera;
 
-	chif::gui::GUI gui(window);
+	chif::GUI::GUI gui(window);
 
 	glm::vec3 fogColor(0.5, 0.6, 0.7);
 	glm::vec3 lightColor(255, 255, 230);
 	lightColor /= 255.0;
 
-	chif::Buffer::FrameBufferObject SceneFBO(chif::Window::SCR_WIDTH, chif::Window::SCR_HEIGHT);
+	chif::Graphics::Renderer::Buffer::FrameBufferObject SceneFBO(chif::Platform::Window::SCR_WIDTH, chif::Platform::Window::SCR_HEIGHT);
 	glm::vec3 lightPosition, seed;
-	glm::mat4 proj = glm::perspective(glm::radians(camera.Zoom), (float)chif::Window::SCR_WIDTH / (float)chif::Window::SCR_HEIGHT, 5.f, 10000000.0f);
+	glm::mat4 proj = glm::perspective(glm::radians(camera.Zoom), (float)chif::Platform::Window::SCR_WIDTH / (float)chif::Platform::Window::SCR_HEIGHT, 5.f, 10000000.0f);
 	glm::vec3 lightDir = glm::vec3(-.5, 0.5, 1.0);
 
-	chif::sceneElements scene;
+	chif::Graphics::sceneElements scene;
 	scene.lightPos = lightPosition;
 	scene.lightColor = lightColor;
 	scene.fogColor = fogColor;
@@ -81,20 +80,20 @@ extern "C" int main(int argc, char **argv)
 	scene.sceneFBO = &SceneFBO;
 	scene.lightDir = lightDir;
 
-	chif::drawableObject::scene = &scene;
+	chif::Graphics::drawableObject::scene = &scene;
 
 	int gridLength = 120;
-	chif::terrain::Terrain terrain(gridLength);
+	chif::Graphics::Terrain terrain(gridLength);
 
 	float waterHeight = 120.0;
-	chif::Render3D::Water water(glm::vec2(0.0, 0.0), gridLength, waterHeight);
+	chif::Graphics::Water water(glm::vec2(0.0, 0.0), gridLength, waterHeight);
 	terrain.waterPtr = &water;
 
-	chif::Render3D::Skybox skybox;
-	chif::weather::CloudsModel cloudsModel(&scene, &skybox);
+	chif::Graphics::Skybox skybox;
+	chif::Graphics::CloudsModel cloudsModel(&scene, &skybox);
 
-	chif::weather::VolumetricClouds volumetricClouds(chif::Window::SCR_WIDTH, chif::Window::SCR_HEIGHT, &cloudsModel);
-	chif::weather::VolumetricClouds reflectionVolumetricClouds(1280, 720, &cloudsModel); // (expected) lower resolution framebuffers, so the rendering will be faster
+	chif::Graphics::VolumetricClouds volumetricClouds(chif::Platform::Window::SCR_WIDTH, chif::Platform::Window::SCR_HEIGHT, &cloudsModel);
+	chif::Graphics::VolumetricClouds reflectionVolumetricClouds(1280, 720, &cloudsModel); // (expected) lower resolution framebuffers, so the rendering will be faster
 
 	gui.subscribe(&terrain)
 		.subscribe(&skybox)
@@ -113,8 +112,8 @@ extern "C" int main(int argc, char **argv)
 
 	// chif::gui::font::destroyFont();
 
-	chif::Shader::ScreenSpaceShader PostProcessing("shaders/post_processing.frag");
-	chif::Shader::ScreenSpaceShader fboVisualizer("shaders/visualizeFbo.frag");
+	chif::Graphics::Renderer::Shader::ScreenSpaceShader PostProcessing("shaders/post_processing.frag");
+	chif::Graphics::Renderer::Shader::ScreenSpaceShader fboVisualizer("shaders/visualizeFbo.frag");
 
 	// Model Loading
 	stbi_set_flip_vertically_on_load(true); // Tell STB_IMAGE to flip it vertically on y axis (Glaube halt Vertikal)
@@ -153,7 +152,7 @@ extern "C" int main(int argc, char **argv)
 		}
 
 		glm::mat4 view = scene.cam->GetViewMatrix();
-		scene.projMatrix = glm::perspective(glm::radians(camera.Zoom), (float)chif::Window::SCR_WIDTH / (float)chif::Window::SCR_HEIGHT, 5.f, 10000000.0f);
+		scene.projMatrix = glm::perspective(glm::radians(camera.Zoom), (float)chif::Platform::Window::SCR_WIDTH / (float)chif::Platform::Window::SCR_HEIGHT, 5.f, 10000000.0f);
 
 		water.bindReflectionFBO();
 		glEnable(GL_DEPTH_TEST);
@@ -166,14 +165,14 @@ extern "C" int main(int argc, char **argv)
 		terrain.up = 1.0;
 		terrain.draw();
 
-		chif::Buffer::FrameBufferObject const &reflFBO = water.getReflectionFBO();
+		chif::Graphics::Renderer::Buffer::FrameBufferObject const &reflFBO = water.getReflectionFBO();
 
-		chif::Shader::ScreenSpaceShader::disableTests();
+		chif::Graphics::Renderer::Shader::ScreenSpaceShader::disableTests();
 
 		reflectionVolumetricClouds.draw();
 		water.bindReflectionFBO();
 
-		chif::Shader::Shader &post = PostProcessing.getShader();
+		chif::Graphics::Renderer::Shader::Shader &post = PostProcessing.getShader();
 		post.use();
 		post.setVec2("resolution", glm::vec2(1280, 720));
 		post.setSampler2D("screenTexture", reflFBO.tex, 0);
@@ -181,7 +180,7 @@ extern "C" int main(int argc, char **argv)
 		post.setSampler2D("cloudTEX", reflectionVolumetricClouds.getCloudsRawTexture(), 1);
 		PostProcessing.draw();
 
-		chif::Shader::ScreenSpaceShader::enableTests();
+		chif::Graphics::Renderer::Shader::ScreenSpaceShader::enableTests();
 
 		scene.cam->invertPitch();
 		scene.cam->Position.y += 2 * abs(scene.cam->Position.y - water.getHeight());
@@ -211,28 +210,28 @@ extern "C" int main(int argc, char **argv)
 		MeshModelShader.setMat4("model", model);
 		ourModel.Draw(MeshModelShader);
 
-		chif::Shader::ScreenSpaceShader::disableTests();
+		chif::Graphics::Renderer::Shader::ScreenSpaceShader::disableTests();
 
 		volumetricClouds.draw();
 		skybox.draw();
 
-		chif::Buffer::unbindCurrentFrameBuffer();
+		chif::Graphics::Renderer::Buffer::unbindCurrentFrameBuffer();
 		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
 		post.use();
-		post.setVec2("resolution", glm::vec2(chif::Window::SCR_WIDTH, chif::Window::SCR_HEIGHT));
+		post.setVec2("resolution", glm::vec2(chif::Platform::Window::SCR_WIDTH, chif::Platform::Window::SCR_HEIGHT));
 		post.setVec3("cameraPosition", scene.cam->Position);
 		post.setSampler2D("screenTexture", SceneFBO.tex, 0);
 		post.setSampler2D("cloudTEX", volumetricClouds.getCloudsTexture(), 1);
 		post.setSampler2D("depthTex", SceneFBO.depthTex, 2);
-		post.setSampler2D("cloudDistance", volumetricClouds.getCloudsTexture(chif::weather::VolumetricClouds::cloudDistance), 3);
+		post.setSampler2D("cloudDistance", volumetricClouds.getCloudsTexture(chif::Graphics::VolumetricClouds::cloudDistance), 3);
 
 		post.setBool("wireframe", scene.wireframe);
 
 		post.setMat4("VP", scene.projMatrix * view);
 		PostProcessing.draw();
 
-		chif::Shader::Shader &fboVisualizerShader = fboVisualizer.getShader();
+		chif::Graphics::Renderer::Shader::Shader &fboVisualizerShader = fboVisualizer.getShader();
 		fboVisualizerShader.use();
 		fboVisualizerShader.setSampler2D("fboTex", volumetricClouds.getCloudsTexture(), 0);
 		// fboVisualizer.draw(); //Debugging

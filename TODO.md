@@ -26,6 +26,7 @@
             - Terrain (Class)
             - Texture (Class)
             - VolumetricClouds (Class)
+            - Light (Class)
             - VFX::
         - GUI::
             - Sprite (Class)

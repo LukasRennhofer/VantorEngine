@@ -13,43 +13,43 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 add_compile_options(-w)
 
 # Include directories
-include_directories(external)
+include_directories(External)
 
 # === Engine Library Sources ===
 set(ENGINE_SOURCES
     stb_image_impl.cpp
-    # Engine
-    Engine/buffers.cpp
-    Engine/BaseShader.cpp
-    Engine/shader.cpp
-    Engine/ScreenSpaceShader.cpp
-    # externals
-    external/imgui/imgui_draw.cpp
-    external/imgui/imgui_demo.cpp
-    external/imgui/imgui_impl_sdl2.cpp
-    external/imgui/imgui_impl_opengl3.cpp
-    external/imgui/imgui_widgets.cpp
-    external/imgui/imgui_tables.cpp
-    external/imgui/imgui.cpp
-    external/glad.c
+    # External
+    External/imgui/imgui_draw.cpp
+    External/imgui/imgui_demo.cpp
+    External/imgui/imgui_impl_sdl2.cpp
+    External/imgui/imgui_impl_opengl3.cpp
+    External/imgui/imgui_widgets.cpp
+    External/imgui/imgui_tables.cpp
+    External/imgui/imgui.cpp
+    External/glad.c
     # graphics
-    graphics/drawableObject.cpp
-    graphics/CloudsModel.cpp
-    graphics/Skybox.cpp
-    graphics/VolumetricClouds.cpp
-    graphics/Water.cpp
+    Graphics/drawableObject.cpp
+    Graphics/CloudsModel.cpp
+    Graphics/Skybox.cpp
+    Graphics/VolumetricClouds.cpp
+    Graphics/Water.cpp
+    Graphics/Renderer/buffers.cpp
+    Graphics/Renderer/BaseShader.cpp
+    Graphics/Renderer/shader.cpp
+    Graphics/Renderer/ScreenSpaceShader.cpp
+    Graphics/Terrain.cpp
+    Graphics/texture.cpp
     # platform
-    platform/Window.cpp
-    platform/glError.cpp
-    # gui
-    gui/ImguiGUI.cpp
-    # core
-    core/version.cpp
-    # utilities
-    utilities/utils.cpp
-    utilities/terrain/Terrain.cpp
-    utilities/texture/texture.cpp
-    utilities/sdl2Utils.cpp
+    Platform/Window.cpp
+    Platform/glError.cpp
+    # GUI
+    GUI/ImguiGUI.cpp
+    # Core
+    Core/version.cpp
+    Core/JobSystem/JobSystem.cpp
+    # Utils
+    Utils/utils.cpp
+    Utils/sdl2Utils.cpp
 )
 
 # === Create the Engine Library ===

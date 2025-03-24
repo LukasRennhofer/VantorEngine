@@ -15,28 +15,28 @@
 #ifndef CHIFENGINE
 #define CHIFENGINE
 
-#include "core/version.h"
+#include "Core/version.h"
+#include "Core/JobSystem/JobSystem.h"
 
-#include "Engine/BaseShader.h"
-#include "Engine/buffers.h"
-#include "Engine/sceneElements.h"
-#include "Engine/ScreenSpaceShader.h"
-#include "Engine/shader.h"
+#include "Graphics/Renderer/BaseShader.h"
+#include "Graphics/Renderer/buffers.h"
+#include "Graphics/Renderer/ScreenSpaceShader.h"
+#include "Graphics/Renderer/shader.h"
+#include "Graphics/sceneElements.h"
+#include "Graphics/CloudsModel.h"
+#include "Graphics/drawableObject.h"
+#include "Graphics/VolumetricClouds.h"
+#include "Graphics/Water.h"
+#include "Graphics/Terrain.h"
+#include "Graphics/texture.h"
 
-#include "graphics/CloudsModel.h"
-#include "graphics/drawableObject.h"
-#include "graphics/VolumetricClouds.h"
-#include "graphics/Water.h"
+#include "Platform/Window.h"
+#include "Platform/glError.h"
 
-#include "platform/Window.h"
-#include "platform/glError.h"
+#include "GUI/ImguiGUI.h"
 
-#include "gui/ImguiGUI.h"
-
-#include "utilities/utils.h"
-#include "utilities/constants.h"
-#include "utilities/terrain/Terrain.h"
-#include "utilities/texture/texture.h"
+#include "Utils/utils.h"
+#include "Utils/constants.h"
 
 #include <camera.h>
 #include <mesh.h>
