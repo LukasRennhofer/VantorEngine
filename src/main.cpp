@@ -20,8 +20,6 @@
 
 #ifdef __SWITCH__
 #include <switch.h>
-#include <EGL/egl.h>	// EGL library for Switch
-#include <EGL/eglext.h> // EGL extensions
 #else
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_opengl.h>
@@ -235,9 +233,6 @@ extern "C" int main(int argc, char **argv)
 		fboVisualizerShader.use();
 		fboVisualizerShader.setSampler2D("fboTex", volumetricClouds.getCloudsTexture(), 0);
 		// fboVisualizer.draw(); //Debugging
-
-		// FONT 2
-		// chif::gui::font::RenderText2D("Hello, World!", 25.0f, 25.0f, 1.0f, glm::vec3(0.5, 0.8f, 0.2f));
 
 		if (SHOW_IMGUI)
 		{

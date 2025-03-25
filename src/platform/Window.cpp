@@ -81,24 +81,6 @@ namespace chif::Platform {
         return 1;
     }
 
-    void Window::mouse_callback(SDL_Window* window, double xpos, double ypos) {
-        if (firstMouse) {
-            lastX = xpos;
-            lastY = ypos;
-            firstMouse = false;
-        }
-
-        float xoffset = xpos - lastX;
-        float yoffset = lastY - ypos;
-
-        lastX = xpos;
-        lastY = ypos;
-
-        if (!mouseCursorDisabled && Window::camera) {
-            Window::camera->ProcessMouseMovement(xoffset, yoffset);
-        }
-    }
-
     void Window::scroll_callback(SDL_Window* window, double xoffset, double yoffset) {
         if (Window::camera)
             Window::camera->ProcessMouseScroll(yoffset);
@@ -108,81 +90,56 @@ namespace chif::Platform {
         glViewport(0, 0, width, height);
     }
 
+    void Window::mouse_callback(SDL_Window* window, double xrel, double yrel) {
+        if (mouseCursorDisabled) {
+            Window::camera->ProcessMouseMovement(xrel, -yrel);
+            SDL_SetRelativeMouseMode(SDL_TRUE);
+        SDL_ShowCursor(SDL_DISABLE);
+        }
+    }
+    
     void Window::processInput(float frameTime) {
         SDL_Event event;
         while (SDL_PollEvent(&event)) {
-            // Handle quit event
             if (event.type == SDL_QUIT) {
                 quit = true;
             }
-
-            // Handle keyboard input
-            const Uint8* currentKeyStates = SDL_GetKeyboardState(NULL);
-            if (camera) {
-                if (currentKeyStates[SDL_SCANCODE_W]) {
-                    camera->ProcessKeyboard(FORWARD, frameTime);
-                }
-                if (currentKeyStates[SDL_SCANCODE_S]) {
-                    camera->ProcessKeyboard(BACKWARD, frameTime);
-                }
-                if (currentKeyStates[SDL_SCANCODE_A]) {
-                    camera->ProcessKeyboard(LEFT, frameTime);
-                }
-                if (currentKeyStates[SDL_SCANCODE_D]) {
-                    camera->ProcessKeyboard(RIGHT, frameTime);
-                }
+    
+            if (event.type == SDL_MOUSEMOTION && mouseCursorDisabled) {
+                mouse_callback(this->w, event.motion.xrel, event.motion.yrel);
             }
-
-            // Handle mouse motion
-            if (event.type == SDL_MOUSEMOTION) {
-                mouse_callback(this->w, event.motion.x, event.motion.y);
-            }
-
-            // Handle mouse button events
+    
             if (event.type == SDL_MOUSEBUTTONDOWN || event.type == SDL_MOUSEBUTTONUP) {
                 if (event.button.button == SDL_BUTTON_RIGHT) {
                     newState = (event.type == SDL_MOUSEBUTTONDOWN) ? 1 : 0;
                     if (newState == 0 && oldState == 1) {
                         mouseCursorDisabled = !mouseCursorDisabled;
                         SDL_ShowCursor(mouseCursorDisabled ? SDL_DISABLE : SDL_ENABLE);
-                        if (mouseCursorDisabled) firstMouse = true;
+                        SDL_SetRelativeMouseMode(mouseCursorDisabled ? SDL_TRUE : SDL_FALSE);
+                        SDL_CaptureMouse(mouseCursorDisabled ? SDL_TRUE : SDL_FALSE); // Hält die Maus im Fenster
                     }
                     oldState = newState;
                 }
             }
-
-            // Handle mouse wheel scrolling
+    
             if (event.type == SDL_MOUSEWHEEL) {
                 scroll_callback(this->w, event.wheel.x, event.wheel.y);
             }
-
-            // Handle window resizing
+    
             if (event.type == SDL_WINDOWEVENT && event.window.event == SDL_WINDOWEVENT_RESIZED) {
                 framebuffer_size_callback(this->w, event.window.data1, event.window.data2);
             }
         }
-
-        // Handle controller/joystick input
-        for (int i = 0; i < SDL_NumJoysticks(); ++i) {
-            if (SDL_IsGameController(i)) {
-                SDL_GameController* controller = SDL_GameControllerOpen(i);
-                if (controller) {
-                    Sint16 axisLeftY = SDL_GameControllerGetAxis(controller, SDL_CONTROLLER_AXIS_LEFTY);
-                    Sint16 axisLeftX = SDL_GameControllerGetAxis(controller, SDL_CONTROLLER_AXIS_LEFTX);
-
-                    if (camera) {
-                        const int DEADZONE = 8000; // Deadzone to prevent accidental movement
-                        if (axisLeftY < -DEADZONE) camera->ProcessKeyboard(FORWARD, frameTime);
-                        if (axisLeftY > DEADZONE) camera->ProcessKeyboard(BACKWARD, frameTime);
-                        if (axisLeftX < -DEADZONE) camera->ProcessKeyboard(LEFT, frameTime);
-                        if (axisLeftX > DEADZONE) camera->ProcessKeyboard(RIGHT, frameTime);
-                    }
-
-                    SDL_GameControllerClose(controller);
-                }
-            }
+    
+        if (camera && mouseCursorDisabled) {
+            const Uint8* currentKeyStates = SDL_GetKeyboardState(NULL);
+            if (currentKeyStates[SDL_SCANCODE_W]) camera->ProcessKeyboard(FORWARD, frameTime);
+            if (currentKeyStates[SDL_SCANCODE_S]) camera->ProcessKeyboard(BACKWARD, frameTime);
+            if (currentKeyStates[SDL_SCANCODE_A]) camera->ProcessKeyboard(LEFT, frameTime);
+            if (currentKeyStates[SDL_SCANCODE_D]) camera->ProcessKeyboard(RIGHT, frameTime);
         }
     }
+
 
     Window::~Window() {
         SDL_GL_DeleteContext(glContext);
