@@ -7,10 +7,10 @@
  * Licensed under the MIT License. See LICENSE file for more details.
  *
  * Author: Lukas Rennhofer
- * Date: 2025-03-08
+ * Date: 2025-03-27
  *
  * File: texture.cpp
- * Last Change: 
+ * Last Change: Updated project docs
  */
  
 
@@ -59,6 +59,7 @@ namespace chif::Graphics {
 		return textureID;
 	}
 
+	// Load cubemaps for skybox
 	unsigned int loadCubemap(vector<std::string> faces) {
 		unsigned int textureID;
 		glGenTextures(1, &textureID);

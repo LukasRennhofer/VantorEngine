@@ -10,7 +10,7 @@
  * Date: 2025-03-08
  *
  * File: version.h
- * Last Change: Added Version settings and chif::version child namespace
+ * Last Change: Updated projects docs
  */
 
 #pragma once

@@ -33,6 +33,7 @@ namespace chif::Graphics {
 		DefaultPreset();
 	}
 
+	// TODO: No GUI in base engine but studio
 	void Skybox::setGui() {
 		ImGui::Begin("Sky controls: ");
 		ImGui::TextColored(ImVec4(1, 1, 0, 1), "Sky colors controls");

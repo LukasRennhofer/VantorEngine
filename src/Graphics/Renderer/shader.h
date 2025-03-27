@@ -10,7 +10,7 @@
  * Date: 2025-03-08
  *
  * File: shader.h
- * Last Change: 
+ * Last Change: Updated the projects docs
  */
  
 

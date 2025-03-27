@@ -53,22 +53,6 @@ Anmerkung : ´´´Get-ChildItem -Recurse -Path .\src\ -Filter *.c | ForEach-Obje
 
 ## ECS System: 
 
-#### Denoiser
-To enable denoising for path traced images, you can use the [Open Image Denoise library](https://github.com/OpenImageDenoise/oidn). To enable this functionality, the engine will try to include the "WickedEngine/OpenImageDenoise/oidn.hpp" file. If this file could be included, it will attempt to link with OpenImageDenoise.lib and tbb.lib and any other lib that is supplied in the OpenImageDenoise release version The libs should be located in the `$(SolutionDir)BUILD\$(Platform)\$(Configuration)` path, which is for example: `C:/PROJECTS/WickedEngine/BUILD/x64/Release`. It is also required to provide the OpenImageDenoise.dll and tbb.dll and any other dll near the exe to correctly launch the application after this, which is for example: `C:\PROJECTS\WickedEngine\BUILD\x64\Release\Editor_Windows`. If you satisfy these steps, the denoiser will work automatically after you rebuild the engine and the path tracer reached the target sample count, or lightmap baking is stopped.
-
-### LoadingScreen
-[[Header]](../../WickedEngine/wiLoadingScreen.h) [[Cpp]](../../WickedEngine/wiLoadingScreen.cpp)
-The LoadingScreen is an example RenderPath that can be used as a drop-in loading screen for your application. It is designed to be a simple 2D screen that is shown during resource loading. You can add generic tasks with `addLoadingFunction()`, or to load an other `RenderPath` using `addLoadingComponent()`. You can specify what will be called after loading is finished by adding a task to with `onFinished()`. You can query the progress of loading with the `getProgress()` function which returns the percentage of loading as an integer in the range 0-100. You can use it to display a loading progress bar for example. The loading will start when `Start()` is called for the loading screen, but you nedd not call this yourself usually. When you activate your loading screen with the `Application` class, it will switch to the loading screen when appropriate and start it automatically. With this you can achieve nice fade-in-out of loading screen easily, as the `Application`'s `ActivatePath()` simply has a parameter for fading duration.
-
-Because the `LoadingScreen` is a `RenderPath2D`, it is safe to load a `Scene` directly into the main scene (with `LoadModel()`), because `RenderPath2D` doesn't utilize scene at all for rendering. If you use a custom loading screen that is also performing 3D rendering with a scene, you would instead load into a separate scene with `LoadModel()`, and merge into your main scene in the `LoadingScreen::onFinished()` callback.
-
-A simple helper feature of this LoadingScreen class is the `BackgroundMode` setting. You can set a background texture easily for the LoadingScreen which will simply be shown as a full screen image during loading. For this, you should at least specify the `LoadingScreen::bacgroundTexture` resource, which you can simply load from an asset file with `wi::resourcemanager::Load()`. You can set the `BackgroundMode` of this image via `LoadingScreen::background_mode` with the following modes:
-- Fill: fill the whole screen, will cut off parts of the image if aspects don't match (default)
-- Fit: fit the image completely inside the screen, will result in black bars on screen if aspects don't match
-- Stretch: fill the whole screen, and stretch the image if needed
-
-If you want to render other things on the LoadingScreen, then you can also override RenderPath2D methods such as Render() or Compose() and implement custom rendering for yourself.
-
 ## System
 You can find out more about the Entity-Component system and other engine-level systems under ENGINE/System filter in the solution.
 ### Entity-Component System

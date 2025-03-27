@@ -10,7 +10,7 @@
  * Date: 2025-03-08
  *
  * File: constants.h
- * Last Change: Added Debug Mode
+ * Last Change: Updated the projects docs
  */
 
 #pragma once

@@ -6,10 +6,10 @@
  * Licensed under the MIT License. See LICENSE file for more details.
  *
  * Author: Lukas Rennhofer
- * Date: 2025-03-11
+ * Date: 2025-03-27
  *
  * File: main.cpp
- * Last Change: Added Nintendo Switch (Homebrew) Files for Init
+ * Last Change: Updated the projects docs
  */
 
 #ifndef GLAD_H
@@ -114,8 +114,8 @@ extern "C" int main(int argc, char **argv)
 	chif::Graphics::Renderer::Shader::ScreenSpaceShader fboVisualizer("shaders/visualizeFbo.frag");
 
 	// Model Loading
-	stbi_set_flip_vertically_on_load(true); // Tell STB_IMAGE to flip it vertically on y axis (Glaube halt Vertikal)
-	ModelShader MeshModelShader("shaders/model.vs", "shaders/model.fs");
+	stbi_set_flip_vertically_on_load(true);
+	ModelShader MeshModelShader("shaders/model.vert", "shaders/model.frag");
 	Model ourModel("resources/objects/backpack/backpack.obj");
 
 	while (window.continueLoop())

@@ -17,6 +17,7 @@
 #include "shader.h"
 
 namespace chif::Graphics::Renderer::Shader {
+
 	Shader::Shader(std::string name) : name(name)
 	{
 		linked = false;
@@ -107,41 +108,45 @@ namespace chif::Graphics::Renderer::Shader {
 	{
 		glUniform1f(glGetUniformLocation(ID, name.c_str()), value);
 	}
+	// ------------------------------------------------------------------------
 	void Shader::setVec2(const std::string &name, glm::vec2 vector) const
 	{
 		unsigned int location = glGetUniformLocation(ID, name.c_str());
 		glUniform2fv(location, 1, glm::value_ptr(vector));
 	}
+	// ------------------------------------------------------------------------
 	void Shader::setVec3(const std::string &name, glm::vec3 vector) const
 	{
 		unsigned int location = glGetUniformLocation(ID, name.c_str());
 		glUniform3fv(location, 1, glm::value_ptr(vector));
 	}
-
+	// ------------------------------------------------------------------------
 	void Shader::setVec4(const std::string &name, glm::vec4 vector) const
 	{
 		unsigned int location = glGetUniformLocation(ID, name.c_str());
 		glUniform4fv(location, 1, glm::value_ptr(vector));
 	}
-
+	// ------------------------------------------------------------------------
 	void Shader::setMat4(const std::string &name, glm::mat4 matrix) const
 	{
 		unsigned int mat = glGetUniformLocation(ID, name.c_str());
 		glUniformMatrix4fv(mat, 1, false, glm::value_ptr(matrix));
 	}
-
+	// ------------------------------------------------------------------------
 	void Shader::setSampler2D(const std::string &name, unsigned int texture, int id) const
 	{
 		glActiveTexture(GL_TEXTURE0 + id);
 		glBindTexture(GL_TEXTURE_2D, texture);
 		this->setInt(name, id);
 	}
+	// ------------------------------------------------------------------------
 	void Shader::setSampler3D(const std::string &name, unsigned int texture, int id) const
 	{
 		glActiveTexture(GL_TEXTURE0 + id);
 		glBindTexture(GL_TEXTURE_3D, texture);
 		this->setInt(name, id);
 	}
+	// ------------------------------------------------------------------------
 	/*
 	void Shader::checkCompileErrors(unsigned int shader, std::string type, std::string shaderName)
 	{

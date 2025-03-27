@@ -10,8 +10,16 @@
  * Date: 2025-03-08
  *
  * File: sdlUtils.h
- * Last Change:
+ * Last Change: Updated the projects docs
  */
+
+/*
+    File for ports of GLFW based functions to SDL2 based Utils
+
+    These functions are cross-platform based and can be used on any supported system
+
+    -> See the README for more
+*/
 
 #include "sdl2Utils.h"
 

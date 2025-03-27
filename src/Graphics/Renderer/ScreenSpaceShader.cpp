@@ -17,8 +17,10 @@
 #include "ScreenSpaceShader.h"
 
 namespace chif::Graphics::Renderer::Shader {
+
 	unsigned int ScreenSpaceShader::quadVAO = 0;
 	unsigned int ScreenSpaceShader::quadVBO = 0;
+
 	bool ScreenSpaceShader::initialized = false;
 
 	ScreenSpaceShader::ScreenSpaceShader(const char * fragmentPath)

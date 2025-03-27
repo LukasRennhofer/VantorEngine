@@ -18,6 +18,8 @@
 #include <glad/glad.h>
 
 namespace chif::Graphics::Renderer::Shader {
+
+	// Creating various shadertypes for Fragment and Vertecie Shaders
 	struct shaderType
 	{
 		shaderType() : type(-1), name("") {}

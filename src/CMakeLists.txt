@@ -1,4 +1,5 @@
-# CMakeLists Build File written by Lukas Rennhofer @2025 - Licensed under MIT
+# - CMakeLists Build File written by Lukas Rennhofer @2025 Licensed under MIT  -
+# ! This file is currently only for the CHIFEngine´s main.cpp file Compilation !
 
 cmake_minimum_required(VERSION 3.10)
 
@@ -46,7 +47,7 @@ set(ENGINE_SOURCES
     GUI/ImguiGUI.cpp
     # Core
     Core/version.cpp
-    Core/JobSystem/JobSystem.cpp
+    Core/JobSystem/JobSystem.cpp 
     # Utils
     Utils/utils.cpp
     Utils/sdl2Utils.cpp
