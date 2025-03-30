@@ -29,26 +29,26 @@ set(ENGINE_SOURCES
     External/imgui/imgui.cpp
     External/glad.c
     # graphics
-    Graphics/drawableObject.cpp
-    Graphics/CloudsModel.cpp
-    Graphics/Skybox.cpp
-    Graphics/VolumetricClouds.cpp
-    Graphics/Water.cpp
-    Graphics/Renderer/buffers.cpp
-    Graphics/Renderer/BaseShader.cpp
-    Graphics/Renderer/shader.cpp
-    Graphics/Renderer/ScreenSpaceShader.cpp
-    Graphics/Terrain.cpp
-    Graphics/texture.cpp
+    Graphics/chifDrawableObject.cpp
+    Graphics/chifCloudsModel.cpp
+    Graphics/chifSkybox.cpp
+    Graphics/chifVolumetricClouds.cpp
+    Graphics/chifWater.cpp
+    Graphics/Renderer/chifBuffers.cpp
+    Graphics/Renderer/chifBaseShader.cpp
+    Graphics/Renderer/chifShader.cpp
+    Graphics/Renderer/chifScreenSpaceShader.cpp
+    Graphics/chifTerrain.cpp
+    Graphics/chifTexture.cpp
     # platform
-    Platform/Window.cpp
+    Platform/chifWindow.cpp
     Platform/glError.cpp
     # GUI
-    GUI/ImguiGUI.cpp
-    GUI/font.cpp
+    GUI/chifImgui.cpp
+    GUI/chifFont.cpp
     # Core
-    Core/version.cpp
-    Core/JobSystem/JobSystem.cpp 
+    Core/chifVersion.cpp
+    Core/JobSystem/chifJobSystem.cpp 
     # Utils
     Utils/utils.cpp
     Utils/sdl2Utils.cpp

@@ -56,6 +56,8 @@ You can download the latest binaries of CHIFEngine from [the website](https://lu
 
 0. Install Mingw Msys x64 from [their website](https://www.msys2.org/).
 
+---
+
 1. Clone the repository:
 
    ```bash
@@ -63,15 +65,15 @@ You can download the latest binaries of CHIFEngine from [the website](https://lu
    cd CHIFEngine
    ```
 
+---
+
 2. Install the Dependencies with Msys2:
 
    ```bash
-      pacman -S mingw-w64-x86_64-toolchain
-      pacman -S cmake
-      pacman -S mingw-w64-x86_64-freeglut
-      pacman -S assimp
-      pacman -S mingw-w64-x86_64-glfw
+      pacman -S cmake mingw-w64-x86_64-toolchain mingw-w64-x86_64-freeglut mingw-w64-x86_64-assimp -S mingw-w64-x86_64-sdl2
    ```
+
+---
 
 3. Build it with the Windows BAT File
   ```bash
@@ -143,7 +145,7 @@ We extend our gratitude to the following individuals for their efforts and contr
 
 | Name                      | GitHub Handle   | Contributions                     | 
 | ------------------------- | --------------- | --------------------------------- |
-| **Lukas Rennhofer**       | @LukasRennhofer     | **Maintainer**, Engine Logic, Physics |
+| **Lukas Rennhofer**       | @LukasRennhofer | **Maintainer**, Engine Logic, Physics |
 | **Moritz Rottensteiner**  | @Alyopolo       | 3D Assets and Game Development    |
 
 ---
@@ -151,5 +153,3 @@ We extend our gratitude to the following individuals for their efforts and contr
 ## Stay Connected
 - Visit our [Website](https://voronoid.tech/).
 - Give us a star on [GitHub](https://github.com/LukasRennhofer/CHIFEngine) for the latest updates.
-
----

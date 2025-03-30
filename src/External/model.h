@@ -11,7 +11,7 @@
 #include <assimp/postprocess.h>
 
 #include <mesh.h>
-#include "../Graphics/texture.h"
+#include "../Graphics/chifTexture.h"
 
 #include <string>
 #include <fstream>

@@ -27,29 +27,29 @@ Based on your System:
 #define CHIFENGINE
 
 // CORE
-#include "Core/version.h"
-#include "Core/JobSystem/JobSystem.h"
+#include "Core/chifVersion.h"
+#include "Core/JobSystem/chifJobSystem.h"
 
 // GRAPHICS
-#include "Graphics/Renderer/BaseShader.h"
-#include "Graphics/Renderer/buffers.h"
-#include "Graphics/Renderer/ScreenSpaceShader.h"
-#include "Graphics/Renderer/shader.h"
-#include "Graphics/sceneElements.h"
-#include "Graphics/CloudsModel.h"
-#include "Graphics/drawableObject.h"
-#include "Graphics/VolumetricClouds.h"
-#include "Graphics/Water.h"
-#include "Graphics/Terrain.h"
-#include "Graphics/texture.h"
+#include "Graphics/Renderer/chifBaseShader.h"
+#include "Graphics/Renderer/chifBuffers.h"
+#include "Graphics/Renderer/chifScreenSpaceShader.h"
+#include "Graphics/Renderer/chifShader.h"
+#include "Graphics/chifSceneElements.h"
+#include "Graphics/chifCloudsModel.h"
+#include "Graphics/chifDrawableObject.h"
+#include "Graphics/chifVolumetricClouds.h"
+#include "Graphics/chifWater.h"
+#include "Graphics/chifTerrain.h"
+#include "Graphics/chifTexture.h"
 
 // PLATFORM
-#include "Platform/Window.h"
+#include "Platform/chifWindow.h"
 #include "Platform/glError.h"
 
 // GUI
-#include "GUI/ImguiGUI.h"
-#include "GUI/font.h"
+#include "GUI/chifImgui.h"
+#include "GUI/chifFont.h"
 
 // UTILITIES
 #include "Utils/utils.h"
