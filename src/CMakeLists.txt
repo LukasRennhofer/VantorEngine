@@ -45,6 +45,7 @@ set(ENGINE_SOURCES
     Platform/glError.cpp
     # GUI
     GUI/ImguiGUI.cpp
+    GUI/font.cpp
     # Core
     Core/version.cpp
     Core/JobSystem/JobSystem.cpp 

@@ -17,9 +17,9 @@ INFO: CHIFEngine.h can be only compiled with the corresponding Library:
 
 Based on your System:
 
-     - Windows x64 (7 - 11): libCHIFEnginelibWindows.a
-     - Linux x64 (Ubuntu, Debian): libCHIFEnginelibLinux.a
-     - Nintendo Switch (Homebrew): libCHIFEnginelibSwitch.a
+     - Windows x64 (Tested on 7 - 11): libCHIFEnginelibWindows.a
+     - Linux x64 (Tested on Ubuntu 24.10): libCHIFEnginelibLinux.a
+     - Nintendo Switch (Tested on Homebrew): libCHIFEnginelibSwitch.a
 */
 
 // CHIFENGINE PREPROCESSOR DEFINITION
@@ -49,6 +49,7 @@ Based on your System:
 
 // GUI
 #include "GUI/ImguiGUI.h"
+#include "GUI/font.h"
 
 // UTILITIES
 #include "Utils/utils.h"

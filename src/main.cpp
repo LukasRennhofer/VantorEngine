@@ -56,8 +56,11 @@
 		 return -1;
  
 	 window.camera = &camera;
- 
+
+	 // GUI
 	 chif::GUI::GUI gui(window);
+	 chif::GUI::font::TextRenderer* CHIFTextRenderer = new chif::GUI::font::TextRenderer(chif::Platform::Window::SCR_WIDTH, chif::Platform::Window::SCR_HEIGHT);
+	 CHIFTextRenderer->Load("resources/UI/Roboto-Regular.ttf", 24);
  
 	 glm::vec3 fogColor(0.5, 0.6, 0.7);
 	 glm::vec3 lightColor(255, 255, 230);
@@ -233,11 +236,14 @@
 		 fboVisualizerShader.use();
 		 fboVisualizerShader.setSampler2D("fboTex", volumetricClouds.getCloudsTexture(), 0);
 		 // fboVisualizer.draw(); //Debugging
- 
+
+		 // GUI
 		 if (SHOW_IMGUI)
 		 {
 			 gui.draw();
 		 }
+
+		 CHIFTextRenderer->RenderText("Hello World!", 400.0f, 400.0f, 1.0f);
  
 		 window.swapBuffersAndPollEvents();
 	 }

@@ -30,22 +30,28 @@
 #include "../External/ft2build.h"
 #include FT_FREETYPE_H
 
-#include "../Renderer/shader.h"
-#include "../Renderer/ScreenSpaceShader.h"
+#include "../Graphics/Renderer/shader.h"
 
 
 namespace chif::GUI::font {
 
-    bool initFont();
-    bool setFont(std::string filePath);
-    void RenderText2D(std::string text, float x, float y, float scale, glm::vec3 color);
-    void destroyFont();
-
-    /// Holds all state information relevant to a character as loaded using FreeType
     struct Character {
-        unsigned int TextureID; // ID handle of the glyph texture
-        glm::ivec2   Size;      // Size of glyph
-        glm::ivec2   Bearing;   // Offset from baseline to left/top of glyph
-        unsigned int Advance;   // Horizontal offset to advance to next glyph
+        unsigned int TextureID;
+        glm::ivec2   Size;
+        glm::ivec2   Bearing;
+        unsigned int Advance;
+    };
+
+    class TextRenderer
+    {
+    public:
+        std::map<char, Character> Characters; 
+        chif::Graphics::Renderer::Shader::Shader* TextShader;
+
+        TextRenderer(unsigned int width, unsigned int height);
+        void Load(std::string font, unsigned int fontSize);
+        void RenderText(std::string text, float x, float y, float scale, glm::vec3 color = glm::vec3(1.0f));
+    private:
+        unsigned int VAO, VBO;
     };
 } // NAMESPACE chif::GUI::font
