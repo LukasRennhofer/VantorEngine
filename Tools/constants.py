@@ -1,6 +1,6 @@
 """
 *    				~ CHIFEngine ~
-*               
+*
 * Copyright (c) 2025 Lukas Rennhofer
 *
 * Licensed under the MIT License. See LICENSE file for more details.
@@ -9,7 +9,7 @@
 * Date: 03-23-2025
 *
 * File: constants.py
-* Last Change: Tooling Updatet
+* Last Change: Tooling Updated
 """
 
 SRC_DIR = "CHIFEngine"
@@ -45,6 +45,3 @@ EXTERN_RESSOURCES = {
     'Utility' : {
         'description' : 'CHIFEngine Util Library / Frameworks : *basis_u , dx12 API, FAudio, meshopt., vulkan API*',
         'website' : 'None',
-        'author' : 'See the Documentation'
-    }
-}

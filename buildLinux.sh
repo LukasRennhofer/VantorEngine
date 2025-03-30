@@ -8,9 +8,10 @@ mkdir linux
 cd linux
 
 echo "Running CMake..."
-cmake -G "Unix Makefiles" ../..
+cmake -G "Unix Makefiles" ../../src/
+
 echo "Building CHIFEngine..."
-make -j$(nproc)
+make 
 
 echo "Creating output directories..."
 mkdir -p resources

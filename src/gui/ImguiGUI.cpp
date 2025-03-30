@@ -27,9 +27,9 @@ namespace chif::GUI {
 		ImGui_ImplOpenGL3_Init("#version 130");
 
 		// Use Custom Fonts - TODO: Working for Linux!!
-		ImGuiIO &io = ImGui::GetIO();
-		io.Fonts->AddFontFromFileTTF("resources/UI/Roboto-Regular.ttf", 18.0f); // Adding Main Font
-		io.Fonts->Build();
+		// ImGuiIO &io = ImGui::GetIO();
+		// io.Fonts->AddFontFromFileTTF("resources/UI/Roboto-Regular.ttf", 18.0f); // Adding Main Font
+		// io.Fonts->Build();
 
 		// Set Custom Styles
 		ImGuiStyle &style = ImGui::GetStyle();

@@ -60,6 +60,7 @@ You can download the latest binaries of CHIFEngine from [the website](https://lu
 
    ```bash
    git clone https://github.com/LukasRennhofer/CHIFEngine.git
+   cd CHIFEngine
    ```
 
 2. Install the Dependencies with Msys2:
@@ -79,10 +80,32 @@ You can download the latest binaries of CHIFEngine from [the website](https://lu
 
 #### Linux
 
-- **Status**: Not currently supported. Building on Linux may lead to errors due to limited development resources.
-  - Needs Dependencies of the ```CMakeLists.txt``` file and can be build with ```./buildLinux.sh```, but not supported⚠️
+- **Status**: Not currently supported. Building on Linux may lead to errors due to limited development resources. (Tested on Ubuntu 24.10)
 
 ---
+
+0. Clone the repository:
+
+   ```bash
+   git clone https://github.com/LukasRennhofer/CHIFEngine.git
+   cd CHIFEngine
+   ```
+
+---
+
+1. Install the Dependencies:
+
+   ```bash
+   sudo apt-get install build-essential libsdl2-dev libsdl2-2.0-0 libassimp-dev cmake libglm-dev libglew-dev
+   ```
+
+---
+
+2. Build from source:
+
+   ```bash
+   ./buildLinux.sh
+   ```
 
 ## Features
 

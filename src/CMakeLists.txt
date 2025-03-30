@@ -88,11 +88,11 @@ elseif(UNIX)
     message(STATUS "Compiling for Linux")
 
     find_package(PkgConfig REQUIRED)
-    pkg_check_modules(GLFW3 REQUIRED glfw3)
     pkg_check_modules(OpenGL REQUIRED gl)
 
     set(LINUX_LIBRARIES
-        ${GLFW3_LIBRARIES}
+        SDL2
+        SDL2main
         ${OpenGL_LIBRARIES}
         X11
         pthread
@@ -105,6 +105,12 @@ elseif(UNIX)
         gbm
         drm
     )
+    find_package(assimp REQUIRED)
+    set(ASSIMP_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/externals/assimp")
+    include_directories(${ASSIMP_INCLUDE_DIR})
+
+    find_package(SDL2 REQUIRED)
+    include_directories(${SDL2_INCLUDE_DIRS})
 
     target_link_libraries(CHIFEngineLib ${LINUX_LIBRARIES} ${SDL2_LIBRARIES})
 
