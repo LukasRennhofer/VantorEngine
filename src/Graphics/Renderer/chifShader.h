@@ -27,6 +27,7 @@
 #include <list>
 
 #include "chifBaseShader.h"
+#include "../../Core/Backlog/chifBacklog.h"
 
 namespace chif::Graphics::Renderer::Shader {
 	class Shader

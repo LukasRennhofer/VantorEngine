@@ -22,11 +22,13 @@
 #include FT_FREETYPE_H
 
 #include "../Graphics/Renderer/chifShader.h"
+#include "../Core/Backlog/chifBacklog.h"
 
 namespace chif::GUI::font {
     TextRenderer::TextRenderer(unsigned int width, unsigned int height)
     {
-        std::cout << "[DEBUG] Initializing TextRenderer..." << std::endl;
+        chif::Backlog::Log("GUI", "Initializing TextRenderer...", chif::Backlog::LogLevel::DEBUG);
+        chif::Backlog::SaveLogs();
 
         this->TextShader = new chif::Graphics::Renderer::Shader::Shader("text");
         this->TextShader->attachShader("shaders/text.vert")
@@ -49,22 +51,18 @@ namespace chif::GUI::font {
         glBindBuffer(GL_ARRAY_BUFFER, 0);
         glBindVertexArray(0);
 
-        std::cout << "[DEBUG] TextRenderer initialized successfully." << std::endl;
     }
 
     void TextRenderer::Load(std::string font, unsigned int fontSize)
     {
-        std::cout << "[DEBUG] Loading font: " << font << " with size " << fontSize << std::endl;
         this->Characters.clear();
         FT_Library ft;    
         if (FT_Init_FreeType(&ft)) {
-            std::cerr << "[ERROR::FREETYPE] Could not initialize FreeType Library!" << std::endl;
             return;
         }
 
         FT_Face face;
         if (FT_New_Face(ft, font.c_str(), 0, &face)) {
-            std::cerr << "[ERROR::FREETYPE] Failed to load font: " << font << std::endl;
             return;
         }
 
@@ -74,7 +72,6 @@ namespace chif::GUI::font {
         for (GLubyte c = 0; c < 128; c++)
         {
             if (FT_Load_Char(face, c, FT_LOAD_RENDER)) {
-                std::cerr << "[ERROR::FREETYPE] Failed to load glyph: " << (char)c << std::endl;
                 continue;
             }
 
@@ -111,7 +108,6 @@ namespace chif::GUI::font {
         FT_Done_Face(face);
         FT_Done_FreeType(ft);
 
-        std::cout << "[DEBUG] Font loaded successfully." << std::endl;
     }
 
     void TextRenderer::RenderText(std::string text, float x, float y, float scale, glm::vec3 color)

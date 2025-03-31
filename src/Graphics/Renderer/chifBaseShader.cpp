@@ -29,8 +29,9 @@ namespace chif::Graphics::Renderer::Shader {
 			if (!success)
 			{
 				glGetShaderInfoLog(shader, 1024, NULL, infoLog);
-				std::cout << "[ERROR::SHADER] SHADER \"" << shaderName << "\" COMPILATION ERROR of type: \"" << type << "\"\n"
-						<< infoLog << "\n -- --------------------------------------------------- -- " << std::endl;
+
+				std::string errorMessage = "Shader: \"" + shaderName  + "\" Compilation Error of type: " + type;
+				chif::Backlog::Log("Shader", errorMessage, chif::Backlog::LogLevel::ERR); 
 			}
 		}
 		else
@@ -39,8 +40,8 @@ namespace chif::Graphics::Renderer::Shader {
 			if (!success)
 			{
 				glGetProgramInfoLog(shader, 1024, NULL, infoLog);
-				std::cout << "[ERROR::SHADER] PROGRAM_LINKING_ERROR of type: \"" << type << "\"\n"
-						<< infoLog << "\n -- --------------------------------------------------- -- " << std::endl;
+				std::string errorMessage = "Programming linking error of type: " + type;
+				chif::Backlog::Log("Shader", errorMessage, chif::Backlog::LogLevel::ERR); 
 			}
 		}
 		return success;
@@ -108,7 +109,8 @@ namespace chif::Graphics::Renderer::Shader {
 		}
 		catch (std::ifstream::failure e)
 		{
-			std::cout << "[ERROR::SHADER] SHADER \"" << getShaderName(shaderPath) << "\" FILE_NOT_SUCCESFULLY_READ" << std::endl;
+			std::string errorMessage = "Shader: \"" + getShaderName(shaderPath) + "\" not succesfully read";
+			chif::Backlog::Log("Shader", errorMessage, chif::Backlog::LogLevel::ERR); 
 		}
 		return shaderCode;
 	}

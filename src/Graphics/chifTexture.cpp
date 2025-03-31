@@ -52,7 +52,7 @@ namespace chif::Graphics {
 		}
 		else
 		{
-			std::cout << "[ERROR::TEXTURE] Texture failed to load at path: \"" << path << "\"" << std::endl;
+			chif::Backlog::Log("Texture", "Texture failed to load", chif::Backlog::LogLevel::ERR);
 			stbi_image_free(data);
 		}
 
@@ -76,7 +76,7 @@ namespace chif::Graphics {
 			}
 			else
 			{
-				std::cout << "[ERROR::TEXTURE]  Cubemap texture failed to load at path: \"" << faces[i] << "\"" << std::endl;
+				chif::Backlog::Log("Texture", "Cubemap texture failed to load", chif::Backlog::LogLevel::ERR);
 				stbi_image_free(data);
 			}
 		}

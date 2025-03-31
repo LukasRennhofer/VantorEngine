@@ -149,7 +149,7 @@ namespace chif::Graphics::Renderer::Buffer {
 
 	unsigned int FrameBufferObject::getColorAttachmentTex(int i) {
 		if (i < 0 || i > nColorAttachments) {
-			std::cout << "[ERROR::BUFFER] COLOR ATTACHMENT OUT OF RANGE" << std::endl;
+			chif::Backlog::Log("Buffer", "Color attachment out of range.", chif::Backlog::LogLevel::ERR);
 			return 0;
 		}
 		return colorAttachments[i];
@@ -169,7 +169,7 @@ namespace chif::Graphics::Renderer::Buffer {
 
 	unsigned int TextureSet::getColorAttachmentTex(int i) {
 		if (i < 0 || i > nTextures) {
-			std::cout << "[ERROR::BUFFER] COLOR ATTACHMENT OUT OF RANGE" << std::endl;
+			chif::Backlog::Log("Buffer", "Color attachment out of range.", chif::Backlog::LogLevel::ERR);
 			return 0;
 		}
 		return texture[i];

@@ -29,6 +29,7 @@ Based on your System:
 // CORE
 #include "Core/chifVersion.h"
 #include "Core/JobSystem/chifJobSystem.h"
+#include "Core/Backlog/chifBacklog.h"
 
 // GRAPHICS
 #include "Graphics/Renderer/chifBaseShader.h"

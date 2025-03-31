@@ -17,7 +17,9 @@
 #pragma once
 
 #include <glad/glad.h>
+
 #include "../../Platform/chifWindow.h"
+#include "../../Core/Backlog/chifBacklog.h"
 
 namespace chif::Graphics::Renderer::Buffer {
 	void bindFrameBuffer(int frameBuffer, int width, int height);

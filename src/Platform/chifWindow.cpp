@@ -29,12 +29,12 @@ namespace chif::Platform {
     bool Window::mouseCursorDisabled = true;
 
     Window::Window(int& success, unsigned int scrW, unsigned int scrH, std::string name) : name(name) {
-        std::cout << "[INIT::CORE] Using CHIFEngine Core " << chif::Core::version::GetVersionString() << std::endl;
+        chif::Backlog::Log("Window", std::format("Using CHIFEngine Core: {}", chif::Core::version::GetVersionString()), chif::Backlog::LogLevel::INFO);
         Window::SCR_WIDTH = scrW;
         Window::SCR_HEIGHT = scrH;
 
         if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_JOYSTICK | SDL_INIT_GAMECONTROLLER) < 0) {
-            std::cout << "[ERROR::WINDOW] SDL could not initialize! SDL_Error: " << SDL_GetError() << std::endl;
+            chif::Backlog::Log("Window", "SDL could not initialize!", chif::Backlog::LogLevel::ERR);
             success = 0;
             return;
         }
@@ -49,14 +49,14 @@ namespace chif::Platform {
         this->w = SDL_CreateWindow(name.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
                                    SCR_WIDTH, SCR_HEIGHT, SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE);
         if (!this->w) {
-            std::cout << "[ERROR::WINDOW] Failed to create SDL window: " << SDL_GetError() << std::endl;
+            chif::Backlog::Log("Window", "Failed to create SDL window", chif::Backlog::LogLevel::ERR);
             success = 0;
             return;
         }
 
         glContext = SDL_GL_CreateContext(this->w);
         if (!glContext) {
-            std::cout << "[ERROR::WINDOW] Failed to create OpenGL context: " << SDL_GetError() << std::endl;
+            chif::Backlog::Log("Window", "Failed to create OpenGL context", chif::Backlog::LogLevel::ERR);
             success = 0;
             return;
         }
@@ -68,14 +68,14 @@ namespace chif::Platform {
 
         success = gladLoader();
         if (success) {
-            std::cout << "[INFO::WINDOW] SDL2 window and OpenGL context correctly initialized!" << std::endl;
+            chif::Backlog::Log("Window", "SDL2 window and OpenGL context correctly initialized!", chif::Backlog::LogLevel::INFO);
         }
     }
 
     int Window::gladLoader() {
         SDL_ShowCursor(SDL_DISABLE);
         if (!gladLoadGLLoader((GLADloadproc)SDL_GL_GetProcAddress)) {
-            std::cout << "[ERROR::WINDOW] Failed to initialize GLAD" << std::endl;
+            chif::Backlog::Log("Window", "Failed to initialize GLAD", chif::Backlog::LogLevel::ERR);
             return 0;
         }
         return 1;

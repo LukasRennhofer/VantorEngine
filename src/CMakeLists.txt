@@ -7,7 +7,7 @@ cmake_minimum_required(VERSION 3.10)
 project(CHIFEngine)
 
 # Set C++ standard
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Compilation flags
@@ -49,6 +49,7 @@ set(ENGINE_SOURCES
     # Core
     Core/chifVersion.cpp
     Core/JobSystem/chifJobSystem.cpp 
+    Core/Backlog/chifBacklog.cpp
     # Utils
     Utils/utils.cpp
     Utils/sdl2Utils.cpp

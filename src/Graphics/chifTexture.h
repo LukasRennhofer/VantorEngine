@@ -20,6 +20,7 @@
 #include <iostream>
 #include <vector>
 
+#include "../Core/Backlog/chifBacklog.h"
 
 #include <glad/glad.h>
 

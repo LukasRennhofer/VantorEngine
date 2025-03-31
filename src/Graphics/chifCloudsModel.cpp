@@ -82,13 +82,14 @@ namespace chif::Graphics {
 
 			comp.use();
 			comp.setVec3("u_resolution", glm::vec3(128, 128, 128));
-			std::cout << "[PROCESS::CLOUDS] Computing \"perlinworley\"" << std::endl;
+			chif::Backlog::Log("CloudsModel", "Computing \"perlinworley\"", chif::Backlog::LogLevel::INFO);
 			glActiveTexture(GL_TEXTURE0);
 			comp.setInt("outVolTex", 0);
 			glBindTexture(GL_TEXTURE_3D, this->perlinTex);
 			glBindImageTexture(0, this->perlinTex, 0, GL_TRUE, 0, GL_READ_WRITE, GL_RGBA8);
 			glDispatchCompute(INT_CEIL(128, 4), INT_CEIL(128, 4), INT_CEIL(128, 4));
-			std::cout << "[PROCESS::CLOUDS] Finished computing perlinworley" << std::endl;
+
+			chif::Backlog::Log("CloudsModel", "Finished computing \"perlinworley\"", chif::Backlog::LogLevel::INFO);
 			//glMemoryBarrier(GL_SHADER_IMAGE_ACCESS_BARRIER_BIT);
 			glGenerateMipmap(GL_TEXTURE_3D);
 		}
@@ -105,9 +106,13 @@ namespace chif::Graphics {
 			glActiveTexture(GL_TEXTURE0);
 			glBindTexture(GL_TEXTURE_3D, this->worley32);
 			glBindImageTexture(0, this->worley32, 0, GL_TRUE, 0, GL_READ_WRITE, GL_RGBA8);
-			std::cout << "[PROCESS::CLOUDS] Computing \"worley 32\"" << std::endl;
+
+			chif::Backlog::Log("CloudsModel", "Computing \"worley 32\"", chif::Backlog::LogLevel::INFO);
+
 			glDispatchCompute(INT_CEIL(32, 4), INT_CEIL(32, 4), INT_CEIL(32, 4));
-			std::cout << "[PROCESS::CLOUDS] Finished computing \"worley 32\"" << std::endl;
+
+			chif::Backlog::Log("CloudsModel", "Finished computing \"worley 32\"", chif::Backlog::LogLevel::INFO);
+
 			glGenerateMipmap(GL_TEXTURE_3D);
 		}
 
@@ -142,9 +147,9 @@ namespace chif::Graphics {
 		weatherShader->use();
 		weatherShader->setVec3("seed", scene->seed);
 		weatherShader->setFloat("perlinFrequency", perlinFrequency);
-		std::cout << "[PROCESS::CLOUDS] Computing \"weather\"" << std::endl;
+		chif::Backlog::Log("CloudsModel", "Computing \"weather\"", chif::Backlog::LogLevel::INFO);
 		glDispatchCompute(INT_CEIL(1024, 8), INT_CEIL(1024, 8), 1);
-		std::cout << "[PROCESS::CLOUDS] Finished computing \"weather\"" << std::endl;
+		chif::Backlog::Log("CloudsModel", "Finished computing \"weather\"", chif::Backlog::LogLevel::INFO);
 
 		glMemoryBarrier(GL_SHADER_IMAGE_ACCESS_BARRIER_BIT);
 	}

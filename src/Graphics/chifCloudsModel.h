@@ -19,6 +19,7 @@
 
 #include "Renderer/chifShader.h"
 #include "Renderer/chifScreenSpaceShader.h"
+#include "../Core/Backlog/chifBacklog.h"
 
 #include "chifSceneElements.h"
 

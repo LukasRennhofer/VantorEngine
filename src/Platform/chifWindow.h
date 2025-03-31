@@ -18,11 +18,13 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_opengl.h>
 #include <iostream>
+#include <format>
 
 #include <camera.h>
 
 #include "../Core/chifVersion.h"
 #include "../Utils/constants.h"
+#include "../Core/Backlog/chifBacklog.h"
 
 namespace chif::Platform {
     class Window

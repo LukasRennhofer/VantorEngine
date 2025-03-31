@@ -49,7 +49,7 @@ namespace chif::Graphics::Renderer::Shader {
 			this->shaders.push_back(s.getShad());
 		}
 		else {
-			std::cout << "[ERROR::SHADER] TRYING TO LINK A NON COMPUTE SHADER TO COMPUTE PROGRAM" << std::endl;
+			chif::Backlog::Log("Shader", "Trying to link a non compute shader to compute program.", chif::Backlog::LogLevel::ERR);
 		}
 
 		return this;
@@ -61,14 +61,14 @@ namespace chif::Graphics::Renderer::Shader {
 
 		if (checkCompileErrors(ID, "PROGRAM", "")) {
 			linked = true;
-			std::cout << "[INFO::SHADER] PROGRAM " << name << " CORRECTLY LINKED" << std::endl;
 			while (!shaders.empty()) {
 				glDeleteShader(shaders.back());
 				shaders.pop_back();
 			}
 		}
 		else {
-			std::cout << "[ERROR::SHADER] OCCURED WHILE LINKING TO " << name << " PROGRAM" << std::endl;
+			std::string errorMessage = "Error occured while linking to: " + name;
+			chif::Backlog::Log("Shader", errorMessage, chif::Backlog::LogLevel::ERR);
 		}
 	}
 
@@ -77,7 +77,7 @@ namespace chif::Graphics::Renderer::Shader {
 		if (linked) {
 			glUseProgram(ID);
 		} else {
-			std::cerr << "[ERROR::SHADER] PROGRAMS NOT LINKED!" << std::endl;
+			chif::Backlog::Log("Shader", "Programs not linked!", chif::Backlog::LogLevel::ERR);
 
 			// Check linking status and log
 			GLint success;
@@ -85,10 +85,10 @@ namespace chif::Graphics::Renderer::Shader {
 			if (!success) {
 				char log[512];
 				glGetProgramInfoLog(ID, 512, NULL, log);
-				std::cerr << "[ERROR::SHADER] Shader Linking Error: " << log << std::endl;
-				std::cout << "[ERROR::SHADER] Error in: " << name << std::endl;
+				std::string errorMessage = "Shader linking Error";
+				chif::Backlog::Log("Shader", errorMessage, chif::Backlog::LogLevel::ERR);
 			} else {
-				std::cerr << "[WARNING::SHADER] 'linked' flag is false, but OpenGL thinks the program is linked." << std::endl;
+				chif::Backlog::Log("Shader", "'linked' flag is false, but OpenGL thinks the program is linked.", chif::Backlog::LogLevel::WARNING);
 			}
 		}
 	}

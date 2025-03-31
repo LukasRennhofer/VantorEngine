@@ -17,6 +17,8 @@
 #include <string>
 #include <glad/glad.h>
 
+#include "../../Core/Backlog/chifBacklog.h"
+
 namespace chif::Graphics::Renderer::Shader {
 
 	// Creating various shadertypes for Fragment and Vertecie Shaders
