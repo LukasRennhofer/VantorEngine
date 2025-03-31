@@ -43,3 +43,13 @@ This is the official CHIFEngine C++ API documentation for Application Developers
 > **TODO**
 ## External
 > **TODO**
+
+<p style="font-size: 24px;" align="center">
+  Written by
+  <br>
+  Lukas Rennhofer @2025
+  <br>
+  <a href="https://voronoid.tech/">
+    <img src="https://raw.githubusercontent.com/LukasRennhofer/CHIFEngine/refs/heads/main/config/assets/LRDevLogoBig.png" width="200" alt="LRDev Logo">
+  </a>
+</p>
