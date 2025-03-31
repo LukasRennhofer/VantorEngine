@@ -15,8 +15,6 @@ This is the official CHIFEngine C++ API documentation for Application Developers
 ## Table of Contents
 0. [Building and integration](#building-and-integration)
 
-    I. 
-
 1. [Core](#core)
 
 2. [Graphics](#graphics)
