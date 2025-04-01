@@ -4,7 +4,7 @@
 cmake_minimum_required(VERSION 3.10)
 
 # Project name
-project(CHIFEngine)
+project(TestFramework)
 
 # Set C++ standard
 set(CMAKE_CXX_STANDARD 20)
@@ -14,57 +14,62 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 add_compile_options(-w)
 
 # Include directories
-include_directories(External)
+include_directories(../../src/External)
 
 # === Engine Library Sources ===
 set(ENGINE_SOURCES
-    stb_image_impl.cpp
+    ../../src/stb_image_impl.cpp
     # External
-    External/imgui/imgui_draw.cpp
-    External/imgui/imgui_demo.cpp
-    External/imgui/imgui_impl_sdl2.cpp
-    External/imgui/imgui_impl_opengl3.cpp
-    External/imgui/imgui_widgets.cpp
-    External/imgui/imgui_tables.cpp
-    External/imgui/imgui.cpp
-    External/glad.c
+    ../../src/External/imgui/imgui_draw.cpp
+    ../../src/External/imgui/imgui_demo.cpp
+    ../../src/External/imgui/imgui_impl_sdl2.cpp
+    ../../src/External/imgui/imgui_impl_opengl3.cpp
+    ../../src/External/imgui/imgui_widgets.cpp
+    ../../src/External/imgui/imgui_tables.cpp
+    ../../src/External/imgui/imgui.cpp
+    ../../src/External/glad.c
     # graphics
-    Graphics/chifDrawableObject.cpp
-    Graphics/chifCloudsModel.cpp
-    Graphics/chifSkybox.cpp
-    Graphics/chifVolumetricClouds.cpp
-    Graphics/chifWater.cpp
-    Graphics/Renderer/chifBuffers.cpp
-    Graphics/Renderer/chifBaseShader.cpp
-    Graphics/Renderer/chifShader.cpp
-    Graphics/Renderer/chifScreenSpaceShader.cpp
-    Graphics/chifTerrain.cpp
-    Graphics/chifTexture.cpp
+    ../../src/Graphics/chifDrawableObject.cpp
+    ../../src/Graphics/chifCloudsModel.cpp
+    ../../src/Graphics/chifSkybox.cpp
+    ../../src/Graphics/chifVolumetricClouds.cpp
+    ../../src/Graphics/chifWater.cpp
+    ../../src/Graphics/Renderer/chifBuffers.cpp
+    ../../src/Graphics/Renderer/chifBaseShader.cpp
+    ../../src/Graphics/Renderer/chifShader.cpp
+    ../../src/Graphics/Renderer/chifScreenSpaceShader.cpp
+    ../../src/Graphics/chifTerrain.cpp
+    ../../src/Graphics/chifTexture.cpp
     # platform
-    Platform/chifWindow.cpp
-    Platform/glError.cpp
+    ../../src/Platform/chifWindow.cpp
+    ../../src/Platform/glError.cpp
     # GUI
-    GUI/chifImgui.cpp
-    GUI/Font/chifFont.cpp
-    GUI/Font/chifFontAtlas.cpp
-    GUI/Font/chifFontUtils.cpp
-    GUI/Font/chifLabel.cpp
+    ../../src/GUI/chifImgui.cpp
+    ../../src/GUI/Font/chifFont.cpp
+    ../../src/GUI/Font/chifFontAtlas.cpp
+    ../../src/GUI/Font/chifFontUtils.cpp
+    ../../src/GUI/Font/chifLabel.cpp
     # Core
-    Core/chifVersion.cpp
-    Core/JobSystem/chifJobSystem.cpp 
-    Core/Backlog/chifBacklog.cpp
+    ../../src/Core/chifVersion.cpp
+    ../../src/Core/JobSystem/chifJobSystem.cpp 
+    ../../src/Core/Backlog/chifBacklog.cpp
     # Utils
-    Utils/utils.cpp
-    Utils/sdl2Utils.cpp
+    ../../src/Utils/utils.cpp
+    ../../src/Utils/sdl2Utils.cpp
 )
+
+# === TestFramework Sources ===
+set(APP_SOURCES
+    main.cpp
+    )
 
 # === Create the Engine Library ===
 add_library(CHIFEngineLib STATIC ${ENGINE_SOURCES})
-target_include_directories(CHIFEngineLib PUBLIC src external)
+target_include_directories(CHIFEngineLib PUBLIC ../../src ../../src/external)
 
 # === Platform-Specific Dependencies ===
 if(WIN32)
-    set(CMAKE_MAKE_PROGRAM "compToolchain/windows/make.exe")
+    set(CMAKE_MAKE_PROGRAM "../../src/compToolchain/windows/make.exe")
     message(STATUS "Compiling for Windows")
 
     set(WINDOWS_LIBRARIES
@@ -81,7 +86,7 @@ if(WIN32)
     )
 
     find_package(assimp REQUIRED)
-    set(ASSIMP_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/externals/assimp")
+    set(ASSIMP_INCLUDE_DIR "${CMAKE_SOURCE_DIR}../../src/externals/assimp")
     include_directories(${ASSIMP_INCLUDE_DIR})
 
     find_package(SDL2 REQUIRED)
@@ -111,7 +116,7 @@ elseif(UNIX)
         drm
     )
     find_package(assimp REQUIRED)
-    set(ASSIMP_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/externals/assimp")
+    set(ASSIMP_INCLUDE_DIR "${CMAKE_SOURCE_DIR}../../src/externals/assimp")
     include_directories(${ASSIMP_INCLUDE_DIR})
 
     find_package(SDL2 REQUIRED)
@@ -153,10 +158,10 @@ elseif(SWITCH)
 endif()
 
 # === Create the Executable ===
-add_executable(CHIFEngine main.cpp)
+add_executable(TestFramework ${APP_SOURCES})
 
 # Link the engine library to the executable
-target_link_libraries(CHIFEngine CHIFEngineLib)
+target_link_libraries(TestFramework CHIFEngineLib)
 
 # Optional: Compiler warnings for the main executable
-target_compile_options(CHIFEngine PRIVATE -Wall -Wextra)
+target_compile_options(TestFramework PRIVATE -Wall -Wextra)

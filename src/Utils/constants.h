@@ -15,5 +15,7 @@
 
 #pragma once
 
+// TODO: Get these away
 #define DEBUG_MODE true
 #define SHOW_IMGUI true
+ 

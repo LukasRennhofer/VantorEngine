@@ -50,7 +50,9 @@ Based on your System:
 
 // GUI
 #include "GUI/chifImgui.h"
-#include "GUI/chifFont.h"
+#include "GUI/Font/chifFont.h"
+#include "GUI/Font/chifFontAtlas.h"
+#include "GUI/Font/chifLabel.h"
 
 // UTILITIES
 #include "Utils/utils.h"

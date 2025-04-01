@@ -130,18 +130,24 @@ namespace chif::Platform {
                 framebuffer_size_callback(this->w, event.window.data1, event.window.data2);
             }
         }
-    
+
+        const Uint8* currentKeyStates = SDL_GetKeyboardState(NULL);
+
         if (camera && mouseCursorDisabled) {
-            const Uint8* currentKeyStates = SDL_GetKeyboardState(NULL);
             if (currentKeyStates[SDL_SCANCODE_W]) camera->ProcessKeyboard(FORWARD, frameTime);
             if (currentKeyStates[SDL_SCANCODE_S]) camera->ProcessKeyboard(BACKWARD, frameTime);
             if (currentKeyStates[SDL_SCANCODE_A]) camera->ProcessKeyboard(LEFT, frameTime);
             if (currentKeyStates[SDL_SCANCODE_D]) camera->ProcessKeyboard(RIGHT, frameTime);
         }
+
+        if (currentKeyStates[SDL_SCANCODE_ESCAPE]) quit = true;
     }
 
 
     Window::~Window() {
+        // Saving Logs (Just for now)
+        chif::Backlog::SaveLogs();
+        // Terminate Application
         SDL_GL_DeleteContext(glContext);
         SDL_DestroyWindow(this->w);
         this->terminate();

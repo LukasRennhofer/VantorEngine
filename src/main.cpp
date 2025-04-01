@@ -57,10 +57,8 @@
  
 	 window.camera = &camera;
 
-	 // GUI
+	 // GUI 
 	 chif::GUI::GUI gui(window);
-	 chif::GUI::font::TextRenderer* CHIFTextRenderer = new chif::GUI::font::TextRenderer(chif::Platform::Window::SCR_WIDTH, chif::Platform::Window::SCR_HEIGHT);
-	 CHIFTextRenderer->Load("resources/UI/Roboto-Regular.ttf", 24);
  
 	 glm::vec3 fogColor(0.5, 0.6, 0.7);
 	 glm::vec3 lightColor(255, 255, 230);
@@ -120,6 +118,18 @@
 	 stbi_set_flip_vertically_on_load(true);
 	 ModelShader MeshModelShader("shaders/model.vert", "shaders/model.frag");
 	 Model ourModel("resources/objects/backpack/backpack.obj");
+
+	 // Font Test Loading
+	 shared_ptr<chif::GUI::Font> fontTest = shared_ptr<chif::GUI::Font>(new chif::GUI::Font("resources/calibri.ttf"));
+
+	 unique_ptr<chif::GUI::Label> label = unique_ptr<chif::GUI::Label>(new chif::GUI::Label(
+		fontTest,        
+		"Hello world!",
+		400,
+		400,
+		chif::Platform::Window::SCR_WIDTH,
+		chif::Platform::Window::SCR_WIDTH
+	  ));
  
 	 while (window.continueLoop())
 	 {
@@ -231,6 +241,8 @@
  
 		 post.setMat4("VP", scene.projMatrix * view);
 		 PostProcessing.draw();
+
+		
  
 		 chif::Graphics::Renderer::Shader::Shader &fboVisualizerShader = fboVisualizer.getShader();
 		 fboVisualizerShader.use();
@@ -242,9 +254,9 @@
 		 {
 			 gui.draw();
 		 }
-
-		 CHIFTextRenderer->RenderText("Hello World!", 400.0f, 400.0f, 1.0f);
+		 
+		 label->render();
  
-		 window.swapBuffersAndPollEvents();
+		window.swapBuffersAndPollEvents();
 	 }
  }
