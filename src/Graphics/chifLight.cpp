@@ -1,0 +1,160 @@
+/*
+ *    				~ CHIFEngine ~
+ *               
+ * Copyright (c) 2025 Lukas Rennhofer
+ *
+ * Licensed under the MIT License. See LICENSE file for more details.
+ *
+ * Author: Lukas Rennhofer
+ * Date: 2025-04-04
+ *
+ * File: chifLight.cpp
+ * Last Change: 
+ */
+ 
+ #include "chifLight.h"
+
+namespace chif::Graphics {
+
+    void LightRegistry::addLight(std::shared_ptr<Light> light) {
+        lights_.push_back(light);
+
+        switch (light->getLightType()) {
+            case LightType::DIRECTIONAL_LIGHT:
+            light->setLightIdx(directionalCount_);
+            directionalCount_++;
+            break;
+            case LightType::POINT_LIGHT:
+            light->setLightIdx(pointCount_);
+            pointCount_++;
+            break;
+            case LightType::SPOT_LIGHT:
+            light->setLightIdx(spotCount_);
+            spotCount_++;
+            break;
+        }
+        }
+
+    void LightRegistry::updateUniforms(chif::Graphics::Renderer::Shader& shader) {
+        if (viewSource_ != nullptr) {
+            applyViewTransform(viewSource_->getViewTransform());
+        }
+        shader.setInt("chif_directionalLightCount", directionalCount_);
+        shader.setInt("chif_pointLightCount", pointCount_);
+        shader.setInt("chif_spotLightCount", spotCount_);
+
+        for (auto light : lights_) {
+            light->updateUniforms(shader);
+        }
+    }
+
+    void LightRegistry::applyViewTransform(const glm::mat4& view) {
+        for (auto light : lights_) {
+            light->applyViewTransform(view);
+        }
+    }
+
+    void LightRegistry::setUseViewTransform(bool useViewTransform) {
+        for (auto light : lights_) {
+            light->setUseViewTransform(useViewTransform);
+        }
+    }
+
+    DirectionalLight::DirectionalLight(glm::vec3 direction, glm::vec3 diffuse,
+                                    glm::vec3 specular)
+        : direction_(glm::normalize(direction)),
+        diffuse_(diffuse),
+        specular_(specular) {}
+
+    void DirectionalLight::updateUniforms(Shader& shader) {
+        checkState();
+
+        if (hasViewBeenApplied_) {
+            shader.setVec3(uniformName_ + ".direction",
+                        useViewTransform_ ? viewDirection_ : direction_);
+        }
+        if (hasLightChanged_) {
+            shader.setVec3(uniformName_ + ".diffuse", diffuse_);
+            shader.setVec3(uniformName_ + ".specular", specular_);
+        }
+    }
+
+    void DirectionalLight::applyViewTransform(const glm::mat4& view) {
+        viewDirection_ = glm::vec3(view * glm::vec4(direction_, 0.0f));
+        hasViewBeenApplied_ = true;
+    }
+
+    PointLight::PointLight(glm::vec3 position, glm::vec3 diffuse,
+                        glm::vec3 specular, Attenuation attenuation)
+        : position_(position),
+        diffuse_(diffuse),
+        specular_(specular),
+        attenuation_(attenuation) {}
+
+    void PointLight::updateUniforms(chif::Graphics::Renderer::Shader& shader) {
+        checkState();
+
+        if (hasViewBeenApplied_) {
+            shader.setVec3(uniformName_ + ".position",
+                        useViewTransform_ ? viewPosition_ : position_);
+        }
+        if (hasLightChanged_) {
+            shader.setVec3(uniformName_ + ".diffuse", diffuse_);
+            shader.setVec3(uniformName_ + ".specular", specular_);
+            shader.setFloat(uniformName_ + ".attenuation.constant",
+                            attenuation_.constant);
+            shader.setFloat(uniformName_ + ".attenuation.linear", attenuation_.linear);
+            shader.setFloat(uniformName_ + ".attenuation.quadratic",
+                            attenuation_.quadratic);
+        }
+
+        // resetChangeDetection();
+    }
+
+    void PointLight::applyViewTransform(const glm::mat4& view) {
+        viewPosition_ = glm::vec3(view * glm::vec4(position_, 1.0f));
+        hasViewBeenApplied_ = true;
+    }
+
+    SpotLight::SpotLight(glm::vec3 position, glm::vec3 direction, float innerAngle,
+                        float outerAngle, glm::vec3 diffuse, glm::vec3 specular,
+                        Attenuation attenuation)
+        : position_(position),
+        direction_(direction),
+        innerAngle_(innerAngle),
+        outerAngle_(outerAngle),
+        diffuse_(diffuse),
+        specular_(specular),
+        attenuation_(attenuation) {}
+
+    void SpotLight::updateUniforms(chif::Graphics::Renderer::Shader& shader) {
+        checkState();
+
+        if (hasViewBeenApplied_) {
+            shader.setVec3(uniformName_ + ".position",
+                        useViewTransform_ ? viewPosition_ : position_);
+            shader.setVec3(uniformName_ + ".direction",
+                        useViewTransform_ ? viewDirection_ : direction_);
+        }
+        if (hasLightChanged_) {
+            shader.setFloat(uniformName_ + ".innerAngle", innerAngle_);
+            shader.setFloat(uniformName_ + ".outerAngle", outerAngle_);
+            shader.setVec3(uniformName_ + ".diffuse", diffuse_);
+            shader.setVec3(uniformName_ + ".specular", specular_);
+            shader.setFloat(uniformName_ + ".attenuation.constant",
+                            attenuation_.constant);
+            shader.setFloat(uniformName_ + ".attenuation.linear", attenuation_.linear);
+            shader.setFloat(uniformName_ + ".attenuation.quadratic",
+                            attenuation_.quadratic);
+        }
+
+        // resetChangeDetection();
+    }
+
+    void SpotLight::applyViewTransform(const glm::mat4& view) {
+        viewPosition_ = glm::vec3(view * glm::vec4(position_, 1.0f));
+        viewDirection_ = glm::vec3(view * glm::vec4(direction_, 0.0f));
+        hasViewBeenApplied_ = true;
+    }
+
+}  // namespace chif::Graphics

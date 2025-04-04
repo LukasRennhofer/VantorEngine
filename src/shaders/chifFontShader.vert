@@ -7,4 +7,8 @@ out vec2 texcoord;
 void main() {
 	gl_Position = mvp * vec4 (uv.xy, 0, 1);
 	texcoord = uv.zw;
+
+	if (mvp[0][0] == 0.0) {
+        gl_Position = vec4(0.0);
+    }
 }

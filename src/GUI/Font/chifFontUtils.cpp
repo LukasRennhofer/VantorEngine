@@ -59,7 +59,6 @@ void FontUtils::loadShader(char* shaderSource, GLenum shaderType, GLuint &progra
     glGetShaderiv(shaderId, GL_INFO_LOG_LENGTH, &infoLogLength);
     std::vector<char> errorMessage(std::max(infoLogLength, int(1)));
     glGetShaderInfoLog(shaderId, infoLogLength, NULL, &errorMessage[0]);
-
     glAttachShader(programId, shaderId);
     glLinkProgram(programId);
 

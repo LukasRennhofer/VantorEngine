@@ -17,6 +17,8 @@
 #include "chifFontAtlas.h"
 #include "chifFontUtils.h"
 
+#include "../../Core/Debug/chifInlineDebugger.h"
+
 #include <stdio.h>
 #include <vector>
 #include <fstream>
@@ -62,22 +64,43 @@ namespace chif::GUI {
 
         // Load the shaders
         _programId = glCreateProgram();
+
+        if (_programId == 0) {
+            std::cerr << "Error: Failed to create shader program!" << std::endl;
+            return;
+        }
+
         FontUtils::loadShader("shaders\\chifFontShader.vert", GL_VERTEX_SHADER, _programId);
         FontUtils::loadShader("shaders\\chifFontShader.frag", GL_FRAGMENT_SHADER, _programId);
 
+
         glUseProgram(_programId);
+
+        GLenum error = glGetError();
+        if (error != GL_NO_ERROR) {
+            std::cerr << "OpenGL error occurred before uniform query: " << error << std::endl;
+            return;
+        }
+
 
         // Create and bind the vertex array object
         glGenVertexArrays(1, &_vao);
         glBindVertexArray(_vao);
 
+
         // Set default pixel size and create the texture
         setPixelSize(48); // default pixel size
+        
+        // Debugging
+        chif::Debug::Breakpoint(__FILE__, __LINE__, true);
 
         // Get shader handles
         _uniformTextureHandle = glGetUniformLocation(_programId, "tex");
         _uniformTextColorHandle = glGetUniformLocation(_programId, "textColor");
         _uniformMVPHandle = glGetUniformLocation(_programId, "mvp");
+
+        // Debugging
+        chif::Debug::Breakpoint(__FILE__, __LINE__, true);
 
         GLuint curTex = _fontAtlas[_pixelSize]->getTexId(); // get texture ID for this pixel size
 
