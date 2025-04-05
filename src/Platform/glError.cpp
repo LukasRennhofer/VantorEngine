@@ -24,7 +24,6 @@ void _check_gl_error(const char *file, int line) {
 
 	while (err != GL_NO_ERROR) {
 		string error;
-
 		switch (err) {
 		case GL_INVALID_OPERATION:      		error = "INVALID_OPERATION";      	      break;
 		case GL_INVALID_ENUM:           		error = "INVALID_ENUM";           	      break;

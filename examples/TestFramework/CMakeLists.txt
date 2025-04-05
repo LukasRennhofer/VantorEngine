@@ -60,7 +60,7 @@ set(ENGINE_SOURCES
 
 # === TestFramework Sources ===
 set(APP_SOURCES
-    main.cpp
+    TestFramework.cpp
     )
 
 # === Create the Engine Library ===
