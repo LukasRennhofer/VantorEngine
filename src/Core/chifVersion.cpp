@@ -15,6 +15,10 @@
 
 #include "chifVersion.h"
 
+/**
+ * * @brief Versioning system for CHIFEngine
+ * * @details The versioning system follows the Semantic Versioning (SemVer) guidelines.
+ */
 namespace chif::Core::version
 {
     // Main Core

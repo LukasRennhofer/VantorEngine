@@ -44,7 +44,6 @@ set(ENGINE_SOURCES
     Platform/chifWindow.cpp
     Platform/glError.cpp
     # GUI
-    GUI/chifImgui.cpp
     GUI/Font/chifFont.cpp
     GUI/Font/chifFontAtlas.cpp
     GUI/Font/chifFontUtils.cpp
@@ -141,12 +140,28 @@ elseif(SWITCH)
         ${DEVKITPRO}/portlibs/switch/lib
     )
 
+    # Link SDL2 from DevKitPro
+    find_package(SDL2 REQUIRED)
+    include_directories(${SDL2_INCLUDE_DIRS})
+
+    # Assimp for Switch
+    find_package(assimp REQUIRED)
+    set(ASSIMP_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/External/assimp")
+    include_directories(${ASSIMP_INCLUDE_DIR})
+
+    # Include FreeType for Switch
+    find_package(Freetype REQUIRED)
+    include_directories(${FREETYPE_INCLUDE_DIRS})
+
     set(SWITCH_LIBRARIES
-        nx
-        EGL
-        GLESv2
-        drm_nouveau
-        mesa
+    nx             # Nintendo Switch SDK
+    GLESv2         # OpenGL ES 2.0 for Switch
+    drm_nouveau    # For graphics on Switch
+    mesa           # OpenGL ES implementation
+    assimp         # Assimp library for Switch
+    freetype       # Freetype for Switch
+    SDL2           # SDL2 for Switch
+        ${SDL2_INCLUDE_DIRS}
     )
 
     add_definitions(-D__SWITCH__)

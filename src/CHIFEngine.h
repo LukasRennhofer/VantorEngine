@@ -50,7 +50,6 @@ Based on your System:
 #include "Platform/glError.h"
 
 // GUI
-#include "GUI/chifImgui.h"
 #include "GUI/Font/chifFont.h"
 #include "GUI/Font/chifFontAtlas.h"
 #include "GUI/Font/chifLabel.h"

@@ -34,17 +34,6 @@
  #include <vector>
  #include <functional>
  
- // ImGui setup (only for desktop)
- #ifndef __SWITCH__
- #include "external/imgui/imgui.h"
- #include "external/imgui/imgui_impl_sdl2.h"
- #include "external/imgui/imgui_impl_opengl3.h"
- #else
- // ImGui for Switch should use an EGL-compatible backend
- #include "external/imgui/imgui.h"
- #include "external/imgui/imgui_impl_opengl3.h"
- #endif
- 
  extern "C" int main(int argc, char **argv)
  {
 

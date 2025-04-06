@@ -1,5 +1,6 @@
 @echo off
-echo Cleaning old build...
+echo Cleaning old build...#
+mkdir build
 cd build
 rmdir /s /q windows
 mkdir windows

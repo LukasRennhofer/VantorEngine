@@ -18,6 +18,10 @@ namespace chif::GUI {
 	// FPS History
 	std::vector<float> GUI::fps_history(100, 0.0f);
 
+	/**
+	 * * @brief Constructor for GUI class
+	 * * @param window Reference to the window object
+	 */
 	GUI::GUI(chif::Platform::Window& window)
 	{
 		// GUI

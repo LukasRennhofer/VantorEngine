@@ -1,6 +1,7 @@
 #!/bin/bash
 
 echo "Cleaning old build..."
+mkdir build
 cd build
 rm -rf linux
 mkdir linux
