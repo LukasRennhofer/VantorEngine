@@ -28,7 +28,7 @@
 
 ## About CHIFEngine
 
-[CHIFEngine](https://github.com/LukasRennhofer/CHIFEngine) is a low-level, high-performance game engine designed for **large-scale Open-World games**. Built from the ground up with **OpenGL** and custom rendering techniques, it provides fine-grained control over every aspect of game development while maintaining **maximum efficiency**. Unlike high-level game engines, the engine is designed to be **lightweight**, **modular**, and **fully extensible**, allowing developers to directly manipulate rendering, physics, and memory management **without unnecessary abstractions**.
+[CHIFEngine](https://github.com/LukasRennhofer/CHIFEngine) is a low-level, high-performance game engine designed for **large-scale Open-World games** and is a code-focused development SDK and Framework. Built from the ground up with **OpenGL** and custom rendering techniques, it provides fine-grained control over every aspect of game development while maintaining **maximum efficiency**. Unlike high-level game engines, the engine is designed to be **lightweight**, **modular**, and **fully extensible**, allowing developers to directly manipulate rendering, physics, and memory management **without unnecessary abstractions**.
 
 ---
 

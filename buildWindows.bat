@@ -8,7 +8,7 @@ mkdir windows
 cd windows
 
 echo Running CMake...
-cmake -G "Unix Makefiles" ../../src/
+cmake -DPLATFORM=Windows -G "Unix Makefiles" ../../src/
 
 echo Building CHIFEngine...
 make
@@ -24,5 +24,3 @@ xcopy /e /i /h ..\..\src\shaders shaders
 xcopy /e /i /h ..\..\src\lib lib
 
 echo Build complete!
-start "" CHIFEngine.exe
-pause

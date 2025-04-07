@@ -1,5 +1,5 @@
 # - CMakeLists Build File written by Lukas Rennhofer @2025 Licensed under MIT  -
-# ! This file is currently only for the CHIFEngine´s main.cpp file Compilation !
+# ! This file is currently only for the CHIFEngine´s TestFramework.cpp file Compilation !
 
 cmake_minimum_required(VERSION 3.10)
 
@@ -18,7 +18,6 @@ include_directories(../../src/External)
 
 # === Engine Library Sources ===
 set(ENGINE_SOURCES
-    ../../src/stb_image_impl.cpp
     # External
     ../../src/External/imgui/imgui_draw.cpp
     ../../src/External/imgui/imgui_demo.cpp
@@ -27,6 +26,7 @@ set(ENGINE_SOURCES
     ../../src/External/imgui/imgui_widgets.cpp
     ../../src/External/imgui/imgui_tables.cpp
     ../../src/External/imgui/imgui.cpp
+    ../../src/External/stb_image_impl.cpp
     ../../src/External/glad.c
     # graphics
     ../../src/Graphics/chifDrawableObject.cpp

@@ -18,7 +18,6 @@ include_directories(External)
 
 # === Engine Library Sources ===
 set(ENGINE_SOURCES
-    stb_image_impl.cpp
     # External
     External/imgui/imgui_draw.cpp
     External/imgui/imgui_demo.cpp
@@ -27,6 +26,7 @@ set(ENGINE_SOURCES
     External/imgui/imgui_widgets.cpp
     External/imgui/imgui_tables.cpp
     External/imgui/imgui.cpp
+    External/stb_image_impl.cpp
     External/glad.c
     # graphics
     Graphics/chifDrawableObject.cpp
@@ -48,6 +48,7 @@ set(ENGINE_SOURCES
     GUI/Font/chifFontAtlas.cpp
     GUI/Font/chifFontUtils.cpp
     GUI/Font/chifLabel.cpp
+    GUI/chifImgui.cpp
     # Core
     Core/chifVersion.cpp
     Core/JobSystem/chifJobSystem.cpp 
@@ -58,14 +59,14 @@ set(ENGINE_SOURCES
     Utils/sdl2Utils.cpp
 )
 
-# === Create the Engine Library ===
-add_library(CHIFEngineLib STATIC ${ENGINE_SOURCES})
-target_include_directories(CHIFEngineLib PUBLIC src external)
-
 # === Platform-Specific Dependencies ===
-if(WIN32)
+if(PLATFORM STREQUAL "Windows")
     set(CMAKE_MAKE_PROGRAM "compToolchain/windows/make.exe")
     message(STATUS "Compiling for Windows")
+
+    # === Create the Engine Library for Windows ===
+    add_library(CHIFEngineWindows STATIC ${ENGINE_SOURCES})
+    target_include_directories(CHIFEngineWindows PUBLIC src external)
 
     set(WINDOWS_LIBRARIES
         mingw32
@@ -87,10 +88,21 @@ if(WIN32)
     find_package(SDL2 REQUIRED)
     include_directories(${SDL2_INCLUDE_DIRS})
 
-    target_link_libraries(CHIFEngineLib ${WINDOWS_LIBRARIES} ${SDL2_LIBRARIES})
+    target_link_libraries(CHIFEngineWindows ${WINDOWS_LIBRARIES} ${SDL2_LIBRARIES})
 
-elseif(UNIX)
+    # Setting up Libarie
+    install(TARGETS CHIFEngineWindows DESTINATION lib)
+    # install(DIRECTORY src/ DESTINATION include FILES_MATCHING PATTERN "*.h")
+
+    # Handle Warnings
+    target_compile_options(CHIFEngineWindows PRIVATE -Wall -Wextra)
+
+elseif(PLATFORM STREQUAL "Linux")
     message(STATUS "Compiling for Linux")
+
+    # === Create the Engine Library for Linux ===
+    add_library(CHIFEngineLinux STATIC ${ENGINE_SOURCES})
+    target_include_directories(CHIFEngineLinux PUBLIC src external)
 
     find_package(PkgConfig REQUIRED)
     pkg_check_modules(OpenGL REQUIRED gl)
@@ -117,10 +129,21 @@ elseif(UNIX)
     find_package(SDL2 REQUIRED)
     include_directories(${SDL2_INCLUDE_DIRS})
 
-    target_link_libraries(CHIFEngineLib ${LINUX_LIBRARIES} ${SDL2_LIBRARIES})
+    target_link_libraries(CHIFEngineLinux ${LINUX_LIBRARIES} ${SDL2_LIBRARIES})
 
-elseif(SWITCH)
+    # Setting up Libarie
+    install(TARGETS CHIFEngineLinux DESTINATION lib)
+    # install(DIRECTORY src/ DESTINATION include FILES_MATCHING PATTERN "*.h")
+
+    # Handle Warnings
+    target_compile_options(CHIFEngineLinux PRIVATE -Wall -Wextra)
+
+elseif(PLATFORM STREQUAL "Switch")
     message(STATUS "Compiling for Nintendo Switch (Homebrew)")
+
+    # === Create the Engine Library for Linux ===
+    add_library(CHIFEngineSwitch STATIC ${ENGINE_SOURCES})
+    target_include_directories(CHIFEngineSwitch PUBLIC src external)
 
     set(CMAKE_SYSTEM_NAME Switch)
     set(CMAKE_SYSTEM_PROCESSOR aarch64)
@@ -165,14 +188,14 @@ elseif(SWITCH)
     )
 
     add_definitions(-D__SWITCH__)
-    target_link_libraries(CHIFEngineLib ${SWITCH_LIBRARIES})
+    target_link_libraries(CHIFEngineSwitch ${SWITCH_LIBRARIES})
+
+    # Setting up Libarie
+    install(TARGETS CHIFEngineSwitch DESTINATION lib)
+    # install(DIRECTORY src/ DESTINATION include FILES_MATCHING PATTERN "*.h")
+
+    # Handle Warnings
+    target_compile_options(CHIFEngineSwitch PRIVATE -Wall -Wextra)
+else()
+    message(FATAL_ERROR "Unknown or unsupported platform: ${PLATFORM}")
 endif()
-
-# === Create the Executable ===
-add_executable(CHIFEngine main.cpp)
-
-# Link the engine library to the executable
-target_link_libraries(CHIFEngine CHIFEngineLib)
-
-# Optional: Compiler warnings for the main executable
-target_compile_options(CHIFEngine PRIVATE -Wall -Wextra)
