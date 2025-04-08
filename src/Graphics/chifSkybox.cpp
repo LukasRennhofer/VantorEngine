@@ -26,7 +26,7 @@ namespace chif::Graphics {
 		skyColorTop = glm::vec3(0.5, 0.7, 0.8)*1.05f;
 		skyColorBottom = glm::vec3(0.9, 0.9, 0.95);
 
-		skyboxShader = new chif::Graphics::Renderer::Shader::ScreenSpaceShader("shaders/sky.frag");
+		skyboxShader = new chif::Graphics::Renderer::Shader::ScreenSpaceShader("shaders\\sky.frag");
 		skyboxFBO = new chif::Graphics::Renderer::Buffer::FrameBufferObject(chif::Platform::Window::SCR_WIDTH, chif::Platform::Window::SCR_HEIGHT);
 
 		SunsetPreset1();

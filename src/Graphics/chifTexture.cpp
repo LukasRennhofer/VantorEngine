@@ -52,7 +52,9 @@ namespace chif::Graphics {
 		}
 		else
 		{
-			chif::Backlog::Log("Texture", "Texture failed to load", chif::Backlog::LogLevel::ERR);
+			std::string filePath = path;
+			std::string errorMessage = "Texture failed to load: " + filePath;
+			chif::Backlog::Log("Texture", errorMessage, chif::Backlog::LogLevel::ERR);
 			stbi_image_free(data);
 		}
 

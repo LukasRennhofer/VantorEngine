@@ -50,10 +50,10 @@ namespace chif::Graphics {
 		posBuffer = 0;
 
 		shad = new chif::Graphics::Renderer::Shader::Shader("TerrainTessShader");
-		shad->attachShader("shaders/terrain.vert")
-			->attachShader("shaders/terrain.tcs")
-			->attachShader("shaders/terrain.tes")
-			->attachShader("shaders/terrain.frag")
+		shad->attachShader("shaders\\terrain.vert")
+			->attachShader("shaders\\terrain.tcs")
+			->attachShader("shaders\\terrain.tes")
+			->attachShader("shaders\\terrain.frag")
 			->linkPrograms();
 
 		this->gridLength = gl + (gl + 1) % 2;

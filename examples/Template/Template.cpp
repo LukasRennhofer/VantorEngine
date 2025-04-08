@@ -1,5 +1,5 @@
 /*
- *    				~ CHIFEngine LightDemo~
+ *    				~ CHIFEngine Template~
  *
  * Copyright (c) 2025 Lukas Rennhofer
  *
@@ -88,12 +88,12 @@
 		 .subscribe(&cloudsModel)
 		 .subscribe(&water);
  
-	 chif::Graphics::Renderer::Shader::ScreenSpaceShader PostProcessing("shaders\\post_processing.frag");
-	 chif::Graphics::Renderer::Shader::ScreenSpaceShader fboVisualizer("shaders\\visualizeFbo.frag");
+	 chif::Graphics::Renderer::Shader::ScreenSpaceShader PostProcessing("shaders/post_processing.frag");
+	 chif::Graphics::Renderer::Shader::ScreenSpaceShader fboVisualizer("shaders/visualizeFbo.frag");
  
 	 // Model Loading
 	 stbi_set_flip_vertically_on_load(true);
-	 ModelShader MeshModelShader("shaders\\model.vert", "shaders\\model.frag");
+	 ModelShader MeshModelShader("shaders/model.vert", "shaders/model.frag");
 	 Model ourModel("resources/objects/backpack/backpack.obj");
  
 	 while (window.continueLoop())
@@ -204,6 +204,8 @@
 		 post.setMat4("VP", scene.projMatrix * view);
 		 PostProcessing.draw();
 
+		
+ 
 		 chif::Graphics::Renderer::Shader::Shader &fboVisualizerShader = fboVisualizer.getShader();
 		 fboVisualizerShader.use();
 		 fboVisualizerShader.setSampler2D("fboTex", volumetricClouds.getCloudsTexture(), 0);

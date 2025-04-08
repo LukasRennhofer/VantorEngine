@@ -70,23 +70,14 @@
  
 	 chif::Graphics::drawableObject::scene = &scene;
  
-	 int gridLength = 120;
-	 chif::Graphics::Terrain terrain(gridLength);
- 
-	 float waterHeight = 120.0;
-	 chif::Graphics::Water water(glm::vec2(0.0, 0.0), gridLength, waterHeight);
-	 terrain.waterPtr = &water;
- 
 	 chif::Graphics::Skybox skybox;
 	 chif::Graphics::CloudsModel cloudsModel(&scene, &skybox);
  
 	 chif::Graphics::VolumetricClouds volumetricClouds(chif::Platform::Window::SCR_WIDTH, chif::Platform::Window::SCR_HEIGHT, &cloudsModel);
 	 chif::Graphics::VolumetricClouds reflectionVolumetricClouds(1280, 720, &cloudsModel); // (expected) lower resolution framebuffers, so the rendering will be faster
  
-	 gui.subscribe(&terrain)
-		 .subscribe(&skybox)
-		 .subscribe(&cloudsModel)
-		 .subscribe(&water);
+	 gui.subscribe(&skybox)
+		 .subscribe(&cloudsModel);
  
 	 chif::Graphics::Renderer::Shader::ScreenSpaceShader PostProcessing("shaders\\post_processing.frag");
 	 chif::Graphics::Renderer::Shader::ScreenSpaceShader fboVisualizer("shaders\\visualizeFbo.frag");
@@ -95,6 +86,28 @@
 	 stbi_set_flip_vertically_on_load(true);
 	 ModelShader MeshModelShader("shaders\\model.vert", "shaders\\model.frag");
 	 Model ourModel("resources/objects/backpack/backpack.obj");
+
+	 chif::Graphics::Renderer::Shader::Shader LightShader("LightShader");
+	 LightShader.attachShader("shaders\\chifLighting.vert");
+	 LightShader.attachShader("shaders\\chifLighting.frag");
+	 LightShader.linkPrograms();
+
+     LightShader.use();
+     LightShader.setInt("albedoMap", 0);
+     LightShader.setInt("normalMap", 1);
+     LightShader.setInt("metallicMap", 2);
+     LightShader.setInt("roughnessMap", 3);
+     LightShader.setInt("aoMap", 4);
+
+	 glm::vec3 lightPositions[] = {
+        glm::vec3(0.0f, 1000.0f, 10.0f),
+    };
+    glm::vec3 lightColors[] = {
+        glm::vec3(150.0f, 150.0f, 150.0f),
+    };
+
+	LightShader.use();
+    LightShader.setMat4("projection", proj);
  
 	 while (window.continueLoop())
 	 {
@@ -104,7 +117,6 @@
 		 float frametime = 1 / ImGui::GetIO().Framerate;
 		 window.processInput(frametime);
  
-		 terrain.updateTilesPositions();
 		 cloudsModel.update();
 		 gui.update();
 		 skybox.update();
@@ -130,48 +142,27 @@
 		 glm::mat4 view = scene.cam->GetViewMatrix();
 		 scene.projMatrix = glm::perspective(glm::radians(camera.Zoom), (float)chif::Platform::Window::SCR_WIDTH / (float)chif::Platform::Window::SCR_HEIGHT, 5.f, 10000000.0f);
  
-		 water.bindReflectionFBO();
 		 glEnable(GL_DEPTH_TEST);
 		 glEnable(GL_CULL_FACE);
 		 glCullFace(GL_BACK);
 		 glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		 scene.cam->invertPitch();
-		 scene.cam->Position.y -= 2 * (scene.cam->Position.y - water.getHeight());
- 
-		 terrain.up = 1.0;
-		 terrain.draw();
- 
-		 chif::Graphics::Renderer::Buffer::FrameBufferObject const &reflFBO = water.getReflectionFBO();
  
 		 chif::Graphics::Renderer::Shader::ScreenSpaceShader::disableTests();
  
-		 reflectionVolumetricClouds.draw();
-		 water.bindReflectionFBO();
- 
 		 chif::Graphics::Renderer::Shader::Shader &post = PostProcessing.getShader();
 		 post.use();
-		 post.setVec2("resolution", glm::vec2(1280, 720));
-		 post.setSampler2D("screenTexture", reflFBO.tex, 0);
-		 post.setSampler2D("depthTex", reflFBO.depthTex, 2);
-		 post.setSampler2D("cloudTEX", reflectionVolumetricClouds.getCloudsRawTexture(), 1);
-		 PostProcessing.draw();
  
 		 chif::Graphics::Renderer::Shader::ScreenSpaceShader::enableTests();
  
 		 scene.cam->invertPitch();
-		 scene.cam->Position.y += 2 * abs(scene.cam->Position.y - water.getHeight());
  
-		 water.bindRefractionFBO();
 		 glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		 glEnable(GL_DEPTH_TEST);
 		 glEnable(GL_CULL_FACE);
  
-		 terrain.up = -1.0;
-		 terrain.draw();
  
 		 scene.sceneFBO->bind();
-		 terrain.draw();
-		 water.draw();
  
 		 MeshModelShader.use();
 		 MeshModelShader.setMat4("projection", scene.projMatrix);
@@ -182,6 +173,15 @@
 		 model = glm::scale(model, glm::vec3(10.0f, 10.0f, 10.0f)); // Too Big
 		 MeshModelShader.setMat4("model", model);
 		 ourModel.Draw(MeshModelShader);
+
+		 LightShader.setVec3("lightPositions[0]", lightPositions[0]);
+         LightShader.setVec3("lightColors[0]", lightColors[0]);
+
+		 LightShader.setMat4("view", view);
+		 LightShader.setVec3("camPos", scene.cam->Position);
+
+		 LightShader.setMat4("model", model);
+         LightShader.setMat4("normalMatrix", glm::transpose(glm::inverse(glm::mat3(model))));
  
 		 chif::Graphics::Renderer::Shader::ScreenSpaceShader::disableTests();
  

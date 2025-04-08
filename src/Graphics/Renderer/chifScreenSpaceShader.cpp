@@ -29,7 +29,7 @@ namespace chif::Graphics::Renderer::Shader {
 		//shad = new Shader("shaders/screen.vert", fragmentPath);
 		shad = new Shader("ScreenQuad_" + getShaderName(fragmentPath));
 
-		shad->attachShader(BaseShader("shaders/screen.vert"));
+		shad->attachShader(BaseShader("shaders\\screen.vert"));
 		shad->attachShader(BaseShader(fragmentPath));
 		shad->linkPrograms();
 	}

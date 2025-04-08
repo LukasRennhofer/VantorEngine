@@ -63,11 +63,11 @@ namespace chif::Graphics {
 
 	void CloudsModel::initShaders()
 	{
-		volumetricCloudsShader = new chif::Graphics::Renderer::Shader::Shader("volumetricCloudsShader", "shaders/volumetric_clouds.comp");
-		postProcessingShader = new chif::Graphics::Renderer::Shader::ScreenSpaceShader("shaders/clouds_post.frag");
+		volumetricCloudsShader = new chif::Graphics::Renderer::Shader::Shader("volumetricCloudsShader", "shaders\\volumetric_clouds.comp");
+		postProcessingShader = new chif::Graphics::Renderer::Shader::ScreenSpaceShader("shaders\\clouds_post.frag");
 
 		weatherShader = new chif::Graphics::Renderer::Shader::Shader("weatherMap");
-		weatherShader->attachShader("shaders/weather.comp");
+		weatherShader->attachShader("shaders\\weather.comp");
 		weatherShader->linkPrograms();
 	}
 

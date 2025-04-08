@@ -54,7 +54,7 @@ You can download the latest binaries of CHIFEngine from [the website](https://lu
 
 #### Windows
 
-0. Install Mingw Msys x64 from [their website](https://www.msys2.org/).
+0. Install Mingw Msys x64 from [their website](https://www.msys2.org/) and install python from [its website](https://www.python.org/).
 
 ---
 
@@ -75,9 +75,9 @@ You can download the latest binaries of CHIFEngine from [the website](https://lu
 
 ---
 
-3. Build it with the Windows BAT File
+3. Build the libary with the CHIFDevConsole Script
   ```bash
-    ./buildWindows.bat
+    python DevConsole.py --platform Windows --build-lib
    ```
 
 #### Linux
@@ -85,6 +85,11 @@ You can download the latest binaries of CHIFEngine from [the website](https://lu
 - **Status**: Not currently supported. Building on Linux may lead to errors due to limited development resources. (Tested on Ubuntu 24.10)
 
 ---
+
+0. Install Python: 
+   ```bash
+   sudo apt-get install python3
+   ```
 
 0. Clone the repository:
 
@@ -103,10 +108,10 @@ You can download the latest binaries of CHIFEngine from [the website](https://lu
 
 ---
 
-2. Build from source:
+2. Build the library from source:
 
    ```bash
-   ./buildLinux.sh
+   python3 DevConsole.py --platform Linux --build-lib
    ```
 
 ## Features

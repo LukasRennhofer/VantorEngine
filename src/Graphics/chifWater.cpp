@@ -25,8 +25,8 @@ namespace chif::Graphics {
 
 		//shad = new Shader("shaders/waterVertexShader.vert", "shaders/waterFragmentShader.frag");
 		shad = new chif::Graphics::Renderer::Shader::Shader("WaterShader");
-		shad->attachShader("shaders/water.vert")
-			->attachShader("shaders/water.frag")
+		shad->attachShader("shaders\\water.vert")
+			->attachShader("shaders\\water.frag")
 			->linkPrograms();
 
 

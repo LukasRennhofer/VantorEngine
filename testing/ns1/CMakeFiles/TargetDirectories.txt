@@ -1,0 +1,3 @@
+/mnt/d/CHIFEngine/CHIFEngine/testing/ns1/CMakeFiles/SwitchApp.dir
+/mnt/d/CHIFEngine/CHIFEngine/testing/ns1/CMakeFiles/edit_cache.dir
+/mnt/d/CHIFEngine/CHIFEngine/testing/ns1/CMakeFiles/rebuild_cache.dir

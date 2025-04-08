@@ -34,7 +34,7 @@ EXAMPLES_INTERNAL = Path("examples")
 RESOURCE_DIRS = ["resources", "shaders", "lib"]
 INCLUDE_DIR = BUILD_DIR_INTERNAL / "include"
 
-VALID_BUILDING_PLATFORMS = ["Windows", "Switch"]
+VALID_BUILDING_PLATFORMS = ["Windows", "Linux", "Switch"]
 
 # ==================== ConsoleUtils: TODO =======================
 class CHIFDevConsoleUtils:
@@ -117,7 +117,7 @@ class CHIFEngineInternalBuildSystem:
         Builds the CHIFEngine library for the specified platform.
 
         Args:
-            target (str): The target platform for the build (e.g., "Windows", "Linux").
+            target (str): The target platform for the build (e.g., "Windows", "Linux", "Switch").
         """
         if not target:
             target = self.runningSystem
@@ -251,7 +251,7 @@ class CHIFEngineInternalBuildSystem:
         Builds an example project for the specified platform.
 
         Args:
-            target (str): The target platform for the build (e.g., "Windows", "Linux").
+            target (str): The target platform for the build (e.g., "Windows", "Linux", "Switch").
             exampleName (str): The name of the example project to build.
         """
         if not target:
@@ -313,8 +313,8 @@ class CHIFDevConsole:
         parser.add_argument(
             "--platform", 
             type=str, 
-            choices=["Windows", "Linux"], 
-            help="Specify the target platform for the build (Windows, Linux)"
+            choices=["Windows", "Linux", "Switch"], 
+            help="Specify the target platform for the build (Windows, Linux, Switch)"
         )
 
         parser.add_argument(
@@ -337,8 +337,8 @@ class CHIFDevConsole:
 
         parser.add_argument(
             "--build-examples", 
-            action="store_true", 
-            help="Build example projects"
+            type=str, 
+            help="Build example projects (e.g., \"TestFramework\")"
         )
         
         return parser.parse_args()
@@ -358,4 +358,4 @@ class CHIFDevConsole:
             self.build_system.buildLib(target=args.platform)
 
         if args.build_examples:
-            self.build_system.buildExample(target=args.platform, exampleName="TestFramework")
+            self.build_system.buildExample(target=args.platform, exampleName=args.build_examples)

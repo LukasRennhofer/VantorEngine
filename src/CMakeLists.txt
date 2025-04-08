@@ -1,5 +1,5 @@
 # - CMakeLists Build File written by Lukas Rennhofer @2025 Licensed under MIT  -
-# ! This file is currently only for the CHIFEngine´s main.cpp file Compilation !
+# ! This file is currently only for the CHIFEngine´s libraries!
 
 cmake_minimum_required(VERSION 3.10)
 
@@ -164,13 +164,16 @@ elseif(PLATFORM STREQUAL "Switch")
     )
 
     # Link SDL2 from DevKitPro
-    find_package(SDL2 REQUIRED)
-    include_directories(${SDL2_INCLUDE_DIRS})
+    include_directories(${DEVKITPRO}/portlibs/switch/include/SDL2)
 
     # Assimp for Switch
     find_package(assimp REQUIRED)
     set(ASSIMP_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/External/assimp")
     include_directories(${ASSIMP_INCLUDE_DIR})
+
+    add_definitions(-DIMGUI_IMPL_OPENGL_ES2)
+    add_definitions(-DIMGUI_IMPL_OPENGL_LOADER_CUSTOM)
+
 
     # Include FreeType for Switch
     find_package(Freetype REQUIRED)
@@ -183,7 +186,7 @@ elseif(PLATFORM STREQUAL "Switch")
     mesa           # OpenGL ES implementation
     assimp         # Assimp library for Switch
     freetype       # Freetype for Switch
-    SDL2           # SDL2 for Switch
+    -lSDL2          # SDL2 for Switch
         ${SDL2_INCLUDE_DIRS}
     )
 
