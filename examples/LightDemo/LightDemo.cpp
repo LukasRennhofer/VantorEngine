@@ -87,6 +87,7 @@
 	 ModelShader MeshModelShader("shaders\\model.vert", "shaders\\model.frag");
 	 Model ourModel("resources/objects/backpack/backpack.obj");
 
+	 // PBR Based lighting
 	 chif::Graphics::Renderer::Shader::Shader LightShader("LightShader");
 	 LightShader.attachShader("shaders\\chifLighting.vert");
 	 LightShader.attachShader("shaders\\chifLighting.frag");

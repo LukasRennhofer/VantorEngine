@@ -18,6 +18,7 @@
 /**
  * * @brief Versioning system for CHIFEngine
  * * @details The versioning system follows the Semantic Versioning (SemVer) guidelines.
+ * * Will be moved in the future to chifApplication.cpp / .h
  */
 namespace chif::Core::version
 {

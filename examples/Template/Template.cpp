@@ -8,7 +8,7 @@
  * Author: Lukas Rennhofer
  * Date: 2025-03-27
  *
- * File: main.cpp
+ * File: Template.cpp
  * Last Change: Updated TestFramework
  */
 
