@@ -105,43 +105,46 @@ namespace chif::Platform {
                 quit = true;
             }
     
+            // Handle mouse motion while in camera mode (only if mouse cursor is disabled)
             if (event.type == SDL_MOUSEMOTION && mouseCursorDisabled) {
                 mouse_callback(this->w, event.motion.xrel, event.motion.yrel);
             }
     
-            if (event.type == SDL_MOUSEBUTTONDOWN || event.type == SDL_MOUSEBUTTONUP) {
-                if (event.button.button == SDL_BUTTON_RIGHT) {
-                    newState = (event.type == SDL_MOUSEBUTTONDOWN) ? 1 : 0;
-                    if (newState == 0 && oldState == 1) {
-                        mouseCursorDisabled = !mouseCursorDisabled;
-                        SDL_ShowCursor(mouseCursorDisabled ? SDL_DISABLE : SDL_ENABLE);
-                        SDL_SetRelativeMouseMode(mouseCursorDisabled ? SDL_TRUE : SDL_FALSE);
-                        SDL_CaptureMouse(mouseCursorDisabled ? SDL_TRUE : SDL_FALSE); // Hält die Maus im Fenster
-                    }
-                    oldState = newState;
-                }
-            }
-    
+            // Handle mouse wheel scroll events
             if (event.type == SDL_MOUSEWHEEL) {
                 scroll_callback(this->w, event.wheel.x, event.wheel.y);
             }
     
+            // Handle window resize events
             if (event.type == SDL_WINDOWEVENT && event.window.event == SDL_WINDOWEVENT_RESIZED) {
                 framebuffer_size_callback(this->w, event.window.data1, event.window.data2);
             }
         }
-
+    
+        // Get the current keyboard state
         const Uint8* currentKeyStates = SDL_GetKeyboardState(NULL);
-
+    
+        // Switch between modes with the 'L' key
+        if (currentKeyStates[SDL_SCANCODE_L]) {
+            mouseCursorDisabled = !mouseCursorDisabled; // Toggle between modes
+            // Adjust cursor and relative mouse mode accordingly
+            SDL_ShowCursor(mouseCursorDisabled ? SDL_DISABLE : SDL_ENABLE);
+            SDL_SetRelativeMouseMode(mouseCursorDisabled ? SDL_TRUE : SDL_FALSE);
+            SDL_CaptureMouse(mouseCursorDisabled ? SDL_TRUE : SDL_FALSE); // Capture mouse when disabled
+        }
+    
+        // If in camera mode (mouseCursorDisabled is true), process camera movement input
         if (camera && mouseCursorDisabled) {
             if (currentKeyStates[SDL_SCANCODE_W]) camera->ProcessKeyboard(FORWARD, frameTime);
             if (currentKeyStates[SDL_SCANCODE_S]) camera->ProcessKeyboard(BACKWARD, frameTime);
             if (currentKeyStates[SDL_SCANCODE_A]) camera->ProcessKeyboard(LEFT, frameTime);
             if (currentKeyStates[SDL_SCANCODE_D]) camera->ProcessKeyboard(RIGHT, frameTime);
         }
-
+    
+        // Escape to quit the application
         if (currentKeyStates[SDL_SCANCODE_ESCAPE]) quit = true;
     }
+    
 
 
     Window::~Window() {
