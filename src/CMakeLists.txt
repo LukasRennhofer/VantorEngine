@@ -54,6 +54,8 @@ set(ENGINE_SOURCES
     Core/JobSystem/chifJobSystem.cpp 
     Core/Backlog/chifBacklog.cpp
     Core/Debug/chifInlineDebugger.cpp
+    # Entity
+    Entity/chifECS.cpp
     # Utils
     Utils/utils.cpp
     Utils/sdl2Utils.cpp

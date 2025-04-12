@@ -32,6 +32,9 @@ Based on your System:
 #include "Core/Backlog/chifBacklog.h"
 #include "Core/Debug/chifInlineDebugger.h"
 
+// ENTITY
+#include "Entity/chifECS.h"
+
 // GRAPHICS
 #include "Graphics/Renderer/chifBaseShader.h"
 #include "Graphics/Renderer/chifBuffers.h"
