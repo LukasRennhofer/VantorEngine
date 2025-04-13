@@ -41,13 +41,10 @@ set(ENGINE_SOURCES
     Graphics/chifTerrain.cpp
     Graphics/chifTexture.cpp
     # platform
+    Platform/chifInput.cpp
     Platform/chifWindow.cpp
     Platform/glError.cpp
     # GUI
-    GUI/Font/chifFont.cpp
-    GUI/Font/chifFontAtlas.cpp
-    GUI/Font/chifFontUtils.cpp
-    GUI/Font/chifLabel.cpp
     GUI/chifImgui.cpp
     # Core
     Core/chifVersion.cpp

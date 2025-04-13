@@ -8,12 +8,13 @@
  * Author: Lukas Rennhofer
  * Date: 2025-03-08
  *
- * File: chifApplication.h
- * Last Change: Added Version settings and chif::core::version child namespace
+ * File: chifPlatformEnvironment.hpp
+ * Last Change: 
 */
 
-namespace chif
-{    class Application {
-        
-    }
-} // namespace chif
+#prgama once
+
+namespace chif::Platform::Environment
+{
+    void Initialize();
+} // namespace chif::Platform::Environment

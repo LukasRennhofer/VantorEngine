@@ -58,6 +58,11 @@ Based on your System:
 #include "GUI/Font/chifLabel.h"
 #include "GUI/chifImgui.h"
 
+// HELPERS
+#include "Helpers/chifColor.hpp"
+#include "Helpers/chifMath.hpp"
+#include "Helpers/chifTimer.hpp"
+
 // UTILITIES
 #include "Utils/utils.h"
 #include "Utils/constants.h"

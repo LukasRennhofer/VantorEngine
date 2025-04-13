@@ -112,7 +112,7 @@ class CHIFEngineInternalBuildSystem:
         except FileNotFoundError:
             return False
 
-    def buildLib(self, target=None):
+    def buildLib(self, debugging=False, target=None):
         """
         Builds the CHIFEngine library for the specified platform.
 
@@ -144,6 +144,9 @@ class CHIFEngineInternalBuildSystem:
             print(f"⚠️ CMakeError: {stderr.decode()}")
             return
 
+        if debugging:
+            print("[DEBUGGING] Resolved Output:", stdout.decode())
+
         # Make Build
         result = subprocess.Popen(["make"], cwd=build_path, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
@@ -158,6 +161,9 @@ class CHIFEngineInternalBuildSystem:
         else:
             print("❌ Build failed.")
             print(f"⚠️ MakeError: {stderr.decode()}")
+
+        if debugging:
+            print("[DEBUGGING] Resolved Output:", stdout.decode())
 
     def copy_resources(self, build_path):
         """
@@ -246,7 +252,7 @@ class CHIFEngineInternalBuildSystem:
             print("❌ Unsupported platform for DevKitPro check.")
             return False
 
-    def buildExample(self, target, exampleName):
+    def buildExample(self, target, exampleName, debugging=False):
         """
         Builds an example project for the specified platform.
 
@@ -284,6 +290,9 @@ class CHIFEngineInternalBuildSystem:
             print(f"⚠️ CMakeError: {stderr.decode()}")
             return
 
+        if debugging:
+            print("[DEBUGGING] Resolved Output:", stdout.decode())
+
         # Make Build
         print(f"🔧 Building {exampleName} with Make...")
         result = subprocess.Popen(["make"], cwd=build_path, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -299,6 +308,9 @@ class CHIFEngineInternalBuildSystem:
         else:
             print("❌ Build failed.")
             print(f"⚠️ MakeError: {stderr.decode()}")
+        
+        if debugging:
+            print("[DEBUGGING] Resolved Output:", stdout.decode())
 
 
 # ====================== Console Application (In Work) ============================
@@ -340,13 +352,23 @@ class CHIFDevConsole:
             type=str, 
             help="Build example projects (e.g., \"TestFramework\")"
         )
+
+        parser.add_argument(
+            "--debug-build", 
+            action="store_true", 
+            help="See all the debugging infos while building"
+        )
         
         return parser.parse_args()
 
     def executeBuild(self, args):
+        debugging = False
         if args.clean:
             print("Cleaning build...")
             self.build_system.cleanBuildDir(args.clean)
+        
+        if args.debug_build:
+            debugging = True
         
         if args.check_cmake:
             if self.build_system.check_cmake_installed():
@@ -355,7 +377,7 @@ class CHIFDevConsole:
                 print("❌ CMake is not installed!")
 
         if args.build_lib:
-            self.build_system.buildLib(target=args.platform)
+            self.build_system.buildLib(target=args.platform, debugging=debugging)
 
         if args.build_examples:
-            self.build_system.buildExample(target=args.platform, exampleName=args.build_examples)
+            self.build_system.buildExample(target=args.platform, exampleName=args.build_examples, debugging=debugging)

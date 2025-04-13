@@ -1,4 +1,3 @@
-
 /*
  *    				~ CHIFEngine ~
  *
@@ -11,7 +10,7 @@
  *
  * File: sdlUtils.h
  * Last Change: Updated the projects docs
- */
+*/
 
 /*
     File for ports of GLFW based functions to SDL2 based Utils

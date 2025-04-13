@@ -41,14 +41,11 @@ set(ENGINE_SOURCES
     ../../src/Graphics/chifTerrain.cpp
     ../../src/Graphics/chifTexture.cpp
     # platform
+    ../../src/Platform/chifInput.cpp
     ../../src/Platform/chifWindow.cpp
     ../../src/Platform/glError.cpp
     # GUI
     ../../src/GUI/chifImgui.cpp
-    ../../src/GUI/Font/chifFont.cpp
-    ../../src/GUI/Font/chifFontAtlas.cpp
-    ../../src/GUI/Font/chifFontUtils.cpp
-    ../../src/GUI/Font/chifLabel.cpp
     # Core
     ../../src/Core/chifVersion.cpp
     ../../src/Core/JobSystem/chifJobSystem.cpp 

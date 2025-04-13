@@ -15,6 +15,4 @@
 namespace chif::AudioEngine
 {
     void Initialize();
-
-    void 
 } // namespace chif::AudioEngine

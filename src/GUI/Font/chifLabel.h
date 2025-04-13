@@ -22,6 +22,7 @@
 
 #include "chifFont.h"
 #include "chifFontAtlas.h"
+#include "../../Helpers/chifMath.hpp"
 
 #include <string>
 #include <memory> // for use of shared_ptr
@@ -29,19 +30,6 @@
 #include <vector>
 
 using namespace std;
-
-// Maths
-#ifndef PI
-#define PI 3.141596
-#endif
-
-#ifndef RAD_TO_DEG
-#define RAD_TO_DEG 180.0 / PI;
-#endif
-
-#ifndef DEG_TO_RAD
-#define DEG_TO_RAD PI / 180.0
-#endif
 
 namespace chif::GUI {
     class Label {
