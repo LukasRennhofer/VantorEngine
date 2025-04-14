@@ -23,17 +23,19 @@
  
  // ImGui setup (only for desktop)
  #ifndef __SWITCH__
- #include "external/imgui/imgui.h"
- #include "external/imgui/imgui_impl_sdl2.h"
- #include "external/imgui/imgui_impl_opengl3.h"
+ #include "../../src/External/imgui/imgui.h"
+ #include "../../src/External/imgui/imgui_impl_sdl2.h"
+ #include "../../src/External/imgui/imgui_impl_opengl3.h"
  #else
  // ImGui for Switch should use an EGL-compatible backend
- #include "external/imgui/imgui.h"
- #include "external/imgui/imgui_impl_opengl3.h"
+ #include "../../src/External/imgui/imgui/imgui.h"
+ #include "../../src/External/imgui/imgui/imgui_impl_opengl3.h"
  #endif
  
  extern "C" int main(int argc, char **argv)
  {
+	 chif::Application app;
+	 app.Initialize();
 	 
 	 // Camera
 	 glm::vec3 startPosition(0.0f, 800.0f, 0.0f);
@@ -98,6 +100,17 @@
  
 	 while (window.continueLoop())
 	 {
+		app.Run();
+
+		// if (!chif::Platform::Input::controllers.empty()) {
+		// 	if (chif::Platform::Input::Pressed_Controller(0, chif::Platform::Input::GAMEPAD_BUTTON_XBOX_B)) {
+		// 		chif::Backlog::Log("Main", "Xbox Controller 0: Button B is pressed", chif::Backlog::LogLevel::DEBUG);
+		// 	}
+		// }
+		if (chif::Platform::Input::Pressed_Keyboard(chif::Platform::Input::KEYBOARD_BUTTON_SPACE)) {
+			chif::Backlog::Log("Main", "Space bar is pressed", chif::Backlog::LogLevel::DEBUG);
+		}
+
 		 scene.lightDir = glm::normalize(scene.lightDir);
 		 scene.lightPos = scene.lightDir * 1e6f + camera.Position;
  
@@ -213,7 +226,7 @@
 		 {
 			 gui.draw();
 		 }
- 
+		
 		window.swapBuffersAndPollEvents();
 	 }
  }

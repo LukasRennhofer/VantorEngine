@@ -1,4 +1,4 @@
-# CHIFEngine Template Project
+# CHIFEngine Template Project [Not Stable]
 
 This Template is for the newest versions of CHIFEngine and meant for new Projects using the C++ API.
 

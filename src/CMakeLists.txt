@@ -43,10 +43,13 @@ set(ENGINE_SOURCES
     # platform
     Platform/chifInput.cpp
     Platform/chifWindow.cpp
-    Platform/glError.cpp
+    Platform/Platforms/chifPlatformWindows.cpp
+    Platform/Platforms/chifPlatformLinux.cpp
+    Platform/Platforms/chifPlatformSwitch.cpp
     # GUI
     GUI/chifImgui.cpp
     # Core
+    Core/chifApplication.cpp
     Core/chifVersion.cpp
     Core/JobSystem/chifJobSystem.cpp 
     Core/Backlog/chifBacklog.cpp
@@ -56,10 +59,12 @@ set(ENGINE_SOURCES
     # Utils
     Utils/utils.cpp
     Utils/sdl2Utils.cpp
+    Utils/OpenGL/glError.cpp
 )
 
 # === Platform-Specific Dependencies ===
 if(PLATFORM STREQUAL "Windows")
+    add_definitions(-D__WINDOWS__)  
     set(CMAKE_MAKE_PROGRAM "compToolchain/windows/make.exe")
     message(STATUS "Compiling for Windows")
 
@@ -97,6 +102,7 @@ if(PLATFORM STREQUAL "Windows")
     target_compile_options(CHIFEngineWindows PRIVATE -Wall -Wextra)
 
 elseif(PLATFORM STREQUAL "Linux")
+    add_definitions(-D__LINUX__)
     message(STATUS "Compiling for Linux")
 
     # === Create the Engine Library for Linux ===
@@ -138,6 +144,7 @@ elseif(PLATFORM STREQUAL "Linux")
     target_compile_options(CHIFEngineLinux PRIVATE -Wall -Wextra)
 
 elseif(PLATFORM STREQUAL "Switch")
+    add_definitions(-D__SWITCH__)
     message(STATUS "Compiling for Nintendo Switch (Homebrew)")
 
     # === Create the Engine Library for Linux ===
@@ -188,8 +195,6 @@ elseif(PLATFORM STREQUAL "Switch")
     -lSDL2          # SDL2 for Switch
         ${SDL2_INCLUDE_DIRS}
     )
-
-    add_definitions(-D__SWITCH__)
     target_link_libraries(CHIFEngineSwitch ${SWITCH_LIBRARIES})
 
     # Setting up Libarie

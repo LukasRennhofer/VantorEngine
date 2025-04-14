@@ -22,7 +22,7 @@
 //#include "TessShader.h"
 #include "chifWater.h"
 #include <camera.h>
-#include "../Platform/glError.h"
+#include "../Utils/OpenGL/glError.h"
 #include "chifDrawableObject.h"
 
 namespace chif::Graphics {

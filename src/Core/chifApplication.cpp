@@ -12,7 +12,36 @@
  * Last Change: Added Version settings and chif::core::version child namespace
 */
 
+#include "chifApplication.hpp"
+#include "JobSystem/chifJobSystem.h"
+
 namespace chif
 {
-    // TODO
+    void Application::Initialize()
+	{
+		if (initialized)
+		{
+			return;
+		}
+        chif::Backlog::Log("Application", std::format("Using CHIFEngine Core: {}", chif::Core::version::GetVersionString()), chif::Backlog::LogLevel::INFO);
+
+		initialized = true;
+
+        // TODO: Initializing with chifInitializer
+        chif::Platform::Input::Initialize();
+	}
+
+    void Application::Run() {
+        SDL_Event event;
+        while (SDL_PollEvent(&event)) {
+            chif::Platform::Input::ProcessEvent(event);
+        }
+
+        chif::Platform::Input::Update();
+        // TODO
+    }
+
+    // void Application::SetWindow(chif::Platform::Window window) {
+    //     this->window = window;
+    // }
 } // namespace chif

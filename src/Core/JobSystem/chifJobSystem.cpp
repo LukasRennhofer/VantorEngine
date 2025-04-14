@@ -15,15 +15,15 @@
 
 /*
     Modified Job System from Turánszki János and his documentation (https://wickedengine.net/2018/11/simple-job-system-using-standard-c/),
-    which was really helpful !
+    which was really helpful!
 */
 
-#include "chifJobSystem.h"    // include our interface
+#include "chifJobSystem.h"
 
-#include <algorithm>    // std::max
-#include <atomic>    // to use std::atomic<uint64_t>
-#include <thread>    // to use std::thread
-#include <condition_variable>    // to use std::condition_variable
+#include <algorithm>
+#include <atomic>
+#include <thread>
+#include <condition_variable>
 #include <sstream>
 #include <assert.h>
 
@@ -32,14 +32,10 @@
 #include <Windows.h>
 #endif
 
-// Fixed size very simple thread safe ring buffer
 template <typename T, size_t capacity>
 class ThreadSafeRingBuffer
 {
 public:
-	// Push an item to the end if there is free space
-	//	Returns true if succesful
-	//	Returns false if there is not enough space
 	inline bool push_back(const T& item)
 	{
 		bool result = false;
@@ -55,9 +51,6 @@ public:
 		return result;
 	}
 
-	// Get an item if there are any
-	//	Returns true if succesful
-	//	Returns false if there are no items
 	inline bool pop_front(T& item)
 	{
 		bool result = false;
@@ -76,12 +69,12 @@ private:
 	T data[capacity];
 	size_t head = 0;
 	size_t tail = 0;
-	std::mutex lock; // this just works better than a spinlock here (on windows)
+	std::mutex lock;
 };
 
 namespace chif::Core::JobSystem
 {
-	uint32_t numThreads = 0;    // number of worker threads, it will be initialized in the Initialize() function
+	uint32_t numThreads = 0;
 	ThreadSafeRingBuffer<std::function<void()>, 256> jobPool;    // a thread safe queue to put pending jobs onto the end (with a capacity of 256 jobs). A worker thread can grab a job from the beginning
 	std::condition_variable wakeCondition;    // used in conjunction with the wakeMutex below. Worker threads just sleep when there is no job, and the main thread can wake them up
 	std::mutex wakeMutex;    // used in conjunction with the wakeCondition above

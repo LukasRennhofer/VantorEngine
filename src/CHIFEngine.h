@@ -27,6 +27,7 @@ Based on your System:
 #define CHIFENGINE
 
 // CORE
+#include "Core/chifApplication.hpp"
 #include "Core/chifVersion.h"
 #include "Core/JobSystem/chifJobSystem.h"
 #include "Core/Backlog/chifBacklog.h"
@@ -50,7 +51,9 @@ Based on your System:
 
 // PLATFORM
 #include "Platform/chifWindow.h"
-#include "Platform/glError.h"
+#include "Platform/chifInput.hpp"
+// PLATFORMS
+#include "Platform/Platforms/chifPlatformEnvironment.hpp"
 
 // GUI
 #include "GUI/Font/chifFont.h"
@@ -62,10 +65,12 @@ Based on your System:
 #include "Helpers/chifColor.hpp"
 #include "Helpers/chifMath.hpp"
 #include "Helpers/chifTimer.hpp"
+#include "Helpers/chifFS.hpp"
 
 // UTILITIES
 #include "Utils/utils.h"
 #include "Utils/constants.h"
+#include "Utils/OpenGL/glError.h"
 
 // EXTERNAL-INCLUDED HEADERS
 #include <camera.h>

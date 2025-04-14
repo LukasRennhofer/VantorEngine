@@ -19,6 +19,6 @@ This file contains the CHIFEngine Dev Environment Console Application for contro
 from Tools.chifDev import *
 
 if __name__ == "__main__":
-     console = CHIFDevConsole()
+     console = CHIFDevConsole() 
      args = console.parseArgs()
      console.executeBuild(args)

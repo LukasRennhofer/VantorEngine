@@ -185,6 +185,7 @@ namespace chif::Platform::Input
 	{
 		bool buttons[BUTTON_ENUM_SIZE] = {}; // it contains pressed buttons as "keyboard/typewriter" like, so no continuous presses
 	};
+    
 	struct MouseState
 	{
 		chif::Helpers::Math::Vec2 position = chif::Helpers::Math::Vec2(0, 0);
@@ -195,6 +196,7 @@ namespace chif::Platform::Input
 		bool middle_button_press = false;
 		bool right_button_press = false;
 	};
+
 	struct ControllerState
 	{
 		uint32_t buttons = 0;
@@ -203,6 +205,7 @@ namespace chif::Platform::Input
 		float trigger_L = 0;
 		float trigger_R = 0;
 	};
+
 	struct ControllerFeedback
 	{
 		float vibration_left = 0;	// left vibration motor (0: no vibration, 1: maximum vibration)
@@ -226,6 +229,13 @@ namespace chif::Platform::Input
         ControllerState state;
     };
 
+	extern std::vector<SDL_Event> events;
+    extern std::vector<Internal_ControllerState> controllers;
+    extern std::unordered_map<SDL_JoystickID, size_t> controller_mapped;
+
+    extern KeyboardState keyboard;
+    extern MouseState mouse;
+
     // Main Functions
     void Initialize();
     void Update();
@@ -239,4 +249,8 @@ namespace chif::Platform::Input
     void controller_map_rebuild();
     int GetMaxControllerCount();
     void SetControllerFeedback(const ControllerFeedback& data, int index);
+
+	// Input functions
+	bool Pressed_Keyboard(int button);
+	bool Pressed_Controller(int index, int buttonBit);
 } // namespace chif::Platform::Input

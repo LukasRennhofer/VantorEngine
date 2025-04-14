@@ -14,6 +14,9 @@
 
 #include "chifInput.hpp"
 
+#include <array>
+#include <cstring>
+
 namespace chif::Platform::Input
 {
     std::vector<SDL_Event> events;
@@ -23,11 +26,19 @@ namespace chif::Platform::Input
     KeyboardState keyboard;
     MouseState mouse;
 
+    bool prev_keyboard_buttons[BUTTON_ENUM_SIZE] = {};
+    std::array<uint32_t, 4> prev_controller_buttons{}; // TODO*: Max Controllers?
+
+
     // Main Functions
     void Initialize() {
         if(!SDL_GameControllerAddMappingsFromFile("gamecontrollerdb.txt")){
             chif::Backlog::Log("Input", "No controller config loaded, add gamecontrollerdb.txt file next to the executable or download it from https://github.com/gabomdq/SDL_GameControllerDB", chif::Backlog::LogLevel::WARNING);
         }
+
+        if (SDL_NumJoysticks() < 1) {
+            chif::Backlog::Log("Input", "No joysticks connected.", chif::Backlog::LogLevel::WARNING);
+        }        
     }
 
     void Update()
@@ -61,12 +72,10 @@ namespace chif::Platform::Input
                     break;
 
 
-                    // mouse events
-                            break;
-                        case SDL_BUTTON_MIDDLE:
-                            mouse.middle_button_press = false;
-                            break;
-                    break;
+                // mouse events
+                case SDL_BUTTON_MIDDLE:
+                        mouse.middle_button_press = false;
+                        break;
                 case SDL_MOUSEWHEEL:           // Mouse wheel motion
                 {
                     float delta = static_cast<float>(event.wheel.y);
@@ -138,6 +147,7 @@ namespace chif::Platform::Input
                 }
                 case SDL_CONTROLLERDEVICEADDED:         // A new Game controller has been inserted into the system
                 {
+                    chif::Backlog::Log("Input", "Controller added", chif::Backlog::LogLevel::DEBUG);
                     auto& controller = controllers.emplace_back();
                     controller.controller = SDL_GameControllerOpen(event.cdevice.which);
                     if(controller.controller){
@@ -167,6 +177,7 @@ namespace chif::Platform::Input
                 
             // Clone all events for use outside the internal code, e.g. main_SDL2.cpp can benefit from this
             //external_events.push_back(event);
+        events.clear();
 
         //Update rumble every call
         for (auto& controller : controllers){
@@ -176,10 +187,15 @@ namespace chif::Platform::Input
                 controller.rumble_r,
                 60); //Buffer at 60ms
             }
-
-        // Flush away stored events
-        events.clear();
         }
+
+
+        std::memcpy(prev_keyboard_buttons, keyboard.buttons, sizeof(bool) * 256);
+
+        for (int i = 0; i < controllers.size(); ++i) {
+            prev_controller_buttons[i] = controllers[i].state.buttons;
+        }
+
     }
 
     void ProcessEvent(const SDL_Event &event){
@@ -328,6 +344,20 @@ namespace chif::Platform::Input
             controllers[index].rumble_l = (Uint16)floor(data.vibration_left * 0xFFFF);
             controllers[index].rumble_r = (Uint16)floor(data.vibration_right * 0xFFFF);
         }
+    }
+
+    // Input functions
+    bool Pressed_Keyboard(int button) {
+        return keyboard.buttons[button] && !prev_keyboard_buttons[button];
+    }
+    
+    bool Pressed_Controller(int controllerIndex, int button) {
+        if (controllerIndex < 0 || controllerIndex >= controllers.size()) {
+            return false; // Invalid controller index
+        }
+    
+        auto& controller = controllers[controllerIndex];
+        return (controller.state.buttons & (1 << (button - GAMEPAD_RANGE_START))) != 0;
     }
 
 } // namespace chif::Platform::Input

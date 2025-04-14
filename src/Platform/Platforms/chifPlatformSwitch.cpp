@@ -12,55 +12,62 @@
  * Last Change: 
 */
 
-#include "chifPlatformSwitch.h"
+#ifdef __SWITCH__
 
-#ifndef ENABLE_NXLINK
-#define TRACE(fmt,...) ((void)0)
-#else
+#include "chifPlatformSwitch.hpp"
+#include <switch.h>
+#include <sys/stat.h>
 #include <unistd.h>
-#define TRACE(fmt,...) printf("%s: " fmt "\n", __PRETTY_FUNCTION__, ## __VA_ARGS__)
+#include <chrono>
+#include <thread>
+#include <cstring>
 
-// TODO
-class chif::Platform::Switch {
-    // Init of Nintendo Switch Headers etc.
-    void Initialize() {
+namespace chif::Platform
+{
+    double PlatformSwitch::startTime = 0.0;
+
+    void PlatformSwitch::Initialize()
+    {
+        socketInitializeDefault();
         romfsInit();
-        chdir("romfs:/");
+        startTime = GetTimeSeconds();
     }
 
-    void ExitPlatform() {
-        romfsExit();
-    }
-
-    static void initNxLink()
+    double PlatformSwitch::GetTimeSeconds()
     {
-        if (R_FAILED(socketInitializeDefault()))
-            return;
-
-        s_nxlinkSock = nxlinkStdio();
-        if (s_nxlinkSock >= 0)
-            TRACE("printf output now goes to nxlink server");
-        else
-            socketExit();
+        TimeSpan ts;
+        timeGetCurrentTime(TimeType_UserSystemClock, &ts);
+        return static_cast<double>(ts.nanoseconds) / 1'000'000'000.0;
     }
 
-    static void deinitNxLink()
+    void PlatformSwitch::SleepMilliseconds(unsigned int ms)
     {
-        if (s_nxlinkSock >= 0)
-        {
-            close(s_nxlinkSock);
-            socketExit();
-            s_nxlinkSock = -1;
-        }
+        svcSleepThread(static_cast<int64_t>(ms) * 1'000'000);
     }
 
-    extern "C" void userAppInit()
+    std::string PlatformSwitch::GetExecutablePath()
     {
-        initNxLink();
+        return "romfs:/"; // Default on homebrew
     }
 
-    extern "C" void userAppExit()
+    std::string PlatformSwitch::GetExecutableDirectory()
     {
-        deinitNxLink();
+        return "romfs:/"; // Safe fallback
     }
-} // Namespace chif::Platform::Switch
+
+    bool PlatformSwitch::FileExists(const std::string& path)
+    {
+        struct stat buffer;
+        return (stat(path.c_str(), &buffer) == 0);
+    }
+
+    uint64_t PlatformSwitch::GetFileSize(const std::string& path)
+    {
+        struct stat st;
+        if (stat(path.c_str(), &st) == 0)
+            return static_cast<uint64_t>(st.st_size);
+        return 0;
+    }
+}
+
+#endif // __SWITCH__

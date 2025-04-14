@@ -8,7 +8,7 @@
 
 This is the official CHIFEngine C++ API documentation for Application Developers using CHIFEngine.
 
-> **API Version**: 0.15.4
+> **API Version**: 0.15.17
 
 ## Still in Work !! TODO
 
@@ -56,9 +56,20 @@ This is the official CHIFEngine C++ API documentation for Application Developers
 
 3. [GUI](#gui)
 
+    0. [ImGUI Integration](#TODO)
+
 4. [Entities (ECS)](#TODO)
 
 5. [Platform](#Platform)
+   
+    0. [Building for different platforms](#TODO)
+
+    1. [Window](#TODO)
+
+    2. [Input](#TODO)
+    
+    3. [Environment](#TODO)
+
 
 6. [Physics](#TODO)
 
@@ -67,6 +78,10 @@ This is the official CHIFEngine C++ API documentation for Application Developers
 8. [Networking](#TODO)
 
 9. [Utils](#utils)
+   
+   1. [OpenGL](#TODO)
+
+   2. [SDL2](#TODO)
 
 10. [External](#external)
 

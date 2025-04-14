@@ -18,7 +18,7 @@ namespace chif::Platform {
     unsigned int Window::SCR_WIDTH = 1600;
     unsigned int Window::SCR_HEIGHT = 900;
 
-    Camera* Window::camera = nullptr;
+    Camera* Window::camera = nullptr; // TODO: Remove Camera from Window Class
     SDL_GLContext chif::Platform::Window::glContext = nullptr;
 
     bool Window::keyBools[10] = { false };
@@ -29,7 +29,6 @@ namespace chif::Platform {
     bool Window::mouseCursorDisabled = true;
 
     Window::Window(int& success, unsigned int scrW, unsigned int scrH, std::string name) : name(name) {
-        chif::Backlog::Log("Window", std::format("Using CHIFEngine Core: {}", chif::Core::version::GetVersionString()), chif::Backlog::LogLevel::INFO);
         Window::SCR_WIDTH = scrW;
         Window::SCR_HEIGHT = scrH;
 

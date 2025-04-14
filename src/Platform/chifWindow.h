@@ -33,7 +33,6 @@ namespace chif::Platform {
         Window(int& success, unsigned int SCR_WIDTH = 1600, unsigned int SCR_HEIGHT = 900, std::string name = "CHIFEngine");
         ~Window();
 
-        // Replacing GLFWwindow* with SDL_Window*
         SDL_Window* w;
         SDL_Window* getWindow() const { return w; }
 
@@ -66,7 +65,6 @@ namespace chif::Platform {
         int oldState, newState;
         int gladLoader();
 
-        // SDL uses its event system instead of GLFW callbacks
         static void framebuffer_size_callback(SDL_Window* window, int width, int height);
         static void mouse_callback(SDL_Window* window, double xpos, double ypos);
         static void scroll_callback(SDL_Window* window, double xoffset, double yoffset);
