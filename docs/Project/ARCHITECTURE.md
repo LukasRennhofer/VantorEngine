@@ -17,3 +17,16 @@ graphics/
 │   └── vulkan/
 │       └── VKShader.hpp / cpp (TODO: Vulkan Support)
 ```
+
+## Graphics Device Architecture:
+
+- Render Context
+- Swap Chain ?
+- Framebuffer
+- Vertex Buffer
+- Index Buffer
+- Texture
+- Shader
+- States
+- Pipelines
+- Render passes

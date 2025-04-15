@@ -16,6 +16,9 @@ add_compile_options(-w)
 # Include directories
 include_directories(External)
 
+# TODO: This is meant for building the Engine with OpenGL everytime, so if building for another API move this away
+add_definitions(-DCHIF_API_OPENGL)
+
 # === Engine Library Sources ===
 set(ENGINE_SOURCES
     # External
@@ -40,6 +43,9 @@ set(ENGINE_SOURCES
     Graphics/Renderer/chifScreenSpaceShader.cpp
     Graphics/chifTerrain.cpp
     Graphics/chifTexture.cpp
+    # TODO: Not Linking!!!
+    Graphics/RenderDevice/DeviceOpenGL/chifOpenGLShader.cpp
+    Graphics/RenderDevice/DeviceOpenGL/chifOpenGLTexture.cpp
     # platform
     Platform/chifInput.cpp
     Platform/chifWindow.cpp

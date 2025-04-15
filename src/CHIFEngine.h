@@ -9,8 +9,8 @@
  * Date: 2025-03-27
  *
  * File: CHIFEngine.h
- * Last Change: Updated the projects docst
- */
+ * Last Change: Updated the projects docs
+*/
 
 /*
 INFO: CHIFEngine.h can be only compiled with the corresponding Library:
@@ -20,6 +20,23 @@ Based on your System:
      - Windows x64 (Tested on 7 - 11): libCHIFEngineWindows.a
      - Linux x64 (Tested on Ubuntu 24.10): libCHIFEngineLinux.a
      - Nintendo Switch (Tested on Homebrew): libCHIFEngineSwitch.a
+*/
+
+/*
+CHIFEngines Preprocessors:
+     : Main Processors :
+          CHIFENGINE = Used for the main header implementation
+
+     : Platforms :
+          __WINDOWS__ = Used for identifying a Window build (Defined in CMake)
+          __LINUX__ = Used for identifying a Linux build (Defined in CMake)
+          __SWITCH__ = Used for identifying a Nintendo Switch build (Defined in CMake)
+
+     : Platform API :
+          CHIF_API_OPENGL = Used for building with RenderDevice OpenGL (Defined in CMake)
+          CHIF_API_VULKAN = Used for building with RenderDevice Vulkan (Defined in CMake)
+          CHIF_API_DIRECTX = Used for building with RenderDevice DirectX (Defined in CMake)
+
 */
 
 // CHIFENGINE PREPROCESSOR DEFINITION
@@ -70,7 +87,7 @@ Based on your System:
 // UTILITIES
 #include "Utils/utils.h"
 #include "Utils/constants.h"
-#include "Utils/OpenGL/glError.h"
+#include "Utils/OpenGL/glError.h" // TODO: Move to RenderDevice
 
 // EXTERNAL-INCLUDED HEADERS
 #include <camera.h>
