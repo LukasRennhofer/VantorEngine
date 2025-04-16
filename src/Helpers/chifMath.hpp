@@ -25,7 +25,7 @@ namespace chif::Helpers::Math
 	constexpr float DEG2RAD = PI / 180.0f;
 	constexpr float RAD2DEG = 180.0f / PI;
 
-	// === Vector 2D ===
+	// === Vector 2D === 
 	struct Vec2
 	{
 		float x = 0, y = 0;

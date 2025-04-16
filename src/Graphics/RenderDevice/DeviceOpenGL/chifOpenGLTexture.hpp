@@ -27,7 +27,7 @@ namespace chif::Graphics::RenderDevice::OpenGL {
         // TODO
     };
 
-    class Texture {
+    class OpenGLTexture {
     public:
         static unsigned int Load2D(const std::string& path, bool useSRGB = false);
         static unsigned int LoadCubemap(const std::vector<std::string>& faces);

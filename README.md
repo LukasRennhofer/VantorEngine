@@ -28,7 +28,7 @@
 
 ## About CHIFEngine
 
-[CHIFEngine](https://github.com/LukasRennhofer/CHIFEngine) is a low-level, high-performance game engine designed for **large-scale Open-World games** and is a code-focused development SDK and Framework. Built from the ground up with **OpenGL** and custom rendering techniques, it provides fine-grained control over every aspect of game development while maintaining **maximum efficiency**. Unlike high-level game engines, the engine is designed to be **lightweight**, **modular**, and **fully extensible**, allowing developers to directly manipulate rendering, physics, and memory management **without unnecessary abstractions**.
+[CHIFEngine](https://github.com/LukasRennhofer/CHIFEngine) is a low-level, high-performance game engine designed for **large-scale Open-World games** and is a code-focused development SDK and Framework. Built from the ground up with **OpenGL** and custom rendering techniques, it provides fine-grained control over every aspect of game development while maintaining **maximum efficiency**. Unlike high-level game engines, the engine is designed to be **lightweight**, **modular**, and **fully extensible**, allowing developers to directly manipulate rendering, physics, and resource management.
 
 ---
 
@@ -117,8 +117,8 @@ You can download the latest binaries of CHIFEngine from [the website](https://lu
 ## Features
 
 - **Cross-Platform Support** – Runs on PC and supports Nintendo Switch Homebrew, making it suitable for both modern and embedded hardware
-- **Minimal External Dependencies** – Designed to be self-contained, avoiding reliance on bulky third-party libraries while giving developers direct access to OpenGL, Vulkan (experimental), and custom math libraries.
-- **Custom OpenGL (Vulkan not yet) Rendering Pipeline** – Uses modern graphics techniques such as deferred shading, GPU-driven culling, and physically-based rendering (PBR) in the future to handle complex environments efficiently.
+- **Minimal External Dependencies** – Designed to be self-contained, avoiding reliance on bulky third-party libraries while giving developers direct access to OpenGL, Vulkan (experimental), and custom libraries.
+- **Custom OpenGL (Vulkan not yet) Rendering Pipeline** – Uses a RHI (Render Hardware Interface) architecture and modern graphics techniques such as deferred shading, GPU-driven culling, and physically-based rendering (PBR) in the future to handle complex environments efficiently.
 ---
 
 ## Documentation & Demos

@@ -37,25 +37,51 @@ namespace chif::Graphics::RenderDevice {
     }
 
     // ============= OPENGL ==============
-    #if defined(CHIF_API_OPENGL)
-        #include "DeviceOpenGL/chifDeviceOpenGL.hpp"
+    #include "DeviceOpenGL/chifDeviceOpenGL.hpp"
 
-        // Main Functions
-        inline RenderAPI getCurrentRenderingAPI() {return RenderAPI::OpenGL;}
-        inline void Init() {chif::Graphics::RenderDevice::OpenGL::Init();}
-        inline void Shutdown() {chif::Graphics::RenderDevice::OpenGL::Shutdown();}
-        inline void BeginFrame() {chif::Graphics::RenderDevice::OpenGL::BeginFrame();}
-        inline void EndFrame() {chif::Graphics::RenderDevice::OpenGL::EndFrame();}
-        // RenderDevice Functions etc.
-        // TODO
+    // Main Functions
+    inline RenderAPI getCurrentRenderingAPI() {return RenderAPI::OpenGL;}
+    inline void Init() {chif::Graphics::RenderDevice::OpenGL::Init();}
+    inline void Shutdown() {chif::Graphics::RenderDevice::OpenGL::Shutdown();}
+    inline void BeginFrame() {chif::Graphics::RenderDevice::OpenGL::BeginFrame();}
+    inline void EndFrame() {chif::Graphics::RenderDevice::OpenGL::EndFrame();}
+    // RenderDevice Functions etc.
+    // TODO
 
     // ============= VULKAN ==============
     // #elif defined(CHIF_API_VULKAN)
     //     #include "RenderDevice_Vulkan.hpp" // TODO
     //     inline RenderAPI getCurrentRenderingAPI() {return RenderAPI::Vulkan;}
-    #else
-        #error "No RenderDevice backend defined (e.g. CHIF_API_OPENGL)"
-    #endif
 
 
 } // namespace chif::Graphics::RenderDevice
+
+
+/*
+Layout:
+
+    #include <memory>
+
+    namespace chif::Graphics {
+
+        class RHISystem {
+        public:
+            static void SetRHI(std::unique_ptr<RHI> newRHI) {
+                if (currentRHI) {
+                    currentRHI->Shutdown();
+                }
+                currentRHI = std::move(newRHI);
+                currentRHI->Init();
+            }
+
+            static RHI* Get() {
+                return currentRHI.get();
+            }
+
+        private:
+            static std::unique_ptr<RHI> currentRHI;
+        };
+
+    } // namespace chif::Graphics
+
+*/

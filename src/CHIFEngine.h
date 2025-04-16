@@ -23,8 +23,8 @@ Based on your System:
 */
 
 /*
-CHIFEngines Preprocessors:
-     : Main Processors :
+CHIFEngines Preprocessor Variables:
+     : Main Variables:
           CHIFENGINE = Used for the main header implementation
 
      : Platforms :
@@ -33,6 +33,9 @@ CHIFEngines Preprocessors:
           __SWITCH__ = Used for identifying a Nintendo Switch build (Defined in CMake)
 
      : Platform API :
+          CHIF_API_COMPILE = Used to identify if the API is able to be switched at runtime
+                             or if it is being chosen at compile time (Defined in CMake) 
+                             (If Defined: Compile with only one given API, else: API is switchable based on platform)
           CHIF_API_OPENGL = Used for building with RenderDevice OpenGL (Defined in CMake)
           CHIF_API_VULKAN = Used for building with RenderDevice Vulkan (Defined in CMake)
           CHIF_API_DIRECTX = Used for building with RenderDevice DirectX (Defined in CMake)

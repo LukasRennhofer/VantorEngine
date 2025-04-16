@@ -8,7 +8,7 @@
  * Author: Lukas Rennhofer
  * Date: 2025-03-08
  *  
- * File: chifDeviceOpenGL.hpp 
+ * File: chifOpenGLRHI.hpp 
  * Last Change: 
 */
 
@@ -32,33 +32,21 @@
             - OpengL Uniform/Framebuffer: TODO:
 */
 
-// TODO: move code to chifOpenGLRHI.hpp and remove file
-
 #pragma once
 
-#include <glad/glad.h>
-
-// OpenGL Headers
-#include "chifOpenGLShader.hpp"
-#include "chifOpenGLTexture.hpp"
-#include "chifOpenGLBuffer.hpp"
+#include "../../SourceDevice/chifRHI.hpp"
 
 namespace chif::Graphics::RenderDevice::OpenGL {
-    inline void Init() {
-        std::cout << "[OpenGL] Init Render Device\n"; // TODO: BackLog
-        // TODO: Load extensions (glad), setup state, etc.
-    }
 
-    inline void Shutdown() {
-        std::cout << "[OpenGL] Shutdown Render Device\n"; // TODO: BackLog
-        // TODO: ?
-    }
+    class OpenGLRHI : public chif::Graphics::SourceDevice::RHI {
+    public:
+        bool Init() override; // TODO
+        void Shutdown() override; // TODO
 
-    inline void BeginFrame() {
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    }
+        void BeginFrame() override; // TODO
+        void EndFrame() override; // TODO
+        void Present() override; // TODO
 
-    inline void EndFrame() {
-        // TODO: Present swapchain maybe (depends swapchain lives)
-    }
-} // namespace chif::Graphics::RenderDevice::OpenGL
+        // TODO: Using Shaders and Buffers
+    } 
+}// namespace chif::Graphics::RenderDevice::OpenGL

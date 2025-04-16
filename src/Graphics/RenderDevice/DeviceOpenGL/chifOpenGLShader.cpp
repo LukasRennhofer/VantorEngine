@@ -77,7 +77,7 @@ namespace chif::Graphics::RenderDevice::OpenGL {
 			return shaderType(GL_COMPUTE_SHADER, "COMPUTE");
 	}
 
-	BaseShader::BaseShader(const char *shaderPath)
+	OpenGLBaseShader::OpenGLBaseShader(const char *shaderPath)
 	{
 		path = std::string(shaderPath);
 		std::string shaderCode = loadShaderFromFile(shaderPath);
@@ -90,7 +90,7 @@ namespace chif::Graphics::RenderDevice::OpenGL {
 		checkCompileErrors(shad, shadType.name.c_str(), getShaderName(shaderPath));
 	}
 
-	std::string BaseShader::loadShaderFromFile(const char *shaderPath)
+	std::string OpenGLBaseShader::loadShaderFromFile(const char *shaderPath)
 	{
 		std::string shaderCode;
 		std::ifstream shaderFile;
@@ -112,40 +112,40 @@ namespace chif::Graphics::RenderDevice::OpenGL {
 		return shaderCode;
 	}
 
-	BaseShader::~BaseShader()
+	OpenGLBaseShader::~OpenGLBaseShader()
 	{
 		// glDeleteShader(shad); 
 	}
 
-	unsigned int BaseShader::getShad()
+	unsigned int OpenGLBaseShader::getShad()
 	{
 		return shad;
 	}
 
     // =========== Shader ===========
-	Shader::Shader(std::string name) : name(name)
+	OpenGLShader::OpenGLShader(std::string name) : name(name)
 	{
 		linked = false;
 		isCompute = false;
 		ID = glCreateProgram();
 	}
 
-	Shader::~Shader() {
+	OpenGLShader::~OpenGLShader() {
 		glDeleteProgram(ID);
 	}
 
-	Shader::Shader(std::string name, const char * computeShaderPath) : name(name)
+	OpenGLShader::OpenGLShader(std::string name, const char * computeShaderPath) : name(name)
 	{
 		linked = false;
 		isCompute = false;
 		ID = glCreateProgram();
 
-		this->attachShader(chif::Graphics::RenderDevice::OpenGL::BaseShader(computeShaderPath));
+		this->attachShader(chif::Graphics::RenderDevice::OpenGL::OpenGLBaseShader(computeShaderPath));
 		this->linkPrograms();
 	}
 
 
-	Shader * Shader::attachShader(chif::Graphics::RenderDevice::OpenGL::BaseShader s)
+	OpenGLShader * OpenGLShader::attachShader(chif::Graphics::RenderDevice::OpenGL::OpenGLBaseShader s)
 	{
 		if (!isCompute) {
 			glAttachShader(ID, s.getShad());
@@ -160,7 +160,7 @@ namespace chif::Graphics::RenderDevice::OpenGL {
 		return this;
 	}
 
-	void Shader::linkPrograms()
+	void OpenGLShader::linkPrograms()
 	{
 		glLinkProgram(ID);
 
@@ -177,7 +177,7 @@ namespace chif::Graphics::RenderDevice::OpenGL {
 		}
 	}
 
-	void Shader::use()
+	void OpenGLShader::use()
 	{
 		if (linked) {
 			glUseProgram(ID);
@@ -199,53 +199,53 @@ namespace chif::Graphics::RenderDevice::OpenGL {
 	}
 
 	// ------------------------------------------------------------------------
-	void Shader::setBool(const std::string &name, bool value) const
+	void OpenGLShader::setBool(const std::string &name, bool value) const
 	{
 		glUniform1i(glGetUniformLocation(ID, name.c_str()), (int)value);
 	}
 	// ------------------------------------------------------------------------
-	void Shader::setInt(const std::string &name, int value) const
+	void OpenGLShader::setInt(const std::string &name, int value) const
 	{
 		glUniform1i(glGetUniformLocation(ID, name.c_str()), value);
 	}
 	// ------------------------------------------------------------------------
-	void Shader::setFloat(const std::string &name, float value) const
+	void OpenGLShader::setFloat(const std::string &name, float value) const
 	{
 		glUniform1f(glGetUniformLocation(ID, name.c_str()), value);
 	}
 	// ------------------------------------------------------------------------
-	void Shader::setVec2(const std::string &name, glm::vec2 vector) const
+	void OpenGLShader::setVec2(const std::string &name, glm::vec2 vector) const
 	{
 		unsigned int location = glGetUniformLocation(ID, name.c_str());
 		glUniform2fv(location, 1, glm::value_ptr(vector));
 	}
 	// ------------------------------------------------------------------------
-	void Shader::setVec3(const std::string &name, glm::vec3 vector) const
+	void OpenGLShader::setVec3(const std::string &name, glm::vec3 vector) const
 	{
 		unsigned int location = glGetUniformLocation(ID, name.c_str());
 		glUniform3fv(location, 1, glm::value_ptr(vector));
 	}
 	// ------------------------------------------------------------------------
-	void Shader::setVec4(const std::string &name, glm::vec4 vector) const
+	void OpenGLShader::setVec4(const std::string &name, glm::vec4 vector) const
 	{
 		unsigned int location = glGetUniformLocation(ID, name.c_str());
 		glUniform4fv(location, 1, glm::value_ptr(vector));
 	}
 	// ------------------------------------------------------------------------
-	void Shader::setMat4(const std::string &name, glm::mat4 matrix) const
+	void OpenGLShader::setMat4(const std::string &name, glm::mat4 matrix) const
 	{
 		unsigned int mat = glGetUniformLocation(ID, name.c_str());
 		glUniformMatrix4fv(mat, 1, false, glm::value_ptr(matrix));
 	}
 	// ------------------------------------------------------------------------
-	void Shader::setSampler2D(const std::string &name, unsigned int texture, int id) const
+	void OpenGLShader::setSampler2D(const std::string &name, unsigned int texture, int id) const
 	{
 		glActiveTexture(GL_TEXTURE0 + id);
 		glBindTexture(GL_TEXTURE_2D, texture);
 		this->setInt(name, id);
 	}
 	// ------------------------------------------------------------------------
-	void Shader::setSampler3D(const std::string &name, unsigned int texture, int id) const
+	void OpenGLShader::setSampler3D(const std::string &name, unsigned int texture, int id) const
 	{
 		glActiveTexture(GL_TEXTURE0 + id);
 		glBindTexture(GL_TEXTURE_3D, texture);

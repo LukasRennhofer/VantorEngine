@@ -31,7 +31,7 @@ namespace chif::Graphics::RenderDevice::OpenGL {
         }
     }
 
-    unsigned int Texture::Load2D(const std::string& path, bool useSRGB) {
+    unsigned int OpenGLTexture::Load2D(const std::string& path, bool useSRGB) {
         int width, height, nrComponents;
         stbi_set_flip_vertically_on_load(true);
         unsigned char* data = stbi_load(path.c_str(), &width, &height, &nrComponents, 0);
@@ -58,7 +58,7 @@ namespace chif::Graphics::RenderDevice::OpenGL {
         return textureID;
     }
 
-    unsigned int Texture::Create2D(int width, int height, TextureFormat format) {
+    unsigned int OpenGLTexture::Create2D(int width, int height, TextureFormat format) {
         GLuint tex;
         glGenTextures(1, &tex);
         glBindTexture(GL_TEXTURE_2D, tex);
@@ -68,7 +68,7 @@ namespace chif::Graphics::RenderDevice::OpenGL {
         return tex;
     }
 
-    unsigned int Texture::Create3D(int width, int height, int depth, TextureFormat format) {
+    unsigned int OpenGLTexture::Create3D(int width, int height, int depth, TextureFormat format) {
         GLuint tex;
         glGenTextures(1, &tex);
         glBindTexture(GL_TEXTURE_3D, tex);
@@ -83,12 +83,12 @@ namespace chif::Graphics::RenderDevice::OpenGL {
         return tex;
     }    
 
-    void Texture::Bind2D(unsigned int textureID, int unit) {
+    void OpenGLTexture::Bind2D(unsigned int textureID, int unit) {
         glActiveTexture(GL_TEXTURE0 + unit);
         glBindTexture(GL_TEXTURE_2D, textureID);
     }
 
-    unsigned int Texture::LoadCubemap(const std::vector<std::string>& faces) {
+    unsigned int OpenGLTexture::LoadCubemap(const std::vector<std::string>& faces) {
         GLuint textureID;
         glGenTextures(1, &textureID);
         glBindTexture(GL_TEXTURE_CUBE_MAP, textureID);
@@ -116,7 +116,7 @@ namespace chif::Graphics::RenderDevice::OpenGL {
         return textureID;
     }
 
-    void Texture::BindCubemap(unsigned int textureID, int unit) {
+    void OpenGLTexture::BindCubemap(unsigned int textureID, int unit) {
         glActiveTexture(GL_TEXTURE0 + unit);
         glBindTexture(GL_TEXTURE_CUBE_MAP, textureID);
     }    

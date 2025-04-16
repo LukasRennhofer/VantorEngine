@@ -14,7 +14,7 @@
 
 #include "chifApplication.hpp"
 #include "JobSystem/chifJobSystem.h"
-#include "../Graphics/RenderDevice/chifRenderDevice.hpp"
+// #include "../Graphics/RenderDevice/chifRenderDevice.hpp"// Not Now!
 
 namespace chif
 {
@@ -29,7 +29,6 @@ namespace chif
 		initialized = true;
 
         // TODO: Initializing with chifInitializer
-        chif::Graphics::RenderDevice::Init();
         chif::Platform::Input::Initialize();
 	}
 

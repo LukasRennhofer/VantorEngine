@@ -41,11 +41,11 @@ namespace chif::Graphics::RenderDevice::OpenGL {
 	std::string getShaderName(const char *shaderPath);
 	shaderType getShaderType(const char *path);
 
-	class BaseShader
+	class OpenGLBaseShader
 	{
 	public:
-		BaseShader(const char *shaderPath);
-		virtual ~BaseShader();
+	OpenGLBaseShader(const char *shaderPath);
+		virtual ~OpenGLBaseShader();
 
 		std::string getName()
 		{
@@ -63,18 +63,18 @@ namespace chif::Graphics::RenderDevice::OpenGL {
 	};
 
     // =========== Shader ===========
-	class Shader
+	class OpenGLShader
 	{
 	public:
-		Shader(std::string name);
-		Shader(std::string name, const char * computeShader);
-		Shader * attachShader(BaseShader s);
+		OpenGLShader(std::string name);
+		OpenGLShader(std::string name, const char * computeShader);
+		OpenGLShader * attachShader(OpenGLBaseShader s);
 
 		unsigned int ID;
 		
 		void linkPrograms();
 
-		virtual ~Shader();
+		virtual ~OpenGLShader();
 		void use();
 		void setBool(const std::string &name, bool value) const;
 		void setInt(const std::string &name, int value) const;
