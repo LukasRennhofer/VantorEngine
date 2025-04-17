@@ -28,7 +28,7 @@ namespace chif::Graphics::SourceDevice {
         // Frame control
         virtual void BeginFrame() = 0;
         virtual void EndFrame() = 0;
-        virtual void Present() = 0;
+        virtual void Present() = 0; // calls swapchain
 
         // TODO: Other functions and RHI Device Handles
     };

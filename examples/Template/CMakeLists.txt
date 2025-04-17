@@ -14,48 +14,48 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 add_compile_options(-w)
 
 # Include directories
-include_directories(../../src/External)
+include_directories(../../Source/External)
 
 # === Engine Library Sources ===
 set(ENGINE_SOURCES
     # External
-    ../../src/External/imgui/imgui_draw.cpp
-    ../../src/External/imgui/imgui_demo.cpp
-    ../../src/External/imgui/imgui_impl_sdl2.cpp
-    ../../src/External/imgui/imgui_impl_opengl3.cpp
-    ../../src/External/imgui/imgui_widgets.cpp
-    ../../src/External/imgui/imgui_tables.cpp
-    ../../src/External/imgui/imgui.cpp
-    ../../src/External/stb_image_impl.cpp
-    ../../src/External/glad.c
+    ../../Source/External/imgui/imgui_draw.cpp
+    ../../Source/External/imgui/imgui_demo.cpp
+    ../../Source/External/imgui/imgui_impl_sdl2.cpp
+    ../../Source/External/imgui/imgui_impl_opengl3.cpp
+    ../../Source/External/imgui/imgui_widgets.cpp
+    ../../Source/External/imgui/imgui_tables.cpp
+    ../../Source/External/imgui/imgui.cpp
+    ../../Source/External/stb_image_impl.cpp
+    ../../Source/External/glad.c
     # graphics
-    ../../src/Graphics/chifDrawableObject.cpp
-    ../../src/Graphics/chifCloudsModel.cpp
-    ../../src/Graphics/chifSkybox.cpp
-    ../../src/Graphics/chifVolumetricClouds.cpp
-    ../../src/Graphics/chifWater.cpp
-    ../../src/Graphics/Renderer/chifBuffers.cpp
-    ../../src/Graphics/Renderer/chifBaseShader.cpp
-    ../../src/Graphics/Renderer/chifShader.cpp
-    ../../src/Graphics/Renderer/chifScreenSpaceShader.cpp
-    ../../src/Graphics/chifTerrain.cpp
-    ../../src/Graphics/chifTexture.cpp
+    ../../Source/Graphics/chifDrawableObject.cpp
+    ../../Source/Graphics/chifCloudsModel.cpp
+    ../../Source/Graphics/chifSkybox.cpp
+    ../../Source/Graphics/chifVolumetricClouds.cpp
+    ../../Source/Graphics/chifWater.cpp
+    ../../Source/Graphics/Renderer/chifBuffers.cpp
+    ../../Source/Graphics/Renderer/chifBaseShader.cpp
+    ../../Source/Graphics/Renderer/chifShader.cpp
+    ../../Source/Graphics/Renderer/chifScreenSpaceShader.cpp
+    ../../Source/Graphics/chifTerrain.cpp
+    ../../Source/Graphics/chifTexture.cpp
     # platform
-    ../../src/Platform/chifWindow.cpp
-    ../../src/Platform/glError.cpp
+    ../../Source/Platform/chifWindow.cpp
+    ../../Source/Platform/glError.cpp
     # GUI
-    ../../src/GUI/chifImgui.cpp
-    ../../src/GUI/Font/chifFont.cpp
-    ../../src/GUI/Font/chifFontAtlas.cpp
-    ../../src/GUI/Font/chifFontUtils.cpp
-    ../../src/GUI/Font/chifLabel.cpp
+    ../../Source/GUI/chifImgui.cpp
+    ../../Source/GUI/Font/chifFont.cpp
+    ../../Source/GUI/Font/chifFontAtlas.cpp
+    ../../Source/GUI/Font/chifFontUtils.cpp
+    ../../Source/GUI/Font/chifLabel.cpp
     # Core
-    ../../src/Core/chifVersion.cpp
-    ../../src/Core/JobSystem/chifJobSystem.cpp 
-    ../../src/Core/Backlog/chifBacklog.cpp
+    ../../Source/Core/chifVersion.cpp
+    ../../Source/Core/JobSystem/chifJobSystem.cpp 
+    ../../Source/Core/Backlog/chifBacklog.cpp
     # Utils
-    ../../src/Utils/utils.cpp
-    ../../src/Utils/sdl2Utils.cpp
+    ../../Source/Utils/utils.cpp
+    ../../Source/Utils/sdl2Utils.cpp
 )
 
 # === Template Sources ===
@@ -65,11 +65,11 @@ set(APP_SOURCES
 
 # === Create the Engine Library ===
 add_library(CHIFEngineLib STATIC ${ENGINE_SOURCES})
-target_include_directories(CHIFEngineLib PUBLIC ../../src ../../src/external)
+target_include_directories(CHIFEngineLib PUBLIC ../../Source ../../Source/external)
 
 # === Platform-Specific Dependencies ===
 if(WIN32)
-    set(CMAKE_MAKE_PROGRAM "../../src/compToolchain/windows/make.exe")
+    set(CMAKE_MAKE_PROGRAM "../../Source/compToolchain/windows/make.exe")
     message(STATUS "Compiling for Windows")
 
     set(WINDOWS_LIBRARIES
@@ -86,7 +86,7 @@ if(WIN32)
     )
 
     find_package(assimp REQUIRED)
-    set(ASSIMP_INCLUDE_DIR "${CMAKE_SOURCE_DIR}../../src/externals/assimp")
+    set(ASSIMP_INCLUDE_DIR "${CMAKE_SOURCE_DIR}../../Source/externals/assimp")
     include_directories(${ASSIMP_INCLUDE_DIR})
 
     find_package(SDL2 REQUIRED)
@@ -116,7 +116,7 @@ elseif(UNIX)
         drm
     )
     find_package(assimp REQUIRED)
-    set(ASSIMP_INCLUDE_DIR "${CMAKE_SOURCE_DIR}../../src/externals/assimp")
+    set(ASSIMP_INCLUDE_DIR "${CMAKE_SOURCE_DIR}../../Source/externals/assimp")
     include_directories(${ASSIMP_INCLUDE_DIR})
 
     find_package(SDL2 REQUIRED)

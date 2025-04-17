@@ -14,7 +14,7 @@
 
  
  // Engine Header
- #include "../../src/CHIFEngine.h"
+ #include "../../Source/CHIFEngine.h"
  
  // Standard libraries
  #include <iostream>
@@ -23,13 +23,13 @@
  
  // ImGui setup (only for desktop)
  #ifndef __SWITCH__
- #include "../../src/External/imgui/imgui.h"
- #include "../../src/External/imgui/imgui_impl_sdl2.h"
- #include "../../src/External/imgui/imgui_impl_opengl3.h"
+ #include "../../Source/External/imgui/imgui.h"
+ #include "../../Source/External/imgui/imgui_impl_sdl2.h"
+ #include "../../Source/External/imgui/imgui_impl_opengl3.h"
  #else
  // ImGui for Switch should use an EGL-compatible backend
- #include "../../src/External/imgui/imgui/imgui.h"
- #include "../../src/External/imgui/imgui/imgui_impl_opengl3.h"
+ #include "../../Source/External/imgui/imgui/imgui.h"
+ #include "../../Source/External/imgui/imgui/imgui_impl_opengl3.h"
  #endif
  
  extern "C" int main(int argc, char **argv)

@@ -14,7 +14,7 @@
 
  
  // Engine Header
- #include "../../src/CHIFEngine.h"
+ #include "../../Source/CHIFEngine.h"
  
  // Standard libraries
  #include <iostream>

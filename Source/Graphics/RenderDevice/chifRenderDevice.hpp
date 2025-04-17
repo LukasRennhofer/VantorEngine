@@ -27,7 +27,7 @@ namespace chif::Graphics::RenderDevice {
         None
     };
 
-    inline std::string ToString(RenderAPI api) {
+    inline std::string apiToString(RenderAPI api) {
         switch (api) {
             case RenderAPI::OpenGL: return "OpenGL";
             // case RenderAPI::Vulkan: return "Vulkan"; // TODO
@@ -36,15 +36,17 @@ namespace chif::Graphics::RenderDevice {
         }
     }
 
-    // ============= OPENGL ==============
-    #include "DeviceOpenGL/chifDeviceOpenGL.hpp"
 
-    // Main Functions
-    inline RenderAPI getCurrentRenderingAPI() {return RenderAPI::OpenGL;}
-    inline void Init() {chif::Graphics::RenderDevice::OpenGL::Init();}
-    inline void Shutdown() {chif::Graphics::RenderDevice::OpenGL::Shutdown();}
-    inline void BeginFrame() {chif::Graphics::RenderDevice::OpenGL::BeginFrame();}
-    inline void EndFrame() {chif::Graphics::RenderDevice::OpenGL::EndFrame();}
+    // TODO
+    // ============= OPENGL ==============
+    // #include "DeviceOpenGL/chifDeviceOpenGL.hpp"
+
+    // // Main Functions
+    // inline RenderAPI getCurrentRenderingAPI() {return RenderAPI::OpenGL;}
+    // inline void Init() {chif::Graphics::RenderDevice::OpenGL::Init();}
+    // inline void Shutdown() {chif::Graphics::RenderDevice::OpenGL::Shutdown();}
+    // inline void BeginFrame() {chif::Graphics::RenderDevice::OpenGL::BeginFrame();}
+    // inline void EndFrame() {chif::Graphics::RenderDevice::OpenGL::EndFrame();}
     // RenderDevice Functions etc.
     // TODO
 

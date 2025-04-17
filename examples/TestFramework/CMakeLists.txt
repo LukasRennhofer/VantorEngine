@@ -14,52 +14,52 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 add_compile_options(-w)
 
 # Include directories
-include_directories(../../src/External)
+include_directories(../../Source/External)
 
 # === Engine Library Sources ===
 set(ENGINE_SOURCES
     # External
-    ../../src/External/imgui/imgui_draw.cpp
-    ../../src/External/imgui/imgui_demo.cpp
-    ../../src/External/imgui/imgui_impl_sdl2.cpp
-    ../../src/External/imgui/imgui_impl_opengl3.cpp
-    ../../src/External/imgui/imgui_widgets.cpp
-    ../../src/External/imgui/imgui_tables.cpp
-    ../../src/External/imgui/imgui.cpp
-    ../../src/External/stb_image_impl.cpp
-    ../../src/External/glad.c
+    ../../Source/External/imgui/imgui_draw.cpp
+    ../../Source/External/imgui/imgui_demo.cpp
+    ../../Source/External/imgui/imgui_impl_sdl2.cpp
+    ../../Source/External/imgui/imgui_impl_opengl3.cpp
+    ../../Source/External/imgui/imgui_widgets.cpp
+    ../../Source/External/imgui/imgui_tables.cpp
+    ../../Source/External/imgui/imgui.cpp
+    ../../Source/External/stb_image_impl.cpp
+    ../../Source/External/glad.c
     # graphics
-    ../../src/Graphics/chifDrawableObject.cpp
-    ../../src/Graphics/chifCloudsModel.cpp
-    ../../src/Graphics/chifSkybox.cpp
-    ../../src/Graphics/chifVolumetricClouds.cpp
-    ../../src/Graphics/chifWater.cpp
-    ../../src/Graphics/Renderer/chifBuffers.cpp
-    ../../src/Graphics/Renderer/chifBaseShader.cpp
-    ../../src/Graphics/Renderer/chifShader.cpp
-    ../../src/Graphics/Renderer/chifScreenSpaceShader.cpp
-    ../../src/Graphics/chifTerrain.cpp
-    ../../src/Graphics/chifTexture.cpp
+    ../../Source/Graphics/chifDrawableObject.cpp
+    ../../Source/Graphics/chifCloudsModel.cpp
+    ../../Source/Graphics/chifSkybox.cpp
+    ../../Source/Graphics/chifVolumetricClouds.cpp
+    ../../Source/Graphics/chifWater.cpp
+    ../../Source/Graphics/Renderer/chifBuffers.cpp
+    ../../Source/Graphics/Renderer/chifBaseShader.cpp
+    ../../Source/Graphics/Renderer/chifShader.cpp
+    ../../Source/Graphics/Renderer/chifScreenSpaceShader.cpp
+    ../../Source/Graphics/chifTerrain.cpp
+    ../../Source/Graphics/chifTexture.cpp
     # platform
-    ../../src/Platform/chifInput.cpp
-    ../../src/Platform/chifWindow.cpp
-    ../../src/Platform/Platforms/chifPlatformWindows.cpp
-    ../../src/Platform/Platforms/chifPlatformLinux.cpp
-    ../../src/Platform/Platforms/chifPlatformSwitch.cpp
+    ../../Source/Platform/chifInput.cpp
+    ../../Source/Platform/chifWindow.cpp
+    ../../Source/Platform/Platforms/chifPlatformWindows.cpp
+    ../../Source/Platform/Platforms/chifPlatformLinux.cpp
+    ../../Source/Platform/Platforms/chifPlatformSwitch.cpp
     # GUI
-    ../../src/GUI/chifImgui.cpp
+    ../../Source/GUI/chifImgui.cpp
     # Core
-    ../../src/Core/chifApplication.cpp
-    ../../src/Core/chifVersion.cpp
-    ../../src/Core/JobSystem/chifJobSystem.cpp 
-    ../../src/Core/Backlog/chifBacklog.cpp
-    ../../src/Core/Debug/chifInlineDebugger.cpp
+    ../../Source/Core/chifApplication.cpp
+    ../../Source/Core/chifVersion.cpp
+    ../../Source/Core/JobSystem/chifJobSystem.cpp 
+    ../../Source/Core/Backlog/chifBacklog.cpp
+    ../../Source/Core/Debug/chifInlineDebugger.cpp
     # Entity
-    ../../src/Entity/chifECS.cpp
+    ../../Source/Entity/chifECS.cpp
     # Utils
-    ../../src/Utils/utils.cpp
-    ../../src/Utils/sdl2Utils.cpp
-    ../../src/Utils/OpenGL/glError.cpp
+    ../../Source/Utils/utils.cpp
+    ../../Source/Utils/sdl2Utils.cpp
+    ../../Source/Utils/OpenGL/glError.cpp
 )
 
 set(APP_SOURCES
@@ -74,7 +74,7 @@ if(PLATFORM STREQUAL "Windows")
 
     # === Create the Engine Library for Windows ===
     add_library(CHIFEngineWindows STATIC ${ENGINE_SOURCES})
-    target_include_directories(CHIFEngineWindows PUBLIC src external)
+    target_include_directories(CHIFEngineWindows PUBLIC Source external)
 
     set(WINDOWS_LIBRARIES
         mingw32
@@ -100,7 +100,7 @@ if(PLATFORM STREQUAL "Windows")
 
     # Setting up Libarie
     install(TARGETS CHIFEngineWindows DESTINATION lib)
-    # install(DIRECTORY src/ DESTINATION include FILES_MATCHING PATTERN "*.h")
+    # install(DIRECTORY Source/ DESTINATION include FILES_MATCHING PATTERN "*.h")
 
     # === Create the Executable ===
     add_executable(TestFramework ${APP_SOURCES})
@@ -115,7 +115,7 @@ elseif(PLATFORM STREQUAL "Linux")
 
     # === Create the Engine Library for Linux ===
     add_library(CHIFEngineLinux STATIC ${ENGINE_SOURCES})
-    target_include_directories(CHIFEngineLinux PUBLIC src external)
+    target_include_directories(CHIFEngineLinux PUBLIC Source external)
 
     find_package(PkgConfig REQUIRED)
     pkg_check_modules(OpenGL REQUIRED gl)
@@ -146,7 +146,7 @@ elseif(PLATFORM STREQUAL "Linux")
 
     # Setting up Libarie
     install(TARGETS CHIFEngineLinux DESTINATION lib)
-    # install(DIRECTORY src/ DESTINATION include FILES_MATCHING PATTERN "*.h")
+    # install(DIRECTORY Source/ DESTINATION include FILES_MATCHING PATTERN "*.h")
 
     # === Create the Executable ===
     add_executable(TestFramework ${APP_SOURCES})
@@ -161,7 +161,7 @@ elseif(PLATFORM STREQUAL "Switch")
 
     # === Create the Engine Library for Linux ===
     add_library(CHIFEngineSwitch STATIC ${ENGINE_SOURCES})
-    target_include_directories(CHIFEngineSwitch PUBLIC src external)
+    target_include_directories(CHIFEngineSwitch PUBLIC Source external)
 
     set(CMAKE_SYSTEM_NAME Switch)
     set(CMAKE_SYSTEM_PROCESSOR aarch64)
@@ -211,7 +211,7 @@ elseif(PLATFORM STREQUAL "Switch")
 
     # Setting up Libarie
     install(TARGETS CHIFEngineSwitch DESTINATION lib)
-    # install(DIRECTORY src/ DESTINATION include FILES_MATCHING PATTERN "*.h")
+    # install(DIRECTORY Source/ DESTINATION include FILES_MATCHING PATTERN "*.h")
 
     # === Create the Executable ===
     add_executable(TestFramework ${APP_SOURCES})

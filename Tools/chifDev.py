@@ -28,7 +28,7 @@ from pathlib import Path
 import argparse
 import time
 
-SRC_DIR_INTERNAL = Path("src")
+SRC_DIR_INTERNAL = Path("Source")
 BUILD_DIR_INTERNAL = Path("build")
 EXAMPLES_INTERNAL = Path("examples")
 RESOURCE_DIRS = ["resources", "shaders", "lib"]
@@ -173,7 +173,7 @@ class CHIFEngineInternalBuildSystem:
             build_path (Path): The path to the build directory.
         """
         for res_dir in RESOURCE_DIRS:
-            src = Path("src/" + res_dir)
+            src = Path(f"{SRC_DIR_INTERNAL}/" + res_dir)
             dest = build_path / res_dir
             if src.exists():
                 shutil.copytree(src, dest, dirs_exist_ok=True)

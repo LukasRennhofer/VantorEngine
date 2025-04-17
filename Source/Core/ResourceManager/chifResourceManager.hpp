@@ -20,18 +20,17 @@ namespace chif::ResourceManager
     void Clear(); // TODO
 
     // TODO?
-    enum ResourceTypes {
+    enum ResourceType {
         TEXTURE,
         SHADER,
         AUDIO,
         VIDEO,
         MODEl,
-        UNIDENTIFIED
+        UNIDENTIFIED = 0xFFF // Last use
     }
 
     struct Resource {
-        ResourceTypes type = UNIDENTIFIED;
-
+        ResourceType type = UNIDENTIFIED;
         // TODO
     }
 } // namespace chif::ResourceManager

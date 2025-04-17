@@ -47,8 +47,6 @@ namespace chif::Graphics::Renderer::Shader {
 			glEnable(GL_DEPTH_TEST);
 		}
 
-
-
 	private:
 		Shader * shad;
 		static unsigned int quadVAO, quadVBO;
