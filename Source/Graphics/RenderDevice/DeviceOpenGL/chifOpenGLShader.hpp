@@ -8,88 +8,55 @@
  * Author: Lukas Rennhofer
  * Date: 2025-03-08
  *
- * File: chifOpenGLShader.hpp
+ * File: chifShader.hpp
  * Last Change: 
 */
 
-#pragma once
-
-#include <glad/glad.h>
-#include <glm/glm.hpp>
-#include <glm/gtc/type_ptr.hpp>
-
 #include <string>
-#include <fstream>
-#include <sstream>
-#include <iostream>
-#include <list>
+#include <vector>
 
-#include "../../../Core/Backlog/chifBacklog.h"
+#include <glm/glm.hpp>
+
+#include "chifOpenGLShadingTypes.hpp"
+
 namespace chif::Graphics::RenderDevice::OpenGL {
-    // =========== Base Shader ===========
-	struct shaderType
-	{
-		shaderType() : type(-1), name("") {}
-		shaderType(unsigned int type, std::string name) : type(type), name(name) {}
 
-		unsigned int type;
-		std::string name;
-	};
+    class Shader
+    {
+    public:
+        unsigned int ID;
+        std::string  Name;
 
-    // Standart Shader Functions
-	bool checkCompileErrors(unsigned int shader, const std::string &type, const std::string &shaderName);
-	std::string getShaderName(const char *shaderPath);
-	shaderType getShaderType(const char *path);
+        std::vector<Uniform>         Uniforms;
+        std::vector<VertexAttribute> Attributes;
 
-	class OpenGLBaseShader
-	{
-	public:
-	OpenGLBaseShader(const char *shaderPath);
-		virtual ~OpenGLBaseShader();
+    public:
+        Shader();
+        Shader(std::string name, std::string vsCode, std::string fsCode, std::vector<std::string> defines = std::vector<std::string>());
 
-		std::string getName()
-		{
-			return getShaderName(path.c_str());
-		}
+        void Load(std::string name, std::string vsCode, std::string fsCode, std::vector<std::string> defines = std::vector<std::string>());
 
-		shaderType getType();
-		unsigned int getShad();
+        void Use();
 
-	private:
-		std::string loadShaderFromFile(const char *shaderPath);
-		std::string path;
-		unsigned int shad;
-		shaderType shadType;
-	};
+        bool HasUniform(std::string name);
 
-    // =========== Shader ===========
-	class OpenGLShader
-	{
-	public:
-		OpenGLShader(std::string name);
-		OpenGLShader(std::string name, const char * computeShader);
-		OpenGLShader * attachShader(OpenGLBaseShader s);
+        void SetInt   (std::string location, int   value);
+        void SetBool  (std::string location, bool  value);
+        void SetFloat (std::string location, float value);
+        void SetVector(std::string location, glm::vec2  value);
+        void SetVector(std::string location, glm::vec3  value);
+        void SetVector(std::string location, glm::vec4  value);
+        void SetVectorArray(std::string location, int size, const std::vector<glm::vec2>& values);
+        void SetVectorArray(std::string location, int size, const std::vector<glm::vec3>& values);
+        void SetVectorArray(std::string location, int size, const std::vector<glm::vec4>& values);
+        void SetMatrix(std::string location, glm::mat2 value);
+        void SetMatrix(std::string location, glm::mat3 value);
+        void SetMatrix(std::string location, glm::mat4 value);
+        void SetMatrixArray(std::string location, int size, glm::mat2* values);
+        void SetMatrixArray(std::string location, int size, glm::mat3* values);
+        void SetMatrixArray(std::string location, int size, glm::mat4* values);
+    private:
+        int getUniformLocation(std::string name);
+    };
 
-		unsigned int ID;
-		
-		void linkPrograms();
-
-		virtual ~OpenGLShader();
-		void use();
-		void setBool(const std::string &name, bool value) const;
-		void setInt(const std::string &name, int value) const;
-		void setFloat(const std::string &name, float value) const;
-		void setVec2(const std::string &name, glm::vec2 vector) const;
-		void setVec3(const std::string &name, glm::vec3 vector) const;
-		void setVec4(const std::string &name, glm::vec4 vector) const;
-		void setMat4(const std::string &name, glm::mat4 matrix) const;
-		void setSampler2D(const std::string &name, unsigned int texture, int id) const;
-		void setSampler3D(const std::string &name, unsigned int texture, int id) const;
-
-	protected:
-
-		bool linked, isCompute; // Checking Variables
-		std::list<unsigned int> shaders;
-		std::string name;
-	};
 } // namespace chif::Graphics::RenderDevice::OpenGL

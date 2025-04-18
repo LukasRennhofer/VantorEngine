@@ -68,6 +68,11 @@ CHIFEngines Preprocessor Variables:
 #include "Graphics/chifWater.h"
 #include "Graphics/chifTerrain.h"
 #include "Graphics/chifTexture.h"
+// RENDERDEVICE: TODO: MOVE AWAY
+#include "Graphics/RenderDevice/DeviceOpenGL/chifOpenGLShader.hpp"
+#include "Graphics/RenderDevice/DeviceOpenGL/chifOpenGLShadingTypes.hpp"
+#include "Graphics/RenderDevice/DeviceOpenGL/chifOpenGLTexture.hpp"
+#include "Graphics/RenderDevice/DeviceOpenGL/chifOpenGLMaterial.hpp"
 
 // PLATFORM
 #include "Platform/chifWindow.h"

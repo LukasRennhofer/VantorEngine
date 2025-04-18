@@ -43,9 +43,11 @@ set(ENGINE_SOURCES
     Graphics/Renderer/chifScreenSpaceShader.cpp
     Graphics/chifTerrain.cpp
     Graphics/chifTexture.cpp
-    # TODO: Not Linking!!!
+    # graphics / render device: TODO: move away, because multi render
     Graphics/RenderDevice/DeviceOpenGL/chifOpenGLShader.cpp
     Graphics/RenderDevice/DeviceOpenGL/chifOpenGLTexture.cpp
+    Graphics/RenderDevice/DeviceOpenGL/chifOpenGLMaterial.cpp
+    
     # platform
     Platform/chifInput.cpp
     Platform/chifWindow.cpp
