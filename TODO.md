@@ -1,0 +1,21 @@
+# CHIFEngine Todo Stack
+
+- Resource Manager (see file loading examples from Cell and Nintendo Switch examples wittht romfs)
+- Render Target
+- New Shaders and better Resource System
+- MaterialLibrary
+- Abstraction Layer (Mesh, Shader, Material, usw.)
+- Update Reosurce Manager with Abstraction Layer
+- Geometry Figures
+- Scene
+- Renderer Header
+- PBR
+- Post Processor
+- Fly Camera
+- Renderer Cpp
+- Update Abstraction
+- Testing
+- Integration
+- Sandbox
+- FXAA ?
+- Old things get integrated 

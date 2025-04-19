@@ -36,6 +36,15 @@
 
 #include "../../SourceDevice/chifRHI.hpp"
 
+#include "chifOpenGLBuffer.hpp"
+#include "chifOpenGLChache.hpp"
+#include "chifOpenGLCommandBuffer.hpp"
+#include "chifOpenGLMaterial.hpp"
+#include "chifOpenGLShader.hpp"
+#include "chifOpenGLTexture.hpp"
+#include "chifOpenGLShadingTypes.hpp"
+#include "PBR/chifOpenGLPBR.hpp"
+
 namespace chif::Graphics::RenderDevice::OpenGL {
     // ======= OpenGL RHI ======
     class OpenGLRHI : public chif::Graphics::SourceDevice::RHI {

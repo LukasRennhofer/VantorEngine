@@ -31,22 +31,27 @@ set(ENGINE_SOURCES
     External/imgui/imgui.cpp
     External/stb_image_impl.cpp
     External/glad.c
-    # graphics
+    # Graphics
     Graphics/chifDrawableObject.cpp
     Graphics/chifCloudsModel.cpp
     Graphics/chifSkybox.cpp
     Graphics/chifVolumetricClouds.cpp
     Graphics/chifWater.cpp
+    Graphics/chifTerrain.cpp
+    Graphics/chifTexture.cpp
+    # Graphics / Camera
+    Graphics/Camera/chifCamera.cpp
+    # Renderer
     Graphics/Renderer/chifBuffers.cpp
     Graphics/Renderer/chifBaseShader.cpp
     Graphics/Renderer/chifShader.cpp
     Graphics/Renderer/chifScreenSpaceShader.cpp
-    Graphics/chifTerrain.cpp
-    Graphics/chifTexture.cpp
     # graphics / render device: TODO: move away, because multi render
     Graphics/RenderDevice/DeviceOpenGL/chifOpenGLShader.cpp
     Graphics/RenderDevice/DeviceOpenGL/chifOpenGLTexture.cpp
     Graphics/RenderDevice/DeviceOpenGL/chifOpenGLMaterial.cpp
+    Graphics/RenderDevice/DeviceOpenGL/chifOpenGLChache.cpp
+    Graphics/RenderDevice/DeviceOpenGL/chifOpenGLMesh.cpp
     
     # platform
     Platform/chifInput.cpp

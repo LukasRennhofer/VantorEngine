@@ -14,6 +14,7 @@
 
 #include "chifECS.h"
 
+// TODO: Move this away to Scene and delete Entity Folder
 namespace chif::Entity {
 
     // Registry implementation

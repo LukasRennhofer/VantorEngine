@@ -37,23 +37,24 @@ namespace chif::Graphics::RenderDevice {
     }
 
 
-    // TODO
     // ============= OPENGL ==============
-    // #include "DeviceOpenGL/chifDeviceOpenGL.hpp"
+    #if defined(CHIF_API_OPENGL)
+    #include "DeviceOpenGL/chifDeviceOpenGL.hpp"
 
-    // // Main Functions
-    // inline RenderAPI getCurrentRenderingAPI() {return RenderAPI::OpenGL;}
+    // Main Functions
+    inline RenderAPI getCurrentRenderingAPI() {return RenderAPI::OpenGL;}
+
     // inline void Init() {chif::Graphics::RenderDevice::OpenGL::Init();}
     // inline void Shutdown() {chif::Graphics::RenderDevice::OpenGL::Shutdown();}
     // inline void BeginFrame() {chif::Graphics::RenderDevice::OpenGL::BeginFrame();}
     // inline void EndFrame() {chif::Graphics::RenderDevice::OpenGL::EndFrame();}
     // RenderDevice Functions etc.
-    // TODO
 
-    // ============= VULKAN ==============
+    // ============= VULKAN: TODO (Later on) ==============
     // #elif defined(CHIF_API_VULKAN)
     //     #include "RenderDevice_Vulkan.hpp" // TODO
     //     inline RenderAPI getCurrentRenderingAPI() {return RenderAPI::Vulkan;}
+    #endif
 
 
 } // namespace chif::Graphics::RenderDevice

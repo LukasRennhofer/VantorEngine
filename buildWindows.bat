@@ -1,3 +1,3 @@
 cd build/Windows
-cmake ../../src/
+cmake -DPLATFORM="Windows" -G "Unix Makefiles" ../../Source/
 make
