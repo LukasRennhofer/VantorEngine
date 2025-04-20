@@ -17,8 +17,8 @@
 #include <glad/glad.h>
 #include <glm/glm.hpp>
 
-#include <string>
 #include <vector>
+#include <map>
 
 namespace chif::Graphics::RenderDevice::OpenGL {
 

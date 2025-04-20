@@ -17,9 +17,6 @@
 #include <glad/glad.h>
 #include <glm/glm.hpp>
 
-#include <string>
-#include <vector>
-
 #include "../chifOpenGLTexture.hpp"
 
 namespace chif::Graphics::RenderDevice::OpenGL {

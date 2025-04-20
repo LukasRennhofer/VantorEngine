@@ -12,8 +12,10 @@
  * Last Change: 
 */
 
-#include <string>
+#pragma once
+
 #include <vector>
+#include <string>
 
 #include <glm/glm.hpp>
 

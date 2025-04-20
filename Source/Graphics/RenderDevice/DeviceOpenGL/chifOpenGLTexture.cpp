@@ -20,8 +20,7 @@
 #include <glad/glad.h>
 #include <glm/glm.hpp>
 
-#include <string>
-#include <vector>
+#include <assert.h>
 
 namespace chif::Graphics::RenderDevice::OpenGL {
         // --------------------------------------------------------------------------------------------

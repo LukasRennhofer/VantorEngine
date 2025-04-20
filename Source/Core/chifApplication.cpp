@@ -14,7 +14,7 @@
 
 #include "chifApplication.hpp"
 #include "JobSystem/chifJobSystem.h"
-// #include "../Graphics/RenderDevice/chifRenderDevice.hpp"// Not Now!
+#include "../Graphics/RenderDevice/chifRenderDevice.hpp"
 
 namespace chif
 {
@@ -30,6 +30,9 @@ namespace chif
 
         // TODO: Initializing with chifInitializer
         chif::Platform::Input::Initialize();
+        chif::Backlog::Log("Application", "Using RenderDevice " + chif::Graphics::RenderDevice::apiToString(chif::Graphics::RenderDevice::RenderAPI::OpenGL), chif::Backlog::LogLevel::DEBUG);
+
+
 	}
 
     void Application::Run() {

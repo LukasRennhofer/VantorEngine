@@ -16,6 +16,9 @@
 
 #include "chifOpenGLMaterial.hpp"
 
+#include "chifOpenGLShader.hpp"
+#include "chifOpenGLTexture.hpp"
+
 namespace chif::Graphics::RenderDevice::OpenGL {
         // --------------------------------------------------------------------------------------------
         Material::Material()

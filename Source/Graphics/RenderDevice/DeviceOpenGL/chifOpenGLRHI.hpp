@@ -34,31 +34,30 @@
 
 #pragma once
 
-#include "../../SourceDevice/chifRHI.hpp"
-
-#include "chifOpenGLBuffer.hpp"
-#include "chifOpenGLChache.hpp"
-#include "chifOpenGLCommandBuffer.hpp"
-#include "chifOpenGLMaterial.hpp"
-#include "chifOpenGLShader.hpp"
-#include "chifOpenGLTexture.hpp"
-#include "chifOpenGLShadingTypes.hpp"
-#include "PBR/chifOpenGLPBR.hpp"
+#include <glad/glad.h>
+#include "../../../Core/BackLog/chifBacklog.h"
 
 namespace chif::Graphics::RenderDevice::OpenGL {
-    // ======= OpenGL RHI ======
-    class OpenGLRHI : public chif::Graphics::SourceDevice::RHI {
-    public:
-        ~OpenGLRHI() override;
-        // ====== Base Functions =====
-        bool Init() override {} // TODO
-        void Shutdown() override; // TODO
+ 
+    inline void Init() {
+        ::chif::Backlog::Log("OpenGLRHI", "Init of OpenGL Render Device", ::chif::Backlog::LogLevel::INFO);
+        // TODO: Load extensions (glad), setup state, etc.
+    }
 
-        void BeginFrame() override; // TODO
-        void EndFrame() override; // TODO
-        void Present() override; // TODO
+    inline void Shutdown() {
+        ::chif::Backlog::Log("OpenGLRHI", "Shutdown of OpenGL Render Device", ::chif::Backlog::LogLevel::INFO);
+        // TODO: ?
+    }
 
-        // ===== Render Implementation ====
-        // TODO: Using Shaders and Buffers
-    } 
-}// namespace chif::Graphics::RenderDevice::OpenGL
+    inline void BeginFrame() {
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    }
+
+    inline void EndFrame() {
+         // TODO: End Command Process and flush commands to GPU
+    }
+
+    inline void Present() {
+        // TODO: Call Swapchain to change buffers with context and render
+    }
+} // namespace chif::Graphics::RenderDevice::OpenGL

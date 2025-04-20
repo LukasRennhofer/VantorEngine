@@ -18,6 +18,7 @@ include_directories(External)
 
 # TODO: This is meant for building the Engine with OpenGL everytime, so if building for another API move this away
 add_definitions(-DCHIF_API_OPENGL)
+set(CHIF_API_OPENGL ON)
 
 # === Engine Library Sources ===
 set(ENGINE_SOURCES
@@ -46,16 +47,10 @@ set(ENGINE_SOURCES
     Graphics/Renderer/chifBaseShader.cpp
     Graphics/Renderer/chifShader.cpp
     Graphics/Renderer/chifScreenSpaceShader.cpp
-    # graphics / render device: TODO: move away, because multi render
-    Graphics/RenderDevice/DeviceOpenGL/chifOpenGLShader.cpp
-    Graphics/RenderDevice/DeviceOpenGL/chifOpenGLTexture.cpp
-    Graphics/RenderDevice/DeviceOpenGL/chifOpenGLMaterial.cpp
-    Graphics/RenderDevice/DeviceOpenGL/chifOpenGLChache.cpp
-    Graphics/RenderDevice/DeviceOpenGL/chifOpenGLMesh.cpp
-    
     # platform
     Platform/chifInput.cpp
     Platform/chifWindow.cpp
+    # TODO: Move away to destination folder
     Platform/Platforms/chifPlatformWindows.cpp
     Platform/Platforms/chifPlatformLinux.cpp
     Platform/Platforms/chifPlatformSwitch.cpp
@@ -75,6 +70,14 @@ set(ENGINE_SOURCES
     Utils/OpenGL/glError.cpp
 )
 
+set(RENDERDEVICE_OPENGL
+    Graphics/RenderDevice/DeviceOpenGL/chifOpenGLShader.cpp
+    Graphics/RenderDevice/DeviceOpenGL/chifOpenGLTexture.cpp
+    Graphics/RenderDevice/DeviceOpenGL/chifOpenGLMaterial.cpp
+    Graphics/RenderDevice/DeviceOpenGL/chifOpenGLChache.cpp
+    Graphics/RenderDevice/DeviceOpenGL/chifOpenGLMesh.cpp
+)
+
 # === Platform-Specific Dependencies ===
 if(PLATFORM STREQUAL "Windows")
     add_definitions(-D__WINDOWS__)  
@@ -82,7 +85,9 @@ if(PLATFORM STREQUAL "Windows")
     message(STATUS "Compiling for Windows")
 
     # === Create the Engine Library for Windows ===
-    add_library(CHIFEngineWindows STATIC ${ENGINE_SOURCES})
+    if (CHIF_API_OPENGL)
+        add_library(CHIFEngineWindows STATIC ${ENGINE_SOURCES} ${RENDERDEVICE_OPENGL})
+    endif()
     target_include_directories(CHIFEngineWindows PUBLIC src external)
 
     set(WINDOWS_LIBRARIES
@@ -119,7 +124,9 @@ elseif(PLATFORM STREQUAL "Linux")
     message(STATUS "Compiling for Linux")
 
     # === Create the Engine Library for Linux ===
-    add_library(CHIFEngineLinux STATIC ${ENGINE_SOURCES})
+    if (CHIF_API_OPENGL)
+        add_library(CHIFEngineLinux STATIC ${ENGINE_SOURCES} ${RENDERDEVICE_OPENGL})
+    endif()
     target_include_directories(CHIFEngineLinux PUBLIC src external)
 
     find_package(PkgConfig REQUIRED)
@@ -161,7 +168,9 @@ elseif(PLATFORM STREQUAL "Switch")
     message(STATUS "Compiling for Nintendo Switch (Homebrew)")
 
     # === Create the Engine Library for Linux ===
-    add_library(CHIFEngineSwitch STATIC ${ENGINE_SOURCES})
+    if (CHIF_API_OPENGL)
+        add_library(CHIFEngineSwitch STATIC ${ENGINE_SOURCES} ${RENDERDEVICE_OPENGL})
+    endif()
     target_include_directories(CHIFEngineSwitch PUBLIC src external)
 
     set(CMAKE_SYSTEM_NAME Switch)

@@ -14,17 +14,14 @@
 
 #include <glm/glm.hpp>
 
-#include <string>
-#include <vector>
-
 namespace chif::Graphics {
 
     // ======== CHIF Point Light Struct ========
     class PointLight
     {
     public:
-        math::vec3 Position   = math::vec3(0.0f);
-        math::vec3 Color      = math::vec3(1.0f);
+        glm::vec3 Position   = glm::vec3(0.0f);
+        glm::vec3 Color      = glm::vec3(1.0f);
         float      Intensity  = 1.0f;
         float      Radius     = 1.0f;
         bool       Visible    = true;

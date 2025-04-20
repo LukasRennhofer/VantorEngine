@@ -15,6 +15,7 @@
 #ifdef __WINDOWS__
 
 #include "chifPlatformWindows.hpp"
+#define NOMINMAX
 #include <Windows.h>
 #include <filesystem>
 

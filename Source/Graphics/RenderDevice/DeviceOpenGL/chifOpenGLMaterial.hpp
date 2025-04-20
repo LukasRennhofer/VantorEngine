@@ -14,15 +14,13 @@
 
 #pragma once
 
-#include "chifOpenGLShader.hpp"
 #include "chifOpenGLShadingTypes.hpp"
+#include "chifOpenGLShader.hpp"
 #include "chifOpenGLTexture.hpp"
 
 #include <glad/glad.h>
 #include <glm/glm.hpp>
 
-#include <string>
-#include <vector>
 #include <map>
 
 namespace chif::Graphics::RenderDevice::OpenGL {
@@ -39,7 +37,7 @@ namespace chif::Graphics::RenderDevice::OpenGL {
         // shader state
         Shader* m_Shader;
         std::map<std::string, UniformValue>        m_Uniforms;
-        std::map<std::string, UniformValueSampler> m_SamplerUniforms;
+        std::map<std::string, UniformValueSampler> m_SamplerUniforms; // NOTE(Joey): process samplers differently 
     public:
         MaterialType Type = MATERIAL_CUSTOM;
         glm::vec4 Color  = glm::vec4(1.0f);

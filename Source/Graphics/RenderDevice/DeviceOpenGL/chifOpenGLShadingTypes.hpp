@@ -17,8 +17,6 @@
 #include <string>
 #include <glm/glm.hpp>
 
-#include "../../../Helpers/chifMath.hpp"
-
 namespace chif::Graphics::RenderDevice::OpenGL {
 
     class Texture;

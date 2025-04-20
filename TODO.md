@@ -1,7 +1,9 @@
 # CHIFEngine Todo Stack
 
+- Abstraction Layer (Mesh, Shader, Material, usw.)
 - Resource Manager (see file loading examples from Cell and Nintendo Switch examples wittht romfs)
 - Render Target
+- proper CMake Architecture Setup
 - New Shaders and better Resource System
 - MaterialLibrary
 - Abstraction Layer (Mesh, Shader, Material, usw.)

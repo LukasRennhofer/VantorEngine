@@ -54,7 +54,7 @@ CHIFEngines Preprocessor Variables:
 #include "Core/Debug/chifInlineDebugger.h"
 
 // ENTITY
-#include "Entity/chifECS.h"
+// #include "Entity/chifECS.h"
 
 // GRAPHICS
 #include "Graphics/Renderer/chifBaseShader.h"
@@ -69,11 +69,7 @@ CHIFEngines Preprocessor Variables:
 #include "Graphics/chifTerrain.h"
 #include "Graphics/chifTexture.h"
 // RENDERDEVICE: TODO: MOVE AWAY
-#include "Graphics/RenderDevice/DeviceOpenGL/chifOpenGLShader.hpp"
-#include "Graphics/RenderDevice/DeviceOpenGL/chifOpenGLShadingTypes.hpp"
-#include "Graphics/RenderDevice/DeviceOpenGL/chifOpenGLTexture.hpp"
-#include "Graphics/RenderDevice/DeviceOpenGL/chifOpenGLMaterial.hpp"
-
+#include "Graphics/RenderDevice/chifRenderDevice.hpp"
 // PLATFORM
 #include "Platform/chifWindow.h"
 #include "Platform/chifInput.hpp"
