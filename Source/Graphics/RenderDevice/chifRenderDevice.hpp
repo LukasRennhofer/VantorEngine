@@ -16,27 +16,7 @@
 
 #include <memory>
 
-namespace chif::Graphics::RenderDevice {
-
-    // Used for switching between and identifying different APIs
-    enum RenderAPI {
-        OpenGL,
-        // Vulkan, // TODO
-        // DirectX, // TODO
-        None
-    };
-
-    inline std::string apiToString(RenderAPI api) {
-        switch (api) {
-            case RenderAPI::OpenGL: return "OpenGL";
-            // case RenderAPI::Vulkan: return "Vulkan"; // TODO
-            // case RenderAPI::DirectX: return "DirectX"; // TODO
-            case RenderAPI::None: default: return "None";
-        }
-    }
-
-    // ============= OPENGL ==============
-    #if defined(CHIF_API_OPENGL)
+#if defined(CHIF_API_OPENGL)
     #include "DeviceOpenGL/chifOpenGLRHI.hpp"               // Core RHI
     // #include "DeviceOpenGL/chifOpenGLCommandBuffer.hpp"     // Command Buffer: TODO: CPP FILE
     #include "DeviceOpenGL/chifOpenGLShader.hpp"              // Mesh (depends on Material)
@@ -44,9 +24,31 @@ namespace chif::Graphics::RenderDevice {
     #include "DeviceOpenGL/PBR/chifOpenGLPBR.hpp"           // PBR (depends on Material and Shader)
     #include "DeviceOpenGL/chifOpenGLChache.hpp"            // Cache (depends on multiple components)
     #include "DeviceOpenGL/chifOpenGLMaterial.hpp"
+#endif
 
+namespace chif::Graphics::RenderDevice {
+
+    // Used for switching between and identifying different APIs
+    enum RenderAPI {
+        OPENGL,
+        // Vulkan, // TODO
+        // DirectX, // TODO
+        NONE
+    };
+
+    inline std::string apiToString(RenderAPI api) {
+        switch (api) {
+            case RenderAPI::OPENGL: return "OpenGL";
+            // case RenderAPI::Vulkan: return "Vulkan"; // TODO
+            // case RenderAPI::DirectX: return "DirectX"; // TODO
+            case RenderAPI::NONE: default: return "None";
+        }
+    }
+
+    // ============= OPENGL ==============
+    #if defined(CHIF_API_OPENGL)
     // // Main Functions
-    inline RenderAPI getCurrentRenderingAPI() {return RenderAPI::OpenGL;}
+    inline RenderAPI getCurrentRenderingAPI() {return RenderAPI::OPENGL;}
 
     // Main Abstraction Functions
     inline void Init() {chif::Graphics::RenderDevice::OpenGL::Init();}
@@ -58,14 +60,8 @@ namespace chif::Graphics::RenderDevice {
     using Shader = chif::Graphics::RenderDevice::OpenGL::Shader;
     using Mesh = chif::Graphics::RenderDevice::OpenGL::Mesh;
     using Texture = chif::Graphics::RenderDevice::OpenGL::Texture;
-    // using Material = chif::Graphics::RenderDevice::OpenGL::Material;
-
-    // RenderDevice Functions etc.
-
-    // ============= VULKAN: TODO (Later on) ==============
-    // #elif defined(CHIF_API_VULKAN)
-    //     #include "RenderDevice_Vulkan.hpp" // TODO
-    //     inline RenderAPI getCurrentRenderingAPI() {return RenderAPI::Vulkan;}
+    using Material = chif::Graphics::RenderDevice::OpenGL::Material;
+    
     #endif
 
 

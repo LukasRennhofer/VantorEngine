@@ -30,8 +30,7 @@ namespace chif
 
         // TODO: Initializing with chifInitializer
         chif::Platform::Input::Initialize();
-        chif::Backlog::Log("Application", "Using RenderDevice " + chif::Graphics::RenderDevice::apiToString(chif::Graphics::RenderDevice::RenderAPI::OpenGL), chif::Backlog::LogLevel::DEBUG);
-
+        chif::Backlog::Log("Application", "Using RenderDevice " + chif::Graphics::RenderDevice::apiToString(chif::Graphics::RenderDevice::RenderAPI::OPENGL), chif::Backlog::LogLevel::DEBUG);
 
 	}
 

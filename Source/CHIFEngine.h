@@ -49,6 +49,7 @@ CHIFEngines Preprocessor Variables:
 // CORE
 #include "Core/chifApplication.hpp"
 #include "Core/chifVersion.h"
+#include "Core/ResourceManager/chifResourceManager.hpp"
 #include "Core/JobSystem/chifJobSystem.h"
 #include "Core/Backlog/chifBacklog.h"
 #include "Core/Debug/chifInlineDebugger.h"

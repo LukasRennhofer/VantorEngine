@@ -58,7 +58,7 @@ set(ENGINE_SOURCES
     GUI/chifImgui.cpp
     # Core
     Core/chifApplication.cpp
-    Core/chifVersion.cpp
+    Core/ResourceManager/chifResourceManager.cpp
     Core/JobSystem/chifJobSystem.cpp 
     Core/Backlog/chifBacklog.cpp
     Core/Debug/chifInlineDebugger.cpp
