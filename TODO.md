@@ -1,12 +1,9 @@
 # CHIFEngine Todo Stack
 
-- Resource Manager (see file loading examples from Cell and Nintendo Switch examples wittht romfs)
-- Render Target
-- proper CMake Architecture Setup
+- Resource Manager Texture Support : TODO
+- proper CMake Architecture Setup (🟩)
 - New Shaders and better Resource System
 - MaterialLibrary
-- Abstraction Layer (Mesh, Shader, Material, usw.)
-- Update Reosurce Manager with Abstraction Layer
 - Geometry Figures
 - Scene
 - Renderer Header
