@@ -1,5 +1,6 @@
 # CHIFEngine Todo Stack
 
+- Getting the temporary docs and todos moved to notion
 - Resource Manager Texture Support : TODO
 - proper CMake Architecture Setup (🟩)
 - New Shaders and better Resource System
@@ -8,12 +9,17 @@
 - Scene
 - Renderer Header
 - PBR
-- Post Processor
-- Fly Camera
+- Post Processor, Fly Camera
 - Renderer Cpp
 - Update Abstraction
-- Testing
+- Testing 
 - Integration
 - Sandbox
 - FXAA ?
-- Old things get integrated 
+- Old things get integrated
+- Platform Switch Setup
+- Build Dev tool
+- Setting API Standart
+- Writing base docs
+- Benchmarks
+- Improve Scene System
