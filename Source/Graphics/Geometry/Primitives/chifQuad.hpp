@@ -8,7 +8,7 @@
 * Author: Lukas Rennhofer
 * Date: 25.04.2025
 *
-* File: chifSphere.hpp
+* File: chifQuad.hpp
 * Last Change:
 */
 

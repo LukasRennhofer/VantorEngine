@@ -1,11 +1,11 @@
 # CHIFEngine Todo Stack
 
+- Geometry Figures
 - Getting the temporary docs and todos moved to notion
 - Resource Manager Texture Support : TODO
 - proper CMake Architecture Setup (🟩)
 - New Shaders and better Resource System
 - MaterialLibrary
-- Geometry Figures
 - Scene
 - Renderer Header
 - PBR
