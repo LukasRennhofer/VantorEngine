@@ -19,6 +19,8 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/constants.hpp> // for glm::two_pi
 
+#include <cmath>
+
 namespace chif::Graphics::Geometry::Primitives {
     class Circle : public chif::Graphics::RenderDevice::Mesh
     {

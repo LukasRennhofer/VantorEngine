@@ -23,3 +23,5 @@
 - Writing base docs
 - Benchmarks
 - Improve Scene System
+- Contributing Rules and glow up (Modules like CGFX)
+- init of chiflib (e.g. chif_base_lib vector)
