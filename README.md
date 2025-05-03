@@ -1,9 +1,6 @@
 <a id="readme-top"></a>
 
 <!-- Standard Project Badges -->
-[![Contributors](https://img.shields.io/github/contributors/LukasRennhofer/Vantor.svg?style=for-the-badge)](https://github.com/LukasRennhofer/Vantor/graphs/contributors)
-[![Forks](https://img.shields.io/github/forks/LukasRennhofer/Vantor.svg?style=for-the-badge)](https://github.com/LukasRennhofer/Vantor/network/members)
-[![Stargazers](https://img.shields.io/github/stars/LukasRennhofer/Vantor.svg?style=for-the-badge)](https://github.com/LukasRennhofer/Vantor/stargazers)
 [![Issues](https://img.shields.io/github/issues/LukasRennhofer/Vantor.svg?style=for-the-badge)](https://github.com/LukasRennhofer/Vantor/issues)
 [![License](https://img.shields.io/github/license/LukasRennhofer/Vantor.svg?style=for-the-badge)](https://github.com/LukasRennhofer/Vantor/blob/main/LICENSE)
 
