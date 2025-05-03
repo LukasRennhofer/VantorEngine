@@ -1,10 +1,10 @@
 # - CMakeLists Build File written by Lukas Rennhofer @2025 Licensed under MIT  -
-# ! This file is currently only for the CHIFEngine´s libraries!
+# ! This file is currently only for the Vantor´s libraries!
 
 cmake_minimum_required(VERSION 3.10)
 
 # Project name
-project(CHIFEngine)
+project(Vantor)
 
 # Set C++ standard
 set(CMAKE_CXX_STANDARD 20)
@@ -17,8 +17,8 @@ add_compile_options(-w)
 include_directories(External)
 
 # TODO: This is meant for building the Engine with OpenGL everytime, so if building for another API move this away
-add_definitions(-DCHIF_API_OPENGL)
-set(CHIF_API_OPENGL ON)
+add_definitions(-DVANTOR_API_OPENGL)
+set(VANTOR_API_OPENGL ON)
 
 # === Engine Library Sources ===
 set(ENGINE_SOURCES
@@ -33,37 +33,37 @@ set(ENGINE_SOURCES
     External/stb_image_impl.cpp
     External/glad.c
     # Graphics
-    Graphics/chifDrawableObject.cpp
-    Graphics/chifCloudsModel.cpp
-    Graphics/chifSkybox.cpp
-    Graphics/chifVolumetricClouds.cpp
-    Graphics/chifWater.cpp
-    Graphics/chifTerrain.cpp
-    Graphics/chifTexture.cpp
+    Graphics/vantorDrawableObject.cpp
+    Graphics/vantorCloudsModel.cpp
+    Graphics/vantorSkybox.cpp
+    Graphics/vantorVolumetricClouds.cpp
+    Graphics/vantorWater.cpp
+    Graphics/vantorTerrain.cpp
+    Graphics/vantorTexture.cpp
     # Graphics / Camera
-    Graphics/Camera/chifCamera.cpp
+    Graphics/Camera/vantorCamera.cpp
     # Renderer
-    Graphics/Renderer/chifBuffers.cpp
-    Graphics/Renderer/chifBaseShader.cpp
-    Graphics/Renderer/chifShader.cpp
-    Graphics/Renderer/chifScreenSpaceShader.cpp
+    Graphics/Renderer/vantorBuffers.cpp
+    Graphics/Renderer/vantorBaseShader.cpp
+    Graphics/Renderer/vantorShader.cpp
+    Graphics/Renderer/vantorScreenSpaceShader.cpp
     # platform
-    Platform/chifInput.cpp
-    Platform/chifWindow.cpp
+    Platform/vantorInput.cpp
+    Platform/vantorWindow.cpp
     # TODO: Move away to destination folder
-    Platform/Platforms/chifPlatformWindows.cpp
-    Platform/Platforms/chifPlatformLinux.cpp
-    Platform/Platforms/chifPlatformSwitch.cpp
+    Platform/Platforms/vantorPlatformWindows.cpp
+    Platform/Platforms/vantorPlatformLinux.cpp
+    Platform/Platforms/vantorPlatformSwitch.cpp
     # GUI
-    GUI/chifImgui.cpp
+    GUI/vantorImgui.cpp
     # Core
-    Core/chifApplication.cpp
-    Core/ResourceManager/chifResourceManager.cpp
-    Core/JobSystem/chifJobSystem.cpp 
-    Core/Backlog/chifBacklog.cpp
-    Core/Debug/chifInlineDebugger.cpp
+    Core/vantorApplication.cpp
+    Core/ResourceManager/vantorResourceManager.cpp
+    Core/JobSystem/vantorJobSystem.cpp 
+    Core/Backlog/vantorBacklog.cpp
+    Core/Debug/vantorInlineDebugger.cpp
     # Entity
-    Entity/chifECS.cpp
+    Entity/vantorECS.cpp
     # Utils
     Utils/utils.cpp
     Utils/sdl2Utils.cpp
@@ -71,11 +71,11 @@ set(ENGINE_SOURCES
 )
 
 set(RENDERDEVICE_OPENGL
-    Graphics/RenderDevice/DeviceOpenGL/chifOpenGLShader.cpp
-    Graphics/RenderDevice/DeviceOpenGL/chifOpenGLTexture.cpp
-    Graphics/RenderDevice/DeviceOpenGL/chifOpenGLMaterial.cpp
-    Graphics/RenderDevice/DeviceOpenGL/chifOpenGLChache.cpp
-    Graphics/RenderDevice/DeviceOpenGL/chifOpenGLMesh.cpp
+    Graphics/RenderDevice/DeviceOpenGL/vantorOpenGLShader.cpp
+    Graphics/RenderDevice/DeviceOpenGL/vantorOpenGLTexture.cpp
+    Graphics/RenderDevice/DeviceOpenGL/vantorOpenGLMaterial.cpp
+    Graphics/RenderDevice/DeviceOpenGL/vantorOpenGLChache.cpp
+    Graphics/RenderDevice/DeviceOpenGL/vantorOpenGLMesh.cpp
 )
 
 # === Platform-Specific Dependencies ===
@@ -85,10 +85,10 @@ if(PLATFORM STREQUAL "Windows")
     message(STATUS "Compiling for Windows")
 
     # === Create the Engine Library for Windows ===
-    if (CHIF_API_OPENGL)
-        add_library(CHIFEngineWindows STATIC ${ENGINE_SOURCES} ${RENDERDEVICE_OPENGL})
+    if (VANTOR_API_OPENGL)
+        add_library(VantorWindows STATIC ${ENGINE_SOURCES} ${RENDERDEVICE_OPENGL})
     endif()
-    target_include_directories(CHIFEngineWindows PUBLIC src external)
+    target_include_directories(VantorWindows PUBLIC src external)
 
     set(WINDOWS_LIBRARIES
         mingw32
@@ -110,24 +110,24 @@ if(PLATFORM STREQUAL "Windows")
     find_package(SDL2 REQUIRED)
     include_directories(${SDL2_INCLUDE_DIRS})
 
-    target_link_libraries(CHIFEngineWindows ${WINDOWS_LIBRARIES} ${SDL2_LIBRARIES})
+    target_link_libraries(VantorWindows ${WINDOWS_LIBRARIES} ${SDL2_LIBRARIES})
 
     # Setting up Libarie
-    install(TARGETS CHIFEngineWindows DESTINATION lib)
+    install(TARGETS VantorWindows DESTINATION lib)
     # install(DIRECTORY src/ DESTINATION include FILES_MATCHING PATTERN "*.h")
 
     # Handle Warnings
-    target_compile_options(CHIFEngineWindows PRIVATE -Wall -Wextra)
+    target_compile_options(VantorWindows PRIVATE -Wall -Wextra)
 
 elseif(PLATFORM STREQUAL "Linux")
     add_definitions(-D__LINUX__)
     message(STATUS "Compiling for Linux")
 
     # === Create the Engine Library for Linux ===
-    if (CHIF_API_OPENGL)
-        add_library(CHIFEngineLinux STATIC ${ENGINE_SOURCES} ${RENDERDEVICE_OPENGL})
+    if (VANTOR_API_OPENGL)
+        add_library(VantorLinux STATIC ${ENGINE_SOURCES} ${RENDERDEVICE_OPENGL})
     endif()
-    target_include_directories(CHIFEngineLinux PUBLIC src external)
+    target_include_directories(VantorLinux PUBLIC src external)
 
     find_package(PkgConfig REQUIRED)
     pkg_check_modules(OpenGL REQUIRED gl)
@@ -154,24 +154,24 @@ elseif(PLATFORM STREQUAL "Linux")
     find_package(SDL2 REQUIRED)
     include_directories(${SDL2_INCLUDE_DIRS})
 
-    target_link_libraries(CHIFEngineLinux ${LINUX_LIBRARIES} ${SDL2_LIBRARIES})
+    target_link_libraries(VantorLinux ${LINUX_LIBRARIES} ${SDL2_LIBRARIES})
 
     # Setting up Libarie
-    install(TARGETS CHIFEngineLinux DESTINATION lib)
+    install(TARGETS VantorLinux DESTINATION lib)
     # install(DIRECTORY src/ DESTINATION include FILES_MATCHING PATTERN "*.h")
 
     # Handle Warnings
-    target_compile_options(CHIFEngineLinux PRIVATE -Wall -Wextra)
+    target_compile_options(VantorLinux PRIVATE -Wall -Wextra)
 
 elseif(PLATFORM STREQUAL "Switch")
     add_definitions(-D__SWITCH__)
     message(STATUS "Compiling for Nintendo Switch (Homebrew)")
 
     # === Create the Engine Library for Linux ===
-    if (CHIF_API_OPENGL)
-        add_library(CHIFEngineSwitch STATIC ${ENGINE_SOURCES} ${RENDERDEVICE_OPENGL})
+    if (VANTOR_API_OPENGL)
+        add_library(VantorSwitch STATIC ${ENGINE_SOURCES} ${RENDERDEVICE_OPENGL})
     endif()
-    target_include_directories(CHIFEngineSwitch PUBLIC src external)
+    target_include_directories(VantorSwitch PUBLIC src external)
 
     set(CMAKE_SYSTEM_NAME Switch)
     set(CMAKE_SYSTEM_PROCESSOR aarch64)
@@ -217,14 +217,14 @@ elseif(PLATFORM STREQUAL "Switch")
     -lSDL2          # SDL2 for Switch
         ${SDL2_INCLUDE_DIRS}
     )
-    target_link_libraries(CHIFEngineSwitch ${SWITCH_LIBRARIES})
+    target_link_libraries(VantorSwitch ${SWITCH_LIBRARIES})
 
     # Setting up Libarie
-    install(TARGETS CHIFEngineSwitch DESTINATION lib)
+    install(TARGETS VantorSwitch DESTINATION lib)
     # install(DIRECTORY src/ DESTINATION include FILES_MATCHING PATTERN "*.h")
 
     # Handle Warnings
-    target_compile_options(CHIFEngineSwitch PRIVATE -Wall -Wextra)
+    target_compile_options(VantorSwitch PRIVATE -Wall -Wextra)
 else()
     message(FATAL_ERROR "Unknown or unsupported platform: ${PLATFORM}")
 endif()

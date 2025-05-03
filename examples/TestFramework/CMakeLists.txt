@@ -1,5 +1,5 @@
 # - CMakeLists Build File written by Lukas Rennhofer @2025 Licensed under MIT  -
-# ! This file is currently only for the CHIFEngine´s TestFramework.cpp file Compilation !
+# ! This file is currently only for the Vantor´s TestFramework.cpp file Compilation !
 
 cmake_minimum_required(VERSION 3.10)
 
@@ -29,33 +29,33 @@ set(ENGINE_SOURCES
     ../../Source/External/stb_image_impl.cpp
     ../../Source/External/glad.c
     # graphics
-    ../../Source/Graphics/chifDrawableObject.cpp
-    ../../Source/Graphics/chifCloudsModel.cpp
-    ../../Source/Graphics/chifSkybox.cpp
-    ../../Source/Graphics/chifVolumetricClouds.cpp
-    ../../Source/Graphics/chifWater.cpp
-    ../../Source/Graphics/Renderer/chifBuffers.cpp
-    ../../Source/Graphics/Renderer/chifBaseShader.cpp
-    ../../Source/Graphics/Renderer/chifShader.cpp
-    ../../Source/Graphics/Renderer/chifScreenSpaceShader.cpp
-    ../../Source/Graphics/chifTerrain.cpp
-    ../../Source/Graphics/chifTexture.cpp
+    ../../Source/Graphics/vantorDrawableObject.cpp
+    ../../Source/Graphics/vantorCloudsModel.cpp
+    ../../Source/Graphics/vantorSkybox.cpp
+    ../../Source/Graphics/vantorVolumetricClouds.cpp
+    ../../Source/Graphics/vantorWater.cpp
+    ../../Source/Graphics/Renderer/vantorBuffers.cpp
+    ../../Source/Graphics/Renderer/vantorBaseShader.cpp
+    ../../Source/Graphics/Renderer/vantorShader.cpp
+    ../../Source/Graphics/Renderer/vantorScreenSpaceShader.cpp
+    ../../Source/Graphics/vantorTerrain.cpp
+    ../../Source/Graphics/vantorTexture.cpp
     # platform
-    ../../Source/Platform/chifInput.cpp
-    ../../Source/Platform/chifWindow.cpp
-    ../../Source/Platform/Platforms/chifPlatformWindows.cpp
-    ../../Source/Platform/Platforms/chifPlatformLinux.cpp
-    ../../Source/Platform/Platforms/chifPlatformSwitch.cpp
+    ../../Source/Platform/vantorInput.cpp
+    ../../Source/Platform/vantorWindow.cpp
+    ../../Source/Platform/Platforms/vantorPlatformWindows.cpp
+    ../../Source/Platform/Platforms/vantorPlatformLinux.cpp
+    ../../Source/Platform/Platforms/vantorPlatformSwitch.cpp
     # GUI
-    ../../Source/GUI/chifImgui.cpp
+    ../../Source/GUI/vantorImgui.cpp
     # Core
-    ../../Source/Core/chifApplication.cpp
-    ../../Source/Core/chifVersion.cpp
-    ../../Source/Core/JobSystem/chifJobSystem.cpp 
-    ../../Source/Core/Backlog/chifBacklog.cpp
-    ../../Source/Core/Debug/chifInlineDebugger.cpp
+    ../../Source/Core/vantorApplication.cpp
+    ../../Source/Core/vantorVersion.cpp
+    ../../Source/Core/JobSystem/vantorJobSystem.cpp 
+    ../../Source/Core/Backlog/vantorBacklog.cpp
+    ../../Source/Core/Debug/vantorInlineDebugger.cpp
     # Entity
-    ../../Source/Entity/chifECS.cpp
+    ../../Source/Entity/vantorECS.cpp
     # Utils
     ../../Source/Utils/utils.cpp
     ../../Source/Utils/sdl2Utils.cpp
@@ -73,8 +73,8 @@ if(PLATFORM STREQUAL "Windows")
     message(STATUS "Compiling for Windows")
 
     # === Create the Engine Library for Windows ===
-    add_library(CHIFEngineWindows STATIC ${ENGINE_SOURCES})
-    target_include_directories(CHIFEngineWindows PUBLIC Source external)
+    add_library(VantorWindows STATIC ${ENGINE_SOURCES})
+    target_include_directories(VantorWindows PUBLIC Source external)
 
     set(WINDOWS_LIBRARIES
         mingw32
@@ -96,16 +96,16 @@ if(PLATFORM STREQUAL "Windows")
     find_package(SDL2 REQUIRED)
     include_directories(${SDL2_INCLUDE_DIRS})
 
-    target_link_libraries(CHIFEngineWindows ${WINDOWS_LIBRARIES} ${SDL2_LIBRARIES})
+    target_link_libraries(VantorWindows ${WINDOWS_LIBRARIES} ${SDL2_LIBRARIES})
 
     # Setting up Libarie
-    install(TARGETS CHIFEngineWindows DESTINATION lib)
+    install(TARGETS VantorWindows DESTINATION lib)
     # install(DIRECTORY Source/ DESTINATION include FILES_MATCHING PATTERN "*.h")
 
     # === Create the Executable ===
     add_executable(TestFramework ${APP_SOURCES})
     # Link the engine library to the executable
-    target_link_libraries(TestFramework CHIFEngineWindows)
+    target_link_libraries(TestFramework VantorWindows)
     # Optional: Compiler warnings for the main executable
     target_compile_options(TestFramework PRIVATE -Wall -Wextra)
 
@@ -114,8 +114,8 @@ elseif(PLATFORM STREQUAL "Linux")
     message(STATUS "Compiling for Linux")
 
     # === Create the Engine Library for Linux ===
-    add_library(CHIFEngineLinux STATIC ${ENGINE_SOURCES})
-    target_include_directories(CHIFEngineLinux PUBLIC Source external)
+    add_library(VantorLinux STATIC ${ENGINE_SOURCES})
+    target_include_directories(VantorLinux PUBLIC Source external)
 
     find_package(PkgConfig REQUIRED)
     pkg_check_modules(OpenGL REQUIRED gl)
@@ -142,16 +142,16 @@ elseif(PLATFORM STREQUAL "Linux")
     find_package(SDL2 REQUIRED)
     include_directories(${SDL2_INCLUDE_DIRS})
 
-    target_link_libraries(CHIFEngineLinux ${LINUX_LIBRARIES} ${SDL2_LIBRARIES})
+    target_link_libraries(VantorLinux ${LINUX_LIBRARIES} ${SDL2_LIBRARIES})
 
     # Setting up Libarie
-    install(TARGETS CHIFEngineLinux DESTINATION lib)
+    install(TARGETS VantorLinux DESTINATION lib)
     # install(DIRECTORY Source/ DESTINATION include FILES_MATCHING PATTERN "*.h")
 
     # === Create the Executable ===
     add_executable(TestFramework ${APP_SOURCES})
     # Link the engine library to the executable
-    target_link_libraries(TestFramework CHIFEngineLinux)
+    target_link_libraries(TestFramework VantorLinux)
     # Optional: Compiler warnings for the main executable
     target_compile_options(TestFramework PRIVATE -Wall -Wextra)
 
@@ -160,8 +160,8 @@ elseif(PLATFORM STREQUAL "Switch")
     message(STATUS "Compiling for Nintendo Switch (Homebrew)")
 
     # === Create the Engine Library for Linux ===
-    add_library(CHIFEngineSwitch STATIC ${ENGINE_SOURCES})
-    target_include_directories(CHIFEngineSwitch PUBLIC Source external)
+    add_library(VantorSwitch STATIC ${ENGINE_SOURCES})
+    target_include_directories(VantorSwitch PUBLIC Source external)
 
     set(CMAKE_SYSTEM_NAME Switch)
     set(CMAKE_SYSTEM_PROCESSOR aarch64)
@@ -207,16 +207,16 @@ elseif(PLATFORM STREQUAL "Switch")
     -lSDL2          # SDL2 for Switch
         ${SDL2_INCLUDE_DIRS}
     )
-    target_link_libraries(CHIFEngineSwitch ${SWITCH_LIBRARIES})
+    target_link_libraries(VantorSwitch ${SWITCH_LIBRARIES})
 
     # Setting up Libarie
-    install(TARGETS CHIFEngineSwitch DESTINATION lib)
+    install(TARGETS VantorSwitch DESTINATION lib)
     # install(DIRECTORY Source/ DESTINATION include FILES_MATCHING PATTERN "*.h")
 
     # === Create the Executable ===
     add_executable(TestFramework ${APP_SOURCES})
     # Link the engine library to the executable
-    target_link_libraries(TestFramework CHIFEngineSwitch)
+    target_link_libraries(TestFramework VantorSwitch)
     # Optional: Compiler warnings for the main executable
     target_compile_options(TestFramework PRIVATE -Wall -Wextra)
 else()

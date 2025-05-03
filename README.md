@@ -1,56 +1,99 @@
-<p align="center">
-  <a href="https://voronoid.tech/">
-    <img src="https://raw.githubusercontent.com/LukasRennhofer/CHIFEngine/refs/heads/main/config/assets/CHIFEngine_Logo_2_wbg.png" width="200" alt="CHIFEngine logo">
+<a id="readme-top"></a>
+
+<!-- Standard Project Badges -->
+[![Contributors](https://img.shields.io/github/contributors/LukasRennhofer/Vantor.svg?style=for-the-badge)](https://github.com/LukasRennhofer/Vantor/graphs/contributors)
+[![Forks](https://img.shields.io/github/forks/LukasRennhofer/Vantor.svg?style=for-the-badge)](https://github.com/LukasRennhofer/Vantor/network/members)
+[![Stargazers](https://img.shields.io/github/stars/LukasRennhofer/Vantor.svg?style=for-the-badge)](https://github.com/LukasRennhofer/Vantor/stargazers)
+[![Issues](https://img.shields.io/github/issues/LukasRennhofer/Vantor.svg?style=for-the-badge)](https://github.com/LukasRennhofer/Vantor/issues)
+[![License](https://img.shields.io/github/license/LukasRennhofer/Vantor.svg?style=for-the-badge)](https://github.com/LukasRennhofer/Vantor/blob/main/LICENSE)
+
+<!-- Extra Badges for Features -->
+[![Build Status](https://img.shields.io/github/actions/workflow/status/LukasRennhofer/Vantor/build.yml?branch=main&style=for-the-badge)](https://github.com/LukasRennhofer/Vantor/actions)
+[![Code Quality](https://img.shields.io/codefactor/grade/github/LukasRennhofer/Vantor?style=for-the-badge)](https://www.codefactor.io/repository/github/LukasRennhofer/Vantor)
+[![Last Commit](https://img.shields.io/github/last-commit/LukasRennhofer/Vantor?style=for-the-badge)](https://github.com/LukasRennhofer/Vantor/commits)
+
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+  <a href="https://github.com/LukasRennhofer/Vantor">
+    <img src="config/assets/VantorLogo_main_wbg.png" alt="Logo" width="80" height="80">
   </a>
-</p>
-<p align="center">
-<img src="https://raw.githubusercontent.com/LukasRennhofer/CHIFEngine/refs/heads/main/config/assets/gif1.gif" alt="GIF Show Background" style="">
-</p>
+
+<h3 align="center">Vantor</h3>
+
+  <p align="center">
+    The Cross-Platform Game and Rendering Engine
+    <br />
+    <a href="https://github.com/LukasRennhofer/Vantor"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+    <a href="https://vantor.netlify.app/">View Website</a>
+    &middot;
+    <a href="https://github.com/LukasRennhofer/Vantor/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
+    &middot;
+    <a href="https://github.com/LukasRennhofer/Vantor/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
+  </p>
+</div>
+
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#acknowledgments">Acknowledgments</a></li>
+  </ol>
+</details>
+
+<!-- ABOUT THE PROJECT -->
+## About The Project
 
 <p align="center">
-  <img alt="GitHub Release" src="https://img.shields.io/github/v/release/LukasRennhofer/CHIFEngine">
-  <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/LukasRennhofer/CHIFEngine">
-  <img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/t/LukasRennhofer/CHIFEngine">
-  <img alt="GitHub contributors" src="https://img.shields.io/github/contributors/LukasRennhofer/CHIFEngine">
-  <img alt="GitHub Downloads (all assets, all releases)" src="https://img.shields.io/github/downloads/LukasRennhofer/CHIFEngine/total">
-  
+<img src="https://raw.githubusercontent.com/LukasRennhofer/Vantor/refs/heads/main/config/assets/gif1.gif" alt="GIF Show Background" style="">
 </p>
 
-<br>
-
-<p align="center">
-  <img alt="GitHub Sponsors" src="https://img.shields.io/github/sponsors/LukasRennhofer">
-  <img alt="GitHub Issues or Pull Requests" src="https://img.shields.io/github/issues/LukasRennhofer/CHIFEngine">
-  <img alt="Website" src="https://img.shields.io/website?url=https%3A%2F%2Fvoronoid.tech%2F">
-</p>
-
----
-
-## About CHIFEngine
-
-[CHIFEngine](https://github.com/LukasRennhofer/CHIFEngine) is a low-level, high-performance game engine designed for **large-scale Open-World games** and is a code-focused development SDK and Framework. Built from the ground up with **OpenGL** and custom rendering techniques, it provides fine-grained control over every aspect of game development while maintaining **maximum efficiency**. Unlike high-level game engines, the engine is designed to be **lightweight**, **modular**, and **fully extensible**, allowing developers to directly manipulate rendering, physics, and resource management.
-
----
-
-## Why CHIFEngine?
-> ***C***ross-Platform ***H***igh-Performance ***I***nterface ***F***ramework Engine
-- **Free and Open Source**: CHIFEngine is licensed under the MIT License, allowing complete freedom with no royalties or hidden fees, just the same License.
-- **Hobby Project for Open-World Game**: As a hobby project, **CHIFEngine** was created with a passion for building a custom low-level game engine to support large-scale open-world games. While it may not offer the conveniences of commercial engines, it provides an invaluable opportunity for hands-on learning, deep customization, and experimenting with game engine design.
+Vantor is a modular, cross-platform game and rendering engine designed for **large-scale Open-World games** and is a code-focused development SDK and Framework. Built from the ground up with **OpenGL** and custom rendering techniques, it provides fine-grained control over every aspect of game development while maintaining **maximum efficiency**. Unlike high-level game engines, the engine is designed to be **lightweight**, **modular**, and **fully extensible**, allowing developers to directly manipulate rendering, physics, and resource management.
 
 > *"Open source is about collaborating; not competing." – **Kelsey Hightower**, technologist at google and open-source advocate*
 
----
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+### Built With
+
+[![C++][C++-badge]][C++-url] [![OpenGL][OpenGL-badge]][OpenGL-url] [![Vulkan][Vulkan-badge]][Vulkan-url] [![GLSL][GLSL-badge]][GLSL-url] [![Python][Python-badge]][Python-url] [![Dear ImGui][ImGui-badge]][ImGui-url] [![SDL2][SDL2-badge]][SDL2-url] [![CMake][CMake-badge]][CMake-url]
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- GETTING STARTED -->
 ## Getting Started
 
-### Download
-You can download the latest binaries of CHIFEngine from [the website](https://lukasrennhofer.github.io/CHIFEngine/#/).
+To get a local copy up and running follow these simple example steps.
 
-- The [Releases Tab](https://github.com/LukasRennhofer/CHIFEngine/releases)
+### Prerequisites
 
-> **Note**: Currently, CHIFEngine supports only Windows x64 and Nintendo Switch (Homebrew) systems.
+* CMake
+* Make
+* A C++20 capable compiler (MSVC, Clang, GCC)
+* Git
+* Python Interpreter
 
-### Build Instructions
+### Building
 
 #### Windows
 
@@ -61,8 +104,8 @@ You can download the latest binaries of CHIFEngine from [the website](https://lu
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/LukasRennhofer/CHIFEngine.git
-   cd CHIFEngine
+   git clone https://github.com/LukasRennhofer/Vantor.git
+   cd Vantor
    ```
 
 ---
@@ -94,8 +137,8 @@ You can download the latest binaries of CHIFEngine from [the website](https://lu
 0. Clone the repository:
 
    ```bash
-   git clone https://github.com/LukasRennhofer/CHIFEngine.git
-   cd CHIFEngine
+   git clone https://github.com/LukasRennhofer/Vantor.git
+   cd Vantor
    ```
 
 ---
@@ -114,40 +157,104 @@ You can download the latest binaries of CHIFEngine from [the website](https://lu
    python3 DevConsole.py --platform Linux --build-lib
    ```
 
-## Features
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-- **Cross-Platform Support** – Runs on PC and supports Nintendo Switch Homebrew, making it suitable for both modern and embedded hardware
-- **Minimal External Dependencies** – Designed to be self-contained, avoiding reliance on bulky third-party libraries while giving developers direct access to OpenGL, Vulkan (experimental), and custom libraries.
-- **Custom OpenGL (Vulkan not yet) Rendering Pipeline** – Uses a RHI (Render Hardware Interface) architecture and modern graphics techniques such as deferred shading, GPU-driven culling, and physically-based rendering (PBR) in the future to handle complex environments efficiently.
----
+<!-- USAGE EXAMPLES -->
+## Usage
 
-## Documentation & Demos
+Once built, you can use the sample applications, build custom modules, or integrate Vantor in your own project. The architecture is designed to support real-time rendering and simulation-heavy applications.
 
-- **Documentation**: [Doc Site](https://lukasrennhofer.github.io/CHIFEngine/#/).
-- **Demos**: *Currently in progress.* Stay tuned for updates.
+_For more examples, please refer to the [Documentation](https://vantor.netlify.app/)_
 
----
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## Q&A
+<!-- ROADMAP -->
+## Roadmap
 
- - "Why does the Project takes so long to be complete?"
-      - Rome wasn't built in a day.
- - "How can I simply make games with it?"
-      - The Engine is specified for complex open-world games only.
- - "Will there be a build for MacOS?"
-      - Yeah, right after Apple learns to not be a sandbox for overpriced toys.
+- [🟩] Platform Abstraction Layer (Windows/Linux/Switch)
+- [🟥] Editor Interface
+- [🟧] Multi-threaded Resource Management
+- [🟧] GPU-based Scene Graph
+- [🟥] Full Vulkan Support
+- [🟥] Documentation Expansion
 
-## Contributors
+See the [open issues](https://github.com/LukasRennhofer/Vantor/issues) for a full list of proposed features (and known issues).
 
-We extend our gratitude to the following individuals for their efforts and contributions:
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-| Name                      | GitHub Handle   | Contributions                     | 
-| ------------------------- | --------------- | --------------------------------- |
-| **Lukas Rennhofer**       | @LukasRennhofer | **Maintainer**, Engine Logic, Physics |
-| **Moritz Rottensteiner**  | @Alyopolo       | 3D Assets and Game Development    |
+<!-- CONTRIBUTING -->
+## Contributing
 
----
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**, but will not affect the internal studios engine.
 
-## Stay Connected
-- Visit our [Website](https://voronoid.tech/).
-- Give us a star on [GitHub](https://github.com/LukasRennhofer/CHIFEngine) for the latest updates.
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+### Top contributors:
+
+<a href="https://github.com/LukasRennhofer/Vantor/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=LukasRennhofer/Vantor" alt="contrib.rocks image" />
+</a>
+
+<!-- LICENSE -->
+## License
+
+Distributed under the GNU General Public License, v3. See `LICENSE` for more information.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- CONTACT -->
+## Contact
+
+Lukas Rennhofer - [@LukasRennhofer](https://twitter.com/LukasRennhofer) - lukas.renn@aon.at
+
+Project Link: [https://github.com/LukasRennhofer/Vantor](https://github.com/LukasRennhofer/Vantor)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- ACKNOWLEDGMENTS -->
+## Acknowledgments
+
+* Vantor Studios
+* Inspiration from [WickedEngine](https://github.com/turanszkij/WickedEngine)
+* All contributors of external libraries
+* The open source community
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- MARKDOWN LINKS & IMAGES -->
+[contributors-shield]: https://img.shields.io/github/contributors/LukasRennhofer/Vantor.svg?style=for-the-badge
+[contributors-url]: https://github.com/LukasRennhofer/Vantor/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/LukasRennhofer/Vantor.svg?style=for-the-badge
+[forks-url]: https://github.com/LukasRennhofer/Vantor/network/members
+[stars-shield]: https://img.shields.io/github/stars/LukasRennhofer/Vantor.svg?style=for-the-badge
+[stars-url]: https://github.com/LukasRennhofer/Vantor/stargazers
+[issues-shield]: https://img.shields.io/github/issues/LukasRennhofer/Vantor.svg?style=for-the-badge
+[issues-url]: https://github.com/LukasRennhofer/Vantor/issues
+[license-shield]: https://img.shields.io/github/license/LukasRennhofer/Vantor.svg?style=for-the-badge
+[license-url]: https://github.com/LukasRennhofer/Vantor/blob/master/LICENSE.txt
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-url]: https://linkedin.com/in/lukas-rennhofer
+[C++-badge]: https://img.shields.io/badge/C%2B%2B-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white
+[C++-url]: https://isocpp.org/
+[OpenGL-badge]: https://img.shields.io/badge/OpenGL-5586A4?style=for-the-badge&logo=opengl&logoColor=white
+[OpenGL-url]: https://www.opengl.org/
+[Vulkan-badge]: https://img.shields.io/badge/Vulkan-AC162C?style=for-the-badge&logo=vulkan&logoColor=white
+[Vulkan-url]: https://www.khronos.org/vulkan/
+[GLSL-badge]: https://img.shields.io/badge/GLSL-FF6C00?style=for-the-badge&logo=opengl&logoColor=white
+[GLSL-url]: https://www.khronos.org/opengl/wiki/OpenGL_Shading_Language
+[Python-badge]: https://img.shields.io/badge/Python-3670A0?style=for-the-badge&logo=python&logoColor=white
+[Python-url]: https://www.python.org/
+[ImGui-badge]: https://img.shields.io/badge/ImGui-9C27B0?style=for-the-badge
+[ImGui-url]: https://github.com/ocornut/imgui
+[Raylib-badge]: https://img.shields.io/badge/Raylib-000000?style=for-the-badge
+[Raylib-url]: https://www.raylib.com/
+[SDL2-badge]: https://img.shields.io/badge/SDL2-FF6C00?style=for-the-badge
+[SDL2-url]: https://www.libsdl.org/
+[CMake-badge]: https://img.shields.io/badge/CMake-064F8C?style=for-the-badge&logo=cmake&logoColor=white
+[CMake-url]: https://cmake.org/

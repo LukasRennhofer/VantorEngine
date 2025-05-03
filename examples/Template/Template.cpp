@@ -1,9 +1,9 @@
 /*
- *    				~ CHIFEngine Template~
+ *    				~ Vantor Template~
  *
  * Copyright (c) 2025 Lukas Rennhofer
  *
- * Licensed under the MIT License. See LICENSE file for more details.
+ * Licensed under the GNU General Public License, Version 3. See LICENSE file for more details.
  *
  * Author: Lukas Rennhofer
  * Date: 2025-03-27
@@ -14,7 +14,7 @@
 
  
  // Engine Header
- #include "../../Source/CHIFEngine.h"
+ #include "../../Source/Vantor.h"
  
  // Standard libraries
  #include <iostream>
@@ -40,25 +40,25 @@
 	 Camera camera(startPosition);
  
 	 int success;
-	 chif::Platform::Window window(success, 1920, 1800);
+	 vantor::Platform::Window window(success, 1920, 1800);
 	 if (!success)
 		 return -1;
  
 	 window.camera = &camera;
 
 	 // GUI 
-	 chif::GUI::GUI gui(window);
+	 vantor::GUI::GUI gui(window);
  
 	 glm::vec3 fogColor(0.5, 0.6, 0.7);
 	 glm::vec3 lightColor(255, 255, 230);
 	 lightColor /= 255.0;
  
-	 chif::Graphics::Renderer::Buffer::FrameBufferObject SceneFBO(chif::Platform::Window::SCR_WIDTH, chif::Platform::Window::SCR_HEIGHT);
+	 vantor::Graphics::Renderer::Buffer::FrameBufferObject SceneFBO(vantor::Platform::Window::SCR_WIDTH, vantor::Platform::Window::SCR_HEIGHT);
 	 glm::vec3 lightPosition, seed;
-	 glm::mat4 proj = glm::perspective(glm::radians(camera.Zoom), (float)chif::Platform::Window::SCR_WIDTH / (float)chif::Platform::Window::SCR_HEIGHT, 5.f, 10000000.0f);
+	 glm::mat4 proj = glm::perspective(glm::radians(camera.Zoom), (float)vantor::Platform::Window::SCR_WIDTH / (float)vantor::Platform::Window::SCR_HEIGHT, 5.f, 10000000.0f);
 	 glm::vec3 lightDir = glm::vec3(-.5, 0.5, 1.0);
  
-	 chif::Graphics::sceneElements scene;
+	 vantor::Graphics::sceneElements scene;
 	 scene.lightPos = lightPosition;
 	 scene.lightColor = lightColor;
 	 scene.fogColor = fogColor;
@@ -68,28 +68,28 @@
 	 scene.sceneFBO = &SceneFBO;
 	 scene.lightDir = lightDir;
  
-	 chif::Graphics::drawableObject::scene = &scene;
+	 vantor::Graphics::drawableObject::scene = &scene;
  
 	 int gridLength = 120;
-	 chif::Graphics::Terrain terrain(gridLength);
+	 vantor::Graphics::Terrain terrain(gridLength);
  
 	 float waterHeight = 120.0;
-	 chif::Graphics::Water water(glm::vec2(0.0, 0.0), gridLength, waterHeight);
+	 vantor::Graphics::Water water(glm::vec2(0.0, 0.0), gridLength, waterHeight);
 	 terrain.waterPtr = &water;
  
-	 chif::Graphics::Skybox skybox;
-	 chif::Graphics::CloudsModel cloudsModel(&scene, &skybox);
+	 vantor::Graphics::Skybox skybox;
+	 vantor::Graphics::CloudsModel cloudsModel(&scene, &skybox);
  
-	 chif::Graphics::VolumetricClouds volumetricClouds(chif::Platform::Window::SCR_WIDTH, chif::Platform::Window::SCR_HEIGHT, &cloudsModel);
-	 chif::Graphics::VolumetricClouds reflectionVolumetricClouds(1280, 720, &cloudsModel); // (expected) lower resolution framebuffers, so the rendering will be faster
+	 vantor::Graphics::VolumetricClouds volumetricClouds(vantor::Platform::Window::SCR_WIDTH, vantor::Platform::Window::SCR_HEIGHT, &cloudsModel);
+	 vantor::Graphics::VolumetricClouds reflectionVolumetricClouds(1280, 720, &cloudsModel); // (expected) lower resolution framebuffers, so the rendering will be faster
  
 	 gui.subscribe(&terrain)
 		 .subscribe(&skybox)
 		 .subscribe(&cloudsModel)
 		 .subscribe(&water);
  
-	 chif::Graphics::Renderer::Shader::ScreenSpaceShader PostProcessing("shaders/post_processing.frag");
-	 chif::Graphics::Renderer::Shader::ScreenSpaceShader fboVisualizer("shaders/visualizeFbo.frag");
+	 vantor::Graphics::Renderer::Shader::ScreenSpaceShader PostProcessing("shaders/post_processing.frag");
+	 vantor::Graphics::Renderer::Shader::ScreenSpaceShader fboVisualizer("shaders/visualizeFbo.frag");
  
 	 // Model Loading
 	 stbi_set_flip_vertically_on_load(true);
@@ -128,7 +128,7 @@
 		 }
  
 		 glm::mat4 view = scene.cam->GetViewMatrix();
-		 scene.projMatrix = glm::perspective(glm::radians(camera.Zoom), (float)chif::Platform::Window::SCR_WIDTH / (float)chif::Platform::Window::SCR_HEIGHT, 5.f, 10000000.0f);
+		 scene.projMatrix = glm::perspective(glm::radians(camera.Zoom), (float)vantor::Platform::Window::SCR_WIDTH / (float)vantor::Platform::Window::SCR_HEIGHT, 5.f, 10000000.0f);
  
 		 water.bindReflectionFBO();
 		 glEnable(GL_DEPTH_TEST);
@@ -141,14 +141,14 @@
 		 terrain.up = 1.0;
 		 terrain.draw();
  
-		 chif::Graphics::Renderer::Buffer::FrameBufferObject const &reflFBO = water.getReflectionFBO();
+		 vantor::Graphics::Renderer::Buffer::FrameBufferObject const &reflFBO = water.getReflectionFBO();
  
-		 chif::Graphics::Renderer::Shader::ScreenSpaceShader::disableTests();
+		 vantor::Graphics::Renderer::Shader::ScreenSpaceShader::disableTests();
  
 		 reflectionVolumetricClouds.draw();
 		 water.bindReflectionFBO();
  
-		 chif::Graphics::Renderer::Shader::Shader &post = PostProcessing.getShader();
+		 vantor::Graphics::Renderer::Shader::Shader &post = PostProcessing.getShader();
 		 post.use();
 		 post.setVec2("resolution", glm::vec2(1280, 720));
 		 post.setSampler2D("screenTexture", reflFBO.tex, 0);
@@ -156,7 +156,7 @@
 		 post.setSampler2D("cloudTEX", reflectionVolumetricClouds.getCloudsRawTexture(), 1);
 		 PostProcessing.draw();
  
-		 chif::Graphics::Renderer::Shader::ScreenSpaceShader::enableTests();
+		 vantor::Graphics::Renderer::Shader::ScreenSpaceShader::enableTests();
  
 		 scene.cam->invertPitch();
 		 scene.cam->Position.y += 2 * abs(scene.cam->Position.y - water.getHeight());
@@ -183,21 +183,21 @@
 		 MeshModelShader.setMat4("model", model);
 		 ourModel.Draw(MeshModelShader);
  
-		 chif::Graphics::Renderer::Shader::ScreenSpaceShader::disableTests();
+		 vantor::Graphics::Renderer::Shader::ScreenSpaceShader::disableTests();
  
 		 volumetricClouds.draw();
 		 skybox.draw();
  
-		 chif::Graphics::Renderer::Buffer::unbindCurrentFrameBuffer();
+		 vantor::Graphics::Renderer::Buffer::unbindCurrentFrameBuffer();
 		 glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
  
 		 post.use();
-		 post.setVec2("resolution", glm::vec2(chif::Platform::Window::SCR_WIDTH, chif::Platform::Window::SCR_HEIGHT));
+		 post.setVec2("resolution", glm::vec2(vantor::Platform::Window::SCR_WIDTH, vantor::Platform::Window::SCR_HEIGHT));
 		 post.setVec3("cameraPosition", scene.cam->Position);
 		 post.setSampler2D("screenTexture", SceneFBO.tex, 0);
 		 post.setSampler2D("cloudTEX", volumetricClouds.getCloudsTexture(), 1);
 		 post.setSampler2D("depthTex", SceneFBO.depthTex, 2);
-		 post.setSampler2D("cloudDistance", volumetricClouds.getCloudsTexture(chif::Graphics::VolumetricClouds::cloudDistance), 3);
+		 post.setSampler2D("cloudDistance", volumetricClouds.getCloudsTexture(vantor::Graphics::VolumetricClouds::cloudDistance), 3);
  
 		 post.setBool("wireframe", scene.wireframe);
  
@@ -206,7 +206,7 @@
 
 		
  
-		 chif::Graphics::Renderer::Shader::Shader &fboVisualizerShader = fboVisualizer.getShader();
+		 vantor::Graphics::Renderer::Shader::Shader &fboVisualizerShader = fboVisualizer.getShader();
 		 fboVisualizerShader.use();
 		 fboVisualizerShader.setSampler2D("fboTex", volumetricClouds.getCloudsTexture(), 0);
 

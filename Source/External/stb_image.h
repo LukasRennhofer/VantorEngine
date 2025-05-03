@@ -1,10 +1,10 @@
 
 /*
- *    				~ CHIFEngine ~
+ *    				~ Vantor ~
  *               
  * Copyright (c) 2025 Lukas Rennhofer
  *
- * Licensed under the MIT License. See LICENSE file for more details.
+ * Licensed under the GNU General Public License, Version 3. See LICENSE file for more details.
  *
  * Author: Lukas Rennhofer
  * Date: 2025-03-08
@@ -7439,7 +7439,7 @@ STBIDEF int stbi_is_16_bit_from_callbacks(stbi_io_callbacks const *c, void *user
 ------------------------------------------------------------------------------
 This software is available under 2 licenses -- choose whichever you prefer.
 ------------------------------------------------------------------------------
-ALTERNATIVE A - MIT License
+ALTERNATIVE A - GNU General Public License, Version 3
 Copyright (c) 2017 Sean Barrett
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in

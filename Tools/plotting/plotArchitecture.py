@@ -1,9 +1,9 @@
 """
-*    				~ CHIFEngine ~
+*    				~ Vantor ~
 *               
 * Copyright (c) 2025 Lukas Rennhofer
 *
-* Licensed under the MIT License. See LICENSE file for more details.
+* Licensed under the GNU General Public License, Version 3. See LICENSE file for more details.
 *
 * Author: Lukas Rennhofer
 * Date: 03-23-2025
@@ -20,7 +20,7 @@ G = nx.DiGraph()
 
 # Adding nodes
 G.add_nodes_from([
-    "chif",
+    "vantor",
     "Entity",
     "EntityBase",
     "ComponentBase",
@@ -57,22 +57,22 @@ G.add_nodes_from([
 
 # Adding edges (relationships between nodes)
 G.add_edges_from([
-    ("chif", "Entity"),
+    ("vantor", "Entity"),
     ("Entity", "EntityBase"),
     ("Entity", "ComponentBase"),
     ("Entity", "Mesh"),
     ("Entity", "Model"),
     ("Entity", "Camera"),
-    ("chif", "Network"),
+    ("vantor", "Network"),
     ("Network", "Server"),
     ("Network", "Client"),
-    ("chif", "Core"),
+    ("vantor", "Core"),
     ("Core", "Version"),
     ("Core", "Resource Management"),
     ("Core", "Application Handling"),
     ("Core", "Job System"),
     ("Core", "BackLog System"),
-    ("chif", "Graphics"),
+    ("vantor", "Graphics"),
     ("Graphics", "Renderer"),
     ("Renderer", "Renderer::Shader"),
     ("Renderer", "Renderer::Buffer"),
@@ -81,14 +81,14 @@ G.add_edges_from([
     ("Graphics", "Texture"),
     ("Graphics", "VolumetricClouds"),
     ("Graphics", "VFX"),
-    ("chif", "GUI"),
+    ("vantor", "GUI"),
     ("GUI", "Sprite"),
     ("GUI", "AnimatedSprite"),
-    ("chif", "Physics"),
-    ("chif", "Utils"),
-    ("chif", "Platform"),
+    ("vantor", "Physics"),
+    ("vantor", "Utils"),
+    ("vantor", "Platform"),
     ("Platform", "Platform::Window"),
-    ("chif", "Audio")
+    ("vantor", "Audio")
 ])
 
 # Draw the graph

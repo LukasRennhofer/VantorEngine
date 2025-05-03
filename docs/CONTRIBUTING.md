@@ -1,4 +1,4 @@
-# TODO: CHIFEngine Contributing
+# TODO: Vantor Contributing
 
 ## Commiting
 

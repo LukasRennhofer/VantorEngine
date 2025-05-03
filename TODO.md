@@ -1,4 +1,11 @@
-# CHIFEngine Todo Stack
+# Vantor Todo Stack
+
+## Renaming
+ - Run Rename Script
+ - Test if working
+ - README + config folder
+ - Documentation
+ - 
 
 - Geometry Figures
 - Getting the temporary docs and todos moved to notion
@@ -24,4 +31,4 @@
 - Benchmarks
 - Improve Scene System
 - Contributing Rules and glow up (Modules like CGFX)
-- init of chiflib (e.g. chif_base_lib vector)
+- init of vantorlib (e.g. vantor_base_lib vector)

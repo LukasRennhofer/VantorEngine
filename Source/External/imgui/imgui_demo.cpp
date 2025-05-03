@@ -7947,7 +7947,7 @@ void ImGui::ShowAboutWindow(bool* p_open)
     ImGui::Separator();
     ImGui::Text("(c) 2014-2025 Omar Cornut");
     ImGui::Text("Developed by Omar Cornut and all Dear ImGui contributors.");
-    ImGui::Text("Dear ImGui is licensed under the MIT License, see LICENSE for more information.");
+    ImGui::Text("Dear ImGui is licensed under the GNU General Public License, Version 3, see LICENSE for more information.");
     ImGui::Text("If your company uses this, please consider funding the project.");
 
     static bool show_config_info = false;

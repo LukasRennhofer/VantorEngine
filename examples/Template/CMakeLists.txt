@@ -1,5 +1,5 @@
 # - CMakeLists Build File written by Lukas Rennhofer @2025 Licensed under MIT  -
-# ! This file is currently only for the CHIFEngine´s Template Compilation !
+# ! This file is currently only for the Vantor´s Template Compilation !
 
 cmake_minimum_required(VERSION 3.10)
 
@@ -29,30 +29,30 @@ set(ENGINE_SOURCES
     ../../Source/External/stb_image_impl.cpp
     ../../Source/External/glad.c
     # graphics
-    ../../Source/Graphics/chifDrawableObject.cpp
-    ../../Source/Graphics/chifCloudsModel.cpp
-    ../../Source/Graphics/chifSkybox.cpp
-    ../../Source/Graphics/chifVolumetricClouds.cpp
-    ../../Source/Graphics/chifWater.cpp
-    ../../Source/Graphics/Renderer/chifBuffers.cpp
-    ../../Source/Graphics/Renderer/chifBaseShader.cpp
-    ../../Source/Graphics/Renderer/chifShader.cpp
-    ../../Source/Graphics/Renderer/chifScreenSpaceShader.cpp
-    ../../Source/Graphics/chifTerrain.cpp
-    ../../Source/Graphics/chifTexture.cpp
+    ../../Source/Graphics/vantorDrawableObject.cpp
+    ../../Source/Graphics/vantorCloudsModel.cpp
+    ../../Source/Graphics/vantorSkybox.cpp
+    ../../Source/Graphics/vantorVolumetricClouds.cpp
+    ../../Source/Graphics/vantorWater.cpp
+    ../../Source/Graphics/Renderer/vantorBuffers.cpp
+    ../../Source/Graphics/Renderer/vantorBaseShader.cpp
+    ../../Source/Graphics/Renderer/vantorShader.cpp
+    ../../Source/Graphics/Renderer/vantorScreenSpaceShader.cpp
+    ../../Source/Graphics/vantorTerrain.cpp
+    ../../Source/Graphics/vantorTexture.cpp
     # platform
-    ../../Source/Platform/chifWindow.cpp
+    ../../Source/Platform/vantorWindow.cpp
     ../../Source/Platform/glError.cpp
     # GUI
-    ../../Source/GUI/chifImgui.cpp
-    ../../Source/GUI/Font/chifFont.cpp
-    ../../Source/GUI/Font/chifFontAtlas.cpp
-    ../../Source/GUI/Font/chifFontUtils.cpp
-    ../../Source/GUI/Font/chifLabel.cpp
+    ../../Source/GUI/vantorImgui.cpp
+    ../../Source/GUI/Font/vantorFont.cpp
+    ../../Source/GUI/Font/vantorFontAtlas.cpp
+    ../../Source/GUI/Font/vantorFontUtils.cpp
+    ../../Source/GUI/Font/vantorLabel.cpp
     # Core
-    ../../Source/Core/chifVersion.cpp
-    ../../Source/Core/JobSystem/chifJobSystem.cpp 
-    ../../Source/Core/Backlog/chifBacklog.cpp
+    ../../Source/Core/vantorVersion.cpp
+    ../../Source/Core/JobSystem/vantorJobSystem.cpp 
+    ../../Source/Core/Backlog/vantorBacklog.cpp
     # Utils
     ../../Source/Utils/utils.cpp
     ../../Source/Utils/sdl2Utils.cpp
@@ -64,8 +64,8 @@ set(APP_SOURCES
     )
 
 # === Create the Engine Library ===
-add_library(CHIFEngineLib STATIC ${ENGINE_SOURCES})
-target_include_directories(CHIFEngineLib PUBLIC ../../Source ../../Source/external)
+add_library(VantorLib STATIC ${ENGINE_SOURCES})
+target_include_directories(VantorLib PUBLIC ../../Source ../../Source/external)
 
 # === Platform-Specific Dependencies ===
 if(WIN32)
@@ -92,7 +92,7 @@ if(WIN32)
     find_package(SDL2 REQUIRED)
     include_directories(${SDL2_INCLUDE_DIRS})
 
-    target_link_libraries(CHIFEngineLib ${WINDOWS_LIBRARIES} ${SDL2_LIBRARIES})
+    target_link_libraries(VantorLib ${WINDOWS_LIBRARIES} ${SDL2_LIBRARIES})
 
 elseif(UNIX)
     message(STATUS "Compiling for Linux")
@@ -122,7 +122,7 @@ elseif(UNIX)
     find_package(SDL2 REQUIRED)
     include_directories(${SDL2_INCLUDE_DIRS})
 
-    target_link_libraries(CHIFEngineLib ${LINUX_LIBRARIES} ${SDL2_LIBRARIES})
+    target_link_libraries(VantorLib ${LINUX_LIBRARIES} ${SDL2_LIBRARIES})
 
 elseif(SWITCH)
     message(STATUS "Compiling for Nintendo Switch (Homebrew)")
@@ -154,14 +154,14 @@ elseif(SWITCH)
     )
 
     add_definitions(-D__SWITCH__)
-    target_link_libraries(CHIFEngineLib ${SWITCH_LIBRARIES})
+    target_link_libraries(VantorLib ${SWITCH_LIBRARIES})
 endif()
 
 # === Create the Executable ===
 add_executable(Template ${APP_SOURCES})
 
 # Link the engine library to the executable
-target_link_libraries(Template CHIFEngineLib)
+target_link_libraries(Template VantorLib)
 
 # Optional: Compiler warnings for the main executable
 target_compile_options(Template PRIVATE -Wall -Wextra)

@@ -1,9 +1,9 @@
 """
-*    				~ CHIFEngine ~
+*    				~ Vantor ~
 *
 * Copyright (c) 2025 Lukas Rennhofer
 *
-* Licensed under the MIT License. See LICENSE file for more details.
+* Licensed under the GNU General Public License, Version 3. See LICENSE file for more details.
 *
 * Author: Lukas Rennhofer
 * Date: 03-23-2025
@@ -12,7 +12,7 @@
 * Last Change: Tooling Updated
 """
 
-SRC_DIR = "CHIFEngine"
+SRC_DIR = "Vantor"
 
 TEST_ENV_DIR =  "Test"
 GLOBAL_VERSION = "0.0.4"
@@ -20,10 +20,10 @@ GLOBAL_VERSION = "0.0.4"
 MAINTAIN_AUTHOR = "Lukas Rennhofer"
 
 SRC_DIR_DESCRIPTIONS = {}
-# CHIFEngine/ DIR External Ressources
+# Vantor/ DIR External Ressources
 EXTERN_RESSOURCES = {
     'Jolt' : {
-        'description' : 'CHIFEngines mainly used Physics Library.',
+        'description' : 'Vantors mainly used Physics Library.',
         'website' : 'https',
         'author' : 'Github@jrouwe'
     },
@@ -33,17 +33,17 @@ EXTERN_RESSOURCES = {
         'author' : 'Github@lua'
     },
     'PS5' : {
-        'description' : 'The PS5 CHIFEngine build files',
+        'description' : 'The PS5 Vantor build files',
         'website' : 'None',
         'author' : 'Lukas Rennhofer, Sony Interactives'
     },
     'shaders' : {
-        'description' : 'The CHIFEngine Shader Library',
+        'description' : 'The Vantor Shader Library',
         'website' : 'None',
         'author' : 'Lukas Rennhofer, (shadercomp)'
     },
     'Utility' : {
-        'description' : 'CHIFEngine Util Library / Frameworks : *basis_u , dx12 API, FAudio, meshopt., vulkan API*',
+        'description' : 'Vantor Util Library / Frameworks : *basis_u , dx12 API, FAudio, meshopt., vulkan API*',
         'website' : 'None',
     }
 }

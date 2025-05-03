@@ -11,7 +11,7 @@
 #include <assimp/postprocess.h>
 
 #include <mesh.h>
-#include "../Graphics/chifTexture.h"
+#include "../Graphics/vantorTexture.h"
 
 #include <string>
 #include <fstream>
@@ -190,7 +190,7 @@ private:
             if(!skip)
             {   // if texture hasn't been loaded already, load it
                 Texture texture;
-                texture.id = chif::Graphics::TextureFromFile(str.C_Str(), this->directory);
+                texture.id = vantor::Graphics::TextureFromFile(str.C_Str(), this->directory);
                 texture.type = typeName;
                 texture.path = str.C_Str();
                 textures.push_back(texture);

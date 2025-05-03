@@ -1,9 +1,9 @@
 """
- *    				~ CHIFEngine ~
+ *    				~ Vantor ~
  *
  * Copyright (c) 2025 Lukas Rennhofer
  *
- * Licensed under the MIT License. See LICENSE file for more details.
+ * Licensed under the GNU General Public License, Version 3. See LICENSE file for more details.
  *
  * Author: Lukas Rennhofer
  * Date: 2025-04-07
@@ -13,12 +13,12 @@
 """
 
 """
-This file contains the CHIFEngine Dev Environment Console Application for controlling the internal files
+This file contains the Vantor Dev Environment Console Application for controlling the internal files
 """
 
-from Tools.chifDev import *
+from Tools.vantorDev import *
 
 if __name__ == "__main__":
-     console = CHIFDevConsole() 
+     console = VANTORDevConsole() 
      args = console.parseArgs()
      console.executeBuild(args)
