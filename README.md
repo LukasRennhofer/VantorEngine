@@ -3,8 +3,6 @@
 <!-- Standard Project Badges -->
 [![Issues](https://img.shields.io/github/issues/LukasRennhofer/Vantor.svg?style=for-the-badge)](https://github.com/LukasRennhofer/Vantor/issues)
 [![License](https://img.shields.io/github/license/LukasRennhofer/Vantor.svg?style=for-the-badge)](https://github.com/LukasRennhofer/Vantor/blob/main/LICENSE)
-
-<!-- Extra Badges for Features -->
 [![Build Status](https://img.shields.io/github/actions/workflow/status/LukasRennhofer/Vantor/build.yml?branch=main&style=for-the-badge)](https://github.com/LukasRennhofer/Vantor/actions)
 [![Code Quality](https://img.shields.io/codefactor/grade/github/LukasRennhofer/Vantor?style=for-the-badge)](https://www.codefactor.io/repository/github/LukasRennhofer/Vantor)
 [![Last Commit](https://img.shields.io/github/last-commit/LukasRennhofer/Vantor?style=for-the-badge)](https://github.com/LukasRennhofer/Vantor/commits)
