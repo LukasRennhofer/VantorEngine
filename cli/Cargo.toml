@@ -1,0 +1,11 @@
+[package]
+name = "vantor"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+clap = "4.5.37"
+toml = "0.8.22"
+webbrowser = "1.0.4"
+indicatif = "0.17"
+colored = "3.0.0"

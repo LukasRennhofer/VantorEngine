@@ -1,0 +1,2 @@
+D:/Vantor/Vantor/__cmake_systeminformation/CMakeFiles/ALL_BUILD.dir
+D:/Vantor/Vantor/__cmake_systeminformation/CMakeFiles/ZERO_CHECK.dir

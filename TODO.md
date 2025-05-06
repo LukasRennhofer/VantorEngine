@@ -1,13 +1,5 @@
 # Vantor Todo Stack
 
-## Renaming
- - Run Rename Script
- - Test if working
- - README + config folder
- - Documentation
- - 
-
-- Geometry Figures
 - Getting the temporary docs and todos moved to notion
 - Resource Manager Texture Support : TODO
 - proper CMake Architecture Setup (🟩)
@@ -19,7 +11,7 @@
 - Post Processor, Fly Camera
 - Renderer Cpp
 - Update Abstraction
-- Testing 
+- Testing
 - Integration
 - Sandbox
 - FXAA ?

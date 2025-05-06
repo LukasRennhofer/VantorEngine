@@ -1,0 +1,8 @@
+[project]
+name = "test-env"
+version = "0.1.0"
+author = ""
+
+[build]
+target_platforms = ["Windows", "Linux", "MacOS"]
+default_platform = "Windows"
