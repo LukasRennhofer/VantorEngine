@@ -1,0 +1,8 @@
+# Vantor Main Repository / .gitignore file / @LukasRennhofer
+
+# Ignore Build Path
+/build/
+
+# python temp paths
+__pycache__/
+*.py[cod]

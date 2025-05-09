@@ -1,19 +1,22 @@
 # Vantor Todo Stack
 
-- Resource Manager Texture Support : TODO
-- New Shaders and better Resource System
+--------------------------------------------------------
+- Resource Support
+- New Shaders and assets (+ System with res/ folder)
 - MaterialLibrary
-- Renderer Header
 - PBR
 - Post Processor, Fly Camera
 - Renderer Cpp
+--------------------------------------------------------
 - Testing
 - Integration
+--------------------------------------------------------
 - proper CMake Architecture Setup (🟩)
 - Sandbox
 - FXAA ?
 - Old things get integrated
 - Platform Switch Setup
+- Maybe abstract window managers (go from sdl2 to glfw egl sdl2, etc) and abstract sound and input
 - Build Dev tool
 - Setting API Standart
 - Writing base docs
