@@ -58,7 +58,7 @@ set(ENGINE_SOURCES
     GUI/vantorImgui.cpp
     # Core
     Core/vantorApplication.cpp
-    Core/ResourceManager/vantorResourceManager.cpp
+    Core/Resource/vantorResourceManager.cpp
     Core/JobSystem/vantorJobSystem.cpp 
     Core/Backlog/vantorBacklog.cpp
     Core/Debug/vantorInlineDebugger.cpp

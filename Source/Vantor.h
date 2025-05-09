@@ -49,7 +49,7 @@ Vantors Preprocessor Variables:
 // CORE
 #include "Core/vantorApplication.hpp"
 #include "Core/vantorVersion.h"
-#include "Core/ResourceManager/vantorResourceManager.hpp"
+#include "Core/Resource/vantorResourceManager.hpp"
 #include "Core/JobSystem/vantorJobSystem.h"
 #include "Core/Backlog/vantorBacklog.h"
 #include "Core/Debug/vantorInlineDebugger.h"

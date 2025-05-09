@@ -61,6 +61,7 @@ namespace vantor::Graphics::RenderDevice {
     using Mesh = vantor::Graphics::RenderDevice::OpenGL::Mesh;
     using Texture = vantor::Graphics::RenderDevice::OpenGL::Texture;
     using Material = vantor::Graphics::RenderDevice::OpenGL::Material;
+    using TextureCube = vantor::Graphics::RenderDevice::OpenGL::TextureCube;
     
     #endif
 

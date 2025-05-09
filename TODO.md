@@ -1,18 +1,15 @@
 # Vantor Todo Stack
 
-- Getting the temporary docs and todos moved to notion
 - Resource Manager Texture Support : TODO
-- proper CMake Architecture Setup (🟩)
 - New Shaders and better Resource System
 - MaterialLibrary
-- Scene
 - Renderer Header
 - PBR
 - Post Processor, Fly Camera
 - Renderer Cpp
-- Update Abstraction
 - Testing
 - Integration
+- proper CMake Architecture Setup (🟩)
 - Sandbox
 - FXAA ?
 - Old things get integrated
