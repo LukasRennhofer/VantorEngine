@@ -1,16 +1,22 @@
 /*
- *    				~ Vantor ~
- *               
- * Copyright (c) 2025 Lukas Rennhofer
+ *  ╔═══════════════════════════════════════════════════════════════╗
+ *  ║                          ~ Vantor ~                           ║
+ *  ║                                                               ║
+ *  ║  This file is part of the Vantor Engine.                      ║
+ *  ║  Automatically formatted by vantorFormat.py                   ║
+ *  ║                                                               ║
+ *  ╚═══════════════════════════════════════════════════════════════╝
  *
- * Licensed under the GNU General Public License, Version 3. See LICENSE file for more details.
+ *  Copyright (c) 2025 Lukas Rennhofer
+ *  Licensed under the GNU General Public License, Version 3.
+ *  See LICENSE file for more details.
  *
- * Author: Lukas Rennhofer
- * Date: 2025-03-08
+ *  Author: Lukas Rennhofer
+ *  Date: 2025-05-11
  *
- * File: vantorPlatformSwitch.hpp
- * Last Change: 
-*/
+ *  File: vantorPlatformSwitch.hpp
+ *  Last Change: Automatically updated
+ */
 
 // Only include this if its building for Nintendo Switch !
 
@@ -25,20 +31,20 @@ namespace vantor::Platform
 {
     class PlatformSwitch
     {
-    public:
-        static void Initialize();
+        public:
+            static void Initialize();
 
-        static double GetTimeSeconds();
-        static void SleepMilliseconds(unsigned int ms);
+            static double GetTimeSeconds();
+            static void   SleepMilliseconds(unsigned int ms);
 
-        static std::string GetExecutablePath();       // Not usually needed on Switch
-        static std::string GetExecutableDirectory();  // Will be placeholder
-        static bool FileExists(const std::string& path);
-        static uint64_t GetFileSize(const std::string& path);
+            static std::string GetExecutablePath();      // Not usually needed on Switch
+            static std::string GetExecutableDirectory(); // Will be placeholder
+            static bool        FileExists(const std::string &path);
+            static uint64_t    GetFileSize(const std::string &path);
 
-    private:
-        static double startTime;
+        private:
+            static double startTime;
     };
-}
+} // namespace vantor::Platform
 
 #endif // __SWITCH__

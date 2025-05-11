@@ -1,24 +1,45 @@
 /*
- *    				~ Vantor (Vath - Vantor Math Library)~
- *               
- * Copyright (c) 2025 Lukas Rennhofer
+ *  ╔═══════════════════════════════════════════════════════════════╗
+ *  ║                          ~ Vantor ~                           ║
+ *  ║                                                               ║
+ *  ║  This file is part of the Vantor Engine.                      ║
+ *  ║  Automatically formatted by vantorFormat.py                   ║
+ *  ║                                                               ║
+ *  ╚═══════════════════════════════════════════════════════════════╝
  *
- * Licensed under the GNU General Public License, Version 3. See LICENSE file for more details.
+ *  Copyright (c) 2025 Lukas Rennhofer
+ *  Licensed under the GNU General Public License, Version 3.
+ *  See LICENSE file for more details.
  *
- * Author: Lukas Rennhofer
- * Date: 2025-03-08
+ *  Author: Lukas Rennhofer
+ *  Date: 2025-05-11
  *
- * File: vath.hpp
- * Last Change: Added Version settings and vantor::core::version child namespace
+ *  File: vath.hpp
+ *  Last Change: Automatically updated
  */
- 
+
 #pragma once
 
-// GEOMETRY
-// TODO
+// ----------------------------
+//    VATH - MAIN HEADER
+// ----------------------------
 
-// LINEAR_ALGEBRA
-// VECTOR
+// ────────────── GEOMETRY ──────────────
+// TODO: BoundingBox, Sphere, Frustum, etc.
+
+// ─────────── LINEAR ALGEBRA ───────────
+// VECTORS
 #include "vathVector.hpp"
-// MATRIX
+
+// MATRICES
 #include "vathMatrix.hpp"
+
+// QUATERNIONS (Coming soon)
+// #include "vathQuaternion.hpp"
+
+// ────────────── TRANSFORM ─────────────
+// #include "vathTransform.hpp"
+
+// ─────────────── UTILITY ──────────────
+// #include "vathMathUtils.hpp"
+// #include "vathConstants.hpp"

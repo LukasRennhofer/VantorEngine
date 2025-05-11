@@ -182,6 +182,7 @@ See the [open issues](https://github.com/LukasRennhofer/Vantor/issues) for a ful
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**, but will not affect the internal studios engine.
 
+0. Install dependencies for Vantor DevTool (`pip install clang-format`)
 1. Fork the Project
 2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
 3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)

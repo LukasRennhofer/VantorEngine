@@ -1,36 +1,44 @@
 /*
- *    				~ Vantor ~
- *               
- * Copyright (c) 2025 Lukas Rennhofer
+ *  ╔═══════════════════════════════════════════════════════════════╗
+ *  ║                          ~ Vantor ~                           ║
+ *  ║                                                               ║
+ *  ║  This file is part of the Vantor Engine.                      ║
+ *  ║  Automatically formatted by vantorFormat.py                   ║
+ *  ║                                                               ║
+ *  ╚═══════════════════════════════════════════════════════════════╝
  *
- * Licensed under the GNU General Public License, Version 3. See LICENSE file for more details.
+ *  Copyright (c) 2025 Lukas Rennhofer
+ *  Licensed under the GNU General Public License, Version 3.
+ *  See LICENSE file for more details.
  *
- * Author: Lukas Rennhofer
- * Date: 2025-03-08
+ *  Author: Lukas Rennhofer
+ *  Date: 2025-05-11
  *
- * File: vantorScene.hpp
- * Last Change: Added Version settings and vantor::core::version child namespace
-*/
+ *  File: vantorScene.hpp
+ *  Last Change: Automatically updated
+ */
 
 #pragma once
 
 #include <vector>
 #include "../../Graphics/RenderDevice/vantorRenderDevice.hpp"
-namespace vantor {
+namespace vantor
+{
     class SceneNode;
 
     class Scene
     {
-    public:
-        static SceneNode* Root;
-        static unsigned int CounterID;
-    public:
-        static void Clear();
- 
-        static SceneNode* MakeSceneNode();
-        static SceneNode* MakeSceneNode(vantor::Graphics::RenderDevice::OpenGL::Mesh* mesh, vantor::Graphics::RenderDevice::OpenGL::Material* material);
-        static SceneNode* MakeSceneNode(SceneNode* node);
+        public:
+            static SceneNode   *Root;
+            static unsigned int CounterID;
 
-        static void DeleteSceneNode(SceneNode* node);
+        public:
+            static void Clear();
+
+            static SceneNode *MakeSceneNode();
+            static SceneNode *MakeSceneNode(vantor::Graphics::RenderDevice::OpenGL::Mesh *mesh, vantor::Graphics::RenderDevice::OpenGL::Material *material);
+            static SceneNode *MakeSceneNode(SceneNode *node);
+
+            static void DeleteSceneNode(SceneNode *node);
     };
 } // namespace vantor

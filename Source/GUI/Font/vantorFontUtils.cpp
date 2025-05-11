@@ -1,17 +1,22 @@
-
 /*
- *    				~ Vantor ~
+ *  ╔═══════════════════════════════════════════════════════════════╗
+ *  ║                          ~ Vantor ~                           ║
+ *  ║                                                               ║
+ *  ║  This file is part of the Vantor Engine.                      ║
+ *  ║  Automatically formatted by vantorFormat.py                   ║
+ *  ║                                                               ║
+ *  ╚═══════════════════════════════════════════════════════════════╝
  *
- * Copyright (c) 2025 Lukas Rennhofer
+ *  Copyright (c) 2025 Lukas Rennhofer
+ *  Licensed under the GNU General Public License, Version 3.
+ *  See LICENSE file for more details.
  *
- * Licensed under the GNU General Public License, Version 3. See LICENSE file for more details.
+ *  Author: Lukas Rennhofer
+ *  Date: 2025-05-11
  *
- * Author: Lukas Rennhofer
- * Date: 2025-04-01
- *
- * File: vantorFontUtils.cpp
- * Last Change: Added Dear Imgui Light theme by Pacôme Danhiez and added Demo Profiler
-*/
+ *  File: vantorFontUtils.cpp
+ *  Last Change: Automatically updated
+ */
 
 #include "vantorFontUtils.h"
 
@@ -22,36 +27,38 @@
 
 FontUtils::FontUtils() {}
 
-
 FontUtils::~FontUtils() {}
 
-void FontUtils::loadShader(char* shaderSource, GLenum shaderType, GLuint &programId) {
+void FontUtils::loadShader(char *shaderSource, GLenum shaderType, GLuint &programId)
+{
     GLuint shaderId = glCreateShader(shaderType);
 
     GLint result = GL_FALSE; // compilation result
-    int infoLogLength; // length of info log
+    int   infoLogLength;     // length of info log
 
     std::ifstream shaderFile(shaderSource);
-    std::string shaderStr;
-    const char* shader;
-    
-    if(!shaderFile.is_open()) {
+    std::string   shaderStr;
+    const char   *shader;
+
+    if (!shaderFile.is_open())
+    {
         std::string error = "Error: could not read file ";
         vantor::Backlog::Log("Font", error, vantor::Backlog::LogLevel::ERR);
     }
 
     // Read shader
     std::string buffer;
-    while(std::getline(shaderFile, buffer)) {
+    while (std::getline(shaderFile, buffer))
+    {
         shaderStr += buffer + "\n";
     }
 
     shader = shaderStr.c_str();
 
-    glShaderSource(shaderId,        // Shader handle
-        1,               // Number of files
-        &shader,  // Shader source code
-        NULL);           // NULL terminated string
+    glShaderSource(shaderId, // Shader handle
+                   1,        // Number of files
+                   &shader,  // Shader source code
+                   NULL);    // NULL terminated string
     glCompileShader(shaderId);
 
     // Check shader

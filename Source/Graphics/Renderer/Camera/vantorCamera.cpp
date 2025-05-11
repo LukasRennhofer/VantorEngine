@@ -1,58 +1,53 @@
 /*
- *    				~ Vantor ~
- *               
- * Copyright (c) 2025 Lukas Rennhofer
+ *  ╔═══════════════════════════════════════════════════════════════╗
+ *  ║                          ~ Vantor ~                           ║
+ *  ║                                                               ║
+ *  ║  This file is part of the Vantor Engine.                      ║
+ *  ║  Automatically formatted by vantorFormat.py                   ║
+ *  ║                                                               ║
+ *  ╚═══════════════════════════════════════════════════════════════╝
  *
- * Licensed under the GNU General Public License, Version 3. See LICENSE file for more details.
+ *  Copyright (c) 2025 Lukas Rennhofer
+ *  Licensed under the GNU General Public License, Version 3.
+ *  See LICENSE file for more details.
  *
- * Author: Lukas Rennhofer
- * Date: 2025-03-08
+ *  Author: Lukas Rennhofer
+ *  Date: 2025-05-11
  *
- * File: vantorCamera.cpp
- * Last Change: 
-*/
+ *  File: vantorCamera.cpp
+ *  Last Change: Automatically updated
+ */
 
 #include "vantorCamera.hpp"
 
-namespace vantor::Graphics {
+namespace vantor::Graphics
+{
     // --------------------------------------------------------------------------------------------
-    Camera::Camera()
-    {
-    }
+    Camera::Camera() {}
     // --------------------------------------------------------------------------------------------
-    Camera::Camera(glm::vec3 position, glm::vec3 forward, glm::vec3 up)
-        : Position(position), Forward(forward), Up(up)
-    {
-        UpdateView();
-    }
+    Camera::Camera(glm::vec3 position, glm::vec3 forward, glm::vec3 up) : Position(position), Forward(forward), Up(up) { UpdateView(); }
     // --------------------------------------------------------------------------------------------
-    void Camera::Update(float dt)
-    {
-        Frustum.Update(this);
-    }
+    void Camera::Update(float dt) { Frustum.Update(this); }
     // --------------------------------------------------------------------------------------------
     void Camera::SetPerspective(float fov, float aspect, float near, float far)
     {
         Perspective = true;
-        Projection = glm::perspective(fov, aspect, near, far);
-        FOV = fov;
-        Aspect = aspect;
-        Near = near;
-        Far = far;
+        Projection  = glm::perspective(fov, aspect, near, far);
+        FOV         = fov;
+        Aspect      = aspect;
+        Near        = near;
+        Far         = far;
     }
     // --------------------------------------------------------------------------------------------
     void Camera::SetOrthographic(float left, float right, float top, float bottom, float near, float far)
     {
         Perspective = false;
-        Projection = glm::ortho(left, right, top, bottom, near, far);
-        Near = near;
-        Far = far;
+        Projection  = glm::ortho(left, right, top, bottom, near, far);
+        Near        = near;
+        Far         = far;
     }
     // --------------------------------------------------------------------------------------------
-    void Camera::UpdateView()
-    {
-        View = glm::lookAt(Position, Position + Forward, Up);
-    }
+    void Camera::UpdateView() { View = glm::lookAt(Position, Position + Forward, Up); }
     // --------------------------------------------------------------------------------------------
     float Camera::FrustumHeightAtDistance(float distance)
     {
@@ -79,9 +74,9 @@ namespace vantor::Graphics {
     }
 
     // ------------------------------------------------------------------------
-    void CameraFrustum::Update(Camera* camera)
+    void CameraFrustum::Update(Camera *camera)
     {
-        float tan = 2.0f * std::tan(camera->FOV * 0.5f);
+        float tan        = 2.0f * std::tan(camera->FOV * 0.5f);
         float nearHeight = tan * camera->Near;
         float nearWidth  = nearHeight * camera->Aspect;
         float farHeight  = tan * camera->Far;
@@ -95,7 +90,7 @@ namespace vantor::Graphics {
         v = (nearCenter - camera->Right * nearWidth * 0.5f) - camera->Position;
         Left().SetNormalD(glm::cross(glm::normalize(v), camera->Up), nearCenter - camera->Right * nearWidth * 0.5f);
         // right plane
-        v = (nearCenter + camera->Right * nearWidth  * 0.5f) - camera->Position;
+        v = (nearCenter + camera->Right * nearWidth * 0.5f) - camera->Position;
         Right().SetNormalD(glm::cross(camera->Up, glm::normalize(v)), nearCenter + camera->Right * nearWidth * 0.5f);
         // top plane
         v = (nearCenter + camera->Up * nearHeight * 0.5f) - camera->Position;
@@ -111,7 +106,7 @@ namespace vantor::Graphics {
     // ------------------------------------------------------------------------
     bool CameraFrustum::Intersect(glm::vec3 point)
     {
-        FrustumPlane* planes = GetPlanes();
+        FrustumPlane *planes = GetPlanes();
         for (int i = 0; i < 6; ++i)
         {
             if (planes[i].Distance(point) < 0)
@@ -124,7 +119,7 @@ namespace vantor::Graphics {
     // ------------------------------------------------------------------------
     bool CameraFrustum::Intersect(glm::vec3 point, float radius)
     {
-        FrustumPlane* planes = GetPlanes();
+        FrustumPlane *planes = GetPlanes();
         for (int i = 0; i < 6; ++i)
         {
             if (planes[i].Distance(point) < -radius)
@@ -137,7 +132,7 @@ namespace vantor::Graphics {
     // ------------------------------------------------------------------------
     bool CameraFrustum::Intersect(glm::vec3 boxMin, glm::vec3 boxMax)
     {
-        FrustumPlane* planes = GetPlanes();
+        FrustumPlane *planes = GetPlanes();
         for (int i = 0; i < 6; ++i)
         {
             glm::vec3 positive = boxMin;
@@ -158,8 +153,8 @@ namespace vantor::Graphics {
     {
         Yaw = -90.0f;
 
-        Forward = forward;
-        m_WorldUp = Up;
+        Forward          = forward;
+        m_WorldUp        = Up;
         m_TargetPosition = position;
     }
     // --------------------------------------------------------------------------------------------
@@ -168,18 +163,17 @@ namespace vantor::Graphics {
         Camera::Update(dt);
 
         Position = glm::mix(Position, m_TargetPosition, glm::clamp(dt * Damping, 0.0f, 1.0f));
-        Yaw      = glm::mix(Yaw,      m_TargetYaw,      glm::clamp(dt * Damping * 2.0f, 0.0f, 1.0f));
-        Pitch    = glm::mix(Pitch,    m_TargetPitch,    glm::clamp(dt * Damping * 2.0f, 0.0f, 1.0f));
-
+        Yaw      = glm::mix(Yaw, m_TargetYaw, glm::clamp(dt * Damping * 2.0f, 0.0f, 1.0f));
+        Pitch    = glm::mix(Pitch, m_TargetPitch, glm::clamp(dt * Damping * 2.0f, 0.0f, 1.0f));
 
         // calculate new cartesian basis vectors from yaw/pitch pair:
         glm::vec3 newForward;
         newForward.x = cos(0.0174533 * Pitch) * cos(0.0174533 * Yaw);
         newForward.y = sin(0.0174533 * Pitch);
         newForward.z = cos(0.0174533 * Pitch) * sin(0.0174533 * Yaw);
-        Forward = glm::normalize(newForward);
-        Right = glm::normalize(glm::cross(Forward, m_WorldUp));
-        Up = glm::cross(Right, Forward);
+        Forward      = glm::normalize(newForward);
+        Right        = glm::normalize(glm::cross(Forward, m_WorldUp));
+        Up           = glm::cross(Right, Forward);
 
         // calculate the new view matrix
         UpdateView();
@@ -188,18 +182,18 @@ namespace vantor::Graphics {
     void FlyCamera::InputKey(float dt, CAMERA_MOVEMENT direction)
     {
         float speed = MovementSpeed * dt;
-        if (direction      == CAMERA_FORWARD)
-            m_TargetPosition = m_TargetPosition + Forward*speed;
+        if (direction == CAMERA_FORWARD)
+            m_TargetPosition = m_TargetPosition + Forward * speed;
         else if (direction == CAMERA_BACK)
-            m_TargetPosition = m_TargetPosition - Forward*speed;
+            m_TargetPosition = m_TargetPosition - Forward * speed;
         else if (direction == CAMERA_LEFT)
-            m_TargetPosition = m_TargetPosition - Right*speed;
+            m_TargetPosition = m_TargetPosition - Right * speed;
         else if (direction == CAMERA_RIGHT)
-            m_TargetPosition = m_TargetPosition + Right*speed;
+            m_TargetPosition = m_TargetPosition + Right * speed;
         else if (direction == CAMERA_UP)
-            m_TargetPosition = m_TargetPosition + m_WorldUp*speed;
+            m_TargetPosition = m_TargetPosition + m_WorldUp * speed;
         else if (direction == CAMERA_DOWN)
-            m_TargetPosition = m_TargetPosition - m_WorldUp*speed;
+            m_TargetPosition = m_TargetPosition - m_WorldUp * speed;
     }
     // --------------------------------------------------------------------------------------------
     void FlyCamera::InputMouse(float deltaX, float deltaY)
@@ -207,23 +201,23 @@ namespace vantor::Graphics {
         float xmovement = deltaX * MouseSensitivty;
         float ymovement = deltaY * MouseSensitivty;
 
-        m_TargetYaw   += xmovement;
+        m_TargetYaw += xmovement;
         m_TargetPitch += ymovement;
 
         // prevents calculating the length of the null vector
-        if(m_TargetYaw == 0.0f) m_TargetYaw = 0.01f;
-        if(m_TargetPitch == 0.0f) m_TargetPitch = 0.01f;
+        if (m_TargetYaw == 0.0f) m_TargetYaw = 0.01f;
+        if (m_TargetPitch == 0.0f) m_TargetPitch = 0.01f;
 
-        // it's not allowed to move the pitch above or below 90 degrees asctime the current 
-        // world-up vector would break our LookAt calculation.
-        if (m_TargetPitch > 89.0f)  m_TargetPitch =  89.0f;
+        // it's not allowed to move the pitch above or below 90 degrees asctime
+        // the current world-up vector would break our LookAt calculation.
+        if (m_TargetPitch > 89.0f) m_TargetPitch = 89.0f;
         if (m_TargetPitch < -89.0f) m_TargetPitch = -89.0f;
     }
     // --------------------------------------------------------------------------------------------
     void FlyCamera::InputScroll(float deltaX, float deltaY)
     {
-        MovementSpeed = glm::clamp(MovementSpeed + deltaY * 1.0f, 1.0f, 25.0f); 
-        Damping       = glm::clamp(Damping       + deltaX * 0.5f, 1.0f, 25.0f);
+        MovementSpeed = glm::clamp(MovementSpeed + deltaY * 1.0f, 1.0f, 25.0f);
+        Damping       = glm::clamp(Damping + deltaX * 0.5f, 1.0f, 25.0f);
     }
 
 } // namespace vantor::Graphics

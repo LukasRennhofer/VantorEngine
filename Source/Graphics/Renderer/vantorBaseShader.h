@@ -1,16 +1,21 @@
-
 /*
- *    				~ Vantor ~
- *               
- * Copyright (c) 2025 Lukas Rennhofer
+ *  ╔═══════════════════════════════════════════════════════════════╗
+ *  ║                          ~ Vantor ~                           ║
+ *  ║                                                               ║
+ *  ║  This file is part of the Vantor Engine.                      ║
+ *  ║  Automatically formatted by vantorFormat.py                   ║
+ *  ║                                                               ║
+ *  ╚═══════════════════════════════════════════════════════════════╝
  *
- * Licensed under the GNU General Public License, Version 3. See LICENSE file for more details.
+ *  Copyright (c) 2025 Lukas Rennhofer
+ *  Licensed under the GNU General Public License, Version 3.
+ *  See LICENSE file for more details.
  *
- * Author: Lukas Rennhofer
- * Date: 2025-03-08
+ *  Author: Lukas Rennhofer
+ *  Date: 2025-05-11
  *
- * File: vantorBaseShader.h
- * Last Change: 
+ *  File: vantorBaseShader.h
+ *  Last Change: Automatically updated
  */
 
 #pragma once
@@ -19,38 +24,36 @@
 
 #include "../../Core/Backlog/vantorBacklog.h"
 
-namespace vantor::Graphics::Renderer::Shader {
-	struct shaderType
-	{
-		shaderType() : type(-1), name("") {}
-		shaderType(unsigned int type, std::string name) : type(type), name(name) {}
+namespace vantor::Graphics::Renderer::Shader
+{
+    struct shaderType
+    {
+            shaderType() : type(-1), name("") {}
+            shaderType(unsigned int type, std::string name) : type(type), name(name) {}
 
-		unsigned int type;
-		std::string name;
-	};
+            unsigned int type;
+            std::string  name;
+    };
 
-	bool checkCompileErrors(unsigned int shader, const std::string &type, const std::string &shaderName);
-	std::string getShaderName(const char *shaderPath);
-	shaderType getShaderType(const char *path);
+    bool        checkCompileErrors(unsigned int shader, const std::string &type, const std::string &shaderName);
+    std::string getShaderName(const char *shaderPath);
+    shaderType  getShaderType(const char *path);
 
-	class BaseShader
-	{
-	public:
-		BaseShader(const char *shaderPath);
-		virtual ~BaseShader();
+    class BaseShader
+    {
+        public:
+            BaseShader(const char *shaderPath);
+            virtual ~BaseShader();
 
-		std::string getName()
-		{
-			return getShaderName(path.c_str());
-		}
+            std::string getName() { return getShaderName(path.c_str()); }
 
-		shaderType getType();
-		unsigned int getShad();
+            shaderType   getType();
+            unsigned int getShad();
 
-	private:
-		std::string loadShaderFromFile(const char *shaderPath);
-		std::string path;
-		unsigned int shad;
-		shaderType shadType;
-	};
+        private:
+            std::string  loadShaderFromFile(const char *shaderPath);
+            std::string  path;
+            unsigned int shad;
+            shaderType   shadType;
+    };
 } // NAMESPACE vantor::Graphics::Renderer::Shader

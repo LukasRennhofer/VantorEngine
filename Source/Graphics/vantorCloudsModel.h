@@ -1,18 +1,22 @@
-
 /*
- *    				~ Vantor ~
- *               
- * Copyright (c) 2025 Lukas Rennhofer
+ *  ╔═══════════════════════════════════════════════════════════════╗
+ *  ║                          ~ Vantor ~                           ║
+ *  ║                                                               ║
+ *  ║  This file is part of the Vantor Engine.                      ║
+ *  ║  Automatically formatted by vantorFormat.py                   ║
+ *  ║                                                               ║
+ *  ╚═══════════════════════════════════════════════════════════════╝
  *
- * Licensed under the GNU General Public License, Version 3. See LICENSE file for more details.
+ *  Copyright (c) 2025 Lukas Rennhofer
+ *  Licensed under the GNU General Public License, Version 3.
+ *  See LICENSE file for more details.
  *
- * Author: Lukas Rennhofer
- * Date: 2025-03-08
+ *  Author: Lukas Rennhofer
+ *  Date: 2025-05-11
  *
- * File: vantorCloudsModel.h
- * Last Change: 
+ *  File: vantorCloudsModel.h
+ *  Last Change: Automatically updated
  */
- 
 
 #pragma once
 #include <glm/glm.hpp>
@@ -27,44 +31,45 @@
 
 #include "vantorSkybox.h"
 
-#define INT_CEIL(n,d) (int)ceil((float)n/d)
+#define INT_CEIL(n, d) (int) ceil((float) n / d)
 
-namespace vantor::Graphics {
-	class CloudsModel : public drawableObject
-	{
-		public:
-			friend class VolumetricClouds;
+namespace vantor::Graphics
+{
+    class CloudsModel : public drawableObject
+    {
+        public:
+            friend class VolumetricClouds;
 
-			CloudsModel(sceneElements * scene, vantor::Graphics::Skybox * sky);
-			~CloudsModel();
-			
-			virtual void draw() {};
+            CloudsModel(sceneElements *scene, vantor::Graphics::Skybox *sky);
+            ~CloudsModel();
 
-			virtual void update();
-			virtual void setGui();
+            virtual void draw() {};
 
-		private:
-			vantor::Graphics::Renderer::Shader::Shader * volumetricCloudsShader, *weatherShader;
-			vantor::Graphics::Renderer::Shader::ScreenSpaceShader * postProcessingShader;
+            virtual void update();
+            virtual void setGui();
 
-			float coverage, cloudSpeed, crispiness, curliness, density, absorption;
-			float earthRadius, sphereInnerRadius, sphereOuterRadius;
-			float perlinFrequency;
-			bool enableGodRays;
-			bool enablePowder;
-			bool postProcess;
+        private:
+            vantor::Graphics::Renderer::Shader::Shader            *volumetricCloudsShader, *weatherShader;
+            vantor::Graphics::Renderer::Shader::ScreenSpaceShader *postProcessingShader;
 
-			glm::vec3 cloudColorTop, cloudColorBottom;
+            float coverage, cloudSpeed, crispiness, curliness, density, absorption;
+            float earthRadius, sphereInnerRadius, sphereOuterRadius;
+            float perlinFrequency;
+            bool  enableGodRays;
+            bool  enablePowder;
+            bool  postProcess;
 
-			glm::vec3 seed, oldSeed;
-			unsigned int perlinTex, worley32, weatherTex;
+            glm::vec3 cloudColorTop, cloudColorBottom;
 
-			sceneElements * scene;
-			vantor::Graphics::Skybox * sky;
+            glm::vec3    seed, oldSeed;
+            unsigned int perlinTex, worley32, weatherTex;
 
-			void generateWeatherMap();
-			void generateModelTextures();
-			void initVariables();
-			void initShaders();
-	};
+            sceneElements            *scene;
+            vantor::Graphics::Skybox *sky;
+
+            void generateWeatherMap();
+            void generateModelTextures();
+            void initVariables();
+            void initShaders();
+    };
 } // NAMESPACE vantor::Graphics

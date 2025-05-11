@@ -1,17 +1,22 @@
 /*
- *    				~ Vantor ~
- *               
- * Copyright (c) 2025 Lukas Rennhofer
+ *  ╔═══════════════════════════════════════════════════════════════╗
+ *  ║                          ~ Vantor ~                           ║
+ *  ║                                                               ║
+ *  ║  This file is part of the Vantor Engine.                      ║
+ *  ║  Automatically formatted by vantorFormat.py                   ║
+ *  ║                                                               ║
+ *  ╚═══════════════════════════════════════════════════════════════╝
  *
- * Licensed under the GNU General Public License, Version 3. See LICENSE file for more details.
+ *  Copyright (c) 2025 Lukas Rennhofer
+ *  Licensed under the GNU General Public License, Version 3.
+ *  See LICENSE file for more details.
  *
- * Author: Lukas Rennhofer
- * Date: 2025-03-08
+ *  Author: Lukas Rennhofer
+ *  Date: 2025-05-11
  *
- * File: vantorImgui.h
- * Last Change: Added FPS-History Ability
+ *  File: vantorImgui.h
+ *  Last Change: Automatically updated
  */
- 
 
 #pragma once
 
@@ -31,8 +36,9 @@
 
 #include <list>
 #include <vector>
-#include <format> 
+#include <format>
 
-namespace vantor::ImGui {
-	// TODO
-} // vantor::GUI 
+namespace vantor::ImGui
+{
+    // TODO
+} // namespace vantor::ImGui

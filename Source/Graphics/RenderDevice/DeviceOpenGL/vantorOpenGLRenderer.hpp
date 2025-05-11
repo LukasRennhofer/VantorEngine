@@ -1,16 +1,22 @@
 /*
-*    				~ Vantor ~
+ *  ╔═══════════════════════════════════════════════════════════════╗
+ *  ║                          ~ Vantor ~                           ║
+ *  ║                                                               ║
+ *  ║  This file is part of the Vantor Engine.                      ║
+ *  ║  Automatically formatted by vantorFormat.py                   ║
+ *  ║                                                               ║
+ *  ╚═══════════════════════════════════════════════════════════════╝
  *
- * Copyright (c) 2025 Lukas Rennhofer
+ *  Copyright (c) 2025 Lukas Rennhofer
+ *  Licensed under the GNU General Public License, Version 3.
+ *  See LICENSE file for more details.
  *
- * Licensed under the GNU General Public License, Version 3. See LICENSE file for more details.
+ *  Author: Lukas Rennhofer
+ *  Date: 2025-05-11
  *
- * Author: Lukas Rennhofer
- * Date: 2025-03-08
- *
- * File: vantorOpenGLRenderer.hpp
- * Last Change:
-*/
+ *  File: vantorOpenGLRenderer.hpp
+ *  Last Change: Automatically updated
+ */
 
 #pragma once
 
@@ -31,7 +37,8 @@
 #include <glad/glad.h>
 #include <string>
 
-namespace vantor::Graphics::RenderDevice::OpenGL {
+namespace vantor::Graphics::RenderDevice::OpenGL
+{
     class Mesh;
     class Material;
     class Scene;
@@ -40,107 +47,111 @@ namespace vantor::Graphics::RenderDevice::OpenGL {
 
     class Renderer
     {
-        friend PostProcessor;
-        friend PBR;
-    public:
-        bool IrradianceGI = true;
-        bool Shadows      = true;
-        bool Lights       = true;
-        bool RenderLights = true;
-        bool LightVolumes = false;
-        bool RenderProbes = false;
-        bool Wireframe    = false;
-    private:       
-        // render state
-        CommandBuffer* m_CommandBuffer;
-        GLCache        m_GLCache;
-        glm::vec2     m_RenderSize;
+            friend PostProcessor;
+            friend PBR;
 
-        // lighting
-        std::vector<vantor::Graphics::DirectionalLight*> m_DirectionalLights;
-        std::vector<vantor::Graphics::PointLight*>       m_PointLights;
-        RenderTarget* m_GBuffer = nullptr;
-        Mesh*         m_DeferredPointMesh;
+        public:
+            bool IrradianceGI = true;
+            bool Shadows      = true;
+            bool Lights       = true;
+            bool RenderLights = true;
+            bool LightVolumes = false;
+            bool RenderProbes = false;
+            bool Wireframe    = false;
 
-        // materials
-        MaterialLibrary* m_MaterialLibrary;
+        private:
+            // render state
+            CommandBuffer *m_CommandBuffer;
+            GLCache        m_GLCache;
+            glm::vec2      m_RenderSize;
 
-        // Camera
-        vantor::Graphics::Camera*    m_Camera;
-        glm::mat4 m_PrevViewProjection;
+            // lighting
+            std::vector<vantor::Graphics::DirectionalLight *> m_DirectionalLights;
+            std::vector<vantor::Graphics::PointLight *>       m_PointLights;
+            RenderTarget                                     *m_GBuffer = nullptr;
+            Mesh                                             *m_DeferredPointMesh;
 
-        // render-targets/post
-        std::vector<RenderTarget*> m_RenderTargetsCustom;
-        RenderTarget*              m_CurrentRenderTargetCustom = nullptr;
-        RenderTarget*              m_CustomTarget;
-        RenderTarget*              m_PostProcessTarget1;
-        PostProcessor*             m_PostProcessor;
-        vantor::Graphics::Geometry::Primitives::Quad*                      m_NDCPlane;
-        unsigned int m_FramebufferCubemap; 
-        unsigned int m_CubemapDepthRBO;
+            // materials
+            MaterialLibrary *m_MaterialLibrary;
 
-        // shadow buffers
-        std::vector<RenderTarget*> m_ShadowRenderTargets;
-        std::vector<glm::mat4>    m_ShadowViewProjections;
-        
-        // pbr
-        PBR* m_PBR;
-        unsigned int m_PBREnvironmentIndex;
-        std::vector<glm::vec4> m_ProbeSpatials;
+            // Camera
+            vantor::Graphics::Camera *m_Camera;
+            glm::mat4                 m_PrevViewProjection;
 
-        // ubo
-        unsigned int m_GlobalUBO;
+            // render-targets/post
+            std::vector<RenderTarget *>                   m_RenderTargetsCustom;
+            RenderTarget                                 *m_CurrentRenderTargetCustom = nullptr;
+            RenderTarget                                 *m_CustomTarget;
+            RenderTarget                                 *m_PostProcessTarget1;
+            PostProcessor                                *m_PostProcessor;
+            vantor::Graphics::Geometry::Primitives::Quad *m_NDCPlane;
+            unsigned int                                  m_FramebufferCubemap;
+            unsigned int                                  m_CubemapDepthRBO;
 
-        // debug
-        Mesh* m_DebugLightMesh;
+            // shadow buffers
+            std::vector<RenderTarget *> m_ShadowRenderTargets;
+            std::vector<glm::mat4>      m_ShadowViewProjections;
 
-    public:
-        Renderer();
-        ~Renderer();
+            // pbr
+            PBR                   *m_PBR;
+            unsigned int           m_PBREnvironmentIndex;
+            std::vector<glm::vec4> m_ProbeSpatials;
 
-        void Init();
+            // ubo
+            unsigned int m_GlobalUBO;
 
-        void SetRenderSize(unsigned int width, unsigned int height);
-        glm::vec2 GetRenderSize();
+            // debug
+            Mesh *m_DebugLightMesh;
 
-        void SetTarget(RenderTarget* renderTarget, GLenum target = GL_TEXTURE_2D);
+        public:
+            Renderer();
+            ~Renderer();
 
-        vantor::Graphics::Camera* GetCamera();
-        void    SetCamera(vantor::Graphics::Camera* camera);
+            void Init();
 
-        PostProcessor* GetPostProcessor();
+            void      SetRenderSize(unsigned int width, unsigned int height);
+            glm::vec2 GetRenderSize();
 
-        Material* CreateMaterial(std::string base = "default");
-        Material* CreateCustomMaterial(Shader* shader);         
-        Material* CreatePostProcessingMaterial(Shader* shader);
+            void SetTarget(RenderTarget *renderTarget, GLenum target = GL_TEXTURE_2D);
 
-        void PushRender(Mesh* mesh, Material* material, glm::mat4 transform = glm::mat4(), glm::mat4 prevFrameTransform = glm::mat4());
-        void PushRender(vantor::SceneNode* node);
-        void PushPostProcessor(Material* postProcessor);
+            vantor::Graphics::Camera *GetCamera();
+            void                      SetCamera(vantor::Graphics::Camera *camera);
 
-        void AddLight(vantor::Graphics::DirectionalLight *light);
-        void AddLight(vantor::Graphics::PointLight       *light);        
+            PostProcessor *GetPostProcessor();
 
-        void RenderPushedCommands();
+            Material *CreateMaterial(std::string base = "default");
+            Material *CreateCustomMaterial(Shader *shader);
+            Material *CreatePostProcessingMaterial(Shader *shader);
 
-        void Blit(Texture* src, RenderTarget* dst = nullptr, Material* material = nullptr, std::string textureUniformName = "TexSrc");
+            void PushRender(Mesh *mesh, Material *material, glm::mat4 transform = glm::mat4(), glm::mat4 prevFrameTransform = glm::mat4());
+            void PushRender(vantor::SceneNode *node);
+            void PushPostProcessor(Material *postProcessor);
 
-        void        SetSkyCapture(vantor::Graphics::RenderDevice::OpenGL::PBRCapture* pbrEnvironment);
-        vantor::Graphics::RenderDevice::OpenGL::PBRCapture* GetSkypCature();
-        void        AddIrradianceProbe(glm::vec3 position, float radius);
-        void        BakeProbes(vantor::SceneNode* scene = nullptr);
-    private:
-        void renderCustomCommand(RenderCommand* command, vantor::Graphics::Camera* customCamera, bool updateGLSettings = true);
-        void renderToCubemap(vantor::SceneNode* scene, TextureCube* target, glm::vec3 position = glm::vec3(0.0f), unsigned int mipLevel = 0);
-        void renderToCubemap(std::vector<RenderCommand>& renderCommands, TextureCube* target, glm::vec3 position = glm::vec3(0.0f), unsigned int mipLevel = 0);
-        void renderMesh(Mesh* mesh, Shader* shader);
-        void updateGlobalUBOs();
-        RenderTarget* getCurrentRenderTarget();
+            void AddLight(vantor::Graphics::DirectionalLight *light);
+            void AddLight(vantor::Graphics::PointLight *light);
 
-        void renderDeferredAmbient();
-        void renderDeferredDirLight(vantor::Graphics::DirectionalLight* light);
-        void renderDeferredPointLight(vantor::Graphics::PointLight* light);
+            void RenderPushedCommands();
 
-        void renderShadowCastCommand(RenderCommand* command, const glm::mat4& projection, const glm::mat4& view);
+            void Blit(Texture *src, RenderTarget *dst = nullptr, Material *material = nullptr, std::string textureUniformName = "TexSrc");
+
+            void                                                SetSkyCapture(vantor::Graphics::RenderDevice::OpenGL::PBRCapture *pbrEnvironment);
+            vantor::Graphics::RenderDevice::OpenGL::PBRCapture *GetSkypCature();
+            void                                                AddIrradianceProbe(glm::vec3 position, float radius);
+            void                                                BakeProbes(vantor::SceneNode *scene = nullptr);
+
+        private:
+            void renderCustomCommand(RenderCommand *command, vantor::Graphics::Camera *customCamera, bool updateGLSettings = true);
+            void renderToCubemap(vantor::SceneNode *scene, TextureCube *target, glm::vec3 position = glm::vec3(0.0f), unsigned int mipLevel = 0);
+            void
+            renderToCubemap(std::vector<RenderCommand> &renderCommands, TextureCube *target, glm::vec3 position = glm::vec3(0.0f), unsigned int mipLevel = 0);
+            void          renderMesh(Mesh *mesh, Shader *shader);
+            void          updateGlobalUBOs();
+            RenderTarget *getCurrentRenderTarget();
+
+            void renderDeferredAmbient();
+            void renderDeferredDirLight(vantor::Graphics::DirectionalLight *light);
+            void renderDeferredPointLight(vantor::Graphics::PointLight *light);
+
+            void renderShadowCastCommand(RenderCommand *command, const glm::mat4 &projection, const glm::mat4 &view);
     };
 } // namespace vantor::Graphics::RenderDevice::OpenGL

@@ -1,15 +1,21 @@
 /*
- *    				~ Vantor (Vath - Vantor vath Library)~
- *               
- * Copyright (c) 2025 Lukas Rennhofer
+ *  ╔═══════════════════════════════════════════════════════════════╗
+ *  ║                          ~ Vantor ~                           ║
+ *  ║                                                               ║
+ *  ║  This file is part of the Vantor Engine.                      ║
+ *  ║  Automatically formatted by vantorFormat.py                   ║
+ *  ║                                                               ║
+ *  ╚═══════════════════════════════════════════════════════════════╝
  *
- * Licensed under the GNU General Public License, Version 3. See LICENSE file for more details.
+ *  Copyright (c) 2025 Lukas Rennhofer
+ *  Licensed under the GNU General Public License, Version 3.
+ *  See LICENSE file for more details.
  *
- * Author: Lukas Rennhofer
- * Date: 2025-03-08
+ *  Author: Lukas Rennhofer
+ *  Date: 2025-05-11
  *
- * File: vathMatrix.hpp
- * Last Change: Added Version settings and vantor::core::version child namespace
+ *  File: vathMatrix.hpp
+ *  Last Change: Automatically updated
  */
 
 #pragma once
@@ -20,7 +26,7 @@
 #include "vathVector.hpp"
 
 namespace vath
-{    
+{
     /*
       Matrix numbering by vath conventions:
       |  0  1  2  3 |
@@ -29,61 +35,57 @@ namespace vath
       | 12 13 14 15 |
       Column-major layout in memory:
       [ 0, 4, 8, 12, 1, 5, 9, 13, 2, 6, 10, 14, 3, 7, 11, 15 ]
-      Matrix numbering if we access column-major memory sequentially in the array:
-      |  0  4  8 12 |
-      |  1  5  9 13 |
-      |  2  6 10 14 |
-      |  3  7 11 15 |
+      Matrix numbering if we access column-major memory sequentially in the
+      array: |  0  4  8 12 | |  1  5  9 13 | |  2  6 10 14 | |  3  7 11 15 |
 
       There is no need for matrix template specialization.
 
     */
-    template <std::size_t m, std::size_t n, typename T>
-    struct matrix
+    template <std::size_t m, std::size_t n, typename T> struct matrix
     {
-        union
-        {
-            T e[n][m];
-            struct
+            union
             {
-                vector<m, T> col[n];
+                    T e[n][m];
+                    struct
+                    {
+                            vector<m, T> col[n];
+                    };
             };
-        };
-        // --------------------------------------------------------------------------------------------
-        // consturctor0: default initializes matrix to identity matrix 
-        matrix()
-        {
-            for (std::size_t col = 0; col < n; ++col)
+            // --------------------------------------------------------------------------------------------
+            // consturctor0: default initializes matrix to identity matrix
+            matrix()
             {
-                for (std::size_t row = 0; row < m; ++row)
+                for (std::size_t col = 0; col < n; ++col)
                 {
-                    e[col][row] = (col == row) ? T(1.0f) : T(0.0f);
+                    for (std::size_t row = 0; row < m; ++row)
+                    {
+                        e[col][row] = (col == row) ? T(1.0f) : T(0.0f);
+                    }
                 }
             }
-        }
-        // --------------------------------------------------------------------------------------------
-        // constructor1: initialize matrix with initializer list
-        matrix(const std::initializer_list<T> args)
-        {
-            assert(args.size() <= m * n);
-            std::size_t cols = 0, rows = 0;
+            // --------------------------------------------------------------------------------------------
+            // constructor1: initialize matrix with initializer list
+            matrix(const std::initializer_list<T> args)
+            {
+                assert(args.size() <= m * n);
+                std::size_t cols = 0, rows = 0;
 
-			for (auto& it : args)
-			{
-				e[cols][rows++] = it;
-				if (rows >= m)
-				{
-					++cols;
-					rows = 0;
-				}
-			}
-        }
-        // --------------------------------------------------------------------------------------------
-        vector<m, T>& operator[](const std::size_t colIndex)
-        {
-            assert(colIndex >= 0 && colIndex < n);
-            return col[colIndex];
-        }
+                for (auto &it : args)
+                {
+                    e[cols][rows++] = it;
+                    if (rows >= m)
+                    {
+                        ++cols;
+                        rows = 0;
+                    }
+                }
+            }
+            // --------------------------------------------------------------------------------------------
+            vector<m, T> &operator[](const std::size_t colIndex)
+            {
+                assert(colIndex >= 0 && colIndex < n);
+                return col[colIndex];
+            }
     };
 
     typedef matrix<2, 2, float>  mat2;
@@ -93,8 +95,7 @@ namespace vath
     typedef matrix<3, 3, double> dmat3;
     typedef matrix<4, 4, double> dmat4;
 
-    template <std::size_t m, std::size_t n, typename T>
-    matrix<m, n, T> operator+(matrix<m, n, T>& lhs, matrix<m, n, T>& rhs)
+    template <std::size_t m, std::size_t n, typename T> matrix<m, n, T> operator+(matrix<m, n, T> &lhs, matrix<m, n, T> &rhs)
     {
         matrix<m, n, T> result;
         for (std::size_t col = 0; col < n; ++col)
@@ -108,8 +109,7 @@ namespace vath
     }
     // subtraction
     // --------------------------------------------------------------------------------------------
-    template <std::size_t m, std::size_t n, typename T>
-    matrix<m, n, T> operator-(matrix<m, n, T>& lhs, matrix<m, n, T>& rhs)
+    template <std::size_t m, std::size_t n, typename T> matrix<m, n, T> operator-(matrix<m, n, T> &lhs, matrix<m, n, T> &rhs)
     {
         matrix<m, n, T> result;
         for (std::size_t col = 0; col < n; ++col)
@@ -123,8 +123,7 @@ namespace vath
     }
     // multiplication
     // --------------------------------------------------------------------------------------------
-    template <std::size_t m, std::size_t n, std::size_t o, typename T>
-    matrix<m, o, T> operator*(matrix<m, n, T>& lhs, matrix<n, o, T>& rhs)
+    template <std::size_t m, std::size_t n, std::size_t o, typename T> matrix<m, o, T> operator*(matrix<m, n, T> &lhs, matrix<n, o, T> &rhs)
     {
         matrix<m, o, T> result;
         for (std::size_t col = 0; col < o; ++col)
@@ -141,10 +140,11 @@ namespace vath
         }
         return result;
     }
-    // multiplication with reference matrix (store directly inside provided matrix)
+    // multiplication with reference matrix (store directly inside provided
+    // matrix)
     // --------------------------------------------------------------------------------------------
     template <std::size_t m, std::size_t n, std::size_t o, typename T>
-    matrix<m, o, T>& mul(matrix <m, n, T> &result, const matrix<m, n, T>& lhs, const matrix<n, o, T>& rhs)
+    matrix<m, o, T> &mul(matrix<m, n, T> &result, const matrix<m, n, T> &lhs, const matrix<n, o, T> &rhs)
     {
         for (std::size_t col = 0; col < o; ++col)
         {
@@ -162,8 +162,7 @@ namespace vath
     }
     // matrix * vector multiplication
     // --------------------------------------------------------------------------------------------
-    template <std::size_t m, std::size_t n, typename T>
-    vector<m, T> operator*(matrix<m, n, T>& lhs, vector<n, T>& rhs)
+    template <std::size_t m, std::size_t n, typename T> vector<m, T> operator*(matrix<m, n, T> &lhs, vector<n, T> &rhs)
     {
         vector<m, T> result;
         for (std::size_t row = 0; row < m; ++row)
@@ -177,4 +176,4 @@ namespace vath
         }
         return result;
     }
-}
+} // namespace vath

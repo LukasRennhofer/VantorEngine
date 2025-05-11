@@ -1,16 +1,22 @@
 /*
- *    				~ Vantor ~
- *               
- * Copyright (c) 2025 Lukas Rennhofer
+ *  ╔═══════════════════════════════════════════════════════════════╗
+ *  ║                          ~ Vantor ~                           ║
+ *  ║                                                               ║
+ *  ║  This file is part of the Vantor Engine.                      ║
+ *  ║  Automatically formatted by vantorFormat.py                   ║
+ *  ║                                                               ║
+ *  ╚═══════════════════════════════════════════════════════════════╝
  *
- * Licensed under the GNU General Public License, Version 3. See LICENSE file for more details.
+ *  Copyright (c) 2025 Lukas Rennhofer
+ *  Licensed under the GNU General Public License, Version 3.
+ *  See LICENSE file for more details.
  *
- * Author: Lukas Rennhofer
- * Date: 2025-03-08
+ *  Author: Lukas Rennhofer
+ *  Date: 2025-05-11
  *
- * File: vantorApplication.hpp
- * Last Change: Added Version settings and vantor::core::version child namespace
-*/
+ *  File: vantorApplication.hpp
+ *  Last Change: Automatically updated
+ */
 
 #pragma once
 
@@ -21,16 +27,18 @@
 #include <SDL2/SDL.h>
 
 namespace vantor
-{    class Application {
+{
+    class Application
+    {
         protected:
             // Base Stats
             bool initialized = false;
 
             // Timer
-            float deltaTime = 0;
-            float deltaTimeAccumulator = 0;
+            float                  deltaTime            = 0;
+            float                  deltaTimeAccumulator = 0;
             vantor::Helpers::Timer timer;
-        
+
         public:
             virtual ~Application() = default;
 
@@ -38,7 +46,7 @@ namespace vantor
             // vantor::Platform::Window window;
 
             // Runs the main engine loop
-            void Run();
+            void         Run();
             virtual void Initialize();
 
             // void SetWindow(vantor::Platform::Window window);

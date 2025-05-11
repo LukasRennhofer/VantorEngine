@@ -1,16 +1,22 @@
 /*
- *    				~ Vantor ~
- *               
- * Copyright (c) 2025 Lukas Rennhofer
+ *  ╔═══════════════════════════════════════════════════════════════╗
+ *  ║                          ~ Vantor ~                           ║
+ *  ║                                                               ║
+ *  ║  This file is part of the Vantor Engine.                      ║
+ *  ║  Automatically formatted by vantorFormat.py                   ║
+ *  ║                                                               ║
+ *  ╚═══════════════════════════════════════════════════════════════╝
  *
- * Licensed under the GNU General Public License, Version 3. See LICENSE file for more details.
+ *  Copyright (c) 2025 Lukas Rennhofer
+ *  Licensed under the GNU General Public License, Version 3.
+ *  See LICENSE file for more details.
  *
- * Author: Lukas Rennhofer
- * Date: 2025-03-08
+ *  Author: Lukas Rennhofer
+ *  Date: 2025-05-11
  *
- * File: vantorPlatformWindows.cpp
- * Last Change: 
-*/
+ *  File: vantorPlatformWindows.cpp
+ *  Last Change: Automatically updated
+ */
 
 #ifdef __WINDOWS__
 
@@ -37,15 +43,16 @@ namespace vantor::Platform
         cachedPath = std::wstring(buffer);
 
         size_t lastSlash = cachedPath.find_last_of(L"\\/");
-        cachedDir = cachedPath.substr(0, lastSlash);
+        cachedDir        = cachedPath.substr(0, lastSlash);
     }
 
     double PlatformWindows::GetTimeSeconds()
     {
         static LARGE_INTEGER freq;
-        static bool initialized = false;
+        static bool          initialized = false;
 
-        if (!initialized) {
+        if (!initialized)
+        {
             QueryPerformanceFrequency(&freq);
             initialized = true;
         }
@@ -55,34 +62,25 @@ namespace vantor::Platform
         return static_cast<double>(now.QuadPart) / freq.QuadPart;
     }
 
-    void PlatformWindows::SleepMilliseconds(unsigned int ms)
-    {
-        ::Sleep(ms);
-    }
+    void PlatformWindows::SleepMilliseconds(unsigned int ms) { ::Sleep(ms); }
 
-    std::wstring PlatformWindows::GetExecutablePath()
-    {
-        return cachedPath;
-    }
+    std::wstring PlatformWindows::GetExecutablePath() { return cachedPath; }
 
-    std::wstring PlatformWindows::GetExecutableDirectory()
-    {
-        return cachedDir;
-    }
+    std::wstring PlatformWindows::GetExecutableDirectory() { return cachedDir; }
 
-    bool PlatformWindows::FileExists(const std::string& path)
-    {
-        return std::filesystem::exists(path);
-    }
+    bool PlatformWindows::FileExists(const std::string &path) { return std::filesystem::exists(path); }
 
-    uint64_t PlatformWindows::GetFileSize(const std::string& path)
+    uint64_t PlatformWindows::GetFileSize(const std::string &path)
     {
-        try {
+        try
+        {
             return static_cast<uint64_t>(std::filesystem::file_size(path));
-        } catch (...) {
+        }
+        catch (...)
+        {
             return 0;
         }
     }
-}
+} // namespace vantor::Platform
 
 #endif // __WINDOWS_

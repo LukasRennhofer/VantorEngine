@@ -1,16 +1,22 @@
 /*
- *    				~ Vantor ~
- *               
- * Copyright (c) 2025 Lukas Rennhofer
+ *  ╔═══════════════════════════════════════════════════════════════╗
+ *  ║                          ~ Vantor ~                           ║
+ *  ║                                                               ║
+ *  ║  This file is part of the Vantor Engine.                      ║
+ *  ║  Automatically formatted by vantorFormat.py                   ║
+ *  ║                                                               ║
+ *  ╚═══════════════════════════════════════════════════════════════╝
  *
- * Licensed under the GNU General Public License, Version 3. See LICENSE file for more details.
+ *  Copyright (c) 2025 Lukas Rennhofer
+ *  Licensed under the GNU General Public License, Version 3.
+ *  See LICENSE file for more details.
  *
- * Author: Lukas Rennhofer
- * Date: 2025-03-08
+ *  Author: Lukas Rennhofer
+ *  Date: 2025-05-11
  *
- * File: vantorShader.hpp
- * Last Change: 
-*/
+ *  File: vantorOpenGLShader.hpp
+ *  Last Change: Automatically updated
+ */
 
 #pragma once
 
@@ -21,44 +27,46 @@
 
 #include "vantorOpenGLShadingTypes.hpp"
 
-namespace vantor::Graphics::RenderDevice::OpenGL {
+namespace vantor::Graphics::RenderDevice::OpenGL
+{
 
     class Shader
     {
-    public:
-        unsigned int ID;
-        std::string  Name;
+        public:
+            unsigned int ID;
+            std::string  Name;
 
-        std::vector<Uniform>         Uniforms;
-        std::vector<VertexAttribute> Attributes;
+            std::vector<Uniform>         Uniforms;
+            std::vector<VertexAttribute> Attributes;
 
-    public:
-        Shader();
-        Shader(std::string name, std::string vsCode, std::string fsCode, std::vector<std::string> defines = std::vector<std::string>());
+        public:
+            Shader();
+            Shader(std::string name, std::string vsCode, std::string fsCode, std::vector<std::string> defines = std::vector<std::string>());
 
-        void Load(std::string name, std::string vsCode, std::string fsCode, std::vector<std::string> defines = std::vector<std::string>());
+            void Load(std::string name, std::string vsCode, std::string fsCode, std::vector<std::string> defines = std::vector<std::string>());
 
-        void Use();
+            void Use();
 
-        bool HasUniform(std::string name);
+            bool HasUniform(std::string name);
 
-        void SetInt   (std::string location, int   value);
-        void SetBool  (std::string location, bool  value);
-        void SetFloat (std::string location, float value);
-        void SetVector(std::string location, glm::vec2  value);
-        void SetVector(std::string location, glm::vec3  value);
-        void SetVector(std::string location, glm::vec4  value);
-        void SetVectorArray(std::string location, int size, const std::vector<glm::vec2>& values);
-        void SetVectorArray(std::string location, int size, const std::vector<glm::vec3>& values);
-        void SetVectorArray(std::string location, int size, const std::vector<glm::vec4>& values);
-        void SetMatrix(std::string location, glm::mat2 value);
-        void SetMatrix(std::string location, glm::mat3 value);
-        void SetMatrix(std::string location, glm::mat4 value);
-        void SetMatrixArray(std::string location, int size, glm::mat2* values);
-        void SetMatrixArray(std::string location, int size, glm::mat3* values);
-        void SetMatrixArray(std::string location, int size, glm::mat4* values);
-    private:
-        int getUniformLocation(std::string name);
+            void SetInt(std::string location, int value);
+            void SetBool(std::string location, bool value);
+            void SetFloat(std::string location, float value);
+            void SetVector(std::string location, glm::vec2 value);
+            void SetVector(std::string location, glm::vec3 value);
+            void SetVector(std::string location, glm::vec4 value);
+            void SetVectorArray(std::string location, int size, const std::vector<glm::vec2> &values);
+            void SetVectorArray(std::string location, int size, const std::vector<glm::vec3> &values);
+            void SetVectorArray(std::string location, int size, const std::vector<glm::vec4> &values);
+            void SetMatrix(std::string location, glm::mat2 value);
+            void SetMatrix(std::string location, glm::mat3 value);
+            void SetMatrix(std::string location, glm::mat4 value);
+            void SetMatrixArray(std::string location, int size, glm::mat2 *values);
+            void SetMatrixArray(std::string location, int size, glm::mat3 *values);
+            void SetMatrixArray(std::string location, int size, glm::mat4 *values);
+
+        private:
+            int getUniformLocation(std::string name);
     };
 
 } // namespace vantor::Graphics::RenderDevice::OpenGL

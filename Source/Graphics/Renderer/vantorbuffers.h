@@ -1,18 +1,22 @@
-
 /*
- *    				~ Vantor ~
- *               
- * Copyright (c) 2025 Lukas Rennhofer
+ *  ╔═══════════════════════════════════════════════════════════════╗
+ *  ║                          ~ Vantor ~                           ║
+ *  ║                                                               ║
+ *  ║  This file is part of the Vantor Engine.                      ║
+ *  ║  Automatically formatted by vantorFormat.py                   ║
+ *  ║                                                               ║
+ *  ╚═══════════════════════════════════════════════════════════════╝
  *
- * Licensed under the GNU General Public License, Version 3. See LICENSE file for more details.
+ *  Copyright (c) 2025 Lukas Rennhofer
+ *  Licensed under the GNU General Public License, Version 3.
+ *  See LICENSE file for more details.
  *
- * Author: Lukas Rennhofer
- * Date: 2025-03-08
+ *  Author: Lukas Rennhofer
+ *  Date: 2025-05-11
  *
- * File: vantorBuffers.h
- * Last Change: 
+ *  File: vantorbuffers.h
+ *  Last Change: Automatically updated
  */
- 
 
 #pragma once
 
@@ -21,51 +25,53 @@
 #include "../../Platform/vantorWindow.h"
 #include "../../Core/Backlog/vantorBacklog.h"
 
-namespace vantor::Graphics::Renderer::Buffer {
-	void bindFrameBuffer(int frameBuffer, int width, int height);
+namespace vantor::Graphics::Renderer::Buffer
+{
+    void bindFrameBuffer(int frameBuffer, int width, int height);
 
-	void unbindCurrentFrameBuffer(int scrWidth, int scrHeight);
-	void unbindCurrentFrameBuffer();
+    void unbindCurrentFrameBuffer(int scrWidth, int scrHeight);
+    void unbindCurrentFrameBuffer();
 
-	unsigned int createFrameBuffer();
+    unsigned int createFrameBuffer();
 
-	unsigned int createTextureAttachment(int width, int height);
+    unsigned int createTextureAttachment(int width, int height);
 
-	unsigned int * createColorAttachments(int width, int height, unsigned int nColorAttachments);
+    unsigned int *createColorAttachments(int width, int height, unsigned int nColorAttachments);
 
-	unsigned int createDepthTextureAttachment(int width, int height);
+    unsigned int createDepthTextureAttachment(int width, int height);
 
-	unsigned int createDepthBufferAttachment(int width, int height);
+    unsigned int createDepthBufferAttachment(int width, int height);
 
-	unsigned int createRenderBufferAttachment(int width, int height);
+    unsigned int createRenderBufferAttachment(int width, int height);
 
-	class FrameBufferObject {
-		public:
-			FrameBufferObject(int W, int H);
-			FrameBufferObject(int W, int H, int numColorAttachments);
-			unsigned int FBO, renderBuffer, depthTex;
-			unsigned int tex;
-			unsigned int getColorAttachmentTex(int i);
-			void bind();
-		private:
-			int W, H;
-			int nColorAttachments;
-			unsigned int * colorAttachments;
-	};
+    class FrameBufferObject
+    {
+        public:
+            FrameBufferObject(int W, int H);
+            FrameBufferObject(int W, int H, int numColorAttachments);
+            unsigned int FBO, renderBuffer, depthTex;
+            unsigned int tex;
+            unsigned int getColorAttachmentTex(int i);
+            void         bind();
 
-	class TextureSet { //for drawing compute shader
-		public:
-			TextureSet(int W, int H, int num);
-			void bindTexture(int i, int unit);
-			unsigned int getColorAttachmentTex(int i);
-			int getNTextures() const {
-				return nTextures;
-			}
+        private:
+            int           W, H;
+            int           nColorAttachments;
+            unsigned int *colorAttachments;
+    };
 
-			void bind();
-			
-		private:
-			int nTextures;
-			unsigned int * texture;
-	};
+    class TextureSet
+    { // for drawing compute shader
+        public:
+            TextureSet(int W, int H, int num);
+            void         bindTexture(int i, int unit);
+            unsigned int getColorAttachmentTex(int i);
+            int          getNTextures() const { return nTextures; }
+
+            void bind();
+
+        private:
+            int           nTextures;
+            unsigned int *texture;
+    };
 } // NAMESPACE vantor::Graphics::Renderer::Buffer

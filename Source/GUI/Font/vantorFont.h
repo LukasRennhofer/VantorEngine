@@ -1,16 +1,21 @@
-
 /*
- *    				~ Vantor ~
+ *  ╔═══════════════════════════════════════════════════════════════╗
+ *  ║                          ~ Vantor ~                           ║
+ *  ║                                                               ║
+ *  ║  This file is part of the Vantor Engine.                      ║
+ *  ║  Automatically formatted by vantorFormat.py                   ║
+ *  ║                                                               ║
+ *  ╚═══════════════════════════════════════════════════════════════╝
  *
- * Copyright (c) 2025 Lukas Rennhofer
+ *  Copyright (c) 2025 Lukas Rennhofer
+ *  Licensed under the GNU General Public License, Version 3.
+ *  See LICENSE file for more details.
  *
- * Licensed under the GNU General Public License, Version 3. See LICENSE file for more details.
+ *  Author: Lukas Rennhofer
+ *  Date: 2025-05-11
  *
- * Author: Lukas Rennhofer
- * Date: 2025-03-11
- *
- * File: vantorFont.h
- * Last Change: Added Dear Imgui Light theme by Pacôme Danhiez and added Demo Profiler
+ *  File: vantorFont.h
+ *  Last Change: Automatically updated
  */
 
 #pragma once
@@ -32,21 +37,22 @@
 
 #include "../Graphics/Renderer/vantorShader.h"
 
-namespace vantor::GUI {
-    class Font {
-    public:
-        Font(const char* fontFile);
-        ~Font();
+namespace vantor::GUI
+{
+    class Font
+    {
+        public:
+            Font(const char *fontFile);
+            ~Font();
 
-        void setFontFile(const char* fontFile);
+            void setFontFile(const char *fontFile);
 
-        FT_Face getFaceHandle();
+            FT_Face getFaceHandle();
 
-    private:
-        char* _fontFile;
-        FT_Error _error;
-        FT_Library _ft;
-        FT_Face _face;
-
+        private:
+            char      *_fontFile;
+            FT_Error   _error;
+            FT_Library _ft;
+            FT_Face    _face;
     };
 } // NAMESPACE vantor::GUI

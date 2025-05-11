@@ -1,17 +1,22 @@
 /*
- *    				~ Vantor ~
- *               
- * Copyright (c) 2025 Lukas Rennhofer
+ *  ╔═══════════════════════════════════════════════════════════════╗
+ *  ║                          ~ Vantor ~                           ║
+ *  ║                                                               ║
+ *  ║  This file is part of the Vantor Engine.                      ║
+ *  ║  Automatically formatted by vantorFormat.py                   ║
+ *  ║                                                               ║
+ *  ╚═══════════════════════════════════════════════════════════════╝
  *
- * Licensed under the GNU General Public License, Version 3. See LICENSE file for more details.
+ *  Copyright (c) 2025 Lukas Rennhofer
+ *  Licensed under the GNU General Public License, Version 3.
+ *  See LICENSE file for more details.
  *
- * Author: Lukas Rennhofer
- * Date: 2025-04-02
+ *  Author: Lukas Rennhofer
+ *  Date: 2025-05-11
  *
- * File: vantorInlineDebugger.h
- * Last Change:
+ *  File: vantorInlineDebugger.h
+ *  Last Change: Automatically updated
  */
- 
 
 #pragma once
 
@@ -24,8 +29,9 @@
 #include "../Backlog/vantorBacklog.h"
 
 // TODO: Adding Final version of debugger
-namespace vantor::Debug {
-    inline bool DebuggingEnabled = false; // Debugging state
+namespace vantor::Debug
+{
+    inline bool DebuggingEnabled       = false; // Debugging state
     inline bool EngineDebuggingEnabled = false; // Engine Debugging state
 
     void EnableDebugging(bool state);

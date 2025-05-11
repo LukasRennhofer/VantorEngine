@@ -1,16 +1,22 @@
 /*
- *    				~ Vantor ~
- *               
- * Copyright (c) 2025 Lukas Rennhofer
+ *  ╔═══════════════════════════════════════════════════════════════╗
+ *  ║                          ~ Vantor ~                           ║
+ *  ║                                                               ║
+ *  ║  This file is part of the Vantor Engine.                      ║
+ *  ║  Automatically formatted by vantorFormat.py                   ║
+ *  ║                                                               ║
+ *  ╚═══════════════════════════════════════════════════════════════╝
  *
- * Licensed under the GNU General Public License, Version 3. See LICENSE file for more details.
+ *  Copyright (c) 2025 Lukas Rennhofer
+ *  Licensed under the GNU General Public License, Version 3.
+ *  See LICENSE file for more details.
  *
- * Author: Lukas Rennhofer
- * Date: 2025-03-08
+ *  Author: Lukas Rennhofer
+ *  Date: 2025-05-11
  *
- * File: vantorApplication.cpp
- * Last Change: Added Version settings and vantor::core::version child namespace
-*/
+ *  File: vantorApplication.cpp
+ *  Last Change: Automatically updated
+ */
 
 #include "vantorApplication.hpp"
 #include "JobSystem/vantorJobSystem.h"
@@ -23,22 +29,24 @@
 namespace vantor
 {
     void Application::Initialize()
-	{
-		if (initialized)
-		{
-			return;
-		}
+    {
+        if (initialized)
+        {
+            return;
+        }
         vantor::Backlog::Log("Application", std::format("Using Vantor Core: {}", vantor::Core::version::GetVersionString()), vantor::Backlog::LogLevel::INFO);
 
-		initialized = true;
+        initialized = true;
 
         // TODO: Initializing with vantorInitializer
         vantor::Platform::Input::Initialize();
-        vantor::Backlog::Log("Application", "Using RenderDevice " + vantor::Graphics::RenderDevice::apiToString(vantor::Graphics::RenderDevice::OPENGL), vantor::Backlog::LogLevel::DEBUG);
+        vantor::Backlog::Log("Application", "Using RenderDevice " + vantor::Graphics::RenderDevice::apiToString(vantor::Graphics::RenderDevice::OPENGL),
+                             vantor::Backlog::LogLevel::DEBUG);
         vantor::Resources::Init();
-	}
+    }
 
-    void Application::Run() {
+    void Application::Run()
+    {
         vantor::Platform::Input::Update();
         // TODO
     }

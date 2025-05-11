@@ -1,23 +1,30 @@
 /*
- *    				~ Vantor ~
- *               
- * Copyright (c) 2025 Lukas Rennhofer
+ *  ╔═══════════════════════════════════════════════════════════════╗
+ *  ║                          ~ Vantor ~                           ║
+ *  ║                                                               ║
+ *  ║  This file is part of the Vantor Engine.                      ║
+ *  ║  Automatically formatted by vantorFormat.py                   ║
+ *  ║                                                               ║
+ *  ╚═══════════════════════════════════════════════════════════════╝
  *
- * Licensed under the GNU General Public License, Version 3. See LICENSE file for more details.
+ *  Copyright (c) 2025 Lukas Rennhofer
+ *  Licensed under the GNU General Public License, Version 3.
+ *  See LICENSE file for more details.
  *
- * Author: Lukas Rennhofer
- * Date: 2025-03-08
+ *  Author: Lukas Rennhofer
+ *  Date: 2025-05-11
  *
- * File: vantorShadingTypes.hpp
- * Last Change: 
-*/
+ *  File: vantorOpenGLShadingTypes.hpp
+ *  Last Change: Automatically updated
+ */
 
 #pragma once
 
 #include <string>
 #include <glm/glm.hpp>
 
-namespace vantor::Graphics::RenderDevice::OpenGL {
+namespace vantor::Graphics::RenderDevice::OpenGL
+{
 
     class Texture;
     class TextureCube;
@@ -41,52 +48,52 @@ namespace vantor::Graphics::RenderDevice::OpenGL {
 
     struct Uniform
     {
-        SHADER_TYPE  Type;
-        std::string  Name;
-        int          Size;
-        unsigned int Location;
+            SHADER_TYPE  Type;
+            std::string  Name;
+            int          Size;
+            unsigned int Location;
     };
 
     struct UniformValue
     {
-        SHADER_TYPE Type;
+            SHADER_TYPE Type;
 
-        union
-        {
-            bool       Bool;
-            int        Int;
-            float      Float;
+            union
+            {
+                    bool  Bool;
+                    int   Int;
+                    float Float;
 
-            glm::vec2 Vec2;
-            glm::vec3 Vec3;
-            glm::vec4 Vec4;
-            glm::mat2 Mat2;
-            glm::mat3 Mat3;
-            glm::mat4 Mat4;
-        };
+                    glm::vec2 Vec2;
+                    glm::vec3 Vec3;
+                    glm::vec4 Vec4;
+                    glm::mat2 Mat2;
+                    glm::mat3 Mat3;
+                    glm::mat4 Mat4;
+            };
 
-        UniformValue() {}
+            UniformValue() {}
     };
 
     struct UniformValueSampler
     {
-        SHADER_TYPE  Type;
-        unsigned int Unit;
-        union 
-        {
-            Texture     *Texture;
-            TextureCube *TextureCube;
-        };
+            SHADER_TYPE  Type;
+            unsigned int Unit;
+            union
+            {
+                    Texture     *Texture;
+                    TextureCube *TextureCube;
+            };
 
-        UniformValueSampler() {}
+            UniformValueSampler() {}
     };
 
     struct VertexAttribute
     {
-        SHADER_TYPE  Type;
-        std::string  Name;
-        int          Size;
-        unsigned int Location;
+            SHADER_TYPE  Type;
+            std::string  Name;
+            int          Size;
+            unsigned int Location;
     };
 
 } // namespace vantor::Graphics::RenderDevice::OpenGL

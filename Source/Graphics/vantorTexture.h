@@ -1,18 +1,22 @@
-
 /*
- *    				~ Vantor ~
- *               
- * Copyright (c) 2025 Lukas Rennhofer
+ *  ╔═══════════════════════════════════════════════════════════════╗
+ *  ║                          ~ Vantor ~                           ║
+ *  ║                                                               ║
+ *  ║  This file is part of the Vantor Engine.                      ║
+ *  ║  Automatically formatted by vantorFormat.py                   ║
+ *  ║                                                               ║
+ *  ╚═══════════════════════════════════════════════════════════════╝
  *
- * Licensed under the GNU General Public License, Version 3. See LICENSE file for more details.
+ *  Copyright (c) 2025 Lukas Rennhofer
+ *  Licensed under the GNU General Public License, Version 3.
+ *  See LICENSE file for more details.
  *
- * Author: Lukas Rennhofer
- * Date: 2025-03-08
+ *  Author: Lukas Rennhofer
+ *  Date: 2025-05-11
  *
- * File: vantorTexture.h
- * Last Change: 
+ *  File: vantorTexture.h
+ *  Last Change: Automatically updated
  */
- 
 
 #pragma once
 #include <stb_image.h>
@@ -26,10 +30,11 @@
 
 using namespace std;
 
-namespace vantor::Graphics {
+namespace vantor::Graphics
+{
     unsigned int TextureFromFile(const char *path, const string &directory, bool gamma = false);
     unsigned int loadCubemap(vector<std::string> faces);
     unsigned int generateTexture2D(int w, int h);
     unsigned int generateTexture3D(int w, int h, int d);
-    void bindTexture2D(unsigned int tex, int unit = 0);
+    void         bindTexture2D(unsigned int tex, int unit = 0);
 } // NAMESPACE vantor::Graphics

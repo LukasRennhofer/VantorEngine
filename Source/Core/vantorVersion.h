@@ -1,23 +1,29 @@
-
 /*
- *    				~ Vantor ~
+ *  ╔═══════════════════════════════════════════════════════════════╗
+ *  ║                          ~ Vantor ~                           ║
+ *  ║                                                               ║
+ *  ║  This file is part of the Vantor Engine.                      ║
+ *  ║  Automatically formatted by vantorFormat.py                   ║
+ *  ║                                                               ║
+ *  ╚═══════════════════════════════════════════════════════════════╝
  *
- * Copyright (c) 2025 Lukas Rennhofer
+ *  Copyright (c) 2025 Lukas Rennhofer
+ *  Licensed under the GNU General Public License, Version 3.
+ *  See LICENSE file for more details.
  *
- * Licensed under the GNU General Public License, Version 3. See LICENSE file for more details.
+ *  Author: Lukas Rennhofer
+ *  Date: 2025-05-11
  *
- * Author: Lukas Rennhofer
- * Date: 2025-03-08
- *
- * File: vantorVersion.h
- * Last Change: Updated projects docs
+ *  File: vantorVersion.h
+ *  Last Change: Automatically updated
  */
 
 #pragma once
 
 #include <string>
 
-namespace vantor::Core::version {
+namespace vantor::Core::version
+{
 
     // return: const int major
     int GetMajor();
@@ -27,4 +33,4 @@ namespace vantor::Core::version {
     int GetRevision();
 
     std::string GetVersionString();
-} // NAMESPACE VANTOR::CORE::VERSION
+} // namespace vantor::Core::version

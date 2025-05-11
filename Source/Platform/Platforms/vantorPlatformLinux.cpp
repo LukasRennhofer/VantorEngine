@@ -1,16 +1,22 @@
 /*
- *    				~ Vantor ~
- *               
- * Copyright (c) 2025 Lukas Rennhofer
+ *  ╔═══════════════════════════════════════════════════════════════╗
+ *  ║                          ~ Vantor ~                           ║
+ *  ║                                                               ║
+ *  ║  This file is part of the Vantor Engine.                      ║
+ *  ║  Automatically formatted by vantorFormat.py                   ║
+ *  ║                                                               ║
+ *  ╚═══════════════════════════════════════════════════════════════╝
  *
- * Licensed under the GNU General Public License, Version 3. See LICENSE file for more details.
+ *  Copyright (c) 2025 Lukas Rennhofer
+ *  Licensed under the GNU General Public License, Version 3.
+ *  See LICENSE file for more details.
  *
- * Author: Lukas Rennhofer
- * Date: 2025-03-08
+ *  Author: Lukas Rennhofer
+ *  Date: 2025-05-11
  *
- * File: vantorPlatformLinux.cpp
- * Last Change: 
-*/
+ *  File: vantorPlatformLinux.cpp
+ *  Last Change: Automatically updated
+ */
 
 #ifdef __LINUX__
 
@@ -34,12 +40,13 @@ namespace vantor::Platform
 
     void PlatformLinux::CacheExecutablePath()
     {
-        char buffer[PATH_MAX] = {0};
-        ssize_t len = readlink("/proc/self/exe", buffer, sizeof(buffer) - 1);
-        if (len != -1) {
-            cachedPath = std::string(buffer, len);
+        char    buffer[PATH_MAX] = {0};
+        ssize_t len              = readlink("/proc/self/exe", buffer, sizeof(buffer) - 1);
+        if (len != -1)
+        {
+            cachedPath       = std::string(buffer, len);
             size_t lastSlash = cachedPath.find_last_of('/');
-            cachedDir = cachedPath.substr(0, lastSlash);
+            cachedDir        = cachedPath.substr(0, lastSlash);
         }
     }
 
@@ -47,38 +54,29 @@ namespace vantor::Platform
     {
         using namespace std::chrono;
         static auto start = high_resolution_clock::now();
-        auto now = high_resolution_clock::now();
+        auto        now   = high_resolution_clock::now();
         return duration<double>(now - start).count();
     }
 
-    void PlatformLinux::SleepMilliseconds(unsigned int ms)
-    {
-        std::this_thread::sleep_for(std::chrono::milliseconds(ms));
-    }
+    void PlatformLinux::SleepMilliseconds(unsigned int ms) { std::this_thread::sleep_for(std::chrono::milliseconds(ms)); }
 
-    std::string PlatformLinux::GetExecutablePath()
-    {
-        return cachedPath;
-    }
+    std::string PlatformLinux::GetExecutablePath() { return cachedPath; }
 
-    std::string PlatformLinux::GetExecutableDirectory()
-    {
-        return cachedDir;
-    }
+    std::string PlatformLinux::GetExecutableDirectory() { return cachedDir; }
 
-    bool PlatformLinux::FileExists(const std::string& path)
-    {
-        return std::filesystem::exists(path);
-    }
+    bool PlatformLinux::FileExists(const std::string &path) { return std::filesystem::exists(path); }
 
-    uint64_t PlatformLinux::GetFileSize(const std::string& path)
+    uint64_t PlatformLinux::GetFileSize(const std::string &path)
     {
-        try {
+        try
+        {
             return static_cast<uint64_t>(std::filesystem::file_size(path));
-        } catch (...) {
+        }
+        catch (...)
+        {
             return 0;
         }
     }
-}
+} // namespace vantor::Platform
 
 #endif // __LINUX__

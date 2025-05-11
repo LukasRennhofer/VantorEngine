@@ -1,0 +1,60 @@
+---
+# clang-format configuration file for ~ Vantor ~
+# More options available: https://clang.llvm.org/docs/ClangFormatStyleOptions.html
+
+# Based on the LLVM style but with customized settings.
+BasedOnStyle: LLVM
+
+# Align the 'public', 'private', 'protected' members of a class
+AlignConsecutiveAssignments: true
+AlignConsecutiveDeclarations: true
+
+# Indentation settings
+IndentWidth: 4             # 4 spaces for indentation
+TabWidth: 4                # Same for tab characters
+UseTab: Never              # Never use tabs (use spaces instead)
+
+# Control whether to put a space before a function's parentheses
+SpaceBeforeParens: ControlStatements
+
+# Bracket styles
+BreakBeforeBraces: Allman  # Opening braces on new lines (Allman style)
+
+# Function argument formatting
+AllowAllParametersOfDeclarationOnNextLine: false  # Put function arguments on the same line
+BinPackParameters: false                          # Don't bin-pack parameters
+
+# Spaces and alignment in function calls
+SpacesInParentheses: false    # No spaces inside parentheses
+SpaceAfterCStyleCast: true    # Add space after C-style casts
+# SpaceBeforeCtorInitializer: true  # Space before constructor initializer
+
+# Formatting for comments
+CommentPragmas: '^\\s*//'     # Matches single-line comments starting with '//' and handles formatting accordingly
+SortIncludes: Never            # Automatically sort includes
+
+# Formatting for control flow statements
+BreakBeforeBinaryOperators: All  # Break before binary operators (like '&&', '||')
+KeepEmptyLinesAtTheStartOfBlocks: true  # Keeps empty lines at the beginning of blocks
+
+# Max line length
+ColumnLimit: 160              # Maximum line length before wrapping
+
+# Control the formatting of switch statements
+#SwitchStatements: AfterCase  # Place `break;` after case labels, not before
+
+# Miscellaneous settings
+AlignAfterOpenBracket: Align  # Align values after opening bracket
+ConstructorInitializerAllOnOneLineOrOnePerLine: true # Constructor initializer list on one line or one per line
+
+# Control the formatting of function bodies
+MaxEmptyLinesToKeep: 1       # Keep at most 1 empty line between functions or methods
+
+# Type and class formatting
+IndentCaseLabels: true       # Indent case labels (e.g., 'case X: {')
+NamespaceIndentation: All       # Indent namespace code
+IndentAccessModifiers: true  # Indent access modifiers like 'public', 'private', 'protected'
+
+# Function formatting
+AlignTrailingComments: true  # Align trailing comments
+AllowShortIfStatementsOnASingleLine: true # Allow short if-statements to be on a single line

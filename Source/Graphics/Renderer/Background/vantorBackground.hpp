@@ -1,16 +1,22 @@
 /*
- *    				~ Vantor ~
- *               
- * Copyright (c) 2025 Lukas Rennhofer
+ *  ╔═══════════════════════════════════════════════════════════════╗
+ *  ║                          ~ Vantor ~                           ║
+ *  ║                                                               ║
+ *  ║  This file is part of the Vantor Engine.                      ║
+ *  ║  Automatically formatted by vantorFormat.py                   ║
+ *  ║                                                               ║
+ *  ╚═══════════════════════════════════════════════════════════════╝
  *
- * Licensed under the GNU General Public License, Version 3. See LICENSE file for more details.
+ *  Copyright (c) 2025 Lukas Rennhofer
+ *  Licensed under the GNU General Public License, Version 3.
+ *  See LICENSE file for more details.
  *
- * Author: Lukas Rennhofer
- * Date: 2025-03-08
+ *  Author: Lukas Rennhofer
+ *  Date: 2025-05-11
  *
- * File: vantorBackground.hpp
- * Last Change: 
-*/
+ *  File: vantorBackground.hpp
+ *  Last Change: Automatically updated
+ */
 
 // !! WARNING: IT NEEDS TO BE CHANGED WHEN WORKING WITH VULKAN!!!
 
@@ -23,14 +29,14 @@ namespace vantor::Graphics
 {
     class Background : public vantor::SceneNode
     {
-    private:
-        vantor::Graphics::RenderDevice::OpenGL::TextureCube *m_CubeMap;
-        vantor::Graphics::RenderDevice::OpenGL::Shader      *m_Shader;
+        private:
+            vantor::Graphics::RenderDevice::OpenGL::TextureCube *m_CubeMap;
+            vantor::Graphics::RenderDevice::OpenGL::Shader      *m_Shader;
 
-    public:
-        Background();
-        ~Background();
+        public:
+            Background();
+            ~Background();
 
-        void SetCubemap(vantor::Graphics::RenderDevice::OpenGL::TextureCube* cubemap);
+            void SetCubemap(vantor::Graphics::RenderDevice::OpenGL::TextureCube *cubemap);
     };
-}
+} // namespace vantor::Graphics

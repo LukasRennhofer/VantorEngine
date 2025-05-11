@@ -28,12 +28,15 @@ from pathlib import Path
 import argparse
 import time
 
+from Tools.Formatting import vantorFormat
+
 SRC_DIR_INTERNAL = Path("Source")
 BUILD_DIR_INTERNAL = Path("build")
 EXAMPLES_INTERNAL = Path("examples")
 RESOURCE_DIRS = ["resources", "shaders", "lib"]
 SANBOX_DIR_INTERNAL = Path("Sandbox")
 INCLUDE_DIR = BUILD_DIR_INTERNAL / "include"
+EXTERNAL_SRC_DIR = SRC_DIR_INTERNAL / "External"
 
 VALID_BUILDING_PLATFORMS = ["Windows", "Linux", "Switch"]
 
@@ -392,6 +395,12 @@ class VANTORDevConsole:
         )
 
         parser.add_argument(
+            "--format", 
+            action="store_true", 
+            help="Formats the whole Vantor CodeBase using a custom Header and clang-format"
+        )
+
+        parser.add_argument(
             "--build-lib", 
             action="store_true", 
             help="Build the Vantor libaries"
@@ -452,3 +461,6 @@ class VANTORDevConsole:
 
         if args.build_sandbox:
             self.build_system.buildSanbox(target=args.platform, debugging=debugging)
+
+        if args.format:
+            vantorFormat.format_files_in_folder(SRC_DIR_INTERNAL)

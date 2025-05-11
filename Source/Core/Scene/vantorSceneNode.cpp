@@ -1,16 +1,22 @@
 /*
- *    				~ Vantor ~
- *               
- * Copyright (c) 2025 Lukas Rennhofer
+ *  ╔═══════════════════════════════════════════════════════════════╗
+ *  ║                          ~ Vantor ~                           ║
+ *  ║                                                               ║
+ *  ║  This file is part of the Vantor Engine.                      ║
+ *  ║  Automatically formatted by vantorFormat.py                   ║
+ *  ║                                                               ║
+ *  ╚═══════════════════════════════════════════════════════════════╝
  *
- * Licensed under the GNU General Public License, Version 3. See LICENSE file for more details.
+ *  Copyright (c) 2025 Lukas Rennhofer
+ *  Licensed under the GNU General Public License, Version 3.
+ *  See LICENSE file for more details.
  *
- * Author: Lukas Rennhofer
- * Date: 2025-03-08
+ *  Author: Lukas Rennhofer
+ *  Date: 2025-05-11
  *
- * File: vantorSceneNode.cpp
- * Last Change: Added Version settings and vantor::core::version child namespace
-*/
+ *  File: vantorSceneNode.cpp
+ *  Last Change: Automatically updated
+ */
 
 #include "vantorSceneNode.hpp"
 #include "vantorScene.hpp"
@@ -18,12 +24,10 @@
 
 #include <assert.h>
 
-namespace vantor {
+namespace vantor
+{
     // --------------------------------------------------------------------------------------------
-    SceneNode::SceneNode(unsigned int id) : m_ID(id)
-    {
-        
-    }
+    SceneNode::SceneNode(unsigned int id) : m_ID(id) {}
     // --------------------------------------------------------------------------------------------
     SceneNode::~SceneNode()
     {
@@ -36,13 +40,13 @@ namespace vantor {
     void SceneNode::SetPosition(glm::vec3 position)
     {
         m_Position = position;
-        m_Dirty = true;
+        m_Dirty    = true;
     }
     // --------------------------------------------------------------------------------------------
     void SceneNode::SetRotation(glm::vec4 rotation)
     {
         m_Rotation = rotation;
-        m_Dirty = true;
+        m_Dirty    = true;
     }
     // --------------------------------------------------------------------------------------------
     void SceneNode::SetScale(glm::vec3 scale)
@@ -57,44 +61,31 @@ namespace vantor {
         m_Dirty = true;
     }
     // --------------------------------------------------------------------------------------------
-    glm::vec3 SceneNode::GetLocalPosition()
-    {
-        return m_Position;
-    }
+    glm::vec3 SceneNode::GetLocalPosition() { return m_Position; }
     // --------------------------------------------------------------------------------------------
-    glm::vec4 SceneNode::GetLocalRotation()
-    {
-        return m_Rotation;
-    }
+    glm::vec4 SceneNode::GetLocalRotation() { return m_Rotation; }
     // --------------------------------------------------------------------------------------------
-    glm::vec3 SceneNode::GetLocalScale()
-    {
-        return m_Scale;
-    }
+    glm::vec3 SceneNode::GetLocalScale() { return m_Scale; }
     // --------------------------------------------------------------------------------------------
     glm::vec3 SceneNode::GetWorldPosition()
     {
         glm::mat4 transform = GetTransform();
-        glm::vec4 pos = transform * glm::vec4(m_Position, 1.0f);
-        glm::vec3 result = glm::vec3(pos.x, pos.y, pos.z);
+        glm::vec4 pos       = transform * glm::vec4(m_Position, 1.0f);
+        glm::vec3 result    = glm::vec3(pos.x, pos.y, pos.z);
         return result;
-
     }
     // --------------------------------------------------------------------------------------------
     glm::vec3 SceneNode::GetWorldScale()
     {
         glm::mat4 transform = GetTransform();
-        glm::vec3 scale = glm::vec3(transform[0][0], transform[1][1], transform[2][2]);
+        glm::vec3 scale     = glm::vec3(transform[0][0], transform[1][1], transform[2][2]);
         if (scale.x < 0.0f) scale.x *= -1.0f;
         if (scale.y < 0.0f) scale.y *= -1.0f;
-        if(scale.z < 0.0f) scale.z *= -1.0f;
+        if (scale.z < 0.0f) scale.z *= -1.0f;
         return scale;
     }
     // --------------------------------------------------------------------------------------------
-    unsigned int SceneNode::GetID()
-    {
-        return m_ID;
-    }
+    unsigned int SceneNode::GetID() { return m_ID; }
     // --------------------------------------------------------------------------------------------
     void SceneNode::AddChild(SceneNode *node)
     {
@@ -109,40 +100,29 @@ namespace vantor {
     void SceneNode::RemoveChild(unsigned int id)
     {
         auto it = std::find(m_Children.begin(), m_Children.end(), GetChild(id));
-        if(it != m_Children.end())
-            m_Children.erase(it);
+        if (it != m_Children.end()) m_Children.erase(it);
     }
     // --------------------------------------------------------------------------------------------
-    std::vector<SceneNode*> SceneNode::GetChildren()
-    {
-        return m_Children;
-    }
+    std::vector<SceneNode *> SceneNode::GetChildren() { return m_Children; }
     // --------------------------------------------------------------------------------------------
-    unsigned int SceneNode::GetChildCount()
-    {
-        return m_Children.size();
-    }
+    unsigned int SceneNode::GetChildCount() { return m_Children.size(); }
     // --------------------------------------------------------------------------------------------
     SceneNode *SceneNode::GetChild(unsigned int id)
     {
         for (unsigned int i = 0; i < m_Children.size(); ++i)
         {
-            if(m_Children[i]->GetID() == id)
-                return m_Children[i];
+            if (m_Children[i]->GetID() == id) return m_Children[i];
         }
         return nullptr;
     }
     // --------------------------------------------------------------------------------------------
-    SceneNode* SceneNode::GetChildByIndex(unsigned int index)
+    SceneNode *SceneNode::GetChildByIndex(unsigned int index)
     {
         assert(index < GetChildCount());
         return m_Children[index];
     }
     // --------------------------------------------------------------------------------------------
-    SceneNode *SceneNode::GetParent()
-    {
-        return m_Parent;
-    }
+    SceneNode *SceneNode::GetParent() { return m_Parent; }
     // --------------------------------------------------------------------------------------------
     glm::mat4 SceneNode::GetTransform()
     {
@@ -153,16 +133,13 @@ namespace vantor {
         return m_Transform;
     }
     // --------------------------------------------------------------------------------------------
-    glm::mat4 SceneNode::GetPrevTransform()
-    {
-        return m_PrevTransform;
-    }
+    glm::mat4 SceneNode::GetPrevTransform() { return m_PrevTransform; }
     // --------------------------------------------------------------------------------------------
     void SceneNode::UpdateTransform(bool updatePrevTransform)
     {
         if (updatePrevTransform)
         {
-            m_PrevTransform = m_Transform;     
+            m_PrevTransform = m_Transform;
         }
         if (m_Dirty)
         {
@@ -172,7 +149,7 @@ namespace vantor {
             if (m_Parent)
             {
                 m_Transform = m_Parent->m_Transform * m_Transform;
-            }        
+            }
         }
         for (int i = 0; i < m_Children.size(); ++i)
         {

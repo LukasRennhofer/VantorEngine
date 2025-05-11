@@ -1,16 +1,22 @@
 /*
- *    				~ Vantor ~
- *               
- * Copyright (c) 2025 Lukas Rennhofer
+ *  ╔═══════════════════════════════════════════════════════════════╗
+ *  ║                          ~ Vantor ~                           ║
+ *  ║                                                               ║
+ *  ║  This file is part of the Vantor Engine.                      ║
+ *  ║  Automatically formatted by vantorFormat.py                   ║
+ *  ║                                                               ║
+ *  ╚═══════════════════════════════════════════════════════════════╝
  *
- * Licensed under the GNU General Public License, Version 3. See LICENSE file for more details.
+ *  Copyright (c) 2025 Lukas Rennhofer
+ *  Licensed under the GNU General Public License, Version 3.
+ *  See LICENSE file for more details.
  *
- * Author: Lukas Rennhofer
- * Date: 2025-03-08
+ *  Author: Lukas Rennhofer
+ *  Date: 2025-05-11
  *
- * File: vantorBackground.cpp
- * Last Change: 
-*/
+ *  File: vantorBackground.cpp
+ *  Last Change: Automatically updated
+ */
 
 // !! WARNING: IT NEEDS TO BE CHANGED WHEN WORKING WITH VULKAN!!!
 
@@ -28,28 +34,25 @@ namespace vantor::Graphics
     {
         vantor::Scene::Root->AddChild(this);
 
-        m_Shader  = vantor::Resources::LoadShader("background", "res/intern/shaders/background.vs", "res/intern/shaders/background.fs");
-        Material  = new vantor::Graphics::RenderDevice::OpenGL::Material(m_Shader);
-        Mesh      = new vantor::Graphics::Geometry::Primitives::Cube;
-        BoxMin    = glm::vec3(-99999.0);
-        BoxMax    = glm::vec3( 99999.0);
+        m_Shader = vantor::Resources::LoadShader("background", "res/intern/shaders/background.vs", "res/intern/shaders/background.fs");
+        Material = new vantor::Graphics::RenderDevice::OpenGL::Material(m_Shader);
+        Mesh     = new vantor::Graphics::Geometry::Primitives::Cube;
+        BoxMin   = glm::vec3(-99999.0);
+        BoxMax   = glm::vec3(99999.0);
 
         // default material configuration
         Material->SetFloat("Exposure", 1.0f);
-        Material->DepthCompare = GL_LEQUAL;
-        Material->Cull = false;
-        Material->ShadowCast = false;
+        Material->DepthCompare  = GL_LEQUAL;
+        Material->Cull          = false;
+        Material->ShadowCast    = false;
         Material->ShadowReceive = false;
     }
     // --------------------------------------------------------------------------------------------
-    Background::~Background()
-    {
-
-    }
+    Background::~Background() {}
     // --------------------------------------------------------------------------------------------
-    void Background::SetCubemap(vantor::Graphics::RenderDevice::OpenGL::TextureCube* cubemap)
+    void Background::SetCubemap(vantor::Graphics::RenderDevice::OpenGL::TextureCube *cubemap)
     {
         m_CubeMap = cubemap;
         Material->SetTextureCube("background", m_CubeMap, 0);
     }
-};
+}; // namespace vantor::Graphics

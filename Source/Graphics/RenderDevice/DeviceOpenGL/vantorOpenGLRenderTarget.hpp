@@ -1,16 +1,22 @@
 /*
-*    				~ Vantor ~
+ *  ╔═══════════════════════════════════════════════════════════════╗
+ *  ║                          ~ Vantor ~                           ║
+ *  ║                                                               ║
+ *  ║  This file is part of the Vantor Engine.                      ║
+ *  ║  Automatically formatted by vantorFormat.py                   ║
+ *  ║                                                               ║
+ *  ╚═══════════════════════════════════════════════════════════════╝
  *
- * Copyright (c) 2025 Lukas Rennhofer
+ *  Copyright (c) 2025 Lukas Rennhofer
+ *  Licensed under the GNU General Public License, Version 3.
+ *  See LICENSE file for more details.
  *
- * Licensed under the GNU General Public License, Version 3. See LICENSE file for more details.
+ *  Author: Lukas Rennhofer
+ *  Date: 2025-05-11
  *
- * Author: Lukas Rennhofer
- * Date: 2025-03-08
- *
- * File: vantorRenderTarget.hpp
- * Last Change:
-*/
+ *  File: vantorOpenGLRenderTarget.hpp
+ *  Last Change: Automatically updated
+ */
 
 #pragma once
 
@@ -23,31 +29,37 @@
 namespace vantor::Graphics::RenderDevice::OpenGL
 {
     class Renderer;
- class RenderTarget
- {
-  friend Renderer;
- public:
-  unsigned int ID;
+    class RenderTarget
+    {
+            friend Renderer;
 
-  unsigned int Width;
-  unsigned int Height;
-  GLenum       Type;
+        public:
+            unsigned int ID;
 
-  bool HasDepthAndStencil;
- private:
-  GLenum       m_Target = GL_TEXTURE_2D;
-  Texture              m_DepthStencil;
-  std::vector<Texture> m_ColorAttachments;
- public:
-  RenderTarget(unsigned int width, unsigned int height, GLenum type = GL_UNSIGNED_BYTE, unsigned int nrColorAttachments = 1, bool depthAndStencil = true);
+            unsigned int Width;
+            unsigned int Height;
+            GLenum       Type;
 
-  Texture *GetDepthStencilTexture();
-  Texture *GetColorTexture(unsigned int index);
+            bool HasDepthAndStencil;
 
-  void Resize(unsigned int width, unsigned int height);
-  void SetTarget(GLenum target);
+        private:
+            GLenum               m_Target = GL_TEXTURE_2D;
+            Texture              m_DepthStencil;
+            std::vector<Texture> m_ColorAttachments;
 
-  //void Bind(bool clear = true, bool setViewport = true);
- };
-} // vantor::Graphics::RenderDevice::OpenGL
+        public:
+            RenderTarget(unsigned int width,
+                         unsigned int height,
+                         GLenum       type               = GL_UNSIGNED_BYTE,
+                         unsigned int nrColorAttachments = 1,
+                         bool         depthAndStencil    = true);
 
+            Texture *GetDepthStencilTexture();
+            Texture *GetColorTexture(unsigned int index);
+
+            void Resize(unsigned int width, unsigned int height);
+            void SetTarget(GLenum target);
+
+            // void Bind(bool clear = true, bool setViewport = true);
+    };
+} // namespace vantor::Graphics::RenderDevice::OpenGL

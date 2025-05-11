@@ -1,16 +1,22 @@
 /*
- *    				~ Vantor ~
- *               
- * Copyright (c) 2025 Lukas Rennhofer
+ *  ╔═══════════════════════════════════════════════════════════════╗
+ *  ║                          ~ Vantor ~                           ║
+ *  ║                                                               ║
+ *  ║  This file is part of the Vantor Engine.                      ║
+ *  ║  Automatically formatted by vantorFormat.py                   ║
+ *  ║                                                               ║
+ *  ╚═══════════════════════════════════════════════════════════════╝
  *
- * Licensed under the GNU General Public License, Version 3. See LICENSE file for more details.
+ *  Copyright (c) 2025 Lukas Rennhofer
+ *  Licensed under the GNU General Public License, Version 3.
+ *  See LICENSE file for more details.
  *
- * Author: Lukas Rennhofer
- * Date: 2025-03-08
+ *  Author: Lukas Rennhofer
+ *  Date: 2025-05-11
  *
- * File: vantorSceneNode.hpp
- * Last Change: Added Version settings and vantor::core::version child namespace
-*/
+ *  File: vantorSceneNode.hpp
+ *  Last Change: Automatically updated
+ */
 
 #pragma once
 
@@ -20,58 +26,61 @@
 #include "../../Graphics/RenderDevice/DeviceOpenGL/vantorOpenGLMesh.hpp"
 #include "../../Graphics/RenderDevice/DeviceOpenGL/vantorOpenGLMaterial.hpp"
 
-namespace vantor {
+namespace vantor
+{
     class Scene;
 
     class SceneNode
     {
-    public:
-        vantor::Graphics::RenderDevice::OpenGL::Mesh*     Mesh;
-        vantor::Graphics::RenderDevice::OpenGL::Material* Material;
+        public:
+            vantor::Graphics::RenderDevice::OpenGL::Mesh     *Mesh;
+            vantor::Graphics::RenderDevice::OpenGL::Material *Material;
 
-        glm::vec3 BoxMin = glm::vec3(-99999.0f);
-        glm::vec3 BoxMax = glm::vec3( 99999.0f);
-    private:
-        std::vector<SceneNode*> m_Children;
-        SceneNode *m_Parent;
+            glm::vec3 BoxMin = glm::vec3(-99999.0f);
+            glm::vec3 BoxMax = glm::vec3(99999.0f);
 
-        glm::mat4 m_Transform;
-        glm::mat4 m_PrevTransform;
-        glm::vec3 m_Position = glm::vec3(0.0f);
-        glm::vec4 m_Rotation;
-        glm::vec3 m_Scale = glm::vec3(1.0f);
+        private:
+            std::vector<SceneNode *> m_Children;
+            SceneNode               *m_Parent;
 
-        bool m_Dirty;
+            glm::mat4 m_Transform;
+            glm::mat4 m_PrevTransform;
+            glm::vec3 m_Position = glm::vec3(0.0f);
+            glm::vec4 m_Rotation;
+            glm::vec3 m_Scale = glm::vec3(1.0f);
 
-        unsigned int m_ID;
+            bool m_Dirty;
 
-        static unsigned int CounterID;
-    public:
-        SceneNode(unsigned int id);
-        ~SceneNode();
+            unsigned int m_ID;
 
-        void SetPosition(glm::vec3 position);
-        void SetRotation(glm::vec4 rotation);
-        void SetScale(glm::vec3 scale);
-        void SetScale(float scale);
-        glm::vec3 GetLocalPosition();
-        glm::vec4 GetLocalRotation();
-        glm::vec3 GetLocalScale();
-        glm::vec3 GetWorldPosition();
-        glm::vec3 GetWorldScale();
+            static unsigned int CounterID;
 
-        unsigned int GetID();
-        void AddChild(SceneNode *node);
-        void RemoveChild(unsigned int id);
-        std::vector<SceneNode*> GetChildren();
-        unsigned int            GetChildCount();
-        SceneNode              *GetChild(unsigned int id);
-        SceneNode              *GetChildByIndex(unsigned int index);
-        SceneNode              *GetParent();
+        public:
+            SceneNode(unsigned int id);
+            ~SceneNode();
 
-        glm::mat4 GetTransform();
-        glm::mat4 GetPrevTransform();
+            void      SetPosition(glm::vec3 position);
+            void      SetRotation(glm::vec4 rotation);
+            void      SetScale(glm::vec3 scale);
+            void      SetScale(float scale);
+            glm::vec3 GetLocalPosition();
+            glm::vec4 GetLocalRotation();
+            glm::vec3 GetLocalScale();
+            glm::vec3 GetWorldPosition();
+            glm::vec3 GetWorldScale();
 
-        void UpdateTransform(bool updatePrevTransform = false);
+            unsigned int             GetID();
+            void                     AddChild(SceneNode *node);
+            void                     RemoveChild(unsigned int id);
+            std::vector<SceneNode *> GetChildren();
+            unsigned int             GetChildCount();
+            SceneNode               *GetChild(unsigned int id);
+            SceneNode               *GetChildByIndex(unsigned int index);
+            SceneNode               *GetParent();
+
+            glm::mat4 GetTransform();
+            glm::mat4 GetPrevTransform();
+
+            void UpdateTransform(bool updatePrevTransform = false);
     };
 } // namespace vantor

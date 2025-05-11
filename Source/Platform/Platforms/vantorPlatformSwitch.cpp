@@ -1,16 +1,22 @@
 /*
- *    				~ Vantor ~
- *               
- * Copyright (c) 2025 Lukas Rennhofer
+ *  ╔═══════════════════════════════════════════════════════════════╗
+ *  ║                          ~ Vantor ~                           ║
+ *  ║                                                               ║
+ *  ║  This file is part of the Vantor Engine.                      ║
+ *  ║  Automatically formatted by vantorFormat.py                   ║
+ *  ║                                                               ║
+ *  ╚═══════════════════════════════════════════════════════════════╝
  *
- * Licensed under the GNU General Public License, Version 3. See LICENSE file for more details.
+ *  Copyright (c) 2025 Lukas Rennhofer
+ *  Licensed under the GNU General Public License, Version 3.
+ *  See LICENSE file for more details.
  *
- * Author: Lukas Rennhofer
- * Date: 2025-03-08
+ *  Author: Lukas Rennhofer
+ *  Date: 2025-05-11
  *
- * File: vantorPlatformSwitch.cpp
- * Last Change: 
-*/
+ *  File: vantorPlatformSwitch.cpp
+ *  Last Change: Automatically updated
+ */
 
 #ifdef __SWITCH__
 
@@ -40,10 +46,7 @@ namespace vantor::Platform
         return static_cast<double>(ts.nanoseconds) / 1'000'000'000.0;
     }
 
-    void PlatformSwitch::SleepMilliseconds(unsigned int ms)
-    {
-        svcSleepThread(static_cast<int64_t>(ms) * 1'000'000);
-    }
+    void PlatformSwitch::SleepMilliseconds(unsigned int ms) { svcSleepThread(static_cast<int64_t>(ms) * 1'000'000); }
 
     std::string PlatformSwitch::GetExecutablePath()
     {
@@ -55,19 +58,18 @@ namespace vantor::Platform
         return "romfs:/"; // Safe fallback
     }
 
-    bool PlatformSwitch::FileExists(const std::string& path)
+    bool PlatformSwitch::FileExists(const std::string &path)
     {
         struct stat buffer;
         return (stat(path.c_str(), &buffer) == 0);
     }
 
-    uint64_t PlatformSwitch::GetFileSize(const std::string& path)
+    uint64_t PlatformSwitch::GetFileSize(const std::string &path)
     {
         struct stat st;
-        if (stat(path.c_str(), &st) == 0)
-            return static_cast<uint64_t>(st.st_size);
+        if (stat(path.c_str(), &st) == 0) return static_cast<uint64_t>(st.st_size);
         return 0;
     }
-}
+} // namespace vantor::Platform
 
 #endif // __SWITCH__

@@ -1,21 +1,26 @@
-
 /*
- *    				~ vantor::GraphicsEngine ~
- *               
- * Copyright (c) 2025 Lukas Rennhofer
+ *  ╔═══════════════════════════════════════════════════════════════╗
+ *  ║                          ~ Vantor ~                           ║
+ *  ║                                                               ║
+ *  ║  This file is part of the Vantor Engine.                      ║
+ *  ║  Automatically formatted by vantorFormat.py                   ║
+ *  ║                                                               ║
+ *  ╚═══════════════════════════════════════════════════════════════╝
  *
- * Licensed under the GNU General Public License, Version 3. See LICENSE file for more details.
+ *  Copyright (c) 2025 Lukas Rennhofer
+ *  Licensed under the GNU General Public License, Version 3.
+ *  See LICENSE file for more details.
  *
- * Author: Lukas Rennhofer
- * Date: 2025-03-08
+ *  Author: Lukas Rennhofer
+ *  Date: 2025-05-11
  *
- * File: vantorDrawableObject.cpp
- * Last Change: 
+ *  File: vantorDrawableObject.cpp
+ *  Last Change: Automatically updated
  */
- 
 
 #include "vantorDrawableObject.h"
 
-namespace vantor::Graphics {
-    vantor::Graphics::sceneElements* drawableObject::scene = 0;
+namespace vantor::Graphics
+{
+    vantor::Graphics::sceneElements *drawableObject::scene = 0;
 } // NAMESPACE vantor::Graphics

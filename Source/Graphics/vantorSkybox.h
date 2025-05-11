@@ -1,18 +1,22 @@
-
 /*
- *    				~ Vantor ~
- *               
- * Copyright (c) 2025 Lukas Rennhofer
+ *  ╔═══════════════════════════════════════════════════════════════╗
+ *  ║                          ~ Vantor ~                           ║
+ *  ║                                                               ║
+ *  ║  This file is part of the Vantor Engine.                      ║
+ *  ║  Automatically formatted by vantorFormat.py                   ║
+ *  ║                                                               ║
+ *  ╚═══════════════════════════════════════════════════════════════╝
  *
- * Licensed under the GNU General Public License, Version 3. See LICENSE file for more details.
+ *  Copyright (c) 2025 Lukas Rennhofer
+ *  Licensed under the GNU General Public License, Version 3.
+ *  See LICENSE file for more details.
  *
- * Author: Lukas Rennhofer
- * Date: 2025-03-08
+ *  Author: Lukas Rennhofer
+ *  Date: 2025-05-11
  *
- * File: vantorSkybox.h
- * Last Change: 
+ *  File: vantorSkybox.h
+ *  Last Change: Automatically updated
  */
- 
 
 #pragma once
 
@@ -21,38 +25,39 @@
 #include "vantorDrawableObject.h"
 #include <glm/gtc/matrix_transform.hpp>
 
-namespace vantor::Graphics {
-struct colorPreset {
-	glm::vec3 cloudColorBottom, skyColorTop, skyColorBottom, lightColor, fogColor;
-};
+namespace vantor::Graphics
+{
+    struct colorPreset
+    {
+            glm::vec3 cloudColorBottom, skyColorTop, skyColorBottom, lightColor, fogColor;
+    };
 
-class Skybox : public vantor::Graphics::drawableObject {
-public:
-	friend class VolumetricClouds;
-	Skybox();
-	~Skybox();
+    class Skybox : public vantor::Graphics::drawableObject
+    {
+        public:
+            friend class VolumetricClouds;
+            Skybox();
+            ~Skybox();
 
-	virtual void draw();
-	virtual void setGui();
-	virtual void update();
+            virtual void draw();
+            virtual void setGui();
+            virtual void update();
 
-	colorPreset DefaultPreset();
-	colorPreset SunsetPreset();
-	colorPreset SunsetPreset1();
+            colorPreset DefaultPreset();
+            colorPreset SunsetPreset();
+            colorPreset SunsetPreset1();
 
-	void mixSkyColorPreset(float v, colorPreset p1, colorPreset p2);
+            void mixSkyColorPreset(float v, colorPreset p1, colorPreset p2);
 
-	unsigned int getSkyTexture() {
-		return skyboxFBO->tex;
-	}
-	
-	glm::vec3 skyColorTop, skyColorBottom;
+            unsigned int getSkyTexture() { return skyboxFBO->tex; }
 
-	vantor::Graphics::Renderer::Shader::ScreenSpaceShader * skyboxShader;
-	vantor::Graphics::Renderer::Buffer::FrameBufferObject * skyboxFBO;
+            glm::vec3 skyColorTop, skyColorBottom;
 
-	colorPreset presetSunset, highSunPreset;
+            vantor::Graphics::Renderer::Shader::ScreenSpaceShader *skyboxShader;
+            vantor::Graphics::Renderer::Buffer::FrameBufferObject *skyboxFBO;
 
-	bool lensFlareOn = true;
-};
+            colorPreset presetSunset, highSunPreset;
+
+            bool lensFlareOn = true;
+    };
 } // NAMESPACE vantor::Graphics
