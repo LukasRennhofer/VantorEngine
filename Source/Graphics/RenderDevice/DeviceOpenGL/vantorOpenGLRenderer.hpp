@@ -8,7 +8,7 @@
  * Author: Lukas Rennhofer
  * Date: 2025-03-08
  *
- * File: vantorOpenGL.hpp
+ * File: vantorOpenGLRenderer.hpp
  * Last Change:
 */
 
@@ -19,21 +19,24 @@
 #include "../../Renderer/Light/vantorPointLight.hpp"
 #include "../../Renderer/Light/vantorDirectionalLight.hpp"
 #include "../../Geometry/Primitives/vantorQuad.hpp"
+#include "vantorOpenGLShader.hpp"
 #include "vantorOpenGLCommandBuffer.hpp"
-#include "PBR/vantorOpenGLPBR.hpp"
 #include "vantorOpenGLChache.hpp"
+#include "../../../Core/Scene/vantorSceneNode.hpp"
+
+#include "../../Renderer/Camera/vantorCamera.hpp"
 
 #include <glad/glad.h>
+#include <string>
 
 namespace vantor::Graphics::RenderDevice::OpenGL {
     class Mesh;
     class Material;
     class Scene;
-    class SceneNode;
-    class Camera;
     class RenderTarget;
     class MaterialLibrary;
     class PBR;
+    class PBRCapture;
     class PostProcessor;
 
     class Renderer
@@ -63,8 +66,8 @@ namespace vantor::Graphics::RenderDevice::OpenGL {
         // materials
         MaterialLibrary* m_MaterialLibrary;
 
-        // camera
-        Camera*    m_Camera;
+        // Camera
+        vantor::Graphics::Camera*    m_Camera;
         glm::mat4 m_PrevViewProjection;
 
         // render-targets/post
@@ -103,18 +106,17 @@ namespace vantor::Graphics::RenderDevice::OpenGL {
 
         void SetTarget(RenderTarget* renderTarget, GLenum target = GL_TEXTURE_2D);
 
-        Camera* GetCamera();
-        void    SetCamera(Camera* camera);
+        vantor::Graphics::Camera* GetCamera();
+        void    SetCamera(vantor::Graphics::Camera* camera);
 
         PostProcessor* GetPostProcessor();
 
-        // create either a deferred default material (based on default set of materials available (like glass)), or a custom material (with custom you have to supply your own shader)
-        Material* CreateMaterial(std::string base = "default"); // these don't have the custom flag set (default material has default state and uses checkerboard texture as albedo (and black metallic, half roughness, purple normal, white ao)
-        Material* CreateCustomMaterial(Shader* shader);         // these have the custom flag set (will be rendered in forward pass)
-        Material* CreatePostProcessingMaterial(Shader* shader); // these have the post-processing flag set (will be rendered after deferred/forward pass)
+        Material* CreateMaterial(std::string base = "default");
+        Material* CreateCustomMaterial(Shader* shader);         
+        Material* CreatePostProcessingMaterial(Shader* shader);
 
         void PushRender(Mesh* mesh, Material* material, glm::mat4 transform = glm::mat4(), glm::mat4 prevFrameTransform = glm::mat4());
-        void PushRender(SceneNode* node);
+        void PushRender(vantor::SceneNode* node);
         void PushPostProcessor(Material* postProcessor);
 
         void AddLight(vantor::Graphics::DirectionalLight *light);
@@ -124,23 +126,21 @@ namespace vantor::Graphics::RenderDevice::OpenGL {
 
         void Blit(Texture* src, RenderTarget* dst = nullptr, Material* material = nullptr, std::string textureUniformName = "TexSrc");
 
-        // pbr
-        void        SetSkyCapture(PBRCapture* pbrEnvironment);
-        PBRCapture* GetSkypCature();
+        void        SetSkyCapture(vantor::Graphics::RenderDevice::OpenGL::PBRCapture* pbrEnvironment);
+        vantor::Graphics::RenderDevice::OpenGL::PBRCapture* GetSkypCature();
         void        AddIrradianceProbe(glm::vec3 position, float radius);
-        void        BakeProbes(SceneNode* scene = nullptr);
+        void        BakeProbes(vantor::SceneNode* scene = nullptr);
     private:
-        //rendering a custom forward-pass command
-        void renderCustomCommand(RenderCommand* command, Camera* customCamera, bool updateGLSettings = true);
-        void renderToCubemap(SceneNode* scene, TextureCube* target, glm::vec3 position = glm::vec3(0.0f), unsigned int mipLevel = 0);
+        void renderCustomCommand(RenderCommand* command, vantor::Graphics::Camera* customCamera, bool updateGLSettings = true);
+        void renderToCubemap(vantor::SceneNode* scene, TextureCube* target, glm::vec3 position = glm::vec3(0.0f), unsigned int mipLevel = 0);
         void renderToCubemap(std::vector<RenderCommand>& renderCommands, TextureCube* target, glm::vec3 position = glm::vec3(0.0f), unsigned int mipLevel = 0);
         void renderMesh(Mesh* mesh, Shader* shader);
         void updateGlobalUBOs();
         RenderTarget* getCurrentRenderTarget();
 
         void renderDeferredAmbient();
-        void renderDeferredDirLight(DirectionalLight* light);
-        void renderDeferredPointLight(PointLight* light);
+        void renderDeferredDirLight(vantor::Graphics::DirectionalLight* light);
+        void renderDeferredPointLight(vantor::Graphics::PointLight* light);
 
         void renderShadowCastCommand(RenderCommand* command, const glm::mat4& projection, const glm::mat4& view);
     };

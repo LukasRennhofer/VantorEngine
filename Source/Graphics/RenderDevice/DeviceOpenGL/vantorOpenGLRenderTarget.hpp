@@ -14,7 +14,6 @@
 
 #pragma once
 
-#include "vantorOpenGLRenderer.hpp"
 #include "vantorOpenGLTexture.hpp"
 
 #include <glad/glad.h>
@@ -23,6 +22,7 @@
 
 namespace vantor::Graphics::RenderDevice::OpenGL
 {
+    class Renderer;
  class RenderTarget
  {
   friend Renderer;

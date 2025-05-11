@@ -12,53 +12,18 @@
 * Last Change:
 */
 
+// !!! Warning: Needs to be changed, when implementing Vulkan, because of GLEnum and other OpenGL usage
+
 #pragma once
 
-#include "../../RenderDevice/vantorRenderDevice.hpp"
+#include "../../RenderDevice/DeviceOpenGL/vantorOpenGLMesh.hpp"
 
 namespace vantor::Graphics::Geometry::Primitives {
-    class Quad : public vantor::Graphics::RenderDevice::Mesh
+    class Quad : public vantor::Graphics::RenderDevice::OpenGL::Mesh
     {
     public:
 
-        Quad()
-        {
-            Positions =
-            {
-                { -1.0f,  1.0f, 0.0f, },
-                { -1.0f, -1.0f, 0.0f, },
-                {  1.0f,  1.0f, 0.0f, },
-                {  1.0f, -1.0f, 0.0f, },
-            };
-            UV = {
-                { 0.0f, 1.0f, },
-                { 0.0f, 0.0f, },
-                { 1.0f, 1.0f, },
-                { 1.0f, 0.0f, },
-            };
-            Topology = TRIANGLE_STRIP;
-
-            Finalize();
-        }
-        // --------------------------------------------------------------------------------------------
-        :Quad(float width, float height)
-        {
-            Positions =
-            {
-                { -width,  height, 0.0f, },
-                { -width, -height, 0.0f, },
-                {  width,  height, 0.0f, },
-                {  width, -height, 0.0f, },
-            };
-            UV = {
-                { 0.0f, 1.0f, },
-                { 0.0f, 0.0f, },
-                { 1.0f, 1.0f, },
-                { 1.0f, 0.0f, },
-            };
-            Topology = TRIANGLE_STRIP;
-
-            Finalize();
-        }
+        Quad(); // defaults to dimensions (1, 1)
+        Quad(float width, float height);
     };
 }

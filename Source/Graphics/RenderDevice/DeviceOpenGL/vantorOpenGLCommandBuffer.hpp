@@ -59,7 +59,7 @@ namespace vantor::Graphics::RenderDevice::OpenGL {
         CommandBuffer(Renderer* renderer);
         ~CommandBuffer(); 
             
-        void Push(Mesh* mesh, Material* material, math::mat4 transform = math::mat4(), math::mat4 prevTransform = math::mat4(), math::vec3 boxMin = math::vec3(-99999.0f), math::vec3 boxMax = math::vec3(99999.0f), RenderTarget* target = nullptr);
+        void Push(Mesh* mesh, Material* material, glm::mat4 transform = glm::mat4(), glm::mat4 prevTransform = glm::mat4(), glm::vec3 boxMin = glm::vec3(-99999.0f), glm::vec3 boxMax = glm::vec3(99999.0f), RenderTarget* target = nullptr);
 
         void Clear();
         void Sort();

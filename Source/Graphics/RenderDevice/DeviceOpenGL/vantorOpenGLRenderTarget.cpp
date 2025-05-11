@@ -13,6 +13,7 @@
 */
 
 #include "vantorOpenGLRenderTarget.hpp"
+#include "vantorOpenGLRenderer.hpp"
 
 #include "../../../Core/Backlog/vantorBacklog.h"
 

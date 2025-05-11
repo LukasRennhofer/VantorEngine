@@ -1,17 +1,13 @@
 # Vantor Todo Stack
 
+- Better Resource System (with FS) and better Res folder and files
 --------------------------------------------------------
-- Resource Support
-- New Shaders and assets (+ System with res/ folder)
-- MaterialLibrary
-- PBR
-- Post Processor, Fly Camera
-- Renderer Cpp
+- Main Frame (Application)
 --------------------------------------------------------
+- proper CMake Architecture Setup (🟩)
 - Testing
 - Integration
 --------------------------------------------------------
-- proper CMake Architecture Setup (🟩)
 - Sandbox
 - FXAA ?
 - Old things get integrated

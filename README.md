@@ -113,7 +113,7 @@ To get a local copy up and running follow these simple example steps.
 
 ---
 
-3. Build the libary with the CHIFDevConsole Script
+3. Build the libary with the DevConsole Script
   ```bash
     python DevConsole.py --platform Windows --build-lib
    ```

@@ -17,16 +17,17 @@
 #include <vector>
 #include <glm/glm.hpp>
 
+#include "../../Graphics/RenderDevice/DeviceOpenGL/vantorOpenGLMesh.hpp"
+#include "../../Graphics/RenderDevice/DeviceOpenGL/vantorOpenGLMaterial.hpp"
+
 namespace vantor {
     class Scene;
-    class Mesh;
-    class Material;
 
     class SceneNode
     {
     public:
-        Mesh*     Mesh;
-        Material* Material;
+        vantor::Graphics::RenderDevice::OpenGL::Mesh*     Mesh;
+        vantor::Graphics::RenderDevice::OpenGL::Material* Material;
 
         glm::vec3 BoxMin = glm::vec3(-99999.0f);
         glm::vec3 BoxMax = glm::vec3( 99999.0f);

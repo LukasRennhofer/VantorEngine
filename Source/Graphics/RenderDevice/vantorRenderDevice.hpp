@@ -24,6 +24,10 @@
     #include "DeviceOpenGL/PBR/vantorOpenGLPBR.hpp"           // PBR (depends on Material and Shader)
     #include "DeviceOpenGL/vantorOpenGLChache.hpp"            // Cache (depends on multiple components)
     #include "DeviceOpenGL/vantorOpenGLMaterial.hpp"
+    #include "DeviceOpenGL/vantorOpenGLRenderer.hpp"
+    #include "DeviceOpenGL/vantorOpenGLRenderTarget.hpp"
+    #include "DeviceOpenGL/vantorOpenGLMaterialLibrary.hpp"
+    #include "DeviceOpenGL/PBR/vantorOpenGLPBR.hpp"
 #endif
 
 namespace vantor::Graphics::RenderDevice {
@@ -57,8 +61,14 @@ namespace vantor::Graphics::RenderDevice {
     inline void EndFrame() {vantor::Graphics::RenderDevice::OpenGL::EndFrame();}
 
     // Abstraction Classes
-    using Shader = vantor::Graphics::RenderDevice::OpenGL::Shader;
+    // MESH
     using Mesh = vantor::Graphics::RenderDevice::OpenGL::Mesh;
+    using TOPOLOGY = vantor::Graphics::RenderDevice::OpenGL::TOPOLOGY;
+    // Rendering
+    using Renderer = vantor::Graphics::RenderDevice::OpenGL::Renderer;
+    using RenderTarget = vantor::Graphics::RenderDevice::OpenGL::RenderTarget;
+    // Resources
+    using Shader = vantor::Graphics::RenderDevice::OpenGL::Shader;
     using Texture = vantor::Graphics::RenderDevice::OpenGL::Texture;
     using Material = vantor::Graphics::RenderDevice::OpenGL::Material;
     using TextureCube = vantor::Graphics::RenderDevice::OpenGL::TextureCube;

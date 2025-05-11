@@ -12,11 +12,13 @@
  * Last Change: 
 */
 
+// !! WARNING: IT NEEDS TO BE CHANGED WHEN WORKING WITH VULKAN!!!
+
 #include <glm/glm.hpp>
+#include "../../RenderDevice/DeviceOpenGL/vantorOpenGLRenderTarget.hpp" // Doesnt work with vulkan
 
 namespace vantor::Graphics {
     class RenderTarget;
-
     // ========= VANTOR Directional Light Struct ========
     class DirectionalLight
     {
@@ -26,7 +28,7 @@ namespace vantor::Graphics {
         float Intensity      = 1.0f;
 
         bool CastShadows = true;
-        RenderTarget* ShadowMapRT;
+        vantor::Graphics::RenderDevice::OpenGL::RenderTarget* ShadowMapRT; // CHANGE: Removed forward decleration to RenderTarget
         glm::mat4    LightSpaceViewProjection;
     };
 } // namespace vantor::Graphics

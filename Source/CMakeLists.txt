@@ -40,13 +40,20 @@ set(ENGINE_SOURCES
     Graphics/vantorWater.cpp
     Graphics/vantorTerrain.cpp
     Graphics/vantorTexture.cpp
-    # Graphics / Camera
-    Graphics/Camera/vantorCamera.cpp
+    # Geometry
+    Graphics/Geometry/Primitives/vantorCircle.cpp
+    Graphics/Geometry/Primitives/vantorCube.cpp
+    Graphics/Geometry/Primitives/vantorLine.cpp
+    Graphics/Geometry/Primitives/vantorPlane.cpp
+    Graphics/Geometry/Primitives/vantorQuad.cpp
+    Graphics/Geometry/Primitives/vantorSphere.cpp
+    Graphics/Geometry/Primitives/vantorTorus.cpp
     # Renderer
     Graphics/Renderer/vantorBuffers.cpp
     Graphics/Renderer/vantorBaseShader.cpp
     Graphics/Renderer/vantorShader.cpp
     Graphics/Renderer/vantorScreenSpaceShader.cpp
+    Graphics/Renderer/Camera/vantorCamera.cpp
     # platform
     Platform/vantorInput.cpp
     Platform/vantorWindow.cpp
@@ -58,10 +65,11 @@ set(ENGINE_SOURCES
     GUI/vantorImgui.cpp
     # Core
     Core/vantorApplication.cpp
-    Core/Resource/vantorResourceManager.cpp
     Core/JobSystem/vantorJobSystem.cpp 
     Core/Backlog/vantorBacklog.cpp
     Core/Debug/vantorInlineDebugger.cpp
+    Core/Resource/vantorResource.cpp
+    Core/Resource/vantorResourceLoader.cpp
     # Entity
     Entity/vantorECS.cpp
     # Utils
@@ -76,6 +84,11 @@ set(RENDERDEVICE_OPENGL
     Graphics/RenderDevice/DeviceOpenGL/vantorOpenGLMaterial.cpp
     Graphics/RenderDevice/DeviceOpenGL/vantorOpenGLChache.cpp
     Graphics/RenderDevice/DeviceOpenGL/vantorOpenGLMesh.cpp
+    Graphics/RenderDevice/DeviceOpenGL/vantorOpenGLMaterialLibrary.cpp
+    Graphics/RenderDevice/DeviceOpenGL/PBR/vantorOpenGLPBR.cpp
+    Graphics/RenderDevice/DeviceOpenGL/vantorOpenGLPostProcessor.cpp
+    Graphics/RenderDevice/DeviceOpenGL/vantorOpenGLRenderer.cpp
+
 )
 
 # === Platform-Specific Dependencies ===

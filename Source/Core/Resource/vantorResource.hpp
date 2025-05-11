@@ -17,14 +17,13 @@
 #pragma once
 
 #include "../../Graphics/RenderDevice/vantorRenderDevice.hpp"
+#include "../Scene/vantorSceneNode.hpp"
 
 #include <map>
 #include <string>
 
-namespace Cell
+namespace vantor
 {
-    class SceneNode;
-    class Renderer;
 
     class Resources
     {
@@ -52,8 +51,7 @@ namespace Cell
         static vantor::Graphics::RenderDevice::Texture*     GetTexture(std::string name);
         static vantor::Graphics::RenderDevice::TextureCube* GetTextureCube(std::string name);
         // mesh/scene resources
-        static SceneNode*  LoadMesh(Renderer* renderer, std::string name, std::string path);
+        static SceneNode*  LoadMesh(vantor::Graphics::RenderDevice::Renderer* renderer, std::string name, std::string path);
         static SceneNode*  GetMesh(std::string name);
     };
 }
-#endif 

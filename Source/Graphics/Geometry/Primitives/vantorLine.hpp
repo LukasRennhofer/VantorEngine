@@ -12,29 +12,16 @@
 * Last Change:
 */
 
+// !!! Warning: Needs to be changed, when implementing Vulkan, because of GLEnum and other OpenGL usage
+
 #pragma once
 
-#include "../../RenderDevice/vantorRenderDevice.hpp"
+#include "../../RenderDevice/DeviceOpenGL/vantorOpenGLMesh.hpp"
 
 namespace vantor::Graphics::Geometry::Primitives {
-    class LineStrip : public vantor::Graphics::RenderDevice::Mesh
+    class LineStrip : public vantor::Graphics::RenderDevice::OpenGL::Mesh
     {
     public:
-        LineStrip(float width, unsigned int segments)
-        {
-            float deltaX = 1.0f / segments;
-            for (int i = 0; i <= segments; ++i)
-            {
-                Positions.push_back({ -0.5f + (float)i * deltaX,  0.5f * width, 0.0f });
-                Positions.push_back({ -0.5f + (float)i * deltaX, -0.5f * width, 0.0f });
-
-                UV.push_back({ (float)i * deltaX, 1.0f });
-                UV.push_back({ (float)i * deltaX, 0.0f });
-            }
-
-            Topology = TRIANGLE_STRIP;
-
-            Finalize();
-        }
+        LineStrip(float width, unsigned int segments);
     };
 }

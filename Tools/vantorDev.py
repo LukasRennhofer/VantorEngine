@@ -32,6 +32,7 @@ SRC_DIR_INTERNAL = Path("Source")
 BUILD_DIR_INTERNAL = Path("build")
 EXAMPLES_INTERNAL = Path("examples")
 RESOURCE_DIRS = ["resources", "shaders", "lib"]
+SANBOX_DIR_INTERNAL = Path("Sandbox")
 INCLUDE_DIR = BUILD_DIR_INTERNAL / "include"
 
 VALID_BUILDING_PLATFORMS = ["Windows", "Linux", "Switch"]
@@ -312,6 +313,67 @@ class VantorInternalBuildSystem:
         if debugging:
             print("[DEBUGGING] Resolved Output:", stdout.decode())
 
+    def buildSanbox(self, target, debugging=False):
+        """
+        Builds the Sandbox project for the specified platform.
+
+        Args:
+            target (str): The target platform for the build (e.g., "Windows", "Linux", "Switch").
+            exampleName (str): The name of the example project to build.
+        """
+        if not target:
+            target = self.runningSystem
+
+        if target not in VALID_BUILDING_PLATFORMS:
+            print(f"❌ Unsupported platform: {target}")
+            return
+
+        frameworkPath = SANBOX_DIR_INTERNAL
+        if not frameworkPath.exists():
+            print(f"❌ Internal Sandbox Project not found.")
+            return
+
+        build_path = frameworkPath / "build" / target
+        build_path.mkdir(parents=True, exist_ok=True)
+
+        # CMake Build
+        print(f"🔧 Starting CMake build for Sandbox project on {target}...")
+        result = subprocess.Popen([
+            "cmake", "-DPLATFORM=" + target, "-G", "Unix Makefiles", str(frameworkPath.resolve())
+        ], cwd=build_path, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+
+        VANTORDevConsoleUtils.show_loading_indicator(result, "Building CMake Configs")
+
+        stdout, stderr = result.communicate()
+
+        if result.returncode != 0:
+            print("❌ CMake configuration failed.")
+            print(f"⚠️ CMakeError: {stderr.decode()}")
+            return
+
+        if debugging:
+            print("[DEBUGGING] Resolved Output:", stdout.decode())
+
+        # Make Build
+        print(f"🔧 Building Sandbox with Make...")
+        result = subprocess.Popen(["make"], cwd=build_path, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+
+        VANTORDevConsoleUtils.show_loading_indicator(result, f"Building Sandbox Project...")
+
+        stdout, stderr = result.communicate()
+
+        if result.returncode == 0:
+            print("✅ Build successful!")
+            self.copy_resources(build_path)
+            self.collect_includes()
+        else:
+            print("❌ Build failed.")
+            print(f"⚠️ MakeError: {stderr.decode()}")
+        
+        if debugging:
+            print("[DEBUGGING] Resolved Output:", stdout.decode())
+
+
 
 # ====================== Console Application (In Work) ============================
     
@@ -354,6 +416,12 @@ class VANTORDevConsole:
         )
 
         parser.add_argument(
+            "--build-sandbox", 
+            action="store_true", 
+            help="Build internal Sandbox Project"
+        )
+
+        parser.add_argument(
             "--debug-build", 
             action="store_true", 
             help="See all the debugging infos while building"
@@ -381,3 +449,6 @@ class VANTORDevConsole:
 
         if args.build_examples:
             self.build_system.buildExample(target=args.platform, exampleName=args.build_examples, debugging=debugging)
+
+        if args.build_sandbox:
+            self.build_system.buildSanbox(target=args.platform, debugging=debugging)

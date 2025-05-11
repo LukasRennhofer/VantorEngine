@@ -27,7 +27,7 @@ namespace vantor::Core::version
     // minor features, major updates
     const int minor = 16;
     // minor bug fixes, alterations, refactors, updates
-    const int revision = 11;
+    const int revision = 14;
     // Version String
     const std::string version_string = std::to_string(major) + "." + std::to_string(minor) + "." + std::to_string(revision);
 

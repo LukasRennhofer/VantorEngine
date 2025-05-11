@@ -98,7 +98,9 @@
     "deque": "cpp",
     "numeric": "cpp",
     "semaphore": "cpp",
-    "execution": "cpp"
+    "execution": "cpp",
+    "codecvt": "cpp",
+    "typeindex": "cpp"
   },
   "C_Cpp.errorSquiggles": "disabled",
   "C_Cpp_Runner.msvcBatchPath": "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Auxiliary/Build/vcvarsall.bat",

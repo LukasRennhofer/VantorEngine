@@ -49,10 +49,11 @@ Vantors Preprocessor Variables:
 // CORE
 #include "Core/vantorApplication.hpp"
 #include "Core/vantorVersion.h"
-#include "Core/Resource/vantorResourceManager.hpp"
 #include "Core/JobSystem/vantorJobSystem.h"
 #include "Core/Backlog/vantorBacklog.h"
 #include "Core/Debug/vantorInlineDebugger.h"
+#include "Core/Resource/vantorResource.cpp"
+#include "Core/Resource/vantorResourceLoader.cpp"
 
 // ENTITY
 // #include "Entity/vantorECS.h"
@@ -69,6 +70,7 @@ Vantors Preprocessor Variables:
 #include "Graphics/vantorWater.h"
 #include "Graphics/vantorTerrain.h"
 #include "Graphics/vantorTexture.h"
+#include "Graphics/Camera/vantorCamera.hpp"
 // RENDERDEVICE: TODO: MOVE AWAY
 #include "Graphics/RenderDevice/vantorRenderDevice.hpp"
 // PLATFORM
