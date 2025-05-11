@@ -16,6 +16,10 @@
 #include "JobSystem/vantorJobSystem.h"
 #include "../Graphics/RenderDevice/vantorRenderDevice.hpp"
 
+#include "Resource/vantorResource.hpp"
+
+// TODO: vantor::Application::Shutdown(); function
+
 namespace vantor
 {
     void Application::Initialize()
@@ -30,16 +34,11 @@ namespace vantor
 
         // TODO: Initializing with vantorInitializer
         vantor::Platform::Input::Initialize();
-        vantor::Backlog::Log("Application", "Using RenderDevice " + vantor::Graphics::RenderDevice::apiToString(vantor::Graphics::RenderDevice::RenderAPI::OPENGL), vantor::Backlog::LogLevel::DEBUG);
-
+        vantor::Backlog::Log("Application", "Using RenderDevice " + vantor::Graphics::RenderDevice::apiToString(vantor::Graphics::RenderDevice::OPENGL), vantor::Backlog::LogLevel::DEBUG);
+        vantor::Resources::Init();
 	}
 
     void Application::Run() {
-        SDL_Event event;
-        while (SDL_PollEvent(&event)) {
-            vantor::Platform::Input::ProcessEvent(event);
-        }
-
         vantor::Platform::Input::Update();
         // TODO
     }

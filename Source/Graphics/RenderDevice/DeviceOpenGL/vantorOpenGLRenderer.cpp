@@ -16,7 +16,6 @@
 
 #include "vantorOpenGLRenderTarget.hpp"
 #include "vantorOpenGLMaterialLibrary.hpp"
-#include "PBR/vantorOpenGLPBR.hpp"
 #include "vantorOpenGLPostProcessor.hpp"
 
 #include "vantorOpenGLMesh.hpp"
@@ -74,7 +73,7 @@ namespace vantor::Graphics::RenderDevice::OpenGL
         delete m_PBR;      
     }
     // ------------------------------------------------------------------------
-    void Renderer::Init(GLADloadproc loadProcFunc)
+    void Renderer::Init()
     {
         // initialize render items
         m_CommandBuffer = new CommandBuffer(this);

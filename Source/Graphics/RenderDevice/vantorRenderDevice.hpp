@@ -28,6 +28,7 @@
     #include "DeviceOpenGL/vantorOpenGLRenderTarget.hpp"
     #include "DeviceOpenGL/vantorOpenGLMaterialLibrary.hpp"
     #include "DeviceOpenGL/PBR/vantorOpenGLPBR.hpp"
+    #include "../../Utils/OpenGL/glError.h" // TODO: Move away or delete
 #endif
 
 namespace vantor::Graphics::RenderDevice {
@@ -55,7 +56,7 @@ namespace vantor::Graphics::RenderDevice {
     inline RenderAPI getCurrentRenderingAPI() {return RenderAPI::OPENGL;}
 
     // Main Abstraction Functions
-    inline void Init() {vantor::Graphics::RenderDevice::OpenGL::Init();}
+    inline vantor::Graphics::RenderDevice::OpenGL::Renderer* Init() {return vantor::Graphics::RenderDevice::OpenGL::Init();}
     inline void Shutdown() {vantor::Graphics::RenderDevice::OpenGL::Shutdown();}
     inline void BeginFrame() {vantor::Graphics::RenderDevice::OpenGL::BeginFrame();}
     inline void EndFrame() {vantor::Graphics::RenderDevice::OpenGL::EndFrame();}
@@ -72,6 +73,7 @@ namespace vantor::Graphics::RenderDevice {
     using Texture = vantor::Graphics::RenderDevice::OpenGL::Texture;
     using Material = vantor::Graphics::RenderDevice::OpenGL::Material;
     using TextureCube = vantor::Graphics::RenderDevice::OpenGL::TextureCube;
+    using PBRCapture = vantor::Graphics::RenderDevice::OpenGL::PBRCapture;
     
     #endif
 

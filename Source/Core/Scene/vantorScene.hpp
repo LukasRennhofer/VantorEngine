@@ -15,10 +15,8 @@
 #pragma once
 
 #include <vector>
-
+#include "../../Graphics/RenderDevice/vantorRenderDevice.hpp"
 namespace vantor {
-    class Mesh;
-    class Material;
     class SceneNode;
 
     class Scene
@@ -30,7 +28,7 @@ namespace vantor {
         static void Clear();
  
         static SceneNode* MakeSceneNode();
-        static SceneNode* MakeSceneNode(Mesh* mesh, Material* material);
+        static SceneNode* MakeSceneNode(vantor::Graphics::RenderDevice::OpenGL::Mesh* mesh, vantor::Graphics::RenderDevice::OpenGL::Material* material);
         static SceneNode* MakeSceneNode(SceneNode* node);
 
         static void DeleteSceneNode(SceneNode* node);

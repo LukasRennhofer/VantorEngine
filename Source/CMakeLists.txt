@@ -16,30 +16,10 @@ add_compile_options(-w)
 # Include directories
 include_directories(External)
 
-# TODO: This is meant for building the Engine with OpenGL everytime, so if building for another API move this away
-add_definitions(-DVANTOR_API_OPENGL)
-set(VANTOR_API_OPENGL ON)
-
 # === Engine Library Sources ===
 set(ENGINE_SOURCES
     # External
-    External/imgui/imgui_draw.cpp
-    External/imgui/imgui_demo.cpp
-    External/imgui/imgui_impl_sdl2.cpp
-    External/imgui/imgui_impl_opengl3.cpp
-    External/imgui/imgui_widgets.cpp
-    External/imgui/imgui_tables.cpp
-    External/imgui/imgui.cpp
     External/stb_image_impl.cpp
-    External/glad.c
-    # Graphics
-    Graphics/vantorDrawableObject.cpp
-    Graphics/vantorCloudsModel.cpp
-    Graphics/vantorSkybox.cpp
-    Graphics/vantorVolumetricClouds.cpp
-    Graphics/vantorWater.cpp
-    Graphics/vantorTerrain.cpp
-    Graphics/vantorTexture.cpp
     # Geometry
     Graphics/Geometry/Primitives/vantorCircle.cpp
     Graphics/Geometry/Primitives/vantorCube.cpp
@@ -49,10 +29,7 @@ set(ENGINE_SOURCES
     Graphics/Geometry/Primitives/vantorSphere.cpp
     Graphics/Geometry/Primitives/vantorTorus.cpp
     # Renderer
-    Graphics/Renderer/vantorBuffers.cpp
-    Graphics/Renderer/vantorBaseShader.cpp
-    Graphics/Renderer/vantorShader.cpp
-    Graphics/Renderer/vantorScreenSpaceShader.cpp
+    Graphics/Renderer/Background/vantorBackground.cpp
     Graphics/Renderer/Camera/vantorCamera.cpp
     # platform
     Platform/vantorInput.cpp
@@ -61,8 +38,6 @@ set(ENGINE_SOURCES
     Platform/Platforms/vantorPlatformWindows.cpp
     Platform/Platforms/vantorPlatformLinux.cpp
     Platform/Platforms/vantorPlatformSwitch.cpp
-    # GUI
-    GUI/vantorImgui.cpp
     # Core
     Core/vantorApplication.cpp
     Core/JobSystem/vantorJobSystem.cpp 
@@ -75,7 +50,6 @@ set(ENGINE_SOURCES
     # Utils
     Utils/utils.cpp
     Utils/sdl2Utils.cpp
-    Utils/OpenGL/glError.cpp
 )
 
 set(RENDERDEVICE_OPENGL
@@ -87,8 +61,20 @@ set(RENDERDEVICE_OPENGL
     Graphics/RenderDevice/DeviceOpenGL/vantorOpenGLMaterialLibrary.cpp
     Graphics/RenderDevice/DeviceOpenGL/PBR/vantorOpenGLPBR.cpp
     Graphics/RenderDevice/DeviceOpenGL/vantorOpenGLPostProcessor.cpp
+    Graphics/RenderDevice/DeviceOpenGL/vantorOpenGLRenderTarget.cpp
     Graphics/RenderDevice/DeviceOpenGL/vantorOpenGLRenderer.cpp
+    # UTILS
+    Utils/OpenGL/glError.cpp
+)
 
+set(IMGUI_SRC
+    GUI/vantorImgui.cpp
+    External/imgui/imgui_draw.cpp
+    External/imgui/imgui_demo.cpp
+    External/imgui/imgui_impl_opengl3.cpp
+    External/imgui/imgui_widgets.cpp
+    External/imgui/imgui_tables.cpp
+    External/imgui/imgui.cpp
 )
 
 # === Platform-Specific Dependencies ===
@@ -96,10 +82,16 @@ if(PLATFORM STREQUAL "Windows")
     add_definitions(-D__WINDOWS__)  
     set(CMAKE_MAKE_PROGRAM "compToolchain/windows/make.exe")
     message(STATUS "Compiling for Windows")
-
+    # Enable API
+    add_definitions(-DVANTOR_WM_GLFW) # TODO: MOVE AWAY AND ENABLE MULTI WM LIKE SDL2
+    set(VANTOR_WM_GLFW ON)
+    # OPENGL
+    add_definitions(-DVANTOR_API_OPENGL)
+    add_compile_definitions(VANTOR_WM_GLFW)
+    set(VANTOR_API_OPENGL ON)
     # === Create the Engine Library for Windows ===
     if (VANTOR_API_OPENGL)
-        add_library(VantorWindows STATIC ${ENGINE_SOURCES} ${RENDERDEVICE_OPENGL})
+        add_library(VantorWindows STATIC ${ENGINE_SOURCES} ${RENDERDEVICE_OPENGL} ${IMGUI_SRC} External/imgui/imgui_impl_glfw.cpp External/glad.c)
     endif()
     target_include_directories(VantorWindows PUBLIC src external)
 
@@ -123,6 +115,10 @@ if(PLATFORM STREQUAL "Windows")
     find_package(SDL2 REQUIRED)
     include_directories(${SDL2_INCLUDE_DIRS})
 
+    # GLFW
+    find_package(glfw3 REQUIRED)
+    target_link_libraries(VantorWindows glfw)
+
     target_link_libraries(VantorWindows ${WINDOWS_LIBRARIES} ${SDL2_LIBRARIES})
 
     # Setting up Libarie
@@ -137,8 +133,17 @@ elseif(PLATFORM STREQUAL "Linux")
     message(STATUS "Compiling for Linux")
 
     # === Create the Engine Library for Linux ===
+    add_definitions(-DVANTOR_WM_GLFW) # TODO: MOVE AWAY AND ENABLE MULTI WM LIKE SDL2
+    set(VANTOR_WM_GLFW ON)
+    # GLFW
+    find_package(glfw3 REQUIRED)
+    target_link_libraries(VantorLinux glfw)
+    # OPENGL
+    add_definitions(-DVANTOR_API_OPENGL)
+    set(VANTOR_API_OPENGL ON)
+    # === Create the Engine Library for Linux ===
     if (VANTOR_API_OPENGL)
-        add_library(VantorLinux STATIC ${ENGINE_SOURCES} ${RENDERDEVICE_OPENGL})
+        add_library(VantorLinux STATIC ${ENGINE_SOURCES} ${RENDERDEVICE_OPENGL} ${IMGUI_SRC} External/imgui/imgui_impl_glfw.cpp External/glad.c)
     endif()
     target_include_directories(VantorLinux PUBLIC src external)
 

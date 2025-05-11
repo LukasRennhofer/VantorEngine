@@ -42,14 +42,14 @@ namespace vantor
     class MeshLoader
     {
     private:
-        static std::vector<vantor::Graphics::RenderDevice::Mesh*> meshStore;
+        static std::vector<vantor::Graphics::RenderDevice::OpenGL::Mesh*> meshStore;
     public:
         static void       Clean();
-        static SceneNode* LoadMesh(vantor::Graphics::RenderDevice::Renderer* renderer, std::string path, bool setDefaultMaterial = true);
+        static SceneNode* LoadMesh(vantor::Graphics::RenderDevice::OpenGL::Renderer* renderer, std::string path, bool setDefaultMaterial = true);
     private:
-        static SceneNode* processNode(vantor::Graphics::RenderDevice::Renderer* renderer, aiNode* aNode, const aiScene* aScene, std::string directory, bool setDefaultMaterial);
-        static vantor::Graphics::RenderDevice::Mesh*      parseMesh(aiMesh* aMesh, const aiScene* aScene, glm::vec3& out_Min, glm::vec3& out_Max);
-        static vantor::Graphics::RenderDevice::Material*  parseMaterial(vantor::Graphics::RenderDevice::Renderer* renderer, aiMaterial* aMaterial, const aiScene* aScene, std::string directory);
+        static SceneNode* processNode(vantor::Graphics::RenderDevice::OpenGL::Renderer* renderer, aiNode* aNode, const aiScene* aScene, std::string directory, bool setDefaultMaterial);
+        static vantor::Graphics::RenderDevice::OpenGL::Mesh*      parseMesh(aiMesh* aMesh, const aiScene* aScene, glm::vec3& out_Min, glm::vec3& out_Max);
+        static vantor::Graphics::RenderDevice::OpenGL::Material*  parseMaterial(vantor::Graphics::RenderDevice::OpenGL::Renderer* renderer, aiMaterial* aMaterial, const aiScene* aScene, std::string directory);
 
         static std::string processPath(aiString* path, std::string directory);
     };
@@ -62,7 +62,7 @@ namespace vantor
     class ShaderLoader
     {
     public:
-        static vantor::Graphics::RenderDevice::Shader Load(std::string name, std::string vsPath, std::string fsPath, std::vector<std::string> defines = std::vector<std::string>());
+        static vantor::Graphics::RenderDevice::OpenGL::Shader Load(std::string name, std::string vsPath, std::string fsPath, std::vector<std::string> defines = std::vector<std::string>());
     private:
         static std::string readShader(std::ifstream& file, const std::string& name, std::string path);
     };
@@ -75,9 +75,9 @@ namespace vantor
     class TextureLoader
     {
     public:
-        static vantor::Graphics::RenderDevice::Texture LoadTexture(std::string path, GLenum target, GLenum internalFormat, bool srgb = false);
-        static vantor::Graphics::RenderDevice::Texture LoadHDRTexture(std::string path);
-        static vantor::Graphics::RenderDevice::TextureCube LoadTextureCube(std::string top, std::string bottom, std::string left, std::string right, std::string front, std::string back);
-        static vantor::Graphics::RenderDevice::TextureCube LoadTextureCube(std::string folder);
+        static vantor::Graphics::RenderDevice::OpenGL::Texture LoadTexture(std::string path, GLenum target, GLenum internalFormat, bool srgb = false);
+        static vantor::Graphics::RenderDevice::OpenGL::Texture LoadHDRTexture(std::string path);
+        static vantor::Graphics::RenderDevice::OpenGL::TextureCube LoadTextureCube(std::string top, std::string bottom, std::string left, std::string right, std::string front, std::string back);
+        static vantor::Graphics::RenderDevice::OpenGL::TextureCube LoadTextureCube(std::string folder);
     };
 }

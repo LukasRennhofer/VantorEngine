@@ -25,20 +25,28 @@ Based on your System:
 /*
 Vantors Preprocessor Variables:
      : Main Variables:
-          VANTOR = Used for the main header implementation
+          VANTOR       = Used for the main header implementation
+          VANTOR_DEBUG = Used for identifying a debug build (Defined in CMake) (RESERVED, BUT NOT IN USE)
 
      : Platforms :
           __WINDOWS__ = Used for identifying a Window build (Defined in CMake)
-          __LINUX__ = Used for identifying a Linux build (Defined in CMake)
-          __SWITCH__ = Used for identifying a Nintendo Switch build (Defined in CMake)
+          __LINUX__   = Used for identifying a Linux build (Defined in CMake)
+          __SWITCH__  = Used for identifying a Nintendo Switch build (Defined in CMake)
+          __PS5__     = Used for identifying a PS5 build (Defined in CMake) (RESERVED, BUT NOT IN USE)
+          __XBOX__    = Used for identifying a Xbox Series X/S build (Defined in CMake) (RESERVED, BUT NOT IN USE)
 
      : Platform API :
           VANTOR_API_COMPILE = Used to identify if the API is able to be switched at runtime
                              or if it is being chosen at compile time (Defined in CMake) 
                              (If Defined: Compile with only one given API, else: API is switchable based on platform)
-          VANTOR_API_OPENGL = Used for building with RenderDevice OpenGL (Defined in CMake)
-          VANTOR_API_VULKAN = Used for building with RenderDevice Vulkan (Defined in CMake)
-          VANTOR_API_DIRECTX = Used for building with RenderDevice DirectX (Defined in CMake)
+          VANTOR_API_OPENGL  = Used for building with RenderDevice OpenGL (Defined in CMake)
+          VANTOR_API_VULKAN  = Used for building with RenderDevice Vulkan (Defined in CMake) (RESERVED, BUT NOT IN USE)
+          VANTOR_API_DIRECTX = Used for building with RenderDevice DirectX (Defined in CMake) (RESERVED, BUT NOT IN USE)
+
+     : Manager API :
+          VANTOR_WM_GLFW = Used to identify if GLFW is being used as the WM
+          VANTOR_WM_SDL2 = Used to identify if SDL2 is being used as the WM
+          VANTOR_WM_EGL  = Used to identify if EGL is being used as the WM
 
 */
 
@@ -59,19 +67,20 @@ Vantors Preprocessor Variables:
 // #include "Entity/vantorECS.h"
 
 // GRAPHICS
-#include "Graphics/Renderer/vantorBaseShader.h"
-#include "Graphics/Renderer/vantorBuffers.h"
-#include "Graphics/Renderer/vantorScreenSpaceShader.h"
-#include "Graphics/Renderer/vantorShader.h"
-#include "Graphics/vantorSceneElements.h"
-#include "Graphics/vantorCloudsModel.h"
-#include "Graphics/vantorDrawableObject.h"
-#include "Graphics/vantorVolumetricClouds.h"
-#include "Graphics/vantorWater.h"
-#include "Graphics/vantorTerrain.h"
-#include "Graphics/vantorTexture.h"
-#include "Graphics/Camera/vantorCamera.hpp"
-// RENDERDEVICE: TODO: MOVE AWAY
+// GRAPHICS / GEOMETRY / PRIMITIVES
+#include "Graphics/Geometry/Primitives/vantorCircle.hpp"
+#include "Graphics/Geometry/Primitives/vantorCube.hpp"
+#include "Graphics/Geometry/Primitives/vantorSphere.hpp"
+#include "Graphics/Geometry/Primitives/vantorLine.hpp"
+#include "Graphics/Geometry/Primitives/vantorPlane.hpp"
+#include "Graphics/Geometry/Primitives/vantorQuad.hpp"
+#include "Graphics/Geometry/Primitives/vantorSphere.hpp"
+#include "Graphics/Geometry/Primitives/vantorTorus.hpp"
+#include "Graphics/Renderer/Background/vantorBackground.hpp"
+#include "Graphics/Renderer/Camera/vantorCamera.hpp"
+#include "Graphics/Renderer/Light/vantorDirectionalLight.hpp"
+#include "Graphics/Renderer/Light/vantorPointLight.hpp"
+// RENDERDEVICE
 #include "Graphics/RenderDevice/vantorRenderDevice.hpp"
 // PLATFORM
 #include "Platform/vantorWindow.h"
@@ -80,9 +89,6 @@ Vantors Preprocessor Variables:
 #include "Platform/Platforms/vantorPlatformEnvironment.hpp"
 
 // GUI
-#include "GUI/Font/vantorFont.h"
-#include "GUI/Font/vantorFontAtlas.h"
-#include "GUI/Font/vantorLabel.h"
 #include "GUI/vantorImgui.h"
 
 // HELPERS
@@ -94,11 +100,5 @@ Vantors Preprocessor Variables:
 // UTILITIES
 #include "Utils/utils.h"
 #include "Utils/constants.h"
-#include "Utils/OpenGL/glError.h" // TODO: Move to RenderDevice
-
-// EXTERNAL-INCLUDED HEADERS
-#include <camera.h>
-#include <mesh.h>
-#include <model.h>
 
 #endif // VANTOR

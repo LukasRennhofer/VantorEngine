@@ -17,7 +17,7 @@
 <h3 align="center">Vantor</h3>
 
   <p align="center">
-    The Cross-Platform Game and Rendering Engine
+    The Cross-Platform Game and Rendering Engine SDK
     <br />
     <a href="https://github.com/LukasRennhofer/Vantor"><strong>Explore the docs »</strong></a>
     <br />

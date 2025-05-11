@@ -12,6 +12,8 @@
  * Last Change: 
 */
 
+#pragma once
+
 #include <glm/glm.hpp>
 
 namespace vantor::Graphics {

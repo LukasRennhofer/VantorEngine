@@ -28,14 +28,14 @@
 
 namespace vantor
 {
-    std::map<unsigned int, vantor::Graphics::RenderDevice::Shader>      Resources::m_Shaders      = std::map<unsigned int, vantor::Graphics::RenderDevice::Shader>();
-    std::map<unsigned int, vantor::Graphics::RenderDevice::Texture>     Resources::m_Textures     = std::map<unsigned int, vantor::Graphics::RenderDevice::Texture>();
-    std::map<unsigned int, vantor::Graphics::RenderDevice::TextureCube> Resources::m_TexturesCube = std::map<unsigned int, vantor::Graphics::RenderDevice::TextureCube>();
+    std::map<unsigned int, vantor::Graphics::RenderDevice::OpenGL::Shader>      Resources::m_Shaders      = std::map<unsigned int, vantor::Graphics::RenderDevice::OpenGL::Shader>();
+    std::map<unsigned int, vantor::Graphics::RenderDevice::OpenGL::Texture>     Resources::m_Textures     = std::map<unsigned int, vantor::Graphics::RenderDevice::OpenGL::Texture>();
+    std::map<unsigned int, vantor::Graphics::RenderDevice::OpenGL::TextureCube> Resources::m_TexturesCube = std::map<unsigned int, vantor::Graphics::RenderDevice::OpenGL::TextureCube>();
     std::map<unsigned int, SceneNode*>  Resources::m_Meshes       = std::map<unsigned int, SceneNode*>();
     // --------------------------------------------------------------------------------------------
     void Resources::Init()
     {  
-        vantor::Graphics::RenderDevice::Texture placeholderTexture;
+        vantor::Graphics::RenderDevice::OpenGL::Texture placeholderTexture;
     }
     void Resources::Clean()
     {
@@ -46,18 +46,18 @@ namespace vantor
     }
 
     // --------------------------------------------------------------------------------------------
-    vantor::Graphics::RenderDevice::Shader* Resources::LoadShader(std::string name, std::string vsPath, std::string fsPath, std::vector<std::string> defines)
+    vantor::Graphics::RenderDevice::OpenGL::Shader* Resources::LoadShader(std::string name, std::string vsPath, std::string fsPath, std::vector<std::string> defines)
     {
         unsigned int id = SID(name);
 
         if(Resources::m_Shaders.find(id) != Resources::m_Shaders.end())
             return &Resources::m_Shaders[id];
 
-        vantor::Graphics::RenderDevice::Shader shader = ShaderLoader::Load(name, vsPath, fsPath, defines);
+        vantor::Graphics::RenderDevice::OpenGL::Shader shader = ShaderLoader::Load(name, vsPath, fsPath, defines);
         Resources::m_Shaders[id] = shader;
         return &Resources::m_Shaders[id];
     }
-    vantor::Graphics::RenderDevice::Shader* Resources::GetShader(std::string name)
+    vantor::Graphics::RenderDevice::OpenGL::Shader* Resources::GetShader(std::string name)
     {
         unsigned int id = SID(name);
 
@@ -72,7 +72,7 @@ namespace vantor
         }
     }
     // --------------------------------------------------------------------------------------------
-    vantor::Graphics::RenderDevice::Texture* Resources::LoadTexture(std::string name, std::string path, GLenum target, GLenum format, bool srgb)
+    vantor::Graphics::RenderDevice::OpenGL::Texture* Resources::LoadTexture(std::string name, std::string path, GLenum target, GLenum format, bool srgb)
     {
         unsigned int id = SID(name);
 
@@ -81,7 +81,7 @@ namespace vantor
 
         vantor::Backlog::Log("ResourceLoader", "Loading texture file at: " + path + ".", vantor::Backlog::LogLevel::INFO);
 
-        vantor::Graphics::RenderDevice::Texture texture = TextureLoader::LoadTexture(path, target, format, srgb);
+        vantor::Graphics::RenderDevice::OpenGL::Texture texture = TextureLoader::LoadTexture(path, target, format, srgb);
 
         vantor::Backlog::Log("ResourceLoader", "Succesfully loaded: " + path + ".", vantor::Backlog::LogLevel::INFO);
 
@@ -96,14 +96,14 @@ namespace vantor
         }
     }
     // --------------------------------------------------------------------------------------------
-    vantor::Graphics::RenderDevice::Texture* Resources::LoadHDR(std::string name, std::string path)
+    vantor::Graphics::RenderDevice::OpenGL::Texture* Resources::LoadHDR(std::string name, std::string path)
     {
         unsigned int id = SID(name);
 
         if (Resources::m_Textures.find(id) != Resources::m_Textures.end())
             return &Resources::m_Textures[id];
 
-        vantor::Graphics::RenderDevice::Texture texture = TextureLoader::LoadHDRTexture(path);
+        vantor::Graphics::RenderDevice::OpenGL::Texture texture = TextureLoader::LoadHDRTexture(path);
  
         if (texture.Width > 0)
         {
@@ -116,7 +116,7 @@ namespace vantor
         }
     }
     // --------------------------------------------------------------------------------------------
-    vantor::Graphics::RenderDevice::Texture* Resources::GetTexture(std::string name)
+    vantor::Graphics::RenderDevice::OpenGL::Texture* Resources::GetTexture(std::string name)
     {
         unsigned int id = SID(name);
 
@@ -131,19 +131,19 @@ namespace vantor
         }
     }
     // --------------------------------------------------------------------------------------------
-    vantor::Graphics::RenderDevice::TextureCube* Resources::LoadTextureCube(std::string name, std::string folder)
+    vantor::Graphics::RenderDevice::OpenGL::TextureCube* Resources::LoadTextureCube(std::string name, std::string folder)
     {
         unsigned int id = SID(name);
 
         if (Resources::m_TexturesCube.find(id) != Resources::m_TexturesCube.end())
             return &Resources::m_TexturesCube[id];
 
-        vantor::Graphics::RenderDevice::TextureCube texture = TextureLoader::LoadTextureCube(folder);
+        vantor::Graphics::RenderDevice::OpenGL::TextureCube texture = TextureLoader::LoadTextureCube(folder);
         Resources::m_TexturesCube[id] = texture;
         return &Resources::m_TexturesCube[id];
     }
     // --------------------------------------------------------------------------------------------
-    vantor::Graphics::RenderDevice::TextureCube* Resources::GetTextureCube(std::string name)
+    vantor::Graphics::RenderDevice::OpenGL::TextureCube* Resources::GetTextureCube(std::string name)
     {
         unsigned int id = SID(name);
 
@@ -158,7 +158,7 @@ namespace vantor
         }
     }
     // --------------------------------------------------------------------------------------------
-    SceneNode* Resources::LoadMesh(vantor::Graphics::RenderDevice::Renderer* renderer, std::string name, std::string path)
+    SceneNode* Resources::LoadMesh(vantor::Graphics::RenderDevice::OpenGL::Renderer* renderer, std::string name, std::string path)
     {
         unsigned int id = SID(name);
 

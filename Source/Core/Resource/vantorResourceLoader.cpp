@@ -32,7 +32,7 @@ namespace vantor
       Mesh loading
 
     */
-    std::vector<vantor::Graphics::RenderDevice::Mesh*> MeshLoader::meshStore = std::vector<vantor::Graphics::RenderDevice::Mesh*>();
+    std::vector<vantor::Graphics::RenderDevice::OpenGL::Mesh*> MeshLoader::meshStore = std::vector<vantor::Graphics::RenderDevice::OpenGL::Mesh*>();
     // --------------------------------------------------------------------------------------------
     void MeshLoader::Clean()
     {
@@ -42,7 +42,7 @@ namespace vantor
         }
     }
     // --------------------------------------------------------------------------------------------
-    vantor::SceneNode* MeshLoader::LoadMesh(vantor::Graphics::RenderDevice::Renderer *renderer, std::string path, bool setDefaultMaterial)
+    vantor::SceneNode* MeshLoader::LoadMesh(vantor::Graphics::RenderDevice::OpenGL::Renderer *renderer, std::string path, bool setDefaultMaterial)
     {
         vantor::Backlog::Log("ResourceLoader", "Loading mesh file at: " + path + ".", vantor::Backlog::LogLevel::INFO);
 
@@ -62,7 +62,7 @@ namespace vantor
         return MeshLoader::processNode(renderer, scene->mRootNode, scene, directory, setDefaultMaterial);
     }
     // --------------------------------------------------------------------------------------------
-    SceneNode* MeshLoader::processNode(vantor::Graphics::RenderDevice::Renderer* renderer, aiNode* aNode, const aiScene* aScene, std::string directory, bool setDefaultMaterial)
+    SceneNode* MeshLoader::processNode(vantor::Graphics::RenderDevice::OpenGL::Renderer* renderer, aiNode* aNode, const aiScene* aScene, std::string directory, bool setDefaultMaterial)
     {
         SceneNode* node = new SceneNode(0);
 
@@ -71,8 +71,8 @@ namespace vantor
             glm::vec3 boxMin, boxMax;
             aiMesh*     assimpMesh = aScene->mMeshes[aNode->mMeshes[i]];
             aiMaterial* assimpMat  = aScene->mMaterials[assimpMesh->mMaterialIndex];
-            vantor::Graphics::RenderDevice::Mesh*       mesh       = MeshLoader::parseMesh(assimpMesh, aScene, boxMin, boxMax);
-            vantor::Graphics::RenderDevice::Material*   material   = nullptr;
+            vantor::Graphics::RenderDevice::OpenGL::Mesh*       mesh       = MeshLoader::parseMesh(assimpMesh, aScene, boxMin, boxMax);
+            vantor::Graphics::RenderDevice::OpenGL::Material*   material   = nullptr;
             if (setDefaultMaterial)
             {
                 material = MeshLoader::parseMaterial(renderer, assimpMat, aScene, directory);
@@ -108,7 +108,7 @@ namespace vantor
         return node;
     }
     // --------------------------------------------------------------------------------------------
-    vantor::Graphics::RenderDevice::Mesh* MeshLoader::parseMesh(aiMesh* aMesh, const aiScene* aScene, glm::vec3& out_Min, glm::vec3& out_Max)
+    vantor::Graphics::RenderDevice::OpenGL::Mesh* MeshLoader::parseMesh(aiMesh* aMesh, const aiScene* aScene, glm::vec3& out_Min, glm::vec3& out_Max)
     {
         std::vector<glm::vec3> positions;
         std::vector<glm::vec2> uv;
@@ -159,7 +159,7 @@ namespace vantor
             }
         }
 
-        vantor::Graphics::RenderDevice::Mesh *mesh = new vantor::Graphics::RenderDevice::Mesh;
+        vantor::Graphics::RenderDevice::OpenGL::Mesh *mesh = new vantor::Graphics::RenderDevice::OpenGL::Mesh;
         mesh->Positions = positions;
         mesh->UV = uv;
         mesh->Normals = normals;
@@ -181,9 +181,9 @@ namespace vantor
         return mesh;
     }
     // --------------------------------------------------------------------------------------------
-    vantor::Graphics::RenderDevice::Material *MeshLoader::parseMaterial(vantor::Graphics::RenderDevice::Renderer* renderer, aiMaterial* aMaterial, const aiScene* aScene, std::string directory)
+    vantor::Graphics::RenderDevice::OpenGL::Material *MeshLoader::parseMaterial(vantor::Graphics::RenderDevice::OpenGL::Renderer* renderer, aiMaterial* aMaterial, const aiScene* aScene, std::string directory)
     {  
-        vantor::Graphics::RenderDevice::Material* material;
+        vantor::Graphics::RenderDevice::OpenGL::Material* material;
 
         aiString file;
         aMaterial->GetTexture(aiTextureType_DIFFUSE, 0, &file);
@@ -214,7 +214,7 @@ namespace vantor
             aiString file;
             aMaterial->GetTexture(aiTextureType_DIFFUSE, 0, &file);
             std::string fileName = MeshLoader::processPath(&file, directory);
-            vantor::Graphics::RenderDevice::Texture* texture = Resources::LoadTexture(fileName, fileName, GL_TEXTURE_2D, alpha ? GL_RGBA : GL_RGB, true);
+            vantor::Graphics::RenderDevice::OpenGL::Texture* texture = Resources::LoadTexture(fileName, fileName, GL_TEXTURE_2D, alpha ? GL_RGBA : GL_RGB, true);
             if (texture)
             {
                 material->SetTexture("TexAlbedo", texture, 3);
@@ -226,7 +226,7 @@ namespace vantor
             aMaterial->GetTexture(aiTextureType_DISPLACEMENT, 0, &file);
             std::string fileName = MeshLoader::processPath(&file, directory);
 
-            vantor::Graphics::RenderDevice::Texture* texture = Resources::LoadTexture(fileName, fileName);
+            vantor::Graphics::RenderDevice::OpenGL::Texture* texture = Resources::LoadTexture(fileName, fileName);
             if (texture)
             {
                 material->SetTexture("TexNormal", texture, 4);
@@ -238,7 +238,7 @@ namespace vantor
             aMaterial->GetTexture(aiTextureType_SPECULAR, 0, &file);
             std::string fileName = MeshLoader::processPath(&file, directory);
 
-            vantor::Graphics::RenderDevice::Texture* texture = Resources::LoadTexture(fileName, fileName);
+            vantor::Graphics::RenderDevice::OpenGL::Texture* texture = Resources::LoadTexture(fileName, fileName);
             if (texture)
             {
                 material->SetTexture("TexMetallic", texture, 5);
@@ -250,7 +250,7 @@ namespace vantor
             aMaterial->GetTexture(aiTextureType_SHININESS, 0, &file);
             std::string fileName = MeshLoader::processPath(&file, directory);
           
-            vantor::Graphics::RenderDevice::Texture* texture = Resources::LoadTexture(fileName, fileName);
+            vantor::Graphics::RenderDevice::OpenGL::Texture* texture = Resources::LoadTexture(fileName, fileName);
             if (texture)
             {
                 material->SetTexture("TexRoughness", texture, 6);
@@ -262,7 +262,7 @@ namespace vantor
             aMaterial->GetTexture(aiTextureType_AMBIENT, 0, &file);
             std::string fileName = MeshLoader::processPath(&file, directory);
          
-            vantor::Graphics::RenderDevice::Texture* texture = Resources::LoadTexture(fileName, fileName);
+            vantor::Graphics::RenderDevice::OpenGL::Texture* texture = Resources::LoadTexture(fileName, fileName);
             if (texture)
             {
                 material->SetTexture("TexAO", texture, 7);
@@ -285,7 +285,7 @@ namespace vantor
       Shader loading 
 
     */
-    vantor::Graphics::RenderDevice::Shader ShaderLoader::Load(std::string name, std::string vsPath, std::string fsPath, std::vector<std::string> defines)
+    vantor::Graphics::RenderDevice::OpenGL::Shader ShaderLoader::Load(std::string name, std::string vsPath, std::string fsPath, std::vector<std::string> defines)
     {
         std::ifstream vsFile, fsFile;
         vsFile.open(vsPath);
@@ -294,7 +294,7 @@ namespace vantor
         if (!vsFile.is_open() || !fsFile.is_open())
         {
             vantor::Backlog::Log("ResourceLoader", "Shader failed to load at path: " + vsPath + " and " + fsPath, vantor::Backlog::LogLevel::ERR);
-            return vantor::Graphics::RenderDevice::Shader();
+            return vantor::Graphics::RenderDevice::OpenGL::Shader();
         }
 
         std::string vsDirectory = vsPath.substr(0, vsPath.find_last_of("/\\"));
@@ -302,7 +302,7 @@ namespace vantor
         std::string vsSource = readShader(vsFile, name, vsPath);
         std::string fsSource = readShader(fsFile, name, fsPath);
 
-        vantor::Graphics::RenderDevice::Shader shader(name, vsSource, fsSource, defines);
+        vantor::Graphics::RenderDevice::OpenGL::Shader shader(name, vsSource, fsSource, defines);
 
         vsFile.close();
         fsFile.close();
@@ -341,9 +341,9 @@ namespace vantor
       Texture loading 
 
     */
-    vantor::Graphics::RenderDevice::Texture TextureLoader::LoadTexture(std::string path, GLenum target, GLenum internalFormat, bool srgb)
+    vantor::Graphics::RenderDevice::OpenGL::Texture TextureLoader::LoadTexture(std::string path, GLenum target, GLenum internalFormat, bool srgb)
     {
-        vantor::Graphics::RenderDevice::Texture texture;
+        vantor::Graphics::RenderDevice::OpenGL::Texture texture;
         texture.Target = target;
         texture.InternalFormat = internalFormat;
         if(texture.InternalFormat == GL_RGB || texture.InternalFormat == GL_SRGB)
@@ -383,9 +383,9 @@ namespace vantor
         return texture;
     }
     // --------------------------------------------------------------------------------------------
-    vantor::Graphics::RenderDevice::Texture TextureLoader::LoadHDRTexture(std::string path)
+    vantor::Graphics::RenderDevice::OpenGL::Texture TextureLoader::LoadHDRTexture(std::string path)
     {
-        vantor::Graphics::RenderDevice::Texture texture;
+        vantor::Graphics::RenderDevice::OpenGL::Texture texture;
         texture.Target = GL_TEXTURE_2D;
 		texture.FilterMin = GL_LINEAR;
 		texture.Mipmapping = false; 
@@ -424,9 +424,9 @@ namespace vantor
         return texture;
     }
     // --------------------------------------------------------------------------------------------
-    vantor::Graphics::RenderDevice::TextureCube TextureLoader::LoadTextureCube(std::string top, std::string bottom, std::string left, std::string right, std::string front, std::string back)
+    vantor::Graphics::RenderDevice::OpenGL::TextureCube TextureLoader::LoadTextureCube(std::string top, std::string bottom, std::string left, std::string right, std::string front, std::string back)
     {
-        vantor::Graphics::RenderDevice::TextureCube texture;
+        vantor::Graphics::RenderDevice::OpenGL::TextureCube texture;
 
         stbi_set_flip_vertically_on_load(false);
 
@@ -460,7 +460,7 @@ namespace vantor
         return texture;
     }
     // --------------------------------------------------------------------------------------------
-    vantor::Graphics::RenderDevice::TextureCube TextureLoader::LoadTextureCube(std::string folder)
+    vantor::Graphics::RenderDevice::OpenGL::TextureCube TextureLoader::LoadTextureCube(std::string folder)
     {
         return TextureLoader::LoadTextureCube(folder + "right.jpg",
                                               folder + "left.jpg",

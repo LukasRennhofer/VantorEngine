@@ -14,6 +14,8 @@
 
 // !! WARNING: IT NEEDS TO BE CHANGED WHEN WORKING WITH VULKAN!!!
 
+#pragma once
+
 #include <glm/glm.hpp>
 #include "../../RenderDevice/DeviceOpenGL/vantorOpenGLRenderTarget.hpp" // Doesnt work with vulkan
 

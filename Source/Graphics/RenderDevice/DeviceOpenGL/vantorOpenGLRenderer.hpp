@@ -23,6 +23,8 @@
 #include "vantorOpenGLCommandBuffer.hpp"
 #include "vantorOpenGLChache.hpp"
 #include "../../../Core/Scene/vantorSceneNode.hpp"
+#include "vantorOpenGLMaterialLibrary.hpp"
+#include "PBR/vantorOpenGLPBR.hpp"
 
 #include "../../Renderer/Camera/vantorCamera.hpp"
 
@@ -34,9 +36,6 @@ namespace vantor::Graphics::RenderDevice::OpenGL {
     class Material;
     class Scene;
     class RenderTarget;
-    class MaterialLibrary;
-    class PBR;
-    class PBRCapture;
     class PostProcessor;
 
     class Renderer
@@ -99,7 +98,7 @@ namespace vantor::Graphics::RenderDevice::OpenGL {
         Renderer();
         ~Renderer();
 
-        void Init(GLADloadproc loadProcFunc);
+        void Init();
 
         void SetRenderSize(unsigned int width, unsigned int height);
         glm::vec2 GetRenderSize();
