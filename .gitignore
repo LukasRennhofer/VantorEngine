@@ -6,3 +6,6 @@
 # python temp paths
 __pycache__/
 *.py[cod]
+
+# Zed Cmake Folder
+/__cmake_systeminformation/

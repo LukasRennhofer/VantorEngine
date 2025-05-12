@@ -47,7 +47,7 @@ int main(int argc, char* argv[]) {
 	glfwSetScrollCallback(window.getWindow(), mouseScrollFunc);
 
     renderer = vantor::Graphics::RenderDevice::OpenGL::Init();
-    
+
     renderer->SetRenderSize(vantor::Platform::Window::SCR_WIDTH, vantor::Platform::Window::SCR_WIDTH);
 	renderer->SetCamera(&camera);
 
@@ -103,7 +103,7 @@ int main(int argc, char* argv[]) {
 	vantor::Graphics::RenderDevice::OpenGL::Material* customPostProcessing1 = renderer->CreatePostProcessingMaterial(postProcessing1);
 	vantor::Graphics::RenderDevice::OpenGL::Material* customPostProcessing2 = renderer->CreatePostProcessingMaterial(postProcessing2);
 
-	// mesh 
+	// mesh
 	vantor::SceneNode* sponza = vantor::Resources::LoadMesh(renderer, "sponza", "res/intern/meshes/sponza/sponza.obj");
 	sponza->SetPosition(glm::vec3(0.0, -1.0, 0.0));
 	sponza->SetScale(0.01f);
@@ -264,22 +264,11 @@ int main(int argc, char* argv[]) {
 			renderer->RenderPushedCommands();
 		}
 
-		// // GUI
-		// if (renderGUI)
-		// {
-		// 	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
-		// 	Cell::RenderGUI();
-		// }
-		// else
-		// {
-		// 	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
-		// }
         glfwSetInputMode(window.getWindow(), GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 		vantor::Graphics::RenderDevice::OpenGL::EndFrame();
         window.swapBuffersAndPollEvents();
 	}
 
-	// clean up Cell
 	vantor::Graphics::RenderDevice::OpenGL::Shutdown();
 
 	return 0;

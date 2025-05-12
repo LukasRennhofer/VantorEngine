@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-05-11
+ *  Date: 2025-05-12
  *
  *  File: vantorTorus.cpp
  *  Last Change: Automatically updated
