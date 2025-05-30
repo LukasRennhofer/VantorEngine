@@ -1,11 +1,69 @@
 # Vantor Main Repository / .gitignore file / @LukasRennhofer
 
-# Ignore Build Path
-/build/
+# =========== Build ==============
+# Build Path
+./Build/
 
-# python temp paths
+# =========== Python ==============
+# Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
+*$py.class
 
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# =========== C++ ==============
+
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+# =========== Code Editors ==============
 # Zed Cmake Folder
 /__cmake_systeminformation/
+
+.vscode/*
+# Local History for Visual Studio Code
+.history/
+
+# Built Visual Studio Code Extensions
+*.vsix
+
+.idea/
+

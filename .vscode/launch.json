@@ -7,9 +7,9 @@
       "request": "launch",
       "args": [],
       "stopAtEntry": false,
-      "externalConsole": true,
-      "cwd": "d:/CHIFEngine/CHIFEngine/src",
-      "program": "d:/CHIFEngine/CHIFEngine/src/build/Debug/outDebug",
+      "externalConsole": false,
+      "cwd": "/run/media/lukas/F0A8-AAEB/Vantor/Vantor",
+      "program": "/run/media/lukas/F0A8-AAEB/Vantor/Vantor/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
