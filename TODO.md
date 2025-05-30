@@ -1,7 +1,13 @@
 # Vantor Todo Stack
 
-- Better Resource System (with FS) and better Res folder and files
---------------------------------------------------------
+ - Main Architecture
+    - Data should start with V (like VColor or VSourcePath)
+    - Vantor Folder with Includes, Source, Documentation, External Dependencies, Configs (maybe another name) and Resources and Shaders and Studio Applications
+    - Module System like Blender has (VLIB, VGFX, VCORE)
+    - All External Dependenices via Github links and forks
+    - Root build system integration
+    - Maybe a Benchmarking system like testing too?
+
 - Main Frame (Application)
 --------------------------------------------------------
 - proper CMake Architecture Setup (🟩)

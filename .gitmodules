@@ -1,0 +1,3 @@
+[submodule "Vantor/External/Switch/switch-glad"]
+	path = Vantor/External/Switch/switch-glad
+	url = https://github.com/VantorStudio/switch-glad.git

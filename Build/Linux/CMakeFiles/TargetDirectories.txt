@@ -1,0 +1,7 @@
+/run/media/lukas/F0A8-AAEB/Vantor/Vantor/Build/Linux/CMakeFiles/VantorLinux.dir
+/run/media/lukas/F0A8-AAEB/Vantor/Vantor/Build/Linux/CMakeFiles/edit_cache.dir
+/run/media/lukas/F0A8-AAEB/Vantor/Vantor/Build/Linux/CMakeFiles/rebuild_cache.dir
+/run/media/lukas/F0A8-AAEB/Vantor/Vantor/Build/Linux/CMakeFiles/list_install_components.dir
+/run/media/lukas/F0A8-AAEB/Vantor/Vantor/Build/Linux/CMakeFiles/install.dir
+/run/media/lukas/F0A8-AAEB/Vantor/Vantor/Build/Linux/CMakeFiles/install/local.dir
+/run/media/lukas/F0A8-AAEB/Vantor/Vantor/Build/Linux/CMakeFiles/install/strip.dir
