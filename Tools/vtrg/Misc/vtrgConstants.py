@@ -45,11 +45,21 @@ HEADER_STYLE = f"""/*
 MAIN_ENGINE_DIR  = Path("Vantor")
 SRC_DIR_INTERNAL = MAIN_ENGINE_DIR / Path("Source")
 BUILD_DIR_INTERNAL = Path("Build")
+
+# Resources
+SHADERS_DIR = MAIN_ENGINE_DIR / Path("Shaders")
+RESOURCE_DIR = MAIN_ENGINE_DIR / Path("Resources")
+
+# Projects
 EXAMPLES_INTERNAL = Path("Samples")
-RESOURCE_DIRS = [MAIN_ENGINE_DIR / "Resources", MAIN_ENGINE_DIR / "Shaders"]
 SANBOX_DIR_INTERNAL = Path("Sandbox")
 INCLUDE_DIR = BUILD_DIR_INTERNAL / "include"
 EXTERNAL_SRC_DIR = MAIN_ENGINE_DIR / "External"
 
+# TOOLS
+MAIN_PY_ENTRY = "vtrg.py"
+
 # Building
 VALID_BUILDING_PLATFORMS = ["Windows", "Linux", "Switch"]
+VALID_PLATFORM_PREFIXES = {"Windows" : ["Win32", "Win64"], "Linux" : ["Linux"], "Switch" : ["Homebrew", "NSX"]}
+VALID_SAMPLES = ["TestFramework", "Template"]

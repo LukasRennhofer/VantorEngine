@@ -28,10 +28,6 @@ class vtrgCLIClientUtils:
     def show_loading_indicator(process, task_name):
         """
         Displays a loading indicator in the console while a subprocess is running.
-
-        Args:
-            process (subprocess.Popen): The subprocess to monitor.
-            task_name (str): The name of the task being executed.
         """
         dots = 6
         while True:
