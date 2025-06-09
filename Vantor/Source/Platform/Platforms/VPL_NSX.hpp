@@ -3,7 +3,7 @@
  *  ║                          ~ Vantor ~                           ║
  *  ║                                                               ║
  *  ║  This file is part of the Vantor Engine.                      ║
- *  ║  Automatically formatted by vantorFormat.py                   ║
+ *  ║  Automatically formatted by vtrgFormat.py                     ║
  *  ║                                                               ║
  *  ╚═══════════════════════════════════════════════════════════════╝
  *
@@ -12,9 +12,9 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-06-08
+ *  Date: 2025-06-09
  *
- *  File: vantorPlatformNSX.hpp
+ *  File: VPL_NSX.hpp
  *  Last Change: Automatically updated
  */
 
@@ -47,7 +47,7 @@ namespace Vantor::Platform
             static uint64_t    GetFileSize(const std::string &path);
 
             static std::vector<uint8_t> ReadBinary(const std::string &path);
-            static std::string ReadText(const std::string &path);
+            static std::string          ReadText(const std::string &path);
 
         private:
             static double startTime;

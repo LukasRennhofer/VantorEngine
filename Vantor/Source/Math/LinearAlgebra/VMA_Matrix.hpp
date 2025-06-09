@@ -3,7 +3,7 @@
  *  ║                          ~ Vantor ~                           ║
  *  ║                                                               ║
  *  ║  This file is part of the Vantor Engine.                      ║
- *  ║  Automatically formatted by vantorFormat.py                   ║
+ *  ║  Automatically formatted by vtrgFormat.py                     ║
  *  ║                                                               ║
  *  ╚═══════════════════════════════════════════════════════════════╝
  *
@@ -12,9 +12,9 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-06-08
+ *  Date: 2025-06-09
  *
- *  File: MathMatrix.hpp
+ *  File: VMA_Matrix.hpp
  *  Last Change: Automatically updated
  */
 
@@ -159,4 +159,4 @@ namespace Vantor::Math
         }
         return result;
     }
-} // namespace Vanotr::Math
+} // namespace Vantor::Math

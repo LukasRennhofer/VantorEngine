@@ -3,7 +3,7 @@
  *  ║                          ~ Vantor ~                           ║
  *  ║                                                               ║
  *  ║  This file is part of the Vantor Engine.                      ║
- *  ║  Automatically formatted by vantorFormat.py                   ║
+ *  ║  Automatically formatted by vtrgFormat.py                     ║
  *  ║                                                               ║
  *  ╚═══════════════════════════════════════════════════════════════╝
  *
@@ -12,9 +12,9 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-06-08
+ *  Date: 2025-06-09
  *
- *  File: vantorPlatformEnvironment.hpp
+ *  File: VPL_Environment.hpp
  *  Last Change: Automatically updated
  */
 
@@ -61,19 +61,19 @@ namespace Vantor::Platform
 
         inline bool     FileExists(const auto &path) { return PlatformImpl::FileExists(path); }
         inline uint64_t GetFileSize(const auto &path) { return PlatformImpl::GetFileSize(path); }
-        
+
         inline std::vector<uint8_t> ReadBinary(const std::string &path) { return PlatformImpl::ReadBinary(path); }
-        inline std::string ReadText(const std::string &path) { return PlatformImpl::ReadText(path); }
+        inline std::string          ReadText(const std::string &path) { return PlatformImpl::ReadText(path); }
 
         constexpr VEPlatforms GetCurrentPlatform()
         {
-            #if defined(__WINDOWS__)
-                        return WINDOWS;
-            #elif defined(__NSX__)
-                        return NSX;
-            #elif defined(__LINUX__)
-                        return LINUX;
-            #endif
+#if defined(__WINDOWS__)
+            return WINDOWS;
+#elif defined(__NSX__)
+            return NSX;
+#elif defined(__LINUX__)
+            return LINUX;
+#endif
         }
 
         inline std::string GetPlatformName()

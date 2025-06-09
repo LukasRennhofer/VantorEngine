@@ -1,3 +1,23 @@
+/*
+ *  ╔═══════════════════════════════════════════════════════════════╗
+ *  ║                          ~ Vantor ~                           ║
+ *  ║                                                               ║
+ *  ║  This file is part of the Vantor Engine.                      ║
+ *  ║  Automatically formatted by vtrgFormat.py                     ║
+ *  ║                                                               ║
+ *  ╚═══════════════════════════════════════════════════════════════╝
+ *
+ *  Copyright (c) 2025 Lukas Rennhofer
+ *  Licensed under the GNU General Public License, Version 3.
+ *  See LICENSE file for more details.
+ *
+ *  Author: Lukas Rennhofer
+ *  Date: 2025-06-09
+ *
+ *  File: VCO_FSUtils.hpp
+ *  Last Change: Automatically updated
+ */
+
 #pragma once
 
 // Platform
@@ -5,7 +25,8 @@
 
 #include <string>
 
-namespace Vantor::Core::IO {
+namespace Vantor::Core::IO
+{
     // Split Path in dir and fileName and directly modify them
     void SplitPath(const std::string &fullPath, std::string &dir, std::string &fileName);
     // Get filename from given Path
@@ -23,4 +44,4 @@ namespace Vantor::Core::IO {
 
     // Abstracted functions
     inline bool FileExists(const std::string &path) { return Vantor::Platform::Environment::FileExists(path); }
-}
+} // namespace Vantor::Core::IO

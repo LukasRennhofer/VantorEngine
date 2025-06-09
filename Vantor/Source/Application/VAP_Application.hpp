@@ -3,7 +3,7 @@
  *  ║                          ~ Vantor ~                           ║
  *  ║                                                               ║
  *  ║  This file is part of the Vantor Engine.                      ║
- *  ║  Automatically formatted by vantorFormat.py                   ║
+ *  ║  Automatically formatted by vtrgFormat.py                     ║
  *  ║                                                               ║
  *  ╚═══════════════════════════════════════════════════════════════╝
  *
@@ -12,9 +12,9 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-06-08
+ *  Date: 2025-06-09
  *
- *  File: vantorApplication.hpp
+ *  File: VAP_Application.hpp
  *  Last Change: Automatically updated
  */
 
@@ -42,7 +42,7 @@ namespace Vantor
     class Application
     {
         private:
-            std::unique_ptr<Vantor::Context::Window> window;
+            std::unique_ptr<Vantor::Context::Window>        window;
             std::unique_ptr<Vantor::RenderDevice::VRDevice> RenderDevice;
 
         protected:
@@ -65,8 +65,8 @@ namespace Vantor
             bool IsRunning();
 
             // RenderDevice
-            RenderDevice::VRDevice* GetRenderDevice();                 // mutable access
-            const RenderDevice::VRDevice* GetRenderDevice() const;     // readonly access
+            RenderDevice::VRDevice       *GetRenderDevice();       // mutable access
+            const RenderDevice::VRDevice *GetRenderDevice() const; // readonly access
 
             // TODO:
             // void SetFullScreen(bool fullscreen);

@@ -1,3 +1,23 @@
+/*
+ *  ╔═══════════════════════════════════════════════════════════════╗
+ *  ║                          ~ Vantor ~                           ║
+ *  ║                                                               ║
+ *  ║  This file is part of the Vantor Engine.                      ║
+ *  ║  Automatically formatted by vtrgFormat.py                     ║
+ *  ║                                                               ║
+ *  ╚═══════════════════════════════════════════════════════════════╝
+ *
+ *  Copyright (c) 2025 Lukas Rennhofer
+ *  Licensed under the GNU General Public License, Version 3.
+ *  See LICENSE file for more details.
+ *
+ *  Author: Lukas Rennhofer
+ *  Date: 2025-06-09
+ *
+ *  File: VCO_Color.hpp
+ *  Last Change: Automatically updated
+ */
+
 #pragma once
 
 // Math
@@ -62,7 +82,7 @@ namespace Vantor::Helpers
             Vantor::Math::Vec4 toFloat4() const
             {
                 return Vantor::Math::Vec4(((rgba >> 0) & 0xFF) / 255.0f, ((rgba >> 8) & 0xFF) / 255.0f, ((rgba >> 16) & 0xFF) / 255.0f,
-                                                   ((rgba >> 24) & 0xFF) / 255.0f);
+                                          ((rgba >> 24) & 0xFF) / 255.0f);
             }
 
             operator Vantor::Math::Vec3() const { return toFloat3(); }

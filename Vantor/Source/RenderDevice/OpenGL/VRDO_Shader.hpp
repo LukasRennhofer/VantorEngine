@@ -3,7 +3,7 @@
  *  ║                          ~ Vantor ~                           ║
  *  ║                                                               ║
  *  ║  This file is part of the Vantor Engine.                      ║
- *  ║  Automatically formatted by vantorFormat.py                   ║
+ *  ║  Automatically formatted by vtrgFormat.py                     ║
  *  ║                                                               ║
  *  ╚═══════════════════════════════════════════════════════════════╝
  *
@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-06-08
+ *  Date: 2025-06-09
  *
  *  File: VRDO_Shader.hpp
  *  Last Change: Automatically updated
@@ -53,10 +53,10 @@ namespace Vantor::RenderDevice
             void setMat4(const std::string &name, const glm::mat4 &mat) const override;
 
         private:
-            GLuint      ID;
-            GLuint      compileShader(GLenum type, const std::string &source);
-            GLuint      linkProgram(GLuint vertexShader, GLuint fragmentShader);
-            GLint       getUniformLocation(const std::string &name) const;
+            GLuint ID;
+            GLuint compileShader(GLenum type, const std::string &source);
+            GLuint linkProgram(GLuint vertexShader, GLuint fragmentShader);
+            GLint  getUniformLocation(const std::string &name) const;
     };
 
 } // namespace Vantor::RenderDevice

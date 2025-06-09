@@ -3,7 +3,7 @@
  *  ║                          ~ Vantor ~                           ║
  *  ║                                                               ║
  *  ║  This file is part of the Vantor Engine.                      ║
- *  ║  Automatically formatted by vantorFormat.py                   ║
+ *  ║  Automatically formatted by vtrgFormat.py                     ║
  *  ║                                                               ║
  *  ╚═══════════════════════════════════════════════════════════════╝
  *
@@ -12,9 +12,9 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-06-08
+ *  Date: 2025-06-09
  *
- *  File: vantorApplication.cpp
+ *  File: VAP_Application.cpp
  *  Last Change: Automatically updated
  */
 
@@ -24,14 +24,15 @@
 namespace Vantor
 {
     void Application::Initialize()
-    {   
+    {
         // Guard for Initializing
         if (initialized)
         {
             return;
         }
 
-        Vantor::Backlog::Log("Application", std::format("Using Vantor Core      : {}", Vantor::Core::version::GetVersionString()), Vantor::Backlog::LogLevel::INFO);
+        Vantor::Backlog::Log("Application", std::format("Using Vantor Core      : {}", Vantor::Core::version::GetVersionString()),
+                             Vantor::Backlog::LogLevel::INFO);
 
         // Initializing the Platform Environment (FS, Time, ...)
         Vantor::Platform::Environment::Initialize();
@@ -44,8 +45,10 @@ namespace Vantor
         // Log RenderDevice Information
         Vantor::Backlog::Log("Application", std::string("Using RenderDevice     : " + RenderDevice->GetRenderDeviceName()), Vantor::Backlog::LogLevel::INFO);
         Vantor::Backlog::Log("Application", std::string("Using PhysicalDevice   : " + RenderDevice->GetPhysicalDeviceName()), Vantor::Backlog::LogLevel::INFO);
-        Vantor::Backlog::Log("Application", std::string("Using RenderAPI        : " + Vantor::RenderDevice::GetRenderAPIToString(RenderDevice->GetRenderDeviceAPI())), Vantor::Backlog::LogLevel::INFO);
-        
+        Vantor::Backlog::Log("Application",
+                             std::string("Using RenderAPI        : " + Vantor::RenderDevice::GetRenderAPIToString(RenderDevice->GetRenderDeviceAPI())),
+                             Vantor::Backlog::LogLevel::INFO);
+
         initialized = true;
 
         // TODO: Initializing with vantorInitializer
@@ -85,12 +88,8 @@ namespace Vantor
     }
 
     // RenderDevice: mutable access
-    RenderDevice::VRDevice* Application::GetRenderDevice() {
-        return RenderDevice.get();
-    }
+    RenderDevice::VRDevice *Application::GetRenderDevice() { return RenderDevice.get(); }
 
     // RenderDevice: readonly access
-    const RenderDevice::VRDevice* Application::GetRenderDevice() const {
-        return RenderDevice.get();
-    }
+    const RenderDevice::VRDevice *Application::GetRenderDevice() const { return RenderDevice.get(); }
 } // namespace Vantor

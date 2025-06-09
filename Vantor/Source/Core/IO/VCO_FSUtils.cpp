@@ -1,6 +1,27 @@
+/*
+ *  ╔═══════════════════════════════════════════════════════════════╗
+ *  ║                          ~ Vantor ~                           ║
+ *  ║                                                               ║
+ *  ║  This file is part of the Vantor Engine.                      ║
+ *  ║  Automatically formatted by vtrgFormat.py                     ║
+ *  ║                                                               ║
+ *  ╚═══════════════════════════════════════════════════════════════╝
+ *
+ *  Copyright (c) 2025 Lukas Rennhofer
+ *  Licensed under the GNU General Public License, Version 3.
+ *  See LICENSE file for more details.
+ *
+ *  Author: Lukas Rennhofer
+ *  Date: 2025-06-09
+ *
+ *  File: VCO_FSUtils.cpp
+ *  Last Change: Automatically updated
+ */
+
 #include "VCO_FSUtils.hpp"
 
-namespace Vantor::Core::IO {
+namespace Vantor::Core::IO
+{
     // Split Path in dir and fileName and directly modify them
     void SplitPath(const std::string &fullPath, std::string &dir, std::string &fileName)
     {
@@ -49,7 +70,7 @@ namespace Vantor::Core::IO {
 
         return "";
     }
-    
+
     // Replace extension from given filename
     std::string ReplaceExtension(const std::string &filename, const std::string &extension)
     {
@@ -86,4 +107,4 @@ namespace Vantor::Core::IO {
         }
         return filename.substr(0, idx);
     }
-}
+} // namespace Vantor::Core::IO

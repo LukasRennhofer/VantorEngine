@@ -1,38 +1,58 @@
+/*
+ *  ╔═══════════════════════════════════════════════════════════════╗
+ *  ║                          ~ Vantor ~                           ║
+ *  ║                                                               ║
+ *  ║  This file is part of the Vantor Engine.                      ║
+ *  ║  Automatically formatted by vtrgFormat.py                     ║
+ *  ║                                                               ║
+ *  ╚═══════════════════════════════════════════════════════════════╝
+ *
+ *  Copyright (c) 2025 Lukas Rennhofer
+ *  Licensed under the GNU General Public License, Version 3.
+ *  See LICENSE file for more details.
+ *
+ *  Author: Lukas Rennhofer
+ *  Date: 2025-06-09
+ *
+ *  File: VRDO_RenderDevice.cpp
+ *  Last Change: Automatically updated
+ */
+
 #include "VRDO_RenderDevice.hpp"
 
-namespace Vantor::RenderDevice {
-    void VRDeviceOpenGL::BeginFrame() {
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    }
+namespace Vantor::RenderDevice
+{
+    void VRDeviceOpenGL::BeginFrame() { glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); }
 
-    void VRDeviceOpenGL::EndFrame() {
+    void VRDeviceOpenGL::EndFrame()
+    {
         // TODO: flush, prepare for present
     }
 
-    void VRDeviceOpenGL::Present() {
+    void VRDeviceOpenGL::Present()
+    {
         // TODO: Typically handled in the main loop with glfwSwapBuffers(window)
     }
 
     // TODO: make arguemnts to shader code not path
-    std::shared_ptr<VShader> VRDeviceOpenGL::CreateShader(const char* vertexCode, const char* fragmentCode) {
+    std::shared_ptr<VShader> VRDeviceOpenGL::CreateShader(const char *vertexCode, const char *fragmentCode)
+    {
         return std::make_shared<VOpenGLShader>(vertexCode, fragmentCode);
     }
 
-    VERenderAPI VRDeviceOpenGL::GetRenderDeviceAPI() const {
-        return VERenderAPI::OPENGL;
-    }
+    VERenderAPI VRDeviceOpenGL::GetRenderDeviceAPI() const { return VERenderAPI::OPENGL; }
 
-    std::string VRDeviceOpenGL::GetRenderDeviceName() const {
-        return "VRDeviceOpenGL";
-    } 
+    std::string VRDeviceOpenGL::GetRenderDeviceName() const { return "VRDeviceOpenGL"; }
 
     // Device Info
-    std::string VRDeviceOpenGL::GetPhysicalDeviceVendor() const {
-        const GLubyte* vendor = glGetString(GL_VENDOR);
-        return std::string(reinterpret_cast<const char*>(vendor));
+    std::string VRDeviceOpenGL::GetPhysicalDeviceVendor() const
+    {
+        const GLubyte *vendor = glGetString(GL_VENDOR);
+        return std::string(reinterpret_cast<const char *>(vendor));
     }
-    std::string VRDeviceOpenGL::GetPhysicalDeviceName() const {
-        const GLubyte* renderer = glGetString(GL_RENDERER);
-        return std::string(reinterpret_cast<const char*>(renderer));
+    std::string VRDeviceOpenGL::GetPhysicalDeviceName() const
+    {
+        const GLubyte *renderer = glGetString(GL_RENDERER);
+        return std::string(reinterpret_cast<const char *>(renderer));
     }
-}
+} // namespace Vantor::RenderDevice
