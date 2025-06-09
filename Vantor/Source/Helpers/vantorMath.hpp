@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-05-12
+ *  Date: 2025-06-08
  *
  *  File: vantorMath.hpp
  *  Last Change: Automatically updated
@@ -24,7 +24,7 @@
 #include <cstdint>
 #include <algorithm>
 
-namespace vantor::Helpers::Math
+namespace Vantor::Helpers::Math
 {
     constexpr float PI      = 3.14159265359f;
     constexpr float DEG2RAD = PI / 180.0f;
@@ -146,4 +146,4 @@ namespace vantor::Helpers::Math
     inline float Radians(float degrees) { return degrees * DEG2RAD; }
 
     inline float Degrees(float radians) { return radians * RAD2DEG; }
-} // namespace vantor::Helpers::Math
+} // namespace Vantor::Helpers::Math

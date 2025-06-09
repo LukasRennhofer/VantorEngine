@@ -42,6 +42,7 @@ class vtrgCLIClient:
         build_parser.add_argument('--platform', type=str, choices=["Windows", "Linux", "Switch"], help='Target platform')
         build_parser.add_argument('--clean', type=str, help="Directory to clean before building")
         build_parser.add_argument('--debug', action='store_true', help="Enable debug build")
+        build_parser.add_argument('--run', action='store_true', help="Run directly after building")
         build_parser.add_argument('--check-dependencies', action='store_true', help="Check if dependencies like CMake are installed")
         build_parser.set_defaults(func=self.handle_build)
 
@@ -69,11 +70,18 @@ class vtrgCLIClient:
         print("🔧 Starting build...")
 
         if args.sample:
-            self.build_system.buildProject(
+            executable_path = self.build_system.buildProject(
                 target=args.platform,
                 exampleName=args.sample,
                 debugging=args.debug
             )
+            
+            if args.run:
+                if os.path.exists(executable_path):
+                    print(f"🛠️  Running executable: {executable_path}")
+                    subprocess.run(["./"+executable_path])
+                else:
+                    print(f"❌  Executable not found at {executable_path}")
         else:
             self.build_system.buildIntern(
                 target=args.platform,

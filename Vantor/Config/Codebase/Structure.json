@@ -1,0 +1,57 @@
+{
+  "engine": "Vantor",
+  "version": "0.16.14",
+  "description": "A modular game engine for real-time rendering and development.",
+  "modules": [
+    {
+      "name": "Core",
+      "path": "Source/Core",
+      "description": "Core utilities, memory management, logging, and timekeeping.",
+
+      "tests" : true,
+      "dependencies": []
+    },
+    {
+      "name": "Renderer",
+      "path": "modules/renderer",
+      "description": "Low-level graphics API abstraction and rendering pipeline.",
+      "dependencies": ["Core"]
+    },
+    {
+      "name": "Scene",
+      "path": "modules/scene",
+      "description": "Scene graph and entity-component system.",
+      "dependencies": ["Core"]
+    },
+    {
+      "name": "Input",
+      "path": "modules/input",
+      "description": "Input handling for keyboard, mouse, and controllers.",
+      "dependencies": ["Core"]
+    },
+    {
+      "name": "Platform",
+      "path": "modules/platform",
+      "description": "Platform abstraction for windowing and system operations.",
+      "dependencies": ["Core"]
+    },
+    {
+      "name": "Audio",
+      "path": "modules/audio",
+      "description": "Audio playback and spatial sound support.",
+      "dependencies": ["Core"]
+    },
+    {
+      "name": "Scripting",
+      "path": "modules/scripting",
+      "description": "Scripting engine integration for gameplay logic (e.g., Lua, Python).",
+      "dependencies": ["Core", "Scene"]
+    },
+    {
+      "name": "Editor",
+      "path": "modules/editor",
+      "description": "In-engine editor interface and tools.",
+      "dependencies": ["Renderer", "Scene", "Input"]
+    }
+  ]
+}

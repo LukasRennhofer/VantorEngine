@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-05-12
+ *  Date: 2025-06-08
  *
  *  File: vantorColor.hpp
  *  Last Change: Automatically updated
@@ -23,7 +23,7 @@
 #include "vantorMath.hpp"
 #include <cstdint>
 
-namespace vantor::Helpers
+namespace Vantor::Helpers
 {
     struct Color
     {
@@ -71,19 +71,19 @@ namespace vantor::Helpers
             constexpr void setB(uint8_t value) { *this = Color(getR(), getG(), value, getA()); }
             constexpr void setA(uint8_t value) { *this = Color(getR(), getG(), getB(), value); }
 
-            constexpr vantor::Helpers::Math::Vec3 toFloat3() const
+            constexpr Vantor::Helpers::Math::Vec3 toFloat3() const
             {
-                return vantor::Helpers::Math::Vec3(((rgba >> 0) & 0xFF) / 255.0f, ((rgba >> 8) & 0xFF) / 255.0f, ((rgba >> 16) & 0xFF) / 255.0f);
+                return Vantor::Helpers::Math::Vec3(((rgba >> 0) & 0xFF) / 255.0f, ((rgba >> 8) & 0xFF) / 255.0f, ((rgba >> 16) & 0xFF) / 255.0f);
             }
 
-            constexpr vantor::Helpers::Math::Vec4 toFloat4() const
+            constexpr Vantor::Helpers::Math::Vec4 toFloat4() const
             {
-                return vantor::Helpers::Math::Vec4(((rgba >> 0) & 0xFF) / 255.0f, ((rgba >> 8) & 0xFF) / 255.0f, ((rgba >> 16) & 0xFF) / 255.0f,
+                return Vantor::Helpers::Math::Vec4(((rgba >> 0) & 0xFF) / 255.0f, ((rgba >> 8) & 0xFF) / 255.0f, ((rgba >> 16) & 0xFF) / 255.0f,
                                                    ((rgba >> 24) & 0xFF) / 255.0f);
             }
 
-            constexpr operator vantor::Helpers::Math::Vec3() const { return toFloat3(); }
-            constexpr operator vantor::Helpers::Math::Vec4() const { return toFloat4(); }
+            constexpr operator Vantor::Helpers::Math::Vec3() const { return toFloat3(); }
+            constexpr operator Vantor::Helpers::Math::Vec4() const { return toFloat4(); }
             constexpr operator uint32_t() const { return rgba; }
 
             template <size_t capacity> struct char_return
@@ -103,17 +103,17 @@ namespace vantor::Helpers
                 return ret;
             }
 
-            static constexpr Color fromFloat4(const vantor::Helpers::Math::Vec4 &value)
+            static constexpr Color fromFloat4(const Vantor::Helpers::Math::Vec4 &value)
             {
                 return Color((uint8_t) (value.x * 255), (uint8_t) (value.y * 255), (uint8_t) (value.z * 255), (uint8_t) (value.w * 255));
             }
 
-            static constexpr Color fromFloat3(const vantor::Helpers::Math::Vec3 &value)
+            static constexpr Color fromFloat3(const Vantor::Helpers::Math::Vec3 &value)
             {
                 return Color((uint8_t) (value.x * 255), (uint8_t) (value.y * 255), (uint8_t) (value.z * 255));
             }
 
-            static constexpr Color lerp(Color a, Color b, float i) { return fromFloat4(vantor::Helpers::Math::Lerp(a.toFloat4(), b.toFloat4(), i)); }
+            static constexpr Color lerp(Color a, Color b, float i) { return fromFloat4(Vantor::Helpers::Math::Lerp(a.toFloat4(), b.toFloat4(), i)); }
 
             // Preset Colors
             static constexpr Color Red() { return Color(255, 0, 0, 255); }
@@ -133,4 +133,4 @@ namespace vantor::Helpers
             static constexpr Color Warning() { return 0xFF66FFFF; }
             static constexpr Color Error() { return 0xFF6666FF; }
     };
-} // namespace vantor::Helpers
+} // namespace Vantor::Helpers

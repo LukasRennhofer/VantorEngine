@@ -25,7 +25,7 @@ HEADER_STYLE = f"""/*
  *  ║                          ~ {ENGINE_NAME} ~                           ║
  *  ║                                                               ║
  *  ║  This file is part of the {ENGINE_NAME} Engine.                      ║
- *  ║  Automatically formatted by vantorFormat.py                   ║
+ *  ║  Automatically formatted by vtrgFormat.py                     ║
  *  ║                                                               ║
  *  ╚═══════════════════════════════════════════════════════════════╝
  *

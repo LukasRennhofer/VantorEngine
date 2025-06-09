@@ -1,0 +1,29 @@
+{
+  "project": "Vantor",
+  "maintainers": [
+    {
+      "name": "Lukas Rennhofer",
+      "username": "LukasRennhofer",
+      "email": "lukas.renn@aon.at",
+      "roles": ["lead developer", "architect", "maintainer"],
+      "github": "https://github.com/LukasRennhofer"
+    }
+  ],
+  "contributors": [
+    {
+      "name": "Moritz Rottensteiner",
+      "username": "Alyopolo",
+      "email": "",
+      "roles": ["game developer"],
+      "github": "https://github.com/Alyopolo"
+    }
+  ],
+  "acknowledgements": [
+    {
+      "name": "GLFW",
+      "type": "library",
+      "url": "https://www.glfw.org/",
+      "license": "zlib/libpng"
+    }
+  ]
+}

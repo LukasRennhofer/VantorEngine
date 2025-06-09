@@ -12,19 +12,19 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-05-12
+ *  Date: 2025-06-08
  *
  *  File: vantorECS.h
  *  Last Change: Automatically updated
  */
 
 // EnTT
-#include <entt/entt.hpp>
+#include <Shared/entt/entt.hpp>
 #include <string>
 
 /*
 This header is being used for Vantors base entity component system and its
-implementation with the EnTT Framework e.g: using namespace vantor::Entity;
+implementation with the EnTT Framework e.g: using namespace Vantor::Entity;
 
     void CreatePlayer() {
         Entity player = Entity::Create();
@@ -34,7 +34,7 @@ implementation with the EnTT Framework e.g: using namespace vantor::Entity;
 
 */
 
-namespace vantor::Entity
+namespace Vantor::Entity
 {
 
     class Entity;
@@ -77,4 +77,4 @@ namespace vantor::Entity
             entt::entity m_Entity;
     };
 
-} // namespace vantor::Entity
+} // namespace Vantor::Entity

@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-05-12
+ *  Date: 2025-06-08
  *
  *  File: valib.hpp
  *  Last Change: Automatically updated

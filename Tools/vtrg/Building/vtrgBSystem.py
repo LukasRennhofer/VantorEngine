@@ -68,13 +68,20 @@ class VantorInternalBuildSystem:
         """
 
         dest = build_path / Path("Resources")
+        dest_shaders = build_path / Path("Shaders")
 
         # Private Resources
         if RESOURCE_DIR.exists():
             shutil.copytree(RESOURCE_DIR / Path("Private"), dest, dirs_exist_ok=True)
             print(f"📦 Copied Private Resources {RESOURCE_DIR / Path("Private")} to {dest}")
         else:
-             print(f"⚠️ Private Resource folder not found: {RESOURCE_DIR / Path("Private")}")
+            print(f"⚠️ Private Resource folder not found: {RESOURCE_DIR / Path("Private")}")
+
+        if SHADERS_DIR.exists():
+            shutil.copytree(SHADERS_DIR, dest_shaders, dirs_exist_ok=True)
+            print(f"📦 Copied Private Shaders {RESOURCE_DIR} to {dest_shaders}")
+        else:
+            print(f"⚠️ Private Shaders folder not found: {RESOURCE_DIR / Path("Private")}")
 
     def collect_includes(self):
         """
@@ -183,7 +190,7 @@ class VantorInternalBuildSystem:
         # Make Build
         result = subprocess.Popen(["make"], cwd=build_path, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
-        vtrgCLIClientUtils.show_loading_indicator(result, "Building the library")
+        vtrgCLIClientUtils.show_loading_indicator(result, "🔧 Building the library")
 
         stdout, stderr = result.communicate()
 
@@ -202,6 +209,8 @@ class VantorInternalBuildSystem:
         Builds an sample or sandbox project for the specified platform.
         """
 
+        exepath = None
+
         if not target:
             target = self.runningSystem
 
@@ -212,10 +221,12 @@ class VantorInternalBuildSystem:
         if exampleName == "Sandbox":
             frameworkPath = SANBOX_DIR_INTERNAL
             frametype = "sandbox"
+            exepath = "VantorSandbox"
 
         elif exampleName in VALID_SAMPLES:
             frameworkPath = EXAMPLES_INTERNAL / Path(exampleName)
             frametype = "sample"
+            exepath = exampleName
 
         else:
             print(f"❌ '{exampleName}' Sample or Sandbox target not found")
@@ -226,6 +237,7 @@ class VantorInternalBuildSystem:
 
         build_path = BUILD_DIR_INTERNAL / Path("Samples") / Path(exampleName)
         build_path.mkdir(parents=True, exist_ok=True)
+        exepath = str(build_path / Path(exepath))
 
         # CMake Build
         print(f"🔧 Starting CMake build for {exampleName} on {target}...")
@@ -233,7 +245,7 @@ class VantorInternalBuildSystem:
             "cmake", "-DPLATFORM=" + target, "-G", "Unix Makefiles", str(frameworkPath.resolve())
         ], cwd=build_path, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
-        vtrgCLIClientUtils.show_loading_indicator(result, "Building CMake Configs")
+        vtrgCLIClientUtils.show_loading_indicator(result, "🔧 Building CMake Configs")
 
         stdout, stderr = result.communicate()
 
@@ -262,3 +274,5 @@ class VantorInternalBuildSystem:
         
         if debugging:
             print("[DEBUGGING] Resolved Output:", stdout.decode())
+
+        return exepath

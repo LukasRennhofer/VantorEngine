@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-05-12
+ *  Date: 2025-06-08
  *
  *  File: vantorECS.cpp
  *  Last Change: Automatically updated
@@ -21,7 +21,7 @@
 #include "vantorECS.h"
 
 // TODO: Move this away to Scene and delete Entity Folder
-namespace vantor::Entity
+namespace Vantor::Entity
 {
 
     // Registry implementation
@@ -57,4 +57,4 @@ namespace vantor::Entity
 
     bool Entity::operator!=(const Entity &other) const { return !(*this == other); }
 
-} // namespace vantor::Entity
+} // namespace Vantor::Entity

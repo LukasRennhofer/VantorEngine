@@ -19,9 +19,8 @@ This file contains the Vantor Dev Environment Console Application VTRG (Vantor T
 code structure and build system
 """
 
-from Tools.vtrg.extern import *
+from Tools.vtrg.client import *
 
 if __name__ == "__main__":
      client = vtrgCLIClient() 
-     args = client.parseArgs()
-     client.executeBuild(args)
+     client.execute()
