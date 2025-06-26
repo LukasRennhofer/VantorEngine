@@ -25,7 +25,9 @@
 #include <sstream>
 #include <iostream>
 
-#include <Shared/glm/glm.hpp>
+// Math
+#include "../../Math/Linear/VMA_Vector.hpp"
+#include "../../Math/Linear/VMA_Matrix.hpp"
 
 namespace Vantor::RenderDevice
 {
@@ -37,17 +39,17 @@ namespace Vantor::RenderDevice
             virtual void use() const = 0;
 
             // Uniform Functions
-            virtual void setUniformBool(const std::string &name, bool value) const                  = 0;
-            virtual void setUniformInt(const std::string &name, int value) const                    = 0;
-            virtual void setUniformFloat(const std::string &name, float value) const                = 0;
-            virtual void setVec2(const std::string &name, const glm::vec2 &value) const             = 0;
-            virtual void setVec2(const std::string &name, float x, float y) const                   = 0;
-            virtual void setVec3(const std::string &name, const glm::vec3 &value) const             = 0;
-            virtual void setVec3(const std::string &name, float x, float y, float z) const          = 0;
-            virtual void setVec4(const std::string &name, const glm::vec4 &value) const             = 0;
-            virtual void setVec4(const std::string &name, float x, float y, float z, float w) const = 0;
-            virtual void setMat2(const std::string &name, const glm::mat2 &mat) const               = 0;
-            virtual void setMat3(const std::string &name, const glm::mat3 &mat) const               = 0;
-            virtual void setMat4(const std::string &name, const glm::mat4 &mat) const               = 0;
+            virtual void setUniformBool(const std::string &name, bool value) const                   = 0;
+            virtual void setUniformInt(const std::string &name, int value) const                     = 0;
+            virtual void setUniformFloat(const std::string &name, float value) const                 = 0;
+            virtual void setVec2(const std::string &name, const Vantor::Math::VVector2 &value) const = 0;
+            virtual void setVec2(const std::string &name, float x, float y) const                    = 0;
+            virtual void setVec3(const std::string &name, const Vantor::Math::VVector3 &value) const = 0;
+            virtual void setVec3(const std::string &name, float x, float y, float z) const           = 0;
+            virtual void setVec4(const std::string &name, const Vantor::Math::VVector4 &value) const = 0;
+            virtual void setVec4(const std::string &name, float x, float y, float z, float w) const  = 0;
+            virtual void setMat2(const std::string &name, const Vantor::Math::VMat2 &mat) const      = 0;
+            virtual void setMat3(const std::string &name, const Vantor::Math::VMat3 &mat) const      = 0;
+            virtual void setMat4(const std::string &name, const Vantor::Math::VMat4 &mat) const      = 0;
     };
 } // namespace Vantor::RenderDevice

@@ -22,7 +22,6 @@
 #include "../../Core/Backlog/VCO_Backlog.hpp"
 
 #include "VRDO_Shader.hpp"
-#include <Shared/glm/gtc/type_ptr.hpp>
 
 // TODO: Work with differemt Filesystems (e.g. Switch)
 namespace Vantor::RenderDevice
@@ -50,31 +49,31 @@ namespace Vantor::RenderDevice
 
     void VOpenGLShader::setUniformFloat(const std::string &name, float value) const { glUniform1f(getUniformLocation(name), value); }
 
-    void VOpenGLShader::setVec2(const std::string &name, const glm::vec2 &value) const { glUniform2fv(getUniformLocation(name), 1, glm::value_ptr(value)); }
+    void VOpenGLShader::setVec2(const std::string &name, const Vantor::Math::VVector2 &value) const { glUniform2fv(getUniformLocation(name), 1, value.Data()); }
 
     void VOpenGLShader::setVec2(const std::string &name, float x, float y) const { glUniform2f(getUniformLocation(name), x, y); }
 
-    void VOpenGLShader::setVec3(const std::string &name, const glm::vec3 &value) const { glUniform3fv(getUniformLocation(name), 1, glm::value_ptr(value)); }
+    void VOpenGLShader::setVec3(const std::string &name, const Vantor::Math::VVector3 &value) const { glUniform3fv(getUniformLocation(name), 1, value.Data()); }
 
     void VOpenGLShader::setVec3(const std::string &name, float x, float y, float z) const { glUniform3f(getUniformLocation(name), x, y, z); }
 
-    void VOpenGLShader::setVec4(const std::string &name, const glm::vec4 &value) const { glUniform4fv(getUniformLocation(name), 1, glm::value_ptr(value)); }
+    void VOpenGLShader::setVec4(const std::string &name, const Vantor::Math::VVector4 &value) const { glUniform4fv(getUniformLocation(name), 1, value.Data()); }
 
     void VOpenGLShader::setVec4(const std::string &name, float x, float y, float z, float w) const { glUniform4f(getUniformLocation(name), x, y, z, w); }
 
-    void VOpenGLShader::setMat2(const std::string &name, const glm::mat2 &mat) const
+    void VOpenGLShader::setMat2(const std::string &name, const Vantor::Math::VMat2 &mat) const
     {
-        glUniformMatrix2fv(getUniformLocation(name), 1, GL_FALSE, glm::value_ptr(mat));
+        glUniformMatrix2fv(getUniformLocation(name), 1, GL_FALSE, mat.Data());
     }
 
-    void VOpenGLShader::setMat3(const std::string &name, const glm::mat3 &mat) const
+    void VOpenGLShader::setMat3(const std::string &name, const Vantor::Math::VMat3 &mat) const
     {
-        glUniformMatrix3fv(getUniformLocation(name), 1, GL_FALSE, glm::value_ptr(mat));
+        glUniformMatrix3fv(getUniformLocation(name), 1, GL_FALSE, mat.Data());
     }
 
-    void VOpenGLShader::setMat4(const std::string &name, const glm::mat4 &mat) const
+    void VOpenGLShader::setMat4(const std::string &name, const Vantor::Math::VMat4 &mat) const
     {
-        glUniformMatrix4fv(getUniformLocation(name), 1, GL_FALSE, glm::value_ptr(mat));
+        glUniformMatrix4fv(getUniformLocation(name), 1, GL_FALSE, mat.Data());
     }
 
     GLuint VOpenGLShader::compileShader(GLenum type, const std::string &source)
@@ -91,6 +90,8 @@ namespace Vantor::RenderDevice
             char infoLog[512];
             glGetShaderInfoLog(shader, 512, nullptr, infoLog);
             Vantor::Backlog::Log("RenderDevice::OpenGL", "Shader Compilation Failed", Vantor::Backlog::LogLevel::ERR);
+
+            std::cout << infoLog << std::endl;
         }
 
         return shader;

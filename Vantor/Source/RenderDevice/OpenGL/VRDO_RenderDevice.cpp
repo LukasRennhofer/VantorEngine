@@ -20,8 +20,22 @@
 
 #include "VRDO_RenderDevice.hpp"
 
+// Core/Backlog
+#include "../../Core/BackLog/VCO_Backlog.hpp"
+
 namespace Vantor::RenderDevice
 {
+    void VRDeviceOpenGL::Initialize() { } // TODO
+    void VRDeviceOpenGL::SetViewPort(int w, int h) { glViewport(0, 0, w, h); }
+
+    void VRDeviceOpenGL::CreateRenderDeviceContext(Vantor::Context::Window* window) {
+
+        if (!gladLoadGLLoader((GLADloadproc) window->getLoadProc()))
+        {
+            Vantor::Backlog::Log("Application", "Failed to initialize OpenGL Window context", Vantor::Backlog::LogLevel::ERR);
+        }
+    }
+
     void VRDeviceOpenGL::BeginFrame() { glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); }
 
     void VRDeviceOpenGL::EndFrame()
@@ -34,7 +48,6 @@ namespace Vantor::RenderDevice
         // TODO: Typically handled in the main loop with glfwSwapBuffers(window)
     }
 
-    // TODO: make arguemnts to shader code not path
     std::shared_ptr<VShader> VRDeviceOpenGL::CreateShader(const char *vertexCode, const char *fragmentCode)
     {
         return std::make_shared<VOpenGLShader>(vertexCode, fragmentCode);
@@ -50,6 +63,7 @@ namespace Vantor::RenderDevice
         const GLubyte *vendor = glGetString(GL_VENDOR);
         return std::string(reinterpret_cast<const char *>(vendor));
     }
+
     std::string VRDeviceOpenGL::GetPhysicalDeviceName() const
     {
         const GLubyte *renderer = glGetString(GL_RENDERER);

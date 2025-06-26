@@ -20,7 +20,7 @@
 
 #include "VCO_Version.hpp"
 
-namespace Vantor::Core::version
+namespace Vantor::Core::Version
 {
     // Main Core
     const int major = 0;

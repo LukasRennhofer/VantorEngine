@@ -23,7 +23,16 @@
 
 namespace Vantor
 {
-    void Application::Initialize()
+
+    static Vantor::Application* s_appInstance = nullptr;
+
+    static void ResizeCallbackStatic(int w, int h) {
+    if (s_appInstance && s_appInstance->GetRenderDevice())
+        s_appInstance->GetRenderDevice()->SetViewPort(w, h);
+    }
+
+
+    void Application::Initialize(VApplicationCreateInfo* info)
     {
         // Guard for Initializing
         if (initialized)
@@ -31,23 +40,34 @@ namespace Vantor
             return;
         }
 
-        Vantor::Backlog::Log("Application", std::format("Using Vantor Core      : {}", Vantor::Core::version::GetVersionString()),
+        Vantor::Backlog::Log("Application", std::format("Using Vantor Core      : {}", Vantor::Core::Version::GetVersionString()),
                              Vantor::Backlog::LogLevel::INFO);
 
         // Initializing the Platform Environment (FS, Time, ...)
         Vantor::Platform::Environment::Initialize();
 
+        // Context
+        Vantor::Backlog::Log("Application", "Creating Vantor Window Context", Vantor::Backlog::LogLevel::INFO);
+        window = std::make_unique<Vantor::Context::Window>(info->windowWidth, info->windowHeight, info->windowTitle);
+
+        // Creating the RenderDevice
         RenderDevice = Vantor::RenderDevice::CreateInstance();
+
+        s_appInstance = this; // For ResizeCallback usage
+        window->setResizeCallback(ResizeCallbackStatic);
 
         // put the pointer of the RenderDevice into the Service Registry for access across the Engine
         VServiceLocator::SetRenderDevice(RenderDevice.get());
 
         // Log RenderDevice Information
+        // Vantor::Backlog::Log("Application", std::string("Using PhysicalDevice   : " + RenderDevice->GetPhysicalDeviceName()), Vantor::Backlog::LogLevel::INFO);
         Vantor::Backlog::Log("Application", std::string("Using RenderDevice     : " + RenderDevice->GetRenderDeviceName()), Vantor::Backlog::LogLevel::INFO);
-        Vantor::Backlog::Log("Application", std::string("Using PhysicalDevice   : " + RenderDevice->GetPhysicalDeviceName()), Vantor::Backlog::LogLevel::INFO);
         Vantor::Backlog::Log("Application",
                              std::string("Using RenderAPI        : " + Vantor::RenderDevice::GetRenderAPIToString(RenderDevice->GetRenderDeviceAPI())),
                              Vantor::Backlog::LogLevel::INFO);
+
+        // Create Context with window
+        RenderDevice->CreateRenderDeviceContext(window.get());
 
         initialized = true;
 
@@ -58,27 +78,16 @@ namespace Vantor
     {
         window->swapBuffers();
         window->pollEvents();
+
+        // Begin a new Frame
+        RenderDevice->BeginFrame();
+        RenderDevice->EndFrame(); // TODO: Not working rn
     }
 
     void Application::Shutdown()
     {
         Vantor::Backlog::Log("Application", "Destroying Application Context", Vantor::Backlog::LogLevel::INFO);
         window->close();
-    }
-
-    void Application::createWindow(int width, int height, const char *title)
-    {
-        Vantor::Backlog::Log("Application", "Creating Vantor Window Context", Vantor::Backlog::LogLevel::INFO);
-        window = std::make_unique<Vantor::Context::Window>(width, height, title);
-
-        window->setResizeCallback([](int w, int h) { glViewport(0, 0, w, h); });
-
-        // TODO_RENDERDEVICE_OPENGL: Move away, Initialize OpenGL loader if needed (e.g., glad)
-        if (!gladLoadGLLoader((GLADloadproc) window->getLoadProc()))
-        {
-
-            Vantor::Backlog::Log("Application", "Failed to initialize OpenGL Window context", Vantor::Backlog::LogLevel::ERR);
-        }
     }
 
     bool Application::IsRunning()

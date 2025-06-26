@@ -31,6 +31,11 @@ namespace Vantor::RenderDevice
             VRDeviceOpenGL()           = default;
             ~VRDeviceOpenGL() override = default;
 
+            void Initialize() override;
+
+            void SetViewPort(int w, int h) override;
+            void CreateRenderDeviceContext(Vantor::Context::Window* window) override;
+
             // Frame lifecycle
             void BeginFrame() override;
             void EndFrame() override;

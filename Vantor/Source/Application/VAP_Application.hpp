@@ -39,6 +39,16 @@
 
 namespace Vantor
 {
+    struct VApplicationCreateInfo {
+        // Window Context
+        int     windowWidth         = 1280;
+        int     windowHeight        = 720;
+        // bool    windowFullscreen    = false; TODO
+        // bool    windowResizable     = true; TODO
+        // bool    windowVSync         = true; TODO
+        const char* windowTitle     = "Vantor Application";
+    };
+
     class Application
     {
         private:
@@ -57,10 +67,9 @@ namespace Vantor
             // Runs the main engine loop
             void         Run();
             void         Shutdown();
-            virtual void Initialize();
+            virtual void Initialize(VApplicationCreateInfo* info);
 
             void SetWindow(Vantor::Context::Window window);
-            void createWindow(int width, int height, const char *title);
 
             bool IsRunning();
 

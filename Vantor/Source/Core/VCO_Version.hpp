@@ -22,7 +22,7 @@
 
 #include <string>
 
-namespace Vantor::Core::version
+namespace Vantor::Core::Version
 {
 
     // return: const int major

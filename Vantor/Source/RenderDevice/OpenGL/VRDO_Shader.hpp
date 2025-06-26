@@ -21,8 +21,12 @@
 #pragma once
 
 #include <Shared/glad/glad.h>
-#include <Shared/glm/glm.hpp>
 #include <string>
+
+// Math
+#include "../../Math/Linear/VMA_Vector.hpp"
+#include "../../Math/Linear/VMA_Matrix.hpp"
+
 #include "../Interface/VRD_Shader.hpp"
 
 namespace Vantor::RenderDevice
@@ -42,15 +46,15 @@ namespace Vantor::RenderDevice
             void setUniformBool(const std::string &name, bool value) const override;
             void setUniformInt(const std::string &name, int value) const override;
             void setUniformFloat(const std::string &name, float value) const override;
-            void setVec2(const std::string &name, const glm::vec2 &value) const override;
+            void setVec2(const std::string &name, const Vantor::Math::VVector2 &value) const override;
             void setVec2(const std::string &name, float x, float y) const override;
-            void setVec3(const std::string &name, const glm::vec3 &value) const override;
+            void setVec3(const std::string &name, const Vantor::Math::VVector3 &value) const override;
             void setVec3(const std::string &name, float x, float y, float z) const override;
-            void setVec4(const std::string &name, const glm::vec4 &value) const override;
+            void setVec4(const std::string &name, const Vantor::Math::VVector4 &value) const override;
             void setVec4(const std::string &name, float x, float y, float z, float w) const override;
-            void setMat2(const std::string &name, const glm::mat2 &mat) const override;
-            void setMat3(const std::string &name, const glm::mat3 &mat) const override;
-            void setMat4(const std::string &name, const glm::mat4 &mat) const override;
+            void setMat2(const std::string &name, const Vantor::Math::VMat2 &mat) const override;
+            void setMat3(const std::string &name, const Vantor::Math::VMat3 &mat) const override;
+            void setMat4(const std::string &name, const Vantor::Math::VMat4 &mat) const override;
 
         private:
             GLuint ID;

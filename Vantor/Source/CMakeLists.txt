@@ -19,6 +19,9 @@ set(VANTOR_CORE
     Core/Debug/VCO_InlineDebugger.cpp
     # Entity
     Entity/vantorECS.cpp
+    # Renderer
+    Renderer/Camera/VRE_Camera.cpp
+    Renderer/Camera/VRE_Frustum.cpp
 )
 # IMGUI SOURCES
 set(IMGUI_SOURCES
@@ -35,6 +38,10 @@ set(IMGUI_SOURCES
 set(RENDERDEVICE_OPENGL
     RenderDevice/OpenGL/VRDO_Shader.cpp
     RenderDevice/OpenGL/VRDO_RenderDevice.cpp
+)
+
+set(RENDERMODULES
+    RenderModules/Camera/VRM_FlyCamera.cpp
 )
 
 # === Platform Setup ===
@@ -102,6 +109,7 @@ endif()
 add_library(Vantor STATIC
     ${VANTOR_CORE}
     ${RENDERDEVICE}
+    ${RENDERMODULES} # TODO: Move away or find solution to choose modules
     ${IMGUI_SOURCES}
     ${PLATFORM_SOURCES}
     ${PLATFORM_ENV}
