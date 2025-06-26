@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-06-09
+ *  Date: 2025-06-26
  *
  *  File: VRDO_RenderDevice.hpp
  *  Last Change: Automatically updated
@@ -34,7 +34,7 @@ namespace Vantor::RenderDevice
             void Initialize() override;
 
             void SetViewPort(int w, int h) override;
-            void CreateRenderDeviceContext(Vantor::Context::Window* window) override;
+            void CreateRenderDeviceContext(Vantor::Context::Window *window) override;
 
             // Frame lifecycle
             void BeginFrame() override;

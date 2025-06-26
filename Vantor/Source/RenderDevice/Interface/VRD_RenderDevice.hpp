@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-06-09
+ *  Date: 2025-06-26
  *
  *  File: VRD_RenderDevice.hpp
  *  Last Change: Automatically updated
@@ -60,8 +60,8 @@ namespace Vantor::RenderDevice
             virtual void EndFrame()   = 0;
             virtual void Present()    = 0;
 
-            virtual void SetViewPort(int w, int h) = 0;
-            virtual void CreateRenderDeviceContext(Vantor::Context::Window* window) = 0;
+            virtual void SetViewPort(int w, int h)                                  = 0;
+            virtual void CreateRenderDeviceContext(Vantor::Context::Window *window) = 0;
 
             // Create Functions
             virtual std::shared_ptr<VShader> CreateShader(const char *vertexCode, const char *fragmentCode) = 0;

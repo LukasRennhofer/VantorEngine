@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-06-09
+ *  Date: 2025-06-26
  *
  *  File: VAP_Application.hpp
  *  Last Change: Automatically updated
@@ -42,14 +42,15 @@
 
 namespace Vantor
 {
-    struct VApplicationCreateInfo {
-        // Window Context
-        int     windowWidth         = 1280;
-        int     windowHeight        = 720;
-        // bool    windowFullscreen    = false; TODO
-        // bool    windowResizable     = true; TODO
-        // bool    windowVSync         = true; TODO
-        const char* windowTitle     = "Vantor Application";
+    struct VApplicationCreateInfo
+    {
+            // Window Context
+            int windowWidth  = 1280;
+            int windowHeight = 720;
+            // bool    windowFullscreen    = false; TODO
+            // bool    windowResizable     = true; TODO
+            // bool    windowVSync         = true; TODO
+            const char *windowTitle = "Vantor Application";
     };
 
     class Application
@@ -71,10 +72,10 @@ namespace Vantor
             // Runs the main engine loop
             void         Run();
             void         Shutdown();
-            virtual void Initialize(VApplicationCreateInfo* info);
+            virtual void Initialize(VApplicationCreateInfo *info);
 
-            void SetWindow(Vantor::Context::Window window);
-            Vantor::Context::Window* GetWindow() {return window.get();}
+            void                     SetWindow(Vantor::Context::Window window);
+            Vantor::Context::Window *GetWindow() { return window.get(); }
 
             bool IsRunning();
 
@@ -83,7 +84,7 @@ namespace Vantor
             const RenderDevice::VRDevice *GetRenderDevice() const; // readonly access
 
             // Input
-            Input::VInputManager   *GetInputManager();
+            Input::VInputManager *GetInputManager();
             // TODO:
             // void SetFullScreen(bool fullscreen);
     };

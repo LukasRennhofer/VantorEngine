@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-06-09
+ *  Date: 2025-06-26
  *
  *  File: VAP_Application.cpp
  *  Last Change: Automatically updated
@@ -23,15 +23,14 @@
 namespace Vantor
 {
 
-    static Vantor::Application* s_appInstance = nullptr;
+    static Vantor::Application *s_appInstance = nullptr;
 
-    static void ResizeCallbackStatic(int w, int h) {
-    if (s_appInstance && s_appInstance->GetRenderDevice())
-        s_appInstance->GetRenderDevice()->SetViewPort(w, h);
+    static void ResizeCallbackStatic(int w, int h)
+    {
+        if (s_appInstance && s_appInstance->GetRenderDevice()) s_appInstance->GetRenderDevice()->SetViewPort(w, h);
     }
 
-
-    void Application::Initialize(VApplicationCreateInfo* info)
+    void Application::Initialize(VApplicationCreateInfo *info)
     {
         // Guard for Initializing
         if (initialized)
@@ -62,7 +61,8 @@ namespace Vantor
         VServiceLocator::SetRenderDevice(RenderDevice.get());
 
         // Log RenderDevice Information
-        // Vantor::Backlog::Log("Application", std::string("Using PhysicalDevice   : " + RenderDevice->GetPhysicalDeviceName()), Vantor::Backlog::LogLevel::INFO);
+        // Vantor::Backlog::Log("Application", std::string("Using PhysicalDevice   : " + RenderDevice->GetPhysicalDeviceName()),
+        // Vantor::Backlog::LogLevel::INFO);
         Vantor::Backlog::Log("Application", std::string("Using RenderDevice     : " + RenderDevice->GetRenderDeviceName()), Vantor::Backlog::LogLevel::INFO);
         Vantor::Backlog::Log("Application",
                              std::string("Using RenderAPI        : " + Vantor::RenderDevice::GetRenderAPIToString(RenderDevice->GetRenderDeviceAPI())),

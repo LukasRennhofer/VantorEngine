@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-06-09
+ *  Date: 2025-06-26
  *
  *  File: VRDO_RenderDevice.cpp
  *  Last Change: Automatically updated
@@ -25,10 +25,11 @@
 
 namespace Vantor::RenderDevice
 {
-    void VRDeviceOpenGL::Initialize() { } // TODO
+    void VRDeviceOpenGL::Initialize() {} // TODO
     void VRDeviceOpenGL::SetViewPort(int w, int h) { glViewport(0, 0, w, h); }
 
-    void VRDeviceOpenGL::CreateRenderDeviceContext(Vantor::Context::Window* window) {
+    void VRDeviceOpenGL::CreateRenderDeviceContext(Vantor::Context::Window *window)
+    {
 
         if (!gladLoadGLLoader((GLADloadproc) window->getLoadProc()))
         {

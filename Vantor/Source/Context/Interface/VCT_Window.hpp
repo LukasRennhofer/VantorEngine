@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-06-09
+ *  Date: 2025-06-26
  *
  *  File: VCT_Window.hpp
  *  Last Change: Automatically updated
@@ -42,7 +42,7 @@ namespace Vantor::Context
             inline int getWidth() { return m_width; };
             inline int getHeight() { return m_height; };
 
-            void* GetNativeHandle();
+            void *GetNativeHandle();
 
         private:
             int m_maxWidth;

@@ -1,12 +1,32 @@
+/*
+ *  ╔═══════════════════════════════════════════════════════════════╗
+ *  ║                          ~ Vantor ~                           ║
+ *  ║                                                               ║
+ *  ║  This file is part of the Vantor Engine.                      ║
+ *  ║  Automatically formatted by vtrgFormat.py                     ║
+ *  ║                                                               ║
+ *  ╚═══════════════════════════════════════════════════════════════╝
+ *
+ *  Copyright (c) 2025 Lukas Rennhofer
+ *  Licensed under the GNU General Public License, Version 3.
+ *  See LICENSE file for more details.
+ *
+ *  Author: Lukas Rennhofer
+ *  Date: 2025-06-26
+ *
+ *  File: VRE_Frustum.cpp
+ *  Last Change: Automatically updated
+ */
+
 #include "VRE_Camera.hpp"
 #include "VRE_Frustum.hpp"
 
 namespace Vantor::Renderer
 {
     // ------------------------------------------------------------------------
-    void CameraFrustum::Update(Camera* camera)
+    void CameraFrustum::Update(Camera *camera)
     {
-        float tan = 2.0 * std::tan(camera->FOV * 0.5);
+        float tan        = 2.0 * std::tan(camera->FOV * 0.5);
         float nearHeight = tan * camera->Near;
         float nearWidth  = nearHeight * camera->Aspect;
         float farHeight  = tan * camera->Far;
@@ -20,7 +40,7 @@ namespace Vantor::Renderer
         v = (nearCenter - camera->Right * nearWidth * 0.5f) - camera->Position;
         VCamPlanes.Left.SetNormalD((v.Normalized()).Cross(camera->Up), nearCenter - camera->Right * nearWidth * 0.5f);
         // right plane
-        v = (nearCenter + camera->Right * nearWidth  * 0.5f) - camera->Position;
+        v = (nearCenter + camera->Right * nearWidth * 0.5f) - camera->Position;
         VCamPlanes.Right.SetNormalD((camera->Up).Cross(v.Normalized()), nearCenter + camera->Right * nearWidth * 0.5f);
         // top plane
         v = (nearCenter + camera->Up * nearHeight * 0.5f) - camera->Position;
@@ -75,7 +95,7 @@ namespace Vantor::Renderer
             {
                 positive.z = boxMax.z;
             }
-            if(Planes[i].Distance(positive) < 0)
+            if (Planes[i].Distance(positive) < 0)
             {
                 return false;
             }
@@ -83,4 +103,4 @@ namespace Vantor::Renderer
         return true;
     }
 
-}
+} // namespace Vantor::Renderer

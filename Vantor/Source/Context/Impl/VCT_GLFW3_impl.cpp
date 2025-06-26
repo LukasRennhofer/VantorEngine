@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-06-09
+ *  Date: 2025-06-26
  *
  *  File: VCT_GLFW3_impl.cpp
  *  Last Change: Automatically updated
@@ -73,6 +73,6 @@ namespace Vantor::Context
 
     bool Window::shouldWindowClose() { return glfwWindowShouldClose(glfwWindow); }
 
-    void* Window::GetNativeHandle() {return glfwWindow;}
+    void *Window::GetNativeHandle() { return glfwWindow; }
 } // namespace Vantor::Context
 #endif
