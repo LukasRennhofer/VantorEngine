@@ -43,6 +43,13 @@ int main() {
     Vantor::RenderModules::FlyCamera camera(Vantor::Math::VVector3(1.0f, 1.0f, 1.0f));
     // std::cout << camera.FOV << std::endl;
 
+    // ==== Input ====
+    // Set up InputDevice
+    auto deviceone = Vantor::Input::CreateInputDevice(app.GetWindow());
+    app.GetInputManager()->AddDevice(deviceone);
+
+    app.GetInputManager()->MapAction("fire", Vantor::Input::VInputButton{Vantor::Input::VEInputDeviceType::Keyboard, (int)Vantor::Input::VEInputKey::KEY_ESCAPE});
+
 
     glClearColor(0.1f, 0.2f, 0.3f, 1.0f);
 
@@ -98,6 +105,11 @@ int main() {
     {
         // Run app logic (empty for now)
         app.Run();
+
+        if (app.GetInputManager()->WasActionPressed("fire")) {
+            std::cout << app.GetInputManager()->devices[0]->GetMousePosition().x << std::endl;
+            break;
+        }
         // draw our first triangle
         shaderProgram->use();
         // Test Uniforms with custom Vector

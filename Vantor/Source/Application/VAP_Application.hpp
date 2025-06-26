@@ -25,14 +25,17 @@
 #include "../Core/BackLog/VCO_Backlog.hpp"
 #include "../Core/Global/VCO_ServiceRegistry.hpp"
 
-// Context
-#include "../Context/Interface/VCT_Window.hpp"
-
 // RenderDevice
 #include "../RenderDevice/VRD_Factory.hpp"
 
+// Context
+#include "../Context/Interface/VCT_Window.hpp"
+
 // Platform Env
 #include "../Platform/VPL_Environment.hpp"
+
+// Input
+#include "../InputDevice/VID_Manager.hpp"
 
 #include <format>
 #include <memory>
@@ -54,6 +57,7 @@ namespace Vantor
         private:
             std::unique_ptr<Vantor::Context::Window>        window;
             std::unique_ptr<Vantor::RenderDevice::VRDevice> RenderDevice;
+            std::unique_ptr<Vantor::Input::VInputManager>   InputManager;
 
         protected:
             // Base Stats
@@ -70,6 +74,7 @@ namespace Vantor
             virtual void Initialize(VApplicationCreateInfo* info);
 
             void SetWindow(Vantor::Context::Window window);
+            Vantor::Context::Window* GetWindow() {return window.get();}
 
             bool IsRunning();
 
@@ -77,6 +82,8 @@ namespace Vantor
             RenderDevice::VRDevice       *GetRenderDevice();       // mutable access
             const RenderDevice::VRDevice *GetRenderDevice() const; // readonly access
 
+            // Input
+            Input::VInputManager   *GetInputManager();
             // TODO:
             // void SetFullScreen(bool fullscreen);
     };

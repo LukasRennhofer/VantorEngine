@@ -20,10 +20,11 @@
 
 #include <iostream>
 
-#include <Shared/GLFW/glfw3.h>
-
 #include "../Interface/VCT_Window.hpp"
 #include "../../Core/Backlog/VCO_Backlog.hpp"
+
+#ifdef VANTOR_WM_GLFW
+#include <Shared/GLFW/glfw3.h>
 
 namespace Vantor::Context
 {
@@ -71,4 +72,7 @@ namespace Vantor::Context
     void Window::pollEvents() { glfwPollEvents(); }
 
     bool Window::shouldWindowClose() { return glfwWindowShouldClose(glfwWindow); }
+
+    void* Window::GetNativeHandle() {return glfwWindow;}
 } // namespace Vantor::Context
+#endif

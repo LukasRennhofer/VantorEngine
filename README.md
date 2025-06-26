@@ -16,7 +16,7 @@
 
 <h3 align="center">Vantor</h3>
   <p align="center">
-    The Cross-Platform Game and Rendering Engine SDK
+    A Experimental Cross-Platform Game and Rendering Engine SDK
     <br />
     <h5 align="center">
     <strong>v0.16.X</strong>
@@ -61,9 +61,9 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-<p align="center">
+<!--<p align="center">
 <img src="https://raw.githubusercontent.com/LukasRennhofer/Vantor/refs/heads/main/Assets/Github/Screenshots/gif1.gif" alt="GIF Show Background" style="">
-</p>
+</p>-->
 
 Vantor is a modular, cross-platform game and rendering engine designed for **Open-World games** and is a code-focused development SDK and Framework. Built from the ground up with **OpenGL** and custom rendering techniques, it provides fine-grained control over every aspect of game development while maintaining **maximum efficiency**. Unlike high-level game engines, the engine is designed to be **lightweight**, **modular**, and **fully extensible**, allowing developers to directly manipulate rendering, physics, and resource management.
 

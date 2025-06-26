@@ -42,6 +42,8 @@ namespace Vantor::Context
             inline int getWidth() { return m_width; };
             inline int getHeight() { return m_height; };
 
+            void* GetNativeHandle();
+
         private:
             int m_maxWidth;
             int m_maxHeight;

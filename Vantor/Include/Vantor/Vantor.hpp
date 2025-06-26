@@ -59,7 +59,9 @@ with RenderDevice Vulkan (Defined in CMake) (RESERVED, BUT NOT IN USE)
           VANTOR_WM_GLFW = Used to identify if GLFW is being used as the WM
           VANTOR_WM_SDL2 = Used to identify if SDL2 is being used as the WM
           VANTOR_WM_EGL  = Used to identify if EGL is being used as the WM
-
+     
+     : Integrations :
+          VANTOR_INTEGRATION_IMGUI = Used to identify if DEAR IMGUI is an integrated module of the current build (Defined in CMake)
 */
 
 // VANTOR PREPROCESSOR DEFINITION
@@ -99,6 +101,11 @@ with RenderDevice Vulkan (Defined in CMake) (RESERVED, BUT NOT IN USE)
 
 // Platform
 #include "../../Source/Platform/VPL_Environment.hpp"
+
+// Input
+#include "../../Source/InputDevice/VID_IDevice.hpp"
+#include "../../Source/InputDevice/VID_Factory.hpp"
+#include "../../Source/InputDevice/VID_Manager.hpp"
 
 // HELPERS
 // #include "Source/Helpers/vantorColor.hpp"

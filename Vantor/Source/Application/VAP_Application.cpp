@@ -19,7 +19,6 @@
  */
 
 #include "VAP_Application.hpp"
-#include <Shared/glad/glad.h> // TODO: MOVE AWAY
 
 namespace Vantor
 {
@@ -53,6 +52,9 @@ namespace Vantor
         // Creating the RenderDevice
         RenderDevice = Vantor::RenderDevice::CreateInstance();
 
+        // Creating the InputManager
+        InputManager = std::make_unique<Vantor::Input::VInputManager>();
+
         s_appInstance = this; // For ResizeCallback usage
         window->setResizeCallback(ResizeCallbackStatic);
 
@@ -79,6 +81,8 @@ namespace Vantor
         window->swapBuffers();
         window->pollEvents();
 
+        InputManager->Update();
+
         // Begin a new Frame
         RenderDevice->BeginFrame();
         RenderDevice->EndFrame(); // TODO: Not working rn
@@ -101,4 +105,7 @@ namespace Vantor
 
     // RenderDevice: readonly access
     const RenderDevice::VRDevice *Application::GetRenderDevice() const { return RenderDevice.get(); }
+
+    // InputManager
+    Input::VInputManager *Application::GetInputManager() { return InputManager.get(); }
 } // namespace Vantor
