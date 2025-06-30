@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-06-26
+ *  Date: 2025-06-30
  *
  *  File: VRDO_RenderDevice.cpp
  *  Last Change: Automatically updated
@@ -52,6 +52,33 @@ namespace Vantor::RenderDevice
     std::shared_ptr<VShader> VRDeviceOpenGL::CreateShader(const char *vertexCode, const char *fragmentCode)
     {
         return std::make_shared<VOpenGLShader>(vertexCode, fragmentCode);
+    }
+
+    std::shared_ptr<VMesh> VRDeviceOpenGL::CreateMesh(const VMeshCreateInfo &createInfo)
+    {
+        auto mesh = std::make_shared<VOpenGLMesh>();
+
+        if (createInfo.HasSDF())
+        {
+            mesh->FromSDF(createInfo.SDF, createInfo.MaxDistance, createInfo.GridResolution);
+        }
+        else
+        {
+            mesh->SetPositions(createInfo.Positions);
+            mesh->SetUVs(createInfo.UVs);
+            mesh->SetNormals(createInfo.Normals);
+
+            if (!createInfo.Tangents.empty() && !createInfo.Bitangents.empty())
+            {
+                mesh->SetTangents(createInfo.Tangents, createInfo.Bitangents);
+            }
+
+            mesh->SetIndices(createInfo.Indices);
+            mesh->SetTopology(createInfo.Topology);
+            mesh->Finalize(createInfo.Interleaved);
+        }
+
+        return mesh;
     }
 
     VERenderAPI VRDeviceOpenGL::GetRenderDeviceAPI() const { return VERenderAPI::OPENGL; }

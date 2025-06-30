@@ -102,10 +102,15 @@ with RenderDevice Vulkan (Defined in CMake) (RESERVED, BUT NOT IN USE)
 // Platform
 #include "../../Source/Platform/VPL_Environment.hpp"
 
-// Input
+// INPUT
 #include "../../Source/InputDevice/VID_IDevice.hpp"
 #include "../../Source/InputDevice/VID_Factory.hpp"
 #include "../../Source/InputDevice/VID_Manager.hpp"
+
+// OBJECT SYSTEM
+#include "../../Source/ObjectSystem/VOS_Object.hpp"
+#include "../../Source/ObjectSystem/Component/VOS_Component.hpp"
+#include "../../Source/ObjectSystem/Register/VOS_Registry.hpp"
 
 // HELPERS
 // #include "Source/Helpers/vantorColor.hpp"

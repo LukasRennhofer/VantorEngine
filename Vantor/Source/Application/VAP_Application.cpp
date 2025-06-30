@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-06-26
+ *  Date: 2025-06-30
  *
  *  File: VAP_Application.cpp
  *  Last Change: Automatically updated
@@ -30,7 +30,7 @@ namespace Vantor
         if (s_appInstance && s_appInstance->GetRenderDevice()) s_appInstance->GetRenderDevice()->SetViewPort(w, h);
     }
 
-    void Application::Initialize(VApplicationCreateInfo *info)
+    void Application::Initialize(VApplicationCreateInfo &info)
     {
         // Guard for Initializing
         if (initialized)
@@ -46,7 +46,7 @@ namespace Vantor
 
         // Context
         Vantor::Backlog::Log("Application", "Creating Vantor Window Context", Vantor::Backlog::LogLevel::INFO);
-        window = std::make_unique<Vantor::Context::Window>(info->windowWidth, info->windowHeight, info->windowTitle);
+        window = std::make_unique<Vantor::Context::Window>(info.windowWidth, info.windowHeight, info.windowTitle);
 
         // Creating the RenderDevice
         RenderDevice = Vantor::RenderDevice::CreateInstance();

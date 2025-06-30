@@ -14,32 +14,30 @@
  *  Author: Lukas Rennhofer
  *  Date: 2025-06-30
  *
- *  File: VID_Factory.hpp
+ *  File: VOS_Component.hpp
  *  Last Change: Automatically updated
  */
 
 #pragma once
-
-#include "VID_IDevice.hpp"
-
-#ifdef VANTOR_WM_GLFW
-#include "Backend/VID_GLFWDevice.hpp"
-#endif
-
 #include <memory>
+#include <string>
 
-namespace Vantor::Input
+namespace Vantor::Object
 {
-    enum VEInputBackend
+
+    class VObject; // Forward declaration
+
+    class VComponent
     {
-        GLFW
+        public:
+            explicit VComponent(VObject *owner) : owner(owner) {}
+            virtual ~VComponent() = default;
+
+            VObject *GetOwner() const { return owner; }
+
+        private:
+            VObject *owner;
     };
 
-    std::shared_ptr<VIInputDevice> CreateInputDevice(Vantor::Context::Window *nativeWindow)
-    {
-#ifdef VANTOR_WM_GLFW
-        return std::make_shared<VGLFWInputDevice>(static_cast<Vantor::Context::Window *>(nativeWindow));
-#endif
-        return nullptr;
-    }
-} // namespace Vantor::Input
+    using VComponentPtr = std::shared_ptr<VComponent>;
+} // namespace Vantor::Object

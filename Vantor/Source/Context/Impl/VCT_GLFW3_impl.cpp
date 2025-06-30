@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-06-26
+ *  Date: 2025-06-30
  *
  *  File: VCT_GLFW3_impl.cpp
  *  Last Change: Automatically updated
@@ -25,6 +25,10 @@
 
 #ifdef VANTOR_WM_GLFW
 #include <Shared/GLFW/glfw3.h>
+
+#ifdef VANTOR_INTEGRATION_IMGUI
+#include "../../Integration/imgui/VIN_Imgui.hpp"
+#endif
 
 namespace Vantor::Context
 {
@@ -47,6 +51,10 @@ namespace Vantor::Context
         glfwMakeContextCurrent(glfwWindow);
         glfwGetWindowSize(glfwWindow, &width, &height);
         resizeCallbackFunc = NULL;
+
+#ifdef VANTOR_INTEGRATION_IMGUI
+        Vantor::Integration::imgui::InitContext(glfwWindow);
+#endif
     }
 
     void Window::close() { glfwTerminate(); }

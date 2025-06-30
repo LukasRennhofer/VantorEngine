@@ -8,7 +8,7 @@ add_compile_options(-w)
 option(VANTOR_API_OPENGL "Use OpenGL backend" ON)
 option(VANTOR_WM_GLFW "Use GLFW window manager" ON)
 # Integrations
-option(VANTOR_INTEGRATION_IMGUI "Integrate external Dear Imgui module" OFF) 
+option(VANTOR_INTEGRATION_IMGUI "Integrate external Dear Imgui module" ON) 
 
 # === Source Groups ===
 # ENGINE CORE
@@ -19,8 +19,6 @@ set(VANTOR_CORE
     Core/VCO_Version.cpp
     Core/Backlog/VCO_Backlog.cpp
     Core/Debug/VCO_InlineDebugger.cpp
-    # Entity
-    Entity/vantorECS.cpp
     # Renderer
     Renderer/Camera/VRE_Camera.cpp
     Renderer/Camera/VRE_Frustum.cpp
@@ -42,6 +40,7 @@ endif()
 # RENDERDEVICE OPENGL
 set(RENDERDEVICE_OPENGL
     RenderDevice/OpenGL/VRDO_Shader.cpp
+    RenderDevice/OpenGL/VRDO_Mesh.cpp
     RenderDevice/OpenGL/VRDO_RenderDevice.cpp
 )
 
@@ -185,6 +184,7 @@ if(VANTOR_WM_GLFW)
 endif()
 
 if(VANTOR_INTEGRATION_IMGUI)
+    add_definitions(-DVANTOR_INTEGRATION_IMGUI)
     target_compile_definitions(Vantor PUBLIC VANTOR_INTEGRATION_IMGUI)
 endif()
 

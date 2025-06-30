@@ -14,32 +14,20 @@
  *  Author: Lukas Rennhofer
  *  Date: 2025-06-30
  *
- *  File: VID_Factory.hpp
+ *  File: VRE_Sphere.hpp
  *  Last Change: Automatically updated
  */
 
 #pragma once
 
-#include "VID_IDevice.hpp"
+#include "VRE_GeomtetryObject.hpp"
+#include "../../RenderDevice/Interface/VRD_RenderDevice.hpp"
 
-#ifdef VANTOR_WM_GLFW
-#include "Backend/VID_GLFWDevice.hpp"
-#endif
-
-#include <memory>
-
-namespace Vantor::Input
+namespace Vantor::Renderer
 {
-    enum VEInputBackend
+    class VSphere : public VGObject
     {
-        GLFW
+        public:
+            VSphere(Vantor::RenderDevice::VRDevice *device, unsigned int xSegments, unsigned int ySegments);
     };
-
-    std::shared_ptr<VIInputDevice> CreateInputDevice(Vantor::Context::Window *nativeWindow)
-    {
-#ifdef VANTOR_WM_GLFW
-        return std::make_shared<VGLFWInputDevice>(static_cast<Vantor::Context::Window *>(nativeWindow));
-#endif
-        return nullptr;
-    }
-} // namespace Vantor::Input
+} // namespace Vantor::Renderer

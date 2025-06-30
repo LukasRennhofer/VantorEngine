@@ -16,6 +16,12 @@
 #include <Vantor/Math/Linear.hpp>
 #include <Vantor/RenderModules/FlyCamera.hpp>
 
+// test Entity
+class Player : public Vantor::Object::VObject {
+    public:
+        int health;
+};
+
 int main() {
     Vantor::Application app;
     
@@ -26,7 +32,7 @@ int main() {
     appInfo.windowTitle = "Vantor Sandbox";
 
     // Initialize the Application
-    app.Initialize(&appInfo);
+    app.Initialize(appInfo);
 
     // Basic Camera Math
     Vantor::Math::VMat4 view;
@@ -38,6 +44,17 @@ int main() {
     Vantor::Math::VVector3 cameraPosition(1.0f, 1.0f, 1.0f);
     Vantor::Math::VVector3 cameraFront(0.0f, 0.0f, -1.0f);
     Vantor::Math::VVector3 cameraUp(0.0f, 1.0f,  0.0f);
+
+    // ==== Object (Entity) System Test ====
+    // auto player = Vantor::Object::VORegistry::CreateEntity<Player>();
+    // std::cout << "Created entity of type: " << "Player"
+    //           << ", ID: " << player->id << "\n";
+
+    // auto player2 = Vantor::Object::VORegistry::CreateEntity<Player>();
+
+    // player->AddChild(player2); // Add Player 2 as child of main player
+
+    // std::cout << "Child player of main player has id: " << player->GetChildren()[0]->id << std::endl;
 
     // Fly Camera Render Module
     Vantor::RenderModules::FlyCamera camera(Vantor::Math::VVector3(1.0f, 1.0f, 1.0f));

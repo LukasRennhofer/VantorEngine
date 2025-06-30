@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-06-26
+ *  Date: 2025-06-30
  *
  *  File: VRDO_RenderDevice.hpp
  *  Last Change: Automatically updated
@@ -21,6 +21,7 @@
 #pragma once
 
 #include "VRDO_Shader.hpp"
+#include "VRDO_Mesh.hpp"
 #include "../Interface/VRD_RenderDevice.hpp"
 
 namespace Vantor::RenderDevice
@@ -41,8 +42,11 @@ namespace Vantor::RenderDevice
             void EndFrame() override;
             void Present() override;
 
-            // Create Functions
+            // Resource Factory
+            // Shader
             std::shared_ptr<VShader> CreateShader(const char *vertexCode, const char *fragmentCode) override;
+            // Mesh : Use this with VMeshCreateInfo
+            std::shared_ptr<VMesh> CreateMesh(const VMeshCreateInfo &createInfo) override;
 
             // Helpers
             VERenderAPI GetRenderDeviceAPI() const override;

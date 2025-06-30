@@ -14,32 +14,38 @@
  *  Author: Lukas Rennhofer
  *  Date: 2025-06-30
  *
- *  File: VID_Factory.hpp
+ *  File: VRE_GeomtetryObject.hpp
  *  Last Change: Automatically updated
  */
 
 #pragma once
 
-#include "VID_IDevice.hpp"
-
-#ifdef VANTOR_WM_GLFW
-#include "Backend/VID_GLFWDevice.hpp"
-#endif
+#include "../../RenderDevice/Interface/VRD_Mesh.hpp"
 
 #include <memory>
 
-namespace Vantor::Input
+namespace Vantor::Renderer
 {
-    enum VEInputBackend
+
+    enum VEGeometryObjectType
     {
-        GLFW
+        SPHERE,
+        NOTSET
     };
 
-    std::shared_ptr<VIInputDevice> CreateInputDevice(Vantor::Context::Window *nativeWindow)
+    class VGObject
     {
-#ifdef VANTOR_WM_GLFW
-        return std::make_shared<VGLFWInputDevice>(static_cast<Vantor::Context::Window *>(nativeWindow));
-#endif
-        return nullptr;
-    }
-} // namespace Vantor::Input
+        public:
+            Vantor::RenderDevice::VMesh *GetMesh() { return objectMesh.get(); }
+
+            // setters
+            void SetMesh(std::shared_ptr<Vantor::RenderDevice::VMesh> meshPtr) { objectMesh = std::move(meshPtr); }
+
+            // getters
+            VEGeometryObjectType GetObjectType() { return objectType; }
+
+        protected:
+            std::shared_ptr<Vantor::RenderDevice::VMesh> objectMesh;
+            VEGeometryObjectType                         objectType = NOTSET; // Set the GeometryObjectType
+    };
+} // namespace Vantor::Renderer

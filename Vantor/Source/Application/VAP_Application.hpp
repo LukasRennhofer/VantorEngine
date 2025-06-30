@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-06-26
+ *  Date: 2025-06-30
  *
  *  File: VAP_Application.hpp
  *  Last Change: Automatically updated
@@ -72,7 +72,7 @@ namespace Vantor
             // Runs the main engine loop
             void         Run();
             void         Shutdown();
-            virtual void Initialize(VApplicationCreateInfo *info);
+            virtual void Initialize(VApplicationCreateInfo &info);
 
             void                     SetWindow(Vantor::Context::Window window);
             Vantor::Context::Window *GetWindow() { return window.get(); }
