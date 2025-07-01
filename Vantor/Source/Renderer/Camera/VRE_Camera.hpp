@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-06-30
+ *  Date: 2025-07-01
  *
  *  File: VRE_Camera.hpp
  *  Last Change: Automatically updated

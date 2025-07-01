@@ -4,12 +4,6 @@ project(Vantor)
 set(CMAKE_CXX_STANDARD 20)
 add_compile_options(-w)
 
-# Compile Options
-option(VANTOR_API_OPENGL "Use OpenGL backend" ON)
-option(VANTOR_WM_GLFW "Use GLFW window manager" ON)
-# Integrations
-option(VANTOR_INTEGRATION_IMGUI "Integrate external Dear Imgui module" ON) 
-
 # === Source Groups ===
 # ENGINE CORE
 set(VANTOR_CORE
@@ -27,15 +21,13 @@ set(VANTOR_CORE
 )
 
 # IMGUI SOURCES
-if(VANTOR_INTEGRATION_IMGUI)
-    set(IMGUI_SOURCES
-        ../External/Shared/imgui/imgui.cpp
-        ../External/Shared/imgui/imgui_draw.cpp
-        ../External/Shared/imgui/imgui_demo.cpp
-        ../External/Shared/imgui/imgui_widgets.cpp
-        ../External/Shared/imgui/imgui_tables.cpp
-    )
-endif()
+set(IMGUI_SOURCES
+    ${CMAKE_CURRENT_LIST_DIR}/../External/Shared/imgui/imgui.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/../External/Shared/imgui/imgui_draw.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/../External/Shared/imgui/imgui_demo.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/../External/Shared/imgui/imgui_widgets.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/../External/Shared/imgui/imgui_tables.cpp
+)
 
 # RENDERDEVICE OPENGL
 set(RENDERDEVICE_OPENGL
@@ -53,7 +45,7 @@ set(RENDERMODULES
 
 # ++++++ Windows ++++++
 if(PLATFORM STREQUAL "Windows")
-    add_definitions(-D__WINDOWS__) # Platform Preprocessor
+    set(__WINDOWS__ ON)
     message(STATUS "Target: Windows")
 
     # External Libraries
@@ -67,7 +59,6 @@ if(PLATFORM STREQUAL "Windows")
 
     # Choose RenderDevice Sources
     if(VANTOR_API_OPENGL)
-        add_definitions(-DVANTOR_API_OPENGL)
         set(RENDERDEVICE ${RENDERDEVICE_OPENGL})
         set(PLATFORM_SOURCES ../External/Windows/windows-glad/glad.c)
 
@@ -84,7 +75,6 @@ if(PLATFORM STREQUAL "Windows")
 
     # Choose Window Context Sources
     if(VANTOR_WM_GLFW)
-        add_definitions(-DVANTOR_WM_GLFW)
         set(CONTEXT_SOURCES Context/Impl/VCT_GLFW3_impl.cpp) # TODO: Abstract for WM Context
         
         set(LIBS ${LIBS} glfw)
@@ -94,14 +84,14 @@ if(PLATFORM STREQUAL "Windows")
         if(VANTOR_INTEGRATION_IMGUI)
             set(IMGUI_SOURCES
                 ${IMGUI_SOURCES}
-                ../External/Shared/imgui/imgui_impl_glfw.cpp
+                ${CMAKE_CURRENT_LIST_DIR}/../External/Shared/imgui/Backend/imgui_impl_glfw.cpp
             )
         endif()
     endif()
 
 # ++++++ Linux ++++++
 elseif(PLATFORM STREQUAL "Linux")
-    add_definitions(-D__LINUX__) # Platform Preprocessor
+    set(__LINUX__ ON)
     message(STATUS "Target: Linux")
 
     # Set Platform Environment
@@ -115,7 +105,6 @@ elseif(PLATFORM STREQUAL "Linux")
 
     # Choose RenderDevice Sources
     if(VANTOR_API_OPENGL)
-        add_definitions(-DVANTOR_API_OPENGL)
         set(RENDERDEVICE ${RENDERDEVICE_OPENGL})
         set(PLATFORM_SOURCES ../External/Linux/linux-glad/glad.c)
 
@@ -126,14 +115,13 @@ elseif(PLATFORM STREQUAL "Linux")
         if(VANTOR_INTEGRATION_IMGUI)
             set(IMGUI_SOURCES
                 ${IMGUI_SOURCES}
-                ../External/Shared/imgui/Backend/imgui_impl_opengl3.cpp
+                ${CMAKE_CURRENT_LIST_DIR}/../External/Shared/imgui/Backend/imgui_impl_opengl3.cpp
             )
         endif()
     endif()
 
     # Choose Window Context Sources
     if(VANTOR_WM_GLFW)
-        add_definitions(-DVANTOR_WM_GLFW)
         set(CONTEXT_SOURCES Context/Impl/VCT_GLFW3_impl.cpp) # TODO: Abstract for WM Context
 
         set(LIBS ${LIBS} glfw)
@@ -142,7 +130,7 @@ elseif(PLATFORM STREQUAL "Linux")
         if(VANTOR_INTEGRATION_IMGUI)
             set(IMGUI_SOURCES
                 ${IMGUI_SOURCES}
-                ../External/Shared/imgui/imgui_impl_glfw.cpp
+                ${CMAKE_CURRENT_LIST_DIR}/../External/Shared/imgui/Backend/imgui_impl_glfw.cpp
             )
         endif()
     endif()
@@ -165,36 +153,18 @@ add_library(Vantor STATIC
 
 # === Integrations Target ===
 if(VANTOR_INTEGRATION_IMGUI)
-    add_library(Vantor STATIC
-        ${IMGUI_SOURCES}
-    )
+    target_sources(Vantor PUBLIC ${IMGUI_SOURCES})
 endif()
 
 target_include_directories(Vantor PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}/../External
 )
 
-# Main Preprocessors:
-if(VANTOR_API_OPENGL)
-    target_compile_definitions(Vantor PUBLIC VANTOR_API_OPENGL)
-endif()
+include(../CMake/VantorGlobalDefinitions.cmake)
 
-if(VANTOR_WM_GLFW)
-    target_compile_definitions(Vantor PUBLIC VANTOR_WM_GLFW)
-endif()
-
-if(VANTOR_INTEGRATION_IMGUI)
-    add_definitions(-DVANTOR_INTEGRATION_IMGUI)
-    target_compile_definitions(Vantor PUBLIC VANTOR_INTEGRATION_IMGUI)
-endif()
-
-if(PLATFORM STREQUAL "Windows")
-    target_compile_definitions(Vantor PUBLIC __WINDOWS__)
-elseif(PLATFORM STREQUAL "Linux")
-    target_compile_definitions(Vantor PUBLIC __LINUX__)
-endif()
+set_vantor_definitions(Vantor)
 
 # Linking and Installing of Vantor Lib
-target_link_libraries(Vantor  ${LIBS})
+target_link_libraries(Vantor ${LIBS})
 target_compile_options(Vantor PRIVATE -Wall -Wextra)
-install(TARGETS Vantor DESTINATION lib)
+# install(TARGETS Vantor DESTINATION lib)

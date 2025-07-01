@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-06-30
+ *  Date: 2025-07-01
  *
  *  File: VAP_Application.cpp
  *  Last Change: Automatically updated
@@ -76,16 +76,23 @@ namespace Vantor
         // TODO: Initializing with vantorInitializer
     }
 
-    void Application::Run()
+    void Application::Run(const std::function<void()> &updateFunc)
     {
-        window->swapBuffers();
-        window->pollEvents();
+        while (IsRunning())
+        {
+            window->pollEvents();
 
-        InputManager->Update();
+            InputManager->Update();
 
-        // Begin a new Frame
-        RenderDevice->BeginFrame();
-        RenderDevice->EndFrame(); // TODO: Not working rn
+            // Begin a new Frame
+            RenderDevice->BeginFrame();
+
+            updateFunc(); // This will  be the main loop func
+
+            RenderDevice->EndFrame();
+
+            window->swapBuffers();
+        }
     }
 
     void Application::Shutdown()
@@ -96,9 +103,17 @@ namespace Vantor
 
     bool Application::IsRunning()
     {
-        // TODO: Write with new Running Context
-        return !window->shouldWindowClose();
+        if (!active)
+        {
+            return false;
+        }
+        else
+        {
+            return !window->shouldWindowClose();
+        }
     }
+
+    void Application::Break() { active = false; }
 
     // RenderDevice: mutable access
     RenderDevice::VRDevice *Application::GetRenderDevice() { return RenderDevice.get(); }

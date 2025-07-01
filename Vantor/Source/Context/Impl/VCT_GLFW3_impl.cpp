@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-06-30
+ *  Date: 2025-07-01
  *
  *  File: VCT_GLFW3_impl.cpp
  *  Last Change: Automatically updated
@@ -53,7 +53,7 @@ namespace Vantor::Context
         resizeCallbackFunc = NULL;
 
 #ifdef VANTOR_INTEGRATION_IMGUI
-        Vantor::Integration::imgui::InitContext(glfwWindow);
+        Vantor::Integration::Imgui::InitContext(glfwWindow);
 #endif
     }
 

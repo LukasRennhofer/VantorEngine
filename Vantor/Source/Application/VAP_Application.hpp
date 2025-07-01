@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-06-30
+ *  Date: 2025-07-01
  *
  *  File: VAP_Application.hpp
  *  Last Change: Automatically updated
@@ -39,6 +39,7 @@
 
 #include <format>
 #include <memory>
+#include <functional>
 
 namespace Vantor
 {
@@ -63,6 +64,7 @@ namespace Vantor
         protected:
             // Base Stats
             bool initialized = false;
+            bool active      = true;
 
         public:
             virtual ~Application() = default;
@@ -70,7 +72,8 @@ namespace Vantor
             bool is_window_active = true;
 
             // Runs the main engine loop
-            void         Run();
+            void         Run(const std::function<void()> &updateFunc);
+            void         Break();
             void         Shutdown();
             virtual void Initialize(VApplicationCreateInfo &info);
 

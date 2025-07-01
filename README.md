@@ -16,7 +16,7 @@
 
 <h3 align="center">Vantor</h3>
   <p align="center">
-    A Experimental Cross-Platform Game and Rendering Engine SDK
+    An Experimental Cross-Platform Game and Rendering Engine
     <br />
     <h5 align="center">
     <strong>v0.16.X</strong>

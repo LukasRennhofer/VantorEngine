@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-06-30
+ *  Date: 2025-07-01
  *
  *  File: VOS_Object.hpp
  *  Last Change: Automatically updated
@@ -30,53 +30,6 @@
 #include <string>
 #include <cstdint>
 #include <algorithm>
-
-/*
- * ========================================================================================
- * VObject — Core Entity Base Class
- * ========================================================================================
- *
- * VObject represents a generic game entity or object in the engine. It acts as a base class
- * that all custom objects (e.g., Player, Camera, PointLight, ...) should inherit from.
- *
- * It provides the following core systems:
- *
- * 1. Unique ID System:
- *    - Every VObject has a globally unique ID (VObjectID) assigned on creation.
- *
- * 2. Component System (Component-Based Architecture):
- *    - Supports dynamic addition and retrieval of components using type-safe templates.
- *    - Components must derive from `VComponent`.
- *    - Stored in an internal map keyed by `std::type_index`.
- *    - Methods:
- *      - AddComponent<T>(args...)     → adds and constructs component T
- *      - GetComponent<T>()            → returns component T if it exists
- *      - HasComponent<T>()            → checks if component T exists
- *      - RemoveComponent(type_index)  → removes a component by type
- *
- * 3. Scene Graph / Hierarchical Object Structure:
- *    - Supports parent-child relationships between objects.
- *    - Used for transforms, grouping, and logical object trees (e.g., Player → Weapon).
- *    - Children are stored as shared_ptrs; parent is held as weak_ptr to avoid cycles.
- *    - Methods:
- *      - AddChild(child)              → attach a child object
- *      - RemoveChild(child)           → detach a specific child
- *      - GetParent()                  → returns parent (if any)
- *      - GetChildren()                → returns list of children
- *
- * 4. Inheritance:
- *    - Intended to be inherited by all custom game object types.
- *    - Virtual destructor for safe polymorphic deletion.
- *
- * Example Usage:
- *    auto player = Vantor::Object::VORegistry::CreateEntity<Player>();
- *    player->AddComponent<TransformComponent>();
- *    player->AddChild(swordEntity);
- *
- * This class is central to the engine's object model.
- * ========================================================================================
- */
-
 namespace Vantor::Object
 {
 

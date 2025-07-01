@@ -12,13 +12,18 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-06-30
+ *  Date: 2025-07-01
  *
  *  File: VRDO_RenderDevice.cpp
  *  Last Change: Automatically updated
  */
 
 #include "VRDO_RenderDevice.hpp"
+
+#ifdef VANTOR_INTEGRATION_IMGUI
+#include <Shared/imgui/imgui.h>
+#include "../../Integration/imgui/VIN_Imgui.hpp"
+#endif
 
 // Core/Backlog
 #include "../../Core/BackLog/VCO_Backlog.hpp"
@@ -37,11 +42,22 @@ namespace Vantor::RenderDevice
         }
     }
 
-    void VRDeviceOpenGL::BeginFrame() { glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); }
+    void VRDeviceOpenGL::BeginFrame()
+    {
+#ifdef VANTOR_INTEGRATION_IMGUI
+        Vantor::Integration::Imgui::NewFrame();
+#endif
+
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    }
 
     void VRDeviceOpenGL::EndFrame()
     {
-        // TODO: flush, prepare for present
+// TODO: flush, prepare for present
+#ifdef VANTOR_INTEGRATION_IMGUI
+        ImGui::Render();
+        Vantor::Integration::Imgui::Render();
+#endif
     }
 
     void VRDeviceOpenGL::Present()

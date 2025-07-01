@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-06-30
+ *  Date: 2025-07-01
  *
  *  File: VCO_Color.hpp
  *  Last Change: Automatically updated
@@ -21,24 +21,24 @@
 #pragma once
 
 // Math
-#include "../../Math/LinearAlgebra/VMA_Vector.hpp"
-#include "../../Math/VMA_common.hpp"
+#include "../../Math/VMA_Common.hpp"
+#include "../../Math/Linear/VMA_Vector.hpp"
 
 #include <cstdint>
 
-namespace Vantor::Helpers
+namespace Vantor::Core::Types
 {
-    struct Color
+    struct VColor
     {
             uint32_t rgba = 0;
 
-            constexpr Color(uint32_t rgba) : rgba(rgba) {}
-            constexpr Color(uint8_t r = 0, uint8_t g = 0, uint8_t b = 0, uint8_t a = 255)
+            constexpr VColor(uint32_t rgba) : rgba(rgba) {}
+            constexpr VColor(uint8_t r = 0, uint8_t g = 0, uint8_t b = 0, uint8_t a = 255)
                 : rgba(uint32_t(r) | (uint32_t(g) << 8) | (uint32_t(b) << 16) | (uint32_t(a) << 24))
             {
             }
 
-            constexpr Color(const char *hex)
+            constexpr VColor(const char *hex)
             {
                 rgba           = 0;
                 uint32_t shift = 0u;
@@ -69,24 +69,24 @@ namespace Vantor::Helpers
             constexpr uint8_t getB() const { return (rgba >> 16) & 0xFF; }
             constexpr uint8_t getA() const { return (rgba >> 24) & 0xFF; }
 
-            constexpr void setR(uint8_t value) { *this = Color(value, getG(), getB(), getA()); }
-            constexpr void setG(uint8_t value) { *this = Color(getR(), value, getB(), getA()); }
-            constexpr void setB(uint8_t value) { *this = Color(getR(), getG(), value, getA()); }
-            constexpr void setA(uint8_t value) { *this = Color(getR(), getG(), getB(), value); }
+            constexpr void setR(uint8_t value) { *this = VColor(value, getG(), getB(), getA()); }
+            constexpr void setG(uint8_t value) { *this = VColor(getR(), value, getB(), getA()); }
+            constexpr void setB(uint8_t value) { *this = VColor(getR(), getG(), value, getA()); }
+            constexpr void setA(uint8_t value) { *this = VColor(getR(), getG(), getB(), value); }
 
-            Vantor::Math::Vec3 toFloat3() const
+            Vantor::Math::VVector3 toFloat3() const
             {
-                return Vantor::Math::Vec3(((rgba >> 0) & 0xFF) / 255.0f, ((rgba >> 8) & 0xFF) / 255.0f, ((rgba >> 16) & 0xFF) / 255.0f);
+                return Vantor::Math::VVector3(((rgba >> 0) & 0xFF) / 255.0f, ((rgba >> 8) & 0xFF) / 255.0f, ((rgba >> 16) & 0xFF) / 255.0f);
             }
 
-            Vantor::Math::Vec4 toFloat4() const
+            Vantor::Math::VVector4 toFloat4() const
             {
-                return Vantor::Math::Vec4(((rgba >> 0) & 0xFF) / 255.0f, ((rgba >> 8) & 0xFF) / 255.0f, ((rgba >> 16) & 0xFF) / 255.0f,
-                                          ((rgba >> 24) & 0xFF) / 255.0f);
+                return Vantor::Math::VVector4(((rgba >> 0) & 0xFF) / 255.0f, ((rgba >> 8) & 0xFF) / 255.0f, ((rgba >> 16) & 0xFF) / 255.0f,
+                                              ((rgba >> 24) & 0xFF) / 255.0f);
             }
 
-            operator Vantor::Math::Vec3() const { return toFloat3(); }
-            operator Vantor::Math::Vec4() const { return toFloat4(); }
+            operator Vantor::Math::VVector3() const { return toFloat3(); }
+            operator Vantor::Math::VVector4() const { return toFloat4(); }
             operator uint32_t() const { return rgba; }
 
             template <std::size_t capacity> struct char_return
@@ -106,34 +106,34 @@ namespace Vantor::Helpers
                 return ret;
             }
 
-            static constexpr Color fromFloat4(const Vantor::Math::Vec4 &value)
+            static constexpr VColor fromFloat4(const Vantor::Math::VVector4 &value)
             {
-                return Color((uint8_t) (value.x * 255), (uint8_t) (value.y * 255), (uint8_t) (value.z * 255), (uint8_t) (value.w * 255));
+                return VColor((uint8_t) (value.x * 255), (uint8_t) (value.y * 255), (uint8_t) (value.z * 255), (uint8_t) (value.w * 255));
             }
 
-            static constexpr Color fromFloat3(const Vantor::Math::Vec3 &value)
+            static constexpr VColor fromFloat3(const Vantor::Math::VVector3 &value)
             {
-                return Color((uint8_t) (value.x * 255), (uint8_t) (value.y * 255), (uint8_t) (value.z * 255));
+                return VColor((uint8_t) (value.x * 255), (uint8_t) (value.y * 255), (uint8_t) (value.z * 255));
             }
 
-            static constexpr Color lerp(Color a, Color b, float i) { return fromFloat4(Vantor::Math::Lerp(a.toFloat4(), b.toFloat4(), i)); }
+            static VColor lerp(VColor a, VColor b, float i) { return fromFloat4(Vantor::Math::Lerp(a.toFloat4(), b.toFloat4(), i)); }
 
-            // Preset Colors
-            static constexpr Color Red() { return Color(255, 0, 0, 255); }
-            static constexpr Color Green() { return Color(0, 255, 0, 255); }
-            static constexpr Color Blue() { return Color(0, 0, 255, 255); }
-            static constexpr Color Black() { return Color(0, 0, 0, 255); }
-            static constexpr Color White() { return Color(255, 255, 255, 255); }
-            static constexpr Color Yellow() { return Color(255, 255, 0, 255); }
-            static constexpr Color Purple() { return Color(255, 0, 255, 255); }
-            static constexpr Color Cyan() { return Color(0, 255, 255, 255); }
-            static constexpr Color Transparent() { return Color(0, 0, 0, 0); }
-            static constexpr Color Gray() { return Color(127, 127, 127, 255); }
-            static constexpr Color Ghost() { return Color(127, 127, 127, 127); }
-            static constexpr Color Booger() { return Color(127, 127, 127, 200); }
-            static constexpr Color Shadow() { return Color(0, 0, 0, 100); }
+            // Preset VColors
+            static constexpr VColor Red() { return VColor(255, 0, 0, 255); }
+            static constexpr VColor Green() { return VColor(0, 255, 0, 255); }
+            static constexpr VColor Blue() { return VColor(0, 0, 255, 255); }
+            static constexpr VColor Black() { return VColor(0, 0, 0, 255); }
+            static constexpr VColor White() { return VColor(255, 255, 255, 255); }
+            static constexpr VColor Yellow() { return VColor(255, 255, 0, 255); }
+            static constexpr VColor Purple() { return VColor(255, 0, 255, 255); }
+            static constexpr VColor Cyan() { return VColor(0, 255, 255, 255); }
+            static constexpr VColor Transparent() { return VColor(0, 0, 0, 0); }
+            static constexpr VColor Gray() { return VColor(127, 127, 127, 255); }
+            static constexpr VColor Ghost() { return VColor(127, 127, 127, 127); }
+            static constexpr VColor Booger() { return VColor(127, 127, 127, 200); }
+            static constexpr VColor Shadow() { return VColor(0, 0, 0, 100); }
 
-            static constexpr Color Warning() { return 0xFF66FFFF; }
-            static constexpr Color Error() { return 0xFF6666FF; }
+            static constexpr VColor Warning() { return 0xFF66FFFF; }
+            static constexpr VColor Error() { return 0xFF6666FF; }
     };
-} // namespace Vantor::Helpers
+} // namespace Vantor::Core::Types

@@ -15,16 +15,10 @@
 #include <Vantor/Vantor.hpp>
 #include <Vantor/Math/Linear.hpp>
 #include <Vantor/RenderModules/FlyCamera.hpp>
-
-// test Entity
-class Player : public Vantor::Object::VObject {
-    public:
-        int health;
-};
+#include <Vantor/Integration/ImGui.hpp>
 
 int main() {
     Vantor::Application app;
-    
     // Application Creation Data
     Vantor::VApplicationCreateInfo appInfo;
     appInfo.windowWidth = 1280;
@@ -33,6 +27,9 @@ int main() {
 
     // Initialize the Application
     app.Initialize(appInfo);
+
+    // A Basic Color for the rect
+    Vantor::Core::Types::VColor rectColor =  Vantor::Core::Types::VColor::Cyan();
 
     // Basic Camera Math
     Vantor::Math::VMat4 view;
@@ -118,23 +115,27 @@ int main() {
     glBindVertexArray(0); 
 
     // Main loop
-    while (app.IsRunning())
-    {
-        // Run app logic (empty for now)
-        app.Run();
 
-        if (app.GetInputManager()->WasActionPressed("fire")) {
-            std::cout << app.GetInputManager()->devices[0]->GetMousePosition().x << std::endl;
-            break;
-        }
-        // draw our first triangle
-        shaderProgram->use();
-        // Test Uniforms with custom Vector
-        shaderProgram->setVec4("newColor", Vantor::Math::VVector4(1.0f, 1.0f, 0.0f, 1.0f));
-        glBindVertexArray(VAO); // seeing as we only have a single VAO there's no need to bind it every time, but we'll do so to keep things a bit more organized
-        //glDrawArrays(GL_TRIANGLES, 0, 6);
-        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-    }
+    // Run app logic
+    app.Run([&]() {
+            #ifdef VANTOR_INTEGRATION_IMGUI
+            ImGui::Begin("Debug Window");
+            ImGui::Text("Hello from ImGui!");
+            ImGui::End();
+            #endif
+
+            if (app.GetInputManager()->WasActionPressed("fire")) {
+                std::cout << app.GetInputManager()->devices[0]->GetMousePosition().x << std::endl;
+                app.Break();
+            }
+            // draw our first triangle
+            shaderProgram->use();
+            // Test Uniforms with custom Color (turn it into a Vector, to pass it to GPU)
+            shaderProgram->setVec4("newColor", rectColor.toFloat4());
+            glBindVertexArray(VAO); // seeing as we only have a single VAO there's no need to bind it every time, but we'll do so to keep things a bit more organized
+            //glDrawArrays(GL_TRIANGLES, 0, 6);
+            glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+        });
 
     glDeleteVertexArrays(1, &VAO);
     glDeleteBuffers(1, &VBO);

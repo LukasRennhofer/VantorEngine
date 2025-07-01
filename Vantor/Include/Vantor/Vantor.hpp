@@ -74,18 +74,10 @@ with RenderDevice Vulkan (Defined in CMake) (RESERVED, BUT NOT IN USE)
 #include "../../Source/Core/Global/VCO_ServiceRegistry.hpp"
 #include "../../Source/Core/Debug/VCO_InlineDebugger.hpp"
 #include "../../Source/Core/IO/VCO_FSUtils.hpp"
-// #include "../Source/Core/Types/VCO_Color.hpp" : TODO: Vector and Lerp
-
-// Math : TODO: Vector and Lerp
-// #include "../Source/Math/VMA_common.hpp"
-// #include "../Source/Math/LinearAlgebra/VMA_Vector.hpp"
-// #include "../Source/Math/LinearAlgebra/VMA_Matrix.hpp"
+#include "../../Source/Core/Types/VCO_Color.hpp"
 
 // APPLICATION
 #include "../../Source/Application/VAP_Application.hpp"
-
-// ENTITY
-// #include "Source/Entity/vantorECS.h"
 
 // RENDERDEVICE
 #include "../../Source/RenderDevice/Interface/VRD_RenderDevice.hpp"
