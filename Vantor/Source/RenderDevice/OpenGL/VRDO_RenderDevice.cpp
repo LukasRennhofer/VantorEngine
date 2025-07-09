@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-07-01
+ *  Date: 2025-07-09
  *
  *  File: VRDO_RenderDevice.cpp
  *  Last Change: Automatically updated
@@ -91,7 +91,10 @@ namespace Vantor::RenderDevice
 
             mesh->SetIndices(createInfo.Indices);
             mesh->SetTopology(createInfo.Topology);
-            mesh->Finalize(createInfo.Interleaved);
+            if (createInfo.SetFinalized)
+            {
+                mesh->Finalize(createInfo.Interleaved);
+            }
         }
 
         return mesh;

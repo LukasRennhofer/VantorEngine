@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.10)
 
 # Define platform (must match logic in Vantor's CMakeLists)
-set(PLATFORM "Linux") # or "Windows" or "Switch"
+# set(PLATFORM "Linux") # or "Windows" or "Switch"
 
 # Include CMake build files
 include(../Vantor/CMake/VantorCMake.cmake)

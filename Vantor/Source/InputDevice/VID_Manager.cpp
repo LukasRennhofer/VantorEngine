@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-07-01
+ *  Date: 2025-07-09
  *
  *  File: VID_Manager.cpp
  *  Last Change: Automatically updated
@@ -47,6 +47,20 @@ namespace Vantor::Input
         return false;
     }
 
+    bool VInputManager::IsPressed(const int &key, const VEInputDeviceType &deviceType) const
+    {
+        VInputButton it;
+        it.id         = key;
+        it.deviceType = deviceType;
+
+        for (const auto &device : devices)
+        {
+            if (device->IsPressed(it)) return true;
+        }
+
+        return false;
+    }
+
     bool VInputManager::WasActionPressed(const std::string &actionName) const
     {
         auto it = actionMap.find(actionName);
@@ -59,6 +73,20 @@ namespace Vantor::Input
                 if (device->WasPressed(input)) return true;
             }
         }
+        return false;
+    }
+
+    bool VInputManager::WasPressed(const int &key, const VEInputDeviceType &deviceType) const
+    {
+        VInputButton it;
+        it.id         = key;
+        it.deviceType = deviceType;
+
+        for (const auto &device : devices)
+        {
+            if (device->WasPressed(it)) return true;
+        }
+
         return false;
     }
 

@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-07-01
+ *  Date: 2025-07-09
  *
  *  File: VID_IDevice.hpp
  *  Last Change: Automatically updated
@@ -32,7 +32,7 @@
 
 namespace Vantor::Input
 {
-    enum class VEInputKey
+    enum VEInputKey
     {
         // --- Keyboard ---
         KEY_A,
@@ -175,9 +175,11 @@ namespace Vantor::Input
 
             // Check if button is currently pressed
             virtual bool IsPressed(const VInputButton &button) const = 0;
+            // virtual bool IsPressed(const VEInputKey &key) const = 0;
 
             // Check if button was just pressed this frame (edge trigger)
             virtual bool WasPressed(const VInputButton &button) const = 0;
+            // virtual bool WasPressed(const VEInputKey &key) const = 0;
 
             // For axis inputs (gamepads, analog sticks etc)
             virtual float GetAxis(const VInputButton &axis) const = 0;

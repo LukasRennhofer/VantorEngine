@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-07-01
+ *  Date: 2025-07-09
  *
  *  File: VAP_Application.hpp
  *  Last Change: Automatically updated
@@ -54,7 +54,7 @@ namespace Vantor
             const char *windowTitle = "Vantor Application";
     };
 
-    class Application
+    class VApplication
     {
         private:
             std::unique_ptr<Vantor::Context::Window>        window;
@@ -67,7 +67,7 @@ namespace Vantor
             bool active      = true;
 
         public:
-            virtual ~Application() = default;
+            virtual ~VApplication() = default;
 
             bool is_window_active = true;
 

@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-07-01
+ *  Date: 2025-07-09
  *
  *  File: VID_Manager.hpp
  *  Last Change: Automatically updated
@@ -40,8 +40,13 @@ namespace Vantor::Input
             void Update();
 
             // Query
-            bool  IsActionPressed(const std::string &actionName) const;
-            bool  WasActionPressed(const std::string &actionName) const;
+            // Is Action or single Input at this moment pressed
+            bool IsActionPressed(const std::string &actionName) const;
+            bool IsPressed(const int &key, const VEInputDeviceType &deviceType) const;
+            // Was the Action or single Input pressed this frame
+            bool WasActionPressed(const std::string &actionName) const;
+            bool WasPressed(const int &key, const VEInputDeviceType &deviceType) const;
+
             float GetActionAxis(const std::string &actionName) const;
 
             std::vector<std::shared_ptr<VIInputDevice>> devices;

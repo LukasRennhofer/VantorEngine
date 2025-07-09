@@ -12,22 +12,10 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-07-01
+ *  Date: 2025-07-09
  *
- *  File: VRE_Sphere.hpp
+ *  File: VRD_RenderPath.hpp
  *  Last Change: Automatically updated
  */
 
-#pragma once
-
-#include "VRE_GeomtetryObject.hpp"
-#include "../../RenderDevice/Interface/VRD_RenderDevice.hpp"
-
-namespace Vantor::Renderer
-{
-    class VSphere : public VGObject
-    {
-        public:
-            VSphere(Vantor::RenderDevice::VRDevice *device, unsigned int xSegments, unsigned int ySegments);
-    };
-} // namespace Vantor::Renderer
+// TODO

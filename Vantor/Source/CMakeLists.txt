@@ -1,170 +1,225 @@
-# Vantor Build File – Lukas Rennhofer @2025 – MIT License
+# ==============================================================================
+# Vantor Engine Build Configuration
+# Author: Lukas Rennhofer @2025
+# ==============================================================================
+
 cmake_minimum_required(VERSION 3.10)
-project(Vantor)
+project(Vantor VERSION 1.0.0 LANGUAGES CXX C)
+
+# ==============================================================================
+# Build Configuration
+# ==============================================================================
 set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 add_compile_options(-w)
 
-# === Source Groups ===
-# ENGINE CORE
-set(VANTOR_CORE
-    # Application
+# Build information
+message(STATUS "=== Vantor Engine Build Configuration ===")
+message(STATUS "System: ${CMAKE_SYSTEM_NAME}")
+message(STATUS "C Compiler: ${CMAKE_C_COMPILER}")
+message(STATUS "CXX Compiler: ${CMAKE_CXX_COMPILER}")
+message(STATUS "Toolchain: ${CMAKE_TOOLCHAIN_FILE}")
+message(STATUS "Working Directory: $ENV{PWD}")
+message(STATUS "========================================")
+
+# ==============================================================================
+# Path Constants
+# ==============================================================================
+set(VANTOR_EXTERNAL_DIR ${CMAKE_CURRENT_LIST_DIR}/../External)
+set(VANTOR_SHARED_EXTERNAL ${VANTOR_EXTERNAL_DIR}/Shared)
+
+# ==============================================================================
+# Core Engine Sources
+# ==============================================================================
+set(VANTOR_CORE_SOURCES
+    # Application Layer
     Application/VAP_Application.cpp
-    # Core
+    
+    # Core Systems
     Core/VCO_Version.cpp
     Core/Backlog/VCO_Backlog.cpp
     Core/Debug/VCO_InlineDebugger.cpp
-    # Renderer
+    
+    # Rendering
     Renderer/Camera/VRE_Camera.cpp
     Renderer/Camera/VRE_Frustum.cpp
-    # InputDevice
+    
+    # Input Management
     InputDevice/VID_Manager.cpp
 )
 
-# IMGUI SOURCES
-set(IMGUI_SOURCES
-    ${CMAKE_CURRENT_LIST_DIR}/../External/Shared/imgui/imgui.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/../External/Shared/imgui/imgui_draw.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/../External/Shared/imgui/imgui_demo.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/../External/Shared/imgui/imgui_widgets.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/../External/Shared/imgui/imgui_tables.cpp
+# ==============================================================================
+# Third-Party Library Sources
+# ==============================================================================
+
+# ImGui Core Sources
+set(IMGUI_CORE_SOURCES
+    ${VANTOR_SHARED_EXTERNAL}/imgui/imgui.cpp
+    ${VANTOR_SHARED_EXTERNAL}/imgui/imgui_draw.cpp
+    ${VANTOR_SHARED_EXTERNAL}/imgui/imgui_demo.cpp
+    ${VANTOR_SHARED_EXTERNAL}/imgui/imgui_widgets.cpp
+    ${VANTOR_SHARED_EXTERNAL}/imgui/imgui_tables.cpp
 )
 
-# RENDERDEVICE OPENGL
-set(RENDERDEVICE_OPENGL
+# OpenGL Render Device Sources
+set(OPENGL_RENDER_SOURCES
     RenderDevice/OpenGL/VRDO_Shader.cpp
     RenderDevice/OpenGL/VRDO_Mesh.cpp
+    RenderDevice/OpenGL/VRDO_CommandBuffer.cpp
     RenderDevice/OpenGL/VRDO_RenderDevice.cpp
 )
 
-# RENDERMODULES: TODO MOVE AWAY TO CHOOSE MODULES
-set(RENDERMODULES
+# Render Modules (TODO: Make configurable)
+set(RENDER_MODULE_SOURCES
     RenderModules/Camera/VRM_FlyCamera.cpp
 )
 
-# === Platform Setup ===
+# ==============================================================================
+# Platform-Specific Configuration Functions
+# ==============================================================================
 
-# ++++++ Windows ++++++
+function(configure_glfw_integration)
+    set(GLFW_BUILD_TESTS OFF CACHE BOOL "Build GLFW test programs" FORCE)
+    set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "Build GLFW example programs" FORCE)
+    set(GLFW_BUILD_DOCS OFF CACHE BOOL "Build GLFW documentation" FORCE)
+    add_subdirectory(${VANTOR_SHARED_EXTERNAL}/GLFW ${CMAKE_BINARY_DIR}/External/GLFW)
+endfunction()
+
+function(setup_imgui_integration backend_sources)
+    if(VANTOR_INTEGRATION_IMGUI)
+        set(IMGUI_BACKEND_SOURCES ${backend_sources} PARENT_SCOPE)
+    endif()
+endfunction()
+
+# ==============================================================================
+# Platform-Specific Configuration
+# ==============================================================================
+
+# Windows Platform Configuration
 if(PLATFORM STREQUAL "Windows")
     set(__WINDOWS__ ON)
-    message(STATUS "Target: Windows")
+    message(STATUS "Configuring for Windows platform")
 
-    # External Libraries
-    set(LIBS
-        mingw32 gdi32 user32 imm32 shell32
-        SDL2 SDL2main assimp freetype
-    ) # TODO: Move SDL, assimp and freetype
+    # Platform-specific source files
+    set(PLATFORM_ENVIRONMENT_SOURCES Platform/Platforms/VPL_Windows.cpp)
+    
+    # Base Windows libraries
+    set(PLATFORM_LIBRARIES mingw32 gdi32 user32 imm32 shell32)
 
-    # Set Platform Environment
-    set(PLATFORM_ENV Platform/Platforms/VPL_Windows.cpp)
-
-    # Choose RenderDevice Sources
+    # OpenGL Configuration
     if(VANTOR_API_OPENGL)
-        set(RENDERDEVICE ${RENDERDEVICE_OPENGL})
-        set(PLATFORM_SOURCES ../External/Windows/windows-glad/glad.c)
+        set(RENDER_DEVICE_SOURCES ${OPENGL_RENDER_SOURCES})
+        set(PLATFORM_GRAPHICS_SOURCES ${VANTOR_EXTERNAL_DIR}/Windows/windows-glad/glad.c)
+        list(APPEND PLATFORM_LIBRARIES opengl32)
 
-        set(LIBS ${LIBS} opengl32)
-        # : Integrations :
-        # IMGUI Integration
-        if(VANTOR_INTEGRATION_IMGUI)
-            set(IMGUI_SOURCES
-                ${IMGUI_SOURCES}
-                ../External/Shared/imgui/Backend/imgui_impl_opengl3.cpp
-            )
-        endif()
+        # ImGui OpenGL backend
+        setup_imgui_integration("${VANTOR_SHARED_EXTERNAL}/imgui/Backend/imgui_impl_opengl3.cpp")
     endif()
 
-    # Choose Window Context Sources
+    # GLFW Window Management
     if(VANTOR_WM_GLFW)
-        set(CONTEXT_SOURCES Context/Impl/VCT_GLFW3_impl.cpp) # TODO: Abstract for WM Context
-        
-        set(LIBS ${LIBS} glfw)
+        set(CONTEXT_SOURCES Context/Impl/VCT_GLFW3_impl.cpp)
+        configure_glfw_integration()
+        list(APPEND PLATFORM_LIBRARIES glfw)
 
-        # : Integrations :
-        # IMGUI Integration
+        # ImGui GLFW backend
         if(VANTOR_INTEGRATION_IMGUI)
-            set(IMGUI_SOURCES
-                ${IMGUI_SOURCES}
-                ${CMAKE_CURRENT_LIST_DIR}/../External/Shared/imgui/Backend/imgui_impl_glfw.cpp
-            )
+            list(APPEND IMGUI_BACKEND_SOURCES "${VANTOR_SHARED_EXTERNAL}/imgui/Backend/imgui_impl_glfw.cpp")
         endif()
     endif()
 
-# ++++++ Linux ++++++
+# Linux Platform Configuration
 elseif(PLATFORM STREQUAL "Linux")
     set(__LINUX__ ON)
-    message(STATUS "Target: Linux")
+    message(STATUS "Configuring for Linux platform")
 
-    # Set Platform Environment
-    set(PLATFORM_ENV Platform/Platforms/VPL_Linux.cpp)
+    # Platform-specific source files
+    set(PLATFORM_ENVIRONMENT_SOURCES Platform/Platforms/VPL_Linux.cpp)
     
-    # External Libraries
-    set(LIBS
-        X11 pthread dl assimp EGL GLESv2 gbm drm
-    ) # TODO: Move SDL, assimp and freetype
+    # Base Linux libraries
+    set(PLATFORM_LIBRARIES X11 pthread dl assimp EGL GLESv2 gbm drm)
 
-
-    # Choose RenderDevice Sources
+    # OpenGL Configuration
     if(VANTOR_API_OPENGL)
-        set(RENDERDEVICE ${RENDERDEVICE_OPENGL})
-        set(PLATFORM_SOURCES ../External/Linux/linux-glad/glad.c)
+        set(RENDER_DEVICE_SOURCES ${OPENGL_RENDER_SOURCES})
+        set(PLATFORM_GRAPHICS_SOURCES ${VANTOR_EXTERNAL_DIR}/Linux/linux-glad/glad.c)
+        
+        # Find OpenGL package
+        find_package(PkgConfig REQUIRED)
+        pkg_check_modules(OpenGL REQUIRED gl)
+        list(APPEND PLATFORM_LIBRARIES ${OpenGL_LIBRARIES})
 
-        set(LIBS ${LIBS} ${OpenGL_LIBRARIES})
-
-        # : Integrations :
-        # IMGUI Integration
-        if(VANTOR_INTEGRATION_IMGUI)
-            set(IMGUI_SOURCES
-                ${IMGUI_SOURCES}
-                ${CMAKE_CURRENT_LIST_DIR}/../External/Shared/imgui/Backend/imgui_impl_opengl3.cpp
-            )
-        endif()
+        # ImGui OpenGL backend
+        setup_imgui_integration("${VANTOR_SHARED_EXTERNAL}/imgui/Backend/imgui_impl_opengl3.cpp")
     endif()
 
-    # Choose Window Context Sources
+    # GLFW Window Management
     if(VANTOR_WM_GLFW)
-        set(CONTEXT_SOURCES Context/Impl/VCT_GLFW3_impl.cpp) # TODO: Abstract for WM Context
+        set(CONTEXT_SOURCES Context/Impl/VCT_GLFW3_impl.cpp)
+        configure_glfw_integration()
+        list(APPEND PLATFORM_LIBRARIES glfw)
 
-        set(LIBS ${LIBS} glfw)
-        # : Integrations :
-        # IMGUI Integration
+        # ImGui GLFW backend
         if(VANTOR_INTEGRATION_IMGUI)
-            set(IMGUI_SOURCES
-                ${IMGUI_SOURCES}
-                ${CMAKE_CURRENT_LIST_DIR}/../External/Shared/imgui/Backend/imgui_impl_glfw.cpp
-            )
+            list(APPEND IMGUI_BACKEND_SOURCES "${VANTOR_SHARED_EXTERNAL}/imgui/Backend/imgui_impl_glfw.cpp")
         endif()
     endif()
 
-    find_package(PkgConfig REQUIRED)
-    pkg_check_modules(OpenGL REQUIRED gl)
+# Unsupported Platform
 else()
-    message(FATAL_ERROR "Unsupported platform: ${PLATFORM}")
+    message(FATAL_ERROR "Unsupported platform: ${PLATFORM}. Supported platforms: Windows, Linux")
 endif()
 
-# === Final Target ===
+# ==============================================================================
+# Target Creation and Configuration
+# ==============================================================================
+
+# Create the main Vantor static library
 add_library(Vantor STATIC
-    ${VANTOR_CORE}
-    ${RENDERDEVICE}
-    ${RENDERMODULES} # TODO: Move away or find solution to choose modules
-    ${PLATFORM_SOURCES}
-    ${PLATFORM_ENV}
+    ${VANTOR_CORE_SOURCES}
+    ${RENDER_DEVICE_SOURCES}
+    ${RENDER_MODULE_SOURCES}
+    ${PLATFORM_GRAPHICS_SOURCES}
+    ${PLATFORM_ENVIRONMENT_SOURCES}
     ${CONTEXT_SOURCES}
 )
 
-# === Integrations Target ===
+# Add ImGui integration if enabled
 if(VANTOR_INTEGRATION_IMGUI)
-    target_sources(Vantor PUBLIC ${IMGUI_SOURCES})
+    target_sources(Vantor PRIVATE 
+        ${IMGUI_CORE_SOURCES}
+        ${IMGUI_BACKEND_SOURCES}
+    )
 endif()
 
+# ==============================================================================
+# Include Directories and Linking
+# ==============================================================================
+
+# Set include directories
 target_include_directories(Vantor PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}/../External
 )
 
+# Apply Vantor-specific definitions
 include(../CMake/VantorGlobalDefinitions.cmake)
-
 set_vantor_definitions(Vantor)
 
-# Linking and Installing of Vantor Lib
-target_link_libraries(Vantor ${LIBS})
+# Link libraries
+target_link_libraries(Vantor PRIVATE ${PLATFORM_LIBRARIES})
+
+# Compiler options
 target_compile_options(Vantor PRIVATE -Wall -Wextra)
+
+# Installation (currently disabled)
 # install(TARGETS Vantor DESTINATION lib)
+
+# ==============================================================================
+# Build Summary
+# ==============================================================================
+message(STATUS "=== Vantor Build Summary ===")
+message(STATUS "Platform: ${PLATFORM}")
+message(STATUS "OpenGL RenderDevice API: ${VANTOR_API_OPENGL}")
+message(STATUS "GLFW WM API: ${VANTOR_WM_GLFW}")
+message(STATUS "ImGui Integration: ${VANTOR_INTEGRATION_IMGUI}")
+message(STATUS "==============================")

@@ -12,15 +12,20 @@
 * Last Change:
 */
 
+// We do this to not need to write Vantor:: 
+// and to not explicitly write the module origin of API calls
+#define VANTOR_USE_NO_NAMESPACE
+
 #include <Vantor/Vantor.hpp>
-#include <Vantor/Math/Linear.hpp>
-#include <Vantor/RenderModules/FlyCamera.hpp>
+#include <Vantor/Math/Linear.hpp> // Linear Math (VVector, VMatrix)
+#include <Vantor/RenderModules/FlyCamera.hpp> // FlyCamera
+#include <Vantor/Renderer/Geometry.hpp> // Geometry Objects
 #include <Vantor/Integration/ImGui.hpp>
 
 int main() {
-    Vantor::Application app;
+    VApplication app;
     // Application Creation Data
-    Vantor::VApplicationCreateInfo appInfo;
+    VApplicationCreateInfo appInfo;
     appInfo.windowWidth = 1280;
     appInfo.windowHeight = 720;
     appInfo.windowTitle = "Vantor Sandbox";
@@ -29,40 +34,76 @@ int main() {
     app.Initialize(appInfo);
 
     // A Basic Color for the rect
-    Vantor::Core::Types::VColor rectColor =  Vantor::Core::Types::VColor::Cyan();
+    VColor rectColor =  VColor::Cyan();
 
     // Basic Camera Math
-    Vantor::Math::VMat4 view;
+    Math::VMat4 view;
 
-    view = Vantor::Math::VMat4::LookAt(Vantor::Math::VVector3(0.0f, 0.0f, 3.0f), 
-  		               Vantor::Math::VVector3(0.0f, 0.0f, 0.0f), 
-  		               Vantor::Math::VVector3(0.0f, 1.0f, 0.0f));
+    view = Math::VMat4::LookAt(Math::VVector3(0.0f, 0.0f, 3.0f), 
+  		               Math::VVector3(0.0f, 0.0f, 0.0f), 
+  		               Math::VVector3(0.0f, 1.0f, 0.0f));
 
-    Vantor::Math::VVector3 cameraPosition(1.0f, 1.0f, 1.0f);
-    Vantor::Math::VVector3 cameraFront(0.0f, 0.0f, -1.0f);
-    Vantor::Math::VVector3 cameraUp(0.0f, 1.0f,  0.0f);
+    Math::VVector3 cameraPosition(1.0f, 1.0f, 1.0f);
+    Math::VVector3 cameraFront(0.0f, 0.0f, -1.0f);
+    Math::VVector3 cameraUp(0.0f, 1.0f,  0.0f);
+
+    // ===== Object System and build Scene Graph =====
+    auto rootNode = Object::VORegistry::CreateEntity<Object::VObject>();
+
+    rootNode->AddComponent<Vantor::Object::VTagComponent>();
+
+    rootNode->GetComponent<Vantor::Object::VTagComponent>()->SetName("Root");
+    // Create the Camera with FlyCamera RenderModule and register it as an entity
+    auto camera = Object::VORegistry::CreateEntity<RenderModules::FlyCamera>(Math::VVector3(1.0f, 1.0f, 1.0f));
+
+    // Add root childs
+    rootNode->AddChild(camera);
+
+    // ==== Cube Object to Render ===
+    auto cube = Object::VORegistry::CreateEntity<Renderer::Geometry::VCube>(); // Create Cube Entity
+
+    cube->AddComponentVoid<Vantor::Object::VMeshComponent>(); // Add a MeshComponent for Render
+
+    Vantor::RenderDevice::VMeshCreateInfo cubeCreateInfo; // Create empty Mesh with Creation Data
+    cubeCreateInfo.SetFinalized = false;
+
+    auto cubeMesh = app.GetRenderDevice()->CreateMesh(cubeCreateInfo);
+
+    cube->GetComponent<Vantor::Object::VMeshComponent>()->SetMesh(cubeMesh); // Add empty Mesh to the cubes MeshComponent
+
+    cube->GenerateMesh(); // Generate the Mesh data for the cube
+
+    rootNode->AddChild(cube);
+
+    // Print Hierachy
+    // std::cout << "==== Hierachy rootNode (root) id: " << rootNode->GetID() << std::endl;
+
+    // for (auto child : rootNode->GetChildren()) {
+    //     std::cout << "          ID: " << child->GetID() << std::endl;
+    // }
+
+    // Verify cam ID (should be 1)
+    // std::cout << "Camera Entity ID: " << camera->GetID() << std::endl;
 
     // ==== Object (Entity) System Test ====
-    // auto player = Vantor::Object::VORegistry::CreateEntity<Player>();
+    // auto player = Object::VORegistry::CreateEntity<Player>();
     // std::cout << "Created entity of type: " << "Player"
     //           << ", ID: " << player->id << "\n";
 
-    // auto player2 = Vantor::Object::VORegistry::CreateEntity<Player>();
+    // auto player2 = Object::VORegistry::CreateEntity<Player>();
 
     // player->AddChild(player2); // Add Player 2 as child of main player
 
     // std::cout << "Child player of main player has id: " << player->GetChildren()[0]->id << std::endl;
 
-    // Fly Camera Render Module
-    Vantor::RenderModules::FlyCamera camera(Vantor::Math::VVector3(1.0f, 1.0f, 1.0f));
     // std::cout << camera.FOV << std::endl;
 
     // ==== Input ====
     // Set up InputDevice
-    auto deviceone = Vantor::Input::CreateInputDevice(app.GetWindow());
+    auto deviceone = Input::CreateInputDevice(app.GetWindow());
     app.GetInputManager()->AddDevice(deviceone);
 
-    app.GetInputManager()->MapAction("fire", Vantor::Input::VInputButton{Vantor::Input::VEInputDeviceType::Keyboard, (int)Vantor::Input::VEInputKey::KEY_ESCAPE});
+    app.GetInputManager()->MapAction("fire", Input::VInputButton{Input::VEInputDeviceType::Keyboard, (int)Input::VEInputKey::KEY_ESCAPE});
 
 
     glClearColor(0.1f, 0.2f, 0.3f, 1.0f);
@@ -119,15 +160,15 @@ int main() {
     // Run app logic
     app.Run([&]() {
             #ifdef VANTOR_INTEGRATION_IMGUI
-            ImGui::Begin("Debug Window");
-            ImGui::Text("Hello from ImGui!");
-            ImGui::End();
+            Vantor::Integration::Imgui::BuildUpDocking();
+            Vantor::Integration::Imgui::ShowSceneHierachy();
             #endif
 
-            if (app.GetInputManager()->WasActionPressed("fire")) {
+            if (app.GetInputManager()->WasPressed(Input::KEY_ESCAPE, Input::VEInputDeviceType::Keyboard)) {
                 std::cout << app.GetInputManager()->devices[0]->GetMousePosition().x << std::endl;
                 app.Break();
             }
+            
             // draw our first triangle
             shaderProgram->use();
             // Test Uniforms with custom Color (turn it into a Vector, to pass it to GPU)

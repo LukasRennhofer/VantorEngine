@@ -12,40 +12,8 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-07-01
+ *  Date: 2025-07-09
  *
- *  File: VRE_GeomtetryObject.hpp
+ *  File: VRD_UniformChache.hpp
  *  Last Change: Automatically updated
  */
-
-#pragma once
-
-#include "../../RenderDevice/Interface/VRD_Mesh.hpp"
-
-#include <memory>
-
-namespace Vantor::Renderer
-{
-
-    enum VEGeometryObjectType
-    {
-        SPHERE,
-        NOTSET
-    };
-
-    class VGObject
-    {
-        public:
-            Vantor::RenderDevice::VMesh *GetMesh() { return objectMesh.get(); }
-
-            // setters
-            void SetMesh(std::shared_ptr<Vantor::RenderDevice::VMesh> meshPtr) { objectMesh = std::move(meshPtr); }
-
-            // getters
-            VEGeometryObjectType GetObjectType() { return objectType; }
-
-        protected:
-            std::shared_ptr<Vantor::RenderDevice::VMesh> objectMesh;
-            VEGeometryObjectType                         objectType = NOTSET; // Set the GeometryObjectType
-    };
-} // namespace Vantor::Renderer

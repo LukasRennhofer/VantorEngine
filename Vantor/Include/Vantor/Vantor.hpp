@@ -31,9 +31,10 @@ Based on your System:
 /*
 Vantors Preprocessor Variables:
      : Main Variables:
-          VANTOR       = Used for the main header implementation
+          VANTOR_API       = Used for the main header implementation
           VANTOR_DEBUG = Used for identifying a debug build (Defined in CMake)
 (RESERVED, BUT NOT IN USE)
+          VANTOR_USE_NO_NAMESPACE = Used to not explicitly use the Vantor namespace and its modules (Must be defined by the API user)
 
      : Platforms :
           __WINDOWS__ = Used for identifying a Window build (Defined in CMake)
@@ -65,8 +66,8 @@ with RenderDevice Vulkan (Defined in CMake) (RESERVED, BUT NOT IN USE)
 */
 
 // VANTOR PREPROCESSOR DEFINITION
-#ifndef VANTOR
-#define VANTOR
+#ifndef VANTOR_API
+#define VANTOR_API
 
 // CORE
 #include "../../Source/Core/VCO_Version.hpp"
@@ -103,11 +104,25 @@ with RenderDevice Vulkan (Defined in CMake) (RESERVED, BUT NOT IN USE)
 #include "../../Source/ObjectSystem/VOS_Object.hpp"
 #include "../../Source/ObjectSystem/Component/VOS_Component.hpp"
 #include "../../Source/ObjectSystem/Register/VOS_Registry.hpp"
+#include "../../Source/ObjectSystem/Component/VOS_Base.hpp"  // Basic Components
 
 // HELPERS
 // #include "Source/Helpers/vantorColor.hpp"
 // #include "Source/vHelpers/vantorMath.hpp"
 // #include "Source/Helpers/vantorTimer.hpp"
 // #include "Source/Helpers/vantorFS.hpp"
+
+// Use no Namespaces for API
+#ifdef VANTOR_USE_NO_NAMESPACE
+// MAIN
+using namespace Vantor;
+// CORE
+using namespace Vantor::Core;
+using namespace Vantor::Core::IO;
+using namespace Vantor::Core::Types;
+using namespace Vantor::Core::Version;
+// BACKLOG
+using namespace Vantor::Backlog;
+#endif
 
 #endif // VANTOR

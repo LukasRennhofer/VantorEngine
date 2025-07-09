@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-07-01
+ *  Date: 2025-07-09
  *
  *  File: VRE_Camera.hpp
  *  Last Change: Automatically updated
@@ -20,8 +20,12 @@
 
 #pragma once
 
+// Math
 #include "../../Math/Linear/VMA_Vector.hpp"
 #include "../../Math/Linear/VMA_Matrix.hpp"
+
+// Object
+#include "../../ObjectSystem/VOS_Object.hpp"
 
 #include "VRE_Frustum.hpp"
 
@@ -38,7 +42,8 @@ namespace Vantor::Renderer
         CAMERA_DOWN,
     };
 
-    class Camera
+    // Camera is a standalone registered Entity
+    class Camera : public Vantor::Object::VObject
     {
         public:
             Vantor::Math::VMat4 Projection;

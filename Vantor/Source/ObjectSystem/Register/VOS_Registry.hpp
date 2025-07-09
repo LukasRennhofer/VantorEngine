@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-07-01
+ *  Date: 2025-07-09
  *
  *  File: VOS_Registry.hpp
  *  Last Change: Automatically updated
@@ -52,6 +52,18 @@ namespace Vantor::Object
                     return it->second;
                 }
                 return nullptr;
+            }
+
+            static const std::unordered_map<VObjectID, std::shared_ptr<VObject>> &GetAllEntities() { return entities; }
+
+            static std::vector<std::shared_ptr<VObject>> GetAllEntitiesList()
+            {
+                std::vector<std::shared_ptr<VObject>> list;
+                for (const auto &[id, entity] : entities)
+                {
+                    list.push_back(entity);
+                }
+                return list;
             }
 
             static void DestroyEntity(VObjectID id) { entities.erase(id); }

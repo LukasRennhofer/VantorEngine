@@ -1,3 +1,6 @@
 [submodule "Vantor/External/Switch/switch-glad"]
 	path = Vantor/External/Switch/switch-glad
 	url = https://github.com/VantorStudio/switch-glad.git
+[submodule "Vantor/External/Windows/glfw"]
+	path = Vantor/External/Windows/glfw
+	url = https://github.com/glfw/glfw.git

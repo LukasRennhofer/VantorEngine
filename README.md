@@ -14,21 +14,23 @@
     <img src="Assets/Github/Branding/VantorLogo_main_wbg.png" alt="Vantor Logo" width="80" height="80">
   </a>
 
-<h3 align="center">Vantor</h3>
+<h3 align="center">Vantor Engine</h3>
   <p align="center">
-    An Experimental Cross-Platform Game and Rendering Engine
+    Low-Level Experimental In-House Game Engine for VantorStudios
     <br />
     <h5 align="center">
-    <strong>v0.16.X</strong>
+    <strong>v0.50.X > - Experimental Build</strong>
     </h5>
     <a href="https://github.com/LukasRennhofer/Vantor"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="http://vantor.net">View Website</a>
+    <a href="#getting-started">Get Started</a>
     &middot;
     <a href="https://github.com/LukasRennhofer/Vantor/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
     &middot;
     <a href="https://github.com/LukasRennhofer/Vantor/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
+    &middot;
+    <a href="#vantorstudios">VantorStudios</a>
   </p>
 </div>
 
@@ -39,7 +41,9 @@
     <li>
       <a href="#about-the-project">About The Project</a>
       <ul>
+        <li><a href="#vantorstudios">VantorStudios</a></li>
         <li><a href="#built-with">Built With</a></li>
+        <li><a href="#experimental-status">Experimental Status</a></li>
       </ul>
     </li>
     <li>
@@ -50,6 +54,7 @@
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
+    <li><a href="#development-tools">Development Tools</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
@@ -65,131 +70,290 @@
 <img src="https://raw.githubusercontent.com/LukasRennhofer/Vantor/refs/heads/main/Assets/Github/Screenshots/gif1.gif" alt="GIF Show Background" style="">
 </p>-->
 
-Vantor is a modular, cross-platform game and rendering engine designed for **Open-World games** and is a code-focused development SDK and Framework. Built from the ground up with **OpenGL** and custom rendering techniques, it provides fine-grained control over every aspect of game development while maintaining **maximum efficiency**. Unlike high-level game engines, the engine is designed to be **lightweight**, **modular**, and **fully extensible**, allowing developers to directly manipulate rendering, physics, and resource management.
+**Vantor Engine** is a low-level, experimental game engine developed in-house by **VantorStudios** for creating high-performance games. Designed from the ground up with a focus on **minimal abstraction** and **maximum control**, Vantor provides game developers with direct access to rendering pipelines, memory management, and system resources.
 
-> *"Open source is about collaborating; not competing." – **Kelsey Hightower**, technologist at google and open-source advocate*
+The engine prioritizes **performance**, **modularity**, and **flexibility** over ease of use, making it ideal for developers who need fine-grained control over every aspect of their game's execution. Built with modern C++20 and OpenGL, Vantor serves as the foundation for VantorStudios' game development projects.
+
+### Key Philosophy
+- **Low-Level Control**: Direct manipulation of rendering, physics, and resource systems
+- **Performance First**: Optimized for real-time applications and resource-constrained environments  
+- **Modular Architecture**: Use only what you need, extend what you want
+- **Experimental Nature**: Cutting-edge features and techniques in active development
+
+> *"If you wish to make a game from scratch, you must first invent the universe."*
+
+### VantorStudios
+
+VantorStudios is an independent, hobby-driven game development studio focused on creating unqiue gaming experiences. The Vantor Engine serves as our proprietary technology stack, powering our internal game development projects and providing the technical foundation for our creative vision.
+
+
+
+### Experimental Status
+
+⚠️ **Important Notice**: Vantor Engine is currently in **experimental development status**. This means:
+
+- **Rapid Changes**: APIs and architecture may change frequently
+- **Limited Documentation**: Focus is on development rather than user documentation  
+- **Internal Use Priority**: Designed primarily for VantorStudios' development needs
+- **Community Contributions**: Welcome but may be adapted to fit internal roadmap
+- **No Stability Guarantees**: Breaking changes can occur between versions
+
+The engine is made available for educational purposes and community collaboration, but production use is not recommended for external users.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Built With
 
+The Vantor Engine is built using modern technologies and industry-standard tools:
+
 [![C++][C++-badge]][C++-url] [![OpenGL][OpenGL-badge]][OpenGL-url] [![Vulkan][Vulkan-badge]][Vulkan-url] [![GLSL][GLSL-badge]][GLSL-url] [![Python][Python-badge]][Python-url] [![Dear ImGui][ImGui-badge]][ImGui-url] [![SDL2][SDL2-badge]][SDL2-url] [![CMake][CMake-badge]][CMake-url]
+
+**Core Technologies:**
+- **C++20**: Modern C++ with latest language features
+- **OpenGL 4.6**: Primary rendering API with Vulkan support planned
+- **Custom GLSL Shaders**: Hand-optimized graphics shaders
+- **Python**: Development tools and build automation (VTRG)
+- **CMake**: Cross-platform build system
+
+**Third-Party Libraries:**
+- **Dear ImGui**: Immediate mode GUI for debugging and tools
+- **SDL2**: Low-level access to audio, keyboard, mouse, and graphics
+- **Assimp**: 3D model loading and processing
+- **GLFW**: Window management and input handling
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
 ## Getting Started
 
-To get a local copy up and running follow these simple example steps.
+> **⚠️ Warning**: This engine is experimental and intended primarily for VantorStudios development. APIs may change without notice.
+
+To get started with Vantor Engine development, follow these steps. Note that the engine is designed for experienced C++ developers familiar with low-level graphics programming.
 
 ### Prerequisites
 
-* CMake
-* Make
-* A C++20 capable compiler (MSVC, Clang, GCC)
-* Git
-* Python Interpreter
+Before building Vantor, ensure you have the following installed:
+
+**Required:**
+- **CMake** (3.10 or higher)
+- **Make** build system
+- **C++20 capable compiler**:
+  - MSVC 2019+ (Windows)
+  - GCC 10+ (Linux)
+  - Clang 12+ (Cross-platform)
+- **Git** for version control
+- **Python 3.7+** for development tools (VTRG)
+
+**Optional but Recommended:**
+- **clang-format** for code formatting
+- **Visual Studio Code** or similar IDE with C++ support
 
 ### Building
 
-#### Windows
+#### Windows (Recommended Platform)
 
-0. Install Mingw Msys x64 from [their website](https://www.msys2.org/) and install python from [its website](https://www.python.org/).
+**Step 0: Setup Environment**
 
----
+Install MSYS2 from [their website](https://www.msys2.org/) and Python from [python.org](https://www.python.org/).
 
-1. Clone the repository:
+**Step 1: Clone Repository**
 
-   ```bash
-   git clone https://github.com/LukasRennhofer/Vantor.git
-   cd Vantor
-   ```
+```bash
+git clone https://github.com/LukasRennhofer/Vantor.git
+cd Vantor
+```
 
----
+**Step 2: Install Dependencies**
 
-2. Install the Dependencies with Msys2:
+```bash
+pacman -S cmake mingw-w64-x86_64-toolchain
+```
 
-   ```bash
-      pacman -S cmake mingw-w64-x86_64-toolchain mingw-w64-x86_64-freeglut mingw-w64-x86_64-assimp -S mingw-w64-x86_64-sdl2
-   ```
+**Step 3: Build Engine**
 
----
+```bash
+# Using the new VTRG development tool
+python vtrg.py build --platform Windows --debug
+```
 
-3. Build the libary with the DevConsole Script
-  ```bash
-    python DevConsole.py --platform Windows --build-lib
-   ```
+#### Linux (Recommended Platform)
 
-#### Linux
+> **⚠️ Status**: Linux support is experimental and may have build issues on other distros than Arch Linux.
 
-- **Status**: Not currently supported. Building on Linux may lead to errors due to limited development resources. (Tested on Ubuntu 24.10)
+**Step 0: Install Python**
+```bash
+sudo apt-get install python3
+```
 
----
+**Step 1: Clone Repository**
+```bash
+git clone https://github.com/LukasRennhofer/Vantor.git
+cd Vantor
+```
 
-0. Install Python: 
-   ```bash
-   sudo apt-get install python3
-   ```
+**Step 2: Install Dependencies**
+```bash
+sudo apt-get install build-essential
+```
 
-0. Clone the repository:
-
-   ```bash
-   git clone https://github.com/LukasRennhofer/Vantor.git
-   cd Vantor
-   ```
-
----
-
-1. Install the Dependencies:
-
-   ```bash
-   sudo apt-get install build-essential libsdl2-dev libsdl2-2.0-0 libassimp-dev cmake libglm-dev libglew-dev
-   ```
-
----
-
-2. Build the library from source:
-
-   ```bash
-   python3 DevConsole.py --platform Linux --build-lib
-   ```
+**Step 3: Build Engine**
+```bash
+# Using VTRG (recommended)
+python3 vtrg.py build --platform Linux --debug
+```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Once built, you can use the sample applications, build custom modules, or integrate Vantor in your own project. The architecture is designed to support real-time rendering and simulation-heavy applications.
+Vantor Engine is designed for experienced developers who need low-level control over game systems. Here are some ways to use the engine:
 
-_For more examples, please refer to the [Documentation](https://vantor.netlify.app/)_
+### Basic Integration
+
+```cpp
+#include <Vantor/Vantor.hpp>
+
+int main() {
+    // Application Creation Data
+    Vantor::VApplication app;
+    // Vantor acts like Vulkan API and uses structs
+    // as parameters to construct objects
+    Vantor::VApplicationCreateInfo appInfo;
+    appInfo.windowWidth = 1280;
+    appInfo.windowHeight = 720;
+    appInfo.windowTitle = "Vantor Demo";
+
+    // Setup Application
+    app.Initialize(appInfo);
+    
+    // Main game loop
+    while (app.IsRunning()) {
+        app.Run([&]() {
+           // Here comes the logic,
+           // that fits between rendering
+        });
+    }
+    
+    // Shutdown the Application
+    app.Shutdown();
+
+    return 0;
+}
+```
+
+### Sample Projects
+
+The engine includes several sample projects in the `Samples/` directory:
+
+- **LightDemo**: Demonstration of lighting systems
+- **Template**: Starting point for new projects
+
+### Running Samples
+
+```bash
+# Build and run a sample using VTRG
+python vtrg.py build --sample Sandbox --platform Windows --run
+
+
+# Clean build artifacts
+python vtrg.py clean --all
+```
+
+_For more detailed examples and API documentation, please refer to the [Documentation](Documentation/)_
+
+## Development Tools
+
+### VTRG (Vantor Trigger)
+
+VTRG is the enhanced command-line development tool for Vantor Engine:
+
+```bash
+# Build commands
+python vtrg.py build --help
+python vtrg.py build --sample MyProject --debug --run
+
+# Code formatting
+python vtrg.py format --check
+python vtrg.py format --path ./Source
+
+# Cleanup
+python vtrg.py clean --build
+python vtrg.py clean --all --dry-run
+
+# Get help
+python vtrg.py --help
+python vtrg.py build --help
+```
+
+### Features:
+- **Multi-platform building** with platform-specific optimizations
+- **Integrated code formatting** with clang-format support
+- **Dependency checking** and validation
+- **Build artifact management** and cleanup
+- **Enhanced logging** with colored output and progress indicators
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- ROADMAP -->
 ## Roadmap
 
-- [🟩] Platform Abstraction Layer (Windows/Linux/Switch)
-- [🟥] Editor Interface
-- [🟧] Multi-threaded Resource Management
-- [🟧] GPU-based Scene Graph
-- [🟥] Full Vulkan Support
-- [🟥] Documentation Expansion
+### Current Focus (v0.16.x)
+- [🟩] **Platform Abstraction Layer** - Windows/Linux/Switch support
+- [�] **Core Rendering Pipeline** - OpenGL 4.6 implementation
+- [🟧] **Memory Management** - Custom allocators and resource pooling
+- [🟧] **Scene Graph** - Efficient spatial organization
 
-See the [open issues](https://github.com/LukasRennhofer/Vantor/issues) for a full list of proposed features (and known issues).
+### Near-term Goals (v0.17.x - v0.20.x)
+- [🟧] **Multi-threaded Resource Management** - Async loading and streaming
+- [🟧] **GPU-based Scene Graph** - GPU-driven rendering pipeline
+- [🟧] **Own STL lib** - Basic Datatypes and language features from scratch
+- [🟥] **Editor Interface** - Basic level editor and debugging tools
+- [🟥] **Audio System** - 3D spatial audio implementation
+
+### Long-term Vision (v1.0+)
+- [🟥] **Full Vulkan Support** - Modern low-level graphics API
+- [🟥] **Advanced Physics** - Custom physics simulation
+- [🟥] **Networking Layer** - Multiplayer game support
+- [🟥] **Documentation Expansion** - Comprehensive API documentation
+
+**Legend:**
+- 🟩 Complete
+- 🟧 In Progress  
+- 🟥 Planned
+
+> **Note**: Roadmap priorities may change based on VantorStudios' internal development needs.
+
+See the [open issues](https://github.com/LukasRennhofer/Vantor/issues) for detailed feature requests and known issues.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- CONTRIBUTING -->
 ## Contributing
 
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**, but will not affect the internal studios engine.
+We welcome contributions to the Vantor Engine! However, please note that this is primarily an **in-house engine for VantorStudios**, so contributions will be evaluated based on alignment with our internal development goals.
 
-0. Install dependencies for Vantor DevTool (`pip install clang-format`)
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+### Contribution Guidelines
+
+**Before Contributing:**
+1. Review our [experimental status](#experimental-status) - APIs may change rapidly
+2. Check existing [issues](https://github.com/LukasRennhofer/Vantor/issues) and [pull requests](https://github.com/LukasRennhofer/Vantor/pulls)
+3. Consider reaching out via [issues](https://github.com/LukasRennhofer/Vantor/issues) to discuss major changes
+
+**Contribution Process:**
+1. **Fork** the Project
+2. **Create** your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. **Format** your code (`python vtrg.py format`)
+4. **Test** your changes thoroughly
+5. **Commit** your Changes (`git commit -m 'Add some AmazingFeature'`)
+6. **Push** to the Branch (`git push origin feature/AmazingFeature`)
+7. **Open** a Pull Request
+
+### Important Notes
+- Contributions may be adapted or modified to fit Vantor's internal roadmap
+- Breaking changes may be introduced that affect community contributions
+- Focus is on engine functionality rather than external developer experience
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -209,19 +373,52 @@ Distributed under the GNU General Public License, v3. See `LICENSE` for more inf
 <!-- CONTACT -->
 ## Contact
 
-Lukas Rennhofer - [@LukasRennhofer](https://twitter.com/LukasRennhofer) - lukas.renn@aon.at
+**VantorStudios Development Team**
 
-Project Link: [https://github.com/LukasRennhofer/Vantor](https://github.com/LukasRennhofer/Vantor)
+- Lukas Rennhofer
+- Moritz Rottensteiner
+
+**Lead Developer:** Lukas Rennhofer  
+📧 Email: lukas.renn@aon.at  
+
+**Project Repository:** [https://github.com/LukasRennhofer/Vantor](https://github.com/LukasRennhofer/Vantor)
+
+For technical questions, bug reports, or feature requests, please use the [GitHub Issues](https://github.com/LukasRennhofer/Vantor/issues) system.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-* Vantor Studios
-* Inspiration from [WickedEngine](https://github.com/turanszkij/WickedEngine)
-* All contributors of external libraries
-* The open source community
+**VantorStudios** would like to thank:
+
+* **Open Source Community** - For the foundational libraries and tools that make Vantor possible
+* **Technical Inspirations:**
+  * [WickedEngine](https://github.com/turanszkij/WickedEngine) - Modern C++ game engine architecture
+  * [Godot Engine](https://github.com/godotengine/godot) - Open source game engine design patterns
+  * [Unreal Engine](https://www.unrealengine.com/) - Industry-standard rendering techniques
+* **Library Contributors:**
+  * [Dear ImGui](https://github.com/ocornut/imgui) - Immediate mode GUI framework
+  * [SDL2](https://www.libsdl.org/) - Cross-platform development library
+  * [Assimp](https://github.com/assimp/assimp) - 3D model loading library
+  * [GLFW](https://www.glfw.org/) - Window and input management
+* **Development Tools:**
+  * [CMake](https://cmake.org/) - Cross-platform build system
+  * [clang-format](https://clang.llvm.org/docs/ClangFormat.html) - Code formatting
+  * [GitHub](https://github.com/) - Version control and collaboration
+
+**Special Recognition:**
+- All contributors who help improve the engine
+- The game development community for sharing knowledge and best practices
+- Beta testers and early adopters who provide valuable feedback
+
+---
+
+<div align="center">
+
+**Vantor Engine** - Experimental Low-Level Game Engine  
+*Developed by VantorStudios (Lukas Rennhofer, Moritz Rottensteiner)*
+</div>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

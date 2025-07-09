@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-07-01
+ *  Date: 2025-07-09
  *
  *  File: VPL_Windows.cpp
  *  Last Change: Automatically updated
@@ -20,9 +20,9 @@
 
 #ifdef __WINDOWS__
 
-#include "vantorPlatformWindows.hpp"
+#include "VPL_Windows.hpp"
 #define NOMINMAX
-#include <Windows.h>
+#include <windows.h>
 #include <filesystem>
 #include <fstream>
 

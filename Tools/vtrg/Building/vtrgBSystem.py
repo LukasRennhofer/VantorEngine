@@ -21,7 +21,20 @@ from pathlib import Path
 import time
 
 from Tools.vtrg.Misc.vtrgConstants import *
-from Tools.vtrg.Console.vtrgCLIUtils import vtrgCLIClientUtils
+try:
+    from ..Console.vtrgCLIUtils import vtrgCLIClientUtils
+    from ..core.logger import logger
+except ImportError:
+    # Fallback for legacy imports
+    from Tools.vtrg.Console.vtrgCLIUtils import vtrgCLIClientUtils
+    # Create a simple logger fallback
+    class SimpleLogger:
+        def info(self, msg): print(f"ℹ️ {msg}")
+        def success(self, msg): print(f"✅ {msg}")
+        def warning(self, msg): print(f"⚠️ {msg}")
+        def error(self, msg): print(f"❌ {msg}")
+        def debug(self, msg): pass
+    logger = SimpleLogger()
 
 # ======================= Internal Build System (For the Libaries and Includes, neeeds to be updated @LRDev - 4.3) =================
 class VantorInternalBuildSystem:
@@ -239,11 +252,25 @@ class VantorInternalBuildSystem:
         build_path.mkdir(parents=True, exist_ok=True)
         exepath = str(build_path / Path(exepath))
 
-        # CMake Build
-        print(f"🔧 Starting CMake build for {exampleName} on {target}...")
-        result = subprocess.Popen([
-            "cmake", "-DPLATFORM=" + target, "-G", "Unix Makefiles", str(frameworkPath.resolve())
-        ], cwd=build_path, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        # Cross Build Linux -> Windows
+        if self.runningSystem == "Linux" and target == "Windows":
+            toolchain_path = Path("/run/media/lukas/F0A8-AAEB/Vantor/Vantor/Vantor/CMake/VantorMingwToolchain.cmake")
+            if not toolchain_path.exists():
+                print(f"❌ Toolchain file not found at {toolchain_path}")
+                return
+
+            print(f"🔧 Starting CMake Cross Build build for {exampleName} on {target}...")
+            # Include Toolchain file
+            result = subprocess.Popen([
+                "cmake", "-DPLATFORM=" + target, f"-DCMAKE_TOOLCHAIN_FILE={toolchain_path}", "-G", "Unix Makefiles", str(frameworkPath.resolve())
+            ], cwd=build_path, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        
+        else:
+             # Native Build
+            print(f"🔧 Starting CMake build for {exampleName} on {target}...")
+            result = subprocess.Popen([
+                "cmake", "-DPLATFORM=" + target, "-G", "Unix Makefiles", str(frameworkPath.resolve())
+            ], cwd=build_path, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
         vtrgCLIClientUtils.show_loading_indicator(result, "🔧 Building CMake Configs")
 
@@ -276,3 +303,126 @@ class VantorInternalBuildSystem:
             print("[DEBUGGING] Resolved Output:", stdout.decode())
 
         return exepath
+
+    def run_executable(self, executable_path: str, platform: str = None) -> int:
+        """Run an executable file."""
+        try:
+            import subprocess
+            import platform as plat
+            
+            if not os.path.exists(executable_path):
+                logger.error(f"Executable not found: {executable_path}")
+                return 1
+            
+            logger.info(f"Running executable: {executable_path}")
+            
+            # Handle cross-platform execution
+            if platform == "Windows" and plat.system() == "Linux":
+                # Try to run Windows executable with wine
+                try:
+                    result = subprocess.run(["wine", executable_path], check=True)
+                    return result.returncode
+                except FileNotFoundError:
+                    logger.error("Wine not found. Cannot run Windows executable on Linux.")
+                    return 1
+            else:
+                # Run native executable
+                if not executable_path.startswith('./'):
+                    executable_path = './' + executable_path
+                result = subprocess.run([executable_path], check=True)
+                return result.returncode
+                
+        except subprocess.CalledProcessError as e:
+            logger.error(f"Executable failed with exit code {e.returncode}")
+            return e.returncode
+        except Exception as e:
+            logger.error(f"Failed to run executable: {e}")
+            return 1
+    
+    def clean_all(self, dry_run: bool = False) -> bool:
+        """Clean all build artifacts and caches."""
+        try:
+            success = True
+            
+            # Clean build directories
+            build_dirs = ["Build", "build", "CMakeFiles"]
+            for build_dir in build_dirs:
+                if os.path.exists(build_dir):
+                    if dry_run:
+                        logger.info(f"Would remove: {build_dir}")
+                    else:
+                        shutil.rmtree(build_dir)
+                        logger.info(f"Removed: {build_dir}")
+            
+            # Clean cache files
+            cache_patterns = ["*.cache", "__pycache__", "*.pyc"]
+            for root, dirs, files in os.walk("."):
+                for pattern in cache_patterns:
+                    if pattern in dirs:
+                        cache_path = os.path.join(root, pattern)
+                        if dry_run:
+                            logger.info(f"Would remove: {cache_path}")
+                        else:
+                            shutil.rmtree(cache_path)
+                            logger.info(f"Removed: {cache_path}")
+                
+                for file in files:
+                    for pattern in cache_patterns:
+                        if file.endswith(pattern.replace("*", "")):
+                            file_path = os.path.join(root, file)
+                            if dry_run:
+                                logger.info(f"Would remove: {file_path}")
+                            else:
+                                os.remove(file_path)
+                                logger.info(f"Removed: {file_path}")
+            
+            return success
+            
+        except Exception as e:
+            logger.error(f"Failed to clean all: {e}")
+            return False
+    
+    def clean_build_dirs(self, dry_run: bool = False) -> bool:
+        """Clean only build directories."""
+        try:
+            build_dirs = ["Build", "build", "CMakeFiles"]
+            for build_dir in build_dirs:
+                if os.path.exists(build_dir):
+                    if dry_run:
+                        logger.info(f"Would remove build directory: {build_dir}")
+                    else:
+                        shutil.rmtree(build_dir)
+                        logger.info(f"Removed build directory: {build_dir}")
+            return True
+        except Exception as e:
+            logger.error(f"Failed to clean build directories: {e}")
+            return False
+    
+    def clean_cache(self, dry_run: bool = False) -> bool:
+        """Clean cache files."""
+        try:
+            cache_patterns = ["__pycache__", "*.pyc", "*.cache"]
+            for root, dirs, files in os.walk("."):
+                # Remove cache directories
+                dirs_to_remove = [d for d in dirs if d in cache_patterns]
+                for cache_dir in dirs_to_remove:
+                    cache_path = os.path.join(root, cache_dir)
+                    if dry_run:
+                        logger.info(f"Would remove cache directory: {cache_path}")
+                    else:
+                        shutil.rmtree(cache_path)
+                        logger.info(f"Removed cache directory: {cache_path}")
+                
+                # Remove cache files
+                for file in files:
+                    if file.endswith('.pyc') or file.endswith('.cache'):
+                        file_path = os.path.join(root, file)
+                        if dry_run:
+                            logger.info(f"Would remove cache file: {file_path}")
+                        else:
+                            os.remove(file_path)
+                            logger.info(f"Removed cache file: {file_path}")
+            return True
+        except Exception as e:
+            logger.error(f"Failed to clean cache: {e}")
+            return False

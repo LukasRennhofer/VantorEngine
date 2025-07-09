@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-07-01
+ *  Date: 2025-07-09
  *
  *  File: VRD_RenderDevice.hpp
  *  Last Change: Automatically updated
@@ -47,8 +47,9 @@ namespace Vantor::RenderDevice
             std::vector<Vantor::Math::VVector3> Bitangents;
             std::vector<unsigned int>           Indices;
 
-            VE_RENDER_TOPOLOGY Topology    = VE_RENDER_TOPOLOGY::TRIANGLES;
-            bool               Interleaved = true;
+            VE_RENDER_TOPOLOGY Topology     = VE_RENDER_TOPOLOGY::TRIANGLES;
+            bool               Interleaved  = true;
+            bool               SetFinalized = true;
 
             // Optional SDF-based mesh generation (if used instead of raw vertex data)
             std::function<float(Vantor::Math::VVector3)> SDF            = nullptr;

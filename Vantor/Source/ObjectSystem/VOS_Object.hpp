@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-07-01
+ *  Date: 2025-07-09
  *
  *  File: VOS_Object.hpp
  *  Last Change: Automatically updated
@@ -51,6 +51,12 @@ namespace Vantor::Object
                 auto comp                              = std::make_shared<T>(this, std::forward<Args>(args)...);
                 components[std::type_index(typeid(T))] = comp;
                 return comp;
+            }
+
+            template <typename T, typename... Args> void AddComponentVoid(Args &&...args)
+            {
+                static_assert(std::is_base_of<VComponent, T>::value, "T must derive from VComponent");
+                auto comp = AddComponent<T>(std::forward<Args>(args)...);
             }
 
             template <typename T> std::shared_ptr<T> GetComponent() const

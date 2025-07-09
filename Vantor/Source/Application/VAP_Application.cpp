@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-07-01
+ *  Date: 2025-07-09
  *
  *  File: VAP_Application.cpp
  *  Last Change: Automatically updated
@@ -23,14 +23,14 @@
 namespace Vantor
 {
 
-    static Vantor::Application *s_appInstance = nullptr;
+    static Vantor::VApplication *s_appInstance = nullptr;
 
     static void ResizeCallbackStatic(int w, int h)
     {
         if (s_appInstance && s_appInstance->GetRenderDevice()) s_appInstance->GetRenderDevice()->SetViewPort(w, h);
     }
 
-    void Application::Initialize(VApplicationCreateInfo &info)
+    void VApplication::Initialize(VApplicationCreateInfo &info)
     {
         // Guard for Initializing
         if (initialized)
@@ -76,7 +76,7 @@ namespace Vantor
         // TODO: Initializing with vantorInitializer
     }
 
-    void Application::Run(const std::function<void()> &updateFunc)
+    void VApplication::Run(const std::function<void()> &updateFunc)
     {
         while (IsRunning())
         {
@@ -95,13 +95,13 @@ namespace Vantor
         }
     }
 
-    void Application::Shutdown()
+    void VApplication::Shutdown()
     {
-        Vantor::Backlog::Log("Application", "Destroying Application Context", Vantor::Backlog::LogLevel::INFO);
+        Vantor::Backlog::Log("Application", "Destroying VApplication Context", Vantor::Backlog::LogLevel::INFO);
         window->close();
     }
 
-    bool Application::IsRunning()
+    bool VApplication::IsRunning()
     {
         if (!active)
         {
@@ -113,14 +113,14 @@ namespace Vantor
         }
     }
 
-    void Application::Break() { active = false; }
+    void VApplication::Break() { active = false; }
 
     // RenderDevice: mutable access
-    RenderDevice::VRDevice *Application::GetRenderDevice() { return RenderDevice.get(); }
+    RenderDevice::VRDevice *VApplication::GetRenderDevice() { return RenderDevice.get(); }
 
     // RenderDevice: readonly access
-    const RenderDevice::VRDevice *Application::GetRenderDevice() const { return RenderDevice.get(); }
+    const RenderDevice::VRDevice *VApplication::GetRenderDevice() const { return RenderDevice.get(); }
 
     // InputManager
-    Input::VInputManager *Application::GetInputManager() { return InputManager.get(); }
+    Input::VInputManager *VApplication::GetInputManager() { return InputManager.get(); }
 } // namespace Vantor
