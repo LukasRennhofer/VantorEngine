@@ -65,6 +65,7 @@ set(IMGUI_CORE_SOURCES
 set(OPENGL_RENDER_SOURCES
     RenderDevice/OpenGL/VRDO_Shader.cpp
     RenderDevice/OpenGL/VRDO_Mesh.cpp
+    RenderDevice/OpenGL/VRDO_Texture.cpp
     RenderDevice/OpenGL/VRDO_CommandBuffer.cpp
     RenderDevice/OpenGL/VRDO_RenderDevice.cpp
 )

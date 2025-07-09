@@ -19,7 +19,7 @@
     Low-Level Experimental In-House Game Engine for VantorStudios
     <br />
     <h5 align="center">
-    <strong>v0.50.X > - Experimental Build</strong>
+    <strong>v0.16.X - Experimental Build</strong>
     </h5>
     <a href="https://github.com/LukasRennhofer/Vantor"><strong>Explore the docs »</strong></a>
     <br />
@@ -80,7 +80,7 @@ The engine prioritizes **performance**, **modularity**, and **flexibility** over
 - **Modular Architecture**: Use only what you need, extend what you want
 - **Experimental Nature**: Cutting-edge features and techniques in active development
 
-> *"If you wish to make a game from scratch, you must first invent the universe."*
+> *"The best engine is the one that gets out of your way and lets you create."* – **VantorStudios Development Team**
 
 ### VantorStudios
 
@@ -98,7 +98,7 @@ VantorStudios is an independent, hobby-driven game development studio focused on
 - **Community Contributions**: Welcome but may be adapted to fit internal roadmap
 - **No Stability Guarantees**: Breaking changes can occur between versions
 
-The engine is made available for educational purposes and community collaboration, but production use is not recommended for external users.
+The engine is made available for educational purposes and community collaboration, but production use is not recommended until a stable release is announced.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -136,7 +136,7 @@ Before building Vantor, ensure you have the following installed:
 
 **Required:**
 - **CMake** (3.10 or higher)
-- **Make** build system
+- **Make** or **Ninja** build system
 - **C++20 capable compiler**:
   - MSVC 2019+ (Windows)
   - GCC 10+ (Linux)
@@ -166,7 +166,7 @@ cd Vantor
 **Step 2: Install Dependencies**
 
 ```bash
-pacman -S cmake mingw-w64-x86_64-toolchain
+pacman -S cmake mingw-w64-x86_64-toolchain mingw-w64-x86_64-freeglut mingw-w64-x86_64-assimp mingw-w64-x86_64-sdl2
 ```
 
 **Step 3: Build Engine**
@@ -174,11 +174,14 @@ pacman -S cmake mingw-w64-x86_64-toolchain
 ```bash
 # Using the new VTRG development tool
 python vtrg.py build --platform Windows --debug
+
+# Or using legacy DevConsole (deprecated)
+python DevConsole.py --platform Windows --build-lib
 ```
 
-#### Linux (Recommended Platform)
+#### Linux (Experimental Support)
 
-> **⚠️ Status**: Linux support is experimental and may have build issues on other distros than Arch Linux.
+> **⚠️ Status**: Linux support is experimental and may have build issues. Tested on Ubuntu 24.10.
 
 **Step 0: Install Python**
 ```bash
@@ -193,13 +196,16 @@ cd Vantor
 
 **Step 2: Install Dependencies**
 ```bash
-sudo apt-get install build-essential
+sudo apt-get install build-essential libsdl2-dev libsdl2-2.0-0 libassimp-dev cmake libglm-dev libglew-dev
 ```
 
 **Step 3: Build Engine**
 ```bash
 # Using VTRG (recommended)
 python3 vtrg.py build --platform Linux --debug
+
+# Or using legacy DevConsole
+python3 DevConsole.py --platform Linux --build-lib
 ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -215,29 +221,18 @@ Vantor Engine is designed for experienced developers who need low-level control 
 #include <Vantor/Vantor.hpp>
 
 int main() {
-    // Application Creation Data
-    Vantor::VApplication app;
-    // Vantor acts like Vulkan API and uses structs
-    // as parameters to construct objects
-    Vantor::VApplicationCreateInfo appInfo;
-    appInfo.windowWidth = 1280;
-    appInfo.windowHeight = 720;
-    appInfo.windowTitle = "Vantor Demo";
-
-    // Setup Application
-    app.Initialize(appInfo);
+    // Initialize Vantor Engine
+    Vantor::Application app;
+    
+    // Setup rendering context
+    app.Initialize();
     
     // Main game loop
     while (app.IsRunning()) {
-        app.Run([&]() {
-           // Here comes the logic,
-           // that fits between rendering
-        });
+        app.Update();
+        app.Render();
     }
     
-    // Shutdown the Application
-    app.Shutdown();
-
     return 0;
 }
 ```
@@ -246,6 +241,7 @@ int main() {
 
 The engine includes several sample projects in the `Samples/` directory:
 
+- **Sandbox**: Basic engine showcase and testing environment
 - **LightDemo**: Demonstration of lighting systems
 - **Template**: Starting point for new projects
 
@@ -255,6 +251,8 @@ The engine includes several sample projects in the `Samples/` directory:
 # Build and run a sample using VTRG
 python vtrg.py build --sample Sandbox --platform Windows --run
 
+# Format code before contributing
+python vtrg.py format
 
 # Clean build artifacts
 python vtrg.py clean --all
@@ -302,12 +300,11 @@ python vtrg.py build --help
 - [🟩] **Platform Abstraction Layer** - Windows/Linux/Switch support
 - [�] **Core Rendering Pipeline** - OpenGL 4.6 implementation
 - [🟧] **Memory Management** - Custom allocators and resource pooling
-- [🟧] **Scene Graph** - Efficient spatial organization
+- [🟥] **Scene Graph** - Efficient spatial organization
 
 ### Near-term Goals (v0.17.x - v0.20.x)
 - [🟧] **Multi-threaded Resource Management** - Async loading and streaming
 - [🟧] **GPU-based Scene Graph** - GPU-driven rendering pipeline
-- [🟧] **Own STL lib** - Basic Datatypes and language features from scratch
 - [🟥] **Editor Interface** - Basic level editor and debugging tools
 - [🟥] **Audio System** - 3D spatial audio implementation
 

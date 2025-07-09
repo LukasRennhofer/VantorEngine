@@ -22,6 +22,7 @@
 
 #include "VRDO_Shader.hpp"
 #include "VRDO_Mesh.hpp"
+#include "VRDO_Texture.hpp"
 #include "../Interface/VRD_RenderDevice.hpp"
 
 namespace Vantor::RenderDevice

@@ -21,6 +21,8 @@
 #include <Vantor/RenderModules/FlyCamera.hpp> // FlyCamera
 #include <Vantor/Renderer/Geometry.hpp> // Geometry Objects
 #include <Vantor/Integration/ImGui.hpp>
+// #include "../Vantor/Source/RenderDevice/OpenGL/VRDO_Texture.hpp"
+
 
 int main() {
     VApplication app;
@@ -46,6 +48,16 @@ int main() {
     Math::VVector3 cameraPosition(1.0f, 1.0f, 1.0f);
     Math::VVector3 cameraFront(0.0f, 0.0f, -1.0f);
     Math::VVector3 cameraUp(0.0f, 1.0f,  0.0f);
+
+    // Vantor::RenderDevice::VTextureSampler sampler;
+    // sampler.minFilter = Vantor::RenderDevice::VTextureFilter::LinearMipmap;
+    // sampler.magFilter = Vantor::RenderDevice::VTextureFilter::Linear;
+    // sampler.wrapS = Vantor::RenderDevice::VTextureWrap::Repeat;
+    // sampler.wrapT = Vantor::RenderDevice::VTextureWrap::Repeat;
+    // sampler.generateMipmaps = true;
+
+    //     // Load texture from file
+    // auto texture = Vantor::RenderDevice::VOpenGLTexture2D::CreateFromFile("Resources/textures/glass.png", sampler, true);
 
     // ===== Object System and build Scene Graph =====
     auto rootNode = Object::VORegistry::CreateEntity<Object::VObject>();
