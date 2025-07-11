@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-07-09
+ *  Date: 2025-07-11
  *
  *  File: VAP_Application.hpp
  *  Last Change: Automatically updated
@@ -21,19 +21,19 @@
 #pragma once
 
 // Core
-#include "../Core/VCO_Version.hpp"
-#include "../Core/VCO_Timer.hpp"
+#include <format>
+#include <functional>
+#include <memory>
+
+#include "../Context/Interface/VCT_Window.hpp"
 #include "../Core/BackLog/VCO_Backlog.hpp"
 #include "../Core/Global/VCO_ServiceRegistry.hpp"
-
-// RenderDevice
-#include "../RenderDevice/VRD_Factory.hpp"
-
-// Context
-#include "../Context/Interface/VCT_Window.hpp"
-
-// Platform Env
+#include "../Core/VCO_Timer.hpp"
+#include "../Core/VCO_Version.hpp"
+#include "../InputDevice/VID_Manager.hpp"
 #include "../Platform/VPL_Environment.hpp"
+#include "../RenderDevice/VRD_Factory.hpp"
+#include "../Resource/VRES_Manager.hpp"
 
 // Input
 #include "../InputDevice/VID_Manager.hpp"
@@ -67,8 +67,8 @@ namespace Vantor
 
         protected:
             // Base Stats
-            bool initialized = false;
-            bool active      = true;
+            bool  initialized = false;
+            bool  active      = true;
             float deltatime;
 
             Vantor::Core::Timer timer;
@@ -93,7 +93,7 @@ namespace Vantor
             bool IsRunning();
 
             // Deltatime
-            float GetDeltaTime() {return deltatime;}
+            float GetDeltaTime() { return deltatime; }
 
             // RenderDevice
             RenderDevice::VRDevice       *GetRenderDevice();       // mutable access

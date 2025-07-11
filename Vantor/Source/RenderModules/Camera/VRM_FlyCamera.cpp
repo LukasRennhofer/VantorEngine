@@ -12,15 +12,15 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-07-09
+ *  Date: 2025-07-11
  *
  *  File: VRM_FlyCamera.cpp
  *  Last Change: Automatically updated
  */
 
+#include "../../Math/Linear/VMA_Vector.hpp"
+#include "../../Math/VMA_Common.hpp"
 #include "VRM_FlyCamera.hpp"
-
-// Math
 #include "../../Math/VMA_Common.hpp"
 #include "../../Math/Linear/VMA_Vector.hpp"
 

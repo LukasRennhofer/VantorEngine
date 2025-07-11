@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-07-09
+ *  Date: 2025-07-11
  *
  *  File: VRDO_RenderDevice.cpp
  *  Last Change: Automatically updated
@@ -22,8 +22,8 @@
 
 #ifdef VANTOR_INTEGRATION_IMGUI
 #include <Shared/imgui/imgui.h>
+
 #include "../../Integration/imgui/VIN_Imgui.hpp"
-#endif
 
 // Core/Backlog
 #include "../../Core/BackLog/VCO_Backlog.hpp"
@@ -31,13 +31,15 @@
 namespace Vantor::RenderDevice
 {
     void VRDeviceOpenGL::Initialize() {} // TODO
-    void VRDeviceOpenGL::SetViewPort(int w, int h) { 
+    void VRDeviceOpenGL::SetViewPort(int w, int h)
+    {
 
-        for (auto rPath : m_RenderPaths) {
+        for (auto rPath : m_RenderPaths)
+        {
             rPath->SetViewport(0, 0, w, h);
         }
 
-        glViewport(0, 0, w, h); 
+        glViewport(0, 0, w, h);
     }
 
     void VRDeviceOpenGL::CreateRenderDeviceContext(Vantor::Context::Window *window)

@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-07-09
+ *  Date: 2025-07-11
  *
  *  File: VRE_Frustum.hpp
  *  Last Change: Automatically updated
@@ -20,8 +20,8 @@
 
 #pragma once
 
-#include "../../Math/Linear/VMA_Vector.hpp"
 #include "../../Math/Linear/VMA_Matrix.hpp"
+#include "../../Math/Linear/VMA_Vector.hpp"
 
 namespace Vantor::Renderer
 {

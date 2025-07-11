@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-07-09
+ *  Date: 2025-07-11
  *
  *  File: VRD_CommandBuffer.hpp
  *  Last Change: Automatically updated
@@ -21,9 +21,9 @@
 #pragma once
 
 // Math
-#include "../../Math/Linear/VMA_Vector.hpp"
 #include "../../Math/Linear/VMA_Matrix.hpp"
-
+#include "../../Math/Linear/VMA_Vector.hpp"
+#include "VRD_Mesh.hpp"
 #include "VRD_Mesh.hpp"
 
 namespace Vantor::RenderDevice

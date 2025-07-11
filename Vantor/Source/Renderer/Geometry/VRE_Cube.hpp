@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-07-09
+ *  Date: 2025-07-11
  *
  *  File: VRE_Cube.hpp
  *  Last Change: Automatically updated
@@ -22,8 +22,8 @@
 
 // Core/Backlog
 #include "../../Core/BackLog/VCO_Backlog.hpp"
-
-// Object
+#include "../../Math/Linear/VMA_Vector.hpp"
+#include "../../ObjectSystem/Component/VOS_Base.hpp"
 #include "../../ObjectSystem/VOS_Object.hpp"
 #include "../../ObjectSystem/Component/VOS_Base.hpp"
 

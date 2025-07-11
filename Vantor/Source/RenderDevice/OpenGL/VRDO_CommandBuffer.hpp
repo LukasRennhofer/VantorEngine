@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-07-09
+ *  Date: 2025-07-11
  *
  *  File: VRDO_CommandBuffer.hpp
  *  Last Change: Automatically updated
@@ -20,9 +20,9 @@
 
 #pragma once
 
-#include "../Interface/VRD_CommandBuffer.hpp"
-
 #include <map>
+
+#include "../Interface/VRD_CommandBuffer.hpp"
 
 namespace Vantor::RenderDevice
 {

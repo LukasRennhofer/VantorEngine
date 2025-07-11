@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-07-09
+ *  Date: 2025-07-11
  *
  *  File: VRD_Mesh.hpp
  *  Last Change: Automatically updated
@@ -20,11 +20,11 @@
 
 #pragma once
 
-#include <vector>
-#include <functional>
 #include <cstdint>
+#include <functional>
+#include <vector>
 
-// Math
+#include "../../Math/Linear/VMA_Vector.hpp"
 #include "../../Math/Linear/VMA_Vector.hpp"
 
 namespace Vantor::RenderDevice

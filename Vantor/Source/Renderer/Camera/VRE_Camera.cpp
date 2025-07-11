@@ -12,14 +12,14 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-07-09
+ *  Date: 2025-07-11
  *
  *  File: VRE_Camera.cpp
  *  Last Change: Automatically updated
  */
 
+#include "../../Math/VMA_Common.hpp"
 #include "VRE_Camera.hpp"
-
 // Math
 #include "../../Math/VMA_Common.hpp"
 

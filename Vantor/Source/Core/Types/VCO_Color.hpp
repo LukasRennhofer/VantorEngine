@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-07-09
+ *  Date: 2025-07-11
  *
  *  File: VCO_Color.hpp
  *  Last Change: Automatically updated
@@ -21,10 +21,10 @@
 #pragma once
 
 // Math
-#include "../../Math/VMA_Common.hpp"
-#include "../../Math/Linear/VMA_Vector.hpp"
-
 #include <cstdint>
+
+#include "../../Math/Linear/VMA_Vector.hpp"
+#include "../../Math/VMA_Common.hpp"
 
 namespace Vantor::Core::Types
 {

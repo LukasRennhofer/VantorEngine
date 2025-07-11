@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-07-09
+ *  Date: 2025-07-11
  *
  *  File: VRM_FlyCamera.hpp
  *  Last Change: Automatically updated
@@ -21,8 +21,8 @@
 #pragma once
 
 // Renderer
-#include "../../Renderer/Camera/VRE_Camera.hpp"
 #include "../../Math/Linear/VMA_Vector.hpp"
+#include "../../Renderer/Camera/VRE_Camera.hpp"
 
 // Fly Camera from Cell Engine @JoeyDeVries
 

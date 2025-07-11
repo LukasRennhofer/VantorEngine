@@ -1,26 +1,34 @@
+/*
+ *  ╔═══════════════════════════════════════════════════════════════╗
+ *  ║                          ~ Vantor ~                           ║
+ *  ║                                                               ║
+ *  ║  This file is part of the Vantor Engine.                      ║
+ *  ║  Automatically formatted by vtrgFormat.py                     ║
+ *  ║                                                               ║
+ *  ╚═══════════════════════════════════════════════════════════════╝
+ *
+ *  Copyright (c) 2025 Lukas Rennhofer
+ *  Licensed under the GNU General Public License, Version 3.
+ *  See LICENSE file for more details.
+ *
+ *  Author: Lukas Rennhofer
+ *  Date: 2025-07-11
+ *
+ *  File: VRE_Material.cpp
+ *  Last Change: Automatically updated
+ */
+
 #include "VRE_Material.hpp"
 
 namespace Vantor::Renderer
 {
-    VMaterial::VMaterial()
-    {
+    VMaterial::VMaterial() {}
 
-    }
+    VMaterial::VMaterial(Vantor::RenderDevice::VShader *shader) { m_Shader = shader; }
 
-    VMaterial::VMaterial(Vantor::RenderDevice::VShader* shader)
-    {
-        m_Shader = shader;
-    }
+    Vantor::RenderDevice::VShader *VMaterial::GetShader() { return m_Shader; }
 
-    Vantor::RenderDevice::VShader* VMaterial::GetShader()
-    {
-        return m_Shader;
-    }
-
-    void VMaterial::SetShader(Vantor::RenderDevice::VShader* shader)
-    {
-        m_Shader = shader;
-    }
+    void VMaterial::SetShader(Vantor::RenderDevice::VShader *shader) { m_Shader = shader; }
 
     VMaterial VMaterial::Copy()
     {
@@ -29,10 +37,10 @@ namespace Vantor::Renderer
         copy.Type = Type;
 
         copy.color = color;
-        
-        copy.m_Uniforms = m_Uniforms;
+
+        copy.m_Uniforms        = m_Uniforms;
         copy.m_SamplerUniforms = m_SamplerUniforms;
-        
+
         return copy;
     }
 
@@ -54,14 +62,13 @@ namespace Vantor::Renderer
         m_Uniforms[name].Float = value;
     }
 
-    void VMaterial::SetTexture(std::string name, Vantor::RenderDevice::VTexture* value, unsigned int unit, VEUniformType target)
+    void VMaterial::SetTexture(std::string name, Vantor::RenderDevice::VTexture *value, unsigned int unit, VEUniformType target)
     {
         m_SamplerUniforms[name].Unit    = unit;
         m_SamplerUniforms[name].Texture = value;
 
-        m_SamplerUniforms[name].Type      = target;
+        m_SamplerUniforms[name].Type = target;
 
-        
         if (m_Shader)
         {
             m_Shader->use();
@@ -69,7 +76,7 @@ namespace Vantor::Renderer
         }
     }
 
-    void VMaterial::SetTextureCube(std::string name, Vantor::RenderDevice::VTextureCube* value, unsigned int unit)
+    void VMaterial::SetTextureCube(std::string name, Vantor::RenderDevice::VTextureCube *value, unsigned int unit)
     {
         m_SamplerUniforms[name].Unit        = unit;
         m_SamplerUniforms[name].Type        = UniformTypeSAMPLERCUBE;
@@ -118,13 +125,7 @@ namespace Vantor::Renderer
         m_Uniforms[name].Mat4 = value;
     }
 
-    std::map<std::string, VUniformValue>*        VMaterial::GetUniforms()
-    {
-        return &m_Uniforms;
-    }
+    std::map<std::string, VUniformValue> *VMaterial::GetUniforms() { return &m_Uniforms; }
 
-    std::map<std::string, VUniformValueSampler>* VMaterial::GetSamplerUniforms()
-    {
-        return &m_SamplerUniforms;
-    }
-}
+    std::map<std::string, VUniformValueSampler> *VMaterial::GetSamplerUniforms() { return &m_SamplerUniforms; }
+} // namespace Vantor::Renderer

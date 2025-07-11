@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-07-09
+ *  Date: 2025-07-11
  *
  *  File: VRD_RenderDevice.hpp
  *  Last Change: Automatically updated
@@ -20,14 +20,14 @@
 
 #pragma once
 
-#include <string>
 #include <memory>
+#include <string>
 
-#include "VRD_Shader.hpp"
+#include "../../Context/Interface/VCT_Window.hpp"
 #include "VRD_Mesh.hpp"
-#include "VRD_Texture.hpp"
-
 #include "VRD_RenderPath.hpp"
+#include "VRD_Shader.hpp"
+#include "VRD_Texture.hpp"
 
 // Context
 #include "../../Context/Interface/VCT_Window.hpp"
@@ -89,7 +89,7 @@ namespace Vantor::RenderDevice
 
             // RenderPaths
             virtual std::shared_ptr<VRenderPath3D> CreateRenderPath3D() = 0;
-            
+
             // Resource Factory
             // Shader
             // virtual std::shared_ptr<VShader> CreateShader(const char *vertexCode, const char *fragmentCode) = 0;

@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-07-09
+ *  Date: 2025-07-11
  *
  *  File: VRD_Shader.hpp
  *  Last Change: Automatically updated
@@ -20,12 +20,12 @@
 
 #pragma once
 
-#include <string>
 #include <fstream>
-#include <sstream>
 #include <iostream>
+#include <sstream>
+#include <string>
 
-// Math
+#include "../../Math/Linear/VMA_Matrix.hpp"
 #include "../../Math/Linear/VMA_Vector.hpp"
 #include "../../Math/Linear/VMA_Matrix.hpp"
 

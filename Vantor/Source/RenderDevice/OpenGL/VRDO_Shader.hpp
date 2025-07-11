@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-07-09
+ *  Date: 2025-07-11
  *
  *  File: VRDO_Shader.hpp
  *  Last Change: Automatically updated
@@ -23,9 +23,9 @@
 #include <Shared/glad/glad.h>
 #include <string>
 
-// Math
-#include "../../Math/Linear/VMA_Vector.hpp"
 #include "../../Math/Linear/VMA_Matrix.hpp"
+#include "../../Math/Linear/VMA_Vector.hpp"
+#include "../Interface/VRD_Shader.hpp"
 
 #include "../Interface/VRD_Shader.hpp"
 

@@ -1,15 +1,36 @@
+/*
+ *  ╔═══════════════════════════════════════════════════════════════╗
+ *  ║                          ~ Vantor ~                           ║
+ *  ║                                                               ║
+ *  ║  This file is part of the Vantor Engine.                      ║
+ *  ║  Automatically formatted by vtrgFormat.py                     ║
+ *  ║                                                               ║
+ *  ╚═══════════════════════════════════════════════════════════════╝
+ *
+ *  Copyright (c) 2025 Lukas Rennhofer
+ *  Licensed under the GNU General Public License, Version 3.
+ *  See LICENSE file for more details.
+ *
+ *  Author: Lukas Rennhofer
+ *  Date: 2025-07-11
+ *
+ *  File: VRE_Uniform.hpp
+ *  Last Change: Automatically updated
+ */
+
 #pragma once
 
 #include <string>
 
-// RenderDevice Interface
+#include "../Math/Linear/VMA_Matrix.hpp"
+#include "../Math/Linear/VMA_Vector.hpp"
 #include "../RenderDevice/Interface/VRD_Texture.hpp"
-
 // Math
 #include "../Math/Linear/VMA_Vector.hpp"
 #include "../Math/Linear/VMA_Matrix.hpp"
 
-namespace Vantor::Renderer {
+namespace Vantor::Renderer
+{
 
     enum VEUniformType
     {
@@ -30,51 +51,51 @@ namespace Vantor::Renderer {
 
     struct VUniform
     {
-        VEUniformType  Type;
-        std::string  Name;
-        int          Size;
-        unsigned int Location;
+            VEUniformType Type;
+            std::string   Name;
+            int           Size;
+            unsigned int  Location;
     };
 
     struct VUniformValue
     {
-        VEUniformType Type;
+            VEUniformType Type;
 
-        union
-        {
-            bool       Bool;
-            int        Int;
-            float      Float;
+            union
+            {
+                    bool  Bool;
+                    int   Int;
+                    float Float;
 
-            Vantor::Math::VVector2 Vec2;
-            Vantor::Math::VVector3 Vec3;
-            Vantor::Math::VVector4 Vec4;
-            Vantor::Math::VMat2 Mat2;
-            Vantor::Math::VMat3 Mat3;
-            Vantor::Math::VMat4 Mat4;
-        };
+                    Vantor::Math::VVector2 Vec2;
+                    Vantor::Math::VVector3 Vec3;
+                    Vantor::Math::VVector4 Vec4;
+                    Vantor::Math::VMat2    Mat2;
+                    Vantor::Math::VMat3    Mat3;
+                    Vantor::Math::VMat4    Mat4;
+            };
 
-        VUniformValue() {}
+            VUniformValue() {}
     };
 
     struct VUniformValueSampler
     {
-        VEUniformType  Type;
-        unsigned int Unit;
-        union 
-        {
-            Vantor::RenderDevice::VTexture     *Texture;
-            Vantor::RenderDevice::VTextureCube *TextureCube;
-        };
+            VEUniformType Type;
+            unsigned int  Unit;
+            union
+            {
+                    Vantor::RenderDevice::VTexture     *Texture;
+                    Vantor::RenderDevice::VTextureCube *TextureCube;
+            };
 
-        VUniformValueSampler() {}
+            VUniformValueSampler() {}
     };
 
     struct VVertexAttribute
     {
-        VEUniformType  Type;
-        std::string  Name;
-        int          Size;
-        unsigned int Location;
+            VEUniformType Type;
+            std::string   Name;
+            int           Size;
+            unsigned int  Location;
     };
-}
+} // namespace Vantor::Renderer

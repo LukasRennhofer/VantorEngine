@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-07-09
+ *  Date: 2025-07-11
  *
  *  File: VPL_Linux.cpp
  *  Last Change: Automatically updated
@@ -20,14 +20,14 @@
 
 #ifdef __LINUX__
 
-#include "VPL_Linux.hpp"
 #include <chrono>
-#include <thread>
 #include <filesystem>
-#include <unistd.h>
-#include <limits.h>
 #include <fstream>
+#include <limits.h>
+#include <thread>
+#include <unistd.h>
 
+#include "VPL_Linux.hpp"
 namespace Vantor::Platform
 {
     std::string PlatformLinux::cachedPath;

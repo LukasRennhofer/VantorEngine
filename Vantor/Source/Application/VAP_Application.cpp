@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-07-09
+ *  Date: 2025-07-11
  *
  *  File: VAP_Application.cpp
  *  Last Change: Automatically updated
@@ -28,7 +28,8 @@ namespace Vantor
     static void ResizeCallbackStatic(int w, int h)
     {
         if (s_appInstance && s_appInstance->GetRenderDevice()) s_appInstance->GetRenderDevice()->SetViewPort(w, h);
-        VServiceLocator::SetContextWidth(w); VServiceLocator::SetContextHeight(h);
+        VServiceLocator::SetContextWidth(w);
+        VServiceLocator::SetContextHeight(h);
     }
 
     void VApplication::Initialize(VApplicationCreateInfo &info)
@@ -54,7 +55,8 @@ namespace Vantor
 
         // Initializing the Resource Manager
 
-        if (!Vantor::Resource::VResourceManager::Instance().Initialize()) {
+        if (!Vantor::Resource::VResourceManager::Instance().Initialize())
+        {
             Vantor::Backlog::Log("Application", "Resource Manager failed to initialize", Vantor::Backlog::LogLevel::ERR);
         }
 
@@ -63,7 +65,6 @@ namespace Vantor
 
         s_appInstance = this; // For ResizeCallback usage
         window->setResizeCallback(ResizeCallbackStatic);
-
 
         // put the pointer of the RenderDevice into the Service Registry for access across the Engine
         VServiceLocator::SetRenderDevice(RenderDevice.get());
@@ -86,15 +87,16 @@ namespace Vantor
         // TODO: Initializing with vantorInitializer
     }
 
-    void VApplication::BeginFrame() {
+    void VApplication::BeginFrame()
+    {
         // Record with Timer
         timer.record();
 
         // Update with DeltaTime
-        static Vantor::Core::VTimeStamp lastTime = timer.timestamp;
-        auto currentTime = timer.timestamp;
-        deltatime = std::chrono::duration<float>(currentTime - lastTime).count();
-        lastTime = currentTime;
+        static Vantor::Core::VTimeStamp lastTime    = timer.timestamp;
+        auto                            currentTime = timer.timestamp;
+        deltatime                                   = std::chrono::duration<float>(currentTime - lastTime).count();
+        lastTime                                    = currentTime;
 
         // Update Window Events
         window->pollEvents();
@@ -106,7 +108,8 @@ namespace Vantor
         RenderDevice->BeginFrame();
     }
 
-    void VApplication::EndFrame() {
+    void VApplication::EndFrame()
+    {
         // End the RenderDevice frame
         RenderDevice->EndFrame();
 

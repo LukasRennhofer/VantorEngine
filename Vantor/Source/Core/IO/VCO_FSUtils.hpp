@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-07-09
+ *  Date: 2025-07-11
  *
  *  File: VCO_FSUtils.hpp
  *  Last Change: Automatically updated
@@ -21,9 +21,9 @@
 #pragma once
 
 // Platform
-#include "../../Platform/VPL_Environment.hpp"
-
 #include <string>
+
+#include "../../Platform/VPL_Environment.hpp"
 
 namespace Vantor::Core::IO
 {

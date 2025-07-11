@@ -12,20 +12,20 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-07-09
+ *  Date: 2025-07-11
  *
  *  File: VRDO_RenderPath.cpp
- *  Last Change: Created OpenGL RenderPath implementations
+ *  Last Change: Automatically updated
  */
 
+#include <cstring>
+#include <iostream>
+
+#include "../../Resource/VRES_Manager.hpp"
+#include "../Interface/VRD_RenderDevice.hpp"
 #include "VRDO_RenderPath.hpp"
 #include "VRDO_Shader.hpp"
 #include "VRDO_Texture.hpp"
-#include "../Interface/VRD_RenderDevice.hpp"
-
-#include <iostream>
-#include <cstring>
-
 // Resource Manager
 #include "../../Resource/VRES_Manager.hpp"
 
@@ -35,68 +35,36 @@ namespace Vantor::RenderDevice
     // VRenderPassGL Implementation
     // =============================================================================
 
-    VRenderPassGL::VRenderPassGL(VERenderPassType type, const std::string& name)
-        : m_Type(type), m_Name(name)
-    {
-    }
+    VRenderPassGL::VRenderPassGL(VERenderPassType type, const std::string &name) : m_Type(type), m_Name(name) {}
 
     // =============================================================================
     // VForwardRenderPassGL Implementation
     // =============================================================================
 
-    VForwardRenderPassGL::VForwardRenderPassGL()
-        : VRenderPassGL(VERenderPassType::Forward, "ForwardPass")
-    {
-    }
+    VForwardRenderPassGL::VForwardRenderPassGL() : VRenderPassGL(VERenderPassType::Forward, "ForwardPass") {}
 
     void VForwardRenderPassGL::Initialize()
     {
-        float vertices[] = {
-            -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
-            0.5f, -0.5f, -0.5f,  1.0f, 0.0f,
-            0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-            0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-            -0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
-            -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
+        float vertices[] = {-0.5f, -0.5f, -0.5f, 0.0f, 0.0f, 0.5f,  -0.5f, -0.5f, 1.0f, 0.0f, 0.5f,  0.5f,  -0.5f, 1.0f, 1.0f,
+                            0.5f,  0.5f,  -0.5f, 1.0f, 1.0f, -0.5f, 0.5f,  -0.5f, 0.0f, 1.0f, -0.5f, -0.5f, -0.5f, 0.0f, 0.0f,
 
-            -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-            0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-            0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
-            0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
-            -0.5f,  0.5f,  0.5f,  0.0f, 1.0f,
-            -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+                            -0.5f, -0.5f, 0.5f,  0.0f, 0.0f, 0.5f,  -0.5f, 0.5f,  1.0f, 0.0f, 0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
+                            0.5f,  0.5f,  0.5f,  1.0f, 1.0f, -0.5f, 0.5f,  0.5f,  0.0f, 1.0f, -0.5f, -0.5f, 0.5f,  0.0f, 0.0f,
 
-            -0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-            -0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-            -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-            -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-            -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-            -0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+                            -0.5f, 0.5f,  0.5f,  1.0f, 0.0f, -0.5f, 0.5f,  -0.5f, 1.0f, 1.0f, -0.5f, -0.5f, -0.5f, 0.0f, 1.0f,
+                            -0.5f, -0.5f, -0.5f, 0.0f, 1.0f, -0.5f, -0.5f, 0.5f,  0.0f, 0.0f, -0.5f, 0.5f,  0.5f,  1.0f, 0.0f,
 
-            0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-            0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-            0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-            0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-            0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-            0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+                            0.5f,  0.5f,  0.5f,  1.0f, 0.0f, 0.5f,  0.5f,  -0.5f, 1.0f, 1.0f, 0.5f,  -0.5f, -0.5f, 0.0f, 1.0f,
+                            0.5f,  -0.5f, -0.5f, 0.0f, 1.0f, 0.5f,  -0.5f, 0.5f,  0.0f, 0.0f, 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
 
-            -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-            0.5f, -0.5f, -0.5f,  1.0f, 1.0f,
-            0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-            0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-            -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-            -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+                            -0.5f, -0.5f, -0.5f, 0.0f, 1.0f, 0.5f,  -0.5f, -0.5f, 1.0f, 1.0f, 0.5f,  -0.5f, 0.5f,  1.0f, 0.0f,
+                            0.5f,  -0.5f, 0.5f,  1.0f, 0.0f, -0.5f, -0.5f, 0.5f,  0.0f, 0.0f, -0.5f, -0.5f, -0.5f, 0.0f, 1.0f,
 
-            -0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
-            0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-            0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-            0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-            -0.5f,  0.5f,  0.5f,  0.0f, 0.0f,
-            -0.5f,  0.5f, -0.5f,  0.0f, 1.0f
-        };
+                            -0.5f, 0.5f,  -0.5f, 0.0f, 1.0f, 0.5f,  0.5f,  -0.5f, 1.0f, 1.0f, 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+                            0.5f,  0.5f,  0.5f,  1.0f, 0.0f, -0.5f, 0.5f,  0.5f,  0.0f, 0.0f, -0.5f, 0.5f,  -0.5f, 0.0f, 1.0f};
 
-
-        auto m_ResDefShader = Vantor::Resource::VResourceManager::Instance().LoadShaderProgram("m_DefaultShader", "Shaders/Private/first.vs", "Shaders/Private/first.fs");
+        auto m_ResDefShader
+            = Vantor::Resource::VResourceManager::Instance().LoadShaderProgram("m_DefaultShader", "Shaders/Private/first.vs", "Shaders/Private/first.fs");
 
         m_DefaultShader = m_ResDefShader->GetShader();
 
@@ -109,30 +77,33 @@ namespace Vantor::RenderDevice
         glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
         // position attribute
-        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
+        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void *) 0);
         glEnableVertexAttribArray(0);
         // texture coord attribute
-        glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
+        glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void *) (3 * sizeof(float)));
         glEnableVertexAttribArray(1);
 
         VTextureSampler sampler;
-        sampler.minFilter = VTextureFilter::Linear;
-        sampler.magFilter = VTextureFilter::Linear;
-        sampler.wrapS = VTextureWrap::Repeat;
-        sampler.wrapT = VTextureWrap::Repeat;
+        sampler.minFilter       = VTextureFilter::Linear;
+        sampler.magFilter       = VTextureFilter::Linear;
+        sampler.wrapS           = VTextureWrap::Repeat;
+        sampler.wrapT           = VTextureWrap::Repeat;
         sampler.generateMipmaps = false;
 
         auto m_ResDeffered = Vantor::Resource::VResourceManager::Instance().LoadTexture2D("m_Deffered", "Resources/textures/container2.png", sampler, false);
-        auto m_ResSpecular = Vantor::Resource::VResourceManager::Instance().LoadTexture2D("m_Specular", "Resources/textures/container2_specular.png", sampler, false);
+        auto m_ResSpecular
+            = Vantor::Resource::VResourceManager::Instance().LoadTexture2D("m_Specular", "Resources/textures/container2_specular.png", sampler, false);
 
         m_Deffered = VOpenGLTexture2D::CreateFromFile("Resources/textures/container2.png", sampler, false);
         m_Specular = VOpenGLTexture2D::CreateFromFile("Resources/textures/container2_specular.png", sampler, false);
 
-        if (!m_Deffered) {
+        if (!m_Deffered)
+        {
             std::cout << "m_Deffered is nullptr" << std::endl;
         }
 
-        if (!m_Specular) {
+        if (!m_Specular)
+        {
             std::cout << "m_Specular is nullptr" << std::endl;
         }
 
@@ -146,7 +117,7 @@ namespace Vantor::RenderDevice
         m_DefaultShader->setUniformInt("texture2", 2);
     }
 
-    void VForwardRenderPassGL::Execute(VCommandBuffer* commandBuffer)
+    void VForwardRenderPassGL::Execute(VCommandBuffer *commandBuffer)
     {
         // Set OpenGL state for forward rendering : TODO : Work with StateChache of RenderPath
         // Enable these for proper 3D rendering
@@ -162,16 +133,16 @@ namespace Vantor::RenderDevice
 
         m_DefaultShader->setMat4("projection", m_Camera->Projection);
         m_DefaultShader->setMat4("view", m_Camera->View);
-        
+
         glBindVertexArray(cubeVAO);
 
-        Vantor::Math::VMat4 model = Vantor::Math::VMat4::Identity(); // Setup the Identity Matrix
-        model = model.Translate(Vantor::Math::VVector3(1.0f, 1.0f, 1.0f)); // Translate model
+        Vantor::Math::VMat4 model = Vantor::Math::VMat4::Identity();                           // Setup the Identity Matrix
+        model                     = model.Translate(Vantor::Math::VVector3(1.0f, 1.0f, 1.0f)); // Translate model
 
         m_DefaultShader->setMat4("model", model);
 
         glDrawArrays(GL_TRIANGLES, 0, 36);
-        
+
         // Basic implementation - would need proper command buffer iteration
         // commandBuffer->ExecuteAll();
     }
@@ -189,18 +160,16 @@ namespace Vantor::RenderDevice
     // VRenderPath3DGL Implementation
     // =============================================================================
 
-    VRenderPath3DGL::VRenderPath3DGL()
-    {
-    }
+    VRenderPath3DGL::VRenderPath3DGL() {}
 
-    void VRenderPath3DGL::Initialize(VRDevice* device)
+    void VRenderPath3DGL::Initialize(VRDevice *device)
     {
-        // TODO: Make Command Buffer m_CommandBuffer = 
+        // TODO: Make Command Buffer m_CommandBuffer =
         m_Device = device;
         SetupDefaultRenderPasses();
-        
+
         // Initialize all render passes
-        for (auto& [type, pass] : m_RenderPasses)
+        for (auto &[type, pass] : m_RenderPasses)
         {
             pass->Initialize();
         }
@@ -242,7 +211,7 @@ namespace Vantor::RenderDevice
         //     }
         // }
 
-        auto* forwardPass = GetRenderPass(VERenderPassType::Forward);
+        auto *forwardPass = GetRenderPass(VERenderPassType::Forward);
         if (forwardPass && forwardPass->IsEnabled())
         {
             forwardPass->Execute(m_CommandBuffer.get());
@@ -253,37 +222,34 @@ namespace Vantor::RenderDevice
 
     void VRenderPath3DGL::Shutdown()
     {
-        for (auto& [type, pass] : m_RenderPasses)
+        for (auto &[type, pass] : m_RenderPasses)
         {
             pass->Cleanup();
         }
         m_RenderPasses.clear();
     }
 
-    void VRenderPath3DGL::SetRenderTarget(VRenderTarget* target)
+    void VRenderPath3DGL::SetRenderTarget(VRenderTarget *target)
     {
         m_RenderTarget = target;
         // TODO: Bind render target framebuffer
     }
 
-    VRenderTarget* VRenderPath3DGL::GetRenderTarget() const
-    {
-        return m_RenderTarget;
-    }
+    VRenderTarget *VRenderPath3DGL::GetRenderTarget() const { return m_RenderTarget; }
 
     void VRenderPath3DGL::SetViewport(uint32_t x, uint32_t y, uint32_t width, uint32_t height)
     {
-        m_ViewportX = x;
-        m_ViewportY = y;
-        m_ViewportWidth = width;
+        m_ViewportX      = x;
+        m_ViewportY      = y;
+        m_ViewportWidth  = width;
         m_ViewportHeight = height;
     }
 
-    void VRenderPath3DGL::GetViewport(uint32_t& x, uint32_t& y, uint32_t& width, uint32_t& height) const
+    void VRenderPath3DGL::GetViewport(uint32_t &x, uint32_t &y, uint32_t &width, uint32_t &height) const
     {
-        x = m_ViewportX;
-        y = m_ViewportY;
-        width = m_ViewportWidth;
+        x      = m_ViewportX;
+        y      = m_ViewportY;
+        width  = m_ViewportWidth;
         height = m_ViewportHeight;
     }
 
@@ -292,7 +258,7 @@ namespace Vantor::RenderDevice
         if (pass)
         {
             VERenderPassType type = pass->GetType();
-            m_RenderPasses[type] = std::move(pass);
+            m_RenderPasses[type]  = std::move(pass);
         }
     }
 
@@ -307,55 +273,43 @@ namespace Vantor::RenderDevice
     //     // }
     // }
 
-    VRenderPass* VRenderPath3DGL::GetRenderPass(VERenderPassType type) const
+    VRenderPass *VRenderPath3DGL::GetRenderPass(VERenderPassType type) const
     {
         auto it = m_RenderPasses.find(type);
         return (it != m_RenderPasses.end()) ? it->second.get() : nullptr;
     }
 
-    const VERenderStats& VRenderPath3DGL::GetRenderStats() const
-    {
-        return m_Stats;
-    }
+    const VERenderStats &VRenderPath3DGL::GetRenderStats() const { return m_Stats; }
 
-    void VRenderPath3DGL::ResetRenderStats()
-    {
-        m_Stats = VERenderStats();
-    }
+    void VRenderPath3DGL::ResetRenderStats() { m_Stats = VERenderStats(); }
 
-    void VRenderPath3DGL::SetCamera(Vantor::Renderer::Camera* camera)
+    void VRenderPath3DGL::SetCamera(Vantor::Renderer::Camera *camera)
     {
         m_Camera = camera;
-        
+
         // Update camera in forward pass
-        auto* forwardPass = dynamic_cast<VForwardRenderPassGL*>(GetRenderPass(VERenderPassType::Forward));
+        auto *forwardPass = dynamic_cast<VForwardRenderPassGL *>(GetRenderPass(VERenderPassType::Forward));
         if (forwardPass)
         {
             forwardPass->SetCamera(camera);
         }
     }
 
-    Vantor::Renderer::Camera* VRenderPath3DGL::GetCamera() const
-    {
-        return m_Camera;
-    }
+    Vantor::Renderer::Camera *VRenderPath3DGL::GetCamera() const { return m_Camera; }
 
-    void VRenderPath3DGL::SetAmbientLight(const Vantor::Math::VVector3& color)
+    void VRenderPath3DGL::SetAmbientLight(const Vantor::Math::VVector3 &color)
     {
         m_AmbientLight = color;
-        
+
         // Update ambient light in forward pass
-        auto* forwardPass = dynamic_cast<VForwardRenderPassGL*>(GetRenderPass(VERenderPassType::Forward));
+        auto *forwardPass = dynamic_cast<VForwardRenderPassGL *>(GetRenderPass(VERenderPassType::Forward));
         if (forwardPass)
         {
             forwardPass->SetAmbientLight(color);
         }
     }
 
-    const Vantor::Math::VVector3& VRenderPath3DGL::GetAmbientLight() const
-    {
-        return m_AmbientLight;
-    }
+    const Vantor::Math::VVector3 &VRenderPath3DGL::GetAmbientLight() const { return m_AmbientLight; }
 
     // void VRenderPath3DGL::EnableShadows(bool enable)
     // {
@@ -370,7 +324,7 @@ namespace Vantor::RenderDevice
     // void VRenderPath3DGL::SetShadowMapSize(uint32_t size)
     // {
     //     m_ShadowMapSize = size;
-        
+
     //     // Recreate shadow map with new size
     //     auto* shadowPass = GetRenderPass(VRenderPassType::ShadowMap);
     //     if (shadowPass)
@@ -405,10 +359,7 @@ namespace Vantor::RenderDevice
         // m_WireframeMode = enable;
     }
 
-    void VRenderPath3DGL::SetCullingMode(bool enable)
-    {
-        m_CullingEnabled = enable;
-    }
+    void VRenderPath3DGL::SetCullingMode(bool enable) { m_CullingEnabled = enable; }
 
     void VRenderPath3DGL::SetupDefaultRenderPasses()
     {
@@ -425,4 +376,4 @@ namespace Vantor::RenderDevice
     // =============================================================================
     // VSpriteBatch Implementation : TODO
     // =============================================================================
-}
+} // namespace Vantor::RenderDevice

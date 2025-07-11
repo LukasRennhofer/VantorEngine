@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-07-09
+ *  Date: 2025-07-11
  *
  *  File: VPL_Windows.hpp
  *  Last Change: Automatically updated
@@ -23,11 +23,11 @@
 #ifdef __WINDOWS__
 
 // Core
-#include "../../Core/BackLog/VCO_Backlog.hpp"
-
-#include <string>
 #include <cstdint>
+#include <string>
 #include <vector>
+
+#include "../../Core/BackLog/VCO_Backlog.hpp"
 
 namespace Vantor::Platform
 {

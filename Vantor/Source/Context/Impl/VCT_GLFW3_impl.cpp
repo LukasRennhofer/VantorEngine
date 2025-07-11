@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-07-09
+ *  Date: 2025-07-11
  *
  *  File: VCT_GLFW3_impl.cpp
  *  Last Change: Automatically updated
@@ -20,8 +20,8 @@
 
 #include <iostream>
 
-#include "../Interface/VCT_Window.hpp"
 #include "../../Core/Backlog/VCO_Backlog.hpp"
+#include "../Interface/VCT_Window.hpp"
 
 #ifdef VANTOR_WM_GLFW
 #include <Shared/GLFW/glfw3.h>

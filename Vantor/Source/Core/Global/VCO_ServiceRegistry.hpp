@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-07-09
+ *  Date: 2025-07-11
  *
  *  File: VCO_ServiceRegistry.hpp
  *  Last Change: Automatically updated
@@ -31,11 +31,11 @@ namespace Vantor
             static void                    SetRenderDevice(RenderDevice::VRDevice *dev) { renderDevice = dev; }
             static RenderDevice::VRDevice *GetRenderDevice() { return renderDevice; }
 
-            static uint32_t GetContextWidth() {return ctxW;}
-            static uint32_t GetContextHeight() {return ctxH;}
+            static uint32_t GetContextWidth() { return ctxW; }
+            static uint32_t GetContextHeight() { return ctxH; }
 
-            static void SetContextWidth(uint32_t w) {ctxW = w;}
-            static void SetContextHeight(uint32_t h) {ctxH = h;}
+            static void SetContextWidth(uint32_t w) { ctxW = w; }
+            static void SetContextHeight(uint32_t h) { ctxH = h; }
             // TODO: Add more systems here
         private:
             static inline RenderDevice::VRDevice *renderDevice = nullptr;

@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-07-09
+ *  Date: 2025-07-11
  *
  *  File: VMA_Matrix.hpp
  *  Last Change: Automatically updated
@@ -20,10 +20,10 @@
 
 #pragma once
 
-#include "VMA_Vector.hpp"
-
 #include <array>
 #include <cassert>
+
+#include "VMA_Vector.hpp"
 
 namespace Vantor::Math
 {

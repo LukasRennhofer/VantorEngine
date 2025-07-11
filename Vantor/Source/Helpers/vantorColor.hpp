@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-07-09
+ *  Date: 2025-07-11
  *
  *  File: vantorColor.hpp
  *  Last Change: Automatically updated
@@ -20,9 +20,9 @@
 
 #pragma once
 
-#include "vantorMath.hpp"
 #include <cstdint>
 
+#include "vantorMath.hpp"
 namespace Vantor::Helpers
 {
     struct Color

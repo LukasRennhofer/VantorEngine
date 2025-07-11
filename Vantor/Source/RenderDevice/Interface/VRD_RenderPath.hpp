@@ -1,20 +1,42 @@
+/*
+ *  ╔═══════════════════════════════════════════════════════════════╗
+ *  ║                          ~ Vantor ~                           ║
+ *  ║                                                               ║
+ *  ║  This file is part of the Vantor Engine.                      ║
+ *  ║  Automatically formatted by vtrgFormat.py                     ║
+ *  ║                                                               ║
+ *  ╚═══════════════════════════════════════════════════════════════╝
+ *
+ *  Copyright (c) 2025 Lukas Rennhofer
+ *  Licensed under the GNU General Public License, Version 3.
+ *  See LICENSE file for more details.
+ *
+ *  Author: Lukas Rennhofer
+ *  Date: 2025-07-11
+ *
+ *  File: VRD_RenderPath.hpp
+ *  Last Change: Automatically updated
+ */
+
 #pragma once
 
+#include "../../Math/Linear/VMA_Vector.hpp"
+#include "../../Renderer/Camera/VRE_Camera.hpp"
 #include "VRD_CommandBuffer.hpp"
-
-// Camera
 #include "../../Renderer/Camera/VRE_Camera.hpp"
 
 // Math
 #include "../../Math/Linear/VMA_Vector.hpp"
 
-namespace Vantor::RenderDevice {
+namespace Vantor::RenderDevice
+{
     // Forward declerations
     class VRDevice;
     class VRenderTarget;
 
     // RenderPass Types (In order)
-    enum class VERenderPassType {
+    enum class VERenderPassType
+    {
         Forward
     };
 
@@ -22,16 +44,17 @@ namespace Vantor::RenderDevice {
     // Render statistics for profiling (later on)
     struct VERenderStats
     {
-        uint32_t DrawCalls = 0;
-        uint32_t Triangles = 0;
-        uint32_t Vertices = 0;
-        float    RenderTime = 0.0f;
-        uint32_t TextureBinds = 0;
-        uint32_t ShaderSwitches = 0;
+            uint32_t DrawCalls      = 0;
+            uint32_t Triangles      = 0;
+            uint32_t Vertices       = 0;
+            float    RenderTime     = 0.0f;
+            uint32_t TextureBinds   = 0;
+            uint32_t ShaderSwitches = 0;
     };
 
     // State Cache for chaching past render states
-    class VStateCache {
+    class VStateCache
+    {
         public:
             ~VStateCache() = default;
 
@@ -43,10 +66,9 @@ namespace Vantor::RenderDevice {
             void SetCulling(bool enabled) { m_isCullingOn = enabled; }
             bool IsCullingEnabled() const { return m_isCullingOn; }
 
-        
-            private:
-                bool m_isWireframeOn = false;
-                bool m_isCullingOn = false;
+        private:
+            bool m_isWireframeOn = false;
+            bool m_isCullingOn   = false;
     };
 
     // Base render pass interface
@@ -55,12 +77,12 @@ namespace Vantor::RenderDevice {
         public:
             virtual ~VRenderPass() = default;
 
-            virtual void Initialize() = 0;
-            virtual void Execute(VCommandBuffer* commandBuffer) = 0;
-            virtual void Cleanup() = 0;
+            virtual void Initialize()                           = 0;
+            virtual void Execute(VCommandBuffer *commandBuffer) = 0;
+            virtual void Cleanup()                              = 0;
 
-            virtual VERenderPassType GetType() const = 0;
-            virtual const std::string& GetName() const = 0;
+            virtual VERenderPassType   GetType() const = 0;
+            virtual const std::string &GetName() const = 0;
 
             // Enable/disable the pass
             virtual void SetEnabled(bool enabled) { m_Enabled = enabled; }
@@ -77,29 +99,28 @@ namespace Vantor::RenderDevice {
             virtual ~VRenderPath() = default;
 
             // Core rendering methods
-            virtual void Initialize(VRDevice* device) = 0;
-            virtual void Render() = 0;
-            virtual void Shutdown() = 0;
+            virtual void Initialize(VRDevice *device) = 0;
+            virtual void Render()                     = 0;
+            virtual void Shutdown()                   = 0;
 
             // Render target management
-            virtual void SetRenderTarget(VRenderTarget* target) = 0;
-            virtual VRenderTarget* GetRenderTarget() const = 0;
+            virtual void           SetRenderTarget(VRenderTarget *target) = 0;
+            virtual VRenderTarget *GetRenderTarget() const                = 0;
 
             // Viewport configuration
-            virtual void SetViewport(uint32_t x, uint32_t y, uint32_t width, uint32_t height) = 0;
-            virtual void GetViewport(uint32_t& x, uint32_t& y, uint32_t& width, uint32_t& height) const = 0;
+            virtual void SetViewport(uint32_t x, uint32_t y, uint32_t width, uint32_t height)           = 0;
+            virtual void GetViewport(uint32_t &x, uint32_t &y, uint32_t &width, uint32_t &height) const = 0;
 
             // Render pass management
-            virtual void AddRenderPass(std::unique_ptr<VRenderPass> pass) = 0;
-            virtual VRenderPass* GetRenderPass(VERenderPassType type) const = 0;
+            virtual void         AddRenderPass(std::unique_ptr<VRenderPass> pass) = 0;
+            virtual VRenderPass *GetRenderPass(VERenderPassType type) const       = 0;
 
             // Statistics and profiling : TODO
-            virtual const VERenderStats& GetRenderStats() const = 0;
-            virtual void ResetRenderStats() = 0;
+            virtual const VERenderStats &GetRenderStats() const = 0;
+            virtual void                 ResetRenderStats()     = 0;
 
-            bool IsActive() {return isActive;}
-            void SetActive(bool active) {isActive = active;}
-
+            bool IsActive() { return isActive; }
+            void SetActive(bool active) { isActive = active; }
 
         protected:
             bool isActive = true;
@@ -107,13 +128,13 @@ namespace Vantor::RenderDevice {
             // State Cache for saving API states
             VStateCache m_StateCache;
 
-            VRDevice* m_Device = nullptr;
-            VRenderTarget* m_RenderTarget = nullptr;
-            VERenderStats   m_Stats; // TODO
+            VRDevice      *m_Device       = nullptr;
+            VRenderTarget *m_RenderTarget = nullptr;
+            VERenderStats  m_Stats; // TODO
 
-            uint32_t m_ViewportX = 0;
-            uint32_t m_ViewportY = 0;
-            uint32_t m_ViewportWidth = 1280;
+            uint32_t m_ViewportX      = 0;
+            uint32_t m_ViewportY      = 0;
+            uint32_t m_ViewportWidth  = 1280;
             uint32_t m_ViewportHeight = 720;
 
             std::shared_ptr<VCommandBuffer> m_CommandBuffer;
@@ -126,12 +147,12 @@ namespace Vantor::RenderDevice {
             virtual ~VRenderPath3D() = default;
 
             // Camera management
-            virtual void SetCamera(Vantor::Renderer::Camera* camera) = 0;
-            virtual Vantor::Renderer::Camera* GetCamera() const = 0;
+            virtual void                      SetCamera(Vantor::Renderer::Camera *camera) = 0;
+            virtual Vantor::Renderer::Camera *GetCamera() const                           = 0;
 
             // Lighting configuration
-            virtual void SetAmbientLight(const Vantor::Math::VVector3& color) = 0;
-            virtual const Vantor::Math::VVector3& GetAmbientLight() const = 0;
+            virtual void                          SetAmbientLight(const Vantor::Math::VVector3 &color) = 0;
+            virtual const Vantor::Math::VVector3 &GetAmbientLight() const                              = 0;
 
             // Shadow mapping : TODO
             // virtual void EnableShadows(bool enable) = 0;
@@ -146,18 +167,18 @@ namespace Vantor::RenderDevice {
 
             // Render modes : TODO
             virtual void SetWireframeMode(bool enable) = 0;
-            virtual void SetCullingMode(bool enable) = 0;
+            virtual void SetCullingMode(bool enable)   = 0;
 
         protected:
-            Vantor::Renderer::Camera* m_Camera = nullptr;
-            Vantor::Math::VVector3 m_AmbientLight = {0.1f, 0.1f, 0.1f};
-            
-    //         bool m_ShadowsEnabled = true;
-    //         uint32_t m_ShadowMapSize = 2048;
-            
-    //         float m_Exposure = 1.0f;
-    //         float m_Gamma = 2.2f;
-    //         bool m_HDREnabled = true;
-    //         bool m_FXAAEnabled = true;
+            Vantor::Renderer::Camera *m_Camera       = nullptr;
+            Vantor::Math::VVector3    m_AmbientLight = {0.1f, 0.1f, 0.1f};
+
+            //         bool m_ShadowsEnabled = true;
+            //         uint32_t m_ShadowMapSize = 2048;
+
+            //         float m_Exposure = 1.0f;
+            //         float m_Gamma = 2.2f;
+            //         bool m_HDREnabled = true;
+            //         bool m_FXAAEnabled = true;
     };
-}
+} // namespace Vantor::RenderDevice

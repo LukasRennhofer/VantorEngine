@@ -12,23 +12,23 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-07-09
+ *  Date: 2025-07-11
  *
  *  File: VRDO_RenderPath.hpp
- *  Last Change: Created OpenGL RenderPath implementations
+ *  Last Change: Automatically updated
  */
 
 #pragma once
 
+#include <Shared/glad/glad.h>
+#include <memory>
 #include <unordered_map>
 #include <vector>
-#include <memory>
 
-// OpenGL
-#include <Shared/glad/glad.h>
-
-// Interface
+#include "../../Resource/VRES_Manager.hpp"
 #include "../Interface/VRD_RenderPath.hpp"
+#include "VRDO_Shader.hpp"
+#include "VRDO_Texture.hpp"
 
 #include "VRDO_Shader.hpp"
 #include "VRDO_Texture.hpp"
@@ -42,16 +42,16 @@ namespace Vantor::RenderDevice
     class VRenderPassGL : public VRenderPass
     {
         public:
-            VRenderPassGL(VERenderPassType type, const std::string& name);
+            VRenderPassGL(VERenderPassType type, const std::string &name);
             virtual ~VRenderPassGL() = default;
 
-            VERenderPassType GetType() const override { return m_Type; }
-            const std::string& GetName() const override { return m_Name; }
+            VERenderPassType   GetType() const override { return m_Type; }
+            const std::string &GetName() const override { return m_Name; }
 
         protected:
             VERenderPassType m_Type;
-            std::string m_Name;
-            GLuint m_FramebufferID = 0;
+            std::string      m_Name;
+            GLuint           m_FramebufferID = 0;
     };
 
     // OpenGL 3D Forward Rendering Pass
@@ -62,16 +62,16 @@ namespace Vantor::RenderDevice
             virtual ~VForwardRenderPassGL() = default;
 
             void Initialize() override;
-            void Execute(VCommandBuffer* commandBuffer) override;
+            void Execute(VCommandBuffer *commandBuffer) override;
             void Cleanup() override;
 
-            void SetCamera(Vantor::Renderer::Camera* camera) { m_Camera = camera; }
-            void SetAmbientLight(const Vantor::Math::VVector3& ambient) { m_AmbientLight = ambient; }
+            void SetCamera(Vantor::Renderer::Camera *camera) { m_Camera = camera; }
+            void SetAmbientLight(const Vantor::Math::VVector3 &ambient) { m_AmbientLight = ambient; }
 
         private:
-            Vantor::Renderer::Camera* m_Camera = nullptr;
-            Vantor::Math::VVector3 m_AmbientLight = {0.1f, 0.1f, 0.1f};
-            std::shared_ptr<VShader> m_DefaultShader;
+            Vantor::Renderer::Camera *m_Camera       = nullptr;
+            Vantor::Math::VVector3    m_AmbientLight = {0.1f, 0.1f, 0.1f};
+            std::shared_ptr<VShader>  m_DefaultShader;
 
             // Just to test
             std::shared_ptr<VTexture> m_Deffered;
@@ -112,32 +112,32 @@ namespace Vantor::RenderDevice
             virtual ~VRenderPath3DGL() = default;
 
             // Core rendering methods
-            void Initialize(VRDevice* device) override;
+            void Initialize(VRDevice *device) override;
             void Render() override;
             void Shutdown() override;
 
             // Render target management
-            void SetRenderTarget(VRenderTarget* target) override;
-            VRenderTarget* GetRenderTarget() const override;
+            void           SetRenderTarget(VRenderTarget *target) override;
+            VRenderTarget *GetRenderTarget() const override;
 
             // Viewport configuration
             void SetViewport(uint32_t x, uint32_t y, uint32_t width, uint32_t height) override;
-            void GetViewport(uint32_t& x, uint32_t& y, uint32_t& width, uint32_t& height) const override;
+            void GetViewport(uint32_t &x, uint32_t &y, uint32_t &width, uint32_t &height) const override;
 
             // Render pass management
-            void AddRenderPass(std::unique_ptr<VRenderPass> pass) override;
-            VRenderPass* GetRenderPass(VERenderPassType type) const override;
+            void         AddRenderPass(std::unique_ptr<VRenderPass> pass) override;
+            VRenderPass *GetRenderPass(VERenderPassType type) const override;
 
             // Statistics and profiling
-            const VERenderStats& GetRenderStats() const override;
-            void ResetRenderStats() override;
+            const VERenderStats &GetRenderStats() const override;
+            void                 ResetRenderStats() override;
 
             // 3D specific methods
-            void SetCamera(Vantor::Renderer::Camera* camera) override;
-            Vantor::Renderer::Camera* GetCamera() const override;
+            void                      SetCamera(Vantor::Renderer::Camera *camera) override;
+            Vantor::Renderer::Camera *GetCamera() const override;
 
-            void SetAmbientLight(const Vantor::Math::VVector3& color) override;
-            const Vantor::Math::VVector3& GetAmbientLight() const override;
+            void                          SetAmbientLight(const Vantor::Math::VVector3 &color) override;
+            const Vantor::Math::VVector3 &GetAmbientLight() const override;
 
             // TODO
             // void EnableShadows(bool enable) override;
@@ -156,7 +156,7 @@ namespace Vantor::RenderDevice
             void SetupDefaultRenderPasses();
 
             // Just to test
-            bool m_WireframeMode = false;
+            bool m_WireframeMode  = false;
             bool m_CullingEnabled = false;
 
             std::unordered_map<VERenderPassType, std::unique_ptr<VRenderPass>> m_RenderPasses;
@@ -179,7 +179,7 @@ namespace Vantor::RenderDevice
 
     //         void Initialize();
     //         void Begin();
-    //         void DrawSprite(VTexture* texture, const Vantor::Math::VVec2& position, 
+    //         void DrawSprite(VTexture* texture, const Vantor::Math::VVec2& position,
     //                       const Vantor::Math::VVec2& size, float rotation,
     //                       const Vantor::Math::VVec4& color);
     //         void DrawQuad(const Vantor::Math::VVec2& position, const Vantor::Math::VVec2& size,
@@ -238,7 +238,7 @@ namespace Vantor::RenderDevice
     //         void ResetRenderStats() override;
 
     //         // 2D specific methods
-    //         void DrawSprite(VTexture* texture, const Vantor::Math::VVec2& position, 
+    //         void DrawSprite(VTexture* texture, const Vantor::Math::VVec2& position,
     //                       const Vantor::Math::VVec2& size, float rotation,
     //                       const Vantor::Math::VVec4& color) override;
 
@@ -280,4 +280,4 @@ namespace Vantor::RenderDevice
 
     //         std::unordered_map<VRenderPassType, std::unique_ptr<VRenderPass>> m_RenderPasses;
     // };
-}
+} // namespace Vantor::RenderDevice

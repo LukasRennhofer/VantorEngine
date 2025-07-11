@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-07-09
+ *  Date: 2025-07-11
  *
  *  File: VCO_InlineDebugger.hpp
  *  Last Change: Automatically updated
@@ -20,11 +20,11 @@
 
 #pragma once
 
-#include <iostream>
 #include <chrono>
 #include <ctime>
-#include <string>
 #include <format>
+#include <iostream>
+#include <string>
 
 #include "../Backlog/VCO_Backlog.hpp"
 

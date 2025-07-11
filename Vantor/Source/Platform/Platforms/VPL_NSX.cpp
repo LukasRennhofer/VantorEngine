@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-07-09
+ *  Date: 2025-07-11
  *
  *  File: VPL_NSX.cpp
  *  Last Change: Automatically updated
@@ -20,14 +20,14 @@
 
 #ifdef __NSX__
 
-#include "VPL_NSX.hpp"
+#include <chrono>
+#include <cstring>
 #include <switch.h>
 #include <sys/stat.h>
-#include <unistd.h>
-#include <chrono>
 #include <thread>
-#include <cstring>
+#include <unistd.h>
 
+#include "VPL_NSX.hpp"
 namespace Vantor::Platform
 {
     double PlatformNSX::startTime = 0.0;

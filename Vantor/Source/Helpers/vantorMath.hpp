@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-07-09
+ *  Date: 2025-07-11
  *
  *  File: vantorMath.hpp
  *  Last Change: Automatically updated
@@ -20,9 +20,9 @@
 
 #pragma once
 
+#include <algorithm>
 #include <cmath>
 #include <cstdint>
-#include <algorithm>
 
 namespace Vantor::Helpers::Math
 {

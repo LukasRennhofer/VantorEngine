@@ -12,15 +12,15 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-07-09
+ *  Date: 2025-07-11
  *
  *  File: VRDO_Mesh.cpp
  *  Last Change: Automatically updated
  */
 
+#include "../../Core/BackLog/VCO_Backlog.hpp"
+#include "../../Math/Linear/VMA_Matrix.hpp"
 #include "VRDO_Mesh.hpp"
-
-// Math
 #include "../../Math/Linear/VMA_Matrix.hpp"
 
 // Core
@@ -250,7 +250,8 @@ namespace Vantor::RenderDevice
         glBindVertexArray(0);
     }
 
-    void VOpenGLMesh::RenderRaw() {
+    void VOpenGLMesh::RenderRaw()
+    {
         glBindVertexArray(m_VAO);
         if (Indices.size() > 0)
         {

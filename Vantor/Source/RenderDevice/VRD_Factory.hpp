@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-07-09
+ *  Date: 2025-07-11
  *
  *  File: VRD_Factory.hpp
  *  Last Change: Automatically updated
@@ -22,7 +22,7 @@
 
 #include <memory>
 
-// RenderDevice
+#include "Interface/VRD_RenderDevice.hpp"
 #include "Interface/VRD_RenderDevice.hpp"
 
 #if defined(VANTOR_API_OPENGL)
@@ -35,18 +35,18 @@
 namespace Vantor::RenderDevice
 {
 
-    inline std::shared_ptr<VTexture> CreateTexture2DInstance(const std::string& filePath, 
-                                                                const VTextureSampler& sampler,
-                                                                bool generateMipmaps = true) {
-        #if defined(VANTOR_API_OPENGL)
+    inline std::shared_ptr<VTexture> CreateTexture2DInstance(const std::string &filePath, const VTextureSampler &sampler, bool generateMipmaps = true)
+    {
+#if defined(VANTOR_API_OPENGL)
         return VOpenGLTexture2D::CreateFromFile(filePath, sampler, generateMipmaps);
-        #endif
+#endif
     }
 
-    inline std::shared_ptr<VShader> CreateShaderInstance(const char *vertexCode, const char *fragmentCode) {
-        #if defined(VANTOR_API_OPENGL)
+    inline std::shared_ptr<VShader> CreateShaderInstance(const char *vertexCode, const char *fragmentCode)
+    {
+#if defined(VANTOR_API_OPENGL)
         return std::make_shared<VOpenGLShader>(vertexCode, fragmentCode);
-        #endif
+#endif
         return nullptr;
     }
 

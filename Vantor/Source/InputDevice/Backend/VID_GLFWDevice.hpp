@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-07-09
+ *  Date: 2025-07-11
  *
  *  File: VID_GLFWDevice.hpp
  *  Last Change: Automatically updated
@@ -24,7 +24,7 @@
 
 #ifdef VANTOR_WM_GLFW
 #include <Shared/GLFW/glfw3.h>
-
+#include <optional>
 #include <string>
 #include <unordered_map>
 #include <optional>

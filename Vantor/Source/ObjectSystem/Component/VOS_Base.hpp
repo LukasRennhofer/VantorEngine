@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-07-09
+ *  Date: 2025-07-11
  *
  *  File: VOS_Base.hpp
  *  Last Change: Automatically updated
@@ -20,9 +20,9 @@
 
 #pragma once
 
+#include "../../Core/Global/VCO_ServiceRegistry.hpp"
+#include "../../RenderDevice/Interface/VRD_Mesh.hpp"
 #include "VOS_Component.hpp"
-
-// Global Registry
 #include "../../Core/Global/VCO_ServiceRegistry.hpp"
 
 // RenderDevice

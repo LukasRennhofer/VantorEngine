@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-07-09
+ *  Date: 2025-07-11
  *
  *  File: VID_IDevice.hpp
  *  Last Change: Automatically updated
@@ -24,8 +24,8 @@
 #include <unordered_map>
 #include <vector>
 
-// Window
 #include "../Context/Interface/VCT_Window.hpp"
+#include "../Math/Linear/VMA_Vector.hpp"
 
 // Math
 #include "../Math/Linear/VMA_Vector.hpp"

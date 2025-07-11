@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-07-09
+ *  Date: 2025-07-11
  *
  *  File: VRDO_Shader.cpp
  *  Last Change: Automatically updated
@@ -20,7 +20,7 @@
 
 // Core
 #include "../../Core/Backlog/VCO_Backlog.hpp"
-
+#include "VRDO_Shader.hpp"
 #include "VRDO_Shader.hpp"
 
 // TODO: Work with differemt Filesystems (e.g. Switch)

@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-07-09
+ *  Date: 2025-07-11
  *
  *  File: VOS_Object.hpp
  *  Last Change: Automatically updated
@@ -20,16 +20,16 @@
 
 #pragma once
 
-#include "Component/VOS_Component.hpp"
-
+#include <algorithm>
+#include <cstdint>
 #include <memory>
-#include <vector>
-#include <unordered_map>
+#include <string>
 #include <typeindex>
 #include <typeinfo>
-#include <string>
-#include <cstdint>
-#include <algorithm>
+#include <unordered_map>
+#include <vector>
+
+#include "Component/VOS_Component.hpp"
 namespace Vantor::Object
 {
 

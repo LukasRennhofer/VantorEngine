@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-07-09
+ *  Date: 2025-07-11
  *
  *  File: VRDO_CommandBuffer.cpp
  *  Last Change: Automatically updated
@@ -79,9 +79,10 @@ namespace Vantor::RenderDevice
     }
 
     // TODO
-    bool renderSortForward(const VRenderCommand &a, const VRenderCommand &b) {
-      // TODO : Becuase we have no Materials yet
-      return true;
+    bool renderSortForward(const VRenderCommand &a, const VRenderCommand &b)
+    {
+        // TODO : Becuase we have no Materials yet
+        return true;
     }
 
     // --------------------------------------------------------------------------------------------
@@ -146,9 +147,10 @@ namespace Vantor::RenderDevice
         // }
     }
 
-    std::vector<VRenderCommand> VOpenGLCommandBuffer::GetForwardRenderCommands(bool cull) {
-      // TODO: Work with Camera Frustum
-      return m_ForwardRenderCommands;
+    std::vector<VRenderCommand> VOpenGLCommandBuffer::GetForwardRenderCommands(bool cull)
+    {
+        // TODO: Work with Camera Frustum
+        return m_ForwardRenderCommands;
     }
 
     // std::vector<VRenderCommand> VOpenGLCommandBuffer::GetDeferredRenderCommands(bool cull)

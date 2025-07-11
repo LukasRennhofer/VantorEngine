@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-07-09
+ *  Date: 2025-07-11
  *
  *  File: VRDO_RenderDevice.hpp
  *  Last Change: Automatically updated
@@ -20,11 +20,11 @@
 
 #pragma once
 
-#include "VRDO_Shader.hpp"
-#include "VRDO_Mesh.hpp"
-#include "VRDO_Texture.hpp"
-
 #include "../Interface/VRD_RenderDevice.hpp"
+#include "VRDO_Mesh.hpp"
+#include "VRDO_RenderPath.hpp"
+#include "VRDO_Shader.hpp"
+#include "VRDO_Texture.hpp"
 
 #include "VRDO_RenderPath.hpp"
 
@@ -42,7 +42,8 @@ namespace Vantor::RenderDevice
             void CreateRenderDeviceContext(Vantor::Context::Window *window) override;
 
             // RenderPaths
-            std::shared_ptr<VRenderPath3D> CreateRenderPath3D() override {
+            std::shared_ptr<VRenderPath3D> CreateRenderPath3D() override
+            {
                 // Initialize the RenderPath with the RenderDevice
                 std::shared_ptr<VRenderPath3DGL> rPath = std::make_shared<VRenderPath3DGL>();
                 rPath->Initialize(this);
@@ -67,7 +68,7 @@ namespace Vantor::RenderDevice
             // Device Info
             std::string GetPhysicalDeviceVendor() const override;
             std::string GetPhysicalDeviceName() const override;
-        
+
         private:
             std::vector<std::shared_ptr<VRenderPath>> m_RenderPaths;
     };
