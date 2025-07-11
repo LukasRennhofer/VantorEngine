@@ -39,27 +39,30 @@ namespace Vantor::RenderDevice
             // sorts the command buffer; first by shader, then by texture bind.
             void Sort() override;
 
-            // returns the list of render commands. For minimizing state changes it is advised to first
-            // call Sort() before retrieving and issuing the render commands.
-            std::vector<VRenderCommand> GetDeferredRenderCommands(bool cull = false) override;
+            std::vector<VRenderCommand> GetForwardRenderCommands(bool cull = false) override;
 
-            // returns the list of render commands of both deferred and forward pushes that require
-            // alpha blending; which have to be rendered last.
-            std::vector<VRenderCommand> GetAlphaRenderCommands(bool cull = false) override;
+            // // returns the list of render commands. For minimizing state changes it is advised to first
+            // // call Sort() before retrieving and issuing the render commands.
+            // std::vector<VRenderCommand> GetDeferredRenderCommands(bool cull = false) override;
 
-            // TODO: returns the list of custom render commands per render target.
-            // std::vector<VRenderCommand> GetCustomRenderCommands(RenderTarget *target, bool cull = false) override;
+            // // returns the list of render commands of both deferred and forward pushes that require
+            // // alpha blending; which have to be rendered last.
+            // std::vector<VRenderCommand> GetAlphaRenderCommands(bool cull = false) override;
 
-            // returns the list of post-processing render commands.
-            std::vector<VRenderCommand> GetPostProcessingRenderCommands() override;
+            // // TODO: returns the list of custom render commands per render target.
+            // // std::vector<VRenderCommand> GetCustomRenderCommands(RenderTarget *target, bool cull = false) override;
 
-            // returns the list of all render commands with mesh shadow casting
-            std::vector<VRenderCommand> GetShadowCastRenderCommands() override;
+            // // returns the list of post-processing render commands.
+            // std::vector<VRenderCommand> GetPostProcessingRenderCommands() override;
+
+            // // returns the list of all render commands with mesh shadow casting
+            // std::vector<VRenderCommand> GetShadowCastRenderCommands() override;
 
         private:
-            std::vector<VRenderCommand> m_DeferredRenderCommands;
-            std::vector<VRenderCommand> m_AlphaRenderCommands;
-            std::vector<VRenderCommand> m_PostProcessingRenderCommands;
+            std::vector<VRenderCommand> m_ForwardRenderCommands;
+            // std::vector<VRenderCommand> m_DeferredRenderCommands;
+            // std::vector<VRenderCommand> m_AlphaRenderCommands;
+            // std::vector<VRenderCommand> m_PostProcessingRenderCommands;
             // std::map<RenderTarget*, std::vector<RenderCommand>> m_CustomRenderCommands; // TODO
     };
 } // namespace Vantor::RenderDevice

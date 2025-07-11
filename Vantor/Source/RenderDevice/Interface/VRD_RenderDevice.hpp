@@ -25,6 +25,9 @@
 
 #include "VRD_Shader.hpp"
 #include "VRD_Mesh.hpp"
+#include "VRD_Texture.hpp"
+
+#include "VRD_RenderPath.hpp"
 
 // Context
 #include "../../Context/Interface/VCT_Window.hpp"
@@ -80,14 +83,16 @@ namespace Vantor::RenderDevice
 
             virtual void BeginFrame() = 0;
             virtual void EndFrame()   = 0;
-            virtual void Present()    = 0;
 
             virtual void SetViewPort(int w, int h)                                  = 0;
             virtual void CreateRenderDeviceContext(Vantor::Context::Window *window) = 0;
 
+            // RenderPaths
+            virtual std::shared_ptr<VRenderPath3D> CreateRenderPath3D() = 0;
+            
             // Resource Factory
             // Shader
-            virtual std::shared_ptr<VShader> CreateShader(const char *vertexCode, const char *fragmentCode) = 0;
+            // virtual std::shared_ptr<VShader> CreateShader(const char *vertexCode, const char *fragmentCode) = 0;
             // Mesh : Use this with VMeshCreateInfo
             virtual std::shared_ptr<VMesh> CreateMesh(const VMeshCreateInfo &createInfo) = 0;
             // Helpers

@@ -58,6 +58,9 @@ namespace Vantor::RenderDevice
             // Buffer upload
             virtual void Finalize(bool interleaved = true) = 0;
 
+            // Raw Rendering
+            virtual void RenderRaw() = 0;
+
             // Procedural generation
             virtual void FromSDF(const std::function<float(Vantor::Math::VVector3)> &sdf, float maxDistance, uint16_t gridResolution) = 0;
     };

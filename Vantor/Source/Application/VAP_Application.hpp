@@ -22,6 +22,7 @@
 
 // Core
 #include "../Core/VCO_Version.hpp"
+#include "../Core/VCO_Timer.hpp"
 #include "../Core/BackLog/VCO_Backlog.hpp"
 #include "../Core/Global/VCO_ServiceRegistry.hpp"
 
@@ -36,6 +37,9 @@
 
 // Input
 #include "../InputDevice/VID_Manager.hpp"
+
+// Resource Manager
+#include "../Resource/VRES_Manager.hpp"
 
 #include <format>
 #include <memory>
@@ -65,22 +69,31 @@ namespace Vantor
             // Base Stats
             bool initialized = false;
             bool active      = true;
+            float deltatime;
+
+            Vantor::Core::Timer timer;
 
         public:
             virtual ~VApplication() = default;
 
             bool is_window_active = true;
 
-            // Runs the main engine loop
-            void         Run(const std::function<void()> &updateFunc);
+            // Main Functions
             void         Break();
             void         Shutdown();
             virtual void Initialize(VApplicationCreateInfo &info);
+
+            // Inside the loop
+            void BeginFrame();
+            void EndFrame();
 
             void                     SetWindow(Vantor::Context::Window window);
             Vantor::Context::Window *GetWindow() { return window.get(); }
 
             bool IsRunning();
+
+            // Deltatime
+            float GetDeltaTime() {return deltatime;}
 
             // RenderDevice
             RenderDevice::VRDevice       *GetRenderDevice();       // mutable access
@@ -88,6 +101,7 @@ namespace Vantor
 
             // Input
             Input::VInputManager *GetInputManager();
+
             // TODO:
             // void SetFullScreen(bool fullscreen);
     };

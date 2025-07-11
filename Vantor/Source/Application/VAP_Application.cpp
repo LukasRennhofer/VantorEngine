@@ -28,6 +28,7 @@ namespace Vantor
     static void ResizeCallbackStatic(int w, int h)
     {
         if (s_appInstance && s_appInstance->GetRenderDevice()) s_appInstance->GetRenderDevice()->SetViewPort(w, h);
+        VServiceLocator::SetContextWidth(w); VServiceLocator::SetContextHeight(h);
     }
 
     void VApplication::Initialize(VApplicationCreateInfo &info)
@@ -51,14 +52,23 @@ namespace Vantor
         // Creating the RenderDevice
         RenderDevice = Vantor::RenderDevice::CreateInstance();
 
+        // Initializing the Resource Manager
+
+        if (!Vantor::Resource::VResourceManager::Instance().Initialize()) {
+            Vantor::Backlog::Log("Application", "Resource Manager failed to initialize", Vantor::Backlog::LogLevel::ERR);
+        }
+
         // Creating the InputManager
         InputManager = std::make_unique<Vantor::Input::VInputManager>();
 
         s_appInstance = this; // For ResizeCallback usage
         window->setResizeCallback(ResizeCallbackStatic);
 
+
         // put the pointer of the RenderDevice into the Service Registry for access across the Engine
         VServiceLocator::SetRenderDevice(RenderDevice.get());
+        VServiceLocator::SetContextWidth(info.windowWidth);
+        VServiceLocator::SetContextHeight(info.windowHeight);
 
         // Log RenderDevice Information
         // Vantor::Backlog::Log("Application", std::string("Using PhysicalDevice   : " + RenderDevice->GetPhysicalDeviceName()),
@@ -76,28 +86,38 @@ namespace Vantor
         // TODO: Initializing with vantorInitializer
     }
 
-    void VApplication::Run(const std::function<void()> &updateFunc)
-    {
-        while (IsRunning())
-        {
-            window->pollEvents();
+    void VApplication::BeginFrame() {
+        // Record with Timer
+        timer.record();
 
-            InputManager->Update();
+        // Update with DeltaTime
+        static Vantor::Core::VTimeStamp lastTime = timer.timestamp;
+        auto currentTime = timer.timestamp;
+        deltatime = std::chrono::duration<float>(currentTime - lastTime).count();
+        lastTime = currentTime;
 
-            // Begin a new Frame
-            RenderDevice->BeginFrame();
+        // Update Window Events
+        window->pollEvents();
 
-            updateFunc(); // This will  be the main loop func
+        // Update the Inputs
+        InputManager->Update();
 
-            RenderDevice->EndFrame();
+        // Begin a new Frame with RenderDevice
+        RenderDevice->BeginFrame();
+    }
 
-            window->swapBuffers();
-        }
+    void VApplication::EndFrame() {
+        // End the RenderDevice frame
+        RenderDevice->EndFrame();
+
+        // Swapchain
+        window->swapBuffers();
     }
 
     void VApplication::Shutdown()
     {
         Vantor::Backlog::Log("Application", "Destroying VApplication Context", Vantor::Backlog::LogLevel::INFO);
+        Vantor::Resource::VResourceManager::Instance().Shutdown();
         window->close();
     }
 

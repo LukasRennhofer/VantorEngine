@@ -31,7 +31,14 @@
 namespace Vantor::RenderDevice
 {
     void VRDeviceOpenGL::Initialize() {} // TODO
-    void VRDeviceOpenGL::SetViewPort(int w, int h) { glViewport(0, 0, w, h); }
+    void VRDeviceOpenGL::SetViewPort(int w, int h) { 
+
+        for (auto rPath : m_RenderPaths) {
+            rPath->SetViewport(0, 0, w, h);
+        }
+
+        glViewport(0, 0, w, h); 
+    }
 
     void VRDeviceOpenGL::CreateRenderDeviceContext(Vantor::Context::Window *window)
     {
@@ -60,15 +67,10 @@ namespace Vantor::RenderDevice
 #endif
     }
 
-    void VRDeviceOpenGL::Present()
-    {
-        // TODO: Typically handled in the main loop with glfwSwapBuffers(window)
-    }
-
-    std::shared_ptr<VShader> VRDeviceOpenGL::CreateShader(const char *vertexCode, const char *fragmentCode)
-    {
-        return std::make_shared<VOpenGLShader>(vertexCode, fragmentCode);
-    }
+    // std::shared_ptr<VShader> VRDeviceOpenGL::CreateShader(const char *vertexCode, const char *fragmentCode)
+    // {
+    //     return std::make_shared<VOpenGLShader>(vertexCode, fragmentCode);
+    // }
 
     std::shared_ptr<VMesh> VRDeviceOpenGL::CreateMesh(const VMeshCreateInfo &createInfo)
     {

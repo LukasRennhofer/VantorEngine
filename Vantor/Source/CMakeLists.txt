@@ -39,10 +39,16 @@ set(VANTOR_CORE_SOURCES
     Core/VCO_Version.cpp
     Core/Backlog/VCO_Backlog.cpp
     Core/Debug/VCO_InlineDebugger.cpp
+    Core/Global/VCO_ServiceRegistry.cpp
+
+    # Resource Manager
+    Resource/VRES_Manager.cpp
     
     # Rendering
     Renderer/Camera/VRE_Camera.cpp
     Renderer/Camera/VRE_Frustum.cpp
+    # Renderer (Material)
+    Renderer/VRE_Material.cpp
     
     # Input Management
     InputDevice/VID_Manager.cpp
@@ -66,7 +72,9 @@ set(OPENGL_RENDER_SOURCES
     RenderDevice/OpenGL/VRDO_Shader.cpp
     RenderDevice/OpenGL/VRDO_Mesh.cpp
     RenderDevice/OpenGL/VRDO_Texture.cpp
+    RenderDevice/OpenGL/VRDO_RenderTarget.cpp
     RenderDevice/OpenGL/VRDO_CommandBuffer.cpp
+    RenderDevice/OpengL/VRDO_RenderPath.cpp
     RenderDevice/OpenGL/VRDO_RenderDevice.cpp
 )
 

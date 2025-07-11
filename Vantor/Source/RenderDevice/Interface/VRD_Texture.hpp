@@ -47,27 +47,34 @@ namespace Vantor::RenderDevice
         ClampToBorder    // GL_CLAMP_TO_BORDER - Clamp to border color
     };
 
-    enum class VTextureFormat : uint8_t
+    enum class VTextureFormat
     {
         // Color formats
-        R8 = 0,          // Single channel 8-bit
-        RG8,             // Dual channel 8-bit
-        RGB8,            // RGB 8-bit per channel
-        RGBA8,           // RGBA 8-bit per channel
-        RGB16F,          // RGB 16-bit float per channel
-        RGBA16F,         // RGBA 16-bit float per channel
-        RGB32F,          // RGB 32-bit float per channel
-        RGBA32F,         // RGBA 32-bit float per channel
-
-        // Depth formats
-        Depth16,         // 16-bit depth
-        Depth24,         // 24-bit depth
-        Depth32F,        // 32-bit float depth
-        Depth24Stencil8, // 24-bit depth + 8-bit stencil
-
-        // Compressed formats
-        CompressedRGB,   // DXT1/BC1
-        CompressedRGBA   // DXT5/BC3
+        RGBA8,          // 8-bit RGBA
+        RGBA16F,        // 16-bit floating point RGBA
+        RGBA32F,        // 32-bit floating point RGBA
+        RGB8,           // 8-bit RGB
+        RGB16F,         // 16-bit floating point RGB
+        RGB32F,         // 32-bit floating point RGB
+        RG8,            // 8-bit RG
+        RG16F,          // 16-bit floating point RG
+        RG32F,          // 32-bit floating point RG
+        R8,             // 8-bit single channel
+        R16F,           // 16-bit floating point single channel
+        R32F,           // 32-bit floating point single channel
+        
+        // HDR formats
+        RGB10_A2,       // 10-bit RGB, 2-bit Alpha
+        R11F_G11F_B10F, // Packed 11-11-10 floating point
+        
+        // Depth/Stencil formats
+        Depth16,        // 16-bit depth
+        Depth24,        // 24-bit depth
+        Depth32F,       // 32-bit floating point depth
+        Depth24_Stencil8, // 24-bit depth, 8-bit stencil
+        Depth32F_Stencil8, // 32-bit float depth, 8-bit stencil
+        CompressedRGB,
+        CompressedRGBA
     };
 
     enum class VTextureUsage : uint8_t

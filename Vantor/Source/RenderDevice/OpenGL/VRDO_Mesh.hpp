@@ -55,6 +55,8 @@ namespace Vantor::RenderDevice
             void SetIndices(const std::vector<unsigned int> &indices) override;
             void SetTopology(VE_RENDER_TOPOLOGY topology) override;
 
+            void RenderRaw() override;
+
             void Finalize(bool interleaved = true) override;
             void FromSDF(const std::function<float(Vantor::Math::VVector3)> &sdf, float maxDistance, uint16_t gridResolution) override;
 

@@ -32,6 +32,9 @@ namespace Vantor::RenderDevice
         command.Transform      = transform;
         command.PrevTransform  = prevTransform;
 
+        // Just for now we will put the default command into the forward pass
+        m_ForwardRenderCommands.push_back(command);
+
         // if material requires alpha support, add it to alpha render commands for later rendering.
         // TODO
         // if (material->Blend)
@@ -67,13 +70,20 @@ namespace Vantor::RenderDevice
 
     void VOpenGLCommandBuffer::Clear()
     {
-        m_DeferredRenderCommands.clear();
-        // m_CustomRenderCommands.clear();
-        m_PostProcessingRenderCommands.clear();
-        m_AlphaRenderCommands.clear();
+        m_ForwardRenderCommands.clear();
+        // TODO
+        // m_DeferredRenderCommands.clear();
+        // // m_CustomRenderCommands.clear();
+        // m_PostProcessingRenderCommands.clear();
+        // m_AlphaRenderCommands.clear();
     }
 
     // TODO
+    bool renderSortForward(const VRenderCommand &a, const VRenderCommand &b) {
+      // TODO : Becuase we have no Materials yet
+      return true;
+    }
+
     // --------------------------------------------------------------------------------------------
     // custom per-element sort compare function used by the VOpenGLCommandBuffer::Sort() function.
     bool renderSortDeferred(const VRenderCommand &a, const VRenderCommand &b)
@@ -136,95 +146,100 @@ namespace Vantor::RenderDevice
         // }
     }
 
-    std::vector<VRenderCommand> VOpenGLCommandBuffer::GetDeferredRenderCommands(bool cull)
-    {
-        // TODO : Work with Camera Frustum
-        // if (cull)
-        // {
-        //     std::vector<VRenderCommand> commands;
-        //     for (auto it = m_DeferredRenderCommands.begin(); it != m_DeferredRenderCommands.end(); ++it)
-        //     {
-        //         VRenderCommand command = *it;
-        //         if (m_Renderer->GetCamera()->Frustum.Intersect(command.BoxMin, command.BoxMax)) {
-        //             commands.push_back(command);
-        //         }
-        //     }
-        //     return commands;
-        // }
-        // else
-        // {
-        //     return m_DeferredRenderCommands;
-        // }
-        return m_DeferredRenderCommands;
+    std::vector<VRenderCommand> VOpenGLCommandBuffer::GetForwardRenderCommands(bool cull) {
+      // TODO: Work with Camera Frustum
+      return m_ForwardRenderCommands;
     }
-    // TODO
-    // std::vector<VRenderCommand> VOpenGLCommandBuffer::GetCustomRenderCommands(RenderTarget *target, bool cull)
+
+    // std::vector<VRenderCommand> VOpenGLCommandBuffer::GetDeferredRenderCommands(bool cull)
+    // {
+    //     // TODO : Work with Camera Frustum
+    //     // if (cull)
+    //     // {
+    //     //     std::vector<VRenderCommand> commands;
+    //     //     for (auto it = m_DeferredRenderCommands.begin(); it != m_DeferredRenderCommands.end(); ++it)
+    //     //     {
+    //     //         VRenderCommand command = *it;
+    //     //         if (m_Renderer->GetCamera()->Frustum.Intersect(command.BoxMin, command.BoxMax)) {
+    //     //             commands.push_back(command);
+    //     //         }
+    //     //     }
+    //     //     return commands;
+    //     // }
+    //     // else
+    //     // {
+    //     //     return m_DeferredRenderCommands;
+    //     // }
+    //     return m_DeferredRenderCommands;
+    // }
+    // // TODO
+    // // std::vector<VRenderCommand> VOpenGLCommandBuffer::GetCustomRenderCommands(RenderTarget *target, bool cull)
+    // // {
+    // //     // TODO
+    // //     // only cull when on main/null render target
+    // //     if (target == nullptr && cull)
+    // //     {
+    // //         std::vector<RenderCommand> commands;
+    // //         for (auto it = m_CustomRenderCommands[target].begin(); it != m_CustomRenderCommands[target].end(); ++it)
+    // //         {
+    // //             RenderCommand command = *it;
+    // //             if (m_Renderer->GetCamera()->Frustum.Intersect(command.BoxMin, command.BoxMax)) {
+    // //                 commands.push_back(command);
+    // //             }
+    // //         }
+    // //         return commands;
+    // //     }
+    // //     else
+    // //     {
+    // //         return m_CustomRenderCommands[target];
+    // //     }
+    // // }
+
+    // std::vector<VRenderCommand> VOpenGLCommandBuffer::GetAlphaRenderCommands(bool cull)
     // {
     //     // TODO
-    //     // only cull when on main/null render target
-    //     if (target == nullptr && cull)
-    //     {
-    //         std::vector<RenderCommand> commands;
-    //         for (auto it = m_CustomRenderCommands[target].begin(); it != m_CustomRenderCommands[target].end(); ++it)
-    //         {
-    //             RenderCommand command = *it;
-    //             if (m_Renderer->GetCamera()->Frustum.Intersect(command.BoxMin, command.BoxMax)) {
-    //                 commands.push_back(command);
-    //             }
-    //         }
-    //         return commands;
-    //     }
-    //     else
-    //     {
-    //         return m_CustomRenderCommands[target];
-    //     }
+    //     // if (cull)
+    //     // {
+    //     //     std::vector<RenderCommand> commands;
+    //     //     for (auto it = m_AlphaRenderCommands.begin(); it != m_AlphaRenderCommands.end(); ++it)
+    //     //     {
+    //     //         RenderCommand command = *it;
+    //     //         if (m_Renderer->GetCamera()->Frustum.Intersect(command.BoxMin, command.BoxMax)) {
+    //     //             commands.push_back(command);
+    //     //         }
+    //     //     }
+    //     //     return commands;
+    //     // }
+    //     // else
+    //     // {
+    //     //     return m_AlphaRenderCommands;
+    //     // }
+    //     return m_AlphaRenderCommands;
     // }
 
-    std::vector<VRenderCommand> VOpenGLCommandBuffer::GetAlphaRenderCommands(bool cull)
-    {
-        // TODO
-        // if (cull)
-        // {
-        //     std::vector<RenderCommand> commands;
-        //     for (auto it = m_AlphaRenderCommands.begin(); it != m_AlphaRenderCommands.end(); ++it)
-        //     {
-        //         RenderCommand command = *it;
-        //         if (m_Renderer->GetCamera()->Frustum.Intersect(command.BoxMin, command.BoxMax)) {
-        //             commands.push_back(command);
-        //         }
-        //     }
-        //     return commands;
-        // }
-        // else
-        // {
-        //     return m_AlphaRenderCommands;
-        // }
-        return m_AlphaRenderCommands;
-    }
+    // std::vector<VRenderCommand> VOpenGLCommandBuffer::GetPostProcessingRenderCommands() { return m_PostProcessingRenderCommands; }
 
-    std::vector<VRenderCommand> VOpenGLCommandBuffer::GetPostProcessingRenderCommands() { return m_PostProcessingRenderCommands; }
-
-    std::vector<VRenderCommand> VOpenGLCommandBuffer::GetShadowCastRenderCommands()
-    {
-        // TODO
-        // std::vector<VRenderCommand> commands;
-        // for (auto it = m_DeferredRenderCommands.begin(); it != m_DeferredRenderCommands.end(); ++it)
-        // {
-        //     if (it->Material->ShadowCast)
-        //     {
-        //         commands.push_back(*it);
-        //     }
-        // }
-        // for (auto it = m_CustomRenderCommands[nullptr].begin(); it != m_CustomRenderCommands[nullptr].end(); ++it)
-        // {
-        //     if (it->Material->ShadowCast)
-        //     {
-        //         commands.push_back(*it);
-        //     }
-        // }
-        // return commands;
-        // This is just so the compiler behaves right, delete it after its alright
-        std::vector<VRenderCommand> commands;
-        return commands;
-    }
+    // std::vector<VRenderCommand> VOpenGLCommandBuffer::GetShadowCastRenderCommands()
+    // {
+    //     // TODO
+    //     // std::vector<VRenderCommand> commands;
+    //     // for (auto it = m_DeferredRenderCommands.begin(); it != m_DeferredRenderCommands.end(); ++it)
+    //     // {
+    //     //     if (it->Material->ShadowCast)
+    //     //     {
+    //     //         commands.push_back(*it);
+    //     //     }
+    //     // }
+    //     // for (auto it = m_CustomRenderCommands[nullptr].begin(); it != m_CustomRenderCommands[nullptr].end(); ++it)
+    //     // {
+    //     //     if (it->Material->ShadowCast)
+    //     //     {
+    //     //         commands.push_back(*it);
+    //     //     }
+    //     // }
+    //     // return commands;
+    //     // This is just so the compiler behaves right, delete it after its alright
+    //     std::vector<VRenderCommand> commands;
+    //     return commands;
+    // }
 } // namespace Vantor::RenderDevice

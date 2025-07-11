@@ -13,3 +13,7 @@
 - Lighting
 - Command Buffer
 - Utility: Timer
+
+## To fix
+
+ - LoadTexture2D in Resource Manager with CreateFromMemory not CreateFromFile to use Platform Environment functions

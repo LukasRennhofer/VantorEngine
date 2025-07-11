@@ -31,8 +31,19 @@ namespace Vantor
             static void                    SetRenderDevice(RenderDevice::VRDevice *dev) { renderDevice = dev; }
             static RenderDevice::VRDevice *GetRenderDevice() { return renderDevice; }
 
+            static uint32_t GetContextWidth() {return ctxW;}
+            static uint32_t GetContextHeight() {return ctxH;}
+
+            static void SetContextWidth(uint32_t w) {ctxW = w;}
+            static void SetContextHeight(uint32_t h) {ctxH = h;}
             // TODO: Add more systems here
         private:
             static inline RenderDevice::VRDevice *renderDevice = nullptr;
+
+            // Context Infos for public
+            // Only working after Context got initialized
+            // NOTE (Lukas): Should implement a version with Singleton for Service Locator
+            static uint32_t ctxW;
+            static uint32_t ctxH;
     };
 } // namespace Vantor

@@ -98,7 +98,6 @@ namespace Vantor::RenderDevice
         }
 
         // Configure Data Buffer (Configure it for the VBO to be pushed to the GPU)
-
         std::vector<float> data;
         if (interleaved)
         {
@@ -251,10 +250,22 @@ namespace Vantor::RenderDevice
         glBindVertexArray(0);
     }
 
+    void VOpenGLMesh::RenderRaw() {
+        glBindVertexArray(m_VAO);
+        if (Indices.size() > 0)
+        {
+            glDrawElements(Topology == TRIANGLE_STRIP ? GL_TRIANGLE_STRIP : GL_TRIANGLES, Indices.size(), GL_UNSIGNED_INT, 0);
+        }
+        else
+        {
+            glDrawArrays(Topology == TRIANGLE_STRIP ? GL_TRIANGLE_STRIP : GL_TRIANGLES, 0, Positions.size());
+        }
+    }
+
     // We generate a Mesh from SDF when procedurally generating data for basic models (Spheres, complex shapes)
     void VOpenGLMesh::FromSDF(const std::function<float(Vantor::Math::VVector3)> &sdf, float maxDistance, uint16_t gridResolution)
     {
-        Vantor::Backlog::Log("RDeviceOpenGL::Mesh", "Generating mesh from SDF function", Vantor::Backlog::LogLevel::DEBUG);
+        Vantor::Backlog::Log("VRDeviceOpenGL::Mesh", "Generating mesh from SDF function", Vantor::Backlog::LogLevel::DEBUG);
 
         // data from: http://paulbourke.net/geometry/polygonise/
         static int edgeTable[256]

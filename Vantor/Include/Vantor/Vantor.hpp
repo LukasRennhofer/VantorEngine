@@ -95,6 +95,9 @@ with RenderDevice Vulkan (Defined in CMake) (RESERVED, BUT NOT IN USE)
 // Platform
 #include "../../Source/Platform/VPL_Environment.hpp"
 
+// Resource Manager
+#include "../../Source/Resource/VRES_Manager.hpp"
+
 // INPUT
 #include "../../Source/InputDevice/VID_IDevice.hpp"
 #include "../../Source/InputDevice/VID_Factory.hpp"

@@ -21,7 +21,6 @@
 #include <Vantor/RenderModules/FlyCamera.hpp> // FlyCamera
 #include <Vantor/Renderer/Geometry.hpp> // Geometry Objects
 #include <Vantor/Integration/ImGui.hpp>
-// #include "../Vantor/Source/RenderDevice/OpenGL/VRDO_Texture.hpp"
 
 
 int main() {
@@ -34,6 +33,7 @@ int main() {
 
     // Initialize the Application
     app.Initialize(appInfo);
+
 
     // A Basic Color for the rect
     VColor rectColor =  VColor::Cyan();
@@ -56,8 +56,6 @@ int main() {
     // sampler.wrapT = Vantor::RenderDevice::VTextureWrap::Repeat;
     // sampler.generateMipmaps = true;
 
-    //     // Load texture from file
-    // auto texture = Vantor::RenderDevice::VOpenGLTexture2D::CreateFromFile("Resources/textures/glass.png", sampler, true);
 
     // ===== Object System and build Scene Graph =====
     auto rootNode = Object::VORegistry::CreateEntity<Object::VObject>();
@@ -86,6 +84,18 @@ int main() {
     cube->GenerateMesh(); // Generate the Mesh data for the cube
 
     rootNode->AddChild(cube);
+
+    glfwSwapInterval(0); // VSync OFF : TODO: Implement in Context
+
+    // RenderPath Test
+    auto renderpath = app.GetRenderDevice()->CreateRenderPath3D();
+
+    // Properly initialize the camera with perspective projection
+    camera->SetPerspective(45.0f, (float)VServiceLocator::GetContextWidth()/(float)VServiceLocator::GetContextHeight(), 0.1f, 100.0f);
+    
+    renderpath->SetCamera(camera.get());
+
+    // renderpath->SetWireframeMode(true); // Re-enable wireframe for debugging
 
     // Print Hierachy
     // std::cout << "==== Hierachy rootNode (root) id: " << rootNode->GetID() << std::endl;
@@ -117,82 +127,46 @@ int main() {
 
     app.GetInputManager()->MapAction("fire", Input::VInputButton{Input::VEInputDeviceType::Keyboard, (int)Input::VEInputKey::KEY_ESCAPE});
 
-
-    glClearColor(0.1f, 0.2f, 0.3f, 1.0f);
-
-    const char *vertexShaderSource = "#version 330 core\n"
-        "layout (location = 0) in vec3 aPos;\n"
-        "out vec4 newColor;\n"
-        
-        "void main()\n"
-            "{\n"
-        "   gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);\n"
-        "}\0";
-    const char *fragmentShaderSource = "#version 330 core\n"
-        "uniform vec4 newColor;\n"
-        "out vec4 FragColor;\n"
-        "void main()\n"
-        "{\n"
-        "   FragColor = newColor;\n"
-        "}\n\0";
-
-    // Set up Shader
-    auto shaderProgram = app.GetRenderDevice()->CreateShader(vertexShaderSource, fragmentShaderSource);
-
-    // set up vertex data (and buffer(s)) and configure vertex attributes
-    // ------------------------------------------------------------------
-    float vertices[] = {
-         0.5f,  0.5f, 0.0f,  // top right
-         0.5f, -0.5f, 0.0f,  // bottom right
-        -0.5f, -0.5f, 0.0f,  // bottom left
-        -0.5f,  0.5f, 0.0f   // top left 
-    };
-    unsigned int indices[] = {  // note that we start from 0!
-        0, 1, 3,  // first Triangle
-        1, 2, 3   // second Triangle
-    };
-
-    unsigned int VBO, VAO, EBO;
-    glGenVertexArrays(1, &VAO);
-    glGenBuffers(1, &VBO);
-    glGenBuffers(1, &EBO);
-    // bind the Vertex Array Object
-    glBindVertexArray(VAO);
-    glBindBuffer(GL_ARRAY_BUFFER, VBO);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
-    glEnableVertexAttribArray(0);
-    glBindBuffer(GL_ARRAY_BUFFER, 0); 
-    glBindVertexArray(0); 
-
-    // Main loop
-
     // Run app logic
-    app.Run([&]() {
+    while (app.IsRunning()) {
+            app.BeginFrame();
+
+            // Show Camera Position if ImGui is enabled
             #ifdef VANTOR_INTEGRATION_IMGUI
             Vantor::Integration::Imgui::BuildUpDocking();
             Vantor::Integration::Imgui::ShowSceneHierachy();
+            ImGui::Begin("Camera");
+            ImGui::Text("X: %f Y: %f Z: %f", camera->Position.x, camera->Position.y, camera->Position.z);
+            ImGui::Text("FPS: %f", 1.0f/app.GetDeltaTime());
+            ImGui::End();
             #endif
 
             if (app.GetInputManager()->WasPressed(Input::KEY_ESCAPE, Input::VEInputDeviceType::Keyboard)) {
-                std::cout << app.GetInputManager()->devices[0]->GetMousePosition().x << std::endl;
                 app.Break();
             }
-            
-            // draw our first triangle
-            shaderProgram->use();
-            // Test Uniforms with custom Color (turn it into a Vector, to pass it to GPU)
-            shaderProgram->setVec4("newColor", rectColor.toFloat4());
-            glBindVertexArray(VAO); // seeing as we only have a single VAO there's no need to bind it every time, but we'll do so to keep things a bit more organized
-            //glDrawArrays(GL_TRIANGLES, 0, 6);
-            glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-        });
 
-    glDeleteVertexArrays(1, &VAO);
-    glDeleteBuffers(1, &VBO);
-    glDeleteBuffers(1, &EBO);
+            if (app.GetInputManager()->IsPressed(Input::KEY_W, Input::VEInputDeviceType::Keyboard)) {
+                camera->InputKey(app.GetDeltaTime(), Vantor::Renderer::CAMERA_FORWARD);
+            } else if (app.GetInputManager()->IsPressed(Input::KEY_A, Input::VEInputDeviceType::Keyboard)) {
+                camera->InputKey(app.GetDeltaTime(), Vantor::Renderer::CAMERA_LEFT);
+            } else if (app.GetInputManager()->IsPressed(Input::KEY_D, Input::VEInputDeviceType::Keyboard)) {
+                camera->InputKey(app.GetDeltaTime(), Vantor::Renderer::CAMERA_RIGHT);
+            } else if (app.GetInputManager()->IsPressed(Input::KEY_S, Input::VEInputDeviceType::Keyboard)) {
+                camera->InputKey(app.GetDeltaTime(), Vantor::Renderer::CAMERA_BACK);
+            } else if (app.GetInputManager()->IsPressed(Input::KEY_E, Input::VEInputDeviceType::Keyboard)) {
+                camera->InputKey(app.GetDeltaTime(), Vantor::Renderer::CAMERA_UP);
+            } else if (app.GetInputManager()->IsPressed(Input::KEY_Q, Input::VEInputDeviceType::Keyboard)) {
+                camera->InputKey(app.GetDeltaTime(), Vantor::Renderer::CAMERA_DOWN);
+            }
+
+            camera->Update(app.GetDeltaTime());
+
+            renderpath->Render();
+
+            app.EndFrame();
+    }
+
+    renderpath->Shutdown();
 
 	app.Shutdown();
 

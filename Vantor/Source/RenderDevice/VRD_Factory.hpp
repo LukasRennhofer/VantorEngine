@@ -35,6 +35,21 @@
 namespace Vantor::RenderDevice
 {
 
+    inline std::shared_ptr<VTexture> CreateTexture2DInstance(const std::string& filePath, 
+                                                                const VTextureSampler& sampler,
+                                                                bool generateMipmaps = true) {
+        #if defined(VANTOR_API_OPENGL)
+        return VOpenGLTexture2D::CreateFromFile(filePath, sampler, generateMipmaps);
+        #endif
+    }
+
+    inline std::shared_ptr<VShader> CreateShaderInstance(const char *vertexCode, const char *fragmentCode) {
+        #if defined(VANTOR_API_OPENGL)
+        return std::make_shared<VOpenGLShader>(vertexCode, fragmentCode);
+        #endif
+        return nullptr;
+    }
+
     // Compile-time selected instance
     inline std::unique_ptr<VRDevice> CreateInstance()
     {

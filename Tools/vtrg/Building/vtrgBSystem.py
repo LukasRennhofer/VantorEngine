@@ -326,9 +326,13 @@ class VantorInternalBuildSystem:
                     logger.error("Wine not found. Cannot run Windows executable on Linux.")
                     return 1
             else:
+                directory = os.path.dirname(executable_path)
+                base = os.path.basename(executable_path)
                 # Run native executable
-                if not executable_path.startswith('./'):
-                    executable_path = './' + executable_path
+                os.chdir(directory)
+                executable_path = './' + base
+                print(executable_path)
+
                 result = subprocess.run([executable_path], check=True)
                 return result.returncode
                 

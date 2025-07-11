@@ -53,7 +53,7 @@ namespace Vantor::RenderDevice
             case VTextureFormat::Depth16:        return 2;
             case VTextureFormat::Depth24:        return 3;
             case VTextureFormat::Depth32F:       return 4;
-            case VTextureFormat::Depth24Stencil8: return 4;
+            case VTextureFormat::Depth24_Stencil8: return 4;
             case VTextureFormat::CompressedRGB:  return 1; // Approximation for DXT1
             case VTextureFormat::CompressedRGBA: return 1; // Approximation for DXT5
             default:                             return 4; // Default to RGBA8
@@ -97,7 +97,7 @@ namespace Vantor::RenderDevice
             case VTextureFormat::Depth16:
             case VTextureFormat::Depth24:
             case VTextureFormat::Depth32F:
-            case VTextureFormat::Depth24Stencil8:
+            case VTextureFormat::Depth24_Stencil8:
                 return true;
             default:
                 return false;
@@ -111,7 +111,7 @@ namespace Vantor::RenderDevice
             case VTextureFormat::Depth16:
             case VTextureFormat::Depth24:
             case VTextureFormat::Depth32F:
-            case VTextureFormat::Depth24Stencil8:
+            case VTextureFormat::Depth24_Stencil8:
                 return true;
             default:
                 return false;
@@ -147,7 +147,7 @@ namespace Vantor::RenderDevice
             case VTextureFormat::Depth16:        return GL_DEPTH_COMPONENT16;
             case VTextureFormat::Depth24:        return GL_DEPTH_COMPONENT24;
             case VTextureFormat::Depth32F:       return GL_DEPTH_COMPONENT32F;
-            case VTextureFormat::Depth24Stencil8: return GL_DEPTH24_STENCIL8;
+            case VTextureFormat::Depth24_Stencil8: return GL_DEPTH24_STENCIL8;
             case VTextureFormat::CompressedRGB:  return GL_COMPRESSED_RGB;  // Use generic compressed format
             case VTextureFormat::CompressedRGBA: return GL_COMPRESSED_RGBA; // Use generic compressed format
             default:                             return GL_RGBA8;
@@ -169,9 +169,9 @@ namespace Vantor::RenderDevice
             case VTextureFormat::Depth16:        return GL_DEPTH_COMPONENT;
             case VTextureFormat::Depth24:        return GL_DEPTH_COMPONENT;
             case VTextureFormat::Depth32F:       return GL_DEPTH_COMPONENT;
-            case VTextureFormat::Depth24Stencil8: return GL_DEPTH_STENCIL;
-            case VTextureFormat::CompressedRGB:  return GL_RGB;
-            case VTextureFormat::CompressedRGBA: return GL_RGBA;
+            case VTextureFormat::Depth24_Stencil8: return GL_DEPTH_STENCIL;
+            case VTextureFormat::CompressedRGB:  return GL_RGB;  // Use generic compressed format
+            case VTextureFormat::CompressedRGBA: return GL_RGBA; // Use generic compressed format
             default:                             return GL_RGBA;
         }
     }
