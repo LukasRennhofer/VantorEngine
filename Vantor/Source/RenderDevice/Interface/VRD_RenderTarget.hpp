@@ -142,7 +142,7 @@ namespace Vantor::RenderDevice
     };
 
     // Utility functions for creating common render target configurations
-    namespace RenderTargetUtils
+    namespace VRenderTargetUtils
     {
         VRenderTargetDescriptor
         CreateColorTarget(uint32_t width, uint32_t height, VTextureFormat format = VTextureFormat::RGBA8, const std::string &debugName = "ColorTarget");

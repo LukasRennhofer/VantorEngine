@@ -24,6 +24,7 @@
 #include <Shared/imgui/imgui.h>
 
 #include "../../Integration/imgui/VIN_Imgui.hpp"
+#endif
 
 // Core/Backlog
 #include "../../Core/BackLog/VCO_Backlog.hpp"

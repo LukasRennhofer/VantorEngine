@@ -33,7 +33,7 @@ namespace Vantor::RenderDevice
             ~VOpenGLCommandBuffer() override;
 
             // pushes render state relevant to a single render call to the command buffer.
-            void Push(VMesh *mesh, Vantor::Math::VMat4 transform, Vantor::Math::VMat4 prevTransform) override;
+            void Push(VMesh *mesh, Vantor::Renderer::VMaterial *material,  Vantor::Math::VMat4 transform) override;
             // clears the command buffer; usually done after issuing all the stored render commands.
             void Clear() override;
             // sorts the command buffer; first by shader, then by texture bind.

@@ -25,6 +25,9 @@
 #include "VRD_CommandBuffer.hpp"
 #include "../../Renderer/Camera/VRE_Camera.hpp"
 
+// Light Data
+#include "../../Renderer/Light/VRE_LightData.hpp"
+
 // Math
 #include "../../Math/Linear/VMA_Vector.hpp"
 
@@ -33,11 +36,13 @@ namespace Vantor::RenderDevice
     // Forward declerations
     class VRDevice;
     class VRenderTarget;
+    class VRenderPath3D;
 
     // RenderPass Types (In order)
     enum class VERenderPassType
     {
-        Forward
+        Forward,
+        Deffered
     };
 
     // TODO: Profile RenderPasses
@@ -77,8 +82,9 @@ namespace Vantor::RenderDevice
         public:
             virtual ~VRenderPass() = default;
 
-            virtual void Initialize()                           = 0;
-            virtual void Execute(VCommandBuffer *commandBuffer) = 0;
+            virtual void Initialize(VRenderPath3D* renderPath)                           = 0;
+            // Camera just for now
+            virtual void Execute() = 0;
             virtual void Cleanup()                              = 0;
 
             virtual VERenderPassType   GetType() const = 0;
@@ -119,6 +125,8 @@ namespace Vantor::RenderDevice
             virtual const VERenderStats &GetRenderStats() const = 0;
             virtual void                 ResetRenderStats()     = 0;
 
+            VRDevice* GetRenderDevice() { return m_Device; };
+
             bool IsActive() { return isActive; }
             void SetActive(bool active) { isActive = active; }
 
@@ -136,8 +144,6 @@ namespace Vantor::RenderDevice
             uint32_t m_ViewportY      = 0;
             uint32_t m_ViewportWidth  = 1280;
             uint32_t m_ViewportHeight = 720;
-
-            std::shared_ptr<VCommandBuffer> m_CommandBuffer;
     };
 
     // 3D rendering path interface
@@ -146,13 +152,20 @@ namespace Vantor::RenderDevice
         public:
             virtual ~VRenderPath3D() = default;
 
+            // Push to Command Buffer
+            virtual void PushRender(VMesh *mesh, Vantor::Renderer::VMaterial *material, Vantor::Math::VMat4 transform) = 0;
+
+            // Push Light Data
+            virtual void PushPointLight(const Vantor::Renderer::VPointLightData& pointLightData) = 0;
+            // TODO: Push VObject PointLight Class
+            // virtual void PushPointLight(const Vantor::Renderer::VPointLight* pointLight) = 0;
+
             // Camera management
             virtual void                      SetCamera(Vantor::Renderer::Camera *camera) = 0;
             virtual Vantor::Renderer::Camera *GetCamera() const                           = 0;
 
-            // Lighting configuration
-            virtual void                          SetAmbientLight(const Vantor::Math::VVector3 &color) = 0;
-            virtual const Vantor::Math::VVector3 &GetAmbientLight() const                              = 0;
+            // Command Buffer
+            virtual VCommandBuffer* GetCommandBuffer() = 0;
 
             // Shadow mapping : TODO
             // virtual void EnableShadows(bool enable) = 0;
@@ -171,7 +184,10 @@ namespace Vantor::RenderDevice
 
         protected:
             Vantor::Renderer::Camera *m_Camera       = nullptr;
-            Vantor::Math::VVector3    m_AmbientLight = {0.1f, 0.1f, 0.1f};
+            // Vantor::Math::VVector3    m_AmbientLight = {0.1f, 0.1f, 0.1f};
+            std::vector<Vantor::Renderer::VPointLightData> m_PointLights;
+
+            std::shared_ptr<VCommandBuffer> m_CommandBuffer;
 
             //         bool m_ShadowsEnabled = true;
             //         uint32_t m_ShadowMapSize = 2048;

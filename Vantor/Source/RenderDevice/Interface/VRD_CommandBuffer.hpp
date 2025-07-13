@@ -23,8 +23,12 @@
 // Math
 #include "../../Math/Linear/VMA_Matrix.hpp"
 #include "../../Math/Linear/VMA_Vector.hpp"
+
 #include "VRD_Mesh.hpp"
 #include "VRD_Mesh.hpp"
+
+// Materials
+#include "../../Renderer/VRE_Material.hpp"
 
 namespace Vantor::RenderDevice
 {
@@ -32,8 +36,9 @@ namespace Vantor::RenderDevice
     struct VRenderCommand
     {
             Vantor::Math::VMat4 Transform;
-            Vantor::Math::VMat4 PrevTransform;
+            // Vantor::Math::VMat4 PrevTransform;
             VMesh              *Mesh;
+            Vantor::Renderer::VMaterial *Material;
     };
 
     class VCommandBuffer
@@ -42,7 +47,7 @@ namespace Vantor::RenderDevice
             virtual ~VCommandBuffer() noexcept = 0;
 
             // pushes render state relevant to a single render call to the command buffer.
-            virtual void Push(VMesh *mesh, Vantor::Math::VMat4 transform, Vantor::Math::VMat4 prevTransform) = 0;
+            virtual void Push(VMesh *mesh, Vantor::Renderer::VMaterial *material, Vantor::Math::VMat4 transform) = 0;
 
             // clears the command buffer; usually done after issuing all the stored render commands.
             virtual void Clear() = 0;

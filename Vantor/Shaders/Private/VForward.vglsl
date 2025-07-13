@@ -1,0 +1,53 @@
+#version 460 core
+
+layout(location = 0) in vec3 aPosition;
+layout(location = 1) in vec2 aUV;
+layout(location = 2) in vec3 aNormal;
+layout(location = 3) in vec3 aTangent; // TODO
+layout(location = 4) in vec3 aBitangent; // TODO
+
+// Constants
+const int FORWARD_MAX_POINT_LIGHTS = 8; // Just for Forward Rendering, because of GLSL flexibility issues
+
+struct PointLight {
+    vec3 position;
+    float constant;        // attenuation constant
+
+    vec3 ambient;
+    float linear;          // attenuation linear
+
+    vec3 diffuse;
+    float quadratic;       // attenuation quadratic
+
+    vec3 specular;
+    float padding;         // pad to 16 bytes alignment
+};
+
+// This is currently bound to the Update function in the VOpenGLUBO and binding 0
+layout(std140, binding = 0) uniform VCommonUniforms
+{
+    mat4 Vu_View;
+    mat4 Vu_Projection;
+    vec3 Vu_CameraPosition;
+    float _pad0; // padding for alignment
+
+    int Vu_NumPointLights;
+    vec3 _pad1; // padding for alignment
+
+    PointLight Vu_PointLights[FORWARD_MAX_POINT_LIGHTS];
+};
+
+out vec3 FragPos;
+out vec3 Normal;
+out vec2 TexCoords;
+
+uniform mat4 model;
+
+void main()
+{
+    FragPos = vec3(model * vec4(aPosition, 1.0));
+    Normal = mat3(transpose(inverse(model))) * aNormal;  
+    TexCoords = aUV;
+    
+    gl_Position = Vu_Projection * Vu_View * vec4(FragPos, 1.0);
+}

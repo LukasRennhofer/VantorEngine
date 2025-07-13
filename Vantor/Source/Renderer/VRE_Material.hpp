@@ -63,12 +63,13 @@ namespace Vantor::Renderer
         public:
             VEMaterialType              Type  = VEMaterialType::MaterialDefault;
             Vantor::Core::Types::VColor color = Vantor::Core::Types::VColor::White(); // Standart Color is white
+            float shininess = 32.0f; // Shininess, just for now
 
             // TODO: Implement States, to represent the sate of a single Mesh
 
             // shadow state
-            bool ShadowCast    = true;
-            bool ShadowReceive = true;
+            // bool ShadowCast    = true;
+            // bool ShadowReceive = true;
 
         private:
         public:

@@ -184,6 +184,9 @@ namespace Vantor::Input
             // For axis inputs (gamepads, analog sticks etc)
             virtual float GetAxis(const VInputButton &axis) const = 0;
 
+            virtual void SetMouseCursorState(bool visible) = 0;
+            virtual bool GetMouseCursorState() const = 0;
+
             virtual Vantor::Math::VVector2 GetMousePosition() const = 0;
 
             virtual Vantor::Math::VVector2 GetMouseDelta() const = 0;
@@ -191,5 +194,8 @@ namespace Vantor::Input
             virtual Vantor::Math::VVector2 GetScrollOffset() const = 0;
 
             virtual std::string GetDeviceName() const = 0;
+        
+        protected:
+            bool m_CursorState = true;
     };
 } // namespace Vantor::Input

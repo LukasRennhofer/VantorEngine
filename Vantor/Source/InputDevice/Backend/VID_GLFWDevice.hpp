@@ -116,6 +116,22 @@ namespace Vantor::Input
                 return it != currentAxes.end() ? it->second : 0.f;
             }
 
+            void SetMouseCursorState(bool visible) override {
+                if (m_CursorState != visible) {
+                    m_CursorState = visible;
+
+                    if (visible) {
+                        glfwSetInputMode(nativeWindow, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+                    } else {
+                        glfwSetInputMode(nativeWindow, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+                    }
+                }
+            }
+
+            bool GetMouseCursorState() const override {
+                return m_CursorState;
+            }
+
             Vantor::Math::VVector2 GetMousePosition() const override { return Vantor::Math::VVector2((float) mouseX, (float) mouseY); }
 
             Vantor::Math::VVector2 GetMouseDelta() const override

@@ -67,8 +67,7 @@ namespace Vantor::Resource
             return true;
         }
 
-        // Add default resource paths
-        std::string execDir = Platform::Environment::GetExecutableDirectory();
+        // TODO
 
         m_initialized = true;
 

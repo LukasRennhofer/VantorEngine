@@ -19,12 +19,12 @@
     Low-Level Experimental In-House Game Engine for VantorStudios
     <br />
     <h5 align="center">
-    <strong>v0.16.X - Experimental Build</strong>
+    <strong>v0.17.X - Experimental Build</strong>
     </h5>
-    <a href="https://github.com/LukasRennhofer/Vantor"><strong>Explore the docs »</strong></a>
+    <a href="https://docs.vantor.net/"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="#getting-started">Get Started</a>
+    <a href="https://docs.vantor.net/docs/category/getting-started">Get Started</a>
     &middot;
     <a href="https://github.com/LukasRennhofer/Vantor/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
     &middot;
@@ -117,8 +117,6 @@ The Vantor Engine is built using modern technologies and industry-standard tools
 
 **Third-Party Libraries:**
 - **Dear ImGui**: Immediate mode GUI for debugging and tools
-- **SDL2**: Low-level access to audio, keyboard, mouse, and graphics
-- **Assimp**: 3D model loading and processing
 - **GLFW**: Window management and input handling
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>

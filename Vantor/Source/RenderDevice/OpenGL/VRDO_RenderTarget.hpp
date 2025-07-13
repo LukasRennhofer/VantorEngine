@@ -118,7 +118,7 @@ namespace Vantor::RenderDevice
     };
 
     // Factory functions for easy creation
-    namespace RenderTargetFactory
+    namespace VRenderTargetFactory
     {
         std::unique_ptr<VOpenGLRenderTarget>
         CreateColorTarget(uint32_t width, uint32_t height, VTextureFormat format = VTextureFormat::RGBA8, const std::string &debugName = "ColorTarget");

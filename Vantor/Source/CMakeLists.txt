@@ -73,7 +73,12 @@ set(OPENGL_RENDER_SOURCES
     RenderDevice/OpenGL/VRDO_Mesh.cpp
     RenderDevice/OpenGL/VRDO_Texture.cpp
     RenderDevice/OpenGL/VRDO_RenderTarget.cpp
+    RenderDevice/OpenGL/VRDO_UBO.cpp
     RenderDevice/OpenGL/VRDO_CommandBuffer.cpp
+    RenderDevice/OpenGL/VRDO_StateCache.cpp
+    # Common OpenGL Objects
+    RenderDevice/OpenGL/Common/VRDO_ScreenQuad.cpp
+    # Main Objects (must be compiled at the end)
     RenderDevice/OpengL/VRDO_RenderPath.cpp
     RenderDevice/OpenGL/VRDO_RenderDevice.cpp
 )

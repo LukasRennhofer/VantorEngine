@@ -32,6 +32,19 @@
 
 #include "VRDO_Shader.hpp"
 #include "VRDO_Texture.hpp"
+#include "VRDO_RenderTarget.hpp"
+
+// Uniform buffer
+#include "VRDO_UBO.hpp"
+
+// Command Buffer
+#include "VRDO_CommandBuffer.hpp"
+
+// State Cache
+#include "VRDO_StateCache.hpp"
+
+// Screen Quad
+#include "Common/VRDO_ScreenQuad.hpp"
 
 // Resource Manager
 #include "../../Resource/VRES_Manager.hpp"
@@ -51,7 +64,6 @@ namespace Vantor::RenderDevice
         protected:
             VERenderPassType m_Type;
             std::string      m_Name;
-            GLuint           m_FramebufferID = 0;
     };
 
     // OpenGL 3D Forward Rendering Pass
@@ -59,27 +71,56 @@ namespace Vantor::RenderDevice
     {
         public:
             VForwardRenderPassGL();
-            virtual ~VForwardRenderPassGL() = default;
+            ~VForwardRenderPassGL() = default;
 
-            void Initialize() override;
-            void Execute(VCommandBuffer *commandBuffer) override;
+            void Initialize(VRenderPath3D* renderPath) override;
+            // Camera just for now
+            void Execute() override;
             void Cleanup() override;
 
             void SetCamera(Vantor::Renderer::Camera *camera) { m_Camera = camera; }
             void SetAmbientLight(const Vantor::Math::VVector3 &ambient) { m_AmbientLight = ambient; }
 
         private:
+            // TODO: Remove this things if not needed
             Vantor::Renderer::Camera *m_Camera       = nullptr;
             Vantor::Math::VVector3    m_AmbientLight = {0.1f, 0.1f, 0.1f};
-            std::shared_ptr<VShader>  m_DefaultShader;
 
-            // Just to test
-            std::shared_ptr<VTexture> m_Deffered;
-            std::shared_ptr<VTexture> m_Specular;
+            // GBuffer
+            
 
-            unsigned int VBO, cubeVAO;
+            VRenderPath3D* m_RenderPath;
+    };
 
-            float vertecies[];
+    class VDefferedRenderPassGL : public VRenderPassGL
+    {
+        public:
+            VDefferedRenderPassGL();
+            ~VDefferedRenderPassGL() = default;
+
+            void Initialize(VRenderPath3D* renderPath) override;
+            // Camera just for now
+            void Execute() override;
+            void Cleanup() override;
+
+            void SetCamera(Vantor::Renderer::Camera *camera) { m_Camera = camera; }
+            void SetAmbientLight(const Vantor::Math::VVector3 &ambient) { m_AmbientLight = ambient; }
+
+        private:
+            // TODO: Remove this things if not needed
+            Vantor::Renderer::Camera *m_Camera       = nullptr;
+            Vantor::Math::VVector3    m_AmbientLight = {0.1f, 0.1f, 0.1f};
+
+            // GBuffer
+            std::unique_ptr<VOpenGLRenderTarget> m_GBuffer;
+
+            // Screen Quad
+            VOpenGLScreenQuad m_ScreenQuad;
+
+            // Shaders
+            std::shared_ptr<VShader> m_ShaderGBuffer;
+
+            VRenderPath3D* m_RenderPath;
     };
 
     // OpenGL Shadow Mapping Pass : TODO
@@ -116,6 +157,10 @@ namespace Vantor::RenderDevice
             void Render() override;
             void Shutdown() override;
 
+            void PushRender(VMesh *mesh, Vantor::Renderer::VMaterial *material, Vantor::Math::VMat4 transform) override;
+
+            void PushPointLight(const Vantor::Renderer::VPointLightData& pointLightData) override;
+
             // Render target management
             void           SetRenderTarget(VRenderTarget *target) override;
             VRenderTarget *GetRenderTarget() const override;
@@ -136,8 +181,8 @@ namespace Vantor::RenderDevice
             void                      SetCamera(Vantor::Renderer::Camera *camera) override;
             Vantor::Renderer::Camera *GetCamera() const override;
 
-            void                          SetAmbientLight(const Vantor::Math::VVector3 &color) override;
-            const Vantor::Math::VVector3 &GetAmbientLight() const override;
+            // Command Buffer
+            VCommandBuffer* GetCommandBuffer() override;
 
             // TODO
             // void EnableShadows(bool enable) override;
@@ -159,7 +204,11 @@ namespace Vantor::RenderDevice
             bool m_WireframeMode  = false;
             bool m_CullingEnabled = false;
 
+            VOpenGLUBO m_UBO; // Uniform Buffer Object
+
             std::unordered_map<VERenderPassType, std::unique_ptr<VRenderPass>> m_RenderPasses;
+
+
     };
 
     // TODO : 2D Sprite batch implementation for efficient 2D rendering

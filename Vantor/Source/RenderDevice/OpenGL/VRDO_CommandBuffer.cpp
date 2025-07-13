@@ -22,15 +22,21 @@
 
 namespace Vantor::RenderDevice
 {
+    VCommandBuffer::~VCommandBuffer() noexcept
+    {
+        // empty body, needed by linker
+    }
+
     VOpenGLCommandBuffer::VOpenGLCommandBuffer() {}
 
-    VOpenGLCommandBuffer::~VOpenGLCommandBuffer() { Clear(); }
-    void VOpenGLCommandBuffer::Push(VMesh *mesh, Vantor::Math::VMat4 transform, Vantor::Math::VMat4 prevTransform)
+    VOpenGLCommandBuffer::~VOpenGLCommandBuffer() noexcept { Clear(); }
+
+    void VOpenGLCommandBuffer::Push(VMesh *mesh, Vantor::Renderer::VMaterial *material, Vantor::Math::VMat4 transform)
     {
         VRenderCommand command = {};
         command.Mesh           = mesh;
         command.Transform      = transform;
-        command.PrevTransform  = prevTransform;
+        command.Material       = material;
 
         // Just for now we will put the default command into the forward pass
         m_ForwardRenderCommands.push_back(command);

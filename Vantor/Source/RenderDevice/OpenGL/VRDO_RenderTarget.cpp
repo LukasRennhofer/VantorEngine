@@ -555,7 +555,7 @@ namespace Vantor::RenderDevice
 
     // ----------------- Utility Functions Implementation -----------------
 
-    namespace RenderTargetUtils
+    namespace VRenderTargetUtils
     {
         VRenderTargetDescriptor CreateColorTarget(uint32_t width, uint32_t height, VTextureFormat format, const std::string &debugName)
         {
@@ -651,12 +651,12 @@ namespace Vantor::RenderDevice
 
     // ----------------- Factory Functions Implementation -----------------
 
-    namespace RenderTargetFactory
+    namespace VRenderTargetFactory
     {
         std::unique_ptr<VOpenGLRenderTarget> CreateColorTarget(uint32_t width, uint32_t height, VTextureFormat format, const std::string &debugName)
         {
             auto renderTarget = std::make_unique<VOpenGLRenderTarget>();
-            auto desc         = RenderTargetUtils::CreateColorTarget(width, height, format, debugName);
+            auto desc         = VRenderTargetUtils::CreateColorTarget(width, height, format, debugName);
 
             if (renderTarget->Create(desc))
             {
@@ -670,7 +670,7 @@ namespace Vantor::RenderDevice
         CreateColorDepthTarget(uint32_t width, uint32_t height, VTextureFormat colorFormat, VTextureFormat depthFormat, const std::string &debugName)
         {
             auto renderTarget = std::make_unique<VOpenGLRenderTarget>();
-            auto desc         = RenderTargetUtils::CreateColorDepthTarget(width, height, colorFormat, depthFormat, debugName);
+            auto desc         = VRenderTargetUtils::CreateColorDepthTarget(width, height, colorFormat, depthFormat, debugName);
 
             if (renderTarget->Create(desc))
             {

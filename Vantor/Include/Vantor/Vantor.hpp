@@ -85,6 +85,9 @@ with RenderDevice Vulkan (Defined in CMake) (RESERVED, BUT NOT IN USE)
 #include "../../Source/RenderDevice/VRD_Factory.hpp"
 
 // RENDERER
+#include "../../Source/Renderer/VRE_Material.hpp"
+#include "../../Source/Renderer/VRE_Uniform.hpp"
+#include "../../Source/Renderer/Light/VRE_LightData.hpp"
 // RENDERER/CAMERA
 #include "../../Source/Renderer/Camera/VRE_Camera.hpp"
 #include "../../Source/Renderer/Camera/VRE_Frustum.hpp"
