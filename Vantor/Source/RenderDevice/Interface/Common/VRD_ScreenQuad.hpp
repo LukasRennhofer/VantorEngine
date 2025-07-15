@@ -11,6 +11,7 @@ namespace Vantor::RenderDevice {
             virtual ~VScreenQuad();
 
             virtual void Draw() = 0;
+            virtual void DrawRaw() = 0;
 
         protected:
             std::shared_ptr<VShader> m_ShaderScreenQuad;

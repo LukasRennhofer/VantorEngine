@@ -1,0 +1,24 @@
+// VPointLightData struct (Should equal VPointLightData in VRE_LightData.hpp)
+struct VPointLightData {
+    vec3 position;
+    float constant;
+
+    vec3 ambient;
+    float linear;
+
+    vec3 diffuse;
+    float quadratic;
+
+    vec3 specular;
+    float radius;
+};
+
+// PointLight SSBO
+layout(std140, binding = 1) buffer VPointLightBuffer {
+    VPointLightData Vu_PointLights[];
+};
+
+// UBO for counts and general parameters
+layout(std140, binding = 2) uniform VLightDataUniforms {
+    int Vu_NumPointLights;
+};

@@ -40,6 +40,7 @@ namespace Vantor::RenderDevice
             void Sort() override;
 
             std::vector<VRenderCommand> GetForwardRenderCommands(bool cull = false) override;
+            std::vector<VRenderCommand> GetDefferedRenderCommands(bool cull = false) override;
 
             // // returns the list of render commands. For minimizing state changes it is advised to first
             // // call Sort() before retrieving and issuing the render commands.
@@ -60,7 +61,7 @@ namespace Vantor::RenderDevice
 
         private:
             std::vector<VRenderCommand> m_ForwardRenderCommands;
-            // std::vector<VRenderCommand> m_DeferredRenderCommands;
+            std::vector<VRenderCommand> m_DeferredRenderCommands;
             // std::vector<VRenderCommand> m_AlphaRenderCommands;
             // std::vector<VRenderCommand> m_PostProcessingRenderCommands;
             // std::map<RenderTarget*, std::vector<RenderCommand>> m_CustomRenderCommands; // TODO

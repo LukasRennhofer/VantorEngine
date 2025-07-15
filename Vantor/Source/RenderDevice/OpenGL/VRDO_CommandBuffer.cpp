@@ -20,6 +20,8 @@
 
 #include "VRDO_CommandBuffer.hpp"
 
+#include <algorithm>
+
 namespace Vantor::RenderDevice
 {
     VCommandBuffer::~VCommandBuffer() noexcept
@@ -38,8 +40,8 @@ namespace Vantor::RenderDevice
         command.Transform      = transform;
         command.Material       = material;
 
-        // Just for now we will put the default command into the forward pass
-        m_ForwardRenderCommands.push_back(command);
+        // Just for now we will put the default command into the deffered  pass
+        m_DeferredRenderCommands.push_back(command);
 
         // if material requires alpha support, add it to alpha render commands for later rendering.
         // TODO
@@ -77,8 +79,8 @@ namespace Vantor::RenderDevice
     void VOpenGLCommandBuffer::Clear()
     {
         m_ForwardRenderCommands.clear();
+        m_DeferredRenderCommands.clear();
         // TODO
-        // m_DeferredRenderCommands.clear();
         // // m_CustomRenderCommands.clear();
         // m_PostProcessingRenderCommands.clear();
         // m_AlphaRenderCommands.clear();
@@ -91,46 +93,15 @@ namespace Vantor::RenderDevice
         return true;
     }
 
-    // --------------------------------------------------------------------------------------------
     // custom per-element sort compare function used by the VOpenGLCommandBuffer::Sort() function.
     bool renderSortDeferred(const VRenderCommand &a, const VRenderCommand &b)
     {
-        // TODO
-        // return a.Material->GetShader()->ID < b.Material->GetShader()->ID;
-
-        return true;
+        return a.Material->GetShader()->GetShaderID() < b.Material->GetShader()->GetShaderID();
     }
     // sort render state
     // TODO
     bool renderSortCustom(const VRenderCommand &a, const VRenderCommand &b)
     {
-        /*
-
-          We want strict weak ordering, which states that if two objects x and y are equivalent
-          then both f(x,y) and f(y,x) should be false. Thus when comparing the object to itself
-          the comparison should always equal false.
-
-          We also want to do multiple sort comparisons in a single pass, so we encapsulate all
-          relevant properties inside an n-tuple with n being equal to the number of sort queries
-          we want to do. The tuple < comparison operator initially compares its left-most element
-          and then works along the next elements of the tuple until an outcome is clear.
-
-          Another (non C++11) alternative is to write out both the < and > case with the == case
-          defaulting to false as in:
-
-          if(a1 < b1)
-            return true;
-          if(b1 > a1)
-            return false;
-
-          if(a2 < b2)
-            return true;
-          if(b2 > a2)
-            return false;
-          [...] and so on for each query you want to perform
-          return false;
-
-        */
         // return std::make_tuple(a.Material->Blend, a.Material->GetShader()->ID) <
         //        std::make_tuple(b.Material->Blend, b.Material->GetShader()->ID);
         return true;
@@ -146,7 +117,7 @@ namespace Vantor::RenderDevice
     void VOpenGLCommandBuffer::Sort()
     {
         // TODO
-        // std::sort(m_DeferredRenderCommands.begin(), m_DeferredRenderCommands.end(), renderSortDeferred);
+        std::sort(m_DeferredRenderCommands.begin(), m_DeferredRenderCommands.end(), renderSortDeferred);
         // for (auto rtIt = m_CustomRenderCommands.begin(); rtIt != m_CustomRenderCommands.end(); rtIt++)
         // {
         //     std::sort(rtIt->second.begin(), rtIt->second.end(), renderSortCustom);
@@ -157,6 +128,11 @@ namespace Vantor::RenderDevice
     {
         // TODO: Work with Camera Frustum
         return m_ForwardRenderCommands;
+    }
+
+    std::vector<VRenderCommand> VOpenGLCommandBuffer::GetDefferedRenderCommands(bool cull)
+    {
+      return m_DeferredRenderCommands;
     }
 
     // std::vector<VRenderCommand> VOpenGLCommandBuffer::GetDeferredRenderCommands(bool cull)

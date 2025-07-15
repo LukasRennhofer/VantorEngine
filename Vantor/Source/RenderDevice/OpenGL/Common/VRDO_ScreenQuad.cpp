@@ -9,10 +9,23 @@ namespace Vantor::RenderDevice {
 
         m_ShaderScreenQuad = ResShaderScreenQuad->GetShader();
 
+        float quadVertices[] = {
+            // positions        // texture Coords
+            -1.0f,  1.0f, 0.0f, 0.0f, 1.0f,
+            -1.0f, -1.0f, 0.0f, 0.0f, 0.0f,
+             1.0f,  1.0f, 0.0f, 1.0f, 1.0f,
+             1.0f, -1.0f, 0.0f, 1.0f, 0.0f,
+        };
+
         glGenVertexArrays(1, &m_VAO);
+        glGenBuffers(1, &m_VBO);
         glBindVertexArray(m_VAO);
-        // No VBO needed when using gl_VertexID
-        glBindVertexArray(0);
+        glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
+        glBufferData(GL_ARRAY_BUFFER, sizeof(quadVertices), &quadVertices, GL_STATIC_DRAW);
+        glEnableVertexAttribArray(0);
+        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
+        glEnableVertexAttribArray(1);
+        glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
     }
 
     VOpenGLScreenQuad::~VOpenGLScreenQuad() {
@@ -21,10 +34,16 @@ namespace Vantor::RenderDevice {
     }
 
     void VOpenGLScreenQuad::Draw() {
-        m_ShaderScreenQuad->use();
+        m_ShaderScreenQuad->Use();
         m_ShaderScreenQuad->setUniformInt("screenTexture", 1);
         glBindVertexArray(m_VAO);
         glDrawArrays(GL_TRIANGLES, 0, 3);
+        glBindVertexArray(0);
+    }
+
+    void VOpenGLScreenQuad::DrawRaw() {
+        glBindVertexArray(m_VAO);
+        glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
         glBindVertexArray(0);
     }
 }

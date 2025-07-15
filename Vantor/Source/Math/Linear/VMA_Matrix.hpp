@@ -147,6 +147,16 @@ namespace Vantor::Math
                 return mat;
             }
 
+            static VMat4 Scale(const VVector3 &scale) noexcept
+            {
+                VMat4 mat = Identity();
+                mat.m[0]  = scale.x;
+                mat.m[5]  = scale.y;
+                mat.m[10] = scale.z;
+                return mat;
+            }
+
+
             static VMat4 Orthographic(float left, float right, float bottom, float top, float nearPlane, float farPlane) noexcept
             {
                 VMat4 mat{};

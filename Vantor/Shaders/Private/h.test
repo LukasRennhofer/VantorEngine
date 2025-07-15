@@ -1,0 +1,42 @@
+/*
+void main()
+{             
+      // G-Buffer
+    vec3 FragPos = texture(gPosition, TexCoords).rgb;
+    vec3 Normal  = normalize(texture(gNormal, TexCoords).rgb);
+    vec3 Diffuse = texture(gAlbedoSpec, TexCoords).rgb;
+    float SpecularStrength = texture(gAlbedoSpec, TexCoords).a;
+
+    // Base ambient light
+    vec3 lighting = Diffuse * 0.1; // Reduced for realism
+    vec3 viewDir = normalize(Vu_CameraPosition - FragPos);
+
+    for (int i = 0; i < Vu_NumPointLights; ++i) {
+        VPointLightData light = Vu_PointLights[i];
+
+        vec3 lightDir = light.position - FragPos;
+        float distance = length(lightDir);
+
+        if (distance < light.radius) {
+            lightDir = normalize(lightDir);
+
+            // Diffuse
+            float diff = max(dot(Normal, lightDir), 0.0);
+            vec3 diffuse = light.diffuse * diff * Diffuse;
+
+            // Specular
+            vec3 halfwayDir = normalize(lightDir + viewDir);
+            float spec = pow(max(dot(Normal, halfwayDir), 0.0), 16.0);
+            vec3 specular = light.specular * spec * SpecularStrength;
+
+            // Attenuation
+            float attenuation = 1.0 / (light.constant + light.linear * distance + light.quadratic * distance * distance);
+            diffuse *= attenuation;
+            specular *= attenuation;
+
+            lighting += diffuse + specular;
+        }
+    }
+
+    FragColor = vec4(lighting, 1.0);
+} */

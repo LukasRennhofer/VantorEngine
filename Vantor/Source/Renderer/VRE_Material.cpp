@@ -71,7 +71,7 @@ namespace Vantor::Renderer
 
         if (m_Shader)
         {
-            m_Shader->use();
+            m_Shader->Use();
             m_Shader->setUniformInt(name, unit);
         }
     }
@@ -84,7 +84,7 @@ namespace Vantor::Renderer
 
         if (m_Shader)
         {
-            m_Shader->use();
+            m_Shader->Use();
             m_Shader->setUniformInt(name, unit);
         }
     }

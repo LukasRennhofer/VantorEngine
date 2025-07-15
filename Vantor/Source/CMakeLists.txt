@@ -32,6 +32,9 @@ set(VANTOR_SHARED_EXTERNAL ${VANTOR_EXTERNAL_DIR}/Shared)
 # Core Engine Sources
 # ==============================================================================
 set(VANTOR_CORE_SOURCES
+    # Common Impl
+    VCommonImpl.cpp
+
     # Application Layer
     Application/VAP_Application.cpp
     
@@ -69,6 +72,9 @@ set(IMGUI_CORE_SOURCES
 
 # OpenGL Render Device Sources
 set(OPENGL_RENDER_SOURCES
+    # Add the GLSL Compiler too OpenGL RenderDevice
+    RenderDevice/Interface/Compiler/VRD_GLSLComp.cpp
+
     RenderDevice/OpenGL/VRDO_Shader.cpp
     RenderDevice/OpenGL/VRDO_Mesh.cpp
     RenderDevice/OpenGL/VRDO_Texture.cpp

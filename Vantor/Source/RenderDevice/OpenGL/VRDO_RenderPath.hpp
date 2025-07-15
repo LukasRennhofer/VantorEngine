@@ -43,6 +43,9 @@
 // State Cache
 #include "VRDO_StateCache.hpp"
 
+// SSBO
+#include "VRDO_SSBO.hpp"
+
 // Screen Quad
 #include "Common/VRDO_ScreenQuad.hpp"
 
@@ -78,49 +81,46 @@ namespace Vantor::RenderDevice
             void Execute() override;
             void Cleanup() override;
 
-            void SetCamera(Vantor::Renderer::Camera *camera) { m_Camera = camera; }
-            void SetAmbientLight(const Vantor::Math::VVector3 &ambient) { m_AmbientLight = ambient; }
-
         private:
-            // TODO: Remove this things if not needed
-            Vantor::Renderer::Camera *m_Camera       = nullptr;
-            Vantor::Math::VVector3    m_AmbientLight = {0.1f, 0.1f, 0.1f};
-
-            // GBuffer
-            
-
             VRenderPath3D* m_RenderPath;
     };
 
-    class VDefferedRenderPassGL : public VRenderPassGL
+    class VGeometryRenderPassGL : public VRenderPassGL
     {
         public:
-            VDefferedRenderPassGL();
-            ~VDefferedRenderPassGL() = default;
+            VGeometryRenderPassGL();
+            ~VGeometryRenderPassGL() = default;
 
             void Initialize(VRenderPath3D* renderPath) override;
             // Camera just for now
             void Execute() override;
             void Cleanup() override;
 
-            void SetCamera(Vantor::Renderer::Camera *camera) { m_Camera = camera; }
-            void SetAmbientLight(const Vantor::Math::VVector3 &ambient) { m_AmbientLight = ambient; }
+        private:
+            VRenderPath3D* m_RenderPath;
+    };
+
+    class VLightingRenderPassGL : public VRenderPassGL
+    {
+        public:
+            VLightingRenderPassGL();
+            ~VLightingRenderPassGL() = default;
+
+            void Initialize(VRenderPath3D* renderPath) override;
+            // Camera just for now
+            void Execute() override;
+            void Cleanup() override;
 
         private:
-            // TODO: Remove this things if not needed
-            Vantor::Renderer::Camera *m_Camera       = nullptr;
-            Vantor::Math::VVector3    m_AmbientLight = {0.1f, 0.1f, 0.1f};
+            std::unique_ptr<VRenderTarget> m_OutBuffer;
 
-            // GBuffer
-            std::unique_ptr<VOpenGLRenderTarget> m_GBuffer;
-
-            // Screen Quad
-            VOpenGLScreenQuad m_ScreenQuad;
-
-            // Shaders
-            std::shared_ptr<VShader> m_ShaderGBuffer;
+            // Shaders : TODO : Move away to MaterialLib or something else (like a Register or smth)
+            std::shared_ptr<VShader> m_ShaderLighting;
 
             VRenderPath3D* m_RenderPath;
+
+            // Just for now: Screen Quad and OutBuffer
+            VOpenGLScreenQuad m_ScreenQuad;
     };
 
     // OpenGL Shadow Mapping Pass : TODO
@@ -157,7 +157,10 @@ namespace Vantor::RenderDevice
             void Render() override;
             void Shutdown() override;
 
+
+            // Push to CommandBufferr
             void PushRender(VMesh *mesh, Vantor::Renderer::VMaterial *material, Vantor::Math::VMat4 transform) override;
+            void PushRender(Vantor::Object::VObject* object) override;
 
             void PushPointLight(const Vantor::Renderer::VPointLightData& pointLightData) override;
 
@@ -180,6 +183,9 @@ namespace Vantor::RenderDevice
             // 3D specific methods
             void                      SetCamera(Vantor::Renderer::Camera *camera) override;
             Vantor::Renderer::Camera *GetCamera() const override;
+
+            // This function is for binding UBOs and SSBOs after binding Shaders (each bool represents an internal UBO or SSBO)
+            void ActivateStorage(VEStorageType storage) const override;
 
             // Command Buffer
             VCommandBuffer* GetCommandBuffer() override;
@@ -204,11 +210,14 @@ namespace Vantor::RenderDevice
             bool m_WireframeMode  = false;
             bool m_CullingEnabled = false;
 
-            VOpenGLUBO m_UBO; // Uniform Buffer Object
+            VOpenGLCommonUBO m_CommonUBO; // Uniform Buffer Object :  This is just being used for Camera Uniforms currently
+            VOpenGLLightDataUBO m_LightDataUBO; // Used to upload data like the number of pointlights
+            
+            // Shader Storage Buffer Objects
+            // Point Light Data
+            VOpenGLSSBO<Vantor::Renderer::VPointLightData> m_PointLightSSBO;
 
             std::unordered_map<VERenderPassType, std::unique_ptr<VRenderPass>> m_RenderPasses;
-
-
     };
 
     // TODO : 2D Sprite batch implementation for efficient 2D rendering

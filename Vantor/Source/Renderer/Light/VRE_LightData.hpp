@@ -81,5 +81,7 @@ namespace Vantor::Renderer {
          * and viewing angle.
          */
         Vantor::Math::VVector3 specular;
+
+        float radius; // the light radius
     };
 } // namespace Vantor::Renderer

@@ -1,0 +1,18 @@
+// This file has all Common Uniforms stored, that Vantor automatically uploads
+// You can include this file in your own custom shaders using "#include <Vantor/VCommon.hglsl>"
+
+// Buffer Bindings:
+    // UBOs:
+        // 0 : VCommonUniforms
+        // 2 : VLightDataUniforms
+    // SSBOs:
+        // 1 : VPointLightBuffer
+
+// This is currently bound to the Update function in the VOpenGLUBO and binding 0
+layout(std140, binding = 0) uniform VCommonUniforms
+{
+    mat4 Vu_View;
+    mat4 Vu_Projection;
+    vec3 Vu_CameraPosition;
+    float _pad0; // padding for alignment
+};

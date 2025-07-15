@@ -205,7 +205,7 @@ namespace Vantor::Resource
             }
 
             // Create shader using render device factory
-            auto renderShader = Vantor::RenderDevice::CreateShaderInstance(vertexSource.c_str(), fragmentSource.c_str());
+            auto renderShader = Vantor::RenderDevice::CreateShaderInstance(vertexSource.c_str(), fragmentSource.c_str(), vertexPath.c_str(), fragmentPath.c_str());
             if (!renderShader)
             {
                 Vantor::Backlog::Log("VResourceManager", "Failed to create shader object", Vantor::Backlog::LogLevel::ERR);

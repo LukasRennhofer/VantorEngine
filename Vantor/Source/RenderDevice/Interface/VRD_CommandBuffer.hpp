@@ -55,18 +55,14 @@ namespace Vantor::RenderDevice
             virtual void Sort() = 0;
 
             virtual std::vector<VRenderCommand> GetForwardRenderCommands(bool cull = false) = 0;
-
-            // TODO
-            // // returns the list of render commands. For minimizing state changes it is advised to first
-            // // call Sort() before retrieving and issuing the render commands.
-            // virtual std::vector<VRenderCommand> GetDeferredRenderCommands(bool cull = false) = 0;
+            virtual std::vector<VRenderCommand> GetDefferedRenderCommands(bool cull = false) = 0;
 
             // // returns the list of render commands of both deferred and forward pushes that require
             // // alpha blending; which have to be rendered last.
             // virtual std::vector<VRenderCommand> GetAlphaRenderCommands(bool cull = false) = 0;
 
             // // TODO: returns the list of custom render commands per render target.
-            // // virtual std::vector<VRenderCommand> GetCustomRenderCommands(RenderTarget *target, bool cull = false) = 0;
+            // // virtual std::vector<VRenderCommand> GetCustomRenderCommands(VRenderTarget *target, bool cull = false) = 0;
 
             // // returns the list of post-processing render commands.
             // virtual std::vector<VRenderCommand> GetPostProcessingRenderCommands() = 0;

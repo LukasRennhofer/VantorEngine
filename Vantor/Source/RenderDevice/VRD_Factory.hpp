@@ -42,10 +42,10 @@ namespace Vantor::RenderDevice
 #endif
     }
 
-    inline std::shared_ptr<VShader> CreateShaderInstance(const char *vertexCode, const char *fragmentCode)
+    inline std::shared_ptr<VShader> CreateShaderInstance(const char *vertexCode, const char *fragmentCode, const char* fileNameVertex,  const char* fileNameFragment)
     {
 #if defined(VANTOR_API_OPENGL)
-        return std::make_shared<VOpenGLShader>(vertexCode, fragmentCode);
+        return std::make_shared<VOpenGLShader>(vertexCode, fragmentCode, fileNameVertex, fileNameFragment);
 #endif
         return nullptr;
     }

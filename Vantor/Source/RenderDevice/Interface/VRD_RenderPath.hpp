@@ -31,6 +31,10 @@
 // Math
 #include "../../Math/Linear/VMA_Vector.hpp"
 
+// ObjectSystem
+#include "../../ObjectSystem/VOS_Object.hpp"
+#include "../../ObjectSystem/Component/VOS_Base.hpp"
+
 namespace Vantor::RenderDevice
 {
     // Forward declerations
@@ -41,8 +45,17 @@ namespace Vantor::RenderDevice
     // RenderPass Types (In order)
     enum class VERenderPassType
     {
-        Forward,
-        Deffered
+        Geometry,
+        Lighting,
+        Forward
+    };
+
+    enum class VEStorageType {
+        // These are the bindings of all
+        // Storage Containers, that are being sent to the GPU
+        CommonUBO = 0,
+        PointLightSSBO = 1,
+        LightDataUBO = 2,
     };
 
     // TODO: Profile RenderPasses
@@ -154,6 +167,7 @@ namespace Vantor::RenderDevice
 
             // Push to Command Buffer
             virtual void PushRender(VMesh *mesh, Vantor::Renderer::VMaterial *material, Vantor::Math::VMat4 transform) = 0;
+            virtual void PushRender(Vantor::Object::VObject* object) = 0;
 
             // Push Light Data
             virtual void PushPointLight(const Vantor::Renderer::VPointLightData& pointLightData) = 0;
@@ -163,6 +177,11 @@ namespace Vantor::RenderDevice
             // Camera management
             virtual void                      SetCamera(Vantor::Renderer::Camera *camera) = 0;
             virtual Vantor::Renderer::Camera *GetCamera() const                           = 0;
+
+            std::shared_ptr<VRenderTarget> GetGBuffer() { return m_GBuffer; }
+
+            // This function is for binding UBOs and SSBOs after binding Shaders (each bool represents an internal UBO or SSBO)
+            virtual void ActivateStorage(VEStorageType storage) const = 0;
 
             // Command Buffer
             virtual VCommandBuffer* GetCommandBuffer() = 0;
@@ -188,6 +207,9 @@ namespace Vantor::RenderDevice
             std::vector<Vantor::Renderer::VPointLightData> m_PointLights;
 
             std::shared_ptr<VCommandBuffer> m_CommandBuffer;
+
+            // GBuffer : The RenderPath owns it, so that every RenderPass has access to its informations
+            std::shared_ptr<VRenderTarget> m_GBuffer;
 
             //         bool m_ShadowsEnabled = true;
             //         uint32_t m_ShadowMapSize = 2048;

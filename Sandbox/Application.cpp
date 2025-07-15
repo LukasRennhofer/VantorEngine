@@ -147,6 +147,8 @@ int main() {
     auto cube = Object::VORegistry::CreateEntity<Renderer::Geometry::VCube>(); // Create Cube Entity
 
     cube->AddComponentVoid<Vantor::Object::VMeshComponent>(); // Add a MeshComponent for Render
+    cube->AddComponentVoid<Vantor::Object::VTransformComponent>(); // Add a TransformComponent for Render
+    cube->AddComponentVoid<Vantor::Object::VMaterialComponent>(); // Add a MaterialComponent for Render
 
     Vantor::RenderDevice::VMeshCreateInfo cubeCreateInfo; // Create empty Mesh with Creation Data
     cubeCreateInfo.SetFinalized = false;
@@ -161,31 +163,34 @@ int main() {
 
     cube->GetComponent<Vantor::Object::VMeshComponent>()->GetMesh()->Finalize();
 
-    auto resMaterialShader = Vantor::Resource::VResourceManager::Instance().LoadShaderProgram("VForwardMaterial", "Shaders/Private/VForward.vglsl", "Shaders/Private/VForward.fglsl");
+    auto resMaterialShader = Vantor::Resource::VResourceManager::Instance().LoadShaderProgram("VDefferedMaterial", "Shaders/Private/Deffered/VGBuffer.vglsl", "Shaders/Private/Deffered/VGBuffer.fglsl");
 
     Vantor::Renderer::VMaterial cubeMaterial(resMaterialShader->GetShader().get());
 
     // Give the Material the Sampler Textures
     // Diffuse
-    cubeMaterial.SetTexture("texture_diffuse1", m_DiffuseTexture.get(), 1);
+    cubeMaterial.SetTexture("VTextureDiffuse", m_DiffuseTexture.get(), 1);
     // Specular
-    cubeMaterial.SetTexture("texture_specular1", m_SpecularTexture.get(), 2);
+    cubeMaterial.SetTexture("VTextureSpecular", m_SpecularTexture.get(), 2);
     
 
     cubeMaterial.color = Vantor::Core::Types::VColor::Gray();
 
-    auto modelTransform = Vantor::Math::VMat4::Identity();
-    modelTransform = modelTransform.Translate(Vantor::Math::VVector3(1.0f, 1.0f, 1.0f));
+    cube->GetComponent<Vantor::Object::VMaterialComponent>()->SetMaterial(&cubeMaterial);
+
+    // rotate cube 45° around X axis
+    cube->GetComponent<Vantor::Object::VTransformComponent>()->SetRotation(Vantor::Math::VQuaternion::FromAxisAngle({1, 0, 0}, 45.0f));
 
     // Point Lights 
     Vantor::Renderer::VPointLightData pointLight1;
-    pointLight1.position = { 20.5f, 2.0f, 1.5f }; // Slightly above and in front of the cube
+    pointLight1.position = { 2.0f, 2.0f, 2.0f }; // Slightly above and in front of the cube
     pointLight1.ambient  = { 0.05f, 0.05f, 0.05f };
-    pointLight1.diffuse  = { 0.1f, 0.1f, 0.1f };  // Full white diffuse for brightness
+    pointLight1.diffuse  = {  1.0f, 1.0f, 1.0f };  // Full white diffuse for brightness
     pointLight1.specular = { 0.1f, 0.1f, 0.1f };
     pointLight1.constant = 1.0f;
     pointLight1.linear   = 0.09f;
     pointLight1.quadratic = 0.032f;
+    pointLight1.radius = 5.0f;
 
     glfwSwapInterval(0); // VSync OFF : TODO: Implement in Context
 
@@ -253,7 +258,7 @@ int main() {
             camera->Update(app.GetDeltaTime());
 
             // Our Render Pushes
-            renderpath->PushRender(cubeMesh.get(), &cubeMaterial, modelTransform);
+            renderpath->PushRender(cube.get());
 
             renderpath->PushPointLight(pointLight1);
 

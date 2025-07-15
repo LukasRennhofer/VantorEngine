@@ -13,10 +13,13 @@ namespace Vantor::RenderDevice {
         ~VOpenGLScreenQuad() override;
 
         void Draw() override;
+        void DrawRaw() override;
 
     private:
         // OpenGL Objects
-        unsigned int m_VAO = 0;
-        unsigned int m_VBO = 0;
+        GLuint m_VAO = 0;
+        GLuint m_VBO = 0;
+
+        float quadVertices[]; // Todo: make to resizeable vector
     };
 }

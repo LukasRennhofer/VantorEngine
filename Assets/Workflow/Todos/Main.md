@@ -6,9 +6,13 @@
 - How to do abstraction layer
 
 # Line
+ - Resource Manager should preload all internal thing (Shaders, internal Textures(maybe not and use just colors)) and     then use the internal things in the MaterialLibrary
+ - MaterialLibrary (Singleton, gets initialized in RenderDevice)
+ - Implement Frustum in CommandBuffer
+ - dirLight, SpotLight, AreaLight
+ - Model Loading ?
+ - Resource Manager GetTexture2D(handle) method and so on ?
 
- - Implement Deffered Commands in Command Buffer
- - Own GBuffer class in common folder ?
  - Entity ID pool / free list: Keep a list (stack or queue) of free entity IDs that get reused when entities are destroyed:
         When creating a new entity:
 
@@ -19,6 +23,13 @@
         When destroying an entity:
 
             Add its ID back to the free list.
+ - PBR:	
+    0   RGB8 or RGBA8	Albedo (RGB) + AO (A)
+    1	RGB16F	World-space normals
+    2	RGB16F	World-space position
+    3	RGB8 or RGBA8	Metallic (R), Roughness (G), AO (B), maybe Specular (A)
+
+ - Let Users be able to make their own Virtual Include paths for Shaders ?
  
 
 # Other

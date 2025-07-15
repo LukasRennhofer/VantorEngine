@@ -27,11 +27,13 @@
 namespace Vantor::RenderDevice
 {
 
-    VOpenGLShader::VOpenGLShader(const char *vertexCode, const char *fragmentCode)
+    VOpenGLShader::VOpenGLShader(const char *vertexCode, const char *fragmentCode, const char* fileNameVertex,  const char* fileNameFragment)
     {
+        const char* new_vertexCode = VGLSLPreproccessor::Instance().ProccessFromMemory(vertexCode, fileNameVertex);
+        const char* new_fragmentCode = VGLSLPreproccessor::Instance().ProccessFromMemory(fragmentCode, fileNameFragment);
 
-        GLuint vertexShader   = compileShader(GL_VERTEX_SHADER, vertexCode);
-        GLuint fragmentShader = compileShader(GL_FRAGMENT_SHADER, fragmentCode);
+        GLuint vertexShader   = compileShader(GL_VERTEX_SHADER, new_vertexCode);
+        GLuint fragmentShader = compileShader(GL_FRAGMENT_SHADER, new_fragmentCode);
 
         ID = linkProgram(vertexShader, fragmentShader);
 
@@ -41,7 +43,7 @@ namespace Vantor::RenderDevice
 
     VOpenGLShader::~VOpenGLShader() { glDeleteProgram(ID); }
 
-    void VOpenGLShader::use() const { glUseProgram(ID); }
+    void VOpenGLShader::Use() const { glUseProgram(ID); }
 
     void VOpenGLShader::setUniformBool(const std::string &name, bool value) const { glUniform1i(getUniformLocation(name), static_cast<int>(value)); }
 
@@ -49,31 +51,35 @@ namespace Vantor::RenderDevice
 
     void VOpenGLShader::setUniformFloat(const std::string &name, float value) const { glUniform1f(getUniformLocation(name), value); }
 
-    void VOpenGLShader::setVec2(const std::string &name, const Vantor::Math::VVector2 &value) const { glUniform2fv(getUniformLocation(name), 1, value.Data()); }
+    void VOpenGLShader::setUniformVec2(const std::string &name, const Vantor::Math::VVector2 &value) const { glUniform2fv(getUniformLocation(name), 1, value.Data()); }
 
-    void VOpenGLShader::setVec2(const std::string &name, float x, float y) const { glUniform2f(getUniformLocation(name), x, y); }
+    void VOpenGLShader::setUniformVec2(const std::string &name, float x, float y) const { glUniform2f(getUniformLocation(name), x, y); }
 
-    void VOpenGLShader::setVec3(const std::string &name, const Vantor::Math::VVector3 &value) const { glUniform3fv(getUniformLocation(name), 1, value.Data()); }
+    void VOpenGLShader::setUniformVec3(const std::string &name, const Vantor::Math::VVector3 &value) const { glUniform3fv(getUniformLocation(name), 1, value.Data()); }
 
-    void VOpenGLShader::setVec3(const std::string &name, float x, float y, float z) const { glUniform3f(getUniformLocation(name), x, y, z); }
+    void VOpenGLShader::setUniformVec3(const std::string &name, float x, float y, float z) const { glUniform3f(getUniformLocation(name), x, y, z); }
 
-    void VOpenGLShader::setVec4(const std::string &name, const Vantor::Math::VVector4 &value) const { glUniform4fv(getUniformLocation(name), 1, value.Data()); }
+    void VOpenGLShader::setUniformVec4(const std::string &name, const Vantor::Math::VVector4 &value) const { glUniform4fv(getUniformLocation(name), 1, value.Data()); }
 
-    void VOpenGLShader::setVec4(const std::string &name, float x, float y, float z, float w) const { glUniform4f(getUniformLocation(name), x, y, z, w); }
+    void VOpenGLShader::setUniformVec4(const std::string &name, float x, float y, float z, float w) const { glUniform4f(getUniformLocation(name), x, y, z, w); }
 
-    void VOpenGLShader::setMat2(const std::string &name, const Vantor::Math::VMat2 &mat) const
+    void VOpenGLShader::setUniformMat2(const std::string &name, const Vantor::Math::VMat2 &mat) const
     {
         glUniformMatrix2fv(getUniformLocation(name), 1, GL_FALSE, mat.Data());
     }
 
-    void VOpenGLShader::setMat3(const std::string &name, const Vantor::Math::VMat3 &mat) const
+    void VOpenGLShader::setUniformMat3(const std::string &name, const Vantor::Math::VMat3 &mat) const
     {
         glUniformMatrix3fv(getUniformLocation(name), 1, GL_FALSE, mat.Data());
     }
 
-    void VOpenGLShader::setMat4(const std::string &name, const Vantor::Math::VMat4 &mat) const
+    void VOpenGLShader::setUniformMat4(const std::string &name, const Vantor::Math::VMat4 &mat) const
     {
         glUniformMatrix4fv(getUniformLocation(name), 1, GL_FALSE, mat.Data());
+    }
+
+    unsigned int VOpenGLShader::GetShaderID() const {
+        return (unsigned int)ID;
     }
 
     GLuint VOpenGLShader::compileShader(GLenum type, const std::string &source)

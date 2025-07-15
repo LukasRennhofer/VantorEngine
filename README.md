@@ -19,7 +19,7 @@
     Low-Level Experimental In-House Game Engine for VantorStudios
     <br />
     <h5 align="center">
-    <strong>v0.17.X - Experimental Build</strong>
+    <strong>v0.18.X - Experimental Build</strong>
     </h5>
     <a href="https://docs.vantor.net/"><strong>Explore the docs »</strong></a>
     <br />
