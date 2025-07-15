@@ -175,6 +175,10 @@ namespace Vantor::Resource
             std::shared_ptr<VTexture2DResource>     GetTexture2D(const VResourceHandle &handle);
             std::shared_ptr<VShaderProgramResource> GetShaderProgram(const VResourceHandle &handle);
 
+            // Access Data itself from Resource
+            std::shared_ptr<Vantor::RenderDevice::VTexture> GetTexture2DData(const VResourceHandle &handle);
+            std::shared_ptr<Vantor::RenderDevice::VShader>  GetShaderProgramData(const VResourceHandle &handle);
+
             // Resource management
             bool UnloadResource(const VResourceHandle &handle);
             void UnloadAllResources();

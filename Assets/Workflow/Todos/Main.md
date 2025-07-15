@@ -33,7 +33,7 @@
  
 
 # Other
-
+- Vulkan Style User API (dont use full names or Namespaces, use handles for smart pointers (like VRDeviceHandle*))
 - Make Shaders work with includes, See Cell Engines Shaders (Custom Shader Parser) With own Single Header C utility
 - VSyncOn/Off fucntion for Context
 - VTransformComponent

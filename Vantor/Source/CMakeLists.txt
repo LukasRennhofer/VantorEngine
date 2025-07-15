@@ -35,6 +35,9 @@ set(VANTOR_CORE_SOURCES
     # Common Impl
     VCommonImpl.cpp
 
+    # Utilities
+    ${VANTOR_SHARED_EXTERNAL}/Utility/offsetAllocator.cpp
+
     # Application Layer
     Application/VAP_Application.cpp
     

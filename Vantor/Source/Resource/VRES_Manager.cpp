@@ -259,6 +259,16 @@ namespace Vantor::Resource
         return std::dynamic_pointer_cast<VShaderProgramResource>(resource);
     }
 
+    std::shared_ptr<Vantor::RenderDevice::VTexture> VResourceManager::GetTexture2DData(const VResourceHandle &handle) {
+        auto resource = GetResource(handle);
+        return std::dynamic_pointer_cast<VTexture2DResource>(resource)->GetTexture();
+    }
+
+    std::shared_ptr<Vantor::RenderDevice::VShader>  VResourceManager::GetShaderProgramData(const VResourceHandle &handle) {
+        auto resource = GetResource(handle);
+        return std::dynamic_pointer_cast<VShaderProgramResource>(resource)->GetShader();
+    }
+
     bool VResourceManager::UnloadResource(const VResourceHandle &handle)
     {
         std::lock_guard<std::mutex> lock(m_resourceMutex);

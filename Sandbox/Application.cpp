@@ -68,9 +68,9 @@ float vertices[] = {
     };
 
 int main() {
-    VApplication app;
+    Vantor::VApplication app;
     // Application Creation Data
-    VApplicationCreateInfo appInfo;
+    Vantor::VApplicationCreateInfo appInfo;
     appInfo.windowWidth = 1280;
     appInfo.windowHeight = 720;
     appInfo.windowTitle = "Vantor Sandbox";
@@ -79,6 +79,13 @@ int main() {
     app.Initialize(appInfo);
 
     // Generate Cube Data
+
+    // Test Vector 
+    // Vantor::Core::Vector<int> new_vector;
+    // new_vector.push_back(2);
+    // new_vector.push_back(2);
+
+    // std::cout << new_vector.at(1) << std::endl;
 
     std::vector<Vantor::Math::VVector3> positions;
     std::vector<Vantor::Math::VVector3> normals;
@@ -122,7 +129,7 @@ int main() {
     Vantor::Math::VVector2 mouseDelta;
 
     // Create the Camera with FlyCamera RenderModule and register it as an entity
-    auto camera = Object::VORegistry::CreateEntity<RenderModules::FlyCamera>(Math::VVector3(1.0f, 1.0f, 1.0f));
+    auto camera = Vantor::Object::VORegistry::CreateEntity<Vantor::RenderModules::FlyCamera>(Vantor::Math::VVector3(1.0f, 1.0f, 1.0f));
 
     camera->MouseSensitivty  = 0.05f; // Set Sensivity a bit lower
 
@@ -144,7 +151,7 @@ int main() {
     auto m_SpecularTexture = m_ResSpecular->GetTexture();
 
 
-    auto cube = Object::VORegistry::CreateEntity<Renderer::Geometry::VCube>(); // Create Cube Entity
+    auto cube = Vantor::Object::VORegistry::CreateEntity<Vantor::Renderer::Geometry::VCube>(); // Create Cube Entity
 
     cube->AddComponentVoid<Vantor::Object::VMeshComponent>(); // Add a MeshComponent for Render
     cube->AddComponentVoid<Vantor::Object::VTransformComponent>(); // Add a TransformComponent for Render
@@ -198,7 +205,7 @@ int main() {
     auto renderpath = app.GetRenderDevice()->CreateRenderPath3D();
 
     // Properly initialize the camera with perspective projection
-    camera->SetPerspective(45.0f, (float)VServiceLocator::GetContextWidth()/(float)VServiceLocator::GetContextHeight(), 0.1f, 100.0f);
+    camera->SetPerspective(45.0f, (float)Vantor::VServiceLocator::GetContextWidth()/(float)Vantor::VServiceLocator::GetContextHeight(), 0.1f, 100.0f);
     
     renderpath->SetCamera(camera.get());
 
@@ -206,10 +213,10 @@ int main() {
 
     // ==== Input ====
     // Set up InputDevice
-    auto deviceone = Input::CreateInputDevice(app.GetWindow());
+    auto deviceone = Vantor::Input::CreateInputDevice(app.GetWindow());
     app.GetInputManager()->AddDevice(deviceone);
 
-    app.GetInputManager()->MapAction("fire", Input::VInputButton{Input::VEInputDeviceType::Keyboard, (int)Input::VEInputKey::KEY_ESCAPE});
+    app.GetInputManager()->MapAction("fire", Vantor::Input::VInputButton{Vantor::Input::VEInputDeviceType::Keyboard, (int)Vantor::Input::VEInputKey::KEY_ESCAPE});
 
     // Run app logic
     while (app.IsRunning()) {
@@ -228,25 +235,25 @@ int main() {
             }
             #endif
 
-            if (app.GetInputManager()->WasPressed(Input::KEY_ESCAPE, Input::VEInputDeviceType::Keyboard)) {
+            if (app.GetInputManager()->WasPressed(Vantor::Input::KEY_ESCAPE, Vantor::Input::VEInputDeviceType::Keyboard)) {
                 app.Break();
             }
 
-            if (app.GetInputManager()->IsPressed(Input::KEY_W, Input::VEInputDeviceType::Keyboard)) {
+            if (app.GetInputManager()->IsPressed(Vantor::Input::KEY_W, Vantor::Input::VEInputDeviceType::Keyboard)) {
                 camera->InputKey(app.GetDeltaTime(), Vantor::Renderer::CAMERA_FORWARD);
-            } else if (app.GetInputManager()->IsPressed(Input::KEY_A, Input::VEInputDeviceType::Keyboard)) {
+            } else if (app.GetInputManager()->IsPressed(Vantor::Input::KEY_A, Vantor::Input::VEInputDeviceType::Keyboard)) {
                 camera->InputKey(app.GetDeltaTime(), Vantor::Renderer::CAMERA_LEFT);
-            } else if (app.GetInputManager()->IsPressed(Input::KEY_D, Input::VEInputDeviceType::Keyboard)) {
+            } else if (app.GetInputManager()->IsPressed(Vantor::Input::KEY_D, Vantor::Input::VEInputDeviceType::Keyboard)) {
                 camera->InputKey(app.GetDeltaTime(), Vantor::Renderer::CAMERA_RIGHT);
-            } else if (app.GetInputManager()->IsPressed(Input::KEY_S, Input::VEInputDeviceType::Keyboard)) {
+            } else if (app.GetInputManager()->IsPressed(Vantor::Input::KEY_S, Vantor::Input::VEInputDeviceType::Keyboard)) {
                 camera->InputKey(app.GetDeltaTime(), Vantor::Renderer::CAMERA_BACK);
-            } else if (app.GetInputManager()->IsPressed(Input::KEY_E, Input::VEInputDeviceType::Keyboard)) {
+            } else if (app.GetInputManager()->IsPressed(Vantor::Input::KEY_E, Vantor::Input::VEInputDeviceType::Keyboard)) {
                 camera->InputKey(app.GetDeltaTime(), Vantor::Renderer::CAMERA_UP);
-            } else if (app.GetInputManager()->IsPressed(Input::KEY_Q, Input::VEInputDeviceType::Keyboard)) {
+            } else if (app.GetInputManager()->IsPressed(Vantor::Input::KEY_Q, Vantor::Input::VEInputDeviceType::Keyboard)) {
                 camera->InputKey(app.GetDeltaTime(), Vantor::Renderer::CAMERA_DOWN);
             } 
             
-            if (app.GetInputManager()->WasPressed(Input::KEY_TAB, Input::VEInputDeviceType::Keyboard)) {
+            if (app.GetInputManager()->WasPressed(Vantor::Input::KEY_TAB, Vantor::Input::VEInputDeviceType::Keyboard)) {
                 app.GetInputManager()->devices[0]->SetMouseCursorState(!app.GetInputManager()->devices[0]->GetMouseCursorState());
             }
 
