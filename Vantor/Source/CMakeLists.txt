@@ -55,6 +55,7 @@ set(VANTOR_CORE_SOURCES
     Renderer/Camera/VRE_Frustum.cpp
     # Renderer (Material)
     Renderer/VRE_Material.cpp
+    Renderer/VRE_MaterialLibrary.cpp
     
     # Input Management
     InputDevice/VID_Manager.cpp

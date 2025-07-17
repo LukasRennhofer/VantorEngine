@@ -12,15 +12,15 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-07-11
+ *  Date: 2025-07-16
  *
  *  File: VRDO_CommandBuffer.cpp
  *  Last Change: Automatically updated
  */
 
-#include "VRDO_CommandBuffer.hpp"
-
 #include <algorithm>
+
+#include "VRDO_CommandBuffer.hpp"
 
 namespace Vantor::RenderDevice
 {
@@ -130,10 +130,7 @@ namespace Vantor::RenderDevice
         return m_ForwardRenderCommands;
     }
 
-    std::vector<VRenderCommand> VOpenGLCommandBuffer::GetDefferedRenderCommands(bool cull)
-    {
-      return m_DeferredRenderCommands;
-    }
+    std::vector<VRenderCommand> VOpenGLCommandBuffer::GetDefferedRenderCommands(bool cull) { return m_DeferredRenderCommands; }
 
     // std::vector<VRenderCommand> VOpenGLCommandBuffer::GetDeferredRenderCommands(bool cull)
     // {

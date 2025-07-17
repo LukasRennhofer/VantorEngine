@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-07-11
+ *  Date: 2025-07-16
  *
  *  File: VRES_Manager.hpp
  *  Last Change: Automatically updated
@@ -27,13 +27,13 @@
 #include <vector>
 
 #include "../Core/BackLog/VCO_Backlog.hpp"
-#include "../Core/Types/VCO_BTypes.hpp" // VSingleton
+#include "../Core/Types/VCO_ClassTypes.hpp" // VSingleton
+#include "../Core/Types/VCO_ClassTypes.hpp" // VSingleton
 #include "../Platform/VPL_Environment.hpp"
 #include "../RenderDevice/Interface/VRD_Shader.hpp"
+#include "../RenderDevice/Interface/VRD_Shader.hpp"
 #include "../RenderDevice/Interface/VRD_Texture.hpp"
-#include "../Core/Types/VCO_BTypes.hpp" // VSingleton
-
-// Interfaces
+#include "../RenderDevice/Interface/VRD_Texture.hpp"
 #include "../RenderDevice/Interface/VRD_Texture.hpp"
 #include "../RenderDevice/Interface/VRD_Shader.hpp"
 
@@ -167,7 +167,13 @@ namespace Vantor::Resource
 
             void PreloadShaderProgram(const VResourceHandle &handle, const std::string &vertexPath, const std::string &fragmentPath)
             {
+                std::cout << "PreloadShaderProgram: " << handle << std::endl;
                 auto shader = LoadShaderProgram(handle, vertexPath, fragmentPath);
+                if (shader) {
+                    std::cout << "PreloadShaderProgram: Success for " << handle << std::endl;
+                } else {
+                    std::cout << "PreloadShaderProgram: Failed for " << handle << std::endl;
+                }
             }
 
             // Resource access
@@ -183,6 +189,9 @@ namespace Vantor::Resource
             bool UnloadResource(const VResourceHandle &handle);
             void UnloadAllResources();
             bool ReloadResource(const VResourceHandle &handle);
+
+            // Internal Resources
+            void PreloadInternalResources();
 
             // Statistics
             size_t                       GetResourceCount() const;

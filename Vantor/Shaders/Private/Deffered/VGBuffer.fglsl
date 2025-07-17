@@ -12,12 +12,26 @@ in vec3 Normal;
 uniform sampler2D VTextureDiffuse;
 uniform sampler2D VTextureSpecular;
 
+uniform vec3 VColor; // Fallback to VTextureDiffuse
+uniform float VSpecularStrength;  // Fallback to VTextureSpecular
+uniform bool VUseTexture; // For using a Texture or fallback to Color
+
+
 void main()
-{    
-    // store albedo and diffuse per-fragment color in first buffer
-    gAlbedoSpec.rgb = texture(VTextureDiffuse, TexCoords).rgb;
-    // store specular intensity in gAlbedoSpec's alpha component
-    gAlbedoSpec.a = texture(VTextureSpecular, TexCoords).r;
+{   
+    // Using the Texture
+    if (VUseTexture) {
+        // store albedo and diffuse per-fragment color in first buffer
+        gAlbedoSpec.rgb = texture(VTextureDiffuse, TexCoords).rgb;
+        // store specular intensity in gAlbedoSpec's alpha component
+        gAlbedoSpec.a = texture(VTextureSpecular, TexCoords).r;
+      // Using the Color
+    } else { 
+        // store albedo and diffuse per-fragment color in first buffer
+        gAlbedoSpec.rgb = VColor;
+        // store specular intensity in gAlbedoSpec's alpha component
+        gAlbedoSpec.a = VSpecularStrength;
+    }
     
     // also store the per-fragment normals into the gbuffer
     gNormal = normalize(Normal);

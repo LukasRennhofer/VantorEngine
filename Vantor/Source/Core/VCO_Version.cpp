@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-07-11
+ *  Date: 2025-07-16
  *
  *  File: VCO_Version.cpp
  *  Last Change: Automatically updated
@@ -27,7 +27,7 @@ namespace Vantor::Core::Version
     // minor features, major updates
     const int minor = 18;
     // minor bug fixes, alterations, refactors, updates
-    const int revision = 1;
+    const int revision = 3;
     // Version String
     const std::string version_string = std::to_string(major) + "." + std::to_string(minor) + "." + std::to_string(revision);
 

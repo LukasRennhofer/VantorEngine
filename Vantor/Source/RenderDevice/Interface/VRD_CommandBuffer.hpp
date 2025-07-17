@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-07-11
+ *  Date: 2025-07-16
  *
  *  File: VRD_CommandBuffer.hpp
  *  Last Change: Automatically updated
@@ -23,7 +23,7 @@
 // Math
 #include "../../Math/Linear/VMA_Matrix.hpp"
 #include "../../Math/Linear/VMA_Vector.hpp"
-
+#include "../../Renderer/VRE_Material.hpp"
 #include "VRD_Mesh.hpp"
 #include "VRD_Mesh.hpp"
 
@@ -37,7 +37,7 @@ namespace Vantor::RenderDevice
     {
             Vantor::Math::VMat4 Transform;
             // Vantor::Math::VMat4 PrevTransform;
-            VMesh              *Mesh;
+            VMesh                       *Mesh;
             Vantor::Renderer::VMaterial *Material;
     };
 
@@ -54,7 +54,7 @@ namespace Vantor::RenderDevice
             // sorts the command buffer; first by shader, then by texture bind.
             virtual void Sort() = 0;
 
-            virtual std::vector<VRenderCommand> GetForwardRenderCommands(bool cull = false) = 0;
+            virtual std::vector<VRenderCommand> GetForwardRenderCommands(bool cull = false)  = 0;
             virtual std::vector<VRenderCommand> GetDefferedRenderCommands(bool cull = false) = 0;
 
             // // returns the list of render commands of both deferred and forward pushes that require

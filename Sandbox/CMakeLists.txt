@@ -13,7 +13,7 @@ set(CMAKE_CXX_STANDARD 20)
 add_subdirectory(../Vantor/Source ${CMAKE_BINARY_DIR}/VantorBuild)
 
 # Add Source Code of project
-add_executable(VantorSandbox Application.cpp)
+add_executable(VantorSandbox impl.cpp Application.cpp)
 
 # Set up Project Target for Vantor
 SetUpVantorTarget(VantorSandbox)

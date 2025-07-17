@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-07-11
+ *  Date: 2025-07-16
  *
  *  File: VID_Manager.hpp
  *  Last Change: Automatically updated
@@ -26,6 +26,7 @@
 #include <vector>
 
 #include "VID_IDevice.hpp"
+
 namespace Vantor::Input
 {
     class VInputManager

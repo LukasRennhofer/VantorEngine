@@ -1,6 +1,27 @@
+/*
+ *  ╔═══════════════════════════════════════════════════════════════╗
+ *  ║                          ~ Vantor ~                           ║
+ *  ║                                                               ║
+ *  ║  This file is part of the Vantor Engine.                      ║
+ *  ║  Automatically formatted by vtrgFormat.py                     ║
+ *  ║                                                               ║
+ *  ╚═══════════════════════════════════════════════════════════════╝
+ *
+ *  Copyright (c) 2025 Lukas Rennhofer
+ *  Licensed under the GNU General Public License, Version 3.
+ *  See LICENSE file for more details.
+ *
+ *  Author: Lukas Rennhofer
+ *  Date: 2025-07-16
+ *
+ *  File: VRDO_UBO.cpp
+ *  Last Change: Automatically updated
+ */
+
 #include "VRDO_UBO.hpp"
 
-namespace Vantor::RenderDevice {
+namespace Vantor::RenderDevice
+{
     VOpenGLCommonUBO::VOpenGLCommonUBO()
     {
         glGenBuffers(1, &m_Buffer);
@@ -11,18 +32,20 @@ namespace Vantor::RenderDevice {
 
     VOpenGLCommonUBO::~VOpenGLCommonUBO()
     {
-        if (m_Buffer != 0)
-            glDeleteBuffers(1, &m_Buffer);
+        if (m_Buffer != 0) glDeleteBuffers(1, &m_Buffer);
     }
 
-    void VOpenGLCommonUBO::Update(Vantor::Renderer::Camera* Camera)
+    void VOpenGLCommonUBO::Update(Vantor::Renderer::Camera *Camera)
     {
-        if (!Camera) { return; }  // Return if camera is NULL (fixed logic)
+        if (!Camera)
+        {
+            return;
+        } // Return if camera is NULL (fixed logic)
 
-        m_Data.view = Camera->View;
-        m_Data.projection = Camera->Projection;
+        m_Data.view           = Camera->View;
+        m_Data.projection     = Camera->Projection;
         m_Data.cameraPosition = Camera->Position;
-        m_Data.padding0 = 0.0f;
+        m_Data.padding0       = 0.0f;
 
         // Upload updated UBO data to GPU
         glBindBuffer(GL_UNIFORM_BUFFER, m_Buffer);
@@ -31,10 +54,7 @@ namespace Vantor::RenderDevice {
     }
 
     // Bind the UBO at beginning of rendering, after updating the UBO
-    void VOpenGLCommonUBO::Bind(GLuint bindingPoint) const
-    {
-        glBindBufferBase(GL_UNIFORM_BUFFER, bindingPoint, m_Buffer);
-    }
+    void VOpenGLCommonUBO::Bind(GLuint bindingPoint) const { glBindBufferBase(GL_UNIFORM_BUFFER, bindingPoint, m_Buffer); }
 
     VOpenGLLightDataUBO::VOpenGLLightDataUBO()
     {
@@ -46,8 +66,7 @@ namespace Vantor::RenderDevice {
 
     VOpenGLLightDataUBO::~VOpenGLLightDataUBO()
     {
-        if (m_Buffer != 0)
-            glDeleteBuffers(1, &m_Buffer);
+        if (m_Buffer != 0) glDeleteBuffers(1, &m_Buffer);
     }
 
     void VOpenGLLightDataUBO::Update()
@@ -59,12 +78,7 @@ namespace Vantor::RenderDevice {
     }
 
     // Bind the UBO at beginning of rendering, after updating the UBO
-    void VOpenGLLightDataUBO::Bind(GLuint bindingPoint) const
-    {
-        glBindBufferBase(GL_UNIFORM_BUFFER, bindingPoint, m_Buffer);
-    }
+    void VOpenGLLightDataUBO::Bind(GLuint bindingPoint) const { glBindBufferBase(GL_UNIFORM_BUFFER, bindingPoint, m_Buffer); }
 
-    void VOpenGLLightDataUBO::UploadLightData(int numPointLights) {
-        m_Data.numPointLights = numPointLights;
-    }
-}
+    void VOpenGLLightDataUBO::UploadLightData(int numPointLights) { m_Data.numPointLights = numPointLights; }
+} // namespace Vantor::RenderDevice

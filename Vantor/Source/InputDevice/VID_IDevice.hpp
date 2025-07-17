@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-07-11
+ *  Date: 2025-07-16
  *
  *  File: VID_IDevice.hpp
  *  Last Change: Automatically updated
@@ -26,7 +26,7 @@
 
 #include "../Context/Interface/VCT_Window.hpp"
 #include "../Math/Linear/VMA_Vector.hpp"
-
+#include "../Math/Linear/VMA_Vector.hpp"
 // Math
 #include "../Math/Linear/VMA_Vector.hpp"
 
@@ -185,7 +185,7 @@ namespace Vantor::Input
             virtual float GetAxis(const VInputButton &axis) const = 0;
 
             virtual void SetMouseCursorState(bool visible) = 0;
-            virtual bool GetMouseCursorState() const = 0;
+            virtual bool GetMouseCursorState() const       = 0;
 
             virtual Vantor::Math::VVector2 GetMousePosition() const = 0;
 
@@ -194,7 +194,7 @@ namespace Vantor::Input
             virtual Vantor::Math::VVector2 GetScrollOffset() const = 0;
 
             virtual std::string GetDeviceName() const = 0;
-        
+
         protected:
             bool m_CursorState = true;
     };

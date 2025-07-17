@@ -1,6 +1,27 @@
+/*
+ *  ╔═══════════════════════════════════════════════════════════════╗
+ *  ║                          ~ Vantor ~                           ║
+ *  ║                                                               ║
+ *  ║  This file is part of the Vantor Engine.                      ║
+ *  ║  Automatically formatted by vtrgFormat.py                     ║
+ *  ║                                                               ║
+ *  ╚═══════════════════════════════════════════════════════════════╝
+ *
+ *  Copyright (c) 2025 Lukas Rennhofer
+ *  Licensed under the GNU General Public License, Version 3.
+ *  See LICENSE file for more details.
+ *
+ *  Author: Lukas Rennhofer
+ *  Date: 2025-07-16
+ *
+ *  File: VRDO_StateCache.cpp
+ *  Last Change: Automatically updated
+ */
+
 #include "VRDO_StateCache.hpp"
 
-namespace Vantor::RenderDevice {
+namespace Vantor::RenderDevice
+{
     void VOpenGLStateChache::SetDepthTest(bool enable)
     {
         if (m_DepthTest != enable)
@@ -11,7 +32,6 @@ namespace Vantor::RenderDevice {
             else
                 glDisable(GL_DEPTH_TEST);
         }
-
     }
 
     void VOpenGLStateChache::SetDepthFunc(GLenum depthFunc)
@@ -28,7 +48,7 @@ namespace Vantor::RenderDevice {
         if (m_Blend != enable)
         {
             m_Blend = enable;
-            if(enable)
+            if (enable)
                 glEnable(GL_BLEND);
             else
                 glDisable(GL_BLEND);
@@ -50,7 +70,7 @@ namespace Vantor::RenderDevice {
         if (m_CullFace != enable)
         {
             m_CullFace = enable;
-            if(enable)
+            if (enable)
                 glEnable(GL_CULL_FACE);
             else
                 glDisable(GL_CULL_FACE);
@@ -83,4 +103,4 @@ namespace Vantor::RenderDevice {
             glUseProgram(ID);
         }
     }
-}
+} // namespace Vantor::RenderDevice

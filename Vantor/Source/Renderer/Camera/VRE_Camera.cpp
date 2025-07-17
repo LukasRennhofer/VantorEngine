@@ -12,15 +12,15 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-07-11
+ *  Date: 2025-07-16
  *
  *  File: VRE_Camera.cpp
  *  Last Change: Automatically updated
  */
 
 #include "../../Math/VMA_Common.hpp"
+#include "../../Math/VMA_Common.hpp"
 #include "VRE_Camera.hpp"
-// Math
 #include "../../Math/VMA_Common.hpp"
 
 namespace Vantor::Renderer

@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-07-11
+ *  Date: 2025-07-16
  *
  *  File: VRDO_RenderDevice.hpp
  *  Last Change: Automatically updated
@@ -23,9 +23,9 @@
 #include "../Interface/VRD_RenderDevice.hpp"
 #include "VRDO_Mesh.hpp"
 #include "VRDO_RenderPath.hpp"
+#include "VRDO_RenderPath.hpp"
 #include "VRDO_Shader.hpp"
 #include "VRDO_Texture.hpp"
-
 #include "VRDO_RenderPath.hpp"
 
 namespace Vantor::RenderDevice

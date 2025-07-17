@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-07-11
+ *  Date: 2025-07-16
  *
  *  File: VRDO_RenderTarget.hpp
  *  Last Change: Automatically updated
@@ -134,6 +134,6 @@ namespace Vantor::RenderDevice
 
         std::unique_ptr<VOpenGLRenderTarget>
         CreateShadowMapTarget(uint32_t size = 1024, VTextureFormat depthFormat = VTextureFormat::Depth24, const std::string &debugName = "ShadowMap");
-    } // namespace RenderTargetFactory
+    } // namespace VRenderTargetFactory
 
 } // namespace Vantor::RenderDevice

@@ -12,21 +12,21 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-07-11
+ *  Date: 2025-07-16
  *
  *  File: VRDO_Texture.cpp
  *  Last Change: Automatically updated
  */
 
 #include <Shared/glad/glad.h>
+#include <Shared/glad/glad.h>
 #include <algorithm>
 #include <cstring>
 #include <iostream>
 
 #include "../../Core/BackLog/VCO_Backlog.hpp"
+#include "../../Core/BackLog/VCO_Backlog.hpp"
 #include "VRDO_Texture.hpp"
-#include <Shared/glad/glad.h>
-
 // Core/Backlog
 #include "../../Core/BackLog/VCO_Backlog.hpp"
 

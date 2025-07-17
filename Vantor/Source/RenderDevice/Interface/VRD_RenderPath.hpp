@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-07-11
+ *  Date: 2025-07-16
  *
  *  File: VRD_RenderPath.hpp
  *  Last Change: Automatically updated
@@ -21,13 +21,13 @@
 #pragma once
 
 #include "../../Math/Linear/VMA_Vector.hpp"
+#include "../../Math/Linear/VMA_Vector.hpp"
+#include "../../ObjectSystem/Component/VOS_Base.hpp"
+#include "../../ObjectSystem/VOS_Object.hpp"
 #include "../../Renderer/Camera/VRE_Camera.hpp"
-#include "VRD_CommandBuffer.hpp"
 #include "../../Renderer/Camera/VRE_Camera.hpp"
-
-// Light Data
 #include "../../Renderer/Light/VRE_LightData.hpp"
-
+#include "VRD_CommandBuffer.hpp"
 // Math
 #include "../../Math/Linear/VMA_Vector.hpp"
 
@@ -50,12 +50,13 @@ namespace Vantor::RenderDevice
         Forward
     };
 
-    enum class VEStorageType {
+    enum class VEStorageType
+    {
         // These are the bindings of all
         // Storage Containers, that are being sent to the GPU
-        CommonUBO = 0,
+        CommonUBO      = 0,
         PointLightSSBO = 1,
-        LightDataUBO = 2,
+        LightDataUBO   = 2,
     };
 
     // TODO: Profile RenderPasses
@@ -95,10 +96,10 @@ namespace Vantor::RenderDevice
         public:
             virtual ~VRenderPass() = default;
 
-            virtual void Initialize(VRenderPath3D* renderPath)                           = 0;
+            virtual void Initialize(VRenderPath3D *renderPath) = 0;
             // Camera just for now
             virtual void Execute() = 0;
-            virtual void Cleanup()                              = 0;
+            virtual void Cleanup() = 0;
 
             virtual VERenderPassType   GetType() const = 0;
             virtual const std::string &GetName() const = 0;
@@ -138,7 +139,7 @@ namespace Vantor::RenderDevice
             virtual const VERenderStats &GetRenderStats() const = 0;
             virtual void                 ResetRenderStats()     = 0;
 
-            VRDevice* GetRenderDevice() { return m_Device; };
+            VRDevice *GetRenderDevice() { return m_Device; };
 
             bool IsActive() { return isActive; }
             void SetActive(bool active) { isActive = active; }
@@ -167,10 +168,10 @@ namespace Vantor::RenderDevice
 
             // Push to Command Buffer
             virtual void PushRender(VMesh *mesh, Vantor::Renderer::VMaterial *material, Vantor::Math::VMat4 transform) = 0;
-            virtual void PushRender(Vantor::Object::VObject* object) = 0;
+            virtual void PushRender(Vantor::Object::VObject *object)                                                   = 0;
 
             // Push Light Data
-            virtual void PushPointLight(const Vantor::Renderer::VPointLightData& pointLightData) = 0;
+            virtual void PushPointLight(const Vantor::Renderer::VPointLightData &pointLightData) = 0;
             // TODO: Push VObject PointLight Class
             // virtual void PushPointLight(const Vantor::Renderer::VPointLight* pointLight) = 0;
 
@@ -184,7 +185,7 @@ namespace Vantor::RenderDevice
             virtual void ActivateStorage(VEStorageType storage) const = 0;
 
             // Command Buffer
-            virtual VCommandBuffer* GetCommandBuffer() = 0;
+            virtual VCommandBuffer *GetCommandBuffer() = 0;
 
             // Shadow mapping : TODO
             // virtual void EnableShadows(bool enable) = 0;
@@ -202,7 +203,7 @@ namespace Vantor::RenderDevice
             virtual void SetCullingMode(bool enable)   = 0;
 
         protected:
-            Vantor::Renderer::Camera *m_Camera       = nullptr;
+            Vantor::Renderer::Camera *m_Camera = nullptr;
             // Vantor::Math::VVector3    m_AmbientLight = {0.1f, 0.1f, 0.1f};
             std::vector<Vantor::Renderer::VPointLightData> m_PointLights;
 

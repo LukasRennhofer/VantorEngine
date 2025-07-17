@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-07-11
+ *  Date: 2025-07-16
  *
  *  File: VOS_Base.hpp
  *  Last Change: Automatically updated
@@ -21,11 +21,11 @@
 #pragma once
 
 // #include "../../Core/Global/VCO_ServiceRegistry.hpp"
+#include "../../Math/Linear/VMA_Quaternation.hpp"
 #include "../../RenderDevice/Interface/VRD_Mesh.hpp"
+#include "../../RenderDevice/Interface/VRD_Mesh.hpp"
+#include "../../Renderer/VRE_Material.hpp"
 #include "VOS_Component.hpp"
-// #include "../../Core/Global/VCO_ServiceRegistry.hpp"
-
-// RenderDevice
 #include "../../RenderDevice/Interface/VRD_Mesh.hpp"
 
 // Math / Linear
@@ -77,33 +77,53 @@ namespace Vantor::Object
     class VTransformComponent : public VComponent
     {
         public:
-            explicit VTransformComponent(VObject* owner)
-                : VComponent(owner), m_position(Vantor::Math::VVector3(1.0f, 1.0f, 1.0f)), m_rotation(Vantor::Math::VQuaternion(1.0f, 0.0f, 0.0f, 0.0f)), m_scale(Vantor::Math::VVector3(1.0f, 1.0f, 1.0f)) {}
+            explicit VTransformComponent(VObject *owner)
+                : VComponent(owner),
+                  m_position(Vantor::Math::VVector3(1.0f, 1.0f, 1.0f)),
+                  m_rotation(Vantor::Math::VQuaternion::Identity()),
+                  m_scale(Vantor::Math::VVector3(1.0f, 1.0f, 1.0f))
+            {
+            }
 
             // === Setters ===
-            void SetPosition(const Vantor::Math::VVector3& position) { m_position = position; }
-            void SetRotation(const Vantor::Math::VQuaternion& rotation) { m_rotation = rotation; }
-            void SetScale(const Vantor::Math::VVector3& scale)       { m_scale = scale; }
+            void SetPosition(const Vantor::Math::VVector3 &position) { m_position = position; }
+            void SetRotation(const Vantor::Math::VQuaternion &rotation) { m_rotation = rotation; }
+            void SetScale(const Vantor::Math::VVector3 &scale) { m_scale = scale; }
 
             // === Getters ===
-            const Vantor::Math::VVector3& GetPosition() const { return m_position; }
-            const Vantor::Math::VQuaternion& GetRotation() const { return m_rotation; }
-            const Vantor::Math::VVector3& GetScale() const    { return m_scale; }
+            const Vantor::Math::VVector3    &GetPosition() const { return m_position; }
+            const Vantor::Math::VQuaternion &GetRotation() const { return m_rotation; }
+            const Vantor::Math::VVector3    &GetScale() const { return m_scale; }
 
             // === Transform Matrix ===
             Vantor::Math::VMat4 GetTransform() const
-            {   
-                Vantor::Math::VMat4 translation = Vantor::Math::VMat4::Identity();
-                translation = translation.Translate(m_position);
-                Vantor::Math::VMat4 rotation    = m_rotation.ToMat4();
-                Vantor::Math::VMat4 scaling     = Vantor::Math::VMat4::Scale(m_scale);
-                return translation * rotation * scaling;
+            {
+                // 1. Scale the object in local space
+                // 2. Rotate the object around its local center  
+                // 3. Then translate to world position
+                
+                Vantor::Math::VMat4 S = Vantor::Math::VMat4::Scale(m_scale);
+                Vantor::Math::VMat4 R = m_rotation.ToMat4();
+                
+                // First apply scale then rotation in local space
+                Vantor::Math::VMat4 RS = R * S;
+                
+                // Then manually set the translation component without affecting the rotation
+                Vantor::Math::VMat4 result = RS;
+                result.m[12] = m_position.x;  // Set translation X
+                result.m[13] = m_position.y;  // Set translation Y
+                result.m[14] = m_position.z;  // Set translation Z
+                
+                return result;
             }
 
         private:
-            Vantor::Math::VVector3 m_position;
+            Vantor::Math::VVector3    m_position;
             Vantor::Math::VQuaternion m_rotation;
-            Vantor::Math::VVector3 m_scale;
+            Vantor::Math::VVector3    m_scale;
+            
+            // We set the center of the mesh to a cube center for now
+            Vantor::Math::VVector3    m_pivot =  {0.0f, 0.0f, 0.0f};
     };
 
     // === Material Component ===
@@ -112,15 +132,15 @@ namespace Vantor::Object
         public:
             explicit VMaterialComponent(VObject *owner) : VComponent(owner) {}
 
-            void SetMaterial(Vantor::Renderer::VMaterial* material) { m_Material = material; }
-            Vantor::Renderer::VMaterial* GetMaterial() { return m_Material; }
+            void                         SetMaterial(Vantor::Renderer::VMaterial *material) { m_Material = material; }
+            Vantor::Renderer::VMaterial *GetMaterial() { return m_Material; }
 
         private:
-            Vantor::Renderer::VMaterial* m_Material = nullptr;
+            Vantor::Renderer::VMaterial *m_Material = nullptr;
     };
 
-    using VTagComponentPtr = std::shared_ptr<VTagComponent>;
-    using VMaterialComponentPtr = std::shared_ptr<VMaterialComponent>;
+    using VTagComponentPtr       = std::shared_ptr<VTagComponent>;
+    using VMaterialComponentPtr  = std::shared_ptr<VMaterialComponent>;
     using VTransformComponentPtr = std::shared_ptr<VTransformComponent>;
-    using VMeshComponentPtr = std::shared_ptr<VMeshComponent>;
+    using VMeshComponentPtr      = std::shared_ptr<VMeshComponent>;
 } // namespace Vantor::Object

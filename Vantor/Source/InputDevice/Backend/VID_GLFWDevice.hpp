@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-07-11
+ *  Date: 2025-07-16
  *
  *  File: VID_GLFWDevice.hpp
  *  Last Change: Automatically updated
@@ -25,9 +25,9 @@
 #ifdef VANTOR_WM_GLFW
 #include <Shared/GLFW/glfw3.h>
 #include <optional>
+#include <optional>
 #include <string>
 #include <unordered_map>
-#include <optional>
 
 namespace Vantor::Input
 {
@@ -116,21 +116,24 @@ namespace Vantor::Input
                 return it != currentAxes.end() ? it->second : 0.f;
             }
 
-            void SetMouseCursorState(bool visible) override {
-                if (m_CursorState != visible) {
+            void SetMouseCursorState(bool visible) override
+            {
+                if (m_CursorState != visible)
+                {
                     m_CursorState = visible;
 
-                    if (visible) {
+                    if (visible)
+                    {
                         glfwSetInputMode(nativeWindow, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
-                    } else {
+                    }
+                    else
+                    {
                         glfwSetInputMode(nativeWindow, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
                     }
                 }
             }
 
-            bool GetMouseCursorState() const override {
-                return m_CursorState;
-            }
+            bool GetMouseCursorState() const override { return m_CursorState; }
 
             Vantor::Math::VVector2 GetMousePosition() const override { return Vantor::Math::VVector2((float) mouseX, (float) mouseY); }
 

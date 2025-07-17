@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-07-11
+ *  Date: 2025-07-16
  *
  *  File: VRD_Shader.hpp
  *  Last Change: Automatically updated
@@ -26,8 +26,8 @@
 #include <string>
 
 #include "../../Math/Linear/VMA_Matrix.hpp"
-#include "../../Math/Linear/VMA_Vector.hpp"
 #include "../../Math/Linear/VMA_Matrix.hpp"
+#include "../../Math/Linear/VMA_Vector.hpp"
 
 namespace Vantor::RenderDevice
 {
@@ -39,9 +39,9 @@ namespace Vantor::RenderDevice
             virtual void Use() const = 0;
 
             // Uniform Functions
-            virtual void setUniformBool(const std::string &name, bool value) const                   = 0;
-            virtual void setUniformInt(const std::string &name, int value) const                     = 0;
-            virtual void setUniformFloat(const std::string &name, float value) const                 = 0;
+            virtual void setUniformBool(const std::string &name, bool value) const                          = 0;
+            virtual void setUniformInt(const std::string &name, int value) const                            = 0;
+            virtual void setUniformFloat(const std::string &name, float value) const                        = 0;
             virtual void setUniformVec2(const std::string &name, const Vantor::Math::VVector2 &value) const = 0;
             virtual void setUniformVec2(const std::string &name, float x, float y) const                    = 0;
             virtual void setUniformVec3(const std::string &name, const Vantor::Math::VVector3 &value) const = 0;

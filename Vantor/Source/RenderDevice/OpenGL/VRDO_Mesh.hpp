@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-07-11
+ *  Date: 2025-07-16
  *
  *  File: VRDO_Mesh.hpp
  *  Last Change: Automatically updated
@@ -22,9 +22,9 @@
 
 #include <Shared/glad/glad.h>
 #include <vector>
+#include <vector>
 
 #include "../Interface/VRD_Mesh.hpp"
-#include <vector>
 
 namespace Vantor::RenderDevice
 {

@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-07-11
+ *  Date: 2025-07-16
  *
  *  File: VRE_Uniform.hpp
  *  Last Change: Automatically updated
@@ -23,10 +23,10 @@
 #include <string>
 
 #include "../Math/Linear/VMA_Matrix.hpp"
+#include "../Math/Linear/VMA_Matrix.hpp"
+#include "../Math/Linear/VMA_Vector.hpp"
 #include "../Math/Linear/VMA_Vector.hpp"
 #include "../RenderDevice/Interface/VRD_Texture.hpp"
-// Math
-#include "../Math/Linear/VMA_Vector.hpp"
 #include "../Math/Linear/VMA_Matrix.hpp"
 
 namespace Vantor::Renderer

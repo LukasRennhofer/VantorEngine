@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-07-11
+ *  Date: 2025-07-16
  *
  *  File: VMA_Matrix.hpp
  *  Last Change: Automatically updated
@@ -155,7 +155,6 @@ namespace Vantor::Math
                 mat.m[10] = scale.z;
                 return mat;
             }
-
 
             static VMat4 Orthographic(float left, float right, float bottom, float top, float nearPlane, float farPlane) noexcept
             {

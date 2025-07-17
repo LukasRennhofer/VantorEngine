@@ -12,65 +12,14 @@
 * Last Change:
 */
 
-// We do this to not need to write Vantor:: 
-// and to not explicitly write the module origin of API calls
-#define VANTOR_USE_NO_NAMESPACE
+#include "common.h"
 
-#include <Vantor/Vantor.hpp>
-#include <Vantor/Math/Linear.hpp> // Linear Math (VVector, VMatrix)
-#include <Vantor/RenderModules/FlyCamera.hpp> // FlyCamera
-#include <Vantor/Renderer/Geometry.hpp> // Geometry Objects
-#include <Vantor/Integration/ImGui.hpp>
-
-float vertices[] = {
-        // positions          // normals           // texture coords
-        -0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  0.0f,  0.0f,
-         0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  1.0f,  0.0f,
-         0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  1.0f,  1.0f,
-         0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  1.0f,  1.0f,
-        -0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  0.0f,  1.0f,
-        -0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  0.0f,  0.0f,
-
-        -0.5f, -0.5f,  0.5f,  0.0f,  0.0f,  1.0f,  0.0f,  0.0f,
-         0.5f, -0.5f,  0.5f,  0.0f,  0.0f,  1.0f,  1.0f,  0.0f,
-         0.5f,  0.5f,  0.5f,  0.0f,  0.0f,  1.0f,  1.0f,  1.0f,
-         0.5f,  0.5f,  0.5f,  0.0f,  0.0f,  1.0f,  1.0f,  1.0f,
-        -0.5f,  0.5f,  0.5f,  0.0f,  0.0f,  1.0f,  0.0f,  1.0f,
-        -0.5f, -0.5f,  0.5f,  0.0f,  0.0f,  1.0f,  0.0f,  0.0f,
-
-        -0.5f,  0.5f,  0.5f, -1.0f,  0.0f,  0.0f,  1.0f,  0.0f,
-        -0.5f,  0.5f, -0.5f, -1.0f,  0.0f,  0.0f,  1.0f,  1.0f,
-        -0.5f, -0.5f, -0.5f, -1.0f,  0.0f,  0.0f,  0.0f,  1.0f,
-        -0.5f, -0.5f, -0.5f, -1.0f,  0.0f,  0.0f,  0.0f,  1.0f,
-        -0.5f, -0.5f,  0.5f, -1.0f,  0.0f,  0.0f,  0.0f,  0.0f,
-        -0.5f,  0.5f,  0.5f, -1.0f,  0.0f,  0.0f,  1.0f,  0.0f,
-
-         0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f,  1.0f,  0.0f,
-         0.5f,  0.5f, -0.5f,  1.0f,  0.0f,  0.0f,  1.0f,  1.0f,
-         0.5f, -0.5f, -0.5f,  1.0f,  0.0f,  0.0f,  0.0f,  1.0f,
-         0.5f, -0.5f, -0.5f,  1.0f,  0.0f,  0.0f,  0.0f,  1.0f,
-         0.5f, -0.5f,  0.5f,  1.0f,  0.0f,  0.0f,  0.0f,  0.0f,
-         0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f,  1.0f,  0.0f,
-
-        -0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,  0.0f,  1.0f,
-         0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,  1.0f,  1.0f,
-         0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,  1.0f,  0.0f,
-         0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,  1.0f,  0.0f,
-        -0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,  0.0f,  0.0f,
-        -0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,  0.0f,  1.0f,
-
-        -0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,  0.0f,  1.0f,
-         0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,  1.0f,  1.0f,
-         0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,  1.0f,  0.0f,
-         0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,  1.0f,  0.0f,
-        -0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,  0.0f,  0.0f,
-        -0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,  0.0f,  1.0f
-    };
+#include "LoadMesh.hpp"
 
 int main() {
-    Vantor::VApplication app;
+    VApplication app;
     // Application Creation Data
-    Vantor::VApplicationCreateInfo appInfo;
+    VApplicationCreateInfo appInfo;
     appInfo.windowWidth = 1280;
     appInfo.windowHeight = 720;
     appInfo.windowTitle = "Vantor Sandbox";
@@ -81,55 +30,31 @@ int main() {
     // Generate Cube Data
 
     // Test Vector 
-    // Vantor::Core::Vector<int> new_vector;
+    // VVector<int> new_vector;
     // new_vector.push_back(2);
     // new_vector.push_back(2);
+
+    // Test SafeString
+    // VSafeString new_string = "Hello, from Vantor!";
+    // std::cout << "Hashed String: " << new_string.hash() << std::endl;
 
     // std::cout << new_vector.at(1) << std::endl;
+    MeshData meshdata = LoadMeshFromGLTF("Resources/meshes/cube.gltf");
 
-    std::vector<Vantor::Math::VVector3> positions;
-    std::vector<Vantor::Math::VVector3> normals;
-    std::vector<Vantor::Math::VVector2> texCoords;
+    std::vector<VVector3> positions = meshdata.positions;
+    std::vector<VVector3> normals = meshdata.normals;
+    std::vector<VVector2> texCoords = meshdata.uvs;
+    std::vector<unsigned int> indicies = meshdata.indices;
 
-    const int stride = 8;  // 3 pos + 3 norm + 2 tex = 8 floats per vertex
-    const int vertexCount = sizeof(vertices) / sizeof(float) / stride;
-
-    for (int i = 0; i < vertexCount; i++) {
-        int baseIndex = i * stride;
-        
-        // Extract position
-        Vantor::Math::VVector3 pos(
-            vertices[baseIndex],
-            vertices[baseIndex + 1],
-            vertices[baseIndex + 2]
-        );
-        positions.push_back(pos);
-        
-        // Extract normal
-        Vantor::Math::VVector3 norm(
-            vertices[baseIndex + 3],
-            vertices[baseIndex + 4],
-            vertices[baseIndex + 5]
-        );
-        normals.push_back(norm);
-        
-        // Extract texture coordinates
-        Vantor::Math::VVector2 uv(
-            vertices[baseIndex + 6],
-            vertices[baseIndex + 7]
-        );
-        texCoords.push_back(uv);
-    }
-
-    const char* version = (const char*)glGetString(GL_VERSION);
-    std::cout << "OpenGL version: " << version << std::endl;
+    // const char* version = (const char*)glGetString(GL_VERSION);
+    // std::cout << "OpenGL version: " << version << std::endl;
 
 
     // for Mouse Movement
-    Vantor::Math::VVector2 mouseDelta;
+    VVector2 mouseDelta;
 
     // Create the Camera with FlyCamera RenderModule and register it as an entity
-    auto camera = Vantor::Object::VORegistry::CreateEntity<Vantor::RenderModules::FlyCamera>(Vantor::Math::VVector3(1.0f, 1.0f, 1.0f));
+    auto camera = VORegistry::CreateEntity<VFlyCamera>(VVector3(1.0f, 1.0f, 1.0f));
 
     camera->MouseSensitivty  = 0.05f; // Set Sensivity a bit lower
 
@@ -137,59 +62,57 @@ int main() {
 
     // Get the texture
     // Texture Sampler
-    Vantor::RenderDevice::VTextureSampler sampler;
-    sampler.minFilter       = Vantor::RenderDevice::VTextureFilter::Linear;
-    sampler.magFilter       = Vantor::RenderDevice::VTextureFilter::Linear;
-    sampler.wrapS           = Vantor::RenderDevice::VTextureWrap::Repeat;
-    sampler.wrapT           = Vantor::RenderDevice::VTextureWrap::Repeat;
+    VTextureSampler sampler;
+    sampler.minFilter       = VTextureFilter::Linear;
+    sampler.magFilter       = VTextureFilter::Linear;
+    sampler.wrapS           = VTextureWrap::Repeat;
+    sampler.wrapT           = VTextureWrap::Repeat;
     sampler.generateMipmaps = false;
 
-    auto m_ResDeffered = Vantor::Resource::VResourceManager::Instance().LoadTexture2D("m_Deffered", "Resources/textures/container2.png", sampler, false);
-    auto m_ResSpecular = Vantor::Resource::VResourceManager::Instance().LoadTexture2D("m_Specular", "Resources/textures/container2_specular.png", sampler, false);
+    auto m_ResDeffered = VResourceManager::Instance().LoadTexture2D("m_Deffered", "Resources/textures/container2.png", sampler, false);
+    auto m_ResSpecular = VResourceManager::Instance().LoadTexture2D("m_Specular", "Resources/textures/container2_specular.png", sampler, false);
 
     auto m_DiffuseTexture = m_ResDeffered->GetTexture();
     auto m_SpecularTexture = m_ResSpecular->GetTexture();
 
 
-    auto cube = Vantor::Object::VORegistry::CreateEntity<Vantor::Renderer::Geometry::VCube>(); // Create Cube Entity
+    auto cube = VORegistry::CreateEntity<VCube>(); // Create Cube Entity
 
-    cube->AddComponentVoid<Vantor::Object::VMeshComponent>(); // Add a MeshComponent for Render
-    cube->AddComponentVoid<Vantor::Object::VTransformComponent>(); // Add a TransformComponent for Render
-    cube->AddComponentVoid<Vantor::Object::VMaterialComponent>(); // Add a MaterialComponent for Render
+    cube->AddComponentVoid<VMeshComponent>(); // Add a MeshComponent for Render
+    cube->AddComponentVoid<VTransformComponent>(); // Add a TransformComponent for Render
+    cube->AddComponentVoid<VMaterialComponent>(); // Add a MaterialComponent for Render
 
-    Vantor::RenderDevice::VMeshCreateInfo cubeCreateInfo; // Create empty Mesh with Creation Data
+    VMeshCreateInfo cubeCreateInfo; // Create empty Mesh with Creation Data
     cubeCreateInfo.SetFinalized = false;
 
     auto cubeMesh = app.GetRenderDevice()->CreateMesh(cubeCreateInfo);
 
-    cube->GetComponent<Vantor::Object::VMeshComponent>()->SetMesh(cubeMesh); // Add empty Mesh to the cubes MeshComponent
+    cube->GetComponent<VMeshComponent>()->SetMesh(cubeMesh); // Add empty Mesh to the cubes MeshComponent
 
-    cube->GetComponent<Vantor::Object::VMeshComponent>()->GetMesh()->SetPositions(positions);
-    cube->GetComponent<Vantor::Object::VMeshComponent>()->GetMesh()->SetNormals(normals);
-    cube->GetComponent<Vantor::Object::VMeshComponent>()->GetMesh()->SetUVs(texCoords);
+    cube->GetComponent<VMeshComponent>()->GetMesh()->SetPositions(positions);
+    cube->GetComponent<VMeshComponent>()->GetMesh()->SetNormals(normals);
+    cube->GetComponent<VMeshComponent>()->GetMesh()->SetUVs(texCoords);
+    cube->GetComponent<VMeshComponent>()->GetMesh()->SetIndices(indicies);
+    
+    cube->GetComponent<VMeshComponent>()->GetMesh()->Finalize();
 
-    cube->GetComponent<Vantor::Object::VMeshComponent>()->GetMesh()->Finalize();
-
-    auto resMaterialShader = Vantor::Resource::VResourceManager::Instance().LoadShaderProgram("VDefferedMaterial", "Shaders/Private/Deffered/VGBuffer.vglsl", "Shaders/Private/Deffered/VGBuffer.fglsl");
-
-    Vantor::Renderer::VMaterial cubeMaterial(resMaterialShader->GetShader().get());
+    auto cubeMaterial = VMaterialLibrary::Instance().CreateMaterial("VDefault");
 
     // Give the Material the Sampler Textures
     // Diffuse
-    cubeMaterial.SetTexture("VTextureDiffuse", m_DiffuseTexture.get(), 1);
+    cubeMaterial->SetTexture("VTextureDiffuse", m_DiffuseTexture.get(), 1);
     // Specular
-    cubeMaterial.SetTexture("VTextureSpecular", m_SpecularTexture.get(), 2);
-    
+    cubeMaterial->SetTexture("VTextureSpecular", m_SpecularTexture.get(), 2);
 
-    cubeMaterial.color = Vantor::Core::Types::VColor::Gray();
+    cube->GetComponent<VMaterialComponent>()->SetMaterial(cubeMaterial.get());
 
-    cube->GetComponent<Vantor::Object::VMaterialComponent>()->SetMaterial(&cubeMaterial);
-
-    // rotate cube 45° around X axis
-    cube->GetComponent<Vantor::Object::VTransformComponent>()->SetRotation(Vantor::Math::VQuaternion::FromAxisAngle({1, 0, 0}, 45.0f));
+    cube->GetComponent<VTransformComponent>()->SetPosition(VVector3(1.0f, 1.0f, 1.0f));
+    cube->GetComponent<VTransformComponent>()->SetScale({0.1f, 0.1f, 0.1f});
+    // // rotate cube 45° around X axis
+    // cube->GetComponent<VTransformComponent>()->SetRotation(VQuaternation::FromAxisAngle({1, 0, 0}, 45.0f));
 
     // Point Lights 
-    Vantor::Renderer::VPointLightData pointLight1;
+    VPointLightData pointLight1;
     pointLight1.position = { 2.0f, 2.0f, 2.0f }; // Slightly above and in front of the cube
     pointLight1.ambient  = { 0.05f, 0.05f, 0.05f };
     pointLight1.diffuse  = {  1.0f, 1.0f, 1.0f };  // Full white diffuse for brightness
@@ -216,7 +139,9 @@ int main() {
     auto deviceone = Vantor::Input::CreateInputDevice(app.GetWindow());
     app.GetInputManager()->AddDevice(deviceone);
 
-    app.GetInputManager()->MapAction("fire", Vantor::Input::VInputButton{Vantor::Input::VEInputDeviceType::Keyboard, (int)Vantor::Input::VEInputKey::KEY_ESCAPE});
+    app.GetInputManager()->MapAction("fire", VInputButton{VInputDeviceType::Keyboard, (int)VInputKey::KEY_ESCAPE});
+
+    float rotationAngle = 0.0f;
 
     // Run app logic
     while (app.IsRunning()) {
@@ -235,25 +160,25 @@ int main() {
             }
             #endif
 
-            if (app.GetInputManager()->WasPressed(Vantor::Input::KEY_ESCAPE, Vantor::Input::VEInputDeviceType::Keyboard)) {
+            if (app.GetInputManager()->WasPressed(VInputKey::KEY_ESCAPE, VInputDeviceType::Keyboard)) {
                 app.Break();
             }
 
-            if (app.GetInputManager()->IsPressed(Vantor::Input::KEY_W, Vantor::Input::VEInputDeviceType::Keyboard)) {
-                camera->InputKey(app.GetDeltaTime(), Vantor::Renderer::CAMERA_FORWARD);
-            } else if (app.GetInputManager()->IsPressed(Vantor::Input::KEY_A, Vantor::Input::VEInputDeviceType::Keyboard)) {
-                camera->InputKey(app.GetDeltaTime(), Vantor::Renderer::CAMERA_LEFT);
-            } else if (app.GetInputManager()->IsPressed(Vantor::Input::KEY_D, Vantor::Input::VEInputDeviceType::Keyboard)) {
-                camera->InputKey(app.GetDeltaTime(), Vantor::Renderer::CAMERA_RIGHT);
-            } else if (app.GetInputManager()->IsPressed(Vantor::Input::KEY_S, Vantor::Input::VEInputDeviceType::Keyboard)) {
-                camera->InputKey(app.GetDeltaTime(), Vantor::Renderer::CAMERA_BACK);
-            } else if (app.GetInputManager()->IsPressed(Vantor::Input::KEY_E, Vantor::Input::VEInputDeviceType::Keyboard)) {
-                camera->InputKey(app.GetDeltaTime(), Vantor::Renderer::CAMERA_UP);
-            } else if (app.GetInputManager()->IsPressed(Vantor::Input::KEY_Q, Vantor::Input::VEInputDeviceType::Keyboard)) {
-                camera->InputKey(app.GetDeltaTime(), Vantor::Renderer::CAMERA_DOWN);
+            if (app.GetInputManager()->IsPressed(VInputKey::KEY_W, VInputDeviceType::Keyboard)) {
+                camera->InputKey(app.GetDeltaTime(), VCameraMovement::CAMERA_FORWARD);
+            } else if (app.GetInputManager()->IsPressed(VInputKey::KEY_A, VInputDeviceType::Keyboard)) {
+                camera->InputKey(app.GetDeltaTime(), VCameraMovement::CAMERA_LEFT);
+            } else if (app.GetInputManager()->IsPressed(VInputKey::KEY_D, VInputDeviceType::Keyboard)) {
+                camera->InputKey(app.GetDeltaTime(), VCameraMovement::CAMERA_RIGHT);
+            } else if (app.GetInputManager()->IsPressed(VInputKey::KEY_S, VInputDeviceType::Keyboard)) {
+                camera->InputKey(app.GetDeltaTime(), VCameraMovement::CAMERA_BACK);
+            } else if (app.GetInputManager()->IsPressed(VInputKey::KEY_E, VInputDeviceType::Keyboard)) {
+                camera->InputKey(app.GetDeltaTime(), VCameraMovement::CAMERA_UP);
+            } else if (app.GetInputManager()->IsPressed(VInputKey::KEY_Q, VInputDeviceType::Keyboard)) {
+                camera->InputKey(app.GetDeltaTime(), VCameraMovement::CAMERA_DOWN);
             } 
             
-            if (app.GetInputManager()->WasPressed(Vantor::Input::KEY_TAB, Vantor::Input::VEInputDeviceType::Keyboard)) {
+            if (app.GetInputManager()->WasPressed(VInputKey::KEY_TAB, VInputDeviceType::Keyboard)) {
                 app.GetInputManager()->devices[0]->SetMouseCursorState(!app.GetInputManager()->devices[0]->GetMouseCursorState());
             }
 
@@ -264,6 +189,9 @@ int main() {
             }
             camera->Update(app.GetDeltaTime());
 
+            rotationAngle += app.GetDeltaTime() * 50.0f;
+
+            cube->GetComponent<VTransformComponent>()->SetRotation(VQuaternion::FromAxisAngle({0, 1, 0}, rotationAngle));
             // Our Render Pushes
             renderpath->PushRender(cube.get());
 

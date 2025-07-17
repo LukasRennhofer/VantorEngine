@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-07-11
+ *  Date: 2025-07-16
  *
  *  File: VMA_Common.hpp
  *  Last Change: Automatically updated
@@ -32,11 +32,7 @@ namespace Vantor::Math
 
     // Convert radians to degrees
     constexpr float RadToDeg(float radians) { return radians * 180.0f / PI; }
-    
+
     // Rounds up a given value to the nearest multiple of a specified alignment
-    template<typename T>
-    constexpr T align(T value, T alignment)
-    {
-        return ((value + alignment - T(1)) / alignment) * alignment;
-    }
+    template <typename T> constexpr T align(T value, T alignment) { return ((value + alignment - T(1)) / alignment) * alignment; }
 } // namespace Vantor::Math

@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-07-11
+ *  Date: 2025-07-16
  *
  *  File: VRE_Material.hpp
  *  Last Change: Automatically updated
@@ -24,11 +24,11 @@
 
 #include "../Core/Types/VCO_Color.hpp"
 #include "../RenderDevice/Interface/VRD_Shader.hpp"
-#include "../RenderDevice/Interface/VRD_Texture.hpp"
-#include "VRE_Uniform.hpp"
 #include "../RenderDevice/Interface/VRD_Shader.hpp"
 #include "../RenderDevice/Interface/VRD_Texture.hpp"
-
+#include "../RenderDevice/Interface/VRD_Texture.hpp"
+#include "VRE_Uniform.hpp"
+#include "VRE_Uniform.hpp"
 // Uniforms
 #include "VRE_Uniform.hpp"
 
@@ -61,12 +61,15 @@ namespace Vantor::Renderer
             std::map<std::string, VUniformValueSampler> m_SamplerUniforms;
 
         public:
-            VEMaterialType              Type  = VEMaterialType::MaterialDefault;
-            Vantor::Core::Types::VColor color = Vantor::Core::Types::VColor::White(); // Standart Color is white
-            float shininess = 32.0f; // Shininess, just for now
+            VEMaterialType              Type      = VEMaterialType::MaterialDefault;
+
+            // Fallbacks
+            // These Fallbacks will be applied in the Shader, if VTextureDiffuse
+            // or VSpecularDiffuse are not given
+            Vantor::Core::Types::VColor Color     = Vantor::Core::Types::VColor::Gray(); // Standart Color is gray
+            float SpecularStrength = 0.5; // Standart is 0.5 (so in the middle)
 
             // TODO: Implement States, to represent the sate of a single Mesh
-
             // shadow state
             // bool ShadowCast    = true;
             // bool ShadowReceive = true;

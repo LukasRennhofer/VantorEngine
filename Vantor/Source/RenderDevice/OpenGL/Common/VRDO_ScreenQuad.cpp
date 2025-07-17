@@ -1,20 +1,40 @@
+/*
+ *  ╔═══════════════════════════════════════════════════════════════╗
+ *  ║                          ~ Vantor ~                           ║
+ *  ║                                                               ║
+ *  ║  This file is part of the Vantor Engine.                      ║
+ *  ║  Automatically formatted by vtrgFormat.py                     ║
+ *  ║                                                               ║
+ *  ╚═══════════════════════════════════════════════════════════════╝
+ *
+ *  Copyright (c) 2025 Lukas Rennhofer
+ *  Licensed under the GNU General Public License, Version 3.
+ *  See LICENSE file for more details.
+ *
+ *  Author: Lukas Rennhofer
+ *  Date: 2025-07-16
+ *
+ *  File: VRDO_ScreenQuad.cpp
+ *  Last Change: Automatically updated
+ */
+
 #include "VRDO_ScreenQuad.hpp"
 
-namespace Vantor::RenderDevice {
+namespace Vantor::RenderDevice
+{
     VScreenQuad::~VScreenQuad() = default;
 
-    VOpenGLScreenQuad::VOpenGLScreenQuad() {
+    VOpenGLScreenQuad::VOpenGLScreenQuad()
+    {
         // Loading the Screen Quad Shader
-        auto ResShaderScreenQuad = Vantor::Resource::VResourceManager::Instance().LoadShaderProgram("VIShaderScreenQuad", "Shaders/Private/Common/VScreenQuad.vglsl", "Shaders/Private/Common/VScreenQuad.fglsl");
+        auto ResShaderScreenQuad = Vantor::Resource::VResourceManager::Instance().LoadShaderProgram(
+            "VIShaderScreenQuad", "Shaders/Private/Common/VScreenQuad.vglsl", "Shaders/Private/Common/VScreenQuad.fglsl");
 
         m_ShaderScreenQuad = ResShaderScreenQuad->GetShader();
 
         float quadVertices[] = {
             // positions        // texture Coords
-            -1.0f,  1.0f, 0.0f, 0.0f, 1.0f,
-            -1.0f, -1.0f, 0.0f, 0.0f, 0.0f,
-             1.0f,  1.0f, 0.0f, 1.0f, 1.0f,
-             1.0f, -1.0f, 0.0f, 1.0f, 0.0f,
+            -1.0f, 1.0f, 0.0f, 0.0f, 1.0f, -1.0f, -1.0f, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f, 1.0f, 1.0f, -1.0f, 0.0f, 1.0f, 0.0f,
         };
 
         glGenVertexArrays(1, &m_VAO);
@@ -23,17 +43,19 @@ namespace Vantor::RenderDevice {
         glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
         glBufferData(GL_ARRAY_BUFFER, sizeof(quadVertices), &quadVertices, GL_STATIC_DRAW);
         glEnableVertexAttribArray(0);
-        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
+        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void *) 0);
         glEnableVertexAttribArray(1);
-        glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
+        glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void *) (3 * sizeof(float)));
     }
 
-    VOpenGLScreenQuad::~VOpenGLScreenQuad() {
+    VOpenGLScreenQuad::~VOpenGLScreenQuad()
+    {
         glDeleteVertexArrays(1, &m_VAO);
         // Shader deleted by unique_ptr
     }
 
-    void VOpenGLScreenQuad::Draw() {
+    void VOpenGLScreenQuad::Draw()
+    {
         m_ShaderScreenQuad->Use();
         m_ShaderScreenQuad->setUniformInt("screenTexture", 1);
         glBindVertexArray(m_VAO);
@@ -41,9 +63,10 @@ namespace Vantor::RenderDevice {
         glBindVertexArray(0);
     }
 
-    void VOpenGLScreenQuad::DrawRaw() {
+    void VOpenGLScreenQuad::DrawRaw()
+    {
         glBindVertexArray(m_VAO);
         glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
         glBindVertexArray(0);
     }
-}
+} // namespace Vantor::RenderDevice

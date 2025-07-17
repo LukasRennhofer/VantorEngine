@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-07-11
+ *  Date: 2025-07-16
  *
  *  File: VRE_Camera.hpp
  *  Last Change: Automatically updated
@@ -24,9 +24,9 @@
 #include "../../Math/Linear/VMA_Matrix.hpp"
 #include "../../Math/Linear/VMA_Vector.hpp"
 #include "../../ObjectSystem/VOS_Object.hpp"
-#include "VRE_Frustum.hpp"
 #include "../../ObjectSystem/VOS_Object.hpp"
-
+#include "VRE_Frustum.hpp"
+#include "VRE_Frustum.hpp"
 #include "VRE_Frustum.hpp"
 
 namespace Vantor::Renderer

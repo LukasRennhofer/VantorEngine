@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-07-11
+ *  Date: 2025-07-16
  *
  *  File: VRE_Material.cpp
  *  Last Change: Automatically updated
@@ -36,7 +36,9 @@ namespace Vantor::Renderer
 
         copy.Type = Type;
 
-        copy.color = color;
+        // Fallbacks
+        copy.Color = Color;
+        copy.SpecularStrength = SpecularStrength;
 
         copy.m_Uniforms        = m_Uniforms;
         copy.m_SamplerUniforms = m_SamplerUniforms;

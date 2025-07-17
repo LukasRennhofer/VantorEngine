@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-07-11
+ *  Date: 2025-07-16
  *
  *  File: VRES_Manager.cpp
  *  Last Change: Automatically updated
@@ -20,10 +20,10 @@
 
 #include <algorithm>
 #include <iostream>
+#include <iostream>
 
 #include "../RenderDevice/VRD_Factory.hpp"
 #include "VRES_Manager.hpp"
-#include <iostream>
 
 // #include <Shared/STB/stb_image.h> TODO: Load Texture2D from Memory
 
@@ -154,7 +154,7 @@ namespace Vantor::Resource
 
     std::shared_ptr<VShaderProgramResource>
     VResourceManager::LoadShaderProgram(const VResourceHandle &handle, const std::string &vertexPath, const std::string &fragmentPath)
-    {
+    { 
         if (!m_initialized)
         {
             Vantor::Backlog::Log("VResourceManager", "Resource Manager not initialized", Vantor::Backlog::LogLevel::ERR);
@@ -205,7 +205,9 @@ namespace Vantor::Resource
             }
 
             // Create shader using render device factory
-            auto renderShader = Vantor::RenderDevice::CreateShaderInstance(vertexSource.c_str(), fragmentSource.c_str(), vertexPath.c_str(), fragmentPath.c_str());
+            auto renderShader
+                = Vantor::RenderDevice::CreateShaderInstance(vertexSource.c_str(), fragmentSource.c_str(), vertexPath.c_str(), fragmentPath.c_str());
+            
             if (!renderShader)
             {
                 Vantor::Backlog::Log("VResourceManager", "Failed to create shader object", Vantor::Backlog::LogLevel::ERR);
@@ -259,12 +261,14 @@ namespace Vantor::Resource
         return std::dynamic_pointer_cast<VShaderProgramResource>(resource);
     }
 
-    std::shared_ptr<Vantor::RenderDevice::VTexture> VResourceManager::GetTexture2DData(const VResourceHandle &handle) {
+    std::shared_ptr<Vantor::RenderDevice::VTexture> VResourceManager::GetTexture2DData(const VResourceHandle &handle)
+    {
         auto resource = GetResource(handle);
         return std::dynamic_pointer_cast<VTexture2DResource>(resource)->GetTexture();
     }
 
-    std::shared_ptr<Vantor::RenderDevice::VShader>  VResourceManager::GetShaderProgramData(const VResourceHandle &handle) {
+    std::shared_ptr<Vantor::RenderDevice::VShader> VResourceManager::GetShaderProgramData(const VResourceHandle &handle)
+    {
         auto resource = GetResource(handle);
         return std::dynamic_pointer_cast<VShaderProgramResource>(resource)->GetShader();
     }
@@ -322,6 +326,16 @@ namespace Vantor::Resource
         Vantor::Backlog::Log("VResourceManager", "Resource reload requested: " + handle, Vantor::Backlog::LogLevel::INFO);
 
         return true;
+    }
+
+    // Internal Resources, gonna be Preloaded (TODO: Work with JobSystem)
+    void VResourceManager::PreloadInternalResources() {        
+        // ====== Shaders ======
+        // GBuffer Standart Deffered Shader
+        PreloadShaderProgram("VIShaderDeffered", "Shaders/Private/Deffered/VGBuffer.vglsl", "Shaders/Private/Deffered/VGBuffer.fglsl");
+        // Standart Deffered Lighting Shader
+        PreloadShaderProgram("VIShaderLightingDeffered", "Shaders/Private/Deffered/VLighting.vglsl", "Shaders/Private/Deffered/VLighting.fglsl");
+        // ====== Textures =====
     }
 
     size_t VResourceManager::GetResourceCount() const

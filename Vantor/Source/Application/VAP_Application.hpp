@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-07-11
+ *  Date: 2025-07-16
  *
  *  File: VAP_Application.hpp
  *  Last Change: Automatically updated
@@ -22,7 +22,10 @@
 
 // Core
 #include <format>
+#include <format>
 #include <functional>
+#include <functional>
+#include <memory>
 #include <memory>
 
 #include "../Context/Interface/VCT_Window.hpp"
@@ -34,12 +37,7 @@
 #include "../Platform/VPL_Environment.hpp"
 #include "../RenderDevice/VRD_Factory.hpp"
 #include "../Resource/VRES_Manager.hpp"
-
-// Input
-#include "../InputDevice/VID_Manager.hpp"
-
-// Resource Manager
-#include "../Resource/VRES_Manager.hpp"
+#include "../Renderer/VRE_MaterialLibrary.hpp"
 
 #include <format>
 #include <memory>

@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-07-11
+ *  Date: 2025-07-16
  *
  *  File: VRD_RenderDevice.hpp
  *  Last Change: Automatically updated
@@ -24,11 +24,11 @@
 #include <string>
 
 #include "../../Context/Interface/VCT_Window.hpp"
+#include "../../Context/Interface/VCT_Window.hpp"
 #include "VRD_Mesh.hpp"
 #include "VRD_RenderPath.hpp"
 #include "VRD_Shader.hpp"
 #include "VRD_Texture.hpp"
-
 // Context
 #include "../../Context/Interface/VCT_Window.hpp"
 

@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-07-11
+ *  Date: 2025-07-16
  *
  *  File: VCO_InlineDebugger.hpp
  *  Last Change: Automatically updated
@@ -26,7 +26,7 @@
 #include <iostream>
 #include <string>
 
-#include "../Backlog/VCO_Backlog.hpp"
+#include "../BackLog/VCO_Backlog.hpp"
 
 // TODO: Adding Final version of debugger
 namespace Vantor::Debug

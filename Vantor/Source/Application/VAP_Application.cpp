@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-07-11
+ *  Date: 2025-07-16
  *
  *  File: VAP_Application.cpp
  *  Last Change: Automatically updated
@@ -54,7 +54,6 @@ namespace Vantor
         RenderDevice = Vantor::RenderDevice::CreateInstance();
 
         // Initializing the Resource Manager
-
         if (!Vantor::Resource::VResourceManager::Instance().Initialize())
         {
             Vantor::Backlog::Log("Application", "Resource Manager failed to initialize", Vantor::Backlog::LogLevel::ERR);
@@ -81,6 +80,12 @@ namespace Vantor
 
         // Create Context with window
         RenderDevice->CreateRenderDeviceContext(window.get());
+
+        // Loading all Internal Resources (TODO: Work with Jobsystem)
+        Vantor::Resource::VResourceManager::Instance().PreloadInternalResources();
+
+        // Initializing the MaterialLibrary, so loading all the Default Materials (can be threaded later on)
+        Vantor::Renderer::VMaterialLibrary::Instance().Initialize();
 
         initialized = true;
 

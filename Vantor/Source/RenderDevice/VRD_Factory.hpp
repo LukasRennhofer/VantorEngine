@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-07-11
+ *  Date: 2025-07-16
  *
  *  File: VRD_Factory.hpp
  *  Last Change: Automatically updated
@@ -42,7 +42,8 @@ namespace Vantor::RenderDevice
 #endif
     }
 
-    inline std::shared_ptr<VShader> CreateShaderInstance(const char *vertexCode, const char *fragmentCode, const char* fileNameVertex,  const char* fileNameFragment)
+    inline std::shared_ptr<VShader>
+    CreateShaderInstance(const char *vertexCode, const char *fragmentCode, const char *fileNameVertex, const char *fileNameFragment)
     {
 #if defined(VANTOR_API_OPENGL)
         return std::make_shared<VOpenGLShader>(vertexCode, fragmentCode, fileNameVertex, fileNameFragment);

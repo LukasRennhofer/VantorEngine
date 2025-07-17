@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-07-11
+ *  Date: 2025-07-16
  *
  *  File: VRD_RenderTarget.hpp
  *  Last Change: Automatically updated
@@ -161,5 +161,5 @@ namespace Vantor::RenderDevice
                                                 const std::vector<VTextureFormat> &colorFormats,
                                                 VTextureFormat                     depthFormat = VTextureFormat::Depth24,
                                                 const std::string                 &debugName   = "MRTTarget");
-    } // namespace RenderTargetUtils
+    } // namespace VRenderTargetUtils
 } // namespace Vantor::RenderDevice

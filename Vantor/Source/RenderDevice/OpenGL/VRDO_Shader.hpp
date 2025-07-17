@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-07-11
+ *  Date: 2025-07-16
  *
  *  File: VRDO_Shader.hpp
  *  Last Change: Automatically updated
@@ -25,8 +25,8 @@
 
 #include "../../Math/Linear/VMA_Matrix.hpp"
 #include "../../Math/Linear/VMA_Vector.hpp"
+#include "../Interface/Compiler/VRD_GLSLComp.hpp"
 #include "../Interface/VRD_Shader.hpp"
-
 #include "../Interface/VRD_Shader.hpp"
 
 #include "../Interface/Compiler/VRD_GLSLComp.hpp"
@@ -39,7 +39,7 @@ namespace Vantor::RenderDevice
         public:
             // Lang for OpenGL still GLSL
             // TODO: Overload functions to seperate vertex and fragment
-            VOpenGLShader(const char *vertexCode, const char *fragmentCode, const char* fileNameVertex,  const char* fileNameFragment);
+            VOpenGLShader(const char *vertexCode, const char *fragmentCode, const char *fileNameVertex, const char *fileNameFragment);
             ~VOpenGLShader() override;
 
             void Use() const override;

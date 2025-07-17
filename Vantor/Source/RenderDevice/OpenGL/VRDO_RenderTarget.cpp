@@ -12,7 +12,7 @@
  *  See LICENSE file for more details.
  *
  *  Author: Lukas Rennhofer
- *  Date: 2025-07-11
+ *  Date: 2025-07-16
  *
  *  File: VRDO_RenderTarget.cpp
  *  Last Change: Automatically updated
@@ -647,7 +647,7 @@ namespace Vantor::RenderDevice
             desc.Attachments.push_back(depthAttachment);
             return desc;
         }
-    } // namespace RenderTargetUtils
+    } // namespace VRenderTargetUtils
 
     // ----------------- Factory Functions Implementation -----------------
 
@@ -712,6 +712,6 @@ namespace Vantor::RenderDevice
 
             return nullptr;
         }
-    } // namespace RenderTargetFactory
+    } // namespace VRenderTargetFactory
 
 } // namespace Vantor::RenderDevice
