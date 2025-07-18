@@ -49,6 +49,11 @@ namespace Vantor::Renderer
         UniformTypeMAT4,
     };
 
+    enum VESamplerType {
+        SamplerDiffuse,
+        SamplerSpecular
+    };
+
     struct VUniform
     {
             VEUniformType Type;
@@ -81,6 +86,7 @@ namespace Vantor::Renderer
     struct VUniformValueSampler
     {
             VEUniformType Type;
+            VESamplerType SType;
             unsigned int  Unit;
             union
             {

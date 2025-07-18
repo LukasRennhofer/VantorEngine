@@ -29,7 +29,7 @@ int main() {
 
     // Initialize the Application
     app.Initialize(appInfo);
-    
+
     // Test Vector 
     // VVector<int> new_vector;
     // new_vector.push_back(2);
@@ -40,7 +40,10 @@ int main() {
     // std::cout << "Hashed String: " << new_string.hash() << std::endl;
 
     // std::cout << new_vector.at(1) << std::endl;
-    MeshData meshdata = LoadMeshFromGLTF("Resources/meshes/cube.gltf");
+    MeshData meshdata = LoadMeshFromGLTF("Resources/meshes/DamagedHelmet/DamagedHelmet.gltf");
+
+    std::cout << meshdata.textureHeight << std::endl;
+    std::cout << meshdata.diffuseTexturePath << std::endl;
 
     std::vector<VVector3> positions = meshdata.positions;
     std::vector<VVector3> normals = meshdata.normals;
@@ -49,7 +52,6 @@ int main() {
 
     // const char* version = (const char*)glGetString(GL_VERSION);
     // std::cout << "OpenGL version: " << version << std::endl;
-
 
     // for Mouse Movement
     VVector2 mouseDelta;
@@ -71,12 +73,10 @@ int main() {
     sampler.generateMipmaps = false;
 
     
-    auto m_ResDeffered = vLoadTexture2D("m_Deffered", "Resources/textures/container2.png", sampler, false);
-    auto m_ResSpecular = vLoadTexture2D("m_Specular", "Resources/textures/container2_specular.png", sampler, false);
+    // auto m_ResDeffered = vLoadTexture2D("m_Deffered", "Resources/textures/container2.png", sampler, false);
+    // auto m_ResSpecular = vLoadTexture2D("m_Specular", "Resources/textures/container2_specular.png", sampler, false);
 
-    auto m_DiffuseTexture = m_ResDeffered->GetTexture();
-    auto m_SpecularTexture = m_ResSpecular->GetTexture();
-
+    auto m_DiffuseTexture = LoadDiffuseTexture(meshdata, RenderDevice.get(), sampler);
 
     auto cube = vCreateActor<VCube>(); // Create Cube Entity
 
@@ -100,20 +100,19 @@ int main() {
 
     auto cubeMaterial = VMaterialLibrary::Instance().CreateMaterial("VDefault");
 
-    // Give the Material the Sampler Textures
-    // Diffuse
-    cubeMaterial->SetTexture("VTextureDiffuse", m_DiffuseTexture.get(), 1);
-    // Specular
-    cubeMaterial->SetTexture("VTextureSpecular", m_SpecularTexture.get(), 2);
+    // // Give the Material the Sampler Textures
+    // // Diffuse
+    cubeMaterial->SetTexture("VTextureDiffuse", m_DiffuseTexture.get(), 1, VUniformType::UniformTypeSAMPLER2D, VSamplerType::SamplerDiffuse);
+    // // Specular
+    // cubeMaterial->SetTexture("VTextureSpecular", m_SpecularTexture.get(), 2);
 
     cube->GetComponent<VMaterialComponent>()->SetMaterial(cubeMaterial.get());
 
     cube->GetComponent<VTransformComponent>()->SetPosition(VVector3(1.0f, 1.0f, 1.0f));
     cube->GetComponent<VTransformComponent>()->SetScale({0.1f, 0.1f, 0.1f});
-
     // Point Lights 
     VPointLightData pointLight1;
-    pointLight1.position = { 2.0f, 2.0f, 2.0f }; // Slightly above and in front of the cube
+    pointLight1.position = { 2.0f, 2.0f, 2.0f }; // Slightly above and in front of the object
     pointLight1.ambient  = { 0.05f, 0.05f, 0.05f };
     pointLight1.diffuse  = {  1.0f, 1.0f, 1.0f };  // Full white diffuse for brightness
     pointLight1.specular = { 0.1f, 0.1f, 0.1f };
@@ -141,6 +140,8 @@ int main() {
     app.GetInputManager()->MapAction("fire", VInputButton{VInputDeviceType::Keyboard, (int)VInputKey::KEY_ESCAPE});
 
     float rotationAngle = 0.0f;
+    // Tilt the object down 45 degrees around the X axis
+    VQuaternion tilt = VQuaternion::FromAxisAngle(VVector3{1, 0, 0}, -40.0f);
 
     // Run app logic
     while (app.IsRunning()) {
@@ -190,7 +191,17 @@ int main() {
 
             rotationAngle += app.GetDeltaTime() * 50.0f;
 
-            cube->GetComponent<VTransformComponent>()->SetRotation(VQuaternion::FromAxisAngle({0, 1, 0}, rotationAngle));
+            // Now spin around the tilted "up" vector (originally Y)
+            VVector3 upAfterTilt = tilt.Rotate(VVector3{0, 1, 0});
+
+            // Rotate 90 degrees around this new "up" axis
+            VQuaternion spin = VQuaternion::FromAxisAngle(upAfterTilt, rotationAngle);
+
+            // Final combined rotation
+            VQuaternion finalRotation = tilt * spin;
+
+
+            cube->GetComponent<VTransformComponent>()->SetRotation(finalRotation);
             // Our Render Pushes
             renderpath->PushRender(cube.get());
 

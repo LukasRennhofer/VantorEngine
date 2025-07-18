@@ -64,12 +64,13 @@ namespace Vantor::Renderer
         m_Uniforms[name].Float = value;
     }
 
-    void VMaterial::SetTexture(std::string name, Vantor::RenderDevice::VTexture *value, unsigned int unit, VEUniformType target)
+    void VMaterial::SetTexture(std::string name, Vantor::RenderDevice::VTexture *value, unsigned int unit, VEUniformType target, VESamplerType type)
     {
         m_SamplerUniforms[name].Unit    = unit;
         m_SamplerUniforms[name].Texture = value;
 
         m_SamplerUniforms[name].Type = target;
+        m_SamplerUniforms[name].SType = type;
 
         if (m_Shader)
         {

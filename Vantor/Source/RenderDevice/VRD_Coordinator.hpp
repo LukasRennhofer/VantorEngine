@@ -62,31 +62,6 @@ namespace Vantor::RenderDevice
                     return renderDevice;
             }
 
-            // TODO: Get these functions to the RenderDevice itself
-            std::shared_ptr<VTexture> CreateTexture2DInstance(const std::string &filePath, const VTextureSampler &sampler, bool generateMipmaps = true)
-            {
-                switch (m_ActiveBackend) {
-                    #if defined(VANTOR_API_OPENGL)
-                    case VERenderAPI::OPENGL:
-                        return VOpenGLTexture2D::CreateFromFile(filePath, sampler, generateMipmaps);
-                    #endif
-                    default: return nullptr;
-                }
-            }
-
-            
-            std::shared_ptr<VShader> CreateShaderInstance(const char *vertexCode, const char *fragmentCode, const char *fileNameVertex, const char *fileNameFragment)
-            {
-                switch (m_ActiveBackend) {
-                    #if defined(VANTOR_API_OPENGL)
-                    case VERenderAPI::OPENGL:
-                        return std::make_shared<VOpenGLShader>(vertexCode, fragmentCode, fileNameVertex, fileNameFragment);
-                    #endif
-                    default:
-                        return nullptr;
-                }
-            }
-
             VRDevice* GetRenderDevice() { return m_RenderDevice.get(); }
 
         private:

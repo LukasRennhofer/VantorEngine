@@ -118,6 +118,9 @@ The Vantor Engine is built using modern technologies and industry-standard tools
 **Third-Party Libraries:**
 - **Dear ImGui**: Immediate mode GUI for debugging and tools
 - **GLFW**: Window management and input handling
+- **STB Headers**: image loading and writing
+- **tinygltf.h**: glTF 2.0 object loading and animations
+- **tinyobjloader**: .obj and mtl object loading
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -173,7 +176,7 @@ pacman -S cmake mingw-w64-x86_64-toolchain mingw-w64-x86_64-freeglut mingw-w64-x
 # Using the new VTRG development tool
 python vtrg.py build --platform Windows --debug
 
-# Or using legacy DevConsole (deprecated)
+# Or using legacy DevConsole (deprecated)glTF 2.0 object loading and animations
 python DevConsole.py --platform Windows --build-lib
 ```
 

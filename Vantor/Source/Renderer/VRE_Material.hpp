@@ -90,7 +90,7 @@ namespace Vantor::Renderer
             void SetTexture(std::string                     name,
                             Vantor::RenderDevice::VTexture *value,
                             unsigned int                    unit   = 0,
-                            VEUniformType                   target = VEUniformType::UniformTypeSAMPLER2D);
+                            VEUniformType                   target = VEUniformType::UniformTypeSAMPLER2D, VESamplerType type = VESamplerType::SamplerDiffuse);
             void SetTextureCube(std::string name, Vantor::RenderDevice::VTextureCube *value, unsigned int unit = 0);
             void SetVector(std::string name, Vantor::Math::VVector2 value);
             void SetVector(std::string name, Vantor::Math::VVector3 value);

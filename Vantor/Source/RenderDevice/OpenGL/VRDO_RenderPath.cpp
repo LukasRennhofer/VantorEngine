@@ -204,7 +204,8 @@ namespace Vantor::RenderDevice
         m_RenderPath->ActivateStorage(VEStorageType::CommonUBO);
 
         // Material Settings
-        bool MaterialUseTexture = false;
+        bool MaterialUseDiffuseTexture = false;
+        bool MaterialUseSpecularTexture = false;
 
         // Go through all Meshes
         for (auto command : m_RenderPath->GetCommandBuffer()->GetDefferedRenderCommands())
@@ -221,12 +222,15 @@ namespace Vantor::RenderDevice
                 if (it->second.Type == Vantor::Renderer::UniformTypeSAMPLERCUBE)
                 {
                     it->second.TextureCube->Bind(it->second.Unit);
-                    MaterialUseTexture = true;
                 }
                 else
                 {
                     it->second.Texture->Bind(it->second.Unit);
-                    MaterialUseTexture = true;
+                    if (it->second.SType == Vantor::Renderer::VESamplerType::SamplerDiffuse) {
+                        MaterialUseDiffuseTexture = true;
+                    } else if (it->second.SType == Vantor::Renderer::VESamplerType::SamplerSpecular) {
+                        MaterialUseSpecularTexture = true;
+                    }
                 }
             }
 
@@ -271,11 +275,16 @@ namespace Vantor::RenderDevice
             }
 
             // Push the current Texture State to GPU too
-            command.Material->GetShader()->setUniformBool("VUseTexture", MaterialUseTexture);
+            command.Material->GetShader()->setUniformBool("VUseDiffuseTexture", MaterialUseDiffuseTexture);
+            command.Material->GetShader()->setUniformBool("VUseSpecularTexture", MaterialUseSpecularTexture);
 
             // Only set this when false, to avoid pushes to GPU
-            if (!MaterialUseTexture) {
+            if (!MaterialUseDiffuseTexture) {
                 command.Material->GetShader()->setUniformVec3("VColor", command.Material->Color.toFloat3());
+
+            } 
+
+            if (!MaterialUseSpecularTexture) {
                 command.Material->GetShader()->setUniformFloat("VSpecularStrength", command.Material->SpecularStrength);
             }
 
@@ -283,7 +292,8 @@ namespace Vantor::RenderDevice
             command.Mesh->RenderRaw();
 
             // Set all Material Settings back to normal
-            MaterialUseTexture = false;
+            MaterialUseDiffuseTexture = false;
+            MaterialUseSpecularTexture = false;
         }
 
         m_RenderPath->GetGBuffer()->Unbind();

@@ -95,6 +95,13 @@ namespace Vantor::RenderDevice
             // virtual std::shared_ptr<VShader> CreateShader(const char *vertexCode, const char *fragmentCode) = 0;
             // Mesh : Use this with VMeshCreateInfo
             virtual std::shared_ptr<VMesh> CreateMesh(const VMeshCreateInfo &createInfo) = 0;
+            virtual std::shared_ptr<VTexture> CreateTexture2DInstance(const std::string &filePath, const VTextureSampler &sampler, bool generateMipmaps = true) = 0;
+            virtual std::shared_ptr<VTexture> CreateTexture2DInstance(const void            *data,
+                                                                      uint32_t               width,
+                                                                      uint32_t               height,
+                                                                      VTextureFormat         format  = VTextureFormat::RGBA8,
+                                                                      const VTextureSampler &sampler = {}) = 0;
+            virtual std::shared_ptr<VShader> CreateShaderInstance(const char *vertexCode, const char *fragmentCode, const char *fileNameVertex, const char *fileNameFragment) = 0;
             // Helpers
             virtual VERenderAPI GetRenderDeviceAPI() const  = 0;
             virtual std::string GetRenderDeviceName() const = 0;

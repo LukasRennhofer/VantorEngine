@@ -14,21 +14,26 @@ uniform sampler2D VTextureSpecular;
 
 uniform vec3 VColor; // Fallback to VTextureDiffuse
 uniform float VSpecularStrength;  // Fallback to VTextureSpecular
-uniform bool VUseTexture; // For using a Texture or fallback to Color
+uniform bool VUseDiffuseTexture; // For using a Texture or fallback to Color
+uniform bool VUseSpecularTexture; // For using a Texture or fallback to strength
 
 
 void main()
 {   
     // Using the Texture
-    if (VUseTexture) {
+    if (VUseDiffuseTexture) {
         // store albedo and diffuse per-fragment color in first buffer
         gAlbedoSpec.rgb = texture(VTextureDiffuse, TexCoords).rgb;
-        // store specular intensity in gAlbedoSpec's alpha component
-        gAlbedoSpec.a = texture(VTextureSpecular, TexCoords).r;
       // Using the Color
     } else { 
         // store albedo and diffuse per-fragment color in first buffer
         gAlbedoSpec.rgb = VColor;
+    }
+
+    if (VUseSpecularTexture) {
+         // store specular intensity in gAlbedoSpec's alpha component
+        gAlbedoSpec.a = texture(VTextureSpecular, TexCoords).r;
+    } else {
         // store specular intensity in gAlbedoSpec's alpha component
         gAlbedoSpec.a = VSpecularStrength;
     }

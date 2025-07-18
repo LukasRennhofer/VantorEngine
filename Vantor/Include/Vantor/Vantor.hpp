@@ -184,6 +184,7 @@ using VUniform = Vantor::Renderer::VUniform;
 using VUniformValue = Vantor::Renderer::VUniformValue;
 using VUniformSampler = Vantor::Renderer::VUniformValueSampler;
 using VUniformType = Vantor::Renderer::VEUniformType;
+using VSamplerType = Vantor::Renderer::VESamplerType;
 using VVertexAttribute = Vantor::Renderer::VVertexAttribute;
 // Resource
 using VResourcetype = Vantor::Resource::VEResourceType;
@@ -236,13 +237,13 @@ std::shared_ptr<VMesh> vRenderDeviceCreateMesh(VRDevice* device, const VMeshCrea
 }
 
 // RenderCoordinator texture/shader creation helpers
-std::shared_ptr<VTexture> vCreateTexture2DInstance(const std::string& filePath, const VTextureSampler& sampler, bool generateMipmaps = true) {
-    return VRenderCoordinator::Instance().CreateTexture2DInstance(filePath, sampler, generateMipmaps);
-}
-std::shared_ptr<VShader> vCreateShaderInstance(const char* vertexCode, const char* fragmentCode, 
-    const char* fileNameVertex, const char* fileNameFragment) {
-    return VRenderCoordinator::Instance().CreateShaderInstance(vertexCode, fragmentCode, fileNameVertex, fileNameFragment);
-}
+// std::shared_ptr<VTexture> vCreateTexture2DInstance(const std::string& filePath, const VTextureSampler& sampler, bool generateMipmaps = true) {
+//     return VRenderCoordinator::Instance().CreateTexture2DInstance(filePath, sampler, generateMipmaps);
+// }
+// std::shared_ptr<VShader> vCreateShaderInstance(const char* vertexCode, const char* fragmentCode, 
+//     const char* fileNameVertex, const char* fileNameFragment) {
+//     return VRenderCoordinator::Instance().CreateShaderInstance(vertexCode, fragmentCode, fileNameVertex, fileNameFragment);
+// }
 
 // ===== Resource Manager Functions =====
 VResourceManager& vGetResourceManager() { return VResourceManager::Instance(); }

@@ -105,6 +105,26 @@ namespace Vantor::RenderDevice
         return mesh;
     }
 
+    std::shared_ptr<VTexture> VRDeviceOpenGL::CreateTexture2DInstance(const std::string &filePath, const VTextureSampler &sampler, bool generateMipmaps)
+    {
+        return VOpenGLTexture2D::CreateFromFile(filePath, sampler, generateMipmaps);
+    }
+
+    std::shared_ptr<VTexture> VRDeviceOpenGL::CreateTexture2DInstance(const void            *data,
+                                                                      uint32_t               width,
+                                                                      uint32_t               height,
+                                                                      VTextureFormat         format,
+                                                                      const VTextureSampler &sampler) 
+    {
+        return VOpenGLTexture2D::CreateFromMemory(data, width, height, format, sampler);
+    }
+
+            
+    std::shared_ptr<VShader> VRDeviceOpenGL::CreateShaderInstance(const char *vertexCode, const char *fragmentCode, const char *fileNameVertex, const char *fileNameFragment)
+    {    
+        return std::make_shared<VOpenGLShader>(vertexCode, fragmentCode, fileNameVertex, fileNameFragment);
+    }
+
     VERenderAPI VRDeviceOpenGL::GetRenderDeviceAPI() const { return VERenderAPI::OPENGL; }
 
     std::string VRDeviceOpenGL::GetRenderDeviceName() const { return "VRDeviceOpenGL"; }
