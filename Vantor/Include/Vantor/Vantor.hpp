@@ -18,15 +18,7 @@
  *  Last Change: Automatically updated
  */
 
-/*
-INFO: Vantor.h can be only compiled with the corresponding Library:
-
-Based on your System:
-
-     - Windows x64 (Tested on 7 - 11): libVantorWindows.a
-     - Linux x64 (Tested on Ubuntu 24.10): libVantorLinux.a
-     - Nintendo Switch (Tested on Homebrew): libVantorSwitch.a
-*/
+// This file is intended for managing the Vantor Engine C++ API
 
 /*
 Vantors Preprocessor Variables:
@@ -84,7 +76,7 @@ with RenderDevice Vulkan (Defined in CMake) (RESERVED, BUT NOT IN USE)
 
 // RENDERDEVICE
 #include "../../Source/RenderDevice/Interface/VRD_RenderDevice.hpp"
-#include "../../Source/RenderDevice/VRD_Factory.hpp"
+#include "../../Source/RenderDevice/VRD_Coordinator.hpp"
 
 // RENDERER
 #include "../../Source/Renderer/VRE_Material.hpp"
@@ -155,6 +147,7 @@ using VTagComponent = Vantor::Object::VTagComponent;
 // TODO: Component and Object Handles
 // Platform : TODO
 // RenderDevice
+using VRenderCoordinator = Vantor::RenderDevice::VRenderCoordinator;
 using VRDevice = Vantor::RenderDevice::VRDevice;
 using VRenderCommand = Vantor::RenderDevice::VRenderCommand;
 using VRenderPass = Vantor::RenderDevice::VRenderPass;
@@ -199,4 +192,151 @@ using VResourceHandle = Vantor::Resource::VResourceHandle;
 using VResourceManager = Vantor::Resource::VResourceManager;
 using VShaderProgramResource = Vantor::Resource::VShaderProgramResource;
 using VTexture2DResource = Vantor::Resource::VTexture2DResource;
-#endif // VANTOR
+
+// ===== C++ API Functions ======
+
+// ===== Core Functions =====
+// Version
+std::string vGetVersion() { return Vantor::Core::Version::GetVersionString(); }
+
+// Core / IO
+bool vFileExists(const std::string &path) { return Vantor::Core::IO::FileExists(path); }
+
+// Backlog/Logging
+void vBacklog(const std::string &source, const std::string &msg, VBacklogLevel level = VBacklogLevel::INFO) { 
+    return Vantor::Backlog::Log(source, msg, level); 
+}
+void vLog(const std::string &source, const std::string &msg) { 
+    return Vantor::Backlog::Log(source, msg, VBacklogLevel::INFO); 
+}
+void vLogInfo(const std::string &source, const std::string &msg) { 
+    return Vantor::Backlog::Log(source, msg, VBacklogLevel::INFO); 
+}
+void vLogError(const std::string &source, const std::string &msg) { 
+    return Vantor::Backlog::Log(source, msg, VBacklogLevel::ERR); 
+}
+
+// ===== Application Functions =====
+VApplication* vCreateApplication() { return new VApplication(); }
+
+// ===== RenderDevice Functions =====
+VRenderCoordinator& vGetRenderCoordinator() { return VRenderCoordinator::Instance(); }
+std::shared_ptr<VRDevice> vCreateRenderDevice(VRenderAPI backend) { 
+    return VRenderCoordinator::Instance().CreateRenderDevice(backend); 
+}
+void vRenderDeviceInitialize(VRDevice* device) { device->Initialize(); }
+void vRenderDeviceBeginFrame(VRDevice* device) { device->BeginFrame(); }
+void vRenderDeviceEndFrame(VRDevice* device) { device->EndFrame(); }
+void vRenderDeviceSetViewPort(VRDevice* device, int width, int height) { device->SetViewPort(width, height); }
+void vRenderDeviceCreateContext(VRDevice* device, VWindow* window) { device->CreateRenderDeviceContext(window); }
+std::shared_ptr<VRenderPath3D> vRenderDeviceCreateRenderPath3D(VRDevice* device) { return device->CreateRenderPath3D(); }
+// TODO: Make better functions
+std::shared_ptr<VMesh> vRenderDeviceCreateMesh(VRDevice* device, const VMeshCreateInfo& createInfo) { 
+    return device->CreateMesh(createInfo); 
+}
+
+// RenderCoordinator texture/shader creation helpers
+std::shared_ptr<VTexture> vCreateTexture2DInstance(const std::string& filePath, const VTextureSampler& sampler, bool generateMipmaps = true) {
+    return VRenderCoordinator::Instance().CreateTexture2DInstance(filePath, sampler, generateMipmaps);
+}
+std::shared_ptr<VShader> vCreateShaderInstance(const char* vertexCode, const char* fragmentCode, 
+    const char* fileNameVertex, const char* fileNameFragment) {
+    return VRenderCoordinator::Instance().CreateShaderInstance(vertexCode, fragmentCode, fileNameVertex, fileNameFragment);
+}
+
+// ===== Resource Manager Functions =====
+VResourceManager& vGetResourceManager() { return VResourceManager::Instance(); }
+bool vResourceManagerInitialize() { return VResourceManager::Instance().Initialize(); }
+void vResourceManagerShutdown() { VResourceManager::Instance().Shutdown(); }
+bool vResourceManagerIsInitialized() { return VResourceManager::Instance().IsInitialized(); }
+
+// Texture Loading
+std::shared_ptr<VTexture2DResource> vLoadTexture2D(const std::string& handle, const std::string& filePath, 
+    const VTextureSampler& sampler = {}, bool generateMipmaps = true) {
+    return VResourceManager::Instance().LoadTexture2D(handle, filePath, sampler, generateMipmaps);
+}
+void vPreloadTexture2D(const std::string& handle, const std::string& filePath, 
+    const VTextureSampler& sampler = {}, bool generateMipmaps = true) {
+    VResourceManager::Instance().PreloadTexture2D(handle, filePath, sampler, generateMipmaps);
+}
+
+// Shader Loading
+std::shared_ptr<VShaderProgramResource> vLoadShaderProgram(const std::string& handle, 
+    const std::string& vertexPath, const std::string& fragmentPath) {
+    return VResourceManager::Instance().LoadShaderProgram(handle, vertexPath, fragmentPath);
+}
+void vPreloadShaderProgram(const std::string& handle, const std::string& vertexPath, const std::string& fragmentPath) {
+    VResourceManager::Instance().PreloadShaderProgram(handle, vertexPath, fragmentPath);
+}
+
+// Resource Access
+std::shared_ptr<VResource> vGetResource(const std::string& handle) {
+    return VResourceManager::Instance().GetResource(handle);
+}
+std::shared_ptr<VTexture2DResource> vGetTexture2D(const std::string& handle) {
+    return VResourceManager::Instance().GetTexture2D(handle);
+}
+std::shared_ptr<VShaderProgramResource> vGetShaderProgram(const std::string& handle) {
+    return VResourceManager::Instance().GetShaderProgram(handle);
+}
+std::shared_ptr<VTexture> vGetTexture2DData(const std::string& handle) {
+    return VResourceManager::Instance().GetTexture2DData(handle);
+}
+std::shared_ptr<VShader> vGetShaderProgramData(const std::string& handle) {
+    return VResourceManager::Instance().GetShaderProgramData(handle);
+}
+
+// Resource Management
+bool vUnloadResource(const std::string& handle) {
+    return VResourceManager::Instance().UnloadResource(handle);
+}
+void vUnloadAllResources() {
+    VResourceManager::Instance().UnloadAllResources();
+}
+bool vReloadResource(const std::string& handle) {
+    return VResourceManager::Instance().ReloadResource(handle);
+}
+void vPreloadInternalResources() {
+    VResourceManager::Instance().PreloadInternalResources();
+}
+
+// Resource Statistics
+size_t vGetResourceCount() {
+    return VResourceManager::Instance().GetResourceCount();
+}
+size_t vGetTotalMemoryUsage() {
+    return VResourceManager::Instance().GetTotalMemoryUsage();
+}
+std::vector<std::string> vGetResourceHandles() {
+    return VResourceManager::Instance().GetResourceHandles();
+}
+
+// ===== Object System Functions =====
+// VORegistry Helper functions
+template <typename T, typename... Args>
+std::shared_ptr<T> vCreateActor(Args&&... args) { 
+    return Vantor::Object::VORegistry::CreateEntity<T>(std::forward<Args>(args)...); 
+}
+std::shared_ptr<VObject> vGetActor(VObjectID id) { 
+    return Vantor::Object::VORegistry::GetEntity(id); 
+}
+void vDestroyActor(VObjectID id) { 
+    Vantor::Object::VORegistry::DestroyEntity(id); 
+}
+std::vector<std::shared_ptr<VObject>> vGetAllActors() { 
+    return Vantor::Object::VORegistry::GetAllEntitiesList(); 
+}
+
+// ===== Material System Functions =====
+VMaterialLibrary& vGetMaterialLibrary() { return VMaterialLibrary::Instance(); }
+void vMaterialLibraryInitialize() { VMaterialLibrary::Instance().Initialize(); }
+// std::shared_ptr<VMaterial> vCreateMaterial(VShader* shader) { 
+//     return std::make_shared<VMaterial>(type); 
+// }
+
+// ===== Renderer Functions =====
+std::string vGetRenderAPIString(VRenderAPI api) { 
+    return Vantor::RenderDevice::GetRenderAPIToString(api); 
+}
+
+#endif // VANTOR_API

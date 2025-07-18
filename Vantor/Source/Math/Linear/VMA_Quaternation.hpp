@@ -148,5 +148,47 @@ namespace Vantor::Math
                 return q;
             }
 
+            // Spherical linear interpolation
+            VQuaternion Slerp(const VQuaternion& other, float t) const noexcept
+            {
+                // Compute the cosine of the angle between the two vectors
+                float dot = x * other.x + y * other.y + z * other.z + w * other.w;
+                
+                // If the dot product is negative, slerp won't take the shorter path
+                // So negate one quaternion to correct this
+                VQuaternion q2 = other;
+                if (dot < 0.0f) {
+                    q2 = VQuaternion(-other.x, -other.y, -other.z, -other.w);
+                    dot = -dot;
+                }
+                
+                // If the quaternions are very close, use linear interpolation
+                if (dot > 0.9995f) {
+                    VQuaternion result(
+                        x + t * (q2.x - x),
+                        y + t * (q2.y - y),
+                        z + t * (q2.z - z),
+                        w + t * (q2.w - w)
+                    );
+                    return result.Normalized();
+                }
+                
+                // Calculate the angle between the quaternions
+                float theta_0 = std::acos(std::abs(dot));
+                float theta = theta_0 * t;
+                float sin_theta = std::sin(theta);
+                float sin_theta_0 = std::sin(theta_0);
+                
+                float s0 = std::cos(theta) - dot * sin_theta / sin_theta_0;
+                float s1 = sin_theta / sin_theta_0;
+                
+                return VQuaternion(
+                    s0 * x + s1 * q2.x,
+                    s0 * y + s1 * q2.y,
+                    s0 * z + s1 * q2.z,
+                    s0 * w + s1 * q2.w
+                );
+            }
+
     };
 } // namespace Vantor::Math

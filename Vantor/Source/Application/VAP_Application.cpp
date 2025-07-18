@@ -27,7 +27,7 @@ namespace Vantor
 
     static void ResizeCallbackStatic(int w, int h)
     {
-        if (s_appInstance && s_appInstance->GetRenderDevice()) s_appInstance->GetRenderDevice()->SetViewPort(w, h);
+        if (s_appInstance && Vantor::RenderDevice::VRenderCoordinator::Instance().GetRenderDevice()) Vantor::RenderDevice::VRenderCoordinator::Instance().GetRenderDevice()->SetViewPort(w, h);
         VServiceLocator::SetContextWidth(w);
         VServiceLocator::SetContextHeight(h);
     }
@@ -50,8 +50,6 @@ namespace Vantor
         Vantor::Backlog::Log("Application", "Creating Vantor Window Context", Vantor::Backlog::LogLevel::INFO);
         window = std::make_unique<Vantor::Context::Window>(info.windowWidth, info.windowHeight, info.windowTitle);
 
-        // Creating the RenderDevice
-        RenderDevice = Vantor::RenderDevice::CreateInstance();
 
         // Initializing the Resource Manager
         if (!Vantor::Resource::VResourceManager::Instance().Initialize())
@@ -65,21 +63,19 @@ namespace Vantor
         s_appInstance = this; // For ResizeCallback usage
         window->setResizeCallback(ResizeCallbackStatic);
 
-        // put the pointer of the RenderDevice into the Service Registry for access across the Engine
-        VServiceLocator::SetRenderDevice(RenderDevice.get());
         VServiceLocator::SetContextWidth(info.windowWidth);
         VServiceLocator::SetContextHeight(info.windowHeight);
 
         // Log RenderDevice Information
         // Vantor::Backlog::Log("Application", std::string("Using PhysicalDevice   : " + RenderDevice->GetPhysicalDeviceName()),
         // Vantor::Backlog::LogLevel::INFO);
-        Vantor::Backlog::Log("Application", std::string("Using RenderDevice     : " + RenderDevice->GetRenderDeviceName()), Vantor::Backlog::LogLevel::INFO);
+        Vantor::Backlog::Log("Application", std::string("Using RenderDevice     : " + Vantor::RenderDevice::VRenderCoordinator::Instance().GetRenderDevice()->GetRenderDeviceName()), Vantor::Backlog::LogLevel::INFO);
         Vantor::Backlog::Log("Application",
-                             std::string("Using RenderAPI        : " + Vantor::RenderDevice::GetRenderAPIToString(RenderDevice->GetRenderDeviceAPI())),
+                             std::string("Using RenderAPI        : " + Vantor::RenderDevice::GetRenderAPIToString(Vantor::RenderDevice::VRenderCoordinator::Instance().GetRenderDevice()->GetRenderDeviceAPI())),
                              Vantor::Backlog::LogLevel::INFO);
 
         // Create Context with window
-        RenderDevice->CreateRenderDeviceContext(window.get());
+        Vantor::RenderDevice::VRenderCoordinator::Instance().GetRenderDevice()->CreateRenderDeviceContext(window.get());
 
         // Loading all Internal Resources (TODO: Work with Jobsystem)
         Vantor::Resource::VResourceManager::Instance().PreloadInternalResources();
@@ -110,13 +106,13 @@ namespace Vantor
         InputManager->Update();
 
         // Begin a new Frame with RenderDevice
-        RenderDevice->BeginFrame();
+        Vantor::RenderDevice::VRenderCoordinator::Instance().GetRenderDevice()->BeginFrame();
     }
 
     void VApplication::EndFrame()
     {
         // End the RenderDevice frame
-        RenderDevice->EndFrame();
+        Vantor::RenderDevice::VRenderCoordinator::Instance().GetRenderDevice()->EndFrame();
 
         // Swapchain
         window->swapBuffers();
@@ -142,12 +138,6 @@ namespace Vantor
     }
 
     void VApplication::Break() { active = false; }
-
-    // RenderDevice: mutable access
-    RenderDevice::VRDevice *VApplication::GetRenderDevice() { return RenderDevice.get(); }
-
-    // RenderDevice: readonly access
-    const RenderDevice::VRDevice *VApplication::GetRenderDevice() const { return RenderDevice.get(); }
 
     // InputManager
     Input::VInputManager *VApplication::GetInputManager() { return InputManager.get(); }

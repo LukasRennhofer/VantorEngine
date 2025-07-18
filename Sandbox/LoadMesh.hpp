@@ -5,7 +5,7 @@
 #include <iostream>
 #include <cstdint>
 
-#include "tiny_gltf.h"
+#include <Shared/tinygltf/tiny_gltf.h>
 
 #include "common.h"
 

@@ -6,8 +6,28 @@
 - How to do abstraction layer
 
 # Line
- - Resource Manager should preload all internal thing (Shaders, internal Textures(maybe not and use just colors)) and     then use the internal things in the MaterialLibrary
- - MaterialLibrary (Singleton, gets initialized in RenderDevice)
+
+ - New RenderFactory Design:
+    - VRenderCoordinator : This VSingleton can create and manage RenderDevices with a VERenderAPI and stores them 
+                           in its private. You can access the API with: GetBackend() and get the RenderDevice 
+                          (which is a shared Pointer) with :  GetRenderDevice(), wwe do this alll before Initializing
+                          the Application Context and the Application gets the RenderDevice through the VRenderCoordinator
+
+    - This Class can be used through the whole Engine code to create and manage Meshes, Textures and Shaders
+
+    - User API:
+        The User itself can access the RenderDevice with special made API functions to create its own resources
+        e.g.
+                        vRDevice_CreateMesh(...);
+                        vRDevice_CreateTexture2D(...);
+                        vRDevice_SetActive(...);
+
+        or:             vTexture_Create2D(...);
+                        vTexture_CreateFromFile(...);
+
+
+
+
  - Implement Frustum in CommandBuffer
  - dirLight, SpotLight, AreaLight
  - Model Loading ?

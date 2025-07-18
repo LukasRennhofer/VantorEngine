@@ -29,7 +29,6 @@
 #include "../Core/VCO_Types.hpp"
 
 #include "VRE_Material.hpp"
-#include "VRE_Material.hpp"
 
 #include "../Resource/VRES_Manager.hpp"
 

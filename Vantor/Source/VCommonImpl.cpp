@@ -25,3 +25,12 @@
 
 #define VGLSL_IMPLEMENTATION
 #include <Shared/VGLSL/vglsl.h>
+
+#define TINYGLTF_NO_EXTERNAL_IMAGE
+#define TINYGLTF_IMPLEMENTATION
+#define STB_IMAGE_WRITE_IMPLEMENTATION
+
+#include <Shared/tinygltf/tiny_gltf.h>
+
+#define TINYOBJLOADER_IMPLEMENTATION
+#include <Shared/tinyobjloader/tiny_obj_loader.hpp>

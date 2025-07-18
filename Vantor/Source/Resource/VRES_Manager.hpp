@@ -28,14 +28,9 @@
 
 #include "../Core/BackLog/VCO_Backlog.hpp"
 #include "../Core/Types/VCO_ClassTypes.hpp" // VSingleton
-#include "../Core/Types/VCO_ClassTypes.hpp" // VSingleton
 #include "../Platform/VPL_Environment.hpp"
 #include "../RenderDevice/Interface/VRD_Shader.hpp"
-#include "../RenderDevice/Interface/VRD_Shader.hpp"
 #include "../RenderDevice/Interface/VRD_Texture.hpp"
-#include "../RenderDevice/Interface/VRD_Texture.hpp"
-#include "../RenderDevice/Interface/VRD_Texture.hpp"
-#include "../RenderDevice/Interface/VRD_Shader.hpp"
 
 // Forward declarations for render device
 namespace Vantor::RenderDevice

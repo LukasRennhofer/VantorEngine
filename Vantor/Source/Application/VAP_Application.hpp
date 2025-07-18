@@ -35,7 +35,7 @@
 #include "../Core/VCO_Version.hpp"
 #include "../InputDevice/VID_Manager.hpp"
 #include "../Platform/VPL_Environment.hpp"
-#include "../RenderDevice/VRD_Factory.hpp"
+#include "../RenderDevice/VRD_Coordinator.hpp"
 #include "../Resource/VRES_Manager.hpp"
 #include "../Renderer/VRE_MaterialLibrary.hpp"
 
@@ -60,7 +60,6 @@ namespace Vantor
     {
         private:
             std::unique_ptr<Vantor::Context::Window>        window;
-            std::unique_ptr<Vantor::RenderDevice::VRDevice> RenderDevice;
             std::unique_ptr<Vantor::Input::VInputManager>   InputManager;
 
         protected:
@@ -92,10 +91,6 @@ namespace Vantor
 
             // Deltatime
             float GetDeltaTime() { return deltatime; }
-
-            // RenderDevice
-            RenderDevice::VRDevice       *GetRenderDevice();       // mutable access
-            const RenderDevice::VRDevice *GetRenderDevice() const; // readonly access
 
             // Input
             Input::VInputManager *GetInputManager();

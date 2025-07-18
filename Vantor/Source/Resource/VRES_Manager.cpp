@@ -22,7 +22,7 @@
 #include <iostream>
 #include <iostream>
 
-#include "../RenderDevice/VRD_Factory.hpp"
+#include "../RenderDevice/VRD_Coordinator.hpp"
 #include "VRES_Manager.hpp"
 
 // #include <Shared/STB/stb_image.h> TODO: Load Texture2D from Memory

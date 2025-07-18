@@ -17,6 +17,9 @@
 #include "LoadMesh.hpp"
 
 int main() {
+    // Create a OpenGL RenderDevice (VANTOR_API_OPENGL must be compiled)
+    auto RenderDevice = vCreateRenderDevice(VRenderAPI::OPENGL);
+
     VApplication app;
     // Application Creation Data
     VApplicationCreateInfo appInfo;
@@ -26,9 +29,7 @@ int main() {
 
     // Initialize the Application
     app.Initialize(appInfo);
-
-    // Generate Cube Data
-
+    
     // Test Vector 
     // VVector<int> new_vector;
     // new_vector.push_back(2);
@@ -54,7 +55,7 @@ int main() {
     VVector2 mouseDelta;
 
     // Create the Camera with FlyCamera RenderModule and register it as an entity
-    auto camera = VORegistry::CreateEntity<VFlyCamera>(VVector3(1.0f, 1.0f, 1.0f));
+    auto camera = vCreateActor<VFlyCamera>(VVector3(1.0f, 1.0f, 1.0f));
 
     camera->MouseSensitivty  = 0.05f; // Set Sensivity a bit lower
 
@@ -69,14 +70,15 @@ int main() {
     sampler.wrapT           = VTextureWrap::Repeat;
     sampler.generateMipmaps = false;
 
-    auto m_ResDeffered = VResourceManager::Instance().LoadTexture2D("m_Deffered", "Resources/textures/container2.png", sampler, false);
-    auto m_ResSpecular = VResourceManager::Instance().LoadTexture2D("m_Specular", "Resources/textures/container2_specular.png", sampler, false);
+    
+    auto m_ResDeffered = vLoadTexture2D("m_Deffered", "Resources/textures/container2.png", sampler, false);
+    auto m_ResSpecular = vLoadTexture2D("m_Specular", "Resources/textures/container2_specular.png", sampler, false);
 
     auto m_DiffuseTexture = m_ResDeffered->GetTexture();
     auto m_SpecularTexture = m_ResSpecular->GetTexture();
 
 
-    auto cube = VORegistry::CreateEntity<VCube>(); // Create Cube Entity
+    auto cube = vCreateActor<VCube>(); // Create Cube Entity
 
     cube->AddComponentVoid<VMeshComponent>(); // Add a MeshComponent for Render
     cube->AddComponentVoid<VTransformComponent>(); // Add a TransformComponent for Render
@@ -85,7 +87,7 @@ int main() {
     VMeshCreateInfo cubeCreateInfo; // Create empty Mesh with Creation Data
     cubeCreateInfo.SetFinalized = false;
 
-    auto cubeMesh = app.GetRenderDevice()->CreateMesh(cubeCreateInfo);
+    auto cubeMesh = RenderDevice->CreateMesh(cubeCreateInfo);
 
     cube->GetComponent<VMeshComponent>()->SetMesh(cubeMesh); // Add empty Mesh to the cubes MeshComponent
 
@@ -108,8 +110,6 @@ int main() {
 
     cube->GetComponent<VTransformComponent>()->SetPosition(VVector3(1.0f, 1.0f, 1.0f));
     cube->GetComponent<VTransformComponent>()->SetScale({0.1f, 0.1f, 0.1f});
-    // // rotate cube 45° around X axis
-    // cube->GetComponent<VTransformComponent>()->SetRotation(VQuaternation::FromAxisAngle({1, 0, 0}, 45.0f));
 
     // Point Lights 
     VPointLightData pointLight1;
@@ -125,7 +125,7 @@ int main() {
     glfwSwapInterval(0); // VSync OFF : TODO: Implement in Context
 
     // RenderPath Test
-    auto renderpath = app.GetRenderDevice()->CreateRenderPath3D();
+    auto renderpath = RenderDevice->CreateRenderPath3D();
 
     // Properly initialize the camera with perspective projection
     camera->SetPerspective(45.0f, (float)Vantor::VServiceLocator::GetContextWidth()/(float)Vantor::VServiceLocator::GetContextHeight(), 0.1f, 100.0f);
@@ -133,10 +133,9 @@ int main() {
     renderpath->SetCamera(camera.get());
 
     // renderpath->SetWireframeMode(true); // Re-enable wireframe for debugging
-
     // ==== Input ====
     // Set up InputDevice
-    auto deviceone = Vantor::Input::CreateInputDevice(app.GetWindow());
+    auto deviceone = Vantor::Input::CreateInputDevice(app.GetWindow()); // TODO: Write vCreateInputDevice(VWindow* window); function
     app.GetInputManager()->AddDevice(deviceone);
 
     app.GetInputManager()->MapAction("fire", VInputButton{VInputDeviceType::Keyboard, (int)VInputKey::KEY_ESCAPE});
