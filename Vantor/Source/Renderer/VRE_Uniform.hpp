@@ -51,7 +51,10 @@ namespace Vantor::Renderer
 
     enum VESamplerType {
         SamplerDiffuse,
-        SamplerSpecular
+        SamplerSpecular,
+        SamplerNormal,
+        SamplerMR, // Metallic-Roughness
+        SamplerAO
     };
 
     struct VUniform

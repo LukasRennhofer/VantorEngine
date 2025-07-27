@@ -6,73 +6,93 @@
 #include <cstdint>
 
 #include <Shared/tinygltf/tiny_gltf.h>
-
 #include <Shared/STB/stb_image.h>
 
 #include "common.h"
-
 
 struct MeshData {
     std::vector<VVector3> positions;
     std::vector<VVector3> normals;
     std::vector<VVector2> uvs;
     std::vector<unsigned int> indices;
-    std::string diffuseTexturePath;
 
-    std::vector<unsigned char> diffuseTextureData; // For embedded
-    int textureWidth = 0;
-    int textureHeight = 0;
-    int textureComponents = 0; // Usually 3 (RGB) or 4 (RGBA)
+    // Texture info for different maps
+    std::string diffuseTexturePath;
+    std::string normalTexturePath;
+    std::string metallicTexturePath;
+    std::string roughnessTexturePath;
+    std::string aoTexturePath;
+
+    std::vector<unsigned char> diffuseTextureData;
+    std::vector<unsigned char> normalTextureData;
+    std::vector<unsigned char> metallicTextureData;
+    std::vector<unsigned char> roughnessTextureData;
+    std::vector<unsigned char> aoTextureData;
+
+    int diffuseWidth = 0, diffuseHeight = 0, diffuseComponents = 0;
+    int normalWidth = 0, normalHeight = 0, normalComponents = 0;
+    int metallicWidth = 0, metallicHeight = 0, metallicComponents = 0;
+    int roughnessWidth = 0, roughnessHeight = 0, roughnessComponents = 0;
+    int aoWidth = 0, aoHeight = 0, aoComponents = 0;
 };
 
-std::shared_ptr<VTexture> LoadDiffuseTexture(
-    const MeshData& mesh,
+// General texture loader function to reduce code duplication
+std::shared_ptr<VTexture> LoadTexture(
+    const std::vector<unsigned char>& embeddedData,
+    int width, int height, int components,
+    const std::string& path,
     VRDevice* renderer,
     const VTextureSampler& sampler = {}
 ) {
-
-    // 1. Use embedded data if available
-    if (!mesh.diffuseTextureData.empty() && mesh.textureWidth > 0 && mesh.textureHeight > 0) {
+    if (!embeddedData.empty() && width > 0 && height > 0) {
         VTextureFormat format = VTextureFormat::RGBA8;
-        if (mesh.textureComponents == 3) format = VTextureFormat::RGB8;
-        else if (mesh.textureComponents == 4) format = VTextureFormat::RGBA8;
+        if (components == 3) format = VTextureFormat::RGB8;
+        else if (components == 4) format = VTextureFormat::RGBA8;
         else {
-            std::cerr << "Unsupported texture format: " << mesh.textureComponents << " components.\n";
+            std::cerr << "Unsupported texture format: " << components << " components.\n";
             return nullptr;
         }
-
-        return renderer->CreateTexture2DInstance(
-            mesh.diffuseTextureData.data(),
-            mesh.textureWidth,
-            mesh.textureHeight,
-            format,
-            sampler
-        );
+        return renderer->CreateTexture2DInstance(embeddedData.data(), width, height, format, sampler);
     }
 
-    // 2. Fall back to external path (load with stb_image or similar)
-    if (!mesh.diffuseTexturePath.empty()) {
-        int width, height, channels;
-        unsigned char* data = stbi_load(mesh.diffuseTexturePath.c_str(), &width, &height, &channels, 0);
+    if (!path.empty()) {
+        int w, h, c;
+        unsigned char* data = stbi_load(path.c_str(), &w, &h, &c, 0);
         if (!data) {
-            std::cerr << "Failed to load texture from path: " << mesh.diffuseTexturePath << "\n";
+            std::cerr << "Failed to load texture from path: " << path << "\n";
             return nullptr;
         }
-
         VTextureFormat format = VTextureFormat::RGBA8;
-        if (channels == 3) format = VTextureFormat::RGB8;
-        else if (channels == 4) format = VTextureFormat::RGBA8;
-
-        auto texture = renderer->CreateTexture2DInstance(data, width, height, format, sampler);
+        if (c == 3) format = VTextureFormat::RGB8;
+        else if (c == 4) format = VTextureFormat::RGBA8;
+        auto tex = renderer->CreateTexture2DInstance(data, w, h, format, sampler);
         stbi_image_free(data);
-        return texture;
+        return tex;
     }
 
-    // 3. No texture available
-    std::cerr << "No diffuse texture data found.\n";
+    std::cerr << "No texture data found.\n";
     return nullptr;
 }
 
+std::shared_ptr<VTexture> LoadDiffuseTexture(const MeshData& mesh, VRDevice* renderer, const VTextureSampler& sampler = {}) {
+    return LoadTexture(mesh.diffuseTextureData, mesh.diffuseWidth, mesh.diffuseHeight, mesh.diffuseComponents, mesh.diffuseTexturePath, renderer, sampler);
+}
+
+std::shared_ptr<VTexture> LoadNormalTexture(const MeshData& mesh, VRDevice* renderer, const VTextureSampler& sampler = {}) {
+    return LoadTexture(mesh.normalTextureData, mesh.normalWidth, mesh.normalHeight, mesh.normalComponents, mesh.normalTexturePath, renderer, sampler);
+}
+
+std::shared_ptr<VTexture> LoadMetallicTexture(const MeshData& mesh, VRDevice* renderer, const VTextureSampler& sampler = {}) {
+    return LoadTexture(mesh.metallicTextureData, mesh.metallicWidth, mesh.metallicHeight, mesh.metallicComponents, mesh.metallicTexturePath, renderer, sampler);
+}
+
+std::shared_ptr<VTexture> LoadRoughnessTexture(const MeshData& mesh, VRDevice* renderer, const VTextureSampler& sampler = {}) {
+    return LoadTexture(mesh.roughnessTextureData, mesh.roughnessWidth, mesh.roughnessHeight, mesh.roughnessComponents, mesh.roughnessTexturePath, renderer, sampler);
+}
+
+std::shared_ptr<VTexture> LoadAOTexture(const MeshData& mesh, VRDevice* renderer, const VTextureSampler& sampler = {}) {
+    return LoadTexture(mesh.aoTextureData, mesh.aoWidth, mesh.aoHeight, mesh.aoComponents, mesh.aoTexturePath, renderer, sampler);
+}
 
 inline MeshData LoadMeshFromGLTF(const std::string& path) {
     MeshData mesh;
@@ -95,15 +115,13 @@ inline MeshData LoadMeshFromGLTF(const std::string& path) {
         return mesh;
     }
 
-    const tinygltf::Mesh& gltfMesh = model.meshes[0]; // Load only the first mesh
-    const tinygltf::Primitive& primitive = gltfMesh.primitives[0]; // Only first primitive
+    const tinygltf::Mesh& gltfMesh = model.meshes[0];
+    const tinygltf::Primitive& primitive = gltfMesh.primitives[0];
 
-    // Index buffer
     if (primitive.indices >= 0) {
         const auto& accessor = model.accessors[primitive.indices];
         const auto& bufferView = model.bufferViews[accessor.bufferView];
         const auto& buffer = model.buffers[bufferView.buffer];
-
         const uint8_t* dataPtr = &buffer.data[accessor.byteOffset + bufferView.byteOffset];
 
         for (size_t i = 0; i < accessor.count; ++i) {
@@ -126,7 +144,6 @@ inline MeshData LoadMeshFromGLTF(const std::string& path) {
         }
     }
 
-    // Helper for VVector3 attributes
     auto getVVector3Attribute = [&](const std::string& name, std::vector<VVector3>& out) {
         if (primitive.attributes.count(name) == 0) return;
 
@@ -147,7 +164,6 @@ inline MeshData LoadMeshFromGLTF(const std::string& path) {
         }
     };
 
-    // Helper for VVector2 attributes
     auto getVVector2Attribute = [&](const std::string& name, std::vector<VVector2>& out) {
         if (primitive.attributes.count(name) == 0) return;
 
@@ -167,36 +183,92 @@ inline MeshData LoadMeshFromGLTF(const std::string& path) {
         }
     };
 
-    // Load attributes
+    // Load vertex attributes
     getVVector3Attribute("POSITION", mesh.positions);
     getVVector3Attribute("NORMAL", mesh.normals);
     getVVector2Attribute("TEXCOORD_0", mesh.uvs);
 
-    // Load diffuse texture (embedded or external)
+    // Load textures
     if (primitive.material >= 0) {
         const tinygltf::Material& material = model.materials[primitive.material];
+
+        // Albedo / Base Color (diffuse)
         if (material.pbrMetallicRoughness.baseColorTexture.index >= 0) {
-            int textureIndex = material.pbrMetallicRoughness.baseColorTexture.index;
-            const tinygltf::Texture& texture = model.textures[textureIndex];
+            int texIdx = material.pbrMetallicRoughness.baseColorTexture.index;
+            const tinygltf::Texture& tex = model.textures[texIdx];
+            if (tex.source >= 0) {
+                const tinygltf::Image& img = model.images[tex.source];
+                if (!img.uri.empty()) {
+                    mesh.diffuseTexturePath = img.uri;
+                } else if (!img.image.empty()) {
+                    mesh.diffuseTextureData = img.image;
+                    mesh.diffuseWidth = img.width;
+                    mesh.diffuseHeight = img.height;
+                    mesh.diffuseComponents = img.component;
+                }
+            }
+        }
 
-            if (texture.source >= 0) {
-                const tinygltf::Image& image = model.images[texture.source];
+        // Normal map
+        if (material.normalTexture.index >= 0) {
+            int texIdx = material.normalTexture.index;
+            const tinygltf::Texture& tex = model.textures[texIdx];
+            if (tex.source >= 0) {
+                const tinygltf::Image& img = model.images[tex.source];
+                if (!img.uri.empty()) {
+                    mesh.normalTexturePath = img.uri;
+                } else if (!img.image.empty()) {
+                    mesh.normalTextureData = img.image;
+                    mesh.normalWidth = img.width;
+                    mesh.normalHeight = img.height;
+                    mesh.normalComponents = img.component;
+                }
+            }
+        }
 
-                if (!image.uri.empty()) {
-                    // External texture
-                    mesh.diffuseTexturePath = image.uri;
-                } else if (!image.image.empty()) {
-                    // Embedded texture
-                    mesh.diffuseTextureData = image.image;
-                    mesh.textureWidth = image.width;
-                    mesh.textureHeight = image.height;
-                    mesh.textureComponents = image.component; // number of channels
+        // Metallic and roughness can be combined in the same texture (metallicRoughnessTexture)
+        if (material.pbrMetallicRoughness.metallicRoughnessTexture.index >= 0) {
+            int texIdx = material.pbrMetallicRoughness.metallicRoughnessTexture.index;
+            const tinygltf::Texture& tex = model.textures[texIdx];
+            if (tex.source >= 0) {
+                const tinygltf::Image& img = model.images[tex.source];
+                if (!img.uri.empty()) {
+                    mesh.metallicTexturePath = img.uri;   // same texture for metallic & roughness
+                    mesh.roughnessTexturePath = img.uri;
+                } else if (!img.image.empty()) {
+                    mesh.metallicTextureData = img.image;
+                    mesh.roughnessTextureData = img.image;
+                    mesh.metallicWidth = img.width;
+                    mesh.metallicHeight = img.height;
+                    mesh.metallicComponents = img.component;
+                    mesh.roughnessWidth = img.width;
+                    mesh.roughnessHeight = img.height;
+                    mesh.roughnessComponents = img.component;
+                }
+            }
+        } else {
+            // If separate metallic or roughness textures exist (non-standard, but possible)
+            // (Note: glTF spec expects combined metallicRoughnessTexture, but some models may separate)
+            // Handle here if needed...
+        }
+
+        // Ambient Occlusion map (occlusionTexture)
+        if (material.occlusionTexture.index >= 0) {
+            int texIdx = material.occlusionTexture.index;
+            const tinygltf::Texture& tex = model.textures[texIdx];
+            if (tex.source >= 0) {
+                const tinygltf::Image& img = model.images[tex.source];
+                if (!img.uri.empty()) {
+                    mesh.aoTexturePath = img.uri;
+                } else if (!img.image.empty()) {
+                    mesh.aoTextureData = img.image;
+                    mesh.aoWidth = img.width;
+                    mesh.aoHeight = img.height;
+                    mesh.aoComponents = img.component;
                 }
             }
         }
     }
-
-    // std::cout << "Mesh has: " << model.materials.size() << " Textures" << std::endl;
 
     return mesh;
 }

@@ -3,25 +3,36 @@
 layout(location = 0) in vec3 aPosition;
 layout(location = 1) in vec2 aUV;
 layout(location = 2) in vec3 aNormal;
-layout(location = 3) in vec3 aTangent; // TODO
-layout(location = 4) in vec3 aBitangent; // TODO
+layout(location = 3) in vec3 aTangent;
+layout(location = 4) in vec3 aBitangent;
 
 out vec3 FragPos;
 out vec2 TexCoords;
-out vec3 Normal;
+out mat3 TBN; // Tangent-Bitangent-Normal matrix for normal mapping
 
 uniform mat4 VModel;
 
 #include <Vantor/VCommon.hglsl>
 
+// TODO: do the bitangent and tangent calculation only on shader side
 void main()
 {
     vec4 worldPos = VModel * vec4(aPosition, 1.0);
-    FragPos = worldPos.xyz; 
+    FragPos = worldPos.xyz;
     TexCoords = aUV;
-    
+
+    // Transform normal and tangent to world space
     mat3 normalMatrix = transpose(inverse(mat3(VModel)));
-    Normal = normalMatrix * aNormal;
+    vec3 N = normalize(normalMatrix * aNormal);
+    vec3 T = normalize(normalMatrix * aTangent);
+
+    // Gram-Schmidt orthonormalization
+    T = normalize(T - dot(T, N) * N);
+
+    // Recalculate bitangent to ensure orthogonality
+    vec3 B = cross(N, T);
+
+    TBN = mat3(T, B, N);
 
     gl_Position = Vu_Projection * Vu_View * worldPos;
 }

@@ -45,6 +45,7 @@ namespace Vantor::RenderDevice
 
     void VForwardRenderPassGL::Initialize(VRenderPath3D *renderPath) { m_RenderPath = renderPath; }
 
+    // TODO: Support and Rewrite Forward Pass
     void VForwardRenderPassGL::Execute()
     {
         // Enable States
@@ -205,7 +206,6 @@ namespace Vantor::RenderDevice
 
         // Material Settings
         bool MaterialUseDiffuseTexture = false;
-        bool MaterialUseSpecularTexture = false;
 
         // Go through all Meshes
         for (auto command : m_RenderPath->GetCommandBuffer()->GetDefferedRenderCommands())
@@ -228,9 +228,11 @@ namespace Vantor::RenderDevice
                     it->second.Texture->Bind(it->second.Unit);
                     if (it->second.SType == Vantor::Renderer::VESamplerType::SamplerDiffuse) {
                         MaterialUseDiffuseTexture = true;
-                    } else if (it->second.SType == Vantor::Renderer::VESamplerType::SamplerSpecular) {
-                        MaterialUseSpecularTexture = true;
-                    }
+                    } // else if (it->second.SType == Vantor::Renderer::VESamplerType::SamplerSpecular) {
+                    //     MaterialUseSpecularTexture = true;
+                    // } // This got taken away because i took a PBR based shading model
+
+                    // TODO: Fallback for other Textures, like normal, mr, ao
                 }
             }
 
@@ -276,16 +278,11 @@ namespace Vantor::RenderDevice
 
             // Push the current Texture State to GPU too
             command.Material->GetShader()->setUniformBool("VUseDiffuseTexture", MaterialUseDiffuseTexture);
-            command.Material->GetShader()->setUniformBool("VUseSpecularTexture", MaterialUseSpecularTexture);
 
             // Only set this when false, to avoid pushes to GPU
             if (!MaterialUseDiffuseTexture) {
                 command.Material->GetShader()->setUniformVec3("VColor", command.Material->Color.toFloat3());
 
-            } 
-
-            if (!MaterialUseSpecularTexture) {
-                command.Material->GetShader()->setUniformFloat("VSpecularStrength", command.Material->SpecularStrength);
             }
 
             // Draw the Raw Mesh
@@ -293,7 +290,6 @@ namespace Vantor::RenderDevice
 
             // Set all Material Settings back to normal
             MaterialUseDiffuseTexture = false;
-            MaterialUseSpecularTexture = false;
         }
 
         m_RenderPath->GetGBuffer()->Unbind();
@@ -332,6 +328,7 @@ namespace Vantor::RenderDevice
         m_ShaderLighting->setUniformInt("gAlbedoSpec", 0); // Albedo is at index 0
         m_ShaderLighting->setUniformInt("gNormal", 1);     // Normal is at index 1
         m_ShaderLighting->setUniformInt("gPosition", 2);   // Position at texture unit 2 for now
+        m_ShaderLighting->setUniformInt("gMaterial", 3);   // Material at texture unit 3 for now
     }
 
     void VLightingRenderPassGL::Execute()
@@ -357,12 +354,13 @@ namespace Vantor::RenderDevice
         // Bind G-Buffer textures to correct texture units
         auto albedoTexture   = m_RenderPath->GetGBuffer()->GetColorTexture(0); // Albedo is at index 0
         auto normalTexture   = m_RenderPath->GetGBuffer()->GetColorTexture(1); // Normal is at index 1
-        auto materialTexture = m_RenderPath->GetGBuffer()->GetColorTexture(2); //  TODO
+        auto materialTexture = m_RenderPath->GetGBuffer()->GetColorTexture(2); // Material is at index 2
         auto positionTexture = m_RenderPath->GetGBuffer()->GetColorTexture(3); // Position is at index 3
 
         albedoTexture->Bind(0);
         normalTexture->Bind(1);
         positionTexture->Bind(2);
+        materialTexture->Bind(3);
 
         m_ScreenQuad.DrawRaw();
 

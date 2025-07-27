@@ -38,6 +38,15 @@ int main() {
     // Test SafeString
     // VSafeString new_string = "Hello, from Vantor!";
     // std::cout << "Hashed String: " << new_string.hash() << std::endl;
+
+    // std::cout << new_vector.at(1) << std::endl;
+    MeshData meshdata = LoadMeshFromGLTF("Resources/meshes/DamagedHelmet/DamagedHelmet.gltf");
+
+    std::vector<VVector3> positions = meshdata.positions;
+    std::vector<VVector3> normals = meshdata.normals;
+    std::vector<VVector2> texCoords = meshdata.uvs;
+    std::vector<unsigned int> indicies = meshdata.indices;
+
     // const char* version = (const char*)glGetString(GL_VERSION);
     // std::cout << "OpenGL version: " << version << std::endl;
 
@@ -64,13 +73,12 @@ int main() {
     // auto m_ResDeffered = vLoadTexture2D("m_Deffered", "Resources/textures/container2.png", sampler, false);
     // auto m_ResSpecular = vLoadTexture2D("m_Specular", "Resources/textures/container2_specular.png", sampler, false);
 
-    auto m_DiffuseTexture = vLoadTexture2D("AlbedoSphere", "Resources/textures/pbr/dull-brass/albedo.png", sampler, false)->GetTexture();
-    auto m_NormalTexture = vLoadTexture2D("NormalSphere", "Resources/textures/pbr/dull-brass/normal.png", sampler, false)->GetTexture();
-    auto m_metallicTexture = vLoadTexture2D("MetallicSphere", "Resources/textures/pbr/dull-brass/metallic.png", sampler, false)->GetTexture();
-    auto m_roughnessTexture = vLoadTexture2D("RoughnessSphere", "Resources/textures/pbr/dull-brass/roughness.png", sampler, false)->GetTexture();
-    auto m_AOTexture = vLoadTexture2D("AOSphere", "Resources/textures/pbr/dull-brass/ao.png", sampler, false)->GetTexture();
+    auto m_DiffuseTexture = LoadDiffuseTexture(meshdata, RenderDevice.get(), sampler);
+    auto m_NormalTexture = LoadNormalTexture(meshdata, RenderDevice.get(), sampler);
+    auto m_metallicRoughnessTexture = LoadMetallicTexture(meshdata, RenderDevice.get(), sampler);
+    auto m_AOTexture = LoadAOTexture(meshdata, RenderDevice.get(), sampler);
 
-    auto cube = vCreateActor<VSphere>(); // Create Cube Entity
+    auto cube = vCreateActor<VCube>(); // Create Cube Entity
 
     cube->AddComponentVoid<VMeshComponent>(); // Add a MeshComponent for Render
     cube->AddComponentVoid<VTransformComponent>(); // Add a TransformComponent for Render
@@ -83,7 +91,12 @@ int main() {
 
     cube->GetComponent<VMeshComponent>()->SetMesh(cubeMesh); // Add empty Mesh to the cubes MeshComponent
 
-    cube->GenerateMesh();
+    cube->GetComponent<VMeshComponent>()->GetMesh()->SetPositions(positions);
+    cube->GetComponent<VMeshComponent>()->GetMesh()->SetNormals(normals);
+    cube->GetComponent<VMeshComponent>()->GetMesh()->SetUVs(texCoords);
+    cube->GetComponent<VMeshComponent>()->GetMesh()->SetIndices(indicies);
+    
+    cube->GetComponent<VMeshComponent>()->GetMesh()->Finalize();
 
     auto cubeMaterial = VMaterialLibrary::Instance().CreateMaterial("VDefault");
 
@@ -91,9 +104,8 @@ int main() {
     // // Diffuse
     cubeMaterial->SetTexture("VTextureDiffuse", m_DiffuseTexture.get(), 1, VUniformType::UniformTypeSAMPLER2D, VSamplerType::SamplerDiffuse);
     cubeMaterial->SetTexture("VTextureNormal", m_NormalTexture.get(), 2, VUniformType::UniformTypeSAMPLER2D, VSamplerType::SamplerNormal);
-    cubeMaterial->SetTexture("VTextureMetallic", m_metallicTexture.get(), 3, VUniformType::UniformTypeSAMPLER2D, VSamplerType::SamplerMR);
-    cubeMaterial->SetTexture("VTextureRoughness", m_roughnessTexture.get(), 4, VUniformType::UniformTypeSAMPLER2D, VSamplerType::SamplerMR);
-    cubeMaterial->SetTexture("VTextureAO", m_AOTexture.get(), 5, VUniformType::UniformTypeSAMPLER2D, VSamplerType::SamplerAO);
+    cubeMaterial->SetTexture("VTextureMR", m_metallicRoughnessTexture.get(), 3, VUniformType::UniformTypeSAMPLER2D, VSamplerType::SamplerMR);
+    cubeMaterial->SetTexture("VTextureAO", m_metallicRoughnessTexture.get(), 4, VUniformType::UniformTypeSAMPLER2D, VSamplerType::SamplerAO);
     // // Specular
     // cubeMaterial->SetTexture("VTextureSpecular", m_SpecularTexture.get(), 2);
 
@@ -180,19 +192,19 @@ int main() {
             }
             camera->Update(app.GetDeltaTime());
 
-            // rotationAngle += app.GetDeltaTime() * 50.0f;
+            rotationAngle += app.GetDeltaTime() * 50.0f;
 
-            // // Now spin around the tilted "up" vector (originally Y)
-            // VVector3 upAfterTilt = tilt.Rotate(VVector3{0, 1, 0});
+            // Now spin around the tilted "up" vector (originally Y)
+            VVector3 upAfterTilt = tilt.Rotate(VVector3{0, 1, 0});
 
-            // // Rotate 90 degrees around this new "up" axis
-            // VQuaternion spin = VQuaternion::FromAxisAngle(upAfterTilt, rotationAngle);
+            // Rotate 90 degrees around this new "up" axis
+            VQuaternion spin = VQuaternion::FromAxisAngle(upAfterTilt, rotationAngle);
 
-            // // Final combined rotation
-            // VQuaternion finalRotation = tilt * spin;
+            // Final combined rotation
+            VQuaternion finalRotation = tilt * spin;
 
 
-            // cube->GetComponent<VTransformComponent>()->SetRotation(finalRotation);
+            cube->GetComponent<VTransformComponent>()->SetRotation(finalRotation);
             // Our Render Pushes
             renderpath->PushRender(cube.get());
 

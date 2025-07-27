@@ -4,6 +4,7 @@
 
 - How to start your Graphics Engine (RenderPasses, RenderPaths)
 - How to do abstraction layer
+- A closer look at RAGE (GTA VI Engine)
 
 # Line
 

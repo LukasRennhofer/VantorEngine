@@ -50,6 +50,7 @@ namespace Vantor::Renderer
     {
         MaterialDefault,
         MaterialPostProcess, // TODO
+        MaterialPBR,
         MaterialCustom       // TODO
     };
 
@@ -83,6 +84,9 @@ namespace Vantor::Renderer
             void                           SetShader(Vantor::RenderDevice::VShader *shader);
 
             VMaterial Copy();
+
+            bool IsDefaultMaterial() {return Type == VEMaterialType::MaterialDefault; }
+            bool IsPBRMaterial() {return Type == VEMaterialType::MaterialPBR; }
 
             void SetBool(std::string name, bool value);
             void SetInt(std::string name, int value);

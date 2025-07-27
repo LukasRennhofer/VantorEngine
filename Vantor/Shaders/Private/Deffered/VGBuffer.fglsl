@@ -1,49 +1,53 @@
 #version 460 core
-layout (location = 0) out vec4 gAlbedoSpec;
-layout (location = 1) out vec3 gNormal;
-layout (location = 2) out vec4 gMaterial;
-layout (location = 3) out vec3 gPosition;
+
+layout (location = 0) out vec4 gAlbedoSpec;  // RGB = Albedo, A = Specular or unused
+layout (location = 1) out vec3 gNormal;      // World-space normal (with padding)
+layout (location = 2) out vec4 gMaterial;    // R = Metallic, G = Roughness, B = AO, A = padding
+layout (location = 3) out vec3 gPosition;    // World-space position
 
 in vec2 TexCoords;
 in vec3 FragPos;
-in vec3 Normal;
+in mat3 TBN; // TBN matrix passed from vertex shader
 
-// These should be used by the user too, to enable Rendering
+// Textures
 uniform sampler2D VTextureDiffuse;
-uniform sampler2D VTextureSpecular;
+uniform sampler2D VTextureNormal;
+uniform sampler2D VTextureMetallic;   // R channel = metallic
+uniform sampler2D VTextureRoughness;  // R channel = roughness
+uniform sampler2D VTextureAO;         // R channel = ambient occlusion
 
-uniform vec3 VColor; // Fallback to VTextureDiffuse
-uniform float VSpecularStrength;  // Fallback to VTextureSpecular
-uniform bool VUseDiffuseTexture; // For using a Texture or fallback to Color
-uniform bool VUseSpecularTexture; // For using a Texture or fallback to strength
+// Fallbacks
+uniform vec3 VColor; 
+uniform bool VUseDiffuseTexture;
 
+// === Helper: Decode normal from normal map ===
+vec3 getNormalFromMap()
+{
+    vec3 tangentNormal = texture(VTextureNormal, TexCoords).rgb;
+    tangentNormal = tangentNormal * 2.0 - 1.0; // [0,1] to [-1,1]
+    return normalize(TBN * tangentNormal);     // Transform to world-space
+}
 
 void main()
-{   
-    // Using the Texture
-    if (VUseDiffuseTexture) {
-        // store albedo and diffuse per-fragment color in first buffer
-        gAlbedoSpec.rgb = texture(VTextureDiffuse, TexCoords).rgb;
-      // Using the Color
-    } else { 
-        // store albedo and diffuse per-fragment color in first buffer
-        gAlbedoSpec.rgb = VColor;
-    }
+{
+    // === Albedo ===
+    vec3 albedo = VUseDiffuseTexture 
+        ? texture(VTextureDiffuse, TexCoords).rgb 
+        : VColor;
 
-    if (VUseSpecularTexture) {
-         // store specular intensity in gAlbedoSpec's alpha component
-        gAlbedoSpec.a = texture(VTextureSpecular, TexCoords).r;
-    } else {
-        // store specular intensity in gAlbedoSpec's alpha component
-        gAlbedoSpec.a = VSpecularStrength;
-    }
-    
-    // also store the per-fragment normals into the gbuffer
-    gNormal = normalize(Normal);
-    
-    // store material properties (metallic, roughness, AO) - for now just set defaults
-    gMaterial = vec4(0.0, 0.5, 1.0, 1.0); // metallic=0, roughness=0.5, AO=1, padding=1
-    
-    // store the fragment position vector in the position gbuffer texture
+    gAlbedoSpec.rgb = albedo;
+    gAlbedoSpec.a = 1.0; // unused or specular placeholder
+
+    // === Normal ===
+    gNormal = getNormalFromMap();
+
+    // === Material Properties ===
+    float metallic  = texture(VTextureMetallic, TexCoords).r;
+    float roughness = texture(VTextureRoughness, TexCoords).r;
+    float ao        = texture(VTextureAO, TexCoords).r;
+
+    gMaterial = vec4(metallic, roughness, ao, 1.0);
+
+    // === Position ===
     gPosition = FragPos;
 }

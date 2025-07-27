@@ -19,7 +19,7 @@
  */
 
 /*
-This file is meant for connecting the current used platform and a initializing
+This file is meant for connecting the current used platform and initializing
 its core systems such as time and the filesystem e.g.:
     Vantor::Platform::Environment::Initialize();
 */
