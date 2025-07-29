@@ -76,6 +76,8 @@ namespace Vantor::RenderDevice
             VTextureFormat      GetFormat() const override { return m_spec.format; }
             size_t              GetMemoryUsage() const override;
 
+            unsigned int getID() const override { return m_textureID; };
+
             // OpenGL-specific methods
             GLuint GetTextureID() const { return m_textureID; }
             GLenum GetTarget() const { return m_target; }

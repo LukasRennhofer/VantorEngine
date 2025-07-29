@@ -8,6 +8,7 @@ function(set_vantor_definitions target)
     get_property(VANTOR_API_OPENGL_VAL CACHE VANTOR_API_OPENGL PROPERTY VALUE)
     get_property(VANTOR_WM_GLFW_VAL CACHE VANTOR_WM_GLFW PROPERTY VALUE)
     get_property(VANTOR_INTEGRATION_IMGUI_VAL CACHE VANTOR_INTEGRATION_IMGUI PROPERTY VALUE)
+    get_property(VANTOR_STUDIO_VAL CACHE VANTOR_STUDIO PROPERTY VALUE)
     get_property(__WINDOWS___VAL CACHE __WINDOWS__ PROPERTY VALUE)
     get_property(__LINUX___VAL CACHE __LINUX__ PROPERTY VALUE)
     
@@ -30,6 +31,10 @@ function(set_vantor_definitions target)
 
     if(VANTOR_API_OPENGL_VAL)
         target_compile_definitions(${target} PRIVATE VANTOR_API_OPENGL)
+    endif()
+
+    if(VANTOR_STUDIO_VAL)
+        target_compile_definitions(${target} PRIVATE VANTOR_STUDIO)
     endif()
 
     if(VANTOR_WM_GLFW_VAL)

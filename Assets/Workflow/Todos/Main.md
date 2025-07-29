@@ -28,7 +28,7 @@
 
 
 
-
+ - Different Modes : Studio Mode, Dev Mode (Debugging), Release Mode
  - Implement Frustum in CommandBuffer
  - dirLight, SpotLight, AreaLight
  - Model Loading ?

@@ -25,6 +25,7 @@ message(STATUS "========================================")
 # ==============================================================================
 # Path Constants
 # ==============================================================================
+set(VANTOR_STUDIO_DIR ${CMAKE_CURRENT_LIST_DIR}/../Studio)
 set(VANTOR_EXTERNAL_DIR ${CMAKE_CURRENT_LIST_DIR}/../External)
 set(VANTOR_SHARED_EXTERNAL ${VANTOR_EXTERNAL_DIR}/Shared)
 
@@ -59,6 +60,16 @@ set(VANTOR_CORE_SOURCES
     
     # Input Management
     InputDevice/VID_Manager.cpp
+)
+
+# ==============================================================================
+# Studio Sources
+# ==============================================================================
+
+set(VANTOR_STUDIO_SOURCES
+    ${VANTOR_STUDIO_DIR}/Interface/VSTD_PanelManager.cpp
+    ${VANTOR_STUDIO_DIR}/Panels/VSTD_Scene.cpp
+    ${VANTOR_STUDIO_DIR}/VSTD_StudioManager.cpp
 )
 
 # ==============================================================================
@@ -216,6 +227,14 @@ if(VANTOR_INTEGRATION_IMGUI)
     )
 endif()
 
+if (VANTOR_STUDIO)
+if(VANTOR_INTEGRATION_IMGUI)
+    target_sources(Vantor PRIVATE 
+        ${VANTOR_STUDIO_SOURCES}
+    )
+endif()
+endif()
+
 # ==============================================================================
 # Include Directories and Linking
 # ==============================================================================
@@ -246,4 +265,5 @@ message(STATUS "Platform: ${PLATFORM}")
 message(STATUS "OpenGL RenderDevice API: ${VANTOR_API_OPENGL}")
 message(STATUS "GLFW WM API: ${VANTOR_WM_GLFW}")
 message(STATUS "ImGui Integration: ${VANTOR_INTEGRATION_IMGUI}")
+message(STATUS "Studio Mode: ${VANTOR_STUDIO}")
 message(STATUS "==============================")

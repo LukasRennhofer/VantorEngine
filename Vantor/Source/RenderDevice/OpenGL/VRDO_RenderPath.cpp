@@ -206,6 +206,7 @@ namespace Vantor::RenderDevice
 
         // Material Settings
         bool MaterialUseDiffuseTexture = false;
+        bool MaterialUseParallaxMapping = false;
 
         // Go through all Meshes
         for (auto command : m_RenderPath->GetCommandBuffer()->GetDefferedRenderCommands())
@@ -228,7 +229,11 @@ namespace Vantor::RenderDevice
                     it->second.Texture->Bind(it->second.Unit);
                     if (it->second.SType == Vantor::Renderer::VESamplerType::SamplerDiffuse) {
                         MaterialUseDiffuseTexture = true;
-                    } // else if (it->second.SType == Vantor::Renderer::VESamplerType::SamplerSpecular) {
+                    } else if (it->second.SType == Vantor::Renderer::VESamplerType::SamplerHeight) {
+                        MaterialUseParallaxMapping = true;
+                    }
+                    
+                    // else if (it->second.SType == Vantor::Renderer::VESamplerType::SamplerSpecular) {
                     //     MaterialUseSpecularTexture = true;
                     // } // This got taken away because i took a PBR based shading model
 
@@ -278,6 +283,7 @@ namespace Vantor::RenderDevice
 
             // Push the current Texture State to GPU too
             command.Material->GetShader()->setUniformBool("VUseDiffuseTexture", MaterialUseDiffuseTexture);
+            command.Material->GetShader()->setUniformBool("VUseParallaxMapping", MaterialUseParallaxMapping);
 
             // Only set this when false, to avoid pushes to GPU
             if (!MaterialUseDiffuseTexture) {
@@ -290,6 +296,7 @@ namespace Vantor::RenderDevice
 
             // Set all Material Settings back to normal
             MaterialUseDiffuseTexture = false;
+            MaterialUseParallaxMapping = false;
         }
 
         m_RenderPath->GetGBuffer()->Unbind();
@@ -316,11 +323,6 @@ namespace Vantor::RenderDevice
 
         m_ShaderLighting = ResShaderLighting->GetShader();
 
-        // m_OutBuffer = VRenderTargetFactory::CreateColorTarget(
-        //     1920, 1080,                    // Dimensions
-        //     VTextureFormat::RGBA8,         // Color format
-        //     "OutBuffer"              // Debug name
-        // );
 
         // Setting Texture Units
         m_ShaderLighting->Use();
@@ -334,13 +336,13 @@ namespace Vantor::RenderDevice
     void VLightingRenderPassGL::Execute()
     {
         VOpenGLStateChache::Instance().SetDepthTest(false);
-        // m_OutBuffer->Bind();
+        m_RenderPath->GetOutBuffer()->Bind();
 
-        // VClearValues clearValues;
-        // clearValues.ColorValue = {0.0f, 0.0f, 0.0f, 1.0f};
-        // clearValues.DepthValue = 1.0f;
+        VClearValues clearValues;
+        clearValues.ColorValue = {0.0f, 0.0f, 0.0f, 1.0f};
+        clearValues.DepthValue = 1.0f;
 
-        // m_OutBuffer->Clear(clearValues);
+        m_RenderPath->GetOutBuffer()->Clear(clearValues);
 
         m_ShaderLighting->Use();
 
@@ -364,13 +366,7 @@ namespace Vantor::RenderDevice
 
         m_ScreenQuad.DrawRaw();
 
-        // m_OutBuffer->Unbind(); TODO
-
-        // auto outTexture = m_OutBuffer->GetColorTexture(0);
-
-        // outTexture->Bind(1);
-
-        // m_ScreenQuad.Draw();
+        m_RenderPath->GetOutBuffer()->Unbind();
     }
 
     void VLightingRenderPassGL::Cleanup()
@@ -407,6 +403,13 @@ namespace Vantor::RenderDevice
         {
             Vantor::Backlog::Log("VRenderPath3DGL", "Initialized GBuffer successfully.");
         }
+
+        // Initialize the OutBuffer
+        m_OutBuffer = VRenderTargetFactory::CreateColorTarget(
+            m_ViewportWidth, m_ViewportHeight,                    // Dimensions
+            VTextureFormat::RGBA8,         // Color format
+            "OutBuffer"              // Debug name
+        );
 
         // Initialize all render passes
         for (auto &[type, pass] : m_RenderPasses)
@@ -499,7 +502,7 @@ namespace Vantor::RenderDevice
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 
         // Set global OpenGL state
-        if (m_WireframeMode)
+        if (m_isWireframeOn)
             glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
         else
             glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
@@ -572,6 +575,7 @@ namespace Vantor::RenderDevice
         m_ViewportHeight = height;
 
         m_GBuffer->Resize(width, height); // Resize the GBuffer
+        m_OutBuffer->Resize(width, height);
     }
 
     void VRenderPath3DGL::GetViewport(uint32_t &x, uint32_t &y, uint32_t &width, uint32_t &height) const

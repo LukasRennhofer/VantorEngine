@@ -54,6 +54,7 @@ namespace Vantor::Renderer
         SamplerSpecular,
         SamplerNormal,
         SamplerMR, // Metallic-Roughness
+        SamplerHeight, // For parallax mapping
         SamplerAO
     };
 

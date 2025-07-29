@@ -24,8 +24,9 @@
 Vantors Preprocessor Variables:
      : Main Variables:
           VANTOR_API       = Used for the main header implementation
-          VANTOR_DEBUG = Used for identifying a debug build (Defined in CMake) (RESERVED, BUT NOT IN USE)
-          VANTOR_PROFILE = Used for profiling the whole engine (Defined by user, or buildTool)
+          VANTOR_STUDIO = Used to identify Studio Builds
+          VANTOR_DEV = Used for identifying a debug build (Defined in CMake) (RESERVED, BUT NOT IN USE)
+          VANTOR_PROFILE = Used for profiling the whole engine (Defined by user, or buildTool) (RESERVED, BUT NOT IN USE)
 
      : Platforms :
           __WINDOWS__ = Used for identifying a Window build (Defined in CMake)

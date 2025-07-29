@@ -172,6 +172,8 @@ namespace Vantor::RenderDevice
             // Get Memory usage of Texture in bytes
             virtual size_t GetMemoryUsage() const = 0;
 
+            virtual unsigned int getID() const = 0;
+
         protected:
             VTextureSpec m_spec = {};
     };

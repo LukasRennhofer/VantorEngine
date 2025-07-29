@@ -80,7 +80,7 @@ The engine prioritizes **performance**, **modularity**, and **flexibility** over
 - **Modular Architecture**: Use only what you need, extend what you want
 - **Experimental Nature**: Cutting-edge features and techniques in active development
 
-> *"The best engine is the one that gets out of your way and lets you create."* – **VantorStudios Development Team**
+> *"A delayed game is eventually good, a rushed game is bad forever."* – **Shigeru Miyamoto**
 
 ### VantorStudios
 

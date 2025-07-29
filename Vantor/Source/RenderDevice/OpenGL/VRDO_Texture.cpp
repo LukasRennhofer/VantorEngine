@@ -446,7 +446,6 @@ namespace Vantor::RenderDevice
         if (m_textureID == 0)
         {
             Vantor::Backlog::Log("VRDeviceOpenGL::Texture", "Failed to generate texture object", Vantor::Backlog::LogLevel::ERR);
-            std::cerr << "[VOpenGLTexture] Failed to generate texture object" << std::endl;
             return false;
         }
         return true;

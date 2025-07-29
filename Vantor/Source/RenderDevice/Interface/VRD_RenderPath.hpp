@@ -139,6 +139,10 @@ namespace Vantor::RenderDevice
             virtual const VERenderStats &GetRenderStats() const = 0;
             virtual void                 ResetRenderStats()     = 0;
 
+            void SetWireframe(bool on = true) {
+                m_isWireframeOn = on;
+            }
+
             VRDevice *GetRenderDevice() { return m_Device; };
 
             bool IsActive() { return isActive; }
@@ -158,6 +162,8 @@ namespace Vantor::RenderDevice
             uint32_t m_ViewportY      = 0;
             uint32_t m_ViewportWidth  = 1280;
             uint32_t m_ViewportHeight = 720;
+
+            bool m_isWireframeOn = false;
     };
 
     // 3D rendering path interface
@@ -180,6 +186,7 @@ namespace Vantor::RenderDevice
             virtual Vantor::Renderer::Camera *GetCamera() const                           = 0;
 
             std::shared_ptr<VRenderTarget> GetGBuffer() { return m_GBuffer; }
+            std::shared_ptr<VRenderTarget> GetOutBuffer() { return m_OutBuffer; }
 
             // This function is for binding UBOs and SSBOs after binding Shaders (each bool represents an internal UBO or SSBO)
             virtual void ActivateStorage(VEStorageType storage) const = 0;
@@ -211,6 +218,8 @@ namespace Vantor::RenderDevice
 
             // GBuffer : The RenderPath owns it, so that every RenderPass has access to its informations
             std::shared_ptr<VRenderTarget> m_GBuffer;
+            // Buffer for Output Rendered Scene
+            std::shared_ptr<VRenderTarget> m_OutBuffer;
 
             //         bool m_ShadowsEnabled = true;
             //         uint32_t m_ShadowMapSize = 2048;
@@ -219,5 +228,36 @@ namespace Vantor::RenderDevice
             //         float m_Gamma = 2.2f;
             //         bool m_HDREnabled = true;
             //         bool m_FXAAEnabled = true;
+    };
+
+    // 2D rendering path interface
+    class VRenderPath2D : public VRenderPath
+    {
+        public:
+            virtual ~VRenderPath2D() = default;
+
+            // 2D-specific rendering methods
+            virtual void PushSprite(VMesh *mesh, Vantor::Renderer::VMaterial *material, Vantor::Math::VMat4 transform) = 0;
+            virtual void PushQuad(const Vantor::Math::VVector2 &position, const Vantor::Math::VVector2 &size, 
+                                  Vantor::Renderer::VMaterial *material) = 0;
+            virtual void PushText(const std::string &text, const Vantor::Math::VVector2 &position, 
+                                  Vantor::Renderer::VMaterial *material) = 0;
+
+            // 2D Camera management (orthographic)
+            virtual void                      SetCamera2D(Vantor::Renderer::Camera *camera) = 0;
+            virtual Vantor::Renderer::Camera *GetCamera2D() const                           = 0;
+
+            // Layer management for 2D depth sorting
+            virtual void SetCurrentLayer(int32_t layer) = 0;
+            virtual int32_t GetCurrentLayer() const = 0;
+
+            // Blend mode control for 2D rendering
+            virtual void SetBlendMode(bool enable) = 0;
+            virtual bool IsBlendEnabled() const = 0;
+
+        protected:
+            Vantor::Renderer::Camera *m_Camera2D = nullptr;
+            int32_t m_CurrentLayer = 0;
+            bool m_BlendEnabled = true;
     };
 } // namespace Vantor::RenderDevice

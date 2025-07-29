@@ -1,53 +1,75 @@
 #version 460 core
 
-layout (location = 0) out vec4 gAlbedoSpec;  // RGB = Albedo, A = Specular or unused
-layout (location = 1) out vec3 gNormal;      // World-space normal (with padding)
-layout (location = 2) out vec4 gMaterial;    // R = Metallic, G = Roughness, B = AO, A = padding
+layout (location = 0) out vec4 gAlbedoSpec;  // RGB = Albedo, A = Specular (or unused)
+layout (location = 1) out vec3 gNormal;      // World-space normal
+layout (location = 2) out vec4 gMaterial;    // R = Metallic, G = Roughness, B = AO
 layout (location = 3) out vec3 gPosition;    // World-space position
 
 in vec2 TexCoords;
 in vec3 FragPos;
-in mat3 TBN; // TBN matrix passed from vertex shader
+in mat3 TBN; // Tangent-Bitangent-Normal matrix (from vertex shader)
 
-// Textures
+// Uniforms
 uniform sampler2D VTextureDiffuse;
 uniform sampler2D VTextureNormal;
-uniform sampler2D VTextureMetallic;   // R channel = metallic
-uniform sampler2D VTextureRoughness;  // R channel = roughness
-uniform sampler2D VTextureAO;         // R channel = ambient occlusion
+uniform sampler2D VTextureMetallic;
+uniform sampler2D VTextureRoughness;
+uniform sampler2D VTextureAO;
+uniform sampler2D VTextureHeight;
 
-// Fallbacks
-uniform vec3 VColor; 
+uniform vec3 VColor;
 uniform bool VUseDiffuseTexture;
+uniform bool VUseParallaxMapping;
 
-// === Helper: Decode normal from normal map ===
-vec3 getNormalFromMap()
+uniform vec3 CameraPosition;
+uniform float VHeightScale = 1.0; // TODO: Make adjustable by the user
+
+#include <Vantor/VCommon.hglsl>
+
+// === Parallax Mapping Function ===
+vec2 ParallaxUV(vec2 texCoords, vec3 viewDirTangent)
 {
-    vec3 tangentNormal = texture(VTextureNormal, TexCoords).rgb;
-    tangentNormal = tangentNormal * 2.0 - 1.0; // [0,1] to [-1,1]
-    return normalize(TBN * tangentNormal);     // Transform to world-space
+    float height = texture(VTextureHeight, texCoords).r;
+    return texCoords - viewDirTangent.xy * (height * VHeightScale);
+}
+
+// === Get Normal (with adjusted UV) ===
+vec3 getNormalFromMap(vec2 adjustedUV)
+{
+    vec3 tangentNormal = texture(VTextureNormal, adjustedUV).rgb;
+    tangentNormal = tangentNormal * 2.0 - 1.0;
+    return normalize(TBN * tangentNormal);
 }
 
 void main()
 {
-    // === Albedo ===
+    // === View direction in tangent space ===
+    vec3 viewDir = normalize(Vu_CameraPosition - FragPos);
+    vec3 viewDirTangent = normalize(TBN * viewDir);
+
+    vec2 adjustedUV;
+
+    if (VUseParallaxMapping) {
+        adjustedUV = ParallaxUV(TexCoords, viewDirTangent);
+    } else {
+        adjustedUV = TexCoords;
+    }
+
+
+    // === Sample Textures with Adjusted UVs ===
     vec3 albedo = VUseDiffuseTexture 
-        ? texture(VTextureDiffuse, TexCoords).rgb 
+        ? texture(VTextureDiffuse, adjustedUV).rgb 
         : VColor;
 
+    float metallic  = texture(VTextureMetallic, adjustedUV).r;
+    float roughness = texture(VTextureRoughness, adjustedUV).r;
+    float ao        = texture(VTextureAO, adjustedUV).r;
+
+    // === Output ===
     gAlbedoSpec.rgb = albedo;
-    gAlbedoSpec.a = 1.0; // unused or specular placeholder
+    gAlbedoSpec.a = 1.0;
 
-    // === Normal ===
-    gNormal = getNormalFromMap();
-
-    // === Material Properties ===
-    float metallic  = texture(VTextureMetallic, TexCoords).r;
-    float roughness = texture(VTextureRoughness, TexCoords).r;
-    float ao        = texture(VTextureAO, TexCoords).r;
-
+    gNormal = getNormalFromMap(adjustedUV);
     gMaterial = vec4(metallic, roughness, ao, 1.0);
-
-    // === Position ===
     gPosition = FragPos;
 }
