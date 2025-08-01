@@ -57,6 +57,9 @@ namespace Vantor::RenderDevice
         CommonUBO      = 0,
         PointLightSSBO = 1,
         LightDataUBO   = 2,
+        DirectionalLightSSBO = 3,
+        SpotLightSSBO = 4,
+        AmbientLightUBO = 5
     };
 
     // TODO: Profile RenderPasses
@@ -178,6 +181,9 @@ namespace Vantor::RenderDevice
 
             // Push Light Data
             virtual void PushPointLight(const Vantor::Renderer::VPointLightData &pointLightData) = 0;
+            virtual void PushDirectionalLight(const Vantor::Renderer::VDirectionalLightData &directionalLightData) = 0;
+            virtual void PushSpotLight(const Vantor::Renderer::VSpotLightData &spotLightData) = 0;
+            virtual void SetAmbientLight(const Vantor::Renderer::VAmbientLightData &ambientLightData) = 0;
             // TODO: Push VObject PointLight Class
             // virtual void PushPointLight(const Vantor::Renderer::VPointLight* pointLight) = 0;
 
@@ -211,8 +217,13 @@ namespace Vantor::RenderDevice
 
         protected:
             Vantor::Renderer::Camera *m_Camera = nullptr;
-            // Vantor::Math::VVector3    m_AmbientLight = {0.1f, 0.1f, 0.1f};
+
+            // Lights
             std::vector<Vantor::Renderer::VPointLightData> m_PointLights;
+            std::vector<Vantor::Renderer::VDirectionalLightData> m_DirectionalLights;
+            std::vector<Vantor::Renderer::VSpotLightData> m_SpotLights;
+            // Ambient
+            Vantor::Renderer::VAmbientLightData m_AmbientLight;
 
             std::shared_ptr<VCommandBuffer> m_CommandBuffer;
 

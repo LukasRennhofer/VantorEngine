@@ -53,9 +53,11 @@ namespace Vantor::Renderer
         SamplerDiffuse,
         SamplerSpecular,
         SamplerNormal,
-        SamplerMR, // Metallic-Roughness
+        SamplerMetallic,
+        SamplerRoughness,
         SamplerHeight, // For parallax mapping
-        SamplerAO
+        SamplerAO,
+        SamplerCustom
     };
 
     struct VUniform

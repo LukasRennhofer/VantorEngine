@@ -17,8 +17,14 @@ uniform sampler2D VTextureRoughness;
 uniform sampler2D VTextureAO;
 uniform sampler2D VTextureHeight;
 
-uniform vec3 VColor;
+uniform vec3 VColor; // Fallback diffuse color
 uniform bool VUseDiffuseTexture;
+// PBR
+uniform bool VUseNormalTexture;
+uniform bool VUseMetallicTexture;
+uniform bool VUseRoughnessTexture;
+uniform bool VUseAOTexture;
+// Other
 uniform bool VUseParallaxMapping;
 
 uniform vec3 CameraPosition;
@@ -36,15 +42,20 @@ vec2 ParallaxUV(vec2 texCoords, vec3 viewDirTangent)
 // === Get Normal (with adjusted UV) ===
 vec3 getNormalFromMap(vec2 adjustedUV)
 {
-    vec3 tangentNormal = texture(VTextureNormal, adjustedUV).rgb;
-    tangentNormal = tangentNormal * 2.0 - 1.0;
-    return normalize(TBN * tangentNormal);
+    if (VUseNormalTexture) {
+        vec3 tangentNormal = texture(VTextureNormal, adjustedUV).rgb;
+        tangentNormal = tangentNormal * 2.0 - 1.0;
+        return normalize(TBN * tangentNormal);
+    } else {
+        // fallback
+       return normalize(TBN[2]);
+    }
 }
 
 void main()
 {
     // === View direction in tangent space ===
-    vec3 viewDir = normalize(Vu_CameraPosition - FragPos);
+    vec3 viewDir = normalize(CameraPosition - FragPos);
     vec3 viewDirTangent = normalize(TBN * viewDir);
 
     vec2 adjustedUV;
@@ -55,19 +66,26 @@ void main()
         adjustedUV = TexCoords;
     }
 
-
-    // === Sample Textures with Adjusted UVs ===
+    // === Sample Textures with Adjusted UVs or fallback values ===
     vec3 albedo = VUseDiffuseTexture 
         ? texture(VTextureDiffuse, adjustedUV).rgb 
         : VColor;
 
-    float metallic  = texture(VTextureMetallic, adjustedUV).r;
-    float roughness = texture(VTextureRoughness, adjustedUV).r;
-    float ao        = texture(VTextureAO, adjustedUV).r;
+    float metallic  = VUseMetallicTexture 
+        ? texture(VTextureMetallic, adjustedUV).r 
+        : 0.0;
+
+    float roughness = VUseRoughnessTexture 
+        ? texture(VTextureRoughness, adjustedUV).r 
+        : 1.0;
+
+    float ao = VUseAOTexture 
+        ? max(texture(VTextureAO, adjustedUV).r, 0.001) 
+        : 1.0;
 
     // === Output ===
     gAlbedoSpec.rgb = albedo;
-    gAlbedoSpec.a = 1.0;
+    gAlbedoSpec.a = 1.0; // TODO: Calculate Specular
 
     gNormal = getNormalFromMap(adjustedUV);
     gMaterial = vec4(metallic, roughness, ao, 1.0);

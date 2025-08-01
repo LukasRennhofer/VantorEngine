@@ -207,6 +207,11 @@ namespace Vantor::RenderDevice
         // Material Settings
         bool MaterialUseDiffuseTexture = false;
         bool MaterialUseParallaxMapping = false;
+        // PBR Settings
+        bool MaterialUseNormalTexture = false;
+        bool MaterialUseMetallicTexture = false;
+        bool MaterialUseRoughnessTexture = false;
+        bool MaterialUseAOTexture = false;
 
         // Go through all Meshes
         for (auto command : m_RenderPath->GetCommandBuffer()->GetDefferedRenderCommands())
@@ -227,17 +232,34 @@ namespace Vantor::RenderDevice
                 else
                 {
                     it->second.Texture->Bind(it->second.Unit);
-                    if (it->second.SType == Vantor::Renderer::VESamplerType::SamplerDiffuse) {
-                        MaterialUseDiffuseTexture = true;
-                    } else if (it->second.SType == Vantor::Renderer::VESamplerType::SamplerHeight) {
-                        MaterialUseParallaxMapping = true;
+
+                    switch (it->second.SType) {
+                        case Vantor::Renderer::VESamplerType::SamplerDiffuse:
+                            MaterialUseDiffuseTexture = true;
+                            break;
+                        case Vantor::Renderer::VESamplerType::SamplerHeight:
+                            MaterialUseParallaxMapping = true;
+                            break;
+                        case Vantor::Renderer::VESamplerType::SamplerNormal:
+                            MaterialUseNormalTexture = true;
+                            break;
+                        case Vantor::Renderer::VESamplerType::SamplerMetallic:
+                            MaterialUseMetallicTexture = true;
+                            break;
+                        case Vantor::Renderer::VESamplerType::SamplerRoughness:
+                            MaterialUseRoughnessTexture = true;
+                            break;
+                        case Vantor::Renderer::VESamplerType::SamplerAO:
+                            MaterialUseAOTexture = true;
+                            break;
+                        default:
+                            break;
                     }
+
                     
                     // else if (it->second.SType == Vantor::Renderer::VESamplerType::SamplerSpecular) {
                     //     MaterialUseSpecularTexture = true;
                     // } // This got taken away because i took a PBR based shading model
-
-                    // TODO: Fallback for other Textures, like normal, mr, ao
                 }
             }
 
@@ -284,6 +306,11 @@ namespace Vantor::RenderDevice
             // Push the current Texture State to GPU too
             command.Material->GetShader()->setUniformBool("VUseDiffuseTexture", MaterialUseDiffuseTexture);
             command.Material->GetShader()->setUniformBool("VUseParallaxMapping", MaterialUseParallaxMapping);
+            // PBR
+            command.Material->GetShader()->setUniformBool("VUseNormalTexture", MaterialUseNormalTexture);
+            command.Material->GetShader()->setUniformBool("VUseMetallicTexture", MaterialUseMetallicTexture);
+            command.Material->GetShader()->setUniformBool("VUseRoughnessTexture", MaterialUseRoughnessTexture);
+            command.Material->GetShader()->setUniformBool("VUseAOTexture", MaterialUseAOTexture);
 
             // Only set this when false, to avoid pushes to GPU
             if (!MaterialUseDiffuseTexture) {
@@ -297,6 +324,10 @@ namespace Vantor::RenderDevice
             // Set all Material Settings back to normal
             MaterialUseDiffuseTexture = false;
             MaterialUseParallaxMapping = false;
+            MaterialUseNormalTexture = false;
+            MaterialUseMetallicTexture = false;
+            MaterialUseRoughnessTexture = false;
+            MaterialUseAOTexture = false;
         }
 
         m_RenderPath->GetGBuffer()->Unbind();
@@ -350,8 +381,11 @@ namespace Vantor::RenderDevice
         // UBOs
         m_RenderPath->ActivateStorage(VEStorageType::CommonUBO);
         m_RenderPath->ActivateStorage(VEStorageType::LightDataUBO);
+        m_RenderPath->ActivateStorage(VEStorageType::AmbientLightUBO);
         // Light Data Shader Storage Buffers
         m_RenderPath->ActivateStorage(VEStorageType::PointLightSSBO);
+        m_RenderPath->ActivateStorage(VEStorageType::DirectionalLightSSBO);
+        m_RenderPath->ActivateStorage(VEStorageType::SpotLightSSBO);
 
         // Bind G-Buffer textures to correct texture units
         auto albedoTexture   = m_RenderPath->GetGBuffer()->GetColorTexture(0); // Albedo is at index 0
@@ -479,6 +513,18 @@ namespace Vantor::RenderDevice
 
     void VRenderPath3DGL::PushPointLight(const Vantor::Renderer::VPointLightData &pointLightData) { m_PointLights.push_back(pointLightData); }
 
+    void VRenderPath3DGL::PushDirectionalLight(const Vantor::Renderer::VDirectionalLightData &directionalLightData) {
+        m_DirectionalLights.push_back(directionalLightData);
+    }
+
+    void VRenderPath3DGL::PushSpotLight(const Vantor::Renderer::VSpotLightData &spotLightData) {
+        m_SpotLights.push_back(spotLightData);
+    }
+
+    void VRenderPath3DGL::SetAmbientLight(const Vantor::Renderer::VAmbientLightData &ambientLightData) {
+        m_AmbientLight = ambientLightData;
+    }
+
     void VRenderPath3DGL::Render()
     {
         if (!m_CommandBuffer) return;
@@ -489,11 +535,15 @@ namespace Vantor::RenderDevice
         // UBO
         m_CommonUBO.Update(m_Camera);
         // Update the Lightdata Uniform Buffer
-        m_LightDataUBO.UploadLightData(m_PointLights.size());
+        m_LightDataUBO.UploadLightData(m_PointLights.size(), m_DirectionalLights.size(), m_SpotLights.size());
         m_LightDataUBO.Update();
 
-        // Update PointLightData
+        // Update Light Data
         m_PointLightSSBO.Update(m_PointLights);
+        m_DirectionalLightSSBO.Update(m_DirectionalLights);
+        m_SpotLightSSBO.Update(m_SpotLights);
+        m_AmbientUBO.UploadLightData(m_AmbientLight);
+        m_AmbientUBO.Update();
 
         // Set viewport
         glViewport(m_ViewportX, m_ViewportY, m_ViewportWidth, m_ViewportHeight);
@@ -548,6 +598,8 @@ namespace Vantor::RenderDevice
 
         // Clear all lights: TODO: Cache them to stay
         m_PointLights.clear();
+        m_DirectionalLights.clear();
+        m_SpotLights.clear();
     }
 
     void VRenderPath3DGL::Shutdown()
@@ -629,9 +681,15 @@ namespace Vantor::RenderDevice
                 m_CommonUBO.Bind(static_cast<GLuint>(VEStorageType::CommonUBO));
             case VEStorageType::LightDataUBO:
                 m_LightDataUBO.Bind(static_cast<GLuint>(VEStorageType::LightDataUBO));
+            case VEStorageType::AmbientLightUBO:
+                m_AmbientUBO.Bind(static_cast<GLuint>(VEStorageType::AmbientLightUBO));
             // SSBOs
             case VEStorageType::PointLightSSBO:
                 m_PointLightSSBO.Bind(static_cast<GLuint>(VEStorageType::PointLightSSBO));
+            case VEStorageType::DirectionalLightSSBO:
+                m_DirectionalLightSSBO.Bind(static_cast<GLuint>(VEStorageType::DirectionalLightSSBO));
+            case VEStorageType::SpotLightSSBO:
+                m_SpotLightSSBO.Bind(static_cast<GLuint>(VEStorageType::SpotLightSSBO));
             default:
                 return;
         }

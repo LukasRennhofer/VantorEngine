@@ -25,6 +25,8 @@
 #include "../../Renderer/Camera/VRE_Camera.hpp"
 #include "../../Renderer/Camera/VRE_Camera.hpp"
 
+#include "../../Renderer/Light/VRE_LightData.hpp"
+
 namespace Vantor::RenderDevice
 {
     // TODO: Remove update function from VOpenGLLightDataUBO
@@ -79,12 +81,35 @@ namespace Vantor::RenderDevice
 
             void Bind(GLuint bindingPoint = 0) const override;
 
-            void UploadLightData(int numPointLights);
+            void UploadLightData(int numPointLights, int numDirectionalLights, int numSpotLights);
 
         private:
             struct UBOData
             {
                     int numPointLights;
+                    int numDirectionalLights;
+                    int numSpotLights;
+                    int padding; // pad to 16 bytes
+            } m_Data;
+    };
+
+    // AmbientLight UBO
+    class VOpenGLAmbientLightUBO : public VOpenGLUBO
+    {
+        public:
+            VOpenGLAmbientLightUBO();
+            ~VOpenGLAmbientLightUBO() override;
+
+            void Update();
+
+            void Bind(GLuint bindingPoint = 0) const override;
+
+            void UploadLightData(Vantor::Renderer::VAmbientLightData &ambientLightdata);
+
+        private:
+            struct UBOData
+            {
+                Vantor::Renderer::VAmbientLightData ambientLightdata;
             } m_Data;
     };
 } // namespace Vantor::RenderDevice

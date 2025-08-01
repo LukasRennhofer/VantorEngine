@@ -59,7 +59,7 @@ namespace Vantor::RenderDevice
     {
         public:
             VRenderPassGL(VERenderPassType type, const std::string &name);
-            virtual ~VRenderPassGL() = default;
+           ~VRenderPassGL() = default;
 
             VERenderPassType   GetType() const override { return m_Type; }
             const std::string &GetName() const override { return m_Name; }
@@ -128,7 +128,7 @@ namespace Vantor::RenderDevice
     // {
     //     public:
     //         VShadowMapPassGL(uint32_t shadowMapSize = 2048);
-    //         virtual ~VShadowMapPassGL() = default;
+    //        ~VShadowMapPassGL() = default;
 
     //         void Initialize() override;
     //         void Execute(VCommandBuffer* commandBuffer) override;
@@ -150,7 +150,7 @@ namespace Vantor::RenderDevice
     {
         public:
             VRenderPath3DGL();
-            virtual ~VRenderPath3DGL() = default;
+           ~VRenderPath3DGL() = default;
 
             // Core rendering methods
             void Initialize(VRDevice *device) override;
@@ -162,6 +162,9 @@ namespace Vantor::RenderDevice
             void PushRender(Vantor::Object::VObject *object) override;
 
             void PushPointLight(const Vantor::Renderer::VPointLightData &pointLightData) override;
+            void PushDirectionalLight(const Vantor::Renderer::VDirectionalLightData &directionalLightData) override;
+            void PushSpotLight(const Vantor::Renderer::VSpotLightData &spotLightData) override;
+            void SetAmbientLight(const Vantor::Renderer::VAmbientLightData &ambientLightData) override;
 
             // Render target management
             void           SetRenderTarget(VRenderTarget *target) override;
@@ -211,10 +214,13 @@ namespace Vantor::RenderDevice
 
             VOpenGLCommonUBO    m_CommonUBO;    // Uniform Buffer Object :  This is just being used for Camera Uniforms currently
             VOpenGLLightDataUBO m_LightDataUBO; // Used to upload data like the number of pointlights
+            VOpenGLAmbientLightUBO m_AmbientUBO;
 
             // Shader Storage Buffer Objects
             // Point Light Data
             VOpenGLSSBO<Vantor::Renderer::VPointLightData> m_PointLightSSBO;
+            VOpenGLSSBO<Vantor::Renderer::VDirectionalLightData> m_DirectionalLightSSBO;
+            VOpenGLSSBO<Vantor::Renderer::VSpotLightData> m_SpotLightSSBO;
 
             std::unordered_map<VERenderPassType, std::unique_ptr<VRenderPass>> m_RenderPasses;
     };

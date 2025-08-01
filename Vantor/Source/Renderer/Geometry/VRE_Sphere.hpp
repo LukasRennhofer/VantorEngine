@@ -16,13 +16,38 @@ namespace Vantor::Renderer::Geometry {
 
         VSphere(const unsigned int xSegments = 64, const unsigned int ySegments = 64)
         {
-            // Generate vertex data
-            for (unsigned int x = 0; x <= xSegments; ++x)
+            m_XSegments = xSegments;
+            m_YSegments = ySegments;
+        }
+
+        void GenerateMesh()
+        {
+            if (!HasComponent<Vantor::Object::VMeshComponent>())
             {
-                for (unsigned int y = 0; y <= ySegments; ++y)
+                AddComponentVoid<Vantor::Object::VMeshComponent>();
+            }
+
+            auto meshComponent = GetComponent<Vantor::Object::VMeshComponent>();
+            if (!meshComponent)
+            {
+                Vantor::Backlog::Log("Renderer::Geometry::VSphere", "MeshComponent pointer is null", Vantor::Backlog::LogLevel::ERR);
+                return;
+            }
+
+            auto mesh = meshComponent->GetMesh();
+            if (!mesh)
+            {
+                Vantor::Backlog::Log("Renderer::Geometry::VSphere", "Mesh pointer inside component is null", Vantor::Backlog::LogLevel::ERR);
+                return;
+            }
+
+            // Generate vertex data
+            for (unsigned int x = 0; x <= m_XSegments; ++x)
+            {
+                for (unsigned int y = 0; y <= m_YSegments; ++y)
                 {
-                    float xSegment = (float)x / (float)xSegments;
-                    float ySegment = (float)y / (float)ySegments;
+                    float xSegment = (float)x / (float)m_XSegments;
+                    float ySegment = (float)y / (float)m_YSegments;
                     float xPos = std::cos(xSegment * 2.0f * Vantor::Math::PI) * std::sin(ySegment * Vantor::Math::PI);
                     float yPos = std::cos(ySegment * Vantor::Math::PI);
                     float zPos = std::sin(xSegment * 2.0f * Vantor::Math::PI) * std::sin(ySegment * Vantor::Math::PI);
@@ -35,14 +60,14 @@ namespace Vantor::Renderer::Geometry {
             }
 
             // Generate indices (triangle list)
-            for (unsigned int y = 0; y < ySegments; ++y)
+            for (unsigned int y = 0; y < m_YSegments; ++y)
             {
-                for (unsigned int x = 0; x < xSegments; ++x)
+                for (unsigned int x = 0; x < m_XSegments; ++x)
                 {
-                    unsigned int i0 = y * (xSegments + 1) + x;
-                    unsigned int i1 = (y + 1) * (xSegments + 1) + x;
-                    unsigned int i2 = (y + 1) * (xSegments + 1) + (x + 1);
-                    unsigned int i3 = y * (xSegments + 1) + (x + 1);
+                    unsigned int i0 = y * (m_XSegments + 1) + x;
+                    unsigned int i1 = (y + 1) * (m_XSegments + 1) + x;
+                    unsigned int i2 = (y + 1) * (m_XSegments + 1) + (x + 1);
+                    unsigned int i3 = y * (m_XSegments + 1) + (x + 1);
 
                     // First triangle
                     indices.push_back(i0);
@@ -118,29 +143,6 @@ namespace Vantor::Renderer::Geometry {
                 bitangents[i] = b;
             }
 
-        }
-
-        void GenerateMesh()
-        {
-            if (!HasComponent<Vantor::Object::VMeshComponent>())
-            {
-                AddComponentVoid<Vantor::Object::VMeshComponent>();
-            }
-
-            auto meshComponent = GetComponent<Vantor::Object::VMeshComponent>();
-            if (!meshComponent)
-            {
-                Vantor::Backlog::Log("Renderer::Geometry::VSphere", "MeshComponent pointer is null", Vantor::Backlog::LogLevel::ERR);
-                return;
-            }
-
-            auto mesh = meshComponent->GetMesh();
-            if (!mesh)
-            {
-                Vantor::Backlog::Log("Renderer::Geometry::VSphere", "Mesh pointer inside component is null", Vantor::Backlog::LogLevel::ERR);
-                return;
-            }
-
             mesh->SetPositions(positions);
             mesh->SetUVs(uv);
             mesh->SetNormals(normals);
@@ -157,5 +159,8 @@ namespace Vantor::Renderer::Geometry {
         std::vector<Vantor::Math::VVector3> tangents;
         std::vector<Vantor::Math::VVector3> bitangents;
         std::vector<unsigned int> indices;
+
+        unsigned int m_XSegments;
+        unsigned int m_YSegments;
     };
 }

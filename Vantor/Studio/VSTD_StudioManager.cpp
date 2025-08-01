@@ -21,6 +21,7 @@
 #include "VSTD_StudioManager.hpp"
 #include "Panels/VSTD_Scene.hpp"
 #include "Panels/VSTD_Viewport.hpp"
+#include "Panels/VSTD_Backlog.hpp"
 
 #include "../Source/Integration/imgui/VIN_Imgui.hpp"
 #include "../Source/Core/VCO_Version.hpp"
@@ -62,6 +63,10 @@ namespace Vantor::Studio {
         // Register ViewportPanel
         auto viewPanel = std::make_unique<VSViewportPanel>();
         m_PanelManager.RegisterPanel(std::move(viewPanel));
+
+         // Register BacklogPanel
+        auto logPanel = std::make_unique<VSBacklog>();
+        m_PanelManager.RegisterPanel(std::move(logPanel));
 
         // TODO: Add more panels as they are implemented
         // auto inspectorPanel = std::make_unique<VInspectorPanel>();

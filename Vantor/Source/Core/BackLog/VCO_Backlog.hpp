@@ -50,4 +50,8 @@ namespace Vantor::Backlog
     void        Log(const std::string &source, const std::string &msg, LogLevel level = LogLevel::INFO);
     void        SaveLogs(const std::string &filename = "Vantor.log");
 
+    extern std::mutex logMutex;
+    extern std::vector<LogEntry> logEntries;
+
+
 } // namespace Vantor::Backlog

@@ -1,4 +1,4 @@
-// VPointLightData struct (Should equal VPointLightData in VRE_LightData.hpp)
+// VPointLightData struct
 struct VPointLightData {
     vec3 position;
     float constant;
@@ -13,12 +13,71 @@ struct VPointLightData {
     float radius;
 };
 
+// Directional Light struct
+struct VDirectionalLightData {
+    vec3 direction;   // Light direction (normalized)
+    float padding1;   // Padding for alignment (std140 requires vec3 + float)
+
+    vec3 ambient;     // Ambient color
+    float padding2;   // Padding
+
+    vec3 diffuse;     // Diffuse color
+    float padding3;
+
+    vec3 specular;    // Specular color
+    float padding4;
+};
+
+// Spot Light struct
+struct VSpotLightData {
+    vec3 position;    // Position of the spot light
+    float constant;   // Attenuation constant
+
+    vec3 direction;   // Spot light direction (normalized)
+    float linear;     // Attenuation linear
+
+    vec3 ambient;     // Ambient color
+    float quadratic;  // Attenuation quadratic
+
+    vec3 diffuse;     // Diffuse color
+    float cutOff;     // Cosine of inner cutoff angle
+
+    vec3 specular;    // Specular color
+    float outerCutOff; // Cosine of outer cutoff angle (for smooth edges)
+
+    float radius;     // Effective radius (optional)
+    float padding;    // Padding to align to 16 bytes
+};
+
+// Ambient Light (global ambient color)
+struct VAmbientLightData {
+    vec3 ambientColor;
+    float padding;  // Align to 16 bytes
+};
+
 // PointLight SSBO
 layout(std140, binding = 1) buffer VPointLightBuffer {
     VPointLightData Vu_PointLights[];
 };
 
+layout(std140, binding = 3) buffer VDirectionalLightBuffer {
+    VDirectionalLightData Vu_DirectionalLights[];
+};
+
+// SpotLight SSBO
+layout(std140, binding = 4) buffer VSpotLightBuffer {
+    VSpotLightData Vu_SpotLights[];
+};
+
+// Ambient Light UBO (just one AmbientLight)
+layout(std140, binding = 5) uniform VAmbientLightBuffer {
+    VAmbientLightData Vu_AmbientLight;
+};
+
 // UBO for counts and general parameters
 layout(std140, binding = 2) uniform VLightDataUniforms {
     int Vu_NumPointLights;
+    int Vu_NumDirectionalLights;
+    int Vu_NumSpotLights;
+    int padding;  // pad to 16 bytes
 };

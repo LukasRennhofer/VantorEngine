@@ -80,5 +80,38 @@ namespace Vantor::RenderDevice
     // Bind the UBO at beginning of rendering, after updating the UBO
     void VOpenGLLightDataUBO::Bind(GLuint bindingPoint) const { glBindBufferBase(GL_UNIFORM_BUFFER, bindingPoint, m_Buffer); }
 
-    void VOpenGLLightDataUBO::UploadLightData(int numPointLights) { m_Data.numPointLights = numPointLights; }
+    void VOpenGLLightDataUBO::UploadLightData(int numPointLights, int numDirectionalLights, int numSpotLights) { 
+        m_Data.numPointLights = numPointLights;
+        m_Data.numDirectionalLights = numDirectionalLights;
+        m_Data.numSpotLights = numSpotLights; 
+    }
+
+    // AmbientLight UBO
+    VOpenGLAmbientLightUBO::VOpenGLAmbientLightUBO()
+    {
+        glGenBuffers(1, &m_Buffer);
+        glBindBuffer(GL_UNIFORM_BUFFER, m_Buffer);
+        glBufferData(GL_UNIFORM_BUFFER, sizeof(UBOData), nullptr, GL_DYNAMIC_DRAW);
+        glBindBuffer(GL_UNIFORM_BUFFER, 0);
+    }
+
+    VOpenGLAmbientLightUBO::~VOpenGLAmbientLightUBO()
+    {
+        if (m_Buffer != 0) glDeleteBuffers(1, &m_Buffer);
+    }
+
+    void VOpenGLAmbientLightUBO::Update()
+    {
+        // Upload updated UBO data to GPU
+        glBindBuffer(GL_UNIFORM_BUFFER, m_Buffer);
+        glBufferSubData(GL_UNIFORM_BUFFER, 0, sizeof(UBOData), &m_Data);
+        glBindBuffer(GL_UNIFORM_BUFFER, 0);
+    }
+
+    // Bind the UBO at beginning of rendering, after updating the UBO
+    void VOpenGLAmbientLightUBO::Bind(GLuint bindingPoint) const { glBindBufferBase(GL_UNIFORM_BUFFER, bindingPoint, m_Buffer); }
+
+    void VOpenGLAmbientLightUBO::UploadLightData(Vantor::Renderer::VAmbientLightData &ambientLightdata) { 
+        m_Data.ambientLightdata = ambientLightdata;
+    }
 } // namespace Vantor::RenderDevice

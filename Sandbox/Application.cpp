@@ -1,4 +1,5 @@
 #include "common.h"
+#include "Objects/Geometry.hpp"
 
 #include "LoadMesh.hpp"
 
@@ -26,39 +27,10 @@ int main() {
     sampler.wrapT           = VTextureWrap::Repeat;
     sampler.generateMipmaps = false;
 
-    auto m_DiffuseTexture = vLoadTexture2D("AlbedoSphere", "Resources/textures/checkerboard.png", sampler, false)->GetTexture();
-    auto m_NormalTexture = vLoadTexture2D("NormalSphere", "Resources/textures/pbr/dull-brass/normal.png", sampler, false)->GetTexture();
-    auto m_metallicTexture = vLoadTexture2D("MetallicSphere", "Resources/textures/pbr/dull-brass/metallic.png", sampler, false)->GetTexture();
-    auto m_roughnessTexture = vLoadTexture2D("RoughnessSphere", "Resources/textures/pbr/dull-brass/roughness.png", sampler, false)->GetTexture();
-    auto m_AOTexture = vLoadTexture2D("AOSphere", "Resources/textures/pbr/dull-brass/ao.png", sampler, false)->GetTexture();
-
-    auto cube = vCreateActor<VSphere>(); // Create Cube Entity
-
-    cube->AddComponentVoid<VMeshComponent>(); // Add a MeshComponent for Render
-    cube->AddComponentVoid<VTransformComponent>(); // Add a TransformComponent for Render
-    cube->AddComponentVoid<VMaterialComponent>(); // Add a MaterialComponent for Render
-
-    VMeshCreateInfo cubeCreateInfo; // Create empty Mesh with Creation Data
-    cubeCreateInfo.SetFinalized = false;
-
-    auto cubeMesh = RenderDevice->CreateMesh(cubeCreateInfo);
-
-    cube->GetComponent<VMeshComponent>()->SetMesh(cubeMesh); // Add empty Mesh to the cubes MeshComponent
-
-    cube->GenerateMesh();
-
-    auto cubeMaterial = VMaterialLibrary::Instance().CreateMaterial("VDefault");
-
-    cubeMaterial->SetTexture("VTextureDiffuse", m_DiffuseTexture.get(), 1, VUniformType::UniformTypeSAMPLER2D, VSamplerType::SamplerDiffuse);
-    cubeMaterial->SetTexture("VTextureNormal", m_NormalTexture.get(), 2, VUniformType::UniformTypeSAMPLER2D, VSamplerType::SamplerNormal);
-    cubeMaterial->SetTexture("VTextureMetallic", m_metallicTexture.get(), 3, VUniformType::UniformTypeSAMPLER2D, VSamplerType::SamplerMR);
-    cubeMaterial->SetTexture("VTextureRoughness", m_roughnessTexture.get(), 4, VUniformType::UniformTypeSAMPLER2D, VSamplerType::SamplerMR);
-    cubeMaterial->SetTexture("VTextureAO", m_AOTexture.get(), 5, VUniformType::UniformTypeSAMPLER2D, VSamplerType::SamplerAO);
-
-    cube->GetComponent<VMaterialComponent>()->SetMaterial(cubeMaterial.get());
-
-    cube->GetComponent<VTransformComponent>()->SetPosition(VVector3(1.0f, 1.0f, 1.0f));
-    cube->GetComponent<VTransformComponent>()->SetScale({0.1f, 0.1f, 0.1f});
+    auto cube = CreateCubeObject(RenderDevice.get(), {2.0f, 2.0f, 2.0f});
+    cube->GetComponent<VMaterialComponent>()->GetMaterial()->Color = VColor::Yellow();
+    auto plane = CreatePlaneObject(RenderDevice.get(), 10.0f, 10.0f, 0.0f);
+    
     // Point Lights 
     VPointLightData pointLight1;
     pointLight1.position = { 2.0f, 2.0f, 2.0f }; // Slightly above and in front of the object
@@ -70,9 +42,34 @@ int main() {
     pointLight1.quadratic = 0.032f;
     pointLight1.radius = 5.0f;
 
-    auto m_AppendCube = VResourceManager::Instance().GetTexture2D("VDeffered");
+    VAmbientLightData ambientLight {
+        .ambientColor = VVector3(0.02f, 0.02f, 0.05f)
+    };
+
+    VDirectionalLightData sunLight {
+        .direction = VVector3(-0.3f, -1.0f, -0.5f),
+        .ambient   = VColor::Red().toFloat3(),
+        .diffuse   = VVector3(0.6f, 0.6f, 0.9f),
+        .specular  = VVector3(0.3f, 0.3f, 0.4f)
+    };
+
+    VSpotLightData spotLight {
+        .position     = camera->Position,
+        .constant     = 1.0f,
+        .direction    = camera->Forward,
+        .linear       = 0.09f,
+        .ambient      = VVector3(0.02f, 0.02f, 0.02f),
+        .quadratic    = 0.032f,
+        .diffuse      = VVector3(1.0f, 1.0f, 0.8f),
+        .cutOff       = std::cos(Vantor::Math::DegToRad(12.5f)),
+        .specular     = VVector3(1.0f, 1.0f, 1.0f),
+        .outerCutOff  = std::cos(Vantor::Math::DegToRad(17.5f)),
+        .radius       = 15.0f
+    };
 
     glfwSwapInterval(0); // VSync OFF : TODO: Implement in Context
+
+    // vLogError("Game", "This is a test error! (located in Application.cpp)");
 
     // RenderPath Test
     auto renderpath = RenderDevice->CreateRenderPath3D();
@@ -88,9 +85,6 @@ int main() {
 
     app.GetInputManager()->MapAction("fire", VInputButton{VInputDeviceType::Keyboard, (int)VInputKey::KEY_ESCAPE});
 
-    float rotationAngle = 0.0f;
-    VQuaternion tilt = VQuaternion::FromAxisAngle(VVector3{1, 0, 0}, -40.0f);
-
     while (app.IsRunning()) {
             app.BeginFrame();
 
@@ -98,54 +92,45 @@ int main() {
                 app.Break();
             }
 
-            if (app.GetInputManager()->IsPressed(VInputKey::KEY_W, VInputDeviceType::Keyboard)) {
-                camera->InputKey(app.GetDeltaTime(), VCameraMovement::CAMERA_FORWARD);
-            } else if (app.GetInputManager()->IsPressed(VInputKey::KEY_A, VInputDeviceType::Keyboard)) {
-                camera->InputKey(app.GetDeltaTime(), VCameraMovement::CAMERA_LEFT);
-            } else if (app.GetInputManager()->IsPressed(VInputKey::KEY_D, VInputDeviceType::Keyboard)) {
-                camera->InputKey(app.GetDeltaTime(), VCameraMovement::CAMERA_RIGHT);
-            } else if (app.GetInputManager()->IsPressed(VInputKey::KEY_S, VInputDeviceType::Keyboard)) {
-                camera->InputKey(app.GetDeltaTime(), VCameraMovement::CAMERA_BACK);
-            } else if (app.GetInputManager()->IsPressed(VInputKey::KEY_E, VInputDeviceType::Keyboard)) {
-                camera->InputKey(app.GetDeltaTime(), VCameraMovement::CAMERA_UP);
-            } else if (app.GetInputManager()->IsPressed(VInputKey::KEY_Q, VInputDeviceType::Keyboard)) {
-                camera->InputKey(app.GetDeltaTime(), VCameraMovement::CAMERA_DOWN);
-            } 
+            if (!app.GetInputManager()->devices[0]->GetMouseCursorState()) {
+                 if (app.GetInputManager()->IsPressed(VInputKey::KEY_W, VInputDeviceType::Keyboard)) {
+                    camera->InputKey(app.GetDeltaTime(), VCameraMovement::CAMERA_FORWARD);
+                } else if (app.GetInputManager()->IsPressed(VInputKey::KEY_A, VInputDeviceType::Keyboard)) {
+                    camera->InputKey(app.GetDeltaTime(), VCameraMovement::CAMERA_LEFT);
+                } else if (app.GetInputManager()->IsPressed(VInputKey::KEY_D, VInputDeviceType::Keyboard)) {
+                    camera->InputKey(app.GetDeltaTime(), VCameraMovement::CAMERA_RIGHT);
+                } else if (app.GetInputManager()->IsPressed(VInputKey::KEY_S, VInputDeviceType::Keyboard)) {
+                    camera->InputKey(app.GetDeltaTime(), VCameraMovement::CAMERA_BACK);
+                } else if (app.GetInputManager()->IsPressed(VInputKey::KEY_E, VInputDeviceType::Keyboard)) {
+                    camera->InputKey(app.GetDeltaTime(), VCameraMovement::CAMERA_UP);
+                } else if (app.GetInputManager()->IsPressed(VInputKey::KEY_Q, VInputDeviceType::Keyboard)) {
+                    camera->InputKey(app.GetDeltaTime(), VCameraMovement::CAMERA_DOWN);
+                } 
+
+                mouseDelta = app.GetInputManager()->devices[0]->GetMouseDelta();
+                camera->InputMouse(mouseDelta.x, -mouseDelta.y);
+            }
             
             if (app.GetInputManager()->WasPressed(VInputKey::KEY_TAB, VInputDeviceType::Keyboard)) {
                 app.GetInputManager()->devices[0]->SetMouseCursorState(!app.GetInputManager()->devices[0]->GetMouseCursorState());
             }
 
-            if (!app.GetInputManager()->devices[0]->GetMouseCursorState()) {
-                mouseDelta = app.GetInputManager()->devices[0]->GetMouseDelta();
-                camera->InputMouse(mouseDelta.x, -mouseDelta.y);
-            }
             camera->Update(app.GetDeltaTime());
 
             renderpath->PushRender(cube.get());
+            renderpath->PushRender(plane.get());
 
-            renderpath->PushPointLight(pointLight1);
+            spotLight.position  = camera->Position;
+            spotLight.direction = camera->Forward;
+            renderpath->PushSpotLight(spotLight);
+
+            // renderpath->PushPointLight(pointLight1);
+            renderpath->SetAmbientLight(ambientLight);
+            renderpath->PushSpotLight(spotLight);
 
             renderpath->Render();
 
             vStudioRender(renderpath->GetOutBuffer().get());
-
-            // #ifdef VANTOR_INTEGRATION_IMGUI
-            // // To enable it only when Tab is pressed
-            // if (app.GetInputManager()->devices[0]->GetMouseCursorState()) {
-            //     Vantor::Integration::Imgui::BuildUpDocking();
-            //     Vantor::Integration::Imgui::ShowSceneHierachy();
-            //     ImGui::Begin("Camera");
-            //     ImGui::Text("X: %f Y: %f Z: %f", camera->Position.x, camera->Position.y, camera->Position.z);
-            //     ImGui::Text("FPS: %f", 1.0f/app.GetDeltaTime());
-            //     ImGui::End();
-
-            //     ImGui::Begin("Viewport");
-            //     auto texture = renderpath->GetOutBuffer()->GetColorTexture(0)->getID();
-            //     ImGui::Image((void*)(intptr_t)texture, ImVec2((float)1920, (float)1080));
-            //     ImGui::End();
-            // }
-            // #endif
 
             app.EndFrame();
     }

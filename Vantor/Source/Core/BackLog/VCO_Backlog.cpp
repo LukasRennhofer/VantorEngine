@@ -23,8 +23,8 @@
 namespace Vantor::Backlog
 {
 
-    static std::mutex            logMutex;
-    static std::vector<LogEntry> logEntries;
+    std::mutex            logMutex;
+    std::vector<LogEntry> logEntries;
 
     // Convert LogLevel to String
     std::string LogLevelToString(LogLevel level)
