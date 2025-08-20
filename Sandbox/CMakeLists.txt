@@ -10,7 +10,7 @@ project(VantorSandbox)
 set(CMAKE_CXX_STANDARD 20)
 
 # Add engine subdirectory
-add_subdirectory(../Vantor/Source ${CMAKE_BINARY_DIR}/VantorBuild)
+add_subdirectory(../Vantor/Source/Vantor ${CMAKE_BINARY_DIR}/VantorBuild)
 
 # Add Source Code of project
 add_executable(VantorSandbox Application.cpp)
@@ -19,7 +19,7 @@ add_executable(VantorSandbox Application.cpp)
 SetUpVantorTarget(VantorSandbox)
 
 # Include Engine API Includes
-target_include_directories(VantorSandbox PRIVATE ../Vantor/Include)
+target_include_directories(VantorSandbox PRIVATE ../Vantor/Include/)
 
 # Link with Vantor
 target_link_libraries(VantorSandbox PRIVATE Vantor)

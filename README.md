@@ -11,7 +11,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/LukasRennhofer/Vantor">
-    <img src="Assets/Github/Branding/VantorLogo_main_wbg.png" alt="Vantor Logo" width="80" height="80">
+    <img src="Assets/Github/Branding/VantorStudiosLogoWhite.png" alt="Vantor Logo" width="200" height="200">
   </a>
 
 <h3 align="center">Vantor Engine</h3>
@@ -19,7 +19,7 @@
     Low-Level Experimental In-House Game Engine for VantorStudios
     <br />
     <h5 align="center">
-    <strong>v0.18.X - Experimental Build</strong>
+    <strong>v0.20.X - Experimental Build</strong>
     </h5>
     <a href="https://docs.vantor.net/"><strong>Explore the docs »</strong></a>
     <br />
@@ -301,19 +301,19 @@ python vtrg.py build --help
 - [🟩] **Platform Abstraction Layer** - Windows/Linux/Switch support
 - [�] **Core Rendering Pipeline** - OpenGL 4.6 implementation
 - [🟧] **Memory Management** - Custom allocators and resource pooling
-- [🟥] **Scene Graph** - Efficient spatial organization
+- [🟩] **Scene Graph** - Efficient spatial organization
 
 ### Near-term Goals (v0.17.x - v0.20.x)
 - [🟧] **Multi-threaded Resource Management** - Async loading and streaming
 - [🟧] **GPU-based Scene Graph** - GPU-driven rendering pipeline
-- [🟥] **Editor Interface** - Basic level editor and debugging tools
+- [🟩] **Editor Interface** - Basic level editor and debugging tools
 - [🟥] **Audio System** - 3D spatial audio implementation
 
 ### Long-term Vision (v1.0+)
 - [🟥] **Full Vulkan Support** - Modern low-level graphics API
 - [🟥] **Advanced Physics** - Custom physics simulation
 - [🟥] **Networking Layer** - Multiplayer game support
-- [🟥] **Documentation Expansion** - Comprehensive API documentation
+- [🟩] **Documentation Expansion** - Comprehensive API documentation
 
 **Legend:**
 - 🟩 Complete

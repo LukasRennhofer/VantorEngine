@@ -17,7 +17,7 @@ option(VANTOR_WM_GLFW "Use GLFW window manager" ON)
 # Integrations
 option(VANTOR_INTEGRATION_IMGUI "Use ImGui as Integration" ON)
 # Modes
-option(VANTOR_STUDIO "Enable Studio Editor Mode" ON)
+option(VANTOR_STUDIO "Enable Studio Editor Mode" OFF)
 
 # Export the settings as cache variables so they're accessible project-wide
 # Use FORCE to ensure values are set even if cache is corrupted

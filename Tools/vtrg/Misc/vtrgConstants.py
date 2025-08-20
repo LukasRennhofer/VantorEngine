@@ -43,7 +43,7 @@ HEADER_STYLE = f"""/*
 
 # Paths
 MAIN_ENGINE_DIR  = Path("Vantor")
-SRC_DIR_INTERNAL = MAIN_ENGINE_DIR / Path("Source")
+SRC_DIR_INTERNAL = MAIN_ENGINE_DIR / Path("Source") / Path("Vantor")
 BUILD_DIR_INTERNAL = Path("Build")
 
 # Resources

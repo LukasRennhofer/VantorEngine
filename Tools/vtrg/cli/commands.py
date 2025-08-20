@@ -96,12 +96,6 @@ class BuildCommand(Command):
             help="Check if required dependencies are installed"
         )
         parser.add_argument(
-            '--jobs', '-j',
-            type=int,
-            metavar='N',
-            help="Number of parallel build jobs (default: auto-detect)"
-        )
-        parser.add_argument(
             '--target',
             type=str,
             help="Specific build target"
@@ -328,6 +322,5 @@ class CleanCommand(Command):
 # Registry of all available commands
 COMMANDS = [
     BuildCommand(),
-    FormatCommand(),
     CleanCommand(),
 ]
