@@ -12,8 +12,9 @@
 
 #include <iostream>
 #include <cassert>
+#include <Shared/glad/glad.h>
 
-namespace Vantor::RHI
+namespace VE::Internal::RHI
 {
 
 uint32_t OpenGLRenderTarget::s_boundFramebuffer = 0;
@@ -84,7 +85,10 @@ bool OpenGLRenderTarget::IsComplete() const
     return status == GL_FRAMEBUFFER_COMPLETE;
 }
 
-void OpenGLRenderTarget::AttachTexture(EAttachmentType type, std::shared_ptr<IRHITexture> texture, uint32_t mipLevel, uint32_t layer)
+void OpenGLRenderTarget::AttachTexture(EAttachmentType type,
+                                       std::shared_ptr<IRHITexture> texture,
+                                       uint32_t mipLevel,
+                                       uint32_t layer)
 {
     if (!texture)
     {
@@ -93,8 +97,7 @@ void OpenGLRenderTarget::AttachTexture(EAttachmentType type, std::shared_ptr<IRH
     }
 
     Bind();
-    
-    // Cast to OpenGL texture to get the handle
+
     auto openglTexture = std::static_pointer_cast<OpenGLTexture>(texture);
     if (!openglTexture)
     {
@@ -102,36 +105,54 @@ void OpenGLRenderTarget::AttachTexture(EAttachmentType type, std::shared_ptr<IRH
         return;
     }
 
-    GLenum attachment = AttachmentTypeToGL(type);
-    
-    // Handle color attachments separately to manage multiple render targets
+    GLenum attachment = 0;
+
     if (type == EAttachmentType::Color)
     {
-        attachment = GetColorAttachment(m_colorAttachmentCount);
-        m_colorAttachmentCount++;
+        uint32_t colorIndex = m_colorAttachmentCount;
+        attachment = GL_COLOR_ATTACHMENT0 + colorIndex;
+
+        switch (openglTexture->GetType())
+        {
+            case ETextureType::Texture2D:
+                glFramebufferTexture2D(GL_FRAMEBUFFER, attachment, GL_TEXTURE_2D, openglTexture->GetHandle(), mipLevel);
+                break;
+
+            case ETextureType::Texture3D:
+            case ETextureType::TextureCube:
+                glFramebufferTextureLayer(GL_FRAMEBUFFER, attachment, openglTexture->GetHandle(), mipLevel, layer);
+                break;
+
+            case ETextureType::Texture1D:
+                glFramebufferTexture1D(GL_FRAMEBUFFER, attachment, GL_TEXTURE_1D, openglTexture->GetHandle(), mipLevel);
+                break;
+        }
+
+        if (colorIndex >= m_colorAttachments.size())
+            m_colorAttachments.resize(colorIndex + 1);
+        m_colorAttachments[colorIndex] = {type, texture, mipLevel, layer};
+
+        ++m_colorAttachmentCount;
+        UpdateDrawBuffers();
     }
-    
-    // Attach the texture
-    if (layer > 0)
+    else if (type == EAttachmentType::Depth)
     {
-        // For array textures or cubemaps
-        glFramebufferTextureLayer(GL_FRAMEBUFFER, attachment, openglTexture->GetHandle(), mipLevel, layer);
-    }
-    else
-    {
-        // For regular 2D textures
+        attachment = GL_DEPTH_ATTACHMENT;
         glFramebufferTexture2D(GL_FRAMEBUFFER, attachment, GL_TEXTURE_2D, openglTexture->GetHandle(), mipLevel);
     }
-    
-    // Store attachment info
-    VRenderTargetAttachment attachmentInfo;
-    attachmentInfo.type = type;
-    attachmentInfo.texture = texture;
-    attachmentInfo.mipLevel = mipLevel;
-    attachmentInfo.layer = layer;
-    m_attachments[type] = attachmentInfo;
-    
-    UpdateDrawBuffers();
+    else if (type == EAttachmentType::DepthStencil)
+    {
+        attachment = GL_DEPTH_STENCIL_ATTACHMENT;
+        glFramebufferTexture2D(GL_FRAMEBUFFER, attachment, GL_TEXTURE_2D, openglTexture->GetHandle(), mipLevel);
+    }
+
+    VRenderTargetAttachment info;
+    info.type = type;
+    info.texture = texture;
+    info.mipLevel = mipLevel;
+    info.layer = layer;
+    m_attachments[type] = info;
+
     CheckFramebufferStatus();
 }
 
@@ -140,25 +161,30 @@ void OpenGLRenderTarget::DetachTexture(EAttachmentType type)
     auto it = m_attachments.find(type);
     if (it == m_attachments.end())
         return;
-    
+
     Bind();
-    
-    GLenum attachment = AttachmentTypeToGL(type);
+
     if (type == EAttachmentType::Color)
     {
-        // Find which color attachment this was
-        for (uint32_t i = 0; i < m_colorAttachmentCount; ++i)
+        // Find and clear the correct color attachment slot
+        for (uint32_t i = 0; i < m_colorAttachments.size(); ++i)
         {
-            attachment = GetColorAttachment(i);
-            glFramebufferTexture2D(GL_FRAMEBUFFER, attachment, GL_TEXTURE_2D, 0, 0);
+            if (m_colorAttachments[i].type == type && m_colorAttachments[i].texture)
+            {
+                glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0 + i, GL_TEXTURE_2D, 0, 0);
+                m_colorAttachments[i].texture = nullptr;
+            }
         }
+        // Recount color attachments
         m_colorAttachmentCount = 0;
+        for (const auto& att : m_colorAttachments)
+            if (att.texture) ++m_colorAttachmentCount;
     }
-    else
-    {
-        glFramebufferTexture2D(GL_FRAMEBUFFER, attachment, GL_TEXTURE_2D, 0, 0);
-    }
-    
+    else if (type == EAttachmentType::Depth)
+        glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, 0, 0);
+    else if (type == EAttachmentType::DepthStencil)
+        glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_TEXTURE_2D, 0, 0);
+
     m_attachments.erase(it);
     UpdateDrawBuffers();
 }
@@ -222,8 +248,7 @@ void OpenGLRenderTarget::CheckFramebufferStatus() const
     GLenum status = glCheckFramebufferStatus(GL_FRAMEBUFFER);
     if (status != GL_FRAMEBUFFER_COMPLETE)
     {
-        std::cerr << "Framebuffer not complete! Status: " << std::hex << status << std::endl;
-        
+        std::cerr << "Framebuffer not complete! Status: 0x" << std::hex << status << std::endl;
         switch (status)
         {
             case GL_FRAMEBUFFER_INCOMPLETE_ATTACHMENT:
@@ -254,15 +279,19 @@ void OpenGLRenderTarget::CheckFramebufferStatus() const
 void OpenGLRenderTarget::UpdateDrawBuffers()
 {
     m_drawBuffers.clear();
-    
-    // Add all color attachments to draw buffers
-    for (const auto& [type, attachment] : m_attachments)
-    {
-        if (type == EAttachmentType::Color)
-        {
-            m_drawBuffers.push_back(GL_COLOR_ATTACHMENT0 + static_cast<uint32_t>(m_drawBuffers.size()));
+    for (uint32_t i = 0; i < m_colorAttachments.size(); ++i) {
+        if (m_colorAttachments[i].texture) {
+            m_drawBuffers.push_back(GL_COLOR_ATTACHMENT0 + i);
         }
+    }
+
+    if (!m_drawBuffers.empty()) {
+        glDrawBuffers(static_cast<GLsizei>(m_drawBuffers.size()), m_drawBuffers.data());
+    } else {
+        glDrawBuffer(GL_NONE);
+        glReadBuffer(GL_NONE);
     }
 }
 
-} // namespace Vantor::RHI
+
+} // namespace VE::Internal::RHI

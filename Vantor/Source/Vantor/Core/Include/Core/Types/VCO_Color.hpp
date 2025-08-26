@@ -15,7 +15,7 @@
 #include <Math/VMA_Common.hpp>
 #include <Math/Linear/VMA_Vector.hpp>
 
-namespace Vantor::Core::Types
+namespace VE::Internal::Core::Types
 {
     struct VColor
     {
@@ -63,19 +63,19 @@ namespace Vantor::Core::Types
             constexpr void setB(uint8_t value) { *this = VColor(getR(), getG(), value, getA()); }
             constexpr void setA(uint8_t value) { *this = VColor(getR(), getG(), getB(), value); }
 
-            Vantor::Math::VVector3 toFloat3() const
+            VE::Internal::Math::VVector3 toFloat3() const
             {
-                return Vantor::Math::VVector3(((rgba >> 0) & 0xFF) / 255.0f, ((rgba >> 8) & 0xFF) / 255.0f, ((rgba >> 16) & 0xFF) / 255.0f);
+                return VE::Internal::Math::VVector3(((rgba >> 0) & 0xFF) / 255.0f, ((rgba >> 8) & 0xFF) / 255.0f, ((rgba >> 16) & 0xFF) / 255.0f);
             }
 
-            Vantor::Math::VVector4 toFloat4() const
+            VE::Internal::Math::VVector4 toFloat4() const
             {
-                return Vantor::Math::VVector4(((rgba >> 0) & 0xFF) / 255.0f, ((rgba >> 8) & 0xFF) / 255.0f, ((rgba >> 16) & 0xFF) / 255.0f,
+                return VE::Internal::Math::VVector4(((rgba >> 0) & 0xFF) / 255.0f, ((rgba >> 8) & 0xFF) / 255.0f, ((rgba >> 16) & 0xFF) / 255.0f,
                                               ((rgba >> 24) & 0xFF) / 255.0f);
             }
 
-            operator Vantor::Math::VVector3() const { return toFloat3(); }
-            operator Vantor::Math::VVector4() const { return toFloat4(); }
+            operator VE::Internal::Math::VVector3() const { return toFloat3(); }
+            operator VE::Internal::Math::VVector4() const { return toFloat4(); }
             operator uint32_t() const { return rgba; }
 
             template <std::size_t capacity> struct char_return
@@ -95,17 +95,17 @@ namespace Vantor::Core::Types
                 return ret;
             }
 
-            static constexpr VColor fromFloat4(const Vantor::Math::VVector4 &value)
+            static constexpr VColor fromFloat4(const VE::Internal::Math::VVector4 &value)
             {
                 return VColor((uint8_t) (value.x * 255), (uint8_t) (value.y * 255), (uint8_t) (value.z * 255), (uint8_t) (value.w * 255));
             }
 
-            static constexpr VColor fromFloat3(const Vantor::Math::VVector3 &value)
+            static constexpr VColor fromFloat3(const VE::Internal::Math::VVector3 &value)
             {
                 return VColor((uint8_t) (value.x * 255), (uint8_t) (value.y * 255), (uint8_t) (value.z * 255));
             }
 
-            static VColor lerp(VColor a, VColor b, float i) { return fromFloat4(Vantor::Math::Lerp(a.toFloat4(), b.toFloat4(), i)); }
+            static VColor lerp(VColor a, VColor b, float i) { return fromFloat4(VE::Internal::Math::Lerp(a.toFloat4(), b.toFloat4(), i)); }
 
             // Preset VColors
             static constexpr VColor Red() { return VColor(255, 0, 0, 255); }
@@ -125,4 +125,4 @@ namespace Vantor::Core::Types
             static constexpr VColor Warning() { return 0xFF66FFFF; }
             static constexpr VColor Error() { return 0xFF6666FF; }
     };
-} // namespace Vantor::Core::Types
+} // namespace VE::Internal::Core::Types

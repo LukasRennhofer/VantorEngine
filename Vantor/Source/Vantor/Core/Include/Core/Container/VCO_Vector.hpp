@@ -20,7 +20,7 @@
 #include <new>
 #include <utility>
 
-namespace Vantor::Core::Container
+namespace VE::Internal::Core::Container
 {
     // Custom TVector container template class
     // T: element type, A: allocator type (defaults to std::allocator<T>)
@@ -323,4 +323,4 @@ namespace Vantor::Core::Container
             size_t m_capacity     = 0;
             A      m_allocator;
     };
-} // namespace Vantor::Core
+} // namespace VE::Internal::Core

@@ -7,7 +7,7 @@
  *             See LICENSE file for full details.
  ****************************************************************************/
 
-#include <Core/BackLog/VCO_Backlog.hpp>
+// #include <Core/BackLog/VCO_Backlog.hpp>
 #include <Context/Interface/VCT_Window.hpp>
 
 #ifdef VANTOR_WM_GLFW
@@ -17,7 +17,7 @@
 #include <Integration/VIN_ImGui.hpp>
 #endif
 
-namespace Vantor::Context
+namespace VE::Internal::Context
 {
     GLFWwindow                  *glfwWindow;
     VWindow::resizeCallbackFunc_t resizeCallbackFunc;
@@ -33,7 +33,7 @@ namespace Vantor::Context
         glfwWindow = glfwCreateWindow(width, height, title, NULL, NULL);
         if (glfwWindow == NULL)
         {
-            // TODO: Vantor::Core::Backlog::Log("Context", "Could not create GLFW Context for VWindow", Vantor::Core::Backlog::ELogLevel::ERR);
+            // TODO: VE::Internal::Core::Backlog::Log("Context", "Could not create GLFW Context for VWindow", VE::Internal::Core::Backlog::ELogLevel::ERR);
             close();
         }
         glfwMakeContextCurrent(glfwWindow);
@@ -41,7 +41,7 @@ namespace Vantor::Context
         resizeCallbackFunc = NULL;
 
 #ifdef VANTOR_INTEGRATION_IMGUI
-        Vantor::Integration::Imgui::InitContext(glfwWindow);
+        VE::Internal::Integration::Imgui::InitContext(glfwWindow);
 #endif
     }
 
@@ -70,5 +70,5 @@ namespace Vantor::Context
     bool VWindow::shouldWindowClose() { return glfwWindowShouldClose(glfwWindow); }
 
     void *VWindow::GetNativeHandle() { return glfwWindow; }
-} // namespace Vantor::Context
+} // namespace VE::Internal::Context
 #endif

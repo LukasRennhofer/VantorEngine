@@ -21,7 +21,7 @@
 #include <memory>
 #include <unordered_map>
 
-namespace Vantor::RHI
+namespace VE::Internal::RHI
 {
 
 class OpenGLDevice : public IRHIDevice
@@ -37,7 +37,7 @@ public:
     void Clear(float r = 0.0f, float g = 0.0f, float b = 0.0f, float a = 1.0f) override;
 
     std::shared_ptr<IRHIShader> CreateShader(const std::string& vertexSource, const std::string& fragmentSource) override;
-    std::shared_ptr<IRHITexture> CreateTexture(uint32_t width, uint32_t height, ERHIFormat format, const void* data = nullptr) override;
+    std::shared_ptr<IRHITexture> CreateTexture(uint32_t width, uint32_t height, ERHIFormat format, const void* data = nullptr, ETextureType type = ETextureType::Texture2D, uint32_t depth = 1) override;
     std::shared_ptr<IRHIMesh> CreateMesh(const void* vertexData, uint32_t vertexSize, const void* indexData, uint32_t indexCount, const VVertexLayout& layout) override;
     std::shared_ptr<IRHIBuffer> CreateBuffer(ERHIBufferType type, uint32_t size, const void* data = nullptr) override;
     std::shared_ptr<IRHIRenderTarget> CreateRenderTarget(uint32_t width, uint32_t height, uint32_t samples = 1) override;
@@ -61,4 +61,4 @@ private:
     void SetupDefaultState();
 };
 
-} // namespace Vantor::RHI
+} // namespace VE::Internal::RHI

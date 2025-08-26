@@ -14,43 +14,52 @@
 
 #include <Shared/glad/glad.h>
 
-namespace Vantor::RHI
+namespace VE::Internal::RHI
 {
 
 class OpenGLTexture : public IRHITexture
 {
 public:
-    OpenGLTexture(uint32_t width, uint32_t height, ERHIFormat format, const void* data = nullptr);
-    OpenGLTexture(uint32_t width, uint32_t height, ETextureFormat format, const void* data = nullptr);
+    OpenGLTexture(uint32_t width, uint32_t height, ERHIFormat format, const void* data = nullptr, ETextureType type = ETextureType::Texture2D, uint32_t depth = 1);
+    
     virtual ~OpenGLTexture();
 
     // IRHITexture implementation
     void Bind(uint32_t slot = 0) override;
     void Unbind() override;
-    void UpdateData(const void* data, uint32_t width, uint32_t height) override;
-    
+    void UpdateData(const void* data, uint32_t width, uint32_t height = 1, uint32_t depth = 1, uint32_t face = 0) override;
+
     uint32_t GetWidth() const override { return m_width; }
     uint32_t GetHeight() const override { return m_height; }
+    uint32_t GetDepth() const override { return m_depth; }
     uint32_t GetHandle() const override { return m_texture; }
-    ETextureFormat GetFormat() const override { return m_format; }
+    ERHIFormat GetFormat() const override { return m_format; }
+    ETextureType GetType() const override { return m_type; }
+
+    void Resize(uint32_t newWidth, uint32_t newHeight, uint32_t newDepth = 1) override;
 
     void SetFilter(ETextureFilter minFilter, ETextureFilter magFilter) override;
-    void SetWrap(ETextureWrap wrapS, ETextureWrap wrapT) override;
+    void SetWrap(ETextureWrap wrapS, ETextureWrap wrapT, ETextureWrap wrapR = ETextureWrap::Repeat) override;
 
     // Static utility functions
-    static GLenum TextureFormatToGL(ETextureFormat format);
     static GLenum RHIFormatToTextureFormat(ERHIFormat format);
     static GLenum TextureFilterToGL(ETextureFilter filter);
     static GLenum TextureWrapToGL(ETextureWrap wrap);
 
 private:
+    // OpenGL handle
     uint32_t m_texture;
+    // dimensions
     uint32_t m_width;
     uint32_t m_height;
-    ETextureFormat m_format;
+    uint32_t m_depth;
+
+    ERHIFormat m_format;
+    ETextureType m_type;
+
     uint32_t m_currentSlot;
 
-    void CreateTexture(const void* data);
+    void CreateTexture(const void* data, uint32_t face = 0);
     GLenum GetPixelFormat() const;
     GLenum GetPixelType() const;
 };

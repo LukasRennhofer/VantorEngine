@@ -10,7 +10,7 @@
 #include <Graphics/Camera/VGFX_Camera.hpp>
 #include <Graphics/Camera/VGFX_Frustum.hpp>
 
-namespace Vantor::Graphics
+namespace VE::Internal::Graphics
 {
     // ------------------------------------------------------------------------
     void VCameraFrustum::Update(ACamera *camera)
@@ -21,10 +21,10 @@ namespace Vantor::Graphics
         float farHeight  = tan * camera->Far;
         float farWidth   = farHeight * camera->Aspect;
 
-        Vantor::Math::VVector3 nearCenter = camera->Position + camera->Forward * camera->Near;
-        Vantor::Math::VVector3 farCenter  = camera->Position + camera->Forward * camera->Far;
+        VE::Internal::Math::VVector3 nearCenter = camera->Position + camera->Forward * camera->Near;
+        VE::Internal::Math::VVector3 farCenter  = camera->Position + camera->Forward * camera->Far;
 
-        Vantor::Math::VVector3 v;
+        VE::Internal::Math::VVector3 v;
         // left plane
         v = (nearCenter - camera->Right * nearWidth * 0.5f) - camera->Position;
         VCamPlanes.Left.SetNormalD((v.Normalized()).Cross(camera->Up), nearCenter - camera->Right * nearWidth * 0.5f);
@@ -43,7 +43,7 @@ namespace Vantor::Graphics
         VCamPlanes.Far.SetNormalD(camera->Forward * -1, farCenter);
     }
     // ------------------------------------------------------------------------
-    bool VCameraFrustum::Intersect(Vantor::Math::VVector3 point)
+    bool VCameraFrustum::Intersect(VE::Internal::Math::VVector3 point)
     {
         for (int i = 0; i < 6; ++i)
         {
@@ -55,7 +55,7 @@ namespace Vantor::Graphics
         return true;
     }
     // ------------------------------------------------------------------------
-    bool VCameraFrustum::Intersect(Vantor::Math::VVector3 point, float radius)
+    bool VCameraFrustum::Intersect(VE::Internal::Math::VVector3 point, float radius)
     {
         for (int i = 0; i < 6; ++i)
         {
@@ -67,11 +67,11 @@ namespace Vantor::Graphics
         return true;
     }
     // ------------------------------------------------------------------------
-    bool VCameraFrustum::Intersect(Vantor::Math::VVector3 boxMin, Vantor::Math::VVector3 boxMax)
+    bool VCameraFrustum::Intersect(VE::Internal::Math::VVector3 boxMin, VE::Internal::Math::VVector3 boxMax)
     {
         for (int i = 0; i < 6; ++i)
         {
-            Vantor::Math::VVector3 positive = boxMin;
+            VE::Internal::Math::VVector3 positive = boxMin;
             if (Planes[i].Normal.x >= 0)
             {
                 positive.x = boxMax.x;
@@ -92,4 +92,4 @@ namespace Vantor::Graphics
         return true;
     }
 
-} // namespace Vantor::Graphics
+} // namespace VE::Internal::Graphics

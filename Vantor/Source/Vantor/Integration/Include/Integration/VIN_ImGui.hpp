@@ -31,12 +31,12 @@
 
 #include <cstring>
 
-namespace Vantor::Integration::Imgui
+namespace VE::Internal::Integration::Imgui
 {
 #ifdef VANTOR_WM_GLFW
     inline void InitContext(GLFWwindow *window)
     {
-        // TODO: Vantor::Core::Backlog::Log("Integration::ImGui", "Initializing ImGui Context for GLFW", Vantor::Core::Backlog::ELogLevel::INFO);
+        // TODO: VE::Internal::Core::Backlog::Log("Integration::ImGui", "Initializing ImGui Context for GLFW", VE::Internal::Core::Backlog::ELogLevel::INFO);
 
         // Get content scale of primary monitor for DPI scaling
         float main_scale = ImGui_ImplGlfw_GetContentScaleForMonitor(glfwGetPrimaryMonitor());
@@ -213,6 +213,6 @@ namespace Vantor::Integration::Imgui
 #endif
         ImGui::DestroyContext();
     }
-} // namespace Vantor::Integration::Imgui
+} // namespace VE::Internal::Integration::Imgui
 
 #endif // VANTOR_INTEGRATION_IMGUI

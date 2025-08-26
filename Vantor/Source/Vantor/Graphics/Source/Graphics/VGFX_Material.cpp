@@ -9,15 +9,15 @@
 
 #include <Graphics/VGFX_Material.hpp>
 
-namespace Vantor::Graphics
+namespace VE::Internal::Graphics
 {
     VMaterial::VMaterial() {}
 
-    VMaterial::VMaterial(Vantor::RHI::IRHIShader *shader) { m_Shader = shader; }
+    VMaterial::VMaterial(VE::Internal::RHI::IRHIShader *shader) { m_Shader = shader; }
 
-    Vantor::RHI::IRHIShader *VMaterial::GetShader() { return m_Shader; }
+    VE::Internal::RHI::IRHIShader *VMaterial::GetShader() { return m_Shader; }
 
-    void VMaterial::SetShader(Vantor::RHI::IRHIShader *shader) { m_Shader = shader; }
+    void VMaterial::SetShader(VE::Internal::RHI::IRHIShader *shader) { m_Shader = shader; }
 
     VMaterial VMaterial::Copy()
     {
@@ -53,7 +53,7 @@ namespace Vantor::Graphics
         m_Uniforms[name].Float = value;
     }
 
-    void VMaterial::SetTexture(std::string name, Vantor::RHI::IRHITexture *value, unsigned int unit, EUniformType target, ESamplerType type)
+    void VMaterial::SetTexture(std::string name, VE::Internal::RHI::IRHITexture *value, unsigned int unit, EUniformType target, ESamplerType type)
     {
         m_SamplerUniforms[name].Unit    = unit;
         m_SamplerUniforms[name].Texture = value;
@@ -68,7 +68,7 @@ namespace Vantor::Graphics
         }
     }
 
-    // void VMaterial::SetTextureCube(std::string name, Vantor::RenderDevice::VTextureCube *value, unsigned int unit)
+    // void VMaterial::SetTextureCube(std::string name, VE::Internal::RenderDevice::VTextureCube *value, unsigned int unit)
     // {
     //     m_SamplerUniforms[name].Unit        = unit;
     //     m_SamplerUniforms[name].Type        = UniformTypeSAMPLERCUBE;
@@ -81,37 +81,37 @@ namespace Vantor::Graphics
     //     }
     // }
 
-    void VMaterial::SetVector(std::string name, Vantor::Math::VVector2 value)
+    void VMaterial::SetVector(std::string name, VE::Internal::Math::VVector2 value)
     {
         m_Uniforms[name].Type = EUniformType::UniformTypeVEC2;
         m_Uniforms[name].Vec2 = value;
     }
 
-    void VMaterial::SetVector(std::string name, Vantor::Math::VVector3 value)
+    void VMaterial::SetVector(std::string name, VE::Internal::Math::VVector3 value)
     {
         m_Uniforms[name].Type = EUniformType::UniformTypeVEC3;
         m_Uniforms[name].Vec3 = value;
     }
 
-    void VMaterial::SetVector(std::string name, Vantor::Math::VVector4 value)
+    void VMaterial::SetVector(std::string name, VE::Internal::Math::VVector4 value)
     {
         m_Uniforms[name].Type = EUniformType::UniformTypeVEC4;
         m_Uniforms[name].Vec4 = value;
     }
 
-    void VMaterial::SetMatrix(std::string name, Vantor::Math::VMat2 value)
+    void VMaterial::SetMatrix(std::string name, VE::Internal::Math::VMat2 value)
     {
         m_Uniforms[name].Type = EUniformType::UniformTypeMAT2;
         m_Uniforms[name].Mat2 = value;
     }
 
-    void VMaterial::SetMatrix(std::string name, Vantor::Math::VMat3 value)
+    void VMaterial::SetMatrix(std::string name, VE::Internal::Math::VMat3 value)
     {
         m_Uniforms[name].Type = EUniformType::UniformTypeMAT3;
         m_Uniforms[name].Mat3 = value;
     }
 
-    void VMaterial::SetMatrix(std::string name, Vantor::Math::VMat4 value)
+    void VMaterial::SetMatrix(std::string name, VE::Internal::Math::VMat4 value)
     {
         m_Uniforms[name].Type = EUniformType::UniformTypeMAT4;
         m_Uniforms[name].Mat4 = value;
@@ -120,4 +120,4 @@ namespace Vantor::Graphics
     std::map<std::string, VUniformValue> *VMaterial::GetUniforms() { return &m_Uniforms; }
 
     std::map<std::string, VUniformValueSampler> *VMaterial::GetSamplerUniforms() { return &m_SamplerUniforms; }
-} // namespace Vantor::Graphics
+} // namespace VE::Internal::Graphics

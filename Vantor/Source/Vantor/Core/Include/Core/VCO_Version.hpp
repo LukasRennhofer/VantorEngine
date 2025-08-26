@@ -11,15 +11,14 @@
 
 #include <string>
 
-namespace Vantor::Core::Version
+namespace VE::Internal::Core::Version
 {
-
-    // return: const int major
+    // return: int major
     int GetMajor();
-    // return: const int minor
+    // return: int minor
     int GetMinor();
-    // return: const int revision
+    // return: int revision
     int GetRevision();
-
+    // Return the Version in the format "<major>.<minor>.<revision>"
     std::string GetVersionString();
-} // namespace Vantor::Core::Version
+} // namespace VE::Internal::Core::Version

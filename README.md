@@ -14,7 +14,7 @@
     <img src="Assets/Github/Branding/VantorStudiosLogoWhite.png" alt="Vantor Logo" width="200" height="200">
   </a>
 
-<h3 align="center">Vantor Engine</h3>
+<h3 align="center">Vantor Engine™</h3>
   <p align="center">
     Low-Level Experimental In-House Game Engine for VantorStudios
     <br />
@@ -30,7 +30,7 @@
     &middot;
     <a href="https://github.com/LukasRennhofer/Vantor/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
     &middot;
-    <a href="#vantorstudios">VantorStudios</a>
+    <a href="#vantorstudios">Vantor Studios™</a>
   </p>
 </div>
 
@@ -41,7 +41,7 @@
     <li>
       <a href="#about-the-project">About The Project</a>
       <ul>
-        <li><a href="#vantorstudios">VantorStudios</a></li>
+        <li><a href="#vantorstudios">Vantor Studios™</a></li>
         <li><a href="#built-with">Built With</a></li>
         <li><a href="#experimental-status">Experimental Status</a></li>
       </ul>
@@ -70,7 +70,7 @@
 <img src="https://raw.githubusercontent.com/LukasRennhofer/Vantor/refs/heads/main/Assets/Github/Screenshots/gif1.gif" alt="GIF Show Background" style="">
 </p>-->
 
-**Vantor Engine** is a low-level, experimental game engine developed in-house by **VantorStudios** for creating high-performance games. Designed from the ground up with a focus on **minimal abstraction** and **maximum control**, Vantor provides game developers with direct access to rendering pipelines, memory management, and system resources.
+**Vantor Engine™** is a low-level, experimental game engine developed in-house by **Vantor Studios™** for creating high-performance games. Designed from the ground up with a focus on **minimal abstraction** and **maximum control**, Vantor provides game developers with direct access to rendering pipelines, memory management, and system resources.
 
 The engine prioritizes **performance**, **modularity**, and **flexibility** over ease of use, making it ideal for developers who need fine-grained control over every aspect of their game's execution. Built with modern C++20 and OpenGL, Vantor serves as the foundation for VantorStudios' game development projects.
 
@@ -82,7 +82,7 @@ The engine prioritizes **performance**, **modularity**, and **flexibility** over
 
 > *"A delayed game is eventually good, a rushed game is bad forever."* – **Shigeru Miyamoto**
 
-### VantorStudios
+### Vantor Studios™
 
 VantorStudios is an independent, hobby-driven game development studio focused on creating unqiue gaming experiences. The Vantor Engine serves as our proprietary technology stack, powering our internal game development projects and providing the technical foundation for our creative vision.
 
@@ -214,28 +214,66 @@ python3 DevConsole.py --platform Linux --build-lib
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Vantor Engine is designed for experienced developers who need low-level control over game systems. Here are some ways to use the engine:
+Vantor Engine™ is designed for experienced developers who need low-level control over game systems. Here are some ways to use the engine:
 
 ### Basic Integration
 
 ```cpp
 #include <Vantor/Vantor.hpp>
 
-int main() {
-    // Initialize Vantor Engine
-    Vantor::Application app;
-    
-    // Setup rendering context
-    app.Initialize();
-    
-    // Main game loop
-    while (app.IsRunning()) {
-        app.Update();
-        app.Render();
-    }
-    
-    return 0;
+#include <iostream>
+
+// Create RHI device
+auto device = Vantor::RHI::VRDCoordinator::Instance().CreateDevice(Vantor::RHI::EGraphicsAPI::OPENGL);
+
+// Vertex structure with position + color
+struct Vertex {
+    Vantor::Math::VVector3 position;
+    Vantor::Math::VVector3 color;
+};
+
+void ResizeCallback(int w, int h) {
+        device->SetViewport(0, 0, w, h);
 }
+
+int main() {
+
+    // Create the window
+    Vantor::Context::VWindow* window = new Vantor::Context::VWindow(1920, 1080, "Legendary Triangle");
+    
+
+    if (!device->Initialize()) {
+        std::cerr << "Failed to initialize RHI device" << std::endl;
+        return 1;
+    }
+
+    window->setResizeCallback(ResizeCallback);
+
+
+    // Define a colorful triangle
+    Vantor::Core::Container::TVector<Vertex> vertices = {
+        {{-0.5f, -0.5f, 0.0f}, {1.0f, 0.0f, 0.0f}}, // Red
+        {{ 0.5f, -0.5f, 0.0f}, {0.0f, 1.0f, 0.0f}}, // Green
+        {{ 0.0f,  0.5f, 0.0f}, {0.0f, 0.0f, 1.0f}}  // Blue
+    };
+    Vantor::Core::Container::TVector<uint32_t> indices = {0, 1, 2};
+
+    // Vertex layout: position + color
+    Vantor::RHI::VVertexLayout layout;
+    layout.stride = sizeof(Vertex);
+    layout.attributes = {
+        {0, Vantor::RHI::ERHIFormat::R32G32B32_FLOAT, offsetof(Vertex, position)},
+        {1, Vantor::RHI::ERHIFormat::R32G32B32_FLOAT, offsetof(Vertex, color)}
+    };
+
+    auto mesh = device->CreateMesh(
+        vertices.data(),
+        vertices.size() * sizeof(Vertex),
+        indices.data(),
+        indices.size(),
+        layout
+    );
+    // ... See Template Sample
 ```
 
 ### Sample Projects
@@ -287,10 +325,8 @@ python vtrg.py build --help
 
 ### Features:
 - **Multi-platform building** with platform-specific optimizations
-- **Integrated code formatting** with clang-format support
 - **Dependency checking** and validation
 - **Build artifact management** and cleanup
-- **Enhanced logging** with colored output and progress indicators
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -326,41 +362,6 @@ See the [open issues](https://github.com/LukasRennhofer/Vantor/issues) for detai
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- CONTRIBUTING -->
-## Contributing
-
-We welcome contributions to the Vantor Engine! However, please note that this is primarily an **in-house engine for VantorStudios**, so contributions will be evaluated based on alignment with our internal development goals.
-
-### Contribution Guidelines
-
-**Before Contributing:**
-1. Review our [experimental status](#experimental-status) - APIs may change rapidly
-2. Check existing [issues](https://github.com/LukasRennhofer/Vantor/issues) and [pull requests](https://github.com/LukasRennhofer/Vantor/pulls)
-3. Consider reaching out via [issues](https://github.com/LukasRennhofer/Vantor/issues) to discuss major changes
-
-**Contribution Process:**
-1. **Fork** the Project
-2. **Create** your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. **Format** your code (`python vtrg.py format`)
-4. **Test** your changes thoroughly
-5. **Commit** your Changes (`git commit -m 'Add some AmazingFeature'`)
-6. **Push** to the Branch (`git push origin feature/AmazingFeature`)
-7. **Open** a Pull Request
-
-### Important Notes
-- Contributions may be adapted or modified to fit Vantor's internal roadmap
-- Breaking changes may be introduced that affect community contributions
-- Focus is on engine functionality rather than external developer experience
-
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-### Top contributors:
-
-<a href="https://github.com/LukasRennhofer/Vantor/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=LukasRennhofer/Vantor" alt="contrib.rocks image" />
-</a>
-
 <!-- LICENSE -->
 ## License
 
@@ -371,7 +372,7 @@ Distributed under the GNU General Public License, v3. See `LICENSE` for more inf
 <!-- CONTACT -->
 ## Contact
 
-**VantorStudios Development Team**
+**Vantor Studios™**
 
 - Lukas Rennhofer
 - Moritz Rottensteiner
@@ -388,7 +389,7 @@ For technical questions, bug reports, or feature requests, please use the [GitHu
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-**VantorStudios** would like to thank:
+**Vantor Studios™** would like to thank:
 
 * **Open Source Community** - For the foundational libraries and tools that make Vantor possible
 * **Technical Inspirations:**
@@ -414,8 +415,8 @@ For technical questions, bug reports, or feature requests, please use the [GitHu
 
 <div align="center">
 
-**Vantor Engine** - Experimental Low-Level Game Engine  
-*Developed by VantorStudios (Lukas Rennhofer, Moritz Rottensteiner)*
+**Vantor Engine™** - Experimental Low-Level Game Engine  
+*Developed by Vantor Studios™ (Lukas Rennhofer, Moritz Rottensteiner)*
 </div>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>

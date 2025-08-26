@@ -33,8 +33,7 @@ set(VANTOR_SHARED_EXTERNAL ${VANTOR_EXTERNAL_DIR}/Shared)
 # Core Engine Sources
 # ==============================================================================
 
-
-file(GLOB VANTOR_CORE_SOURCES
+file(GLOB_RECURSE VANTOR_CORE_SOURCES
     # Common Impl
     VCommonImpl.cpp
 
@@ -52,9 +51,6 @@ file(GLOB VANTOR_CORE_SOURCES
 
     # Graphics
     ${CMAKE_CURRENT_LIST_DIR}/Graphics/Source/*.cpp
-
-    # Input Device
-    ${CMAKE_CURRENT_LIST_DIR}/InputDevice/Source/*.cpp
 
     # Math
     ${CMAKE_CURRENT_LIST_DIR}/Math/Source/*.cpp
@@ -134,7 +130,12 @@ if(PLATFORM STREQUAL "Windows")
 
     # GLFW Window Management
     if(VANTOR_WM_GLFW)
-        set(CONTEXT_SOURCES Context/Source/Context/Impl/VCT_GLFW3_impl.cpp)
+        set(CONTEXT_SOURCES 
+        Context/Source/Context/Impl/VCT_GLFW3_impl.cpp
+        # InputDevice/Source/InputDevice/Device/Backend/GLFW/VID_GLFWGamepad.cpp
+        # InputDevice/Source/InputDevice/Device/Backend/GLFW/VID_GLFWKeyboard.cpp
+        # InputDevice/Source/InputDevice/Device/Backend/GLFW/VID_GLFWMouse.cpp
+        )
         configure_glfw_integration()
         list(APPEND PLATFORM_LIBRARIES glfw)
 
@@ -168,7 +169,12 @@ elseif(PLATFORM STREQUAL "Linux")
 
     # GLFW Window Management
     if(VANTOR_WM_GLFW)
-        set(CONTEXT_SOURCES Context/Source/Context/Impl/VCT_GLFW3_impl.cpp)
+        set(CONTEXT_SOURCES 
+        Context/Source/Context/Impl/VCT_GLFW3_impl.cpp
+        # InputDevice/Source/InputDevice/Device/Backend/GLFW/VID_GLFWGamepad.cpp
+        # InputDevice/Source/InputDevice/Device/Backend/GLFW/VID_GLFWKeyboard.cpp
+        # InputDevice/Source/InputDevice/Device/Backend/GLFW/VID_GLFWMouse.cpp
+        )
         configure_glfw_integration()
         list(APPEND PLATFORM_LIBRARIES glfw)
 

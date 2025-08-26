@@ -14,7 +14,7 @@
 #include <cstring>
 #include <memory>
 
-namespace Vantor::Core::Container
+namespace VE::Internal::Core::Container
 {
     // Internal Implementation for a TSafeString
     template <typename Alloc = std::allocator<char>> class TSafeString
@@ -149,4 +149,4 @@ namespace Vantor::Core::Container
             Alloc  m_allocator;
     };
 
-} // namespace Vantor::Core
+} // namespace VE::Internal::Core

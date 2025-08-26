@@ -9,14 +9,14 @@
 
 #include <Core/VCO_Version.hpp>
 
-namespace Vantor::Core::Version
+namespace VE::Internal::Core::Version
 {
     // Main Core
     const int major = 0;
     // minor features, major updates
     const int minor = 20;
     // minor bug fixes, alterations, refactors, updates
-    const int revision = 5;
+    const int revision = 9;
     // Version String
     const std::string version_string = std::to_string(major) + "." + std::to_string(minor) + "." + std::to_string(revision);
 
@@ -24,4 +24,4 @@ namespace Vantor::Core::Version
     int         GetMinor() { return minor; }
     int         GetRevision() { return revision; }
     std::string GetVersionString() { return version_string; }
-} // namespace Vantor::Core::Version
+} // namespace VE::Internal::Core::Version

@@ -14,9 +14,9 @@
 
 // Fly Camera from Cell Engine @JoeyDeVries
 
-namespace Vantor::RenderModules
+namespace VE::Internal::RenderModules
 {
-    AFlyCamera::AFlyCamera(Vantor::Math::VVector3 position, Vantor::Math::VVector3 forward, Vantor::Math::VVector3 up) : ACamera(position, forward, up)
+    AFlyCamera::AFlyCamera(VE::Internal::Math::VVector3 position, VE::Internal::Math::VVector3 forward, VE::Internal::Math::VVector3 up) : ACamera(position, forward, up)
     {
         Yaw = -90.0f;
 
@@ -29,12 +29,12 @@ namespace Vantor::RenderModules
     {
         ACamera::Update(dt);
 
-        Position = Vantor::Math::Lerp(Position, m_TargetPosition, Vantor::Math::Clamp01(dt * Damping));
-        Yaw      = Vantor::Math::Lerp(Yaw, m_TargetYaw, Vantor::Math::Clamp01(dt * Damping * 2.0f));
-        Pitch    = Vantor::Math::Lerp(Pitch, m_TargetPitch, Vantor::Math::Clamp01(dt * Damping * 2.0f));
+        Position = VE::Internal::Math::Lerp(Position, m_TargetPosition, VE::Internal::Math::Clamp01(dt * Damping));
+        Yaw      = VE::Internal::Math::Lerp(Yaw, m_TargetYaw, VE::Internal::Math::Clamp01(dt * Damping * 2.0f));
+        Pitch    = VE::Internal::Math::Lerp(Pitch, m_TargetPitch, VE::Internal::Math::Clamp01(dt * Damping * 2.0f));
 
         // calculate new cartesian basis vectors from yaw/pitch pair:
-        Vantor::Math::VVector3 newForward;
+        VE::Internal::Math::VVector3 newForward;
         newForward.x = cos(0.0174533 * Pitch) * cos(0.0174533 * Yaw);
         newForward.y = sin(0.0174533 * Pitch);
         newForward.z = cos(0.0174533 * Pitch) * sin(0.0174533 * Yaw);
@@ -46,20 +46,20 @@ namespace Vantor::RenderModules
         UpdateView();
     }
     // --------------------------------------------------------------------------------------------
-    void AFlyCamera::InputKey(float dt, Vantor::Graphics::ECameraMovement direction)
+    void AFlyCamera::InputKey(float dt, VE::Internal::Graphics::ECameraMovement direction)
     {
         float speed = MovementSpeed * dt;
-        if (direction == Vantor::Graphics::ECameraMovement::CAMERA_FORWARD)
+        if (direction == VE::Internal::Graphics::ECameraMovement::CAMERA_FORWARD)
             m_TargetPosition = m_TargetPosition + Forward * speed;
-        else if (direction == Vantor::Graphics::ECameraMovement::CAMERA_BACK)
+        else if (direction == VE::Internal::Graphics::ECameraMovement::CAMERA_BACK)
             m_TargetPosition = m_TargetPosition - Forward * speed;
-        else if (direction == Vantor::Graphics::ECameraMovement::CAMERA_LEFT)
+        else if (direction == VE::Internal::Graphics::ECameraMovement::CAMERA_LEFT)
             m_TargetPosition = m_TargetPosition - Right * speed;
-        else if (direction == Vantor::Graphics::ECameraMovement::CAMERA_RIGHT)
+        else if (direction == VE::Internal::Graphics::ECameraMovement::CAMERA_RIGHT)
             m_TargetPosition = m_TargetPosition + Right * speed;
-        else if (direction == Vantor::Graphics::ECameraMovement::CAMERA_UP)
+        else if (direction == VE::Internal::Graphics::ECameraMovement::CAMERA_UP)
             m_TargetPosition = m_TargetPosition + m_WorldUp * speed;
-        else if (direction == Vantor::Graphics::ECameraMovement::CAMERA_DOWN)
+        else if (direction == VE::Internal::Graphics::ECameraMovement::CAMERA_DOWN)
             m_TargetPosition = m_TargetPosition - m_WorldUp * speed;
     }
     // --------------------------------------------------------------------------------------------
@@ -83,7 +83,7 @@ namespace Vantor::RenderModules
     // --------------------------------------------------------------------------------------------
     void AFlyCamera::InputScroll(float deltaX, float deltaY)
     {
-        MovementSpeed = Vantor::Math::Clamp(MovementSpeed + deltaY * 1.0f, 1.0f, 25.0f);
-        Damping       = Vantor::Math::Clamp(Damping + deltaX * 0.5f, 1.0f, 25.0f);
+        MovementSpeed = VE::Internal::Math::Clamp(MovementSpeed + deltaY * 1.0f, 1.0f, 25.0f);
+        Damping       = VE::Internal::Math::Clamp(Damping + deltaX * 0.5f, 1.0f, 25.0f);
     }
-} // namespace Vantor::RenderModules
+} // namespace VE::Internal::RenderModules

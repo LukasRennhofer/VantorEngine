@@ -11,11 +11,11 @@
 
 #include <Graphics/Camera/VGFX_Camera.hpp>
 
-namespace Vantor::Graphics
+namespace VE::Internal::Graphics
 {
     ACamera::ACamera() {}
 
-    ACamera::ACamera(Vantor::Math::VVector3 position, Vantor::Math::VVector3 forward, Vantor::Math::VVector3 up) : Position(position), Forward(forward), Up(up)
+    ACamera::ACamera(VE::Internal::Math::VVector3 position, VE::Internal::Math::VVector3 forward, VE::Internal::Math::VVector3 up) : Position(position), Forward(forward), Up(up)
     {
         UpdateView();
     }
@@ -25,7 +25,7 @@ namespace Vantor::Graphics
     void ACamera::SetPerspective(float fov, float aspect, float near, float far)
     {
         Perspective = true;
-        Projection  = Vantor::Math::VMat4::Perspective(fov, aspect, near, far);
+        Projection  = VE::Internal::Math::VMat4::Perspective(fov, aspect, near, far);
         FOV         = fov;
         Aspect      = aspect;
         Near        = near;
@@ -35,18 +35,18 @@ namespace Vantor::Graphics
     void ACamera::SetOrthographic(float left, float right, float top, float bottom, float near, float far)
     {
         Perspective = false;
-        Projection  = Vantor::Math::VMat4::Orthographic(left, right, top, bottom, near, far);
+        Projection  = VE::Internal::Math::VMat4::Orthographic(left, right, top, bottom, near, far);
         Near        = near;
         Far         = far;
     }
 
-    void ACamera::UpdateView() { View = Vantor::Math::VMat4::LookAt(Position, Position + Forward, Up); }
+    void ACamera::UpdateView() { View = VE::Internal::Math::VMat4::LookAt(Position, Position + Forward, Up); }
 
     float ACamera::FrustumHeightAtDistance(float distance)
     {
         if (Perspective)
         {
-            return 2.0f * distance * tanf(Vantor::Math::DegToRad(FOV * 0.5));
+            return 2.0f * distance * tanf(VE::Internal::Math::DegToRad(FOV * 0.5));
         }
         else
         {
@@ -58,7 +58,7 @@ namespace Vantor::Graphics
     {
         if (Perspective)
         {
-            return frustumHeight * 0.5f / tanf(Vantor::Math::DegToRad(FOV * 0.5f));
+            return frustumHeight * 0.5f / tanf(VE::Internal::Math::DegToRad(FOV * 0.5f));
         }
         else
         {
@@ -66,4 +66,4 @@ namespace Vantor::Graphics
         }
     }
 
-}; // namespace Vantor::Graphics
+}; // namespace VE::Internal::Graphics

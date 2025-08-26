@@ -11,7 +11,7 @@
 
 #include <cstdint>
 
-namespace Vantor::RHI
+namespace VE::Internal::RHI
 {
 
 enum class EBufferUsage
@@ -27,6 +27,7 @@ public:
     virtual ~IRHIBuffer() = default;
 
     virtual void Bind() = 0;
+    virtual void Bind(uint32_t slot) = 0;
     virtual void Unbind() = 0;
     virtual void UpdateData(const void* data, uint32_t size, uint32_t offset = 0) = 0;
     virtual void* Map() = 0;
@@ -36,4 +37,4 @@ public:
     virtual uint32_t GetHandle() const = 0;
 };
 
-} // namespace Lab::RHI
+} // namespace VE::Internal::RHI

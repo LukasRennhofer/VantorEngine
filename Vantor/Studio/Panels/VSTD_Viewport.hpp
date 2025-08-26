@@ -1,7 +1,6 @@
 #pragma once
 
 #include "../Interface/VSTD_Panel.hpp"
-#include "../../Source/RenderDevice/Interface/VRD_RenderTarget.hpp"
 
 #include <Shared/imgui/imgui.h>
 #include <Studio/Gizmo/imoguizmo.hpp>
@@ -17,9 +16,7 @@ namespace Vantor::Studio {
             
             virtual ~VSViewportPanel() = default;
 
-            void OnImGuiRender() override {
-                auto texture = m_OutBuffer->GetColorTexture(0)->getID();
-                
+            void OnImGuiRender() override {                
                 // Get the current window position and size for the viewport
                 ImVec2 viewportPanelSize = ImGui::GetContentRegionAvail();
                 ImVec2 viewportMinRegion = ImGui::GetWindowContentRegionMin();

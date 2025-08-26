@@ -9,7 +9,7 @@
 
 #pragma once
 
-namespace Vantor::Core::Types
+namespace VE::Internal::Core::Types
 {
     // An implementation of a Singleton class for Vantor
     template <typename T> class TSingleton
@@ -39,4 +39,4 @@ namespace Vantor::Core::Types
     //     AnotherSingletonClass() = default;
     // };
 
-} // namespace Vantor::Core::Types
+} // namespace VE::Internal::Core::Types

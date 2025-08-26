@@ -1,14 +1,13 @@
 #pragma once
 
 #include "Interface/VSTD_PanelManager.hpp"
-#include "../Source/Core/Types/VCO_ClassTypes.hpp"
-#include "../Source/RenderDevice/Interface/VRD_RenderTarget.hpp"
+#include <Core/Types/VCO_Singleton.hpp>
 #include <string>
 
 namespace Vantor::Studio {
-    class VStudioManager :  public Vantor::Core::Types::VSingleton<VStudioManager>
+    class VStudioManager :  public Vantor::Core::Types::TSingleton<VStudioManager>
     {
-        friend class Vantor::Core::Types::VSingleton<VStudioManager>;
+        friend class Vantor::Core::Types::TSingleton<VStudioManager>;
 
         public:
             ~VStudioManager() override;
@@ -16,7 +15,7 @@ namespace Vantor::Studio {
             // Core functionality
             void Initialize();
             void Shutdown();
-            void RenderInterface(Vantor::RenderDevice::VRenderTarget* target = nullptr);
+            void RenderInterface();
 
         private:
             VStudioManager() = default;

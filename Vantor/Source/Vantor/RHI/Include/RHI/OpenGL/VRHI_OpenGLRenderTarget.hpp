@@ -16,8 +16,9 @@
 
 #include <Shared/glad/glad.h>
 #include <unordered_map>
+#include <vector>
 
-namespace Vantor::RHI
+namespace VE::Internal::RHI
 {
 
 class OpenGLRenderTarget : public IRHIRenderTarget
@@ -63,10 +64,11 @@ private:
     uint32_t m_samples;
     
     std::unordered_map<EAttachmentType, VRenderTargetAttachment> m_attachments;
-    Vantor::Core::Container::TVector<GLenum> m_drawBuffers;
+    std::vector<VRenderTargetAttachment> m_colorAttachments;
+    VE::Internal::Core::Container::TVector<GLenum> m_drawBuffers;
     uint32_t m_colorAttachmentCount;
     
     static uint32_t s_boundFramebuffer;
 };
 
-} // namespace Vantor::RHI
+} // namespace VE::Internal::RHI

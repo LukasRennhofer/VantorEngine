@@ -12,22 +12,22 @@
 #include <Math/Linear/VMA_Vector.hpp>
 #include <Math/Linear/VMA_Matrix.hpp>
 
-namespace Vantor::Graphics
+namespace VE::Internal::Graphics
 {
     class ACamera;
 
     struct VFrustumPlane
     {
-            Vantor::Math::VVector3 Normal;
+            VE::Internal::Math::VVector3 Normal;
             float                  D;
 
-            void SetNormalD(Vantor::Math::VVector3 normal, Vantor::Math::VVector3 point)
+            void SetNormalD(VE::Internal::Math::VVector3 normal, VE::Internal::Math::VVector3 point)
             {
                 Normal = normal.Normalized();
                 D      = -Normal.Dot(point);
             }
 
-            float Distance(Vantor::Math::VVector3 point) { return Normal.Dot(point) + D; }
+            float Distance(VE::Internal::Math::VVector3 point) { return Normal.Dot(point) + D; }
     };
 
     class VCameraFrustum
@@ -49,8 +49,8 @@ namespace Vantor::Graphics
 
             void Update(ACamera *camera);
 
-            bool Intersect(Vantor::Math::VVector3 point);
-            bool Intersect(Vantor::Math::VVector3 point, float radius);
-            bool Intersect(Vantor::Math::VVector3 boxMin, Vantor::Math::VVector3 boxMax);
+            bool Intersect(VE::Internal::Math::VVector3 point);
+            bool Intersect(VE::Internal::Math::VVector3 point, float radius);
+            bool Intersect(VE::Internal::Math::VVector3 boxMin, VE::Internal::Math::VVector3 boxMax);
     };
-} // namespace Vantor::Graphics
+} // namespace VE::Internal::Graphics

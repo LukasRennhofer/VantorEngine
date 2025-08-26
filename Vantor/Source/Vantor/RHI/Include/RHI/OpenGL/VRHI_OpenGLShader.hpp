@@ -14,7 +14,7 @@
 #include <Shared/glad/glad.h>
 #include <string>
 
-namespace Vantor::RHI
+namespace VE::Internal::RHI
 {
 
 class OpenGLShader : public IRHIShader
@@ -32,15 +32,15 @@ public:
     void SetFloat(const std::string& name, float value) override;
 
     void SetVec2(const std::string& name, float x, float y) override;
-    void SetVec2(const std::string& name, const Vantor::Math::VVector2 &value) override;
+    void SetVec2(const std::string& name, const VE::Internal::Math::VVector2 &value) override;
     void SetVec3(const std::string& name, float x, float y, float z) override;
-    void SetVec3(const std::string& name, const Vantor::Math::VVector3 &value) override;
+    void SetVec3(const std::string& name, const VE::Internal::Math::VVector3 &value) override;
     void SetVec4(const std::string& name, float x, float y, float z, float w) override;
-    void SetVec4(const std::string& name, const Vantor::Math::VVector4 &value) override;
+    void SetVec4(const std::string& name, const VE::Internal::Math::VVector4 &value) override;
 
-    void SetMat2(const std::string& name, const Vantor::Math::VMat2 &mat) override;
-    void SetMat3(const std::string& name, const Vantor::Math::VMat3 &mat) override;
-    void SetMat4(const std::string& name, const Vantor::Math::VMat4 &mat) override;
+    void SetMat2(const std::string& name, const VE::Internal::Math::VMat2 &mat) override;
+    void SetMat3(const std::string& name, const VE::Internal::Math::VMat3 &mat) override;
+    void SetMat4(const std::string& name, const VE::Internal::Math::VMat4 &mat) override;
 
 private:
     uint32_t m_program;
@@ -51,4 +51,4 @@ private:
     int GetUniformLocation(const std::string& name);
 };
 
-} // namespace Vantor::RHI
+} // namespace VE::Internal::RHI

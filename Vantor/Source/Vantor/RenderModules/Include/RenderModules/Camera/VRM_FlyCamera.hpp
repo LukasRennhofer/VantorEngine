@@ -15,9 +15,9 @@
 
 // Fly Camera from Cell Engine @JoeyDeVries
 
-namespace Vantor::RenderModules
+namespace VE::Internal::RenderModules
 {
-    class AFlyCamera : public Vantor::Graphics::ACamera
+    class AFlyCamera : public VE::Internal::Graphics::ACamera
     {
         public:
             float Yaw;
@@ -28,20 +28,20 @@ namespace Vantor::RenderModules
             float Damping         = 5.0f;
 
         private:
-            Vantor::Math::VVector3 m_TargetPosition;
-            Vantor::Math::VVector3 m_WorldUp;
+            VE::Internal::Math::VVector3 m_TargetPosition;
+            VE::Internal::Math::VVector3 m_WorldUp;
             float                  m_TargetYaw;
             float                  m_TargetPitch;
 
         public:
-            AFlyCamera(Vantor::Math::VVector3 position,
-                      Vantor::Math::VVector3 forward = Vantor::Math::VVector3(0.0f, 0.0f, -1.0f),
-                      Vantor::Math::VVector3 up      = Vantor::Math::VVector3(0.0f, 1.0f, 0.0f));
+            AFlyCamera(VE::Internal::Math::VVector3 position,
+                      VE::Internal::Math::VVector3 forward = VE::Internal::Math::VVector3(0.0f, 0.0f, -1.0f),
+                      VE::Internal::Math::VVector3 up      = VE::Internal::Math::VVector3(0.0f, 1.0f, 0.0f));
 
             virtual void Update(float dt);
 
-            virtual void InputKey(float dt, Vantor::Graphics::ECameraMovement direction);
+            virtual void InputKey(float dt, VE::Internal::Graphics::ECameraMovement direction);
             virtual void InputMouse(float deltaX, float deltaY);
             virtual void InputScroll(float deltaX, float deltaY);
     };
-} // namespace Vantor::RenderModules
+} // namespace VE::Internal::RenderModules

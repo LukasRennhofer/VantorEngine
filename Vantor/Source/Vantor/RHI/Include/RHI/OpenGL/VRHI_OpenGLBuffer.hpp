@@ -14,7 +14,7 @@
 
 #include <Shared/glad/glad.h>
 
-namespace Vantor::RHI
+namespace VE::Internal::RHI
 {
 
 class OpenGLBuffer : public IRHIBuffer
@@ -26,6 +26,7 @@ public:
 
     // IRHIBuffer implementation
     void Bind() override;
+    void Bind(uint32_t slot) override;
     void Unbind() override;
     void UpdateData(const void* data, uint32_t size, uint32_t offset = 0) override;
     void* Map() override;

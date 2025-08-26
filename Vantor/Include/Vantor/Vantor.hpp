@@ -47,6 +47,7 @@
 #include "../../Source/Vantor/RHI/Include/RHI/Interface/VRHI_Texture.hpp"
 #include "../../Source/Vantor/RHI/Include/RHI/Interface/VRHI_Mesh.hpp"
 #include "../../Source/Vantor/RHI/Include/RHI/Interface/VRHI_RenderTarget.hpp"
+#include "../../Source/Vantor/RHI/Include/RHI/Interface/VRHI_RenderPass.hpp"
 
 // =============================================================================
 // Context and Window Management
@@ -56,9 +57,14 @@
 // =============================================================================
 // Input Device Management
 // =============================================================================
-#include "../../Source/Vantor/InputDevice/Include/InputDevice/VID_Manager.hpp"
-#include "../../Source/Vantor/InputDevice/Include/InputDevice/VID_Factory.hpp"
-#include "../../Source/Vantor/InputDevice/Include/InputDevice/VID_IDevice.hpp"
+// #include "../../Source/Vantor/InputDevice/Include/InputDevice/VID_Factory.hpp"
+// #include "../../Source/Vantor/InputDevice/Include/InputDevice/VID_System.hpp"
+// #include "../../Source/Vantor/InputDevice/Include/InputDevice/VID_MappingContext.hpp"
+// #include "../../Source/Vantor/InputDevice/Include/InputDevice/VID_Common.hpp"
+// #include "../../Source/Vantor/InputDevice/Include/InputDevice/Device/Interface/VID_Device.hpp"
+// #include "../../Source/Vantor/InputDevice/Include/InputDevice/Device/Interface/VID_Gamepad.hpp"
+// #include "../../Source/Vantor/InputDevice/Include/InputDevice/Device/Interface/VID_Keyboard.hpp"
+// #include "../../Source/Vantor/InputDevice/Include/InputDevice/Device/Interface/VID_Mouse.hpp"
 
 // =============================================================================
 // Actor Runtime System
@@ -108,4 +114,4 @@
 // =============================================================================
 
 // Quick access to commonly used components
-#define VANTOR_VERSION() Vantor::Core::Version::GetVersionString()
+#define VANTOR_VERSION() VE::Internal::Core::Version::GetVersionString()

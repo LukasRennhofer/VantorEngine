@@ -23,8 +23,7 @@
 #include "Panels/VSTD_Viewport.hpp"
 #include "Panels/VSTD_Backlog.hpp"
 
-#include "../Source/Integration/imgui/VIN_Imgui.hpp"
-#include "../Source/Core/VCO_Version.hpp"
+#include <Integration/VIN_ImGui.hpp>
 
 #include <Shared/imgui/imgui.h>
 

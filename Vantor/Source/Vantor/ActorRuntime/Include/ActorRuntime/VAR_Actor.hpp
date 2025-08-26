@@ -20,7 +20,7 @@
 #include <typeinfo>
 #include <unordered_map>
 
-namespace Vantor::ActorRuntime
+namespace VE::Internal::ActorRuntime
 {
 
     using VActorID = uint64_t;
@@ -86,14 +86,14 @@ namespace Vantor::ActorRuntime
 
             std::weak_ptr<AActor> GetParent() const { return parent; }
 
-            const Vantor::Core::Container::TVector<std::shared_ptr<AActor>> &GetChildren() const { return children; }
+            const VE::Internal::Core::Container::TVector<std::shared_ptr<AActor>> &GetChildren() const { return children; }
 
             VActorID id; // The Entity Actor ID
 
         private:
             std::unordered_map<std::type_index, VComponentPtr> components;
 
-            Vantor::Core::Container::TVector<std::shared_ptr<AActor>> children;
+            VE::Internal::Core::Container::TVector<std::shared_ptr<AActor>> children;
             std::weak_ptr<AActor>                parent;
 
             static VActorID nextID;
@@ -102,4 +102,4 @@ namespace Vantor::ActorRuntime
     // Initialize static member
     inline VActorID AActor::nextID = 1;
 
-} // namespace Vantor::Actor
+} // namespace VE::Internal::Actor

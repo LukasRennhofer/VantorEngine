@@ -10,11 +10,11 @@
 #include <Core/BackLog/VCO_Backlog.hpp>
 #include <Core/Container/VCO_Vector.hpp>
 
-namespace Vantor::Core::Backlog
+namespace VE::Internal::Core::Backlog
 {
 
     std::mutex            logMutex;
-    Vantor::Core::Container::TVector<VLogEntry> logEntries;
+    VE::Internal::Core::Container::TVector<VLogEntry> logEntries;
 
     // Convert ELogLevel to String
     std::string ELogLevelToString(ELogLevel level)
@@ -65,4 +65,4 @@ namespace Vantor::Core::Backlog
     //     logFile.close();
     // }
 
-} // namespace Vantor::Backlog
+} // namespace VE::Internal::Backlog

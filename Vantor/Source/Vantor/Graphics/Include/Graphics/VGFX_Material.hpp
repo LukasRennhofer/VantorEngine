@@ -29,7 +29,7 @@
     for creating customized materials specific to an entity or render pass.
 */
 
-namespace Vantor::Graphics
+namespace VE::Internal::Graphics
 {
     // Material Types
     enum class EMaterialType
@@ -43,7 +43,7 @@ namespace Vantor::Graphics
     class VMaterial
     {
         private:
-            Vantor::RHI::IRHIShader              *m_Shader; // Base Shader program
+            VE::Internal::RHI::IRHIShader              *m_Shader; // Base Shader program
             std::map<std::string, VUniformValue>        m_Uniforms;
             std::map<std::string, VUniformValueSampler> m_SamplerUniforms;
 
@@ -53,7 +53,7 @@ namespace Vantor::Graphics
             // Fallbacks
             // These Fallbacks will be applied in the Shader, if VTextureDiffuse
             // or VSpecularDiffuse are not given
-            Vantor::Core::Types::VColor Color     = Vantor::Core::Types::VColor::Gray(); // Standart Color is gray
+            VE::Internal::Core::Types::VColor Color     = VE::Internal::Core::Types::VColor::Gray(); // Standart Color is gray
             float SpecularStrength = 0.5; // Standart is 0.5 (so in the middle)
 
             // TODO: Implement States, to represent the sate of a single Mesh
@@ -64,10 +64,10 @@ namespace Vantor::Graphics
         private:
         public:
             VMaterial();
-            VMaterial(Vantor::RHI::IRHIShader *shader);
+            VMaterial(VE::Internal::RHI::IRHIShader *shader);
 
-            Vantor::RHI::IRHIShader *GetShader();
-            void                     SetShader(Vantor::RHI::IRHIShader *shader);
+            VE::Internal::RHI::IRHIShader *GetShader();
+            void                     SetShader(VE::Internal::RHI::IRHIShader *shader);
 
             VMaterial Copy();
 
@@ -78,18 +78,18 @@ namespace Vantor::Graphics
             void SetInt(std::string name, int value);
             void SetFloat(std::string name, float value);
             void SetTexture(std::string                     name,
-                            Vantor::RHI::IRHITexture *value,
+                            VE::Internal::RHI::IRHITexture *value,
                             unsigned int                    unit   = 0,
                             EUniformType                   target = EUniformType::UniformTypeSAMPLER2D, ESamplerType type = ESamplerType::SamplerDiffuse);
-            // TODO: void SetTextureCube(std::string name, Vantor::RenderDevice::VTextureCube *value, unsigned int unit = 0);
-            void SetVector(std::string name, Vantor::Math::VVector2 value);
-            void SetVector(std::string name, Vantor::Math::VVector3 value);
-            void SetVector(std::string name, Vantor::Math::VVector4 value);
-            void SetMatrix(std::string name, Vantor::Math::VMat2 value);
-            void SetMatrix(std::string name, Vantor::Math::VMat3 value);
-            void SetMatrix(std::string name, Vantor::Math::VMat4 value);
+            // TODO: void SetTextureCube(std::string name, VE::Internal::RenderDevice::VTextureCube *value, unsigned int unit = 0);
+            void SetVector(std::string name, VE::Internal::Math::VVector2 value);
+            void SetVector(std::string name, VE::Internal::Math::VVector3 value);
+            void SetVector(std::string name, VE::Internal::Math::VVector4 value);
+            void SetMatrix(std::string name, VE::Internal::Math::VMat2 value);
+            void SetMatrix(std::string name, VE::Internal::Math::VMat3 value);
+            void SetMatrix(std::string name, VE::Internal::Math::VMat4 value);
 
             std::map<std::string, VUniformValue>        *GetUniforms();
             std::map<std::string, VUniformValueSampler> *GetSamplerUniforms();
     };
-} // namespace Vantor::Graphics
+} // namespace VE::Internal::Graphics

@@ -14,7 +14,7 @@
 
 #include "VMA_Vector.hpp"
 
-namespace Vantor::Math
+namespace VE::Internal::Math
 {
 
     // ----------------- VMat4 -----------------
@@ -367,4 +367,4 @@ namespace Vantor::Math
             constexpr const float *Data() const noexcept { return m.data(); }
             float                 *Data() noexcept { return m.data(); }
     };
-} // namespace Vantor::Math
+} // namespace VE::Internal::Math

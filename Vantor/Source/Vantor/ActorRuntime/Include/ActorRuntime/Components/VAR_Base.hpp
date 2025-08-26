@@ -15,13 +15,13 @@
 
 #include <ActorRuntime/VAR_Component.hpp>
 
-namespace Vantor::ActorRuntime::Components
+namespace VE::Internal::ActorRuntime::Components
 {
     // ===  Mesh Component (Holding renderable data) ===
     class CMeshComponent : public CComponent
     {
         public:
-            using VMeshPtr = std::shared_ptr<Vantor::RHI::IRHIMesh>;
+            using VMeshPtr = std::shared_ptr<VE::Internal::RHI::IRHIMesh>;
 
             explicit CMeshComponent(AActor *owner) : CComponent(owner) {}
 
@@ -52,37 +52,37 @@ namespace Vantor::ActorRuntime::Components
         public:
             explicit CTransformComponent(AActor *owner)
                 : CComponent(owner),
-                  m_position(Vantor::Math::VVector3(1.0f, 1.0f, 1.0f)),
-                  m_rotation(Vantor::Math::VQuaternion::Identity()),
-                  m_scale(Vantor::Math::VVector3(1.0f, 1.0f, 1.0f))
+                  m_position(VE::Internal::Math::VVector3(1.0f, 1.0f, 1.0f)),
+                  m_rotation(VE::Internal::Math::VQuaternion::Identity()),
+                  m_scale(VE::Internal::Math::VVector3(1.0f, 1.0f, 1.0f))
             {
             }
 
             // === Setters ===
-            void SetPosition(const Vantor::Math::VVector3 &position) { m_position = position; }
-            void SetRotation(const Vantor::Math::VQuaternion &rotation) { m_rotation = rotation; }
-            void SetScale(const Vantor::Math::VVector3 &scale) { m_scale = scale; }
+            void SetPosition(const VE::Internal::Math::VVector3 &position) { m_position = position; }
+            void SetRotation(const VE::Internal::Math::VQuaternion &rotation) { m_rotation = rotation; }
+            void SetScale(const VE::Internal::Math::VVector3 &scale) { m_scale = scale; }
 
             // === Getters ===
-            const Vantor::Math::VVector3    &GetPosition() const { return m_position; }
-            const Vantor::Math::VQuaternion &GetRotation() const { return m_rotation; }
-            const Vantor::Math::VVector3    &GetScale() const { return m_scale; }
+            const VE::Internal::Math::VVector3    &GetPosition() const { return m_position; }
+            const VE::Internal::Math::VQuaternion &GetRotation() const { return m_rotation; }
+            const VE::Internal::Math::VVector3    &GetScale() const { return m_scale; }
 
             // === Transform Matrix ===
-            Vantor::Math::VMat4 GetTransform() const
+            VE::Internal::Math::VMat4 GetTransform() const
             {
                 // 1. Scale the object in local space
                 // 2. Rotate the object around its local center  
                 // 3. Then translate to world position
                 
-                Vantor::Math::VMat4 S = Vantor::Math::VMat4::Scale(m_scale);
-                Vantor::Math::VMat4 R = m_rotation.ToMat4();
+                VE::Internal::Math::VMat4 S = VE::Internal::Math::VMat4::Scale(m_scale);
+                VE::Internal::Math::VMat4 R = m_rotation.ToMat4();
                 
                 // First apply scale then rotation in local space
-                Vantor::Math::VMat4 RS = R * S;
+                VE::Internal::Math::VMat4 RS = R * S;
                 
                 // Then manually set the translation component without affecting the rotation
-                Vantor::Math::VMat4 result = RS;
+                VE::Internal::Math::VMat4 result = RS;
                 result.m[12] = m_position.x;  // Set translation X
                 result.m[13] = m_position.y;  // Set translation Y
                 result.m[14] = m_position.z;  // Set translation Z
@@ -91,12 +91,12 @@ namespace Vantor::ActorRuntime::Components
             }
 
         private:
-            Vantor::Math::VVector3    m_position;
-            Vantor::Math::VQuaternion m_rotation;
-            Vantor::Math::VVector3    m_scale;
+            VE::Internal::Math::VVector3    m_position;
+            VE::Internal::Math::VQuaternion m_rotation;
+            VE::Internal::Math::VVector3    m_scale;
             
             // We set the center of the mesh to a cube center for now
-            Vantor::Math::VVector3    m_pivot =  {0.0f, 0.0f, 0.0f};
+            VE::Internal::Math::VVector3    m_pivot =  {0.0f, 0.0f, 0.0f};
     };
 
     // === Material Component ===
@@ -105,15 +105,15 @@ namespace Vantor::ActorRuntime::Components
         public:
             explicit CMaterialComponent(AActor *owner) : CComponent(owner) {}
 
-            void                         SetMaterial(Vantor::Graphics::VMaterial *material) { m_Material = material; }
-            Vantor::Graphics::VMaterial *GetMaterial() { return m_Material; }
+            void                         SetMaterial(VE::Internal::Graphics::VMaterial *material) { m_Material = material; }
+            VE::Internal::Graphics::VMaterial *GetMaterial() { return m_Material; }
 
         private:
-            Vantor::Graphics::VMaterial *m_Material = nullptr;
+            VE::Internal::Graphics::VMaterial *m_Material = nullptr;
     };
 
     using CTagComponentPtr       = std::shared_ptr<CTagComponent>;
     using CMaterialComponentPtr  = std::shared_ptr<CMaterialComponent>;
     using CTransformComponentPtr = std::shared_ptr<CTransformComponent>;
     using CMeshComponentPtr      = std::shared_ptr<CMeshComponent>;
-} // namespace Vantor::ActorRuntime
+} // namespace VE::Internal::ActorRuntime

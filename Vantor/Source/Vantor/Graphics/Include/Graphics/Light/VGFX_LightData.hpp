@@ -14,56 +14,56 @@
 #include <Core/Types/VCO_Color.hpp>
 #include <Math/Linear/VMA_Vector.hpp>
 
-namespace Vantor::Graphics
+namespace VE::Internal::Graphics
 {
 
     struct VPointLightData
     {
-            Vantor::Math::VVector3 position;
+            VE::Internal::Math::VVector3 position;
 
             float constant;
 
-            Vantor::Math::VVector3 ambient;
+            VE::Internal::Math::VVector3 ambient;
 
             float linear;
 
-            Vantor::Math::VVector3 diffuse;
+            VE::Internal::Math::VVector3 diffuse;
 
             float quadratic;
 
-            Vantor::Math::VVector3 specular;
+            VE::Internal::Math::VVector3 specular;
 
             float radius; // the light radius
     };
 
     struct VDirectionalLightData {
-        Vantor::Math::VVector3 direction; // Light direction
+        VE::Internal::Math::VVector3 direction; // Light direction
         float padding1 = 0.0f;            // Padding for std140
 
-        Vantor::Math::VVector3 ambient;   // Ambient color
+        VE::Internal::Math::VVector3 ambient;   // Ambient color
         float padding2 = 0.0f;
 
-        Vantor::Math::VVector3 diffuse;   // Diffuse color
+        VE::Internal::Math::VVector3 diffuse;   // Diffuse color
         float padding3 = 0.0f;
 
-        Vantor::Math::VVector3 specular;  // Specular color
+        VE::Internal::Math::VVector3 specular;  // Specular color
         float padding4 = 0.0f;
     };
 
     struct VSpotLightData {
-        Vantor::Math::VVector3 position;  // Light position
+        VE::Internal::Math::VVector3 position;  // Light position
         float constant = 1.0f;            // Attenuation
 
-        Vantor::Math::VVector3 direction; // Direction (normalized)
+        VE::Internal::Math::VVector3 direction; // Direction (normalized)
         float linear = 0.0f;              // Attenuation
 
-        Vantor::Math::VVector3 ambient;   // Ambient color
+        VE::Internal::Math::VVector3 ambient;   // Ambient color
         float quadratic = 0.0f;           // Attenuation
 
-        Vantor::Math::VVector3 diffuse;   // Diffuse color
+        VE::Internal::Math::VVector3 diffuse;   // Diffuse color
         float cutOff = 0.0f;              // Cosine of inner angle
 
-        Vantor::Math::VVector3 specular;  // Specular color
+        VE::Internal::Math::VVector3 specular;  // Specular color
         float outerCutOff = 0.0f;         // Cosine of outer angle
 
         float radius = 0.0f;              // Light range
@@ -71,8 +71,8 @@ namespace Vantor::Graphics
     };
 
     struct VAmbientLightData {
-        Vantor::Math::VVector3 ambientColor;
+        VE::Internal::Math::VVector3 ambientColor;
         float padding = 0.0f; // Align to 16 bytes
     };
 
-} // namespace Vantor::Graphics
+} // namespace VE::Internal::Graphics

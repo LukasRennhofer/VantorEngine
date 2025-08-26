@@ -8,14 +8,15 @@
  ****************************************************************************/
 
 #include <RHI/OpenGL/VRHI_OpenGLMesh.hpp>
+#include <RHI/OpenGL/VRHI_OpenGLBuffer.hpp>
 
 #include <iostream>
 
-namespace Vantor::RHI
+namespace VE::Internal::RHI
 {
 
 OpenGLMesh::OpenGLMesh(const void* vertexData, uint32_t vertexSize, const void* indexData, uint32_t indexCount, const VVertexLayout& layout)
-    : m_vao(0), m_vbo(0), m_ebo(0), m_vertexCount(0), m_indexCount(indexCount), m_hasIndices(indexData != nullptr)
+    : m_vao(0), m_vertexCount(0), m_indexCount(indexCount), m_hasIndices(indexData != nullptr)
 {
     // Calculate vertex count
     m_vertexCount = vertexSize / layout.stride;
@@ -24,17 +25,27 @@ OpenGLMesh::OpenGLMesh(const void* vertexData, uint32_t vertexSize, const void* 
     glGenVertexArrays(1, &m_vao);
     glBindVertexArray(m_vao);
 
-    // Create and fill vertex buffer
-    glGenBuffers(1, &m_vbo);
-    glBindBuffer(GL_ARRAY_BUFFER, m_vbo);
-    glBufferData(GL_ARRAY_BUFFER, vertexSize, vertexData, GL_STATIC_DRAW);
+    m_VertexBuffer = std::make_shared<OpenGLBuffer>(
+        ERHIBufferType::Vertex, 
+        vertexSize, 
+        EBufferUsage::Static, 
+        vertexData
+    );
+
+    m_VertexBuffer->Bind();
 
     // Create and fill index buffer if indices are provided
     if (m_hasIndices)
     {
-        glGenBuffers(1, &m_ebo);
-        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_ebo);
-        glBufferData(GL_ELEMENT_ARRAY_BUFFER, indexCount * sizeof(uint32_t), indexData, GL_STATIC_DRAW);
+        m_IndexBuffer = std::make_shared<OpenGLBuffer>(
+            ERHIBufferType::Index,
+            indexCount * sizeof(uint32_t),
+            EBufferUsage::Static,
+            indexData
+
+        );
+
+        m_IndexBuffer->Bind();
     }
 
     // Setup vertex attributes
@@ -42,14 +53,15 @@ OpenGLMesh::OpenGLMesh(const void* vertexData, uint32_t vertexSize, const void* 
 
     // Unbind VAO
     glBindVertexArray(0);
+    // Unbind Vertex / Index Buffer
+    // IDK if I should bind it with slots in the future
+    // but I think it's good for now
+    m_VertexBuffer->Unbind();
+    if (m_hasIndices) m_IndexBuffer->Unbind();
 }
 
 OpenGLMesh::~OpenGLMesh()
 {
-    if (m_ebo != 0)
-        glDeleteBuffers(1, &m_ebo);
-    if (m_vbo != 0)
-        glDeleteBuffers(1, &m_vbo);
     if (m_vao != 0)
         glDeleteVertexArrays(1, &m_vao);
 }

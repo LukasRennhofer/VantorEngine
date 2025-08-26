@@ -11,19 +11,11 @@
 
 #include <cstdint>
 
-namespace Vantor::RHI
+namespace VE::Internal::RHI
 {
 
-enum class ETextureFormat
-{
-    RGB8,
-    RGBA8,
-    RGB16F,
-    RGBA16F,
-    RGB32F,
-    RGBA32F,
-    Depth24Stencil8
-};
+enum class ETextureType; // Forward Decl.
+enum class ERHIFormat; // Forward Decl.
 
 enum class ETextureFilter
 {
@@ -45,15 +37,21 @@ public:
 
     virtual void Bind(uint32_t slot = 0) = 0;
     virtual void Unbind() = 0;
-    virtual void UpdateData(const void* data, uint32_t width, uint32_t height) = 0;
-    
+
+    // For 2D/3D/1D/Cube
+    virtual void UpdateData(const void* data, uint32_t width, uint32_t height = 1, uint32_t depth = 1, uint32_t face = 0) = 0;
+
     virtual uint32_t GetWidth() const = 0;
     virtual uint32_t GetHeight() const = 0;
+    virtual uint32_t GetDepth() const { return 1; } // Default slices for 2D/1D Textures
     virtual uint32_t GetHandle() const = 0;
-    virtual ETextureFormat GetFormat() const = 0;
+    virtual ERHIFormat GetFormat() const = 0;
+    virtual ETextureType GetType() const = 0;
+
+    virtual void Resize(uint32_t newWidth, uint32_t newHeight, uint32_t newDepth = 1) = 0;
 
     virtual void SetFilter(ETextureFilter minFilter, ETextureFilter magFilter) = 0;
-    virtual void SetWrap(ETextureWrap wrapS, ETextureWrap wrapT) = 0;
+    virtual void SetWrap(ETextureWrap wrapS, ETextureWrap wrapT, ETextureWrap wrapR = ETextureWrap::Repeat) = 0;
 };
 
-} // namespace Vantor::RHI
+} // namespace VE::Internal::RHI

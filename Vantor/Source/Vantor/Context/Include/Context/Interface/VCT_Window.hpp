@@ -9,7 +9,10 @@
 
 #pragma once
 
-namespace Vantor::Context
+// TODO: Redo the Context and Window becomes VContext
+// Add features like Fullscreen and Vsync
+
+namespace VE::Internal::Context
 {
     class VWindow
     {
@@ -40,4 +43,4 @@ namespace Vantor::Context
             int m_width;
             int m_height;
     };
-} // namespace Vantor::Context
+} // namespace VE::Internal::Context

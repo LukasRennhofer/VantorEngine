@@ -10,9 +10,12 @@
 #pragma once
 
 #include <cstdint>
+#include <memory>
 
-namespace Vantor::RHI
+namespace VE::Internal::RHI
 {
+
+class IRHIBuffer; // forward declaration, because why not
 
 enum class EPrimitiveType
 {
@@ -35,6 +38,11 @@ public:
 
     virtual uint32_t GetVertexCount() const = 0;
     virtual uint32_t GetIndexCount() const = 0;
+
+    // IDK why I am exposing the buffers so early 
+    // but i guess Terry A. Davis would want it
+    virtual std::shared_ptr<IRHIBuffer> GetVertexBuffer() const = 0;
+    virtual std::shared_ptr<IRHIBuffer> GetIndexBuffer() const = 0;
 };
 
-} // namespace Vantor::RHI
+} // namespace VE::Internal::RHI

@@ -16,7 +16,7 @@
 
 #include <string>
 
-namespace Vantor::Graphics
+namespace VE::Internal::Graphics
 {
 
     enum class EUniformType
@@ -65,12 +65,12 @@ namespace Vantor::Graphics
                     int   Int;
                     float Float;
 
-                    Vantor::Math::VVector2 Vec2;
-                    Vantor::Math::VVector3 Vec3;
-                    Vantor::Math::VVector4 Vec4;
-                    Vantor::Math::VMat2    Mat2;
-                    Vantor::Math::VMat3    Mat3;
-                    Vantor::Math::VMat4    Mat4;
+                    VE::Internal::Math::VVector2 Vec2;
+                    VE::Internal::Math::VVector3 Vec3;
+                    VE::Internal::Math::VVector4 Vec4;
+                    VE::Internal::Math::VMat2    Mat2;
+                    VE::Internal::Math::VMat3    Mat3;
+                    VE::Internal::Math::VMat4    Mat4;
             };
 
             VUniformValue() {}
@@ -83,10 +83,10 @@ namespace Vantor::Graphics
             unsigned int  Unit;
             union
             {
-                    Vantor::RHI::IRHITexture     *Texture;
+                    VE::Internal::RHI::IRHITexture     *Texture;
                     // TODO: TextureCube
             };
 
             VUniformValueSampler() {}
     };
-} // namespace Vantor::Graphics
+} // namespace VE::Internal::Graphics

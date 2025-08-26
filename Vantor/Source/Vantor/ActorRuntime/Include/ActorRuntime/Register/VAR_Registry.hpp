@@ -18,7 +18,7 @@
 #include <Core/Container/VCO_Vector.hpp>
 #include <ActorRuntime/VAR_Actor.hpp>
 
-namespace Vantor::ActorRuntime
+namespace VE::Internal::ActorRuntime
 {
 
     class VARegistry
@@ -61,9 +61,9 @@ namespace Vantor::ActorRuntime
 
             static const std::unordered_map<VActorID, std::shared_ptr<AActor>> &GetAllActors() { return m_Actors; }
 
-            static Vantor::Core::Container::TVector<std::shared_ptr<AActor>> GetAllActorsList()
+            static VE::Internal::Core::Container::TVector<std::shared_ptr<AActor>> GetAllActorsList()
             {
-                Vantor::Core::Container::TVector<std::shared_ptr<AActor>> list;
+                VE::Internal::Core::Container::TVector<std::shared_ptr<AActor>> list;
                 list.reserve(m_Actors.size());
                 for (const auto &[id, entity] : m_Actors)
                 {
@@ -88,4 +88,4 @@ namespace Vantor::ActorRuntime
             inline static std::queue<VActorID>                                   m_FreeIDs; // pool of reusable IDs
     };
 
-} // namespace Vantor::ActorRuntime
+} // namespace VE::Internal::ActorRuntime

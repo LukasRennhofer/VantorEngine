@@ -12,7 +12,7 @@
 #include <iostream>
 #include <unordered_map>
 
-namespace Vantor::RHI
+namespace VE::Internal::RHI
 {
 
 OpenGLShader::OpenGLShader(const std::string& vertexSource, const std::string& fragmentSource)
@@ -83,7 +83,7 @@ void OpenGLShader::SetVec2(const std::string& name, float x, float y)
     glUniform2f(GetUniformLocation(name), x, y);
 }
 
-void OpenGLShader::SetVec2(const std::string& name, const Vantor::Math::VVector2 &value)
+void OpenGLShader::SetVec2(const std::string& name, const VE::Internal::Math::VVector2 &value)
 {
     glUniform2fv(GetUniformLocation(name), 1,  value.Data());
 }
@@ -93,7 +93,7 @@ void OpenGLShader::SetVec3(const std::string& name, float x, float y, float z)
     glUniform3f(GetUniformLocation(name), x, y, z);
 }
 
-void OpenGLShader::SetVec3(const std::string& name, const Vantor::Math::VVector3 &value)
+void OpenGLShader::SetVec3(const std::string& name, const VE::Internal::Math::VVector3 &value)
 {
     glUniform3fv(GetUniformLocation(name), 1, value.Data());
 }
@@ -103,22 +103,22 @@ void OpenGLShader::SetVec4(const std::string& name, float x, float y, float z, f
     glUniform4f(GetUniformLocation(name), x, y, z, w);
 }
 
-void OpenGLShader::SetVec4(const std::string& name, const Vantor::Math::VVector4 &value)
+void OpenGLShader::SetVec4(const std::string& name, const VE::Internal::Math::VVector4 &value)
 {
     glUniform4fv(GetUniformLocation(name), 1, value.Data());
 }
 
-void OpenGLShader::SetMat2(const std::string& name, const Vantor::Math::VMat2 &mat)
+void OpenGLShader::SetMat2(const std::string& name, const VE::Internal::Math::VMat2 &mat)
 {
     glUniformMatrix2fv(GetUniformLocation(name), 1, GL_FALSE, mat.Data());
 }
 
-void OpenGLShader::SetMat3(const std::string& name, const Vantor::Math::VMat3 &mat)
+void OpenGLShader::SetMat3(const std::string& name, const VE::Internal::Math::VMat3 &mat)
 {
     glUniformMatrix3fv(GetUniformLocation(name), 1, GL_FALSE, mat.Data());
 }
 
-void OpenGLShader::SetMat4(const std::string& name, const Vantor::Math::VMat4 &mat)
+void OpenGLShader::SetMat4(const std::string& name, const VE::Internal::Math::VMat4 &mat)
 {
     glUniformMatrix4fv(GetUniformLocation(name), 1, GL_FALSE, mat.Data());
 }
@@ -193,4 +193,4 @@ int OpenGLShader::GetUniformLocation(const std::string& name)
     return location;
 }
 
-} // namespace Vantor::RHI
+} // namespace VE::Internal::RHI

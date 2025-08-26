@@ -13,7 +13,7 @@
 #include <cassert>
 #include <cmath>
 
-namespace Vantor::Math
+namespace VE::Internal::Math
 {
 
     // ----------------- VVector2 -----------------
@@ -267,4 +267,4 @@ namespace Vantor::Math
 
     inline VVector4 Lerp(const VVector4 &a, const VVector4 &b, float t) noexcept { return a + (b - a) * Clamp01(t); }
 
-} // namespace Vantor::Math
+} // namespace VE::Internal::Math

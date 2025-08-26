@@ -16,7 +16,7 @@
 
 #include <Graphics/Camera/VGFX_Frustum.hpp>
 
-namespace Vantor::Graphics
+namespace VE::Internal::Graphics
 {
     // TODO: Refactor
     enum class ECameraMovement
@@ -30,16 +30,16 @@ namespace Vantor::Graphics
     };
 
     // Camera is a standalone registered Entity
-    class ACamera : public Vantor::ActorRuntime::AActor
+    class ACamera : public VE::Internal::ActorRuntime::AActor
     {
         public:
-            Vantor::Math::VMat4 Projection;
-            Vantor::Math::VMat4 View;
+            VE::Internal::Math::VMat4 Projection;
+            VE::Internal::Math::VMat4 View;
 
-            Vantor::Math::VVector3 Position = Vantor::Math::VVector3(0.0f, 0.0f, 0.0f);
-            Vantor::Math::VVector3 Forward  = Vantor::Math::VVector3(0.0f, 0.0f, -1.0f);
-            Vantor::Math::VVector3 Up       = Vantor::Math::VVector3(0.0f, 1.0f, 0.0f);
-            Vantor::Math::VVector3 Right    = Vantor::Math::VVector3(1.0f, 0.0f, 0.0f);
+            VE::Internal::Math::VVector3 Position = VE::Internal::Math::VVector3(0.0f, 0.0f, 0.0f);
+            VE::Internal::Math::VVector3 Forward  = VE::Internal::Math::VVector3(0.0f, 0.0f, -1.0f);
+            VE::Internal::Math::VVector3 Up       = VE::Internal::Math::VVector3(0.0f, 1.0f, 0.0f);
+            VE::Internal::Math::VVector3 Right    = VE::Internal::Math::VVector3(1.0f, 0.0f, 0.0f);
 
             float FOV;
             float Aspect;
@@ -52,7 +52,7 @@ namespace Vantor::Graphics
         private:
         public:
             ACamera();
-            ACamera(Vantor::Math::VVector3 position, Vantor::Math::VVector3 forward, Vantor::Math::VVector3 up);
+            ACamera(VE::Internal::Math::VVector3 position, VE::Internal::Math::VVector3 forward, VE::Internal::Math::VVector3 up);
 
             void Update(float dt);
 
@@ -64,4 +64,4 @@ namespace Vantor::Graphics
             float FrustumHeightAtDistance(float distance);
             float DistanceAtFrustumHeight(float frustumHeight);
     };
-} // namespace Vantor::Graphics
+} // namespace VE::Internal::Graphics

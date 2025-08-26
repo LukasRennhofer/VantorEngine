@@ -16,7 +16,7 @@
 #include "VMA_Vector.hpp"
 #include <cmath>
 
-namespace Vantor::Math
+namespace VE::Internal::Math
 {
     struct VQuaternion
     {
@@ -180,4 +180,4 @@ namespace Vantor::Math
             }
 
     };
-} // namespace Vantor::Math
+} // namespace VE::Internal::Math

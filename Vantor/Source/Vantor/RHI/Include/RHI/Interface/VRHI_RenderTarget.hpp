@@ -12,7 +12,7 @@
 #include <memory>
 #include <cstdint>
 
-namespace Vantor::RHI
+namespace VE::Internal::RHI
 {
 
 // Forward declarations
@@ -67,4 +67,4 @@ public:
     virtual bool IsMultisampled() const = 0;
 };
 
-} // namespace Vantor::RHI
+} // namespace VE::Internal::RHI

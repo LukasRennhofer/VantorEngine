@@ -20,11 +20,11 @@
 #include <memory>
 #include <iostream>
 
-namespace Vantor::RHI {
+namespace VE::Internal::RHI {
 
-class VRDCoordinator : public Vantor::Core::Types::TSingleton<VRDCoordinator>
+class VRDCoordinator : public VE::Internal::Core::Types::TSingleton<VRDCoordinator>
 {
-    friend class Vantor::Core::Types::TSingleton<VRDCoordinator>; // Allow singleton access
+    friend class VE::Internal::Core::Types::TSingleton<VRDCoordinator>; // Allow singleton access
 
 public:
     std::shared_ptr<IRHIDevice> CreateDevice(EGraphicsAPI api)
@@ -49,7 +49,7 @@ private:
     VRDCoordinator() = default;
 };
 
-} // namespace Vantor::RHI
+} // namespace VE::Internal::RHI
 
 
 

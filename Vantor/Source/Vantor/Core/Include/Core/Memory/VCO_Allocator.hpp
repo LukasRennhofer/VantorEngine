@@ -22,7 +22,7 @@
 
 // Implementation of VPageAllocator from @turanszkij
 
-namespace Vantor::Core::Memory
+namespace VE::Internal::Core::Memory
 {
     struct VLinearAllocator
     {
@@ -51,14 +51,14 @@ namespace Vantor::Core::Memory
             constexpr void reset() { offset = 0; }
     };
 
-    template <typename T, size_t block_size = 256> struct BlockAllocator
+    template <typename T, size_t block_size = 256> struct VBlockAllocator
     {
             struct Block
             {
-                    Vantor::Core::Vector<uint8_t> mem;
+                    VE::Internal::Core::Container::TVector<uint8_t> mem;
             };
-            Vantor::Core::Container::TVector<Block> blocks;
-            Vantor::Core::Container::TVector<T *>   free_list;
+            VE::Internal::Core::Container::TVector<Block> blocks;
+            VE::Internal::Core::Container::TVector<T *>   free_list;
 
             template <typename... ARG> inline T *allocate(ARG &&...args)
             {
@@ -99,7 +99,7 @@ namespace Vantor::Core::Memory
             {
                     std::mutex                                                   locker;
                     OffsetAllocator::Allocator                                   allocator;
-                    BlockAllocator<AllocationInternal>                           internal_blocks;
+                    VBlockAllocator<AllocationInternal>                           internal_blocks;
                     bool                                                         deferred_release_enabled = false;
                     uint64_t                                                     deferred_release_frame   = 0;
                     std::deque<std::pair<OffsetAllocator::Allocation, uint64_t>> deferred_release_queue;
@@ -110,7 +110,7 @@ namespace Vantor::Core::Memory
 
             constexpr uint32_t page_count_from_bytes(uint64_t sizeInBytes) const
             {
-                return uint32_t(Vantor::Math::align((uint64_t) sizeInBytes, (uint64_t) page_size) / (uint64_t) page_size);
+                return uint32_t(VE::Internal::Math::align((uint64_t) sizeInBytes, (uint64_t) page_size) / (uint64_t) page_size);
             }
 
             // Initializes the allocator, only after which it can be used
@@ -235,4 +235,4 @@ namespace Vantor::Core::Memory
 
             inline bool is_empty() { return allocator->allocator.storageReport().totalFreeSpace == page_count; }
     };
-} // namespace Vantor::Core::Memory
+} // namespace VE::Internal::Core::Memory

@@ -11,7 +11,7 @@
 #include <memory>
 #include <string>
 
-namespace Vantor::ActorRuntime
+namespace VE::Internal::ActorRuntime
 {
 
     class AActor; // Forward declaration
@@ -29,4 +29,4 @@ namespace Vantor::ActorRuntime
     };
 
     using VComponentPtr = std::shared_ptr<CComponent>;
-} // namespace Vantor::ActorRuntime
+} // namespace VE::Internal::ActorRuntime

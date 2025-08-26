@@ -16,7 +16,7 @@
 
 #include <Core/Container/VCO_Vector.hpp>
 
-namespace Vantor::Core::Backlog
+namespace VE::Internal::Core::Backlog
 {
 
     // Different Log Levels
@@ -41,7 +41,7 @@ namespace Vantor::Core::Backlog
     // void        SaveLogs(const std::string &filename = "Vantor.log");
 
     extern std::mutex logMutex;
-    extern Vantor::Core::Container::TVector<VLogEntry> logEntries;
+    extern VE::Internal::Core::Container::TVector<VLogEntry> logEntries;
 
 
-} // namespace Vantor::Backlog
+} // namespace VE::Internal::Backlog

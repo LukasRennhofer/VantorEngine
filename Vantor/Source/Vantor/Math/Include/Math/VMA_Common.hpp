@@ -11,7 +11,7 @@
 
 #include <cmath>
 
-namespace Vantor::Math
+namespace VE::Internal::Math
 {
     constexpr float VPI  = 3.14159265358979323846f;
     constexpr float VTAU = 6.28318530717958647692f; // TAU = 2 * PI
@@ -24,4 +24,4 @@ namespace Vantor::Math
 
     // Rounds up a given value to the nearest multiple of a specified alignment
     template <typename T> constexpr T align(T value, T alignment) { return ((value + alignment - T(1)) / alignment) * alignment; }
-} // namespace Vantor::Math
+} // namespace VE::Internal::Math
