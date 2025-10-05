@@ -42,7 +42,7 @@ namespace VE::Internal::Core::Backlog
         logEntries.push_back(entry);
 
         // Print to console
-        std::cout << "[" << ELogLevelToString(level) << "::" << source << "] " << msg << std::endl;
+        std::cout << "[" << ELogLevelToString(level) << "] [" << source << "] " << msg << std::endl;
     }
 
     // // Save Logs to File

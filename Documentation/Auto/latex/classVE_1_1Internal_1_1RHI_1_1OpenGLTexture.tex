@@ -1,0 +1,223 @@
+\doxysection{VE\+::Internal\+::RHI\+::Open\+GLTexture Class Reference}
+\hypertarget{classVE_1_1Internal_1_1RHI_1_1OpenGLTexture}{}\label{classVE_1_1Internal_1_1RHI_1_1OpenGLTexture}\index{VE::Internal::RHI::OpenGLTexture@{VE::Internal::RHI::OpenGLTexture}}
+
+
+{\ttfamily \#include $<$VRHI\+\_\+\+Open\+GLTexture.\+hpp$>$}
+
+Inheritance diagram for VE\+::Internal\+::RHI\+::Open\+GLTexture\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classVE_1_1Internal_1_1RHI_1_1OpenGLTexture}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLTexture_ae9d8bb86b252d0de7611fd58720d13da}{Open\+GLTexture}} (uint32\+\_\+t width, uint32\+\_\+t height, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7}{ERHIFormat}} format, const void \texorpdfstring{$\ast$}{*}data=nullptr, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a79a6d19349d7b5399e5fb907a28fb009}{ETexture\+Type}} type=\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a79a6d19349d7b5399e5fb907a28fb009aa6e2bae752d3bf4e34cb392bca789995}{ETexture\+Type\+::\+Texture2D}}, uint32\+\_\+t depth=1)
+\item 
+virtual \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLTexture_a4124755abb03ad5eb5c5c8023bdaa487}{\texorpdfstring{$\sim$}{\string~}\+Open\+GLTexture}} ()
+\item 
+void \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLTexture_a55979d97cffc17c335ef8263de7f19cf}{Bind}} (uint32\+\_\+t slot=0) override
+\item 
+void \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLTexture_ae6c6d2c6cbccaf4751e6d867c303a3ad}{Unbind}} () override
+\item 
+void \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLTexture_a1788facf1a6f9c26a5bba37d7865acac}{Update\+Data}} (const void \texorpdfstring{$\ast$}{*}data, uint32\+\_\+t width, uint32\+\_\+t height=1, uint32\+\_\+t depth=1, uint32\+\_\+t face=0) override
+\item 
+uint32\+\_\+t \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLTexture_aa3e4975e651e04e90478e0fae9be0773}{Get\+Width}} () const override
+\item 
+uint32\+\_\+t \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLTexture_a3cde827620a1a64b147d97959a749cc5}{Get\+Height}} () const override
+\item 
+uint32\+\_\+t \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLTexture_a1c56838ee5fbb3c40fb5af80c4a0cf1c}{Get\+Depth}} () const override
+\item 
+uint32\+\_\+t \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLTexture_aa5dce5c3df58eefb2b48c99294a546f9}{Get\+Handle}} () const override
+\item 
+\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7}{ERHIFormat}} \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLTexture_a616f70e0366a939129d5148f4910bf06}{Get\+Format}} () const override
+\item 
+\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a79a6d19349d7b5399e5fb907a28fb009}{ETexture\+Type}} \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLTexture_aa4796f5b11d6c3ac69df404dc2344dc1}{Get\+Type}} () const override
+\item 
+void \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLTexture_a265e21ff2fa1b6558cf6134d224ab27c}{Resize}} (uint32\+\_\+t new\+Width, uint32\+\_\+t new\+Height, uint32\+\_\+t new\+Depth=1) override
+\item 
+void \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLTexture_a664a30976d448ec9d9f7e05751718fed}{Set\+Filter}} (\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_acbc77117a5daabd65c97f439aa80020f}{ETexture\+Filter}} min\+Filter, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_acbc77117a5daabd65c97f439aa80020f}{ETexture\+Filter}} mag\+Filter) override
+\item 
+void \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLTexture_af22d6300270b8cb1bca58fff13393aad}{Set\+Wrap}} (\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_abc26d04d9c8a19c57ebbcda98f2d5aea}{ETexture\+Wrap}} wrapS, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_abc26d04d9c8a19c57ebbcda98f2d5aea}{ETexture\+Wrap}} wrapT, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_abc26d04d9c8a19c57ebbcda98f2d5aea}{ETexture\+Wrap}} wrapR=\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_abc26d04d9c8a19c57ebbcda98f2d5aeaa7020426cfb0a204051be4b3053d2acc8}{ETexture\+Wrap\+::\+Repeat}}) override
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHITexture}{VE\+::\+Internal\+::\+RHI\+::\+IRHITexture}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHITexture_a8098240c2b877df66d6a93e75e97ca92}{\texorpdfstring{$\sim$}{\string~}\+IRHITexture}} ()=default
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static GLenum \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLTexture_ae816ddb70297171ac6d1de416773432e}{RHIFormat\+To\+Texture\+Format}} (\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7}{ERHIFormat}} format)
+\item 
+static GLenum \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLTexture_a989d2035efb501ff4535a5e564b71936}{Texture\+Filter\+To\+GL}} (\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_acbc77117a5daabd65c97f439aa80020f}{ETexture\+Filter}} filter)
+\item 
+static GLenum \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLTexture_a2cf1cc5dc3c738645ee992c2d5369fc0}{Texture\+Wrap\+To\+GL}} (\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_abc26d04d9c8a19c57ebbcda98f2d5aea}{ETexture\+Wrap}} wrap)
+\end{DoxyCompactItemize}
+
+
+\label{doc-constructors}
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1OpenGLTexture_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1OpenGLTexture_ae9d8bb86b252d0de7611fd58720d13da}\index{VE::Internal::RHI::OpenGLTexture@{VE::Internal::RHI::OpenGLTexture}!OpenGLTexture@{OpenGLTexture}}
+\index{OpenGLTexture@{OpenGLTexture}!VE::Internal::RHI::OpenGLTexture@{VE::Internal::RHI::OpenGLTexture}}
+\doxysubsubsection{\texorpdfstring{OpenGLTexture()}{OpenGLTexture()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RHI_1_1OpenGLTexture_ae9d8bb86b252d0de7611fd58720d13da} 
+VE\+::\+Internal\+::\+RHI\+::\+Open\+GLTexture\+::\+Open\+GLTexture (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{width}{, }\item[{uint32\+\_\+t}]{height}{, }\item[{\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7}{ERHIFormat}}}]{format}{, }\item[{const void \texorpdfstring{$\ast$}{*}}]{data}{ = {\ttfamily nullptr}, }\item[{\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a79a6d19349d7b5399e5fb907a28fb009}{ETexture\+Type}}}]{type}{ = {\ttfamily \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a79a6d19349d7b5399e5fb907a28fb009aa6e2bae752d3bf4e34cb392bca789995}{ETexture\+Type\+::\+Texture2D}}}, }\item[{uint32\+\_\+t}]{depth}{ = {\ttfamily 1}}\end{DoxyParamCaption})}
+
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1OpenGLTexture_a4124755abb03ad5eb5c5c8023bdaa487}\index{VE::Internal::RHI::OpenGLTexture@{VE::Internal::RHI::OpenGLTexture}!````~OpenGLTexture@{\texorpdfstring{$\sim$}{\string~}OpenGLTexture}}
+\index{````~OpenGLTexture@{\texorpdfstring{$\sim$}{\string~}OpenGLTexture}!VE::Internal::RHI::OpenGLTexture@{VE::Internal::RHI::OpenGLTexture}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}OpenGLTexture()}{\string~OpenGLTexture()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RHI_1_1OpenGLTexture_a4124755abb03ad5eb5c5c8023bdaa487} 
+VE\+::\+Internal\+::\+RHI\+::\+Open\+GLTexture\+::\texorpdfstring{$\sim$}{\string~}\+Open\+GLTexture (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+\label{doc-func-members}
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1OpenGLTexture_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1OpenGLTexture_a55979d97cffc17c335ef8263de7f19cf}\index{VE::Internal::RHI::OpenGLTexture@{VE::Internal::RHI::OpenGLTexture}!Bind@{Bind}}
+\index{Bind@{Bind}!VE::Internal::RHI::OpenGLTexture@{VE::Internal::RHI::OpenGLTexture}}
+\doxysubsubsection{\texorpdfstring{Bind()}{Bind()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RHI_1_1OpenGLTexture_a55979d97cffc17c335ef8263de7f19cf} 
+void VE\+::\+Internal\+::\+RHI\+::\+Open\+GLTexture\+::\+Bind (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{slot}{ = {\ttfamily 0}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHITexture_acc03a3244976502d7836a433dd6e8fa9}{VE\+::\+Internal\+::\+RHI\+::\+IRHITexture}}.
+
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1OpenGLTexture_a1c56838ee5fbb3c40fb5af80c4a0cf1c}\index{VE::Internal::RHI::OpenGLTexture@{VE::Internal::RHI::OpenGLTexture}!GetDepth@{GetDepth}}
+\index{GetDepth@{GetDepth}!VE::Internal::RHI::OpenGLTexture@{VE::Internal::RHI::OpenGLTexture}}
+\doxysubsubsection{\texorpdfstring{GetDepth()}{GetDepth()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RHI_1_1OpenGLTexture_a1c56838ee5fbb3c40fb5af80c4a0cf1c} 
+uint32\+\_\+t VE\+::\+Internal\+::\+RHI\+::\+Open\+GLTexture\+::\+Get\+Depth (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHITexture_a532c391048907954c5414129c1a93a13}{VE\+::\+Internal\+::\+RHI\+::\+IRHITexture}}.
+
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1OpenGLTexture_a616f70e0366a939129d5148f4910bf06}\index{VE::Internal::RHI::OpenGLTexture@{VE::Internal::RHI::OpenGLTexture}!GetFormat@{GetFormat}}
+\index{GetFormat@{GetFormat}!VE::Internal::RHI::OpenGLTexture@{VE::Internal::RHI::OpenGLTexture}}
+\doxysubsubsection{\texorpdfstring{GetFormat()}{GetFormat()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RHI_1_1OpenGLTexture_a616f70e0366a939129d5148f4910bf06} 
+\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7}{ERHIFormat}} VE\+::\+Internal\+::\+RHI\+::\+Open\+GLTexture\+::\+Get\+Format (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHITexture_a6d381ea2a2f1c6a8aa92ced73f8d26cf}{VE\+::\+Internal\+::\+RHI\+::\+IRHITexture}}.
+
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1OpenGLTexture_aa5dce5c3df58eefb2b48c99294a546f9}\index{VE::Internal::RHI::OpenGLTexture@{VE::Internal::RHI::OpenGLTexture}!GetHandle@{GetHandle}}
+\index{GetHandle@{GetHandle}!VE::Internal::RHI::OpenGLTexture@{VE::Internal::RHI::OpenGLTexture}}
+\doxysubsubsection{\texorpdfstring{GetHandle()}{GetHandle()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RHI_1_1OpenGLTexture_aa5dce5c3df58eefb2b48c99294a546f9} 
+uint32\+\_\+t VE\+::\+Internal\+::\+RHI\+::\+Open\+GLTexture\+::\+Get\+Handle (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHITexture_acfb71d6d98268b626ac0f495ab32ac19}{VE\+::\+Internal\+::\+RHI\+::\+IRHITexture}}.
+
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1OpenGLTexture_a3cde827620a1a64b147d97959a749cc5}\index{VE::Internal::RHI::OpenGLTexture@{VE::Internal::RHI::OpenGLTexture}!GetHeight@{GetHeight}}
+\index{GetHeight@{GetHeight}!VE::Internal::RHI::OpenGLTexture@{VE::Internal::RHI::OpenGLTexture}}
+\doxysubsubsection{\texorpdfstring{GetHeight()}{GetHeight()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RHI_1_1OpenGLTexture_a3cde827620a1a64b147d97959a749cc5} 
+uint32\+\_\+t VE\+::\+Internal\+::\+RHI\+::\+Open\+GLTexture\+::\+Get\+Height (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHITexture_a661042543ec5eef91a8bb9a3cdd7fe93}{VE\+::\+Internal\+::\+RHI\+::\+IRHITexture}}.
+
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1OpenGLTexture_aa4796f5b11d6c3ac69df404dc2344dc1}\index{VE::Internal::RHI::OpenGLTexture@{VE::Internal::RHI::OpenGLTexture}!GetType@{GetType}}
+\index{GetType@{GetType}!VE::Internal::RHI::OpenGLTexture@{VE::Internal::RHI::OpenGLTexture}}
+\doxysubsubsection{\texorpdfstring{GetType()}{GetType()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RHI_1_1OpenGLTexture_aa4796f5b11d6c3ac69df404dc2344dc1} 
+\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a79a6d19349d7b5399e5fb907a28fb009}{ETexture\+Type}} VE\+::\+Internal\+::\+RHI\+::\+Open\+GLTexture\+::\+Get\+Type (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHITexture_a326402a097b5323ac539c82cbbbebc35}{VE\+::\+Internal\+::\+RHI\+::\+IRHITexture}}.
+
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1OpenGLTexture_aa3e4975e651e04e90478e0fae9be0773}\index{VE::Internal::RHI::OpenGLTexture@{VE::Internal::RHI::OpenGLTexture}!GetWidth@{GetWidth}}
+\index{GetWidth@{GetWidth}!VE::Internal::RHI::OpenGLTexture@{VE::Internal::RHI::OpenGLTexture}}
+\doxysubsubsection{\texorpdfstring{GetWidth()}{GetWidth()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RHI_1_1OpenGLTexture_aa3e4975e651e04e90478e0fae9be0773} 
+uint32\+\_\+t VE\+::\+Internal\+::\+RHI\+::\+Open\+GLTexture\+::\+Get\+Width (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHITexture_a6684903b1fd5390e37edef07c24f6fb5}{VE\+::\+Internal\+::\+RHI\+::\+IRHITexture}}.
+
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1OpenGLTexture_a265e21ff2fa1b6558cf6134d224ab27c}\index{VE::Internal::RHI::OpenGLTexture@{VE::Internal::RHI::OpenGLTexture}!Resize@{Resize}}
+\index{Resize@{Resize}!VE::Internal::RHI::OpenGLTexture@{VE::Internal::RHI::OpenGLTexture}}
+\doxysubsubsection{\texorpdfstring{Resize()}{Resize()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RHI_1_1OpenGLTexture_a265e21ff2fa1b6558cf6134d224ab27c} 
+void VE\+::\+Internal\+::\+RHI\+::\+Open\+GLTexture\+::\+Resize (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{new\+Width}{, }\item[{uint32\+\_\+t}]{new\+Height}{, }\item[{uint32\+\_\+t}]{new\+Depth}{ = {\ttfamily 1}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHITexture_a712cfa530201a9eb085fe9b87847c8bc}{VE\+::\+Internal\+::\+RHI\+::\+IRHITexture}}.
+
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1OpenGLTexture_ae816ddb70297171ac6d1de416773432e}\index{VE::Internal::RHI::OpenGLTexture@{VE::Internal::RHI::OpenGLTexture}!RHIFormatToTextureFormat@{RHIFormatToTextureFormat}}
+\index{RHIFormatToTextureFormat@{RHIFormatToTextureFormat}!VE::Internal::RHI::OpenGLTexture@{VE::Internal::RHI::OpenGLTexture}}
+\doxysubsubsection{\texorpdfstring{RHIFormatToTextureFormat()}{RHIFormatToTextureFormat()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RHI_1_1OpenGLTexture_ae816ddb70297171ac6d1de416773432e} 
+GLenum VE\+::\+Internal\+::\+RHI\+::\+Open\+GLTexture\+::\+RHIFormat\+To\+Texture\+Format (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7}{ERHIFormat}}}]{format}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1OpenGLTexture_a664a30976d448ec9d9f7e05751718fed}\index{VE::Internal::RHI::OpenGLTexture@{VE::Internal::RHI::OpenGLTexture}!SetFilter@{SetFilter}}
+\index{SetFilter@{SetFilter}!VE::Internal::RHI::OpenGLTexture@{VE::Internal::RHI::OpenGLTexture}}
+\doxysubsubsection{\texorpdfstring{SetFilter()}{SetFilter()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RHI_1_1OpenGLTexture_a664a30976d448ec9d9f7e05751718fed} 
+void VE\+::\+Internal\+::\+RHI\+::\+Open\+GLTexture\+::\+Set\+Filter (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_acbc77117a5daabd65c97f439aa80020f}{ETexture\+Filter}}}]{min\+Filter}{, }\item[{\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_acbc77117a5daabd65c97f439aa80020f}{ETexture\+Filter}}}]{mag\+Filter}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHITexture_a01b54a561d153edeede3d18220e6f261}{VE\+::\+Internal\+::\+RHI\+::\+IRHITexture}}.
+
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1OpenGLTexture_af22d6300270b8cb1bca58fff13393aad}\index{VE::Internal::RHI::OpenGLTexture@{VE::Internal::RHI::OpenGLTexture}!SetWrap@{SetWrap}}
+\index{SetWrap@{SetWrap}!VE::Internal::RHI::OpenGLTexture@{VE::Internal::RHI::OpenGLTexture}}
+\doxysubsubsection{\texorpdfstring{SetWrap()}{SetWrap()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RHI_1_1OpenGLTexture_af22d6300270b8cb1bca58fff13393aad} 
+void VE\+::\+Internal\+::\+RHI\+::\+Open\+GLTexture\+::\+Set\+Wrap (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_abc26d04d9c8a19c57ebbcda98f2d5aea}{ETexture\+Wrap}}}]{wrapS}{, }\item[{\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_abc26d04d9c8a19c57ebbcda98f2d5aea}{ETexture\+Wrap}}}]{wrapT}{, }\item[{\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_abc26d04d9c8a19c57ebbcda98f2d5aea}{ETexture\+Wrap}}}]{wrapR}{ = {\ttfamily \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_abc26d04d9c8a19c57ebbcda98f2d5aeaa7020426cfb0a204051be4b3053d2acc8}{ETexture\+Wrap\+::\+Repeat}}}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHITexture_a9a065f816f2801ad3b6ee395fd6e1040}{VE\+::\+Internal\+::\+RHI\+::\+IRHITexture}}.
+
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1OpenGLTexture_a989d2035efb501ff4535a5e564b71936}\index{VE::Internal::RHI::OpenGLTexture@{VE::Internal::RHI::OpenGLTexture}!TextureFilterToGL@{TextureFilterToGL}}
+\index{TextureFilterToGL@{TextureFilterToGL}!VE::Internal::RHI::OpenGLTexture@{VE::Internal::RHI::OpenGLTexture}}
+\doxysubsubsection{\texorpdfstring{TextureFilterToGL()}{TextureFilterToGL()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RHI_1_1OpenGLTexture_a989d2035efb501ff4535a5e564b71936} 
+GLenum VE\+::\+Internal\+::\+RHI\+::\+Open\+GLTexture\+::\+Texture\+Filter\+To\+GL (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_acbc77117a5daabd65c97f439aa80020f}{ETexture\+Filter}}}]{filter}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1OpenGLTexture_a2cf1cc5dc3c738645ee992c2d5369fc0}\index{VE::Internal::RHI::OpenGLTexture@{VE::Internal::RHI::OpenGLTexture}!TextureWrapToGL@{TextureWrapToGL}}
+\index{TextureWrapToGL@{TextureWrapToGL}!VE::Internal::RHI::OpenGLTexture@{VE::Internal::RHI::OpenGLTexture}}
+\doxysubsubsection{\texorpdfstring{TextureWrapToGL()}{TextureWrapToGL()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RHI_1_1OpenGLTexture_a2cf1cc5dc3c738645ee992c2d5369fc0} 
+GLenum VE\+::\+Internal\+::\+RHI\+::\+Open\+GLTexture\+::\+Texture\+Wrap\+To\+GL (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_abc26d04d9c8a19c57ebbcda98f2d5aea}{ETexture\+Wrap}}}]{wrap}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1OpenGLTexture_ae6c6d2c6cbccaf4751e6d867c303a3ad}\index{VE::Internal::RHI::OpenGLTexture@{VE::Internal::RHI::OpenGLTexture}!Unbind@{Unbind}}
+\index{Unbind@{Unbind}!VE::Internal::RHI::OpenGLTexture@{VE::Internal::RHI::OpenGLTexture}}
+\doxysubsubsection{\texorpdfstring{Unbind()}{Unbind()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RHI_1_1OpenGLTexture_ae6c6d2c6cbccaf4751e6d867c303a3ad} 
+void VE\+::\+Internal\+::\+RHI\+::\+Open\+GLTexture\+::\+Unbind (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHITexture_a397938e569f89b5be9bfc6f942867a75}{VE\+::\+Internal\+::\+RHI\+::\+IRHITexture}}.
+
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1OpenGLTexture_a1788facf1a6f9c26a5bba37d7865acac}\index{VE::Internal::RHI::OpenGLTexture@{VE::Internal::RHI::OpenGLTexture}!UpdateData@{UpdateData}}
+\index{UpdateData@{UpdateData}!VE::Internal::RHI::OpenGLTexture@{VE::Internal::RHI::OpenGLTexture}}
+\doxysubsubsection{\texorpdfstring{UpdateData()}{UpdateData()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RHI_1_1OpenGLTexture_a1788facf1a6f9c26a5bba37d7865acac} 
+void VE\+::\+Internal\+::\+RHI\+::\+Open\+GLTexture\+::\+Update\+Data (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\ast$}{*}}]{data}{, }\item[{uint32\+\_\+t}]{width}{, }\item[{uint32\+\_\+t}]{height}{ = {\ttfamily 1}, }\item[{uint32\+\_\+t}]{depth}{ = {\ttfamily 1}, }\item[{uint32\+\_\+t}]{face}{ = {\ttfamily 0}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHITexture_acddc9216fce0c3304e3f87f7ddc7e67a}{VE\+::\+Internal\+::\+RHI\+::\+IRHITexture}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Vantor/\+Source/\+Vantor/\+RHI/\+Include/\+RHI/\+Open\+GL/\mbox{\hyperlink{VRHI__OpenGLTexture_8hpp}{VRHI\+\_\+\+Open\+GLTexture.\+hpp}}\item 
+Vantor/\+Source/\+Vantor/\+RHI/\+Source/\+RHI/\+Open\+GL/\mbox{\hyperlink{VRHI__OpenGLTexture_8cpp}{VRHI\+\_\+\+Open\+GLTexture.\+cpp}}\end{DoxyCompactItemize}

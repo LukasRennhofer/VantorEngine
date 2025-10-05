@@ -1,0 +1,66 @@
+\doxysection{VRHI\+\_\+\+Open\+GLMesh.\+hpp}
+\hypertarget{VRHI__OpenGLMesh_8hpp_source}{}\label{VRHI__OpenGLMesh_8hpp_source}\index{Vantor/Source/Vantor/RHI/Include/RHI/OpenGL/VRHI\_OpenGLMesh.hpp@{Vantor/Source/Vantor/RHI/Include/RHI/OpenGL/VRHI\_OpenGLMesh.hpp}}
+\mbox{\hyperlink{VRHI__OpenGLMesh_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/****************************************************************************}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ Vantor\ Engine™\ -\/\ Source\ Code\ (2025)}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ Author\ \ \ \ :\ Lukas\ Rennhofer\ (@LukasRennhofer),\ Vantor\ Studios™}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ Copyright\ :\ ©\ 2025\ Lukas\ Rennhofer,\ Vantor\ Studios™}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ *\ License\ \ \ :\ GNU\ General\ Public\ License\ v3.0}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ See\ LICENSE\ file\ for\ full\ details.}}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ ****************************************************************************/}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{VRHI__Mesh_8hpp}{RHI/Interface/VRHI\_Mesh.hpp}}>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{VRHI__Device_8hpp}{RHI/Interface/VRHI\_Device.hpp}}>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{VRHI__Buffer_8hpp}{RHI/Interface/VRHI\_Buffer.hpp}}>}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <Shared/glad/glad.h>}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{comment}{//\ TODO:\ Implement\ with\ Math\ Module}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI}{VE::Internal::RHI}}}
+\DoxyCodeLine{00021\ \{}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLMesh_ae7234dd960d86c2a9a7973696cf8c949}{OpenGLMesh}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIMesh}{IRHIMesh}}}
+\DoxyCodeLine{00024\ \{}
+\DoxyCodeLine{00025\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00026\ \ \ \ \ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLMesh_ae7234dd960d86c2a9a7973696cf8c949}{OpenGLMesh}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ vertexData,\ uint32\_t\ vertexSize,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ indexData,\ uint32\_t\ indexCount,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structVE_1_1Internal_1_1RHI_1_1VVertexLayout}{VVertexLayout}}\&\ layout);}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLMesh_ad60b2785899509b26d037bf058c09634}{\string~OpenGLMesh}}();}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{comment}{//\ IRHIMesh\ implementation}}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLMesh_ab9f59f3bdf1aaf76c62383188025c0d6}{Bind}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLMesh_aba5f6edfb7fc9f71f3a485b1f91412ed}{Unbind}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLMesh_ad0a35e0512c4e5e2895dc9451b7d4034}{Draw}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLMesh_ad0a35e0512c4e5e2895dc9451b7d4034}{Draw}}(\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a2c5cfd4eeba474f2e652bf3bcba13200}{EPrimitiveType}}\ primitiveType)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLMesh_abd4f16e4bc2e8435f46f8679264aa20e}{GetVertexCount}}()\textcolor{keyword}{\ const\ override\ }\{\ \textcolor{keywordflow}{return}\ m\_vertexCount;\ \}}
+\DoxyCodeLine{00036\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLMesh_a7ac409c8004ceeb1c48fd7b1d0495495}{GetIndexCount}}()\textcolor{keyword}{\ const\ override\ }\{\ \textcolor{keywordflow}{return}\ m\_indexCount;\ \}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ std::shared\_ptr<IRHIBuffer>\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLMesh_ae0724a3fa06d47a3bd976b15af33874b}{GetVertexBuffer}}()\textcolor{keyword}{\ const\ override\ }\{\ \textcolor{keywordflow}{return}\ m\_VertexBuffer;\ \}}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keyword}{virtual}\ std::shared\_ptr<IRHIBuffer>\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLMesh_a946e191bd08a9b7e350f3d664453bfac}{GetIndexBuffer}}()\textcolor{keyword}{\ const\ override\ }\{\ \textcolor{keywordflow}{return}\ m\_IndexBuffer;\ \};}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{comment}{//\ Static\ utility\ functions}}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keyword}{static}\ GLenum\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLMesh_a3058156c8c7e9773c014f94bd0250dbb}{PrimitiveTypeToGL}}(\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a2c5cfd4eeba474f2e652bf3bcba13200}{EPrimitiveType}}\ type);}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keyword}{static}\ GLenum\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLMesh_acf2fa076d8037897b747bf119db0a207}{RHIFormatToGL}}(\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7}{ERHIFormat}}\ format);}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keyword}{static}\ uint32\_t\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLMesh_a125806997b1b99ec49039c33c74ea764}{GetFormatSize}}(\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7}{ERHIFormat}}\ format);}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{comment}{//\ Vertex\ and\ Index\ Buffers\ are\ no\ concrete\ members}}
+\DoxyCodeLine{00048\ \ \ \ \ std::shared\_ptr<IRHIBuffer>\ m\_VertexBuffer;}
+\DoxyCodeLine{00049\ \ \ \ \ std::shared\_ptr<IRHIBuffer>\ m\_IndexBuffer;}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{comment}{//\ VAO\ Stays\ as\ handle,\ because\ its\ OpenGL\ specific}}
+\DoxyCodeLine{00051\ \ \ \ \ uint32\_t\ m\_vao;}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ uint32\_t\ m\_vertexCount;}
+\DoxyCodeLine{00054\ \ \ \ \ uint32\_t\ m\_indexCount;}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_hasIndices;}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{void}\ SetupVertexAttributes(\textcolor{keyword}{const}\ \mbox{\hyperlink{structVE_1_1Internal_1_1RHI_1_1VVertexLayout}{VVertexLayout}}\&\ layout);}
+\DoxyCodeLine{00058\ \};}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \}\ \textcolor{comment}{//\ namespace\ Lab}}
+
+\end{DoxyCode}

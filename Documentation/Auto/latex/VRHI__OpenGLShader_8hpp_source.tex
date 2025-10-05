@@ -1,0 +1,60 @@
+\doxysection{VRHI\+\_\+\+Open\+GLShader.\+hpp}
+\hypertarget{VRHI__OpenGLShader_8hpp_source}{}\label{VRHI__OpenGLShader_8hpp_source}\index{Vantor/Source/Vantor/RHI/Include/RHI/OpenGL/VRHI\_OpenGLShader.hpp@{Vantor/Source/Vantor/RHI/Include/RHI/OpenGL/VRHI\_OpenGLShader.hpp}}
+\mbox{\hyperlink{VRHI__OpenGLShader_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/****************************************************************************}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ Vantor\ Engine™\ -\/\ Source\ Code\ (2025)}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ Author\ \ \ \ :\ Lukas\ Rennhofer\ (@LukasRennhofer),\ Vantor\ Studios™}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ Copyright\ :\ ©\ 2025\ Lukas\ Rennhofer,\ Vantor\ Studios™}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ *\ License\ \ \ :\ GNU\ General\ Public\ License\ v3.0}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ See\ LICENSE\ file\ for\ full\ details.}}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ ****************************************************************************/}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{VRHI__Shader_8hpp}{RHI/Interface/VRHI\_Shader.hpp}}>}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <Shared/glad/glad.h>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI}{VE::Internal::RHI}}}
+\DoxyCodeLine{00018\ \{}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLShader_af73fc168b02513fe72478607fd635989}{OpenGLShader}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIShader}{IRHIShader}}}
+\DoxyCodeLine{00021\ \{}
+\DoxyCodeLine{00022\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLShader_af73fc168b02513fe72478607fd635989}{OpenGLShader}}(\textcolor{keyword}{const}\ std::string\&\ vertexSource,\ \textcolor{keyword}{const}\ std::string\&\ fragmentSource);}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLShader_a8882722ebbe67405a3b7a4b43f2ef2ee}{\string~OpenGLShader}}();}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{comment}{//\ IRHIShader\ implementation}}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLShader_a80513755e08f33ec77b7ae006397dc9f}{Use}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{comment}{//\ Uniform\ Setters}}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLShader_ade87883305e42a27bcb3dd3a592d7ee0}{SetBool}}(\textcolor{keyword}{const}\ std::string\&\ name,\ \textcolor{keywordtype}{bool}\ value)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLShader_a7d1558f73d2598c96af3d6b3666e36e7}{SetInt}}(\textcolor{keyword}{const}\ std::string\&\ name,\ \textcolor{keywordtype}{int}\ value)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLShader_a11fd88c4688d5ea454cf484993d88812}{SetFloat}}(\textcolor{keyword}{const}\ std::string\&\ name,\ \textcolor{keywordtype}{float}\ value)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLShader_a7e949a03a7b600c7f53b9c38b7771eef}{SetVec2}}(\textcolor{keyword}{const}\ std::string\&\ name,\ \textcolor{keywordtype}{float}\ x,\ \textcolor{keywordtype}{float}\ y)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLShader_a7e949a03a7b600c7f53b9c38b7771eef}{SetVec2}}(\textcolor{keyword}{const}\ std::string\&\ name,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structVE_1_1Math_1_1VVector2}{VE::Math::VVector2}}\ \&value)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLShader_a582acf56e8aef84bf59c6da5356a5da1}{SetVec3}}(\textcolor{keyword}{const}\ std::string\&\ name,\ \textcolor{keywordtype}{float}\ x,\ \textcolor{keywordtype}{float}\ y,\ \textcolor{keywordtype}{float}\ z)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLShader_a582acf56e8aef84bf59c6da5356a5da1}{SetVec3}}(\textcolor{keyword}{const}\ std::string\&\ name,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VE::Math::VVector3}}\ \&value)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLShader_aa738dc158f869dd75fdab972a75f2aec}{SetVec4}}(\textcolor{keyword}{const}\ std::string\&\ name,\ \textcolor{keywordtype}{float}\ x,\ \textcolor{keywordtype}{float}\ y,\ \textcolor{keywordtype}{float}\ z,\ \textcolor{keywordtype}{float}\ w)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLShader_aa738dc158f869dd75fdab972a75f2aec}{SetVec4}}(\textcolor{keyword}{const}\ std::string\&\ name,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structVE_1_1Math_1_1VVector4}{VE::Math::VVector4}}\ \&value)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLShader_ad44e8f543ae62d8f7c4afa89a4af2069}{SetMat2}}(\textcolor{keyword}{const}\ std::string\&\ name,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat2}{VE::Math::VMat2}}\ \&mat)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLShader_ad0fd9ed21ee9398a01c885679532a75a}{SetMat3}}(\textcolor{keyword}{const}\ std::string\&\ name,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat3}{VE::Math::VMat3}}\ \&mat)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLShader_a11c6358a25c2264f7709c31ab82277b6}{SetMat4}}(\textcolor{keyword}{const}\ std::string\&\ name,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat4}{VE::Math::VMat4}}\ \&mat)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00046\ \ \ \ \ uint32\_t\ m\_program;}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ uint32\_t\ CompileShader(\textcolor{keyword}{const}\ std::string\&\ source,\ GLenum\ type);}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{bool}\ CheckCompileErrors(uint32\_t\ shader,\ \textcolor{keyword}{const}\ std::string\&\ type);}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{bool}\ CheckLinkErrors(uint32\_t\ program);}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{int}\ GetUniformLocation(\textcolor{keyword}{const}\ std::string\&\ name);}
+\DoxyCodeLine{00052\ \};}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \}\ \textcolor{comment}{//\ namespace\ VE::Internal::RHI}}
+
+\end{DoxyCode}

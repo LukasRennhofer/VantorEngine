@@ -1,0 +1,182 @@
+\doxysection{VID\+\_\+\+Backend\+GLFW.\+hpp}
+\hypertarget{VID__BackendGLFW_8hpp_source}{}\label{VID__BackendGLFW_8hpp_source}\index{Vantor/Source/Vantor/InputDevice/Include/InputDevice/Backend/VID\_BackendGLFW.hpp@{Vantor/Source/Vantor/InputDevice/Include/InputDevice/Backend/VID\_BackendGLFW.hpp}}
+\mbox{\hyperlink{VID__BackendGLFW_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/****************************************************************************}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ Vantor\ Engine™\ -\/\ Source\ Code\ (2025)}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ Author\ \ \ \ :\ Lukas\ Rennhofer\ (@LukasRennhofer),\ Vantor\ Studios™}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ Copyright\ :\ ©\ 2025\ Lukas\ Rennhofer,\ Vantor\ Studios™}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ *\ License\ \ \ :\ GNU\ General\ Public\ License\ v3.0}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ See\ LICENSE\ file\ for\ full\ details.}}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ ****************************************************************************/}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{VID__IDevice_8hpp}{InputDevice/Public/VID\_IDevice.hpp}}>}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{VCT__Window_8hpp}{Context/Interface/VCT\_Window.hpp}}>}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#ifdef\ VANTOR\_WM\_GLFW}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <GLFW/glfw3.h>}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ <array>}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceVE_1_1Input}{VE::Input}}\ \{}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{class\ }VGLFWInputDevice\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classVE_1_1Input_1_1VInputDevice}{VInputDevice}}}
+\DoxyCodeLine{00026\ \{}
+\DoxyCodeLine{00027\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{explicit}\ VGLFWInputDevice(VE::Internal::Context::VWindow*\ wnd)}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ :\ window(wnd),\ nativeWindow(static\_cast<GLFWwindow*>(wnd-\/>GetNativeHandle()))}
+\DoxyCodeLine{00030\ \ \ \ \ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ SetupMappings();}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ SetupCallbacks();}
+\DoxyCodeLine{00033\ \ \ \ \ \}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{void}\ Update()\textcolor{keyword}{\ override}}
+\DoxyCodeLine{00036\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ previousKeys\ =\ currentKeys;}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/\ Mouse\ -\/-\/-\/}}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ prevMouseX\ =\ mouseX;\ prevMouseY\ =\ mouseY;}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ glfwGetCursorPos(nativeWindow,\ \&mouseX,\ \&mouseY);}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ scrollDeltaX\ =\ scrollX;\ scrollDeltaY\ =\ scrollY;}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ scrollX\ =\ 0.0;\ scrollY\ =\ 0.0;}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/\ Keyboard\ -\/-\/-\/}}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ [key,\ glfwKey]\ :\ keyMapping)}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ currentKeys[\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(key)]\ =\ glfwGetKey(nativeWindow,\ glfwKey)\ ==\ GLFW\_PRESS;}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/\ Mouse\ Buttons\ -\/-\/-\/}}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ [key,\ glfwButton]\ :\ mouseButtonMapping)}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ currentKeys[\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(key)]\ =\ glfwGetMouseButton(nativeWindow,\ glfwButton)\ ==\ GLFW\_PRESS;}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ TODO:\ Gamepad\ support\ (first\ controller)}}
+\DoxyCodeLine{00055\ \ \ \ \ \}}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{bool}\ IsPressed(\textcolor{keyword}{const}\ VInputButton\&\ button)\textcolor{keyword}{\ const\ override}}
+\DoxyCodeLine{00058\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (button.isAxis)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ it\ =\ currentKeys.find(button.id);}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ it\ !=\ currentKeys.end()\ \&\&\ it-\/>second;}
+\DoxyCodeLine{00062\ \ \ \ \ \}}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{bool}\ WasPressed(\textcolor{keyword}{const}\ VInputButton\&\ button)\textcolor{keyword}{\ const\ override}}
+\DoxyCodeLine{00065\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (button.isAxis)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ itCurr\ =\ currentKeys.find(button.id);}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ itPrev\ =\ previousKeys.find(button.id);}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ itCurr\ !=\ currentKeys.end()\ \&\&\ itPrev\ !=\ previousKeys.end()\ \&\&\ itCurr-\/>second\ \&\&\ !itPrev-\/>second;}
+\DoxyCodeLine{00070\ \ \ \ \ \}}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordtype}{float}\ GetAxis(\textcolor{keyword}{const}\ VInputButton\&\ axis)\textcolor{keyword}{\ const\ override}}
+\DoxyCodeLine{00073\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!axis.isAxis)\ \textcolor{keywordflow}{return}\ 0.f;}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ it\ =\ currentAxes.find(axis.axisId);}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ it\ !=\ currentAxes.end()\ ?\ it-\/>second\ :\ 0.f;}
+\DoxyCodeLine{00077\ \ \ \ \ \}}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{void}\ SetMouseCursorState(\textcolor{keywordtype}{bool}\ visible)\textcolor{keyword}{\ override}}
+\DoxyCodeLine{00080\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_CursorState\ !=\ visible)}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ m\_CursorState\ =\ visible;}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ glfwSetInputMode(nativeWindow,\ GLFW\_CURSOR,\ visible\ ?\ GLFW\_CURSOR\_NORMAL\ :\ GLFW\_CURSOR\_DISABLED);}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00086\ \ \ \ \ \}}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keywordtype}{bool}\ GetMouseCursorState()\textcolor{keyword}{\ const\ override\ }\{\ \textcolor{keywordflow}{return}\ m\_CursorState;\ \}}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \ \ \ \ VE::Math::VVector2\ GetMousePosition()\textcolor{keyword}{\ const\ override\ }\{\ \textcolor{keywordflow}{return}\ \{float(mouseX),\ float(mouseY)\};\ \}}
+\DoxyCodeLine{00091\ \ \ \ \ VE::Math::VVector2\ GetMouseDelta()\textcolor{keyword}{\ const\ override\ }\{\ \textcolor{keywordflow}{return}\ \{float(mouseX\ -\/\ prevMouseX),\ float(mouseY\ -\/\ prevMouseY)\};\ \}}
+\DoxyCodeLine{00092\ \ \ \ \ VE::Math::VVector2\ GetScrollOffset()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \{float(scrollX),\ float(scrollY)\};\ \}}
+\DoxyCodeLine{00093\ \ \ \ \ std::string\ GetDeviceName()\textcolor{keyword}{\ const\ override\ }\{\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}GLFWInputDevice"{}};\ \}}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00096\ \ \ \ \ VE::Internal::Context::VWindow*\ window;}
+\DoxyCodeLine{00097\ \ \ \ \ GLFWwindow*\ nativeWindow;}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \ \ \ \ std::unordered\_map<int,\ bool>\ \ currentKeys;}
+\DoxyCodeLine{00100\ \ \ \ \ std::unordered\_map<int,\ bool>\ \ previousKeys;}
+\DoxyCodeLine{00101\ \ \ \ \ std::unordered\_map<int,\ float>\ currentAxes;}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ \ \ \ \ std::unordered\_map<EInputKey,\ int>\ keyMapping;}
+\DoxyCodeLine{00104\ \ \ \ \ std::unordered\_map<EInputKey,\ int>\ mouseButtonMapping;}
+\DoxyCodeLine{00105\ \ \ \ \ std::unordered\_map<EInputKey,\ int>\ gamepadButtonMapping;}
+\DoxyCodeLine{00106\ \ \ \ \ std::unordered\_map<EInputKey,\ int>\ gamepadAxisMapping;}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keywordtype}{double}\ mouseX\ =\ 0.0,\ mouseY\ =\ 0.0;}
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{keywordtype}{double}\ prevMouseX\ =\ 0.0,\ prevMouseY\ =\ 0.0;}
+\DoxyCodeLine{00110\ \ \ \ \ \textcolor{keywordtype}{double}\ scrollX\ =\ 0.0,\ scrollY\ =\ 0.0;}
+\DoxyCodeLine{00111\ \ \ \ \ \textcolor{keywordtype}{double}\ scrollDeltaX\ =\ 0.0,\ scrollDeltaY\ =\ 0.0;}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{keywordtype}{void}\ SetupMappings()}
+\DoxyCodeLine{00114\ \ \ \ \ \{}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }K\ =\ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085af}{EInputKey}};}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ std::pair<K,\ int>\ keyboard[]\ =\ \{}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \{K::KEY\_A,\ GLFW\_KEY\_A\},\ \{K::KEY\_B,\ GLFW\_KEY\_B\},\ \{K::KEY\_C,\ GLFW\_KEY\_C\},\ \{K::KEY\_D,\ GLFW\_KEY\_D\},}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \{K::KEY\_E,\ GLFW\_KEY\_E\},\ \{K::KEY\_F,\ GLFW\_KEY\_F\},\ \{K::KEY\_G,\ GLFW\_KEY\_G\},\ \{K::KEY\_H,\ GLFW\_KEY\_H\},}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \{K::KEY\_I,\ GLFW\_KEY\_I\},\ \{K::KEY\_J,\ GLFW\_KEY\_J\},\ \{K::KEY\_K,\ GLFW\_KEY\_K\},\ \{K::KEY\_L,\ GLFW\_KEY\_L\},}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \{K::KEY\_M,\ GLFW\_KEY\_M\},\ \{K::KEY\_N,\ GLFW\_KEY\_N\},\ \{K::KEY\_O,\ GLFW\_KEY\_O\},\ \{K::KEY\_P,\ GLFW\_KEY\_P\},}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \{K::KEY\_Q,\ GLFW\_KEY\_Q\},\ \{K::KEY\_R,\ GLFW\_KEY\_R\},\ \{K::KEY\_S,\ GLFW\_KEY\_S\},\ \{K::KEY\_T,\ GLFW\_KEY\_T\},}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \{K::KEY\_U,\ GLFW\_KEY\_U\},\ \{K::KEY\_V,\ GLFW\_KEY\_V\},\ \{K::KEY\_W,\ GLFW\_KEY\_W\},\ \{K::KEY\_X,\ GLFW\_KEY\_X\},}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \{K::KEY\_Y,\ GLFW\_KEY\_Y\},\ \{K::KEY\_Z,\ GLFW\_KEY\_Z\},}
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \{K::KEY\_0,\ GLFW\_KEY\_0\},\ \{K::KEY\_1,\ GLFW\_KEY\_1\},\ \{K::KEY\_2,\ GLFW\_KEY\_2\},\ \{K::KEY\_3,\ GLFW\_KEY\_3\},}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \{K::KEY\_4,\ GLFW\_KEY\_4\},\ \{K::KEY\_5,\ GLFW\_KEY\_5\},\ \{K::KEY\_6,\ GLFW\_KEY\_6\},\ \{K::KEY\_7,\ GLFW\_KEY\_7\},}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \{K::KEY\_8,\ GLFW\_KEY\_8\},\ \{K::KEY\_9,\ GLFW\_KEY\_9\},}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \{K::KEY\_ESCAPE,\ GLFW\_KEY\_ESCAPE\},\ \{K::KEY\_TAB,\ GLFW\_KEY\_TAB\},\ \{K::KEY\_CAPS\_LOCK,\ GLFW\_KEY\_CAPS\_LOCK\},}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \{K::KEY\_LEFT\_SHIFT,\ GLFW\_KEY\_LEFT\_SHIFT\},\ \{K::KEY\_LEFT\_CTRL,\ GLFW\_KEY\_LEFT\_CONTROL\},}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ \{K::KEY\_LEFT\_ALT,\ GLFW\_KEY\_LEFT\_ALT\},\ \{K::KEY\_RIGHT\_SHIFT,\ GLFW\_KEY\_RIGHT\_SHIFT\},}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ \{K::KEY\_RIGHT\_CTRL,\ GLFW\_KEY\_RIGHT\_CONTROL\},\ \{K::KEY\_RIGHT\_ALT,\ GLFW\_KEY\_RIGHT\_ALT\},}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ \{K::KEY\_SPACE,\ GLFW\_KEY\_SPACE\},\ \{K::KEY\_ENTER,\ GLFW\_KEY\_ENTER\},\ \{K::KEY\_BACKSPACE,\ GLFW\_KEY\_BACKSPACE\},}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ \{K::KEY\_LEFT,\ GLFW\_KEY\_LEFT\},\ \{K::KEY\_RIGHT,\ GLFW\_KEY\_RIGHT\},\ \{K::KEY\_UP,\ GLFW\_KEY\_UP\},\ \{K::KEY\_DOWN,\ GLFW\_KEY\_DOWN\},}
+\DoxyCodeLine{00136\ }
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ \{K::KEY\_F1,\ GLFW\_KEY\_F1\},\ \{K::KEY\_F2,\ GLFW\_KEY\_F2\},\ \{K::KEY\_F3,\ GLFW\_KEY\_F3\},\ \{K::KEY\_F4,\ GLFW\_KEY\_F4\},}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ \{K::KEY\_F5,\ GLFW\_KEY\_F5\},\ \{K::KEY\_F6,\ GLFW\_KEY\_F6\},\ \{K::KEY\_F7,\ GLFW\_KEY\_F7\},\ \{K::KEY\_F8,\ GLFW\_KEY\_F8\},}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ \{K::KEY\_F9,\ GLFW\_KEY\_F9\},\ \{K::KEY\_F10,\ GLFW\_KEY\_F10\},\ \{K::KEY\_F11,\ GLFW\_KEY\_F11\},\ \{K::KEY\_F12,\ GLFW\_KEY\_F12\},}
+\DoxyCodeLine{00140\ }
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ \{K::KEY\_INSERT,\ GLFW\_KEY\_INSERT\},\ \{K::KEY\_DELETE,\ GLFW\_KEY\_DELETE\},\ \{K::KEY\_HOME,\ GLFW\_KEY\_HOME\},}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \ \ \ \ \{K::KEY\_END,\ GLFW\_KEY\_END\},\ \{K::KEY\_PAGE\_UP,\ GLFW\_KEY\_PAGE\_UP\},\ \{K::KEY\_PAGE\_DOWN,\ GLFW\_KEY\_PAGE\_DOWN\}}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00144\ }
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ [k,\ v]\ :\ keyboard)\ keyMapping[k]\ =\ v;}
+\DoxyCodeLine{00146\ }
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ std::pair<K,\ int>\ mouseButtons[]\ =\ \{}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ \{K::MOUSE\_LEFT,\ GLFW\_MOUSE\_BUTTON\_LEFT\},\ \{K::MOUSE\_RIGHT,\ GLFW\_MOUSE\_BUTTON\_RIGHT\},}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \{K::MOUSE\_MIDDLE,\ GLFW\_MOUSE\_BUTTON\_MIDDLE\},\ \{K::MOUSE\_BUTTON\_4,\ GLFW\_MOUSE\_BUTTON\_4\},}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ \{K::MOUSE\_BUTTON\_5,\ GLFW\_MOUSE\_BUTTON\_5\}}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00152\ }
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ [k,\ v]\ :\ mouseButtons)\ mouseButtonMapping[k]\ =\ v;}
+\DoxyCodeLine{00154\ }
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ TODO:\ Gamepad\ mappings}}
+\DoxyCodeLine{00156\ \ \ \ \ \}}
+\DoxyCodeLine{00157\ }
+\DoxyCodeLine{00158\ \ \ \ \ \textcolor{keywordtype}{void}\ SetupCallbacks()}
+\DoxyCodeLine{00159\ \ \ \ \ \{}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ glfwSetWindowUserPointer(nativeWindow,\ \textcolor{keyword}{this});}
+\DoxyCodeLine{00161\ }
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ glfwSetScrollCallback(nativeWindow,\ [](GLFWwindow*\ wnd,\ \textcolor{keywordtype}{double}\ xoffset,\ \textcolor{keywordtype}{double}\ yoffset)}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}*\ input\ =\ \textcolor{keyword}{static\_cast<}VGLFWInputDevice*\textcolor{keyword}{>}(glfwGetWindowUserPointer(wnd));}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (input)}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ input-\/>scrollX\ +=\ xoffset;}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ input-\/>scrollY\ +=\ yoffset;}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{00171\ \ \ \ \ \}}
+\DoxyCodeLine{00172\ \};}
+\DoxyCodeLine{00173\ }
+\DoxyCodeLine{00174\ \}\ \textcolor{comment}{//\ namespace\ VE::Input}}
+\DoxyCodeLine{00175\ }
+\DoxyCodeLine{00176\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

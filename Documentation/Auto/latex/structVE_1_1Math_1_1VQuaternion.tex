@@ -1,0 +1,171 @@
+\doxysection{VE\+::Math\+::VQuaternion Struct Reference}
+\hypertarget{structVE_1_1Math_1_1VQuaternion}{}\label{structVE_1_1Math_1_1VQuaternion}\index{VE::Math::VQuaternion@{VE::Math::VQuaternion}}
+
+
+{\ttfamily \#include $<$VMA\+\_\+\+Quaternation.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_a6408e3525bfaeef00ee241bcd4163a38}{VQuaternion}} (float x\+\_\+, float y\+\_\+, float z\+\_\+, float w\+\_\+) noexcept
+\item 
+\mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion}{VQuaternion}} \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_ad95f1ebd733436ed51fddbb00aab0c58}{Normalized}} () const noexcept
+\item 
+\mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion}{VQuaternion}} \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_a4a783358264f1237275f2367a66e805d}{Conjugated}} () const noexcept
+\item 
+\mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion}{VQuaternion}} \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_a74c6ff393b87cff189bad6a6c592b70e}{Inverted}} () const noexcept
+\item 
+\mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion}{VQuaternion}} \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_a0343eb6b19f87fdcabac6d3654e75ee4}{operator\texorpdfstring{$\ast$}{*}}} (const \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion}{VQuaternion}} \&rhs) const noexcept
+\item 
+\mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion}{VQuaternion}} \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_a2afda122f6acd0d90db414fa192765e3}{operator\texorpdfstring{$\ast$}{*}}} (float scalar) const noexcept
+\item 
+\mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VVector3}} \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_a0caed1a8af6d59c499570e769c03bcd4}{Rotate}} (const \mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VVector3}} \&v) const noexcept
+\item 
+\mbox{\hyperlink{structVE_1_1Math_1_1VMat3}{VMat3}} \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_ad15c63e44373df485ce0466c06bba41b}{To\+Mat3}} () const noexcept
+\item 
+\mbox{\hyperlink{structVE_1_1Math_1_1VMat4}{VMat4}} \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_ad62139719c73588aad5bade72208a311}{To\+Mat4}} () const noexcept
+\item 
+\mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion}{VQuaternion}} \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_a631b261088e4b029d0849431d8a57c00}{Slerp}} (const \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion}{VQuaternion}} \&other, float t) const noexcept
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion}{VQuaternion}} \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_a584730c5e78911255626337a12f38f86}{Identity}} () noexcept
+\item 
+static \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion}{VQuaternion}} \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_a033b556aa6e5bdf6e87b3e51385db51a}{From\+Axis\+Angle}} (const \mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VVector3}} \&axis, float degrees) noexcept
+\item 
+static \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion}{VQuaternion}} \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_ae249db32728a08d237e4f7d4f6b823f3}{From\+Euler\+Angles}} (const \mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VVector3}} \&euler\+Degrees) noexcept
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+float \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_aacd07a9d5ff31f0a8c46774bfac392a8}{x}} = 0
+\item 
+float \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_aa12a96487828e11a23702d552ddd8cb2}{y}} = 0
+\item 
+float \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_ad54a2282399bc851279aafceba7ea493}{z}} = 0
+\item 
+float \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_a997d938162a842923e8965852154b7ae}{w}} = 1
+\end{DoxyCompactItemize}
+
+
+\label{doc-constructors}
+\Hypertarget{structVE_1_1Math_1_1VQuaternion_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{structVE_1_1Math_1_1VQuaternion_a6408e3525bfaeef00ee241bcd4163a38}\index{VE::Math::VQuaternion@{VE::Math::VQuaternion}!VQuaternion@{VQuaternion}}
+\index{VQuaternion@{VQuaternion}!VE::Math::VQuaternion@{VE::Math::VQuaternion}}
+\doxysubsubsection{\texorpdfstring{VQuaternion()}{VQuaternion()}}
+{\footnotesize\ttfamily \label{structVE_1_1Math_1_1VQuaternion_a6408e3525bfaeef00ee241bcd4163a38} 
+VE\+::\+Math\+::\+VQuaternion\+::\+VQuaternion (\begin{DoxyParamCaption}\item[{float}]{x\+\_\+}{, }\item[{float}]{y\+\_\+}{, }\item[{float}]{z\+\_\+}{, }\item[{float}]{w\+\_\+}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+\label{doc-func-members}
+\Hypertarget{structVE_1_1Math_1_1VQuaternion_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{structVE_1_1Math_1_1VQuaternion_a4a783358264f1237275f2367a66e805d}\index{VE::Math::VQuaternion@{VE::Math::VQuaternion}!Conjugated@{Conjugated}}
+\index{Conjugated@{Conjugated}!VE::Math::VQuaternion@{VE::Math::VQuaternion}}
+\doxysubsubsection{\texorpdfstring{Conjugated()}{Conjugated()}}
+{\footnotesize\ttfamily \label{structVE_1_1Math_1_1VQuaternion_a4a783358264f1237275f2367a66e805d} 
+\mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion}{VQuaternion}} VE\+::\+Math\+::\+VQuaternion\+::\+Conjugated (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{structVE_1_1Math_1_1VQuaternion_a033b556aa6e5bdf6e87b3e51385db51a}\index{VE::Math::VQuaternion@{VE::Math::VQuaternion}!FromAxisAngle@{FromAxisAngle}}
+\index{FromAxisAngle@{FromAxisAngle}!VE::Math::VQuaternion@{VE::Math::VQuaternion}}
+\doxysubsubsection{\texorpdfstring{FromAxisAngle()}{FromAxisAngle()}}
+{\footnotesize\ttfamily \label{structVE_1_1Math_1_1VQuaternion_a033b556aa6e5bdf6e87b3e51385db51a} 
+\mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion}{VQuaternion}} VE\+::\+Math\+::\+VQuaternion\+::\+From\+Axis\+Angle (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VVector3}} \&}]{axis}{, }\item[{float}]{degrees}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{structVE_1_1Math_1_1VQuaternion_ae249db32728a08d237e4f7d4f6b823f3}\index{VE::Math::VQuaternion@{VE::Math::VQuaternion}!FromEulerAngles@{FromEulerAngles}}
+\index{FromEulerAngles@{FromEulerAngles}!VE::Math::VQuaternion@{VE::Math::VQuaternion}}
+\doxysubsubsection{\texorpdfstring{FromEulerAngles()}{FromEulerAngles()}}
+{\footnotesize\ttfamily \label{structVE_1_1Math_1_1VQuaternion_ae249db32728a08d237e4f7d4f6b823f3} 
+\mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion}{VQuaternion}} VE\+::\+Math\+::\+VQuaternion\+::\+From\+Euler\+Angles (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VVector3}} \&}]{euler\+Degrees}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{structVE_1_1Math_1_1VQuaternion_a584730c5e78911255626337a12f38f86}\index{VE::Math::VQuaternion@{VE::Math::VQuaternion}!Identity@{Identity}}
+\index{Identity@{Identity}!VE::Math::VQuaternion@{VE::Math::VQuaternion}}
+\doxysubsubsection{\texorpdfstring{Identity()}{Identity()}}
+{\footnotesize\ttfamily \label{structVE_1_1Math_1_1VQuaternion_a584730c5e78911255626337a12f38f86} 
+\mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion}{VQuaternion}} VE\+::\+Math\+::\+VQuaternion\+::\+Identity (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{structVE_1_1Math_1_1VQuaternion_a74c6ff393b87cff189bad6a6c592b70e}\index{VE::Math::VQuaternion@{VE::Math::VQuaternion}!Inverted@{Inverted}}
+\index{Inverted@{Inverted}!VE::Math::VQuaternion@{VE::Math::VQuaternion}}
+\doxysubsubsection{\texorpdfstring{Inverted()}{Inverted()}}
+{\footnotesize\ttfamily \label{structVE_1_1Math_1_1VQuaternion_a74c6ff393b87cff189bad6a6c592b70e} 
+\mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion}{VQuaternion}} VE\+::\+Math\+::\+VQuaternion\+::\+Inverted (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{structVE_1_1Math_1_1VQuaternion_ad95f1ebd733436ed51fddbb00aab0c58}\index{VE::Math::VQuaternion@{VE::Math::VQuaternion}!Normalized@{Normalized}}
+\index{Normalized@{Normalized}!VE::Math::VQuaternion@{VE::Math::VQuaternion}}
+\doxysubsubsection{\texorpdfstring{Normalized()}{Normalized()}}
+{\footnotesize\ttfamily \label{structVE_1_1Math_1_1VQuaternion_ad95f1ebd733436ed51fddbb00aab0c58} 
+\mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion}{VQuaternion}} VE\+::\+Math\+::\+VQuaternion\+::\+Normalized (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{structVE_1_1Math_1_1VQuaternion_a0343eb6b19f87fdcabac6d3654e75ee4}\index{VE::Math::VQuaternion@{VE::Math::VQuaternion}!operator\texorpdfstring{$\ast$}{*}@{operator\texorpdfstring{$\ast$}{*}}}
+\index{operator\texorpdfstring{$\ast$}{*}@{operator\texorpdfstring{$\ast$}{*}}!VE::Math::VQuaternion@{VE::Math::VQuaternion}}
+\doxysubsubsection{\texorpdfstring{operator\texorpdfstring{$\ast$}{*}()}{operator*()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{structVE_1_1Math_1_1VQuaternion_a0343eb6b19f87fdcabac6d3654e75ee4} 
+\mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion}{VQuaternion}} VE\+::\+Math\+::\+VQuaternion\+::operator\texorpdfstring{$\ast$}{*} (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion}{VQuaternion}} \&}]{rhs}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{structVE_1_1Math_1_1VQuaternion_a2afda122f6acd0d90db414fa192765e3}\index{VE::Math::VQuaternion@{VE::Math::VQuaternion}!operator\texorpdfstring{$\ast$}{*}@{operator\texorpdfstring{$\ast$}{*}}}
+\index{operator\texorpdfstring{$\ast$}{*}@{operator\texorpdfstring{$\ast$}{*}}!VE::Math::VQuaternion@{VE::Math::VQuaternion}}
+\doxysubsubsection{\texorpdfstring{operator\texorpdfstring{$\ast$}{*}()}{operator*()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{structVE_1_1Math_1_1VQuaternion_a2afda122f6acd0d90db414fa192765e3} 
+\mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion}{VQuaternion}} VE\+::\+Math\+::\+VQuaternion\+::operator\texorpdfstring{$\ast$}{*} (\begin{DoxyParamCaption}\item[{float}]{scalar}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{structVE_1_1Math_1_1VQuaternion_a0caed1a8af6d59c499570e769c03bcd4}\index{VE::Math::VQuaternion@{VE::Math::VQuaternion}!Rotate@{Rotate}}
+\index{Rotate@{Rotate}!VE::Math::VQuaternion@{VE::Math::VQuaternion}}
+\doxysubsubsection{\texorpdfstring{Rotate()}{Rotate()}}
+{\footnotesize\ttfamily \label{structVE_1_1Math_1_1VQuaternion_a0caed1a8af6d59c499570e769c03bcd4} 
+\mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VVector3}} VE\+::\+Math\+::\+VQuaternion\+::\+Rotate (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VVector3}} \&}]{v}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{structVE_1_1Math_1_1VQuaternion_a631b261088e4b029d0849431d8a57c00}\index{VE::Math::VQuaternion@{VE::Math::VQuaternion}!Slerp@{Slerp}}
+\index{Slerp@{Slerp}!VE::Math::VQuaternion@{VE::Math::VQuaternion}}
+\doxysubsubsection{\texorpdfstring{Slerp()}{Slerp()}}
+{\footnotesize\ttfamily \label{structVE_1_1Math_1_1VQuaternion_a631b261088e4b029d0849431d8a57c00} 
+\mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion}{VQuaternion}} VE\+::\+Math\+::\+VQuaternion\+::\+Slerp (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion}{VQuaternion}} \&}]{other}{, }\item[{float}]{t}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{structVE_1_1Math_1_1VQuaternion_ad15c63e44373df485ce0466c06bba41b}\index{VE::Math::VQuaternion@{VE::Math::VQuaternion}!ToMat3@{ToMat3}}
+\index{ToMat3@{ToMat3}!VE::Math::VQuaternion@{VE::Math::VQuaternion}}
+\doxysubsubsection{\texorpdfstring{ToMat3()}{ToMat3()}}
+{\footnotesize\ttfamily \label{structVE_1_1Math_1_1VQuaternion_ad15c63e44373df485ce0466c06bba41b} 
+\mbox{\hyperlink{structVE_1_1Math_1_1VMat3}{VMat3}} VE\+::\+Math\+::\+VQuaternion\+::\+To\+Mat3 (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{structVE_1_1Math_1_1VQuaternion_ad62139719c73588aad5bade72208a311}\index{VE::Math::VQuaternion@{VE::Math::VQuaternion}!ToMat4@{ToMat4}}
+\index{ToMat4@{ToMat4}!VE::Math::VQuaternion@{VE::Math::VQuaternion}}
+\doxysubsubsection{\texorpdfstring{ToMat4()}{ToMat4()}}
+{\footnotesize\ttfamily \label{structVE_1_1Math_1_1VQuaternion_ad62139719c73588aad5bade72208a311} 
+\mbox{\hyperlink{structVE_1_1Math_1_1VMat4}{VMat4}} VE\+::\+Math\+::\+VQuaternion\+::\+To\+Mat4 (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+\label{doc-variable-members}
+\Hypertarget{structVE_1_1Math_1_1VQuaternion_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structVE_1_1Math_1_1VQuaternion_a997d938162a842923e8965852154b7ae}\index{VE::Math::VQuaternion@{VE::Math::VQuaternion}!w@{w}}
+\index{w@{w}!VE::Math::VQuaternion@{VE::Math::VQuaternion}}
+\doxysubsubsection{\texorpdfstring{w}{w}}
+{\footnotesize\ttfamily \label{structVE_1_1Math_1_1VQuaternion_a997d938162a842923e8965852154b7ae} 
+float VE\+::\+Math\+::\+VQuaternion\+::w = 1}
+
+\Hypertarget{structVE_1_1Math_1_1VQuaternion_aacd07a9d5ff31f0a8c46774bfac392a8}\index{VE::Math::VQuaternion@{VE::Math::VQuaternion}!x@{x}}
+\index{x@{x}!VE::Math::VQuaternion@{VE::Math::VQuaternion}}
+\doxysubsubsection{\texorpdfstring{x}{x}}
+{\footnotesize\ttfamily \label{structVE_1_1Math_1_1VQuaternion_aacd07a9d5ff31f0a8c46774bfac392a8} 
+float VE\+::\+Math\+::\+VQuaternion\+::x = 0}
+
+\Hypertarget{structVE_1_1Math_1_1VQuaternion_aa12a96487828e11a23702d552ddd8cb2}\index{VE::Math::VQuaternion@{VE::Math::VQuaternion}!y@{y}}
+\index{y@{y}!VE::Math::VQuaternion@{VE::Math::VQuaternion}}
+\doxysubsubsection{\texorpdfstring{y}{y}}
+{\footnotesize\ttfamily \label{structVE_1_1Math_1_1VQuaternion_aa12a96487828e11a23702d552ddd8cb2} 
+float VE\+::\+Math\+::\+VQuaternion\+::y = 0}
+
+\Hypertarget{structVE_1_1Math_1_1VQuaternion_ad54a2282399bc851279aafceba7ea493}\index{VE::Math::VQuaternion@{VE::Math::VQuaternion}!z@{z}}
+\index{z@{z}!VE::Math::VQuaternion@{VE::Math::VQuaternion}}
+\doxysubsubsection{\texorpdfstring{z}{z}}
+{\footnotesize\ttfamily \label{structVE_1_1Math_1_1VQuaternion_ad54a2282399bc851279aafceba7ea493} 
+float VE\+::\+Math\+::\+VQuaternion\+::z = 0}
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Vantor/\+Source/\+Vantor/\+Math/\+Include/\+Math/\+Linear/\mbox{\hyperlink{VMA__Quaternation_8hpp}{VMA\+\_\+\+Quaternation.\+hpp}}\end{DoxyCompactItemize}

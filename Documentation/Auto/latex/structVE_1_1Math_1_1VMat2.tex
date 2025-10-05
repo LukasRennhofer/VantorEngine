@@ -1,0 +1,110 @@
+\doxysection{VE\+::Math\+::VMat2 Struct Reference}
+\hypertarget{structVE_1_1Math_1_1VMat2}{}\label{structVE_1_1Math_1_1VMat2}\index{VE::Math::VMat2@{VE::Math::VMat2}}
+
+
+{\ttfamily \#include $<$VMA\+\_\+\+Matrix.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structVE_1_1Math_1_1VMat2}{VMat2}} \mbox{\hyperlink{structVE_1_1Math_1_1VMat2_ad5dfe944aef0d128da3be5e643ca2587}{operator\texorpdfstring{$\ast$}{*}}} (const \mbox{\hyperlink{structVE_1_1Math_1_1VMat2}{VMat2}} \&rhs) const noexcept
+\item 
+\mbox{\hyperlink{structVE_1_1Math_1_1VVector2}{VVector2}} \mbox{\hyperlink{structVE_1_1Math_1_1VMat2_a12bc79351cd302884ea85117413523e0}{operator\texorpdfstring{$\ast$}{*}}} (const \mbox{\hyperlink{structVE_1_1Math_1_1VVector2}{VVector2}} \&vec) const noexcept
+\item 
+\mbox{\hyperlink{structVE_1_1Math_1_1VMat2}{VMat2}} \mbox{\hyperlink{structVE_1_1Math_1_1VMat2_abea59661a9b6ccb837830937e969ac27}{Transposed}} () const noexcept
+\item 
+constexpr float \mbox{\hyperlink{structVE_1_1Math_1_1VMat2_a1bbf777b899f0c7f4b050703ca2ac0dc}{Determinant}} () const noexcept
+\item 
+constexpr const float \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structVE_1_1Math_1_1VMat2_aac1b93f3dec77385c37c2975cdcd8114}{Data}} () const noexcept
+\item 
+float \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structVE_1_1Math_1_1VMat2_af7fc70e3b484ed70ea0e6555c42fb29e}{Data}} () noexcept
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static constexpr \mbox{\hyperlink{structVE_1_1Math_1_1VMat2}{VMat2}} \mbox{\hyperlink{structVE_1_1Math_1_1VMat2_a6a26a63efaef1c1f94671a0c203bde85}{Identity}} () noexcept
+\item 
+static \mbox{\hyperlink{structVE_1_1Math_1_1VMat2}{VMat2}} \mbox{\hyperlink{structVE_1_1Math_1_1VMat2_a790e53746f472d5ff0030fb81ebbe04f}{Rotation}} (float degrees) noexcept
+\item 
+static \mbox{\hyperlink{structVE_1_1Math_1_1VMat2}{VMat2}} \mbox{\hyperlink{structVE_1_1Math_1_1VMat2_ab397adc3d456ae0112ee18d13d21b680}{Scale}} (float scaleX, float scaleY) noexcept
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::array$<$ float, 4 $>$ \mbox{\hyperlink{structVE_1_1Math_1_1VMat2_a55129ca196d0942e9af77670d8b693ad}{m}} \{\}
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{structVE_1_1Math_1_1VMat2_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{structVE_1_1Math_1_1VMat2_aac1b93f3dec77385c37c2975cdcd8114}\index{VE::Math::VMat2@{VE::Math::VMat2}!Data@{Data}}
+\index{Data@{Data}!VE::Math::VMat2@{VE::Math::VMat2}}
+\doxysubsubsection{\texorpdfstring{Data()}{Data()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{structVE_1_1Math_1_1VMat2_aac1b93f3dec77385c37c2975cdcd8114} 
+const float \texorpdfstring{$\ast$}{*} VE\+::\+Math\+::\+VMat2\+::\+Data (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{structVE_1_1Math_1_1VMat2_af7fc70e3b484ed70ea0e6555c42fb29e}\index{VE::Math::VMat2@{VE::Math::VMat2}!Data@{Data}}
+\index{Data@{Data}!VE::Math::VMat2@{VE::Math::VMat2}}
+\doxysubsubsection{\texorpdfstring{Data()}{Data()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{structVE_1_1Math_1_1VMat2_af7fc70e3b484ed70ea0e6555c42fb29e} 
+float \texorpdfstring{$\ast$}{*} VE\+::\+Math\+::\+VMat2\+::\+Data (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{structVE_1_1Math_1_1VMat2_a1bbf777b899f0c7f4b050703ca2ac0dc}\index{VE::Math::VMat2@{VE::Math::VMat2}!Determinant@{Determinant}}
+\index{Determinant@{Determinant}!VE::Math::VMat2@{VE::Math::VMat2}}
+\doxysubsubsection{\texorpdfstring{Determinant()}{Determinant()}}
+{\footnotesize\ttfamily \label{structVE_1_1Math_1_1VMat2_a1bbf777b899f0c7f4b050703ca2ac0dc} 
+float VE\+::\+Math\+::\+VMat2\+::\+Determinant (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{structVE_1_1Math_1_1VMat2_a6a26a63efaef1c1f94671a0c203bde85}\index{VE::Math::VMat2@{VE::Math::VMat2}!Identity@{Identity}}
+\index{Identity@{Identity}!VE::Math::VMat2@{VE::Math::VMat2}}
+\doxysubsubsection{\texorpdfstring{Identity()}{Identity()}}
+{\footnotesize\ttfamily \label{structVE_1_1Math_1_1VMat2_a6a26a63efaef1c1f94671a0c203bde85} 
+constexpr \mbox{\hyperlink{structVE_1_1Math_1_1VMat2}{VMat2}} VE\+::\+Math\+::\+VMat2\+::\+Identity (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{structVE_1_1Math_1_1VMat2_ad5dfe944aef0d128da3be5e643ca2587}\index{VE::Math::VMat2@{VE::Math::VMat2}!operator\texorpdfstring{$\ast$}{*}@{operator\texorpdfstring{$\ast$}{*}}}
+\index{operator\texorpdfstring{$\ast$}{*}@{operator\texorpdfstring{$\ast$}{*}}!VE::Math::VMat2@{VE::Math::VMat2}}
+\doxysubsubsection{\texorpdfstring{operator\texorpdfstring{$\ast$}{*}()}{operator*()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{structVE_1_1Math_1_1VMat2_ad5dfe944aef0d128da3be5e643ca2587} 
+\mbox{\hyperlink{structVE_1_1Math_1_1VMat2}{VMat2}} VE\+::\+Math\+::\+VMat2\+::operator\texorpdfstring{$\ast$}{*} (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structVE_1_1Math_1_1VMat2}{VMat2}} \&}]{rhs}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{structVE_1_1Math_1_1VMat2_a12bc79351cd302884ea85117413523e0}\index{VE::Math::VMat2@{VE::Math::VMat2}!operator\texorpdfstring{$\ast$}{*}@{operator\texorpdfstring{$\ast$}{*}}}
+\index{operator\texorpdfstring{$\ast$}{*}@{operator\texorpdfstring{$\ast$}{*}}!VE::Math::VMat2@{VE::Math::VMat2}}
+\doxysubsubsection{\texorpdfstring{operator\texorpdfstring{$\ast$}{*}()}{operator*()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{structVE_1_1Math_1_1VMat2_a12bc79351cd302884ea85117413523e0} 
+\mbox{\hyperlink{structVE_1_1Math_1_1VVector2}{VVector2}} VE\+::\+Math\+::\+VMat2\+::operator\texorpdfstring{$\ast$}{*} (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structVE_1_1Math_1_1VVector2}{VVector2}} \&}]{vec}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{structVE_1_1Math_1_1VMat2_a790e53746f472d5ff0030fb81ebbe04f}\index{VE::Math::VMat2@{VE::Math::VMat2}!Rotation@{Rotation}}
+\index{Rotation@{Rotation}!VE::Math::VMat2@{VE::Math::VMat2}}
+\doxysubsubsection{\texorpdfstring{Rotation()}{Rotation()}}
+{\footnotesize\ttfamily \label{structVE_1_1Math_1_1VMat2_a790e53746f472d5ff0030fb81ebbe04f} 
+\mbox{\hyperlink{structVE_1_1Math_1_1VMat2}{VMat2}} VE\+::\+Math\+::\+VMat2\+::\+Rotation (\begin{DoxyParamCaption}\item[{float}]{degrees}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{structVE_1_1Math_1_1VMat2_ab397adc3d456ae0112ee18d13d21b680}\index{VE::Math::VMat2@{VE::Math::VMat2}!Scale@{Scale}}
+\index{Scale@{Scale}!VE::Math::VMat2@{VE::Math::VMat2}}
+\doxysubsubsection{\texorpdfstring{Scale()}{Scale()}}
+{\footnotesize\ttfamily \label{structVE_1_1Math_1_1VMat2_ab397adc3d456ae0112ee18d13d21b680} 
+\mbox{\hyperlink{structVE_1_1Math_1_1VMat2}{VMat2}} VE\+::\+Math\+::\+VMat2\+::\+Scale (\begin{DoxyParamCaption}\item[{float}]{scaleX}{, }\item[{float}]{scaleY}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{structVE_1_1Math_1_1VMat2_abea59661a9b6ccb837830937e969ac27}\index{VE::Math::VMat2@{VE::Math::VMat2}!Transposed@{Transposed}}
+\index{Transposed@{Transposed}!VE::Math::VMat2@{VE::Math::VMat2}}
+\doxysubsubsection{\texorpdfstring{Transposed()}{Transposed()}}
+{\footnotesize\ttfamily \label{structVE_1_1Math_1_1VMat2_abea59661a9b6ccb837830937e969ac27} 
+\mbox{\hyperlink{structVE_1_1Math_1_1VMat2}{VMat2}} VE\+::\+Math\+::\+VMat2\+::\+Transposed (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+\label{doc-variable-members}
+\Hypertarget{structVE_1_1Math_1_1VMat2_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structVE_1_1Math_1_1VMat2_a55129ca196d0942e9af77670d8b693ad}\index{VE::Math::VMat2@{VE::Math::VMat2}!m@{m}}
+\index{m@{m}!VE::Math::VMat2@{VE::Math::VMat2}}
+\doxysubsubsection{\texorpdfstring{m}{m}}
+{\footnotesize\ttfamily \label{structVE_1_1Math_1_1VMat2_a55129ca196d0942e9af77670d8b693ad} 
+std\+::array$<$float, 4$>$ VE\+::\+Math\+::\+VMat2\+::m \{\}}
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Vantor/\+Source/\+Vantor/\+Math/\+Include/\+Math/\+Linear/\mbox{\hyperlink{VMA__Matrix_8hpp}{VMA\+\_\+\+Matrix.\+hpp}}\end{DoxyCompactItemize}

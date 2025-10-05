@@ -1,0 +1,95 @@
+\doxysection{VOBR\+\_\+\+Object.\+hpp}
+\hypertarget{VOBR__Object_8hpp_source}{}\label{VOBR__Object_8hpp_source}\index{Vantor/Source/Vantor/ObjectRuntime/Include/ObjectRuntime/Public/Classes/VOBR\_Object.hpp@{Vantor/Source/Vantor/ObjectRuntime/Include/ObjectRuntime/Public/Classes/VOBR\_Object.hpp}}
+\mbox{\hyperlink{VOBR__Object_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/****************************************************************************}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ Vantor\ Engine™\ -\/\ Source\ Code\ (2025)}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ Author\ \ \ \ :\ Lukas\ Rennhofer\ (@LukasRennhofer),\ Vantor\ Studios™}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ Copyright\ :\ ©\ 2025\ Lukas\ Rennhofer,\ Vantor\ Studios™}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ *\ License\ \ \ :\ GNU\ General\ Public\ License\ v3.0}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ See\ LICENSE\ file\ for\ full\ details.}}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ ****************************************************************************/}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <cstdint>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <atomic>}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceVE_1_1Internal_1_1ObjectRuntime}{VE::Internal::ObjectRuntime}}\ \{}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{comment}{//\ TODO:\ Refactor\ (this\ is\ just\ for\ now)}}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{inline}\ uint32\_t\ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1ObjectRuntime_a524ec2223e9957b21d805720caafcc26}{GenerateTypeID}}()\ \{}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ std::atomic<uint32\_t>\ counter\{0\};}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ++counter;}
+\DoxyCodeLine{00022\ \ \ \ \ \}}
+\DoxyCodeLine{00023\ \ \ \ \ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{class\ }VObject;\ \textcolor{comment}{//\ Forward\ Decl.}}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classVE_1_1Internal_1_1ObjectRuntime_1_1VObject_afde74aa4e900602b59113727b6a8aa9a}{VObject}}\ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00028\ \ \ \ \ }
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structVE_1_1Internal_1_1ObjectRuntime_1_1VObject_1_1Type}{Type}}\ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{structVE_1_1Internal_1_1ObjectRuntime_1_1VObject_1_1Type_a77c29fdf8341514b10a0c064eaf26d1d}{name}};\ \ \ \ \ \textcolor{comment}{//\ static\ string\ literal\ from\ macro}}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ uint32\_t\ \ \ \ \mbox{\hyperlink{structVE_1_1Internal_1_1ObjectRuntime_1_1VObject_1_1Type_a36a8ca298787246777a07879eee41ae1}{id}};}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{structVE_1_1Internal_1_1ObjectRuntime_1_1VObject_1_1Type}{Type}}*\ \mbox{\hyperlink{structVE_1_1Internal_1_1ObjectRuntime_1_1VObject_1_1Type_af933f48a13c9980114c63e9f0e2d7ae3}{parent}};\ \ \ \textcolor{comment}{//\ nullptr\ for\ root}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Walk\ parent\ chain\ to\ check\ inheritance}}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structVE_1_1Internal_1_1ObjectRuntime_1_1VObject_1_1Type_a41344d95130c0b7fdc6d39d3516a1786}{IsA}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structVE_1_1Internal_1_1ObjectRuntime_1_1VObject_1_1Type}{Type}}\&\ other)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{structVE_1_1Internal_1_1ObjectRuntime_1_1VObject_1_1Type}{Type}}*\ cur\ =\ \textcolor{keyword}{this};}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (cur)\ \{}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (cur-\/>\mbox{\hyperlink{structVE_1_1Internal_1_1ObjectRuntime_1_1VObject_1_1Type_a36a8ca298787246777a07879eee41ae1}{id}}\ ==\ other.\mbox{\hyperlink{structVE_1_1Internal_1_1ObjectRuntime_1_1VObject_1_1Type_a36a8ca298787246777a07879eee41ae1}{id}})\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cur\ =\ cur-\/>\mbox{\hyperlink{structVE_1_1Internal_1_1ObjectRuntime_1_1VObject_1_1Type_af933f48a13c9980114c63e9f0e2d7ae3}{parent}};}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classVE_1_1Internal_1_1ObjectRuntime_1_1VObject_a1ed5f33ca7deb756316160cf3ad72193}{\string~VObject}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Per-\/instance\ type\ access}}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structVE_1_1Internal_1_1ObjectRuntime_1_1VObject_1_1Type}{Type}}\&\ \mbox{\hyperlink{classVE_1_1Internal_1_1ObjectRuntime_1_1VObject_a07a9da1af4de7da1f9eb9f16a583bab1}{GetType}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classVE_1_1Internal_1_1ObjectRuntime_1_1VObject_a12163bbd6684669e11377d040b7ac412}{StaticType}}();\ \textcolor{comment}{//\ base\ fallback;\ overridden\ by\ macro\ for\ derived\ classes}}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Utility:\ runtime\ safe\ cast\ (returns\ nullptr\ if\ not\ instance\ of\ T)}}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ T*\ \mbox{\hyperlink{classVE_1_1Internal_1_1ObjectRuntime_1_1VObject_a5ec023492df92cb9e1ee7932a3b56330}{CastTo}}()\ \{}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\mbox{\hyperlink{classVE_1_1Internal_1_1ObjectRuntime_1_1VObject_a07a9da1af4de7da1f9eb9f16a583bab1}{GetType}}().IsA(T::StaticType()))\ ?\ \textcolor{keyword}{static\_cast<}T*\textcolor{keyword}{>}(\textcolor{keyword}{this})\ :\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ T*\ \mbox{\hyperlink{classVE_1_1Internal_1_1ObjectRuntime_1_1VObject_abaa2a320abecb2dea8d2d3052ab9c984}{CastTo}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\mbox{\hyperlink{classVE_1_1Internal_1_1ObjectRuntime_1_1VObject_a07a9da1af4de7da1f9eb9f16a583bab1}{GetType}}().IsA(T::StaticType()))\ ?\ \textcolor{keyword}{static\_cast<}\textcolor{keyword}{const\ }T*\textcolor{keyword}{>}(\textcolor{keyword}{this})\ :\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ For\ root\ class\ we\ define\ StaticType\ manually\ below}}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structVE_1_1Internal_1_1ObjectRuntime_1_1VObject_1_1Type}{Type}}\&\ \mbox{\hyperlink{classVE_1_1Internal_1_1ObjectRuntime_1_1VObject_a12163bbd6684669e11377d040b7ac412}{StaticType}}();}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVE_1_1Internal_1_1ObjectRuntime_1_1VObject_afde74aa4e900602b59113727b6a8aa9a}{VObject}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00068\ \ \ \ \ \};}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{comment}{//\ Macros\ to\ declare/define\ RTTI\ for\ classes}}
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{comment}{//\ Usage:}}
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{comment}{//\ \ \ class\ MyClass\ :\ public\ Base\ \{\ VCLASS\_DECLARE(MyClass,\ Base)\ ...\ \};}}
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{comment}{//\ \ \ VCLASS\_DEFINE(MyClass,\ Base)}}
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00076\ \textcolor{preprocessor}{\ \ \ \ \#define\ VCLASS\_DECLARE(CLASS,\ BASE)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00077\ \textcolor{preprocessor}{\ \ \ \ public:\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00078\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ static\ const\ ::VE::Internal::ObjectRuntime::VObject::Type\&\ StaticType();\ \(\backslash\)}}
+\DoxyCodeLine{00079\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ virtual\ const\ ::VE::Internal::ObjectRuntime::VObject::Type\&\ GetType()\ const\ override\ \{\ return\ StaticType();\ \}\ \(\backslash\)}}
+\DoxyCodeLine{00080\ \textcolor{preprocessor}{\ \ \ \ private:}}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \textcolor{preprocessor}{\ \ \ \ \#define\ VCLASS\_DEFINE(CLASS,\ BASE)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00083\ \textcolor{preprocessor}{\ \ \ \ const\ ::VE::Internal::ObjectRuntime::VObject::Type\&\ CLASS::StaticType()\ \{\ \(\backslash\)}}
+\DoxyCodeLine{00084\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ static\ const\ ::VE::Internal::ObjectRuntime::VObject::Type\ type\ =\ []()\ -\/>\ ::VE::Internal::ObjectRuntime::VObject::Type\ \{\ \(\backslash\)}}
+\DoxyCodeLine{00085\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ return\ ::VE::Internal::ObjectRuntime::VObject::Type\{\ \#CLASS,\ ::VE::Internal::ObjectRuntime::GenerateTypeID(),\ \&BASE::StaticType()\ \};\ \(\backslash\)}}
+\DoxyCodeLine{00086\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \}();\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00087\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ return\ type;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00088\ \textcolor{preprocessor}{\ \ \ \ \}}}
+\DoxyCodeLine{00089\ \}}
+
+\end{DoxyCode}

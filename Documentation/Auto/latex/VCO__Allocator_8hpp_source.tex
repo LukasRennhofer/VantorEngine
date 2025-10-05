@@ -1,0 +1,244 @@
+\doxysection{VCO\+\_\+\+Allocator.\+hpp}
+\hypertarget{VCO__Allocator_8hpp_source}{}\label{VCO__Allocator_8hpp_source}\index{Vantor/Source/Vantor/Core/Include/Core/Memory/VCO\_Allocator.hpp@{Vantor/Source/Vantor/Core/Include/Core/Memory/VCO\_Allocator.hpp}}
+\mbox{\hyperlink{VCO__Allocator_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/****************************************************************************}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ Vantor\ Engine™\ -\/\ Source\ Code\ (2025)}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ Author\ \ \ \ :\ Lukas\ Rennhofer\ (@LukasRennhofer),\ Vantor\ Studios™}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ Copyright\ :\ ©\ 2025\ Lukas\ Rennhofer,\ Vantor\ Studios™}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ *\ License\ \ \ :\ GNU\ General\ Public\ License\ v3.0}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ See\ LICENSE\ file\ for\ full\ details.}}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ ****************************************************************************/}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <Shared/Utility/offsetAllocator.hpp>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <atomic>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <cassert>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <deque>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <mutex>}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{VMA__Common_8hpp}{Math/VMA\_Common.hpp}}>}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{VCO__Vector_8hpp}{Core/Container/VCO\_Vector.hpp}}>}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{comment}{//\ Implementation\ of\ VPageAllocator\ from\ @turanszkij}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceVE_1_1Internal_1_1Core_1_1Memory}{VE::Internal::Core::Memory}}}
+\DoxyCodeLine{00026\ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VLinearAllocator}{VLinearAllocator}}}
+\DoxyCodeLine{00028\ \ \ \ \ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ *\mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VLinearAllocator_a0b479f67a50fb7f613e93de28f2f9063}{data}}\ \ \ \ \ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \ \ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VLinearAllocator_a28bb2dea2c1e83318730e68988a94560}{capacity}}\ =\ 0;}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \ \ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VLinearAllocator_a952ee223c019a8eb4db04ed5ce3b2f39}{offset}}\ \ \ =\ 0;}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VLinearAllocator_afa61d1171192b634fbe0d1d618e45259}{init}}(\textcolor{keywordtype}{void}\ *mem,\ \textcolor{keywordtype}{size\_t}\ size)}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VLinearAllocator_a0b479f67a50fb7f613e93de28f2f9063}{data}}\ \ \ \ \ =\ (uint8\_t\ *)\ mem;}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VLinearAllocator_a28bb2dea2c1e83318730e68988a94560}{capacity}}\ =\ size;}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VLinearAllocator_aa6755ba899982917a10a511f3c0db75d}{reset}}();}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ uint8\_t\ *\mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VLinearAllocator_aac9c9064039ea332912d5e245a4ec4d9}{allocate}}(\textcolor{keywordtype}{size\_t}\ size)}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VLinearAllocator_a952ee223c019a8eb4db04ed5ce3b2f39}{offset}}\ +\ size\ >=\ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VLinearAllocator_a28bb2dea2c1e83318730e68988a94560}{capacity}})\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ *ptr\ =\ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VLinearAllocator_a0b479f67a50fb7f613e93de28f2f9063}{data}}\ +\ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VLinearAllocator_a952ee223c019a8eb4db04ed5ce3b2f39}{offset}};}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VLinearAllocator_a952ee223c019a8eb4db04ed5ce3b2f39}{offset}}\ +=\ size;}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ptr;}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VLinearAllocator_a94a3bcc40fdad818192785cf8add1e8f}{free}}(\textcolor{keywordtype}{size\_t}\ size)}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ size\ =\ std::min(size,\ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VLinearAllocator_a952ee223c019a8eb4db04ed5ce3b2f39}{offset}});}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VLinearAllocator_a952ee223c019a8eb4db04ed5ce3b2f39}{offset}}\ -\/=\ size;}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VLinearAllocator_aa6755ba899982917a10a511f3c0db75d}{reset}}()\ \{\ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VLinearAllocator_a952ee223c019a8eb4db04ed5ce3b2f39}{offset}}\ =\ 0;\ \}}
+\DoxyCodeLine{00052\ \ \ \ \ \};}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T,\ \textcolor{keywordtype}{size\_t}\ block\_size\ =\ 256>\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VBlockAllocator}{VBlockAllocator}}}
+\DoxyCodeLine{00055\ \ \ \ \ \{}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VBlockAllocator_1_1Block}{Block}}}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector}{VE::Internal::Core::Container::TVector<uint8\_t>}}\ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VBlockAllocator_1_1Block_a668a2e38f3ea32c741cd792b63076b41}{mem}};}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector}{VE::Internal::Core::Container::TVector<Block>}}\ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VBlockAllocator_ab3fee8a34fbbe088cd069a116baa6fc0}{blocks}};}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector}{VE::Internal::Core::Container::TVector<T\ *>}}\ \ \ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VBlockAllocator_aaf2a263aadb63d0202d12375b27ca2b5}{free\_list}};}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}...\ ARG>\ \textcolor{keyword}{inline}\ T\ *\mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VBlockAllocator_a75a408d4fe82c82b35bc68e4fe366285}{allocate}}(ARG\ \&\&...args)}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VBlockAllocator_aaf2a263aadb63d0202d12375b27ca2b5}{free\_list}}.empty())}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VBlockAllocator_aaf2a263aadb63d0202d12375b27ca2b5}{free\_list}}.reserve(block\_size);}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VBlockAllocator_1_1Block}{Block}}\ \&block\ =\ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VBlockAllocator_ab3fee8a34fbbe088cd069a116baa6fc0}{blocks}}.emplace\_back();}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ block.\mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VBlockAllocator_1_1Block_a668a2e38f3ea32c741cd792b63076b41}{mem}}.\mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a00497e144a84da431a96134fcd9816e7}{resize}}(\textcolor{keyword}{sizeof}(T)\ *\ block\_size);}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ T\ *ptr\ =\ (T\ *)\ block.\mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VBlockAllocator_1_1Block_a668a2e38f3ea32c741cd792b63076b41}{mem}}.\mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a0194a740b447c0a3cbe8508b22f1dc76}{data}}();}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ block\_size;\ ++i)}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VBlockAllocator_aaf2a263aadb63d0202d12375b27ca2b5}{free\_list}}.push\_back(ptr\ +\ i);}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ T\ *ptr\ =\ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VBlockAllocator_aaf2a263aadb63d0202d12375b27ca2b5}{free\_list}}.back();}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VBlockAllocator_aaf2a263aadb63d0202d12375b27ca2b5}{free\_list}}.pop\_back();}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ (ptr)\ T(std::forward<ARG>(args)...);}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VBlockAllocator_a09e20eb15dc03d5aa5cf04d0c93f61be}{free}}(T\ *ptr)}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ptr-\/>\string~T();}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VBlockAllocator_aaf2a263aadb63d0202d12375b27ca2b5}{free\_list}}.push\_back(ptr);}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VBlockAllocator_ab8100fe1f1e59108d556de37e2b401af}{is\_empty}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ (\mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VBlockAllocator_ab3fee8a34fbbe088cd069a116baa6fc0}{blocks}}.size()\ *\ block\_size)\ ==\ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VBlockAllocator_aaf2a263aadb63d0202d12375b27ca2b5}{free\_list}}.size();\ \}}
+\DoxyCodeLine{00087\ \ \ \ \ \};}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator}{VPageAllocator}}}
+\DoxyCodeLine{00090\ \ \ \ \ \{}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ uint32\_t\ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_aaf4c485ddb4f589c7f657782d0e938be}{page\_count}}\ =\ 0;}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ uint32\_t\ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_a630ff99292b99b779babbcc7bb421622}{page\_size}}\ \ =\ 0;}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1AllocationInternal}{AllocationInternal}}}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::atomic<int>\ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1AllocationInternal_aca0ac86c6d2e4a057b600be8ebb4a2d9}{refcount}}\{0\};}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ OffsetAllocator::Allocation\ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1AllocationInternal_afbb84e950dddb811bda9e0069dc54669}{allocation}};}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1AllocatorInternal}{AllocatorInternal}}}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::mutex\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1AllocatorInternal_a530d59ae0fba05184c75da07c8a23ac5}{locker}};}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ OffsetAllocator::Allocator\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1AllocatorInternal_a46571e0ff8fff8a0fded379cf9e7df2d}{allocator}};}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VBlockAllocator}{VBlockAllocator<AllocationInternal>}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1AllocatorInternal_aa5864c57871ba76b587c458783bb82c7}{internal\_blocks}};}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1AllocatorInternal_ae34d42cc883f312b36d003793a002f64}{deferred\_release\_enabled}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint64\_t\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1AllocatorInternal_ae4bf7a1550afc444de99c12213ccc66e}{deferred\_release\_frame}}\ \ \ =\ 0;}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::deque<std::pair<OffsetAllocator::Allocation,\ uint64\_t>>\ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1AllocatorInternal_aa2d8521481827f3aab93244517950044}{deferred\_release\_queue}};}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ std::shared\_ptr<AllocatorInternal>\ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_a88e8a82c89b08d0baa673f6e10ba9416}{allocator}};}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ uint64\_t\ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_a58ae207fc3c202421e3bbfb357d8a1c8}{total\_size\_in\_bytes}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ uint64\_t(\mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_aaf4c485ddb4f589c7f657782d0e938be}{page\_count}})\ *\ uint64\_t(\mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_a630ff99292b99b779babbcc7bb421622}{page\_size}});\ \}}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ uint32\_t\ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_a706e907182881cac7bdaf2d91a4bbfd8}{page\_count\_from\_bytes}}(uint64\_t\ sizeInBytes)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00112\ \textcolor{keyword}{\ \ \ \ \ \ \ \ \ \ \ \ }\{}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ uint32\_t(VE::Internal::Math::align((uint64\_t)\ sizeInBytes,\ (uint64\_t)\ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_a630ff99292b99b779babbcc7bb421622}{page\_size}})\ /\ (uint64\_t)\ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_a630ff99292b99b779babbcc7bb421622}{page\_size}});}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Initializes\ the\ allocator,\ only\ after\ which\ it\ can\ be\ used}}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ total\_size\_in\_bytes\ :\ \ \ the\ allocator\ will\ manage\ this\ number\ of\ bytes}}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ page\_size\ \ \ \ \ \ \ \ \ \ \ :\ \ \ the\ allocation\ granularity\ in\ bytes,\ each\ allocation\ will\ be\ aligned\ to\ this}}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ deferred\_release\ \ \ \ :\ \ \ if\ false,\ allocations\ are\ freed\ immediately\ (suitable\ for\ CPU\ only\ allocations),\ otherwise\ they\ are\ freed\ after\ a\ number}}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//of\ frames\ passed\ (which\ should\ be\ used\ for\ GPU\ allocations)}}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_afb5452ece91deeb997d035143a596570}{init}}(uint64\_t\ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_a58ae207fc3c202421e3bbfb357d8a1c8}{total\_size\_in\_bytes}},\ uint32\_t\ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_a630ff99292b99b779babbcc7bb421622}{page\_size}}\ =\ 64u\ *\ 1024u,\ \textcolor{keywordtype}{bool}\ deferred\_release\ =\ \textcolor{keyword}{false})}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>page\_size\ \ =\ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_a630ff99292b99b779babbcc7bb421622}{page\_size}};}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>page\_count\ =\ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_a706e907182881cac7bdaf2d91a4bbfd8}{page\_count\_from\_bytes}}(\mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_a58ae207fc3c202421e3bbfb357d8a1c8}{total\_size\_in\_bytes}});}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_a88e8a82c89b08d0baa673f6e10ba9416}{allocator}}\ \ \ \ \ \ \ \ =\ std::make\_shared<AllocatorInternal>();}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_a88e8a82c89b08d0baa673f6e10ba9416}{allocator}}-\/>allocator.init(\mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_aaf4c485ddb4f589c7f657782d0e938be}{page\_count}},\ std::min(\mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_aaf4c485ddb4f589c7f657782d0e938be}{page\_count}},\ OffsetAllocator::default\_maxallocations));}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_a88e8a82c89b08d0baa673f6e10ba9416}{allocator}}-\/>deferred\_release\_enabled\ =\ deferred\_release;}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_a88e8a82c89b08d0baa673f6e10ba9416}{allocator}}-\/>deferred\_release\_frame\ \ \ =\ 0;}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_a88e8a82c89b08d0baa673f6e10ba9416}{allocator}}-\/>deferred\_release\_queue.clear();}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ This\ needs\ to\ be\ called\ every\ frame\ if\ deferred\ release\ is\ enabled:}}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_a819146ea5e8a42b7ba6a762407a490b0}{update\_deferred\_release}}(uint64\_t\ framecount,\ uint32\_t\ buffercount)}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_a88e8a82c89b08d0baa673f6e10ba9416}{allocator}}\ ==\ \textcolor{keyword}{nullptr})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::scoped\_lock\ lck(\mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_a88e8a82c89b08d0baa673f6e10ba9416}{allocator}}-\/>locker);}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_a88e8a82c89b08d0baa673f6e10ba9416}{allocator}}-\/>deferred\_release\_frame\ =\ framecount;}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (!\mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_a88e8a82c89b08d0baa673f6e10ba9416}{allocator}}-\/>deferred\_release\_queue.empty()\ \&\&\ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_a88e8a82c89b08d0baa673f6e10ba9416}{allocator}}-\/>deferred\_release\_queue.front().second\ +\ buffercount\ <\ framecount)}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_a88e8a82c89b08d0baa673f6e10ba9416}{allocator}}-\/>allocator.free(\mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_a88e8a82c89b08d0baa673f6e10ba9416}{allocator}}-\/>deferred\_release\_queue.front().first);}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_a88e8a82c89b08d0baa673f6e10ba9416}{allocator}}-\/>deferred\_release\_queue.pop\_front();}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00143\ }
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1Allocation_a8157b927748eb36a6c4a7f49a7be17ff}{Allocation}}}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::shared\_ptr<AllocatorInternal>\ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1Allocation_ad8a7a2790d5a0eb30c40572a72cbccdb}{allocator}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ the\ allocator\ is\ retained\ so\ that\ allocation\ can\ deallocate\ itself}}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1AllocationInternal}{AllocationInternal}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *\mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1Allocation_a61dd056835ae6c88e1043d6964afa39a}{internal\_state}}\ =\ \textcolor{keyword}{nullptr};\ \textcolor{comment}{//\ this\ is\ pointing\ within\ the\ allocator\ which\ is\ retained\ by\ shared\_ptr}}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint64\_t\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1Allocation_ad862857132c47e5edcb695104be4c083}{byte\_offset}}\ \ \ \ =\ \string~0ull;}
+\DoxyCodeLine{00149\ }
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1Allocation_a8157b927748eb36a6c4a7f49a7be17ff}{Allocation}}()\ \{\ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1Allocation_a66439f28a6443d4a587aae618ad0fbb3}{Reset}}();\ \}}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1Allocation_ae8a4b606305cf03514c3716acc843b7c}{Allocation}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1Allocation_a8157b927748eb36a6c4a7f49a7be17ff}{Allocation}}\ \&other)}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1Allocation_a66439f28a6443d4a587aae618ad0fbb3}{Reset}}();}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1Allocation_ad8a7a2790d5a0eb30c40572a72cbccdb}{allocator}}\ \ \ \ \ \ =\ other.\mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1Allocation_ad8a7a2790d5a0eb30c40572a72cbccdb}{allocator}};}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1Allocation_a61dd056835ae6c88e1043d6964afa39a}{internal\_state}}\ =\ other.\mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1Allocation_a61dd056835ae6c88e1043d6964afa39a}{internal\_state}};}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1Allocation_ad862857132c47e5edcb695104be4c083}{byte\_offset}}\ \ \ \ =\ other.\mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1Allocation_ad862857132c47e5edcb695104be4c083}{byte\_offset}};}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1Allocation_a61dd056835ae6c88e1043d6964afa39a}{internal\_state}}\ !=\ \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1Allocation_a61dd056835ae6c88e1043d6964afa39a}{internal\_state}}-\/>refcount.fetch\_add(1);}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1Allocation_a298ee3ee3304b309a0cd3deaa333177d}{Allocation}}(\mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1Allocation_a8157b927748eb36a6c4a7f49a7be17ff}{Allocation}}\ \&\&other)\ \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1Allocation_a66439f28a6443d4a587aae618ad0fbb3}{Reset}}();}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1Allocation_ad8a7a2790d5a0eb30c40572a72cbccdb}{allocator}}\ \ \ \ \ \ \ \ \ \ \ \ =\ std::move(other.allocator);}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1Allocation_a61dd056835ae6c88e1043d6964afa39a}{internal\_state}}\ \ \ \ \ \ \ =\ other.internal\_state;}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1Allocation_ad862857132c47e5edcb695104be4c083}{byte\_offset}}\ \ \ \ \ \ \ \ \ \ =\ other.byte\_offset;}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ other.allocator\ \ \ \ \ \ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ other.internal\_state\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ other.byte\_offset\ \ \ \ =\ \string~0ull;}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1Allocation_ab8c675f88e37d1e3e95201cb98441ac3}{\string~Allocation}}()\ \{\ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1Allocation_a66439f28a6443d4a587aae618ad0fbb3}{Reset}}();\ \}}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1Allocation_a4c50f8d130fd994f1556255e23105db3}{operator=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1Allocation_a8157b927748eb36a6c4a7f49a7be17ff}{Allocation}}\ \&other)}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1Allocation_a66439f28a6443d4a587aae618ad0fbb3}{Reset}}();}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1Allocation_ad8a7a2790d5a0eb30c40572a72cbccdb}{allocator}}\ \ \ \ \ \ =\ other.\mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1Allocation_ad8a7a2790d5a0eb30c40572a72cbccdb}{allocator}};}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1Allocation_a61dd056835ae6c88e1043d6964afa39a}{internal\_state}}\ =\ other.\mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1Allocation_a61dd056835ae6c88e1043d6964afa39a}{internal\_state}};}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1Allocation_ad862857132c47e5edcb695104be4c083}{byte\_offset}}\ \ \ \ =\ other.\mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1Allocation_ad862857132c47e5edcb695104be4c083}{byte\_offset}};}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1Allocation_a61dd056835ae6c88e1043d6964afa39a}{internal\_state}}\ !=\ \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1Allocation_a61dd056835ae6c88e1043d6964afa39a}{internal\_state}}-\/>refcount.fetch\_add(1);}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1Allocation_ad22b9ee8a8d424c7ca4762e4c8414ab9}{operator=}}(\mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1Allocation_a8157b927748eb36a6c4a7f49a7be17ff}{Allocation}}\ \&\&other)\ \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1Allocation_a66439f28a6443d4a587aae618ad0fbb3}{Reset}}();}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1Allocation_ad8a7a2790d5a0eb30c40572a72cbccdb}{allocator}}\ \ \ \ \ \ \ \ \ \ \ \ =\ std::move(other.allocator);}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1Allocation_a61dd056835ae6c88e1043d6964afa39a}{internal\_state}}\ \ \ \ \ \ \ =\ other.internal\_state;}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1Allocation_ad862857132c47e5edcb695104be4c083}{byte\_offset}}\ \ \ \ \ \ \ \ \ \ =\ other.byte\_offset;}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ other.allocator\ \ \ \ \ \ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ other.internal\_state\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ other.byte\_offset\ \ \ \ =\ \string~0ull;}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1Allocation_a66439f28a6443d4a587aae618ad0fbb3}{Reset}}()}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1Allocation_aa48d8e071f9a9f31b66540c710e0e42c}{IsValid}}()\ \&\&\ (\mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1Allocation_a61dd056835ae6c88e1043d6964afa39a}{internal\_state}}-\/>refcount.fetch\_sub(1)\ <=\ 1))}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::scoped\_lock\ lck(\mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1Allocation_ad8a7a2790d5a0eb30c40572a72cbccdb}{allocator}}-\/>locker);}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1Allocation_ad8a7a2790d5a0eb30c40572a72cbccdb}{allocator}}-\/>deferred\_release\_enabled)}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ can\ only\ be\ reclaimed\ after\ buffering\ amount\ of\ frames\ passed,\ this\ is\ usually\ used\ for\ GPU\ resources:}}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1Allocation_ad8a7a2790d5a0eb30c40572a72cbccdb}{allocator}}-\/>deferred\_release\_queue.push\_back(std::make\_pair(\mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1Allocation_a61dd056835ae6c88e1043d6964afa39a}{internal\_state}}-\/>allocation,\ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1Allocation_ad8a7a2790d5a0eb30c40572a72cbccdb}{allocator}}-\/>deferred\_release\_frame));}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ reclaimed\ immediately:}}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1Allocation_ad8a7a2790d5a0eb30c40572a72cbccdb}{allocator}}-\/>allocator.free(\mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1Allocation_a61dd056835ae6c88e1043d6964afa39a}{internal\_state}}-\/>allocation);}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1Allocation_ad8a7a2790d5a0eb30c40572a72cbccdb}{allocator}}-\/>internal\_blocks.free(\mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1Allocation_a61dd056835ae6c88e1043d6964afa39a}{internal\_state}});}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1Allocation_ad8a7a2790d5a0eb30c40572a72cbccdb}{allocator}}\ \ \ \ \ \ =\ \{\};}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1Allocation_a61dd056835ae6c88e1043d6964afa39a}{internal\_state}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1Allocation_ad862857132c47e5edcb695104be4c083}{byte\_offset}}\ \ \ \ =\ \string~0ull;}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00215\ }
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1Allocation_aa48d8e071f9a9f31b66540c710e0e42c}{IsValid}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1Allocation_a61dd056835ae6c88e1043d6964afa39a}{internal\_state}}\ !=\ \textcolor{keyword}{nullptr};\ \}}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00218\ }
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1Allocation}{Allocation}}\ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_add8e23543e9217de1bbbf29bc6977340}{allocate}}(\textcolor{keywordtype}{size\_t}\ sizeInBytes)}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ uint32\_t\ \ \ \ \ \ \ \ \ \ \ \ \ \ pages\ =\ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_a706e907182881cac7bdaf2d91a4bbfd8}{page\_count\_from\_bytes}}(sizeInBytes);}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::scoped\_lock\ \ \ \ \ \ \ \ \ \ \ \ lck(\mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_a88e8a82c89b08d0baa673f6e10ba9416}{allocator}}-\/>locker);}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ OffsetAllocator::Allocation\ offsetallocation\ =\ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_a88e8a82c89b08d0baa673f6e10ba9416}{allocator}}-\/>allocator.allocate(pages);}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1Allocation}{Allocation}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ alloc;}
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (offsetallocation.offset\ !=\ OffsetAllocator::Allocation::NO\_SPACE)}
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ alloc.\mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1Allocation_ad8a7a2790d5a0eb30c40572a72cbccdb}{allocator}}\ \ \ \ \ \ =\ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_a88e8a82c89b08d0baa673f6e10ba9416}{allocator}};}
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ alloc.\mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1Allocation_a61dd056835ae6c88e1043d6964afa39a}{internal\_state}}\ =\ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_a88e8a82c89b08d0baa673f6e10ba9416}{allocator}}-\/>internal\_blocks.allocate();}
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ alloc.\mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1Allocation_a61dd056835ae6c88e1043d6964afa39a}{internal\_state}}-\/>\mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1AllocationInternal_aca0ac86c6d2e4a057b600be8ebb4a2d9}{refcount}}.store(1);}
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ alloc.\mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1Allocation_a61dd056835ae6c88e1043d6964afa39a}{internal\_state}}-\/>\mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1AllocationInternal_afbb84e950dddb811bda9e0069dc54669}{allocation}}\ =\ offsetallocation;}
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ alloc.\mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1Allocation_ad862857132c47e5edcb695104be4c083}{byte\_offset}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ offsetallocation.offset\ *\ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_a630ff99292b99b779babbcc7bb421622}{page\_size}};}
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ alloc;}
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00235\ }
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_ab3c9a932a044ff48c9a996b111554129}{is\_empty}}()\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_a88e8a82c89b08d0baa673f6e10ba9416}{allocator}}-\/>allocator.storageReport().totalFreeSpace\ ==\ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_aaf4c485ddb4f589c7f657782d0e938be}{page\_count}};\ \}}
+\DoxyCodeLine{00237\ \ \ \ \ \};}
+\DoxyCodeLine{00238\ \}\ \textcolor{comment}{//\ namespace\ VE::Internal::Core::Memory}}
+
+\end{DoxyCode}

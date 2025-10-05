@@ -1,0 +1,330 @@
+\doxysection{VE\+::Internal\+::Core\+::Container\+::TVector\texorpdfstring{$<$}{<} T, A \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector}{}\label{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector}\index{VE::Internal::Core::Container::TVector$<$ T, A $>$@{VE::Internal::Core::Container::TVector$<$ T, A $>$}}
+
+
+{\ttfamily \#include $<$VCO\+\_\+\+Vector.\+hpp$>$}
+
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a34c8db4f66e642939ed38164a0e1f85a}{value\+\_\+type}} = T
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a42ca981fd5efb31183034073676ac838}{TVector}} (size\+\_\+t initial\+\_\+size=0)
+\item 
+\mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a5724d53c38c993612ab0f1151a9402f9}{TVector}} (const \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector}{TVector}}$<$ T $>$ \&source\+\_\+\+TVector)
+\item 
+\mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a35f08e15750a3478604fa3781fa7d354}{TVector}} (\mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector}{TVector}}$<$ T $>$ \&\&source\+\_\+\+TVector) noexcept
+\item 
+\mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a81f4b2dcf6d20ecbf55d5a6cb9c29da5}{TVector}} (std\+::initializer\+\_\+list$<$ T $>$ init\+\_\+list)
+\item 
+\mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a40afeb4048d96b0e1a61acd5d0c732f5}{\texorpdfstring{$\sim$}{\string~}\+TVector}} ()
+\item 
+\mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector}{TVector}}$<$ T $>$ \& \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a8b4e297635689836bff3d25c713e0e98}{operator=}} (const \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector}{TVector}}$<$ T $>$ \&source\+\_\+\+TVector)
+\item 
+\mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector}{TVector}}$<$ T $>$ \& \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_adb11c1fde607829d202ba78a0137a853}{operator=}} (\mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector}{TVector}}$<$ T $>$ \&\&source\+\_\+\+TVector)
+\item 
+constexpr T \& \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a7baa59131e651df216ee0d6537d30a30}{operator\mbox{[}$\,$\mbox{]}}} (size\+\_\+t element\+\_\+index) noexcept
+\item 
+constexpr const T \& \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a0282d1b31261041ce3a984521b402e15}{operator\mbox{[}$\,$\mbox{]}}} (size\+\_\+t element\+\_\+index) const noexcept
+\item 
+void \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a1bd585b39f5882c0af298677a71f734e}{reserve}} (size\+\_\+t requested\+\_\+capacity)
+\item 
+void \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a00497e144a84da431a96134fcd9816e7}{resize}} (size\+\_\+t new\+\_\+size)
+\item 
+void \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_aa16f87df5929e75dd5d68ab00836cf7f}{shrink\+\_\+to\+\_\+fit}} ()
+\item 
+{\footnotesize template$<$typename... Constructor\+Args$>$ }\\T \& \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a25adab1b0745d135c41ec33392d233ac}{emplace\+\_\+back}} (Constructor\+Args \&\&...constructor\+\_\+args)
+\item 
+void \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a1d0a156a2cc88d247a5b75a2a101fff7}{push\+\_\+back}} (const T \&element)
+\item 
+void \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a7114a238523664d7671e44a2badb029f}{push\+\_\+back}} (T \&\&element)
+\item 
+constexpr void \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a53f099bedb89e51fe465423f8d3d60e1}{clear}} () noexcept
+\item 
+constexpr void \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_af194807c421491402758ea99fb41574a}{pop\+\_\+back}} () noexcept
+\item 
+constexpr void \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a45e54b6bd4d0f4cf87ee96ebc35eea93}{erase}} (T \texorpdfstring{$\ast$}{*}position) noexcept
+\item 
+constexpr T \& \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a7a8fe31669a623415c017372d0b5fab6}{back}} () noexcept
+\item 
+constexpr const T \& \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a8008cd7633d86dc42a0b7170cab791ab}{back}} () const noexcept
+\item 
+constexpr T \& \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_acaba72615d59a2c2035725c6664884d8}{front}} () noexcept
+\item 
+constexpr const T \& \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a5c019d3dd35b8e43c4afe53dc93e6127}{front}} () const noexcept
+\item 
+constexpr T \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a0194a740b447c0a3cbe8508b22f1dc76}{data}} () noexcept
+\item 
+constexpr const T \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a10708fb47182441930df1c42f09780fb}{data}} () const noexcept
+\item 
+constexpr T \& \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a042ff8a7426cba44f65de1815998ffe5}{at}} (size\+\_\+t element\+\_\+index) noexcept
+\item 
+constexpr const T \& \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a51b9104c7479027efc6351b9deda0656}{at}} (size\+\_\+t element\+\_\+index) const noexcept
+\item 
+constexpr size\+\_\+t \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a7e82fb696fe06b2a6410324547b09323}{size}} () const noexcept
+\item 
+constexpr bool \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a897bccfaab854defae7fc5d889d2c4b3}{empty}} () const noexcept
+\item 
+constexpr T \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_aa2723bbbc706bc6313720c79ee9a8ecd}{begin}} () noexcept
+\item 
+constexpr const T \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a0cd25f304f1dbbf1ce423824c498548a}{begin}} () const noexcept
+\item 
+constexpr T \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_afaf7151bcf3583c31d82efc81a2cd88d}{end}} () noexcept
+\item 
+constexpr const T \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_af9d1e3445a0e20d522a530596502b6f8}{end}} () const noexcept
+\end{DoxyCompactItemize}
+
+
+\label{doc-typedef-members}
+\Hypertarget{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_doc-typedef-members}
+\doxysubsection{Member Typedef Documentation}
+\Hypertarget{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a34c8db4f66e642939ed38164a0e1f85a}\index{VE::Internal::Core::Container::TVector$<$ T, A $>$@{VE::Internal::Core::Container::TVector$<$ T, A $>$}!value\_type@{value\_type}}
+\index{value\_type@{value\_type}!VE::Internal::Core::Container::TVector$<$ T, A $>$@{VE::Internal::Core::Container::TVector$<$ T, A $>$}}
+\doxysubsubsection{\texorpdfstring{value\_type}{value\_type}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a34c8db4f66e642939ed38164a0e1f85a} 
+template$<$typename T, typename A = std\+::allocator$<$\+T$>$$>$ \\
+using \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector}{VE\+::\+Internal\+::\+Core\+::\+Container\+::\+TVector}}$<$ T, A $>$\+::value\+\_\+type = T}
+
+
+
+\label{doc-constructors}
+\Hypertarget{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a42ca981fd5efb31183034073676ac838}\index{VE::Internal::Core::Container::TVector$<$ T, A $>$@{VE::Internal::Core::Container::TVector$<$ T, A $>$}!TVector@{TVector}}
+\index{TVector@{TVector}!VE::Internal::Core::Container::TVector$<$ T, A $>$@{VE::Internal::Core::Container::TVector$<$ T, A $>$}}
+\doxysubsubsection{\texorpdfstring{TVector()}{TVector()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a42ca981fd5efb31183034073676ac838} 
+template$<$typename T, typename A = std\+::allocator$<$\+T$>$$>$ \\
+\mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector}{VE\+::\+Internal\+::\+Core\+::\+Container\+::\+TVector}}$<$ T, A $>$\+::\+TVector (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{initial\+\_\+size}{ = {\ttfamily 0}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a5724d53c38c993612ab0f1151a9402f9}\index{VE::Internal::Core::Container::TVector$<$ T, A $>$@{VE::Internal::Core::Container::TVector$<$ T, A $>$}!TVector@{TVector}}
+\index{TVector@{TVector}!VE::Internal::Core::Container::TVector$<$ T, A $>$@{VE::Internal::Core::Container::TVector$<$ T, A $>$}}
+\doxysubsubsection{\texorpdfstring{TVector()}{TVector()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a5724d53c38c993612ab0f1151a9402f9} 
+template$<$typename T, typename A = std\+::allocator$<$\+T$>$$>$ \\
+\mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector}{VE\+::\+Internal\+::\+Core\+::\+Container\+::\+TVector}}$<$ T, A $>$\+::\+TVector (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector}{TVector}}$<$ T $>$ \&}]{source\+\_\+\+TVector}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a35f08e15750a3478604fa3781fa7d354}\index{VE::Internal::Core::Container::TVector$<$ T, A $>$@{VE::Internal::Core::Container::TVector$<$ T, A $>$}!TVector@{TVector}}
+\index{TVector@{TVector}!VE::Internal::Core::Container::TVector$<$ T, A $>$@{VE::Internal::Core::Container::TVector$<$ T, A $>$}}
+\doxysubsubsection{\texorpdfstring{TVector()}{TVector()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a35f08e15750a3478604fa3781fa7d354} 
+template$<$typename T, typename A = std\+::allocator$<$\+T$>$$>$ \\
+\mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector}{VE\+::\+Internal\+::\+Core\+::\+Container\+::\+TVector}}$<$ T, A $>$\+::\+TVector (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector}{TVector}}$<$ T $>$ \&\&}]{source\+\_\+\+TVector}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a81f4b2dcf6d20ecbf55d5a6cb9c29da5}\index{VE::Internal::Core::Container::TVector$<$ T, A $>$@{VE::Internal::Core::Container::TVector$<$ T, A $>$}!TVector@{TVector}}
+\index{TVector@{TVector}!VE::Internal::Core::Container::TVector$<$ T, A $>$@{VE::Internal::Core::Container::TVector$<$ T, A $>$}}
+\doxysubsubsection{\texorpdfstring{TVector()}{TVector()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a81f4b2dcf6d20ecbf55d5a6cb9c29da5} 
+template$<$typename T, typename A = std\+::allocator$<$\+T$>$$>$ \\
+\mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector}{VE\+::\+Internal\+::\+Core\+::\+Container\+::\+TVector}}$<$ T, A $>$\+::\+TVector (\begin{DoxyParamCaption}\item[{std\+::initializer\+\_\+list$<$ T $>$}]{init\+\_\+list}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a40afeb4048d96b0e1a61acd5d0c732f5}\index{VE::Internal::Core::Container::TVector$<$ T, A $>$@{VE::Internal::Core::Container::TVector$<$ T, A $>$}!````~TVector@{\texorpdfstring{$\sim$}{\string~}TVector}}
+\index{````~TVector@{\texorpdfstring{$\sim$}{\string~}TVector}!VE::Internal::Core::Container::TVector$<$ T, A $>$@{VE::Internal::Core::Container::TVector$<$ T, A $>$}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}TVector()}{\string~TVector()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a40afeb4048d96b0e1a61acd5d0c732f5} 
+template$<$typename T, typename A = std\+::allocator$<$\+T$>$$>$ \\
+\mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector}{VE\+::\+Internal\+::\+Core\+::\+Container\+::\+TVector}}$<$ T, A $>$\+::\texorpdfstring{$\sim$}{\string~}\mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector}{TVector}} (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\label{doc-func-members}
+\Hypertarget{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a51b9104c7479027efc6351b9deda0656}\index{VE::Internal::Core::Container::TVector$<$ T, A $>$@{VE::Internal::Core::Container::TVector$<$ T, A $>$}!at@{at}}
+\index{at@{at}!VE::Internal::Core::Container::TVector$<$ T, A $>$@{VE::Internal::Core::Container::TVector$<$ T, A $>$}}
+\doxysubsubsection{\texorpdfstring{at()}{at()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a51b9104c7479027efc6351b9deda0656} 
+template$<$typename T, typename A = std\+::allocator$<$\+T$>$$>$ \\
+const T \& \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector}{VE\+::\+Internal\+::\+Core\+::\+Container\+::\+TVector}}$<$ T, A $>$\+::at (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{element\+\_\+index}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a042ff8a7426cba44f65de1815998ffe5}\index{VE::Internal::Core::Container::TVector$<$ T, A $>$@{VE::Internal::Core::Container::TVector$<$ T, A $>$}!at@{at}}
+\index{at@{at}!VE::Internal::Core::Container::TVector$<$ T, A $>$@{VE::Internal::Core::Container::TVector$<$ T, A $>$}}
+\doxysubsubsection{\texorpdfstring{at()}{at()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a042ff8a7426cba44f65de1815998ffe5} 
+template$<$typename T, typename A = std\+::allocator$<$\+T$>$$>$ \\
+T \& \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector}{VE\+::\+Internal\+::\+Core\+::\+Container\+::\+TVector}}$<$ T, A $>$\+::at (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{element\+\_\+index}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a8008cd7633d86dc42a0b7170cab791ab}\index{VE::Internal::Core::Container::TVector$<$ T, A $>$@{VE::Internal::Core::Container::TVector$<$ T, A $>$}!back@{back}}
+\index{back@{back}!VE::Internal::Core::Container::TVector$<$ T, A $>$@{VE::Internal::Core::Container::TVector$<$ T, A $>$}}
+\doxysubsubsection{\texorpdfstring{back()}{back()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a8008cd7633d86dc42a0b7170cab791ab} 
+template$<$typename T, typename A = std\+::allocator$<$\+T$>$$>$ \\
+const T \& \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector}{VE\+::\+Internal\+::\+Core\+::\+Container\+::\+TVector}}$<$ T, A $>$\+::back (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a7a8fe31669a623415c017372d0b5fab6}\index{VE::Internal::Core::Container::TVector$<$ T, A $>$@{VE::Internal::Core::Container::TVector$<$ T, A $>$}!back@{back}}
+\index{back@{back}!VE::Internal::Core::Container::TVector$<$ T, A $>$@{VE::Internal::Core::Container::TVector$<$ T, A $>$}}
+\doxysubsubsection{\texorpdfstring{back()}{back()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a7a8fe31669a623415c017372d0b5fab6} 
+template$<$typename T, typename A = std\+::allocator$<$\+T$>$$>$ \\
+T \& \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector}{VE\+::\+Internal\+::\+Core\+::\+Container\+::\+TVector}}$<$ T, A $>$\+::back (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a0cd25f304f1dbbf1ce423824c498548a}\index{VE::Internal::Core::Container::TVector$<$ T, A $>$@{VE::Internal::Core::Container::TVector$<$ T, A $>$}!begin@{begin}}
+\index{begin@{begin}!VE::Internal::Core::Container::TVector$<$ T, A $>$@{VE::Internal::Core::Container::TVector$<$ T, A $>$}}
+\doxysubsubsection{\texorpdfstring{begin()}{begin()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a0cd25f304f1dbbf1ce423824c498548a} 
+template$<$typename T, typename A = std\+::allocator$<$\+T$>$$>$ \\
+const T \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector}{VE\+::\+Internal\+::\+Core\+::\+Container\+::\+TVector}}$<$ T, A $>$\+::begin (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_aa2723bbbc706bc6313720c79ee9a8ecd}\index{VE::Internal::Core::Container::TVector$<$ T, A $>$@{VE::Internal::Core::Container::TVector$<$ T, A $>$}!begin@{begin}}
+\index{begin@{begin}!VE::Internal::Core::Container::TVector$<$ T, A $>$@{VE::Internal::Core::Container::TVector$<$ T, A $>$}}
+\doxysubsubsection{\texorpdfstring{begin()}{begin()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_aa2723bbbc706bc6313720c79ee9a8ecd} 
+template$<$typename T, typename A = std\+::allocator$<$\+T$>$$>$ \\
+T \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector}{VE\+::\+Internal\+::\+Core\+::\+Container\+::\+TVector}}$<$ T, A $>$\+::begin (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a53f099bedb89e51fe465423f8d3d60e1}\index{VE::Internal::Core::Container::TVector$<$ T, A $>$@{VE::Internal::Core::Container::TVector$<$ T, A $>$}!clear@{clear}}
+\index{clear@{clear}!VE::Internal::Core::Container::TVector$<$ T, A $>$@{VE::Internal::Core::Container::TVector$<$ T, A $>$}}
+\doxysubsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a53f099bedb89e51fe465423f8d3d60e1} 
+template$<$typename T, typename A = std\+::allocator$<$\+T$>$$>$ \\
+void \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector}{VE\+::\+Internal\+::\+Core\+::\+Container\+::\+TVector}}$<$ T, A $>$\+::clear (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a10708fb47182441930df1c42f09780fb}\index{VE::Internal::Core::Container::TVector$<$ T, A $>$@{VE::Internal::Core::Container::TVector$<$ T, A $>$}!data@{data}}
+\index{data@{data}!VE::Internal::Core::Container::TVector$<$ T, A $>$@{VE::Internal::Core::Container::TVector$<$ T, A $>$}}
+\doxysubsubsection{\texorpdfstring{data()}{data()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a10708fb47182441930df1c42f09780fb} 
+template$<$typename T, typename A = std\+::allocator$<$\+T$>$$>$ \\
+const T \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector}{VE\+::\+Internal\+::\+Core\+::\+Container\+::\+TVector}}$<$ T, A $>$\+::data (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a0194a740b447c0a3cbe8508b22f1dc76}\index{VE::Internal::Core::Container::TVector$<$ T, A $>$@{VE::Internal::Core::Container::TVector$<$ T, A $>$}!data@{data}}
+\index{data@{data}!VE::Internal::Core::Container::TVector$<$ T, A $>$@{VE::Internal::Core::Container::TVector$<$ T, A $>$}}
+\doxysubsubsection{\texorpdfstring{data()}{data()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a0194a740b447c0a3cbe8508b22f1dc76} 
+template$<$typename T, typename A = std\+::allocator$<$\+T$>$$>$ \\
+T \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector}{VE\+::\+Internal\+::\+Core\+::\+Container\+::\+TVector}}$<$ T, A $>$\+::data (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a25adab1b0745d135c41ec33392d233ac}\index{VE::Internal::Core::Container::TVector$<$ T, A $>$@{VE::Internal::Core::Container::TVector$<$ T, A $>$}!emplace\_back@{emplace\_back}}
+\index{emplace\_back@{emplace\_back}!VE::Internal::Core::Container::TVector$<$ T, A $>$@{VE::Internal::Core::Container::TVector$<$ T, A $>$}}
+\doxysubsubsection{\texorpdfstring{emplace\_back()}{emplace\_back()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a25adab1b0745d135c41ec33392d233ac} 
+template$<$typename T, typename A = std\+::allocator$<$\+T$>$$>$ \\
+template$<$typename... Constructor\+Args$>$ \\
+T \& \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector}{VE\+::\+Internal\+::\+Core\+::\+Container\+::\+TVector}}$<$ T, A $>$\+::emplace\+\_\+back (\begin{DoxyParamCaption}\item[{Constructor\+Args \&\&...}]{constructor\+\_\+args}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a897bccfaab854defae7fc5d889d2c4b3}\index{VE::Internal::Core::Container::TVector$<$ T, A $>$@{VE::Internal::Core::Container::TVector$<$ T, A $>$}!empty@{empty}}
+\index{empty@{empty}!VE::Internal::Core::Container::TVector$<$ T, A $>$@{VE::Internal::Core::Container::TVector$<$ T, A $>$}}
+\doxysubsubsection{\texorpdfstring{empty()}{empty()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a897bccfaab854defae7fc5d889d2c4b3} 
+template$<$typename T, typename A = std\+::allocator$<$\+T$>$$>$ \\
+bool \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector}{VE\+::\+Internal\+::\+Core\+::\+Container\+::\+TVector}}$<$ T, A $>$\+::empty (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_af9d1e3445a0e20d522a530596502b6f8}\index{VE::Internal::Core::Container::TVector$<$ T, A $>$@{VE::Internal::Core::Container::TVector$<$ T, A $>$}!end@{end}}
+\index{end@{end}!VE::Internal::Core::Container::TVector$<$ T, A $>$@{VE::Internal::Core::Container::TVector$<$ T, A $>$}}
+\doxysubsubsection{\texorpdfstring{end()}{end()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_af9d1e3445a0e20d522a530596502b6f8} 
+template$<$typename T, typename A = std\+::allocator$<$\+T$>$$>$ \\
+const T \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector}{VE\+::\+Internal\+::\+Core\+::\+Container\+::\+TVector}}$<$ T, A $>$\+::end (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_afaf7151bcf3583c31d82efc81a2cd88d}\index{VE::Internal::Core::Container::TVector$<$ T, A $>$@{VE::Internal::Core::Container::TVector$<$ T, A $>$}!end@{end}}
+\index{end@{end}!VE::Internal::Core::Container::TVector$<$ T, A $>$@{VE::Internal::Core::Container::TVector$<$ T, A $>$}}
+\doxysubsubsection{\texorpdfstring{end()}{end()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_afaf7151bcf3583c31d82efc81a2cd88d} 
+template$<$typename T, typename A = std\+::allocator$<$\+T$>$$>$ \\
+T \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector}{VE\+::\+Internal\+::\+Core\+::\+Container\+::\+TVector}}$<$ T, A $>$\+::end (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a45e54b6bd4d0f4cf87ee96ebc35eea93}\index{VE::Internal::Core::Container::TVector$<$ T, A $>$@{VE::Internal::Core::Container::TVector$<$ T, A $>$}!erase@{erase}}
+\index{erase@{erase}!VE::Internal::Core::Container::TVector$<$ T, A $>$@{VE::Internal::Core::Container::TVector$<$ T, A $>$}}
+\doxysubsubsection{\texorpdfstring{erase()}{erase()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a45e54b6bd4d0f4cf87ee96ebc35eea93} 
+template$<$typename T, typename A = std\+::allocator$<$\+T$>$$>$ \\
+void \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector}{VE\+::\+Internal\+::\+Core\+::\+Container\+::\+TVector}}$<$ T, A $>$\+::erase (\begin{DoxyParamCaption}\item[{T \texorpdfstring{$\ast$}{*}}]{position}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a5c019d3dd35b8e43c4afe53dc93e6127}\index{VE::Internal::Core::Container::TVector$<$ T, A $>$@{VE::Internal::Core::Container::TVector$<$ T, A $>$}!front@{front}}
+\index{front@{front}!VE::Internal::Core::Container::TVector$<$ T, A $>$@{VE::Internal::Core::Container::TVector$<$ T, A $>$}}
+\doxysubsubsection{\texorpdfstring{front()}{front()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a5c019d3dd35b8e43c4afe53dc93e6127} 
+template$<$typename T, typename A = std\+::allocator$<$\+T$>$$>$ \\
+const T \& \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector}{VE\+::\+Internal\+::\+Core\+::\+Container\+::\+TVector}}$<$ T, A $>$\+::front (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_acaba72615d59a2c2035725c6664884d8}\index{VE::Internal::Core::Container::TVector$<$ T, A $>$@{VE::Internal::Core::Container::TVector$<$ T, A $>$}!front@{front}}
+\index{front@{front}!VE::Internal::Core::Container::TVector$<$ T, A $>$@{VE::Internal::Core::Container::TVector$<$ T, A $>$}}
+\doxysubsubsection{\texorpdfstring{front()}{front()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_acaba72615d59a2c2035725c6664884d8} 
+template$<$typename T, typename A = std\+::allocator$<$\+T$>$$>$ \\
+T \& \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector}{VE\+::\+Internal\+::\+Core\+::\+Container\+::\+TVector}}$<$ T, A $>$\+::front (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a8b4e297635689836bff3d25c713e0e98}\index{VE::Internal::Core::Container::TVector$<$ T, A $>$@{VE::Internal::Core::Container::TVector$<$ T, A $>$}!operator=@{operator=}}
+\index{operator=@{operator=}!VE::Internal::Core::Container::TVector$<$ T, A $>$@{VE::Internal::Core::Container::TVector$<$ T, A $>$}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a8b4e297635689836bff3d25c713e0e98} 
+template$<$typename T, typename A = std\+::allocator$<$\+T$>$$>$ \\
+\mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector}{TVector}}$<$ T $>$ \& \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector}{VE\+::\+Internal\+::\+Core\+::\+Container\+::\+TVector}}$<$ T, A $>$\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector}{TVector}}$<$ T $>$ \&}]{source\+\_\+\+TVector}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_adb11c1fde607829d202ba78a0137a853}\index{VE::Internal::Core::Container::TVector$<$ T, A $>$@{VE::Internal::Core::Container::TVector$<$ T, A $>$}!operator=@{operator=}}
+\index{operator=@{operator=}!VE::Internal::Core::Container::TVector$<$ T, A $>$@{VE::Internal::Core::Container::TVector$<$ T, A $>$}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_adb11c1fde607829d202ba78a0137a853} 
+template$<$typename T, typename A = std\+::allocator$<$\+T$>$$>$ \\
+\mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector}{TVector}}$<$ T $>$ \& \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector}{VE\+::\+Internal\+::\+Core\+::\+Container\+::\+TVector}}$<$ T, A $>$\+::operator= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector}{TVector}}$<$ T $>$ \&\&}]{source\+\_\+\+TVector}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a0282d1b31261041ce3a984521b402e15}\index{VE::Internal::Core::Container::TVector$<$ T, A $>$@{VE::Internal::Core::Container::TVector$<$ T, A $>$}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!VE::Internal::Core::Container::TVector$<$ T, A $>$@{VE::Internal::Core::Container::TVector$<$ T, A $>$}}
+\doxysubsubsection{\texorpdfstring{operator[]()}{operator[]()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a0282d1b31261041ce3a984521b402e15} 
+template$<$typename T, typename A = std\+::allocator$<$\+T$>$$>$ \\
+const T \& \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector}{VE\+::\+Internal\+::\+Core\+::\+Container\+::\+TVector}}$<$ T, A $>$\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{element\+\_\+index}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a7baa59131e651df216ee0d6537d30a30}\index{VE::Internal::Core::Container::TVector$<$ T, A $>$@{VE::Internal::Core::Container::TVector$<$ T, A $>$}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!VE::Internal::Core::Container::TVector$<$ T, A $>$@{VE::Internal::Core::Container::TVector$<$ T, A $>$}}
+\doxysubsubsection{\texorpdfstring{operator[]()}{operator[]()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a7baa59131e651df216ee0d6537d30a30} 
+template$<$typename T, typename A = std\+::allocator$<$\+T$>$$>$ \\
+T \& \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector}{VE\+::\+Internal\+::\+Core\+::\+Container\+::\+TVector}}$<$ T, A $>$\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{element\+\_\+index}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_af194807c421491402758ea99fb41574a}\index{VE::Internal::Core::Container::TVector$<$ T, A $>$@{VE::Internal::Core::Container::TVector$<$ T, A $>$}!pop\_back@{pop\_back}}
+\index{pop\_back@{pop\_back}!VE::Internal::Core::Container::TVector$<$ T, A $>$@{VE::Internal::Core::Container::TVector$<$ T, A $>$}}
+\doxysubsubsection{\texorpdfstring{pop\_back()}{pop\_back()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_af194807c421491402758ea99fb41574a} 
+template$<$typename T, typename A = std\+::allocator$<$\+T$>$$>$ \\
+void \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector}{VE\+::\+Internal\+::\+Core\+::\+Container\+::\+TVector}}$<$ T, A $>$\+::pop\+\_\+back (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a1d0a156a2cc88d247a5b75a2a101fff7}\index{VE::Internal::Core::Container::TVector$<$ T, A $>$@{VE::Internal::Core::Container::TVector$<$ T, A $>$}!push\_back@{push\_back}}
+\index{push\_back@{push\_back}!VE::Internal::Core::Container::TVector$<$ T, A $>$@{VE::Internal::Core::Container::TVector$<$ T, A $>$}}
+\doxysubsubsection{\texorpdfstring{push\_back()}{push\_back()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a1d0a156a2cc88d247a5b75a2a101fff7} 
+template$<$typename T, typename A = std\+::allocator$<$\+T$>$$>$ \\
+void \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector}{VE\+::\+Internal\+::\+Core\+::\+Container\+::\+TVector}}$<$ T, A $>$\+::push\+\_\+back (\begin{DoxyParamCaption}\item[{const T \&}]{element}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a7114a238523664d7671e44a2badb029f}\index{VE::Internal::Core::Container::TVector$<$ T, A $>$@{VE::Internal::Core::Container::TVector$<$ T, A $>$}!push\_back@{push\_back}}
+\index{push\_back@{push\_back}!VE::Internal::Core::Container::TVector$<$ T, A $>$@{VE::Internal::Core::Container::TVector$<$ T, A $>$}}
+\doxysubsubsection{\texorpdfstring{push\_back()}{push\_back()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a7114a238523664d7671e44a2badb029f} 
+template$<$typename T, typename A = std\+::allocator$<$\+T$>$$>$ \\
+void \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector}{VE\+::\+Internal\+::\+Core\+::\+Container\+::\+TVector}}$<$ T, A $>$\+::push\+\_\+back (\begin{DoxyParamCaption}\item[{T \&\&}]{element}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a1bd585b39f5882c0af298677a71f734e}\index{VE::Internal::Core::Container::TVector$<$ T, A $>$@{VE::Internal::Core::Container::TVector$<$ T, A $>$}!reserve@{reserve}}
+\index{reserve@{reserve}!VE::Internal::Core::Container::TVector$<$ T, A $>$@{VE::Internal::Core::Container::TVector$<$ T, A $>$}}
+\doxysubsubsection{\texorpdfstring{reserve()}{reserve()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a1bd585b39f5882c0af298677a71f734e} 
+template$<$typename T, typename A = std\+::allocator$<$\+T$>$$>$ \\
+void \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector}{VE\+::\+Internal\+::\+Core\+::\+Container\+::\+TVector}}$<$ T, A $>$\+::reserve (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{requested\+\_\+capacity}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a00497e144a84da431a96134fcd9816e7}\index{VE::Internal::Core::Container::TVector$<$ T, A $>$@{VE::Internal::Core::Container::TVector$<$ T, A $>$}!resize@{resize}}
+\index{resize@{resize}!VE::Internal::Core::Container::TVector$<$ T, A $>$@{VE::Internal::Core::Container::TVector$<$ T, A $>$}}
+\doxysubsubsection{\texorpdfstring{resize()}{resize()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a00497e144a84da431a96134fcd9816e7} 
+template$<$typename T, typename A = std\+::allocator$<$\+T$>$$>$ \\
+void \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector}{VE\+::\+Internal\+::\+Core\+::\+Container\+::\+TVector}}$<$ T, A $>$\+::resize (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{new\+\_\+size}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_aa16f87df5929e75dd5d68ab00836cf7f}\index{VE::Internal::Core::Container::TVector$<$ T, A $>$@{VE::Internal::Core::Container::TVector$<$ T, A $>$}!shrink\_to\_fit@{shrink\_to\_fit}}
+\index{shrink\_to\_fit@{shrink\_to\_fit}!VE::Internal::Core::Container::TVector$<$ T, A $>$@{VE::Internal::Core::Container::TVector$<$ T, A $>$}}
+\doxysubsubsection{\texorpdfstring{shrink\_to\_fit()}{shrink\_to\_fit()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_aa16f87df5929e75dd5d68ab00836cf7f} 
+template$<$typename T, typename A = std\+::allocator$<$\+T$>$$>$ \\
+void \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector}{VE\+::\+Internal\+::\+Core\+::\+Container\+::\+TVector}}$<$ T, A $>$\+::shrink\+\_\+to\+\_\+fit (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a7e82fb696fe06b2a6410324547b09323}\index{VE::Internal::Core::Container::TVector$<$ T, A $>$@{VE::Internal::Core::Container::TVector$<$ T, A $>$}!size@{size}}
+\index{size@{size}!VE::Internal::Core::Container::TVector$<$ T, A $>$@{VE::Internal::Core::Container::TVector$<$ T, A $>$}}
+\doxysubsubsection{\texorpdfstring{size()}{size()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a7e82fb696fe06b2a6410324547b09323} 
+template$<$typename T, typename A = std\+::allocator$<$\+T$>$$>$ \\
+size\+\_\+t \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector}{VE\+::\+Internal\+::\+Core\+::\+Container\+::\+TVector}}$<$ T, A $>$\+::size (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Vantor/\+Source/\+Vantor/\+Core/\+Include/\+Core/\+Container/\mbox{\hyperlink{VCO__Vector_8hpp}{VCO\+\_\+\+Vector.\+hpp}}\end{DoxyCompactItemize}

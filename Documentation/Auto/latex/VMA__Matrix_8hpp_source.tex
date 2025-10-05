@@ -1,0 +1,376 @@
+\doxysection{VMA\+\_\+\+Matrix.\+hpp}
+\hypertarget{VMA__Matrix_8hpp_source}{}\label{VMA__Matrix_8hpp_source}\index{Vantor/Source/Vantor/Math/Include/Math/Linear/VMA\_Matrix.hpp@{Vantor/Source/Vantor/Math/Include/Math/Linear/VMA\_Matrix.hpp}}
+\mbox{\hyperlink{VMA__Matrix_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/****************************************************************************}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ Vantor\ Engine™\ -\/\ Source\ Code\ (2025)}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ Author\ \ \ \ :\ Lukas\ Rennhofer\ (@LukasRennhofer),\ Vantor\ Studios™}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ Copyright\ :\ ©\ 2025\ Lukas\ Rennhofer,\ Vantor\ Studios™}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ *\ License\ \ \ :\ GNU\ General\ Public\ License\ v3.0}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ See\ LICENSE\ file\ for\ full\ details.}}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ ****************************************************************************/}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <array>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <cassert>}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{VMA__Vector_8hpp}{VMA\_Vector.hpp}}"{}}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceVE_1_1Math}{VE::Math}}}
+\DoxyCodeLine{00018\ \{}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ VMat4\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structVE_1_1Math_1_1VMat4}{VMat4}}}
+\DoxyCodeLine{00022\ \ \ \ \ \{}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ std::array<float,\ 16>\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat4_a4aeca468454c64f69b1ecd807c862d15}{m}}\{\};}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Identity\ matrix}}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat4}{VMat4}}\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat4_abf6c85826bca4b302fbd656d06062268}{Identity}}()\ noexcept}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Math_1_1VMat4}{VMat4}}\ mat\{\};}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat4_a4aeca468454c64f69b1ecd807c862d15}{m}}[0]\ \ =\ 1.f;}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat4_a4aeca468454c64f69b1ecd807c862d15}{m}}[5]\ \ =\ 1.f;}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat4_a4aeca468454c64f69b1ecd807c862d15}{m}}[10]\ =\ 1.f;}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat4_a4aeca468454c64f69b1ecd807c862d15}{m}}[15]\ =\ 1.f;}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ mat;}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Multiply\ two\ matrices}}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Math_1_1VMat4}{VMat4}}\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat4_a4e96fddb81117ef060e435044343af49}{operator*}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat4}{VMat4}}\ \&rhs)\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Math_1_1VMat4}{VMat4}}\ result\{\};}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ row\ =\ 0;\ row\ <\ 4;\ ++row)}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ col\ =\ 0;\ col\ <\ 4;\ ++col)}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ sum\ =\ 0.f;}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ 4;\ ++i)}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sum\ +=\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat4_a4aeca468454c64f69b1ecd807c862d15}{m}}[row\ *\ 4\ +\ i]\ *\ rhs.m[i\ *\ 4\ +\ col];}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ result.\mbox{\hyperlink{structVE_1_1Math_1_1VMat4_a4aeca468454c64f69b1ecd807c862d15}{m}}[row\ *\ 4\ +\ col]\ =\ sum;}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Create\ translation\ matrix}}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat4}{VMat4}}\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat4_a6dbd64492624b52b842f17053d2331a5}{Translate}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VVector3}}\ \&translation)\ \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Math_1_1VMat4}{VMat4}}\ mat\ =\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat4_abf6c85826bca4b302fbd656d06062268}{Identity}}();}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat4_a4aeca468454c64f69b1ecd807c862d15}{m}}[12]\ =\ translation.x;}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat4_a4aeca468454c64f69b1ecd807c862d15}{m}}[13]\ =\ translation.y;}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat4_a4aeca468454c64f69b1ecd807c862d15}{m}}[14]\ =\ translation.z;}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ mat;}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Create\ rotation\ matrix\ around\ Y\ (yaw)}}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat4}{VMat4}}\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat4_aea1d51532c689e8614683175275432f7}{RotationYaw}}(\textcolor{keywordtype}{float}\ degrees)\ \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ rad\ =\ degrees\ *\ 3.14159265358979323846f\ /\ 180.f;}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ c\ \ \ =\ std::cos(rad);}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ s\ \ \ =\ std::sin(rad);}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Math_1_1VMat4}{VMat4}}\ mat\ =\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat4_abf6c85826bca4b302fbd656d06062268}{Identity}}();}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat4_a4aeca468454c64f69b1ecd807c862d15}{m}}[0]\ \ =\ c;}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat4_a4aeca468454c64f69b1ecd807c862d15}{m}}[2]\ \ =\ s;}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat4_a4aeca468454c64f69b1ecd807c862d15}{m}}[8]\ \ =\ -\/s;}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat4_a4aeca468454c64f69b1ecd807c862d15}{m}}[10]\ =\ c;}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ mat;}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Create\ rotation\ matrix\ around\ X\ (pitch)}}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat4}{VMat4}}\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat4_a26ec288bdfd99e6050eea8ea3d3e2590}{RotationPitch}}(\textcolor{keywordtype}{float}\ degrees)\ \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ rad\ =\ degrees\ *\ 3.14159265358979323846f\ /\ 180.f;}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ c\ \ \ =\ std::cos(rad);}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ s\ \ \ =\ std::sin(rad);}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Math_1_1VMat4}{VMat4}}\ mat\ =\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat4_abf6c85826bca4b302fbd656d06062268}{Identity}}();}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat4_a4aeca468454c64f69b1ecd807c862d15}{m}}[5]\ \ =\ c;}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat4_a4aeca468454c64f69b1ecd807c862d15}{m}}[6]\ \ =\ -\/s;}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat4_a4aeca468454c64f69b1ecd807c862d15}{m}}[9]\ \ =\ s;}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat4_a4aeca468454c64f69b1ecd807c862d15}{m}}[10]\ =\ c;}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ mat;}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Combine\ yaw\ +\ pitch\ rotations\ (yaw\ first)}}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat4}{VMat4}}\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat4_a2e2c19f3aca1c9e73bf042cf55131e9c}{RotationYawPitch}}(\textcolor{keywordtype}{float}\ yawDegrees,\ \textcolor{keywordtype}{float}\ pitchDegrees)\ \textcolor{keyword}{noexcept}\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat4_aea1d51532c689e8614683175275432f7}{RotationYaw}}(yawDegrees)\ *\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat4_a26ec288bdfd99e6050eea8ea3d3e2590}{RotationPitch}}(pitchDegrees);\ \}}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Create\ lookAt\ matrix\ (right-\/handed)}}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat4}{VMat4}}\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat4_aa7b566220f5035c9088a23aa134fe546}{LookAt}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VVector3}}\ \&eye,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VVector3}}\ \&center,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VVector3}}\ \&up)\ \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VVector3}}\ f\ =\ (center\ -\/\ eye).Normalized();}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VVector3}}\ s\ =\ f.\mbox{\hyperlink{structVE_1_1Math_1_1VVector3_a23b7a0a109ecb2e2874c5199acd81575}{Cross}}(up).\mbox{\hyperlink{structVE_1_1Math_1_1VVector3_abd098809cb4cd6df0e51369c1a06bf4f}{Normalized}}();}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VVector3}}\ u\ =\ s.\mbox{\hyperlink{structVE_1_1Math_1_1VVector3_a23b7a0a109ecb2e2874c5199acd81575}{Cross}}(f);}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Math_1_1VMat4}{VMat4}}\ mat\ =\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat4_abf6c85826bca4b302fbd656d06062268}{Identity}}();}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat4_a4aeca468454c64f69b1ecd807c862d15}{m}}[0]\ \ =\ s.\mbox{\hyperlink{structVE_1_1Math_1_1VVector3_acfc163e55301288e983c45e7a3aea9a9}{x}};}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat4_a4aeca468454c64f69b1ecd807c862d15}{m}}[1]\ \ =\ u.\mbox{\hyperlink{structVE_1_1Math_1_1VVector3_acfc163e55301288e983c45e7a3aea9a9}{x}};}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat4_a4aeca468454c64f69b1ecd807c862d15}{m}}[2]\ \ =\ -\/f.\mbox{\hyperlink{structVE_1_1Math_1_1VVector3_acfc163e55301288e983c45e7a3aea9a9}{x}};}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat4_a4aeca468454c64f69b1ecd807c862d15}{m}}[4]\ \ =\ s.\mbox{\hyperlink{structVE_1_1Math_1_1VVector3_a645347944175ba15e6c2b76984d846e1}{y}};}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat4_a4aeca468454c64f69b1ecd807c862d15}{m}}[5]\ \ =\ u.\mbox{\hyperlink{structVE_1_1Math_1_1VVector3_a645347944175ba15e6c2b76984d846e1}{y}};}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat4_a4aeca468454c64f69b1ecd807c862d15}{m}}[6]\ \ =\ -\/f.\mbox{\hyperlink{structVE_1_1Math_1_1VVector3_a645347944175ba15e6c2b76984d846e1}{y}};}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat4_a4aeca468454c64f69b1ecd807c862d15}{m}}[8]\ \ =\ s.\mbox{\hyperlink{structVE_1_1Math_1_1VVector3_a69564468328b68d7ecd3703715e1f397}{z}};}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat4_a4aeca468454c64f69b1ecd807c862d15}{m}}[9]\ \ =\ u.\mbox{\hyperlink{structVE_1_1Math_1_1VVector3_a69564468328b68d7ecd3703715e1f397}{z}};}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat4_a4aeca468454c64f69b1ecd807c862d15}{m}}[10]\ =\ -\/f.\mbox{\hyperlink{structVE_1_1Math_1_1VVector3_a69564468328b68d7ecd3703715e1f397}{z}};}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat4_a4aeca468454c64f69b1ecd807c862d15}{m}}[12]\ =\ -\/s.\mbox{\hyperlink{structVE_1_1Math_1_1VVector3_aeda540142f20be809cfa93e33afde2b6}{Dot}}(eye);}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat4_a4aeca468454c64f69b1ecd807c862d15}{m}}[13]\ =\ -\/u.\mbox{\hyperlink{structVE_1_1Math_1_1VVector3_aeda540142f20be809cfa93e33afde2b6}{Dot}}(eye);}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat4_a4aeca468454c64f69b1ecd807c862d15}{m}}[14]\ =\ f.\mbox{\hyperlink{structVE_1_1Math_1_1VVector3_aeda540142f20be809cfa93e33afde2b6}{Dot}}(eye);}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ mat;}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat4}{VMat4}}\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat4_a9e4c47f0661d7a828aad83bec1f0bae2}{Perspective}}(\textcolor{keywordtype}{float}\ fovDegrees,\ \textcolor{keywordtype}{float}\ aspectRatio,\ \textcolor{keywordtype}{float}\ nearPlane,\ \textcolor{keywordtype}{float}\ farPlane)\ \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ fovRad\ =\ fovDegrees\ *\ 3.14159265358979323846f\ /\ 180.f;}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ f\ \ \ \ \ \ =\ 1.f\ /\ std::tan(fovRad\ /\ 2.f);}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Math_1_1VMat4}{VMat4}}\ mat\{\};}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat4_a4aeca468454c64f69b1ecd807c862d15}{m}}[0]\ \ =\ f\ /\ aspectRatio;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ scale\ X}}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat4_a4aeca468454c64f69b1ecd807c862d15}{m}}[5]\ \ =\ f;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ scale\ Y}}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat4_a4aeca468454c64f69b1ecd807c862d15}{m}}[10]\ =\ (farPlane\ +\ nearPlane)\ /\ (nearPlane\ -\/\ farPlane);\ \textcolor{comment}{//\ Z\ scaling}}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat4_a4aeca468454c64f69b1ecd807c862d15}{m}}[11]\ =\ -\/1.f;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ perspective\ divide}}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat4_a4aeca468454c64f69b1ecd807c862d15}{m}}[14]\ =\ (2.f\ *\ farPlane\ *\ nearPlane)\ /\ (nearPlane\ -\/\ farPlane);}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat4_a4aeca468454c64f69b1ecd807c862d15}{m}}[15]\ =\ 0.f;}
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ mat;}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat4}{VMat4}}\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat4_a3a7b26c2f5dc86b34c3cdd2f9df7fabe}{Scale}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VVector3}}\ \&scale)\ \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Math_1_1VMat4}{VMat4}}\ mat\ =\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat4_abf6c85826bca4b302fbd656d06062268}{Identity}}();}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat4_a4aeca468454c64f69b1ecd807c862d15}{m}}[0]\ \ =\ scale.x;}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat4_a4aeca468454c64f69b1ecd807c862d15}{m}}[5]\ \ =\ scale.y;}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat4_a4aeca468454c64f69b1ecd807c862d15}{m}}[10]\ =\ scale.z;}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ mat;}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00147\ }
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat4}{VMat4}}\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat4_af952ff318d5fafacba0995c2149c93d9}{Orthographic}}(\textcolor{keywordtype}{float}\ left,\ \textcolor{keywordtype}{float}\ right,\ \textcolor{keywordtype}{float}\ bottom,\ \textcolor{keywordtype}{float}\ top,\ \textcolor{keywordtype}{float}\ nearPlane,\ \textcolor{keywordtype}{float}\ farPlane)\ \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Math_1_1VMat4}{VMat4}}\ mat\{\};}
+\DoxyCodeLine{00151\ }
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ rl\ =\ right\ -\/\ left;}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ tb\ =\ top\ -\/\ bottom;}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ fn\ =\ farPlane\ -\/\ nearPlane;}
+\DoxyCodeLine{00155\ }
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ assert(rl\ !=\ 0.f\ \&\&\ tb\ !=\ 0.f\ \&\&\ fn\ !=\ 0.f);}
+\DoxyCodeLine{00157\ }
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat4_a4aeca468454c64f69b1ecd807c862d15}{m}}[0]\ \ =\ 2.f\ /\ rl;}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat4_a4aeca468454c64f69b1ecd807c862d15}{m}}[5]\ \ =\ 2.f\ /\ tb;}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat4_a4aeca468454c64f69b1ecd807c862d15}{m}}[10]\ =\ -\/2.f\ /\ fn;}
+\DoxyCodeLine{00161\ }
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat4_a4aeca468454c64f69b1ecd807c862d15}{m}}[12]\ =\ -\/(right\ +\ left)\ /\ rl;}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat4_a4aeca468454c64f69b1ecd807c862d15}{m}}[13]\ =\ -\/(top\ +\ bottom)\ /\ tb;}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat4_a4aeca468454c64f69b1ecd807c862d15}{m}}[14]\ =\ -\/(farPlane\ +\ nearPlane)\ /\ fn;}
+\DoxyCodeLine{00165\ }
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat4_a4aeca468454c64f69b1ecd807c862d15}{m}}[15]\ =\ 1.f;}
+\DoxyCodeLine{00167\ }
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ mat;}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00170\ }
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ *\mbox{\hyperlink{structVE_1_1Math_1_1VMat4_ae432f2923b2b820476fe06f2c1c972a8}{Data}}()\ const\ noexcept\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat4_a4aeca468454c64f69b1ecd807c862d15}{m}}.data();\ \}}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *\mbox{\hyperlink{structVE_1_1Math_1_1VMat4_abfe343b2c5092eb81a02d2bf441e849c}{Data}}()\ noexcept\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat4_a4aeca468454c64f69b1ecd807c862d15}{m}}.data();\ \}}
+\DoxyCodeLine{00173\ \ \ \ \ \};}
+\DoxyCodeLine{00174\ }
+\DoxyCodeLine{00175\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ VMat3\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00176\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structVE_1_1Math_1_1VMat3}{VMat3}}}
+\DoxyCodeLine{00177\ \ \ \ \ \{}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \ \ \ \ std::array<float,\ 9>\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat3_a5a3da05e5ed1e10e7e64f346c6dffb7d}{m}}\{\};\ \textcolor{comment}{//\ 3x3\ matrix\ stored\ in\ row-\/major\ order}}
+\DoxyCodeLine{00179\ }
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Identity\ matrix}}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat3}{VMat3}}\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat3_ae42165d1bee5646ea03d6fda80653d1c}{Identity}}()\ noexcept}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Math_1_1VMat3}{VMat3}}\ mat\{\};}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat3_a5a3da05e5ed1e10e7e64f346c6dffb7d}{m}}[0]\ =\ 1.f;}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat3_a5a3da05e5ed1e10e7e64f346c6dffb7d}{m}}[4]\ =\ 1.f;}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat3_a5a3da05e5ed1e10e7e64f346c6dffb7d}{m}}[8]\ =\ 1.f;}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ mat;}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00189\ }
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Multiply\ two\ matrices}}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Math_1_1VMat3}{VMat3}}\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat3_a45677a9001092c2b993beddb8b794737}{operator*}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat3}{VMat3}}\ \&rhs)\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Math_1_1VMat3}{VMat3}}\ result\{\};}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ row\ =\ 0;\ row\ <\ 3;\ ++row)}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ col\ =\ 0;\ col\ <\ 3;\ ++col)}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ sum\ =\ 0.f;}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ 3;\ ++i)}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sum\ +=\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat3_a5a3da05e5ed1e10e7e64f346c6dffb7d}{m}}[row\ *\ 3\ +\ i]\ *\ rhs.m[i\ *\ 3\ +\ col];}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ result.\mbox{\hyperlink{structVE_1_1Math_1_1VMat3_a5a3da05e5ed1e10e7e64f346c6dffb7d}{m}}[row\ *\ 3\ +\ col]\ =\ sum;}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00208\ }
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Multiply\ matrix\ by\ vector}}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VVector3}}\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat3_ade713c4dec2b7d503bc80de130c452a4}{operator*}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VVector3}}\ \&v)\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VVector3}}\{\mbox{\hyperlink{structVE_1_1Math_1_1VMat3_a5a3da05e5ed1e10e7e64f346c6dffb7d}{m}}[0]\ *\ v.x\ +\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat3_a5a3da05e5ed1e10e7e64f346c6dffb7d}{m}}[1]\ *\ v.y\ +\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat3_a5a3da05e5ed1e10e7e64f346c6dffb7d}{m}}[2]\ *\ v.z,\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat3_a5a3da05e5ed1e10e7e64f346c6dffb7d}{m}}[3]\ *\ v.x\ +\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat3_a5a3da05e5ed1e10e7e64f346c6dffb7d}{m}}[4]\ *\ v.y\ +\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat3_a5a3da05e5ed1e10e7e64f346c6dffb7d}{m}}[5]\ *\ v.z,\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat3_a5a3da05e5ed1e10e7e64f346c6dffb7d}{m}}[6]\ *\ v.x\ +\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat3_a5a3da05e5ed1e10e7e64f346c6dffb7d}{m}}[7]\ *\ v.y\ +\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat3_a5a3da05e5ed1e10e7e64f346c6dffb7d}{m}}[8]\ *\ v.z\};}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00214\ }
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Create\ rotation\ matrix\ around\ X\ axis\ (degrees)}}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat3}{VMat3}}\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat3_a5957b02a366cf842723085bc9ddfbeb0}{RotationX}}(\textcolor{keywordtype}{float}\ degrees)\ \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ rad\ =\ degrees\ *\ 3.14159265358979323846f\ /\ 180.f;}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ c\ \ \ =\ std::cos(rad);}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ s\ \ \ =\ std::sin(rad);}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Math_1_1VMat3}{VMat3}}\ mat\ =\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat3_ae42165d1bee5646ea03d6fda80653d1c}{Identity}}();}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat3_a5a3da05e5ed1e10e7e64f346c6dffb7d}{m}}[4]\ \ =\ c;}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat3_a5a3da05e5ed1e10e7e64f346c6dffb7d}{m}}[5]\ \ =\ -\/s;}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat3_a5a3da05e5ed1e10e7e64f346c6dffb7d}{m}}[7]\ \ =\ s;}
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat3_a5a3da05e5ed1e10e7e64f346c6dffb7d}{m}}[8]\ \ =\ c;}
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ mat;}
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00228\ }
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Create\ rotation\ matrix\ around\ Y\ axis\ (degrees)}}
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat3}{VMat3}}\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat3_a07fc50422755f6704e4bd31ee4a515d3}{RotationY}}(\textcolor{keywordtype}{float}\ degrees)\ \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ rad\ =\ degrees\ *\ 3.14159265358979323846f\ /\ 180.f;}
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ c\ \ \ =\ std::cos(rad);}
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ s\ \ \ =\ std::sin(rad);}
+\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Math_1_1VMat3}{VMat3}}\ mat\ =\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat3_ae42165d1bee5646ea03d6fda80653d1c}{Identity}}();}
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat3_a5a3da05e5ed1e10e7e64f346c6dffb7d}{m}}[0]\ \ =\ c;}
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat3_a5a3da05e5ed1e10e7e64f346c6dffb7d}{m}}[2]\ \ =\ s;}
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat3_a5a3da05e5ed1e10e7e64f346c6dffb7d}{m}}[6]\ \ =\ -\/s;}
+\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat3_a5a3da05e5ed1e10e7e64f346c6dffb7d}{m}}[8]\ \ =\ c;}
+\DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ mat;}
+\DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00242\ }
+\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Create\ rotation\ matrix\ around\ Z\ axis\ (degrees)}}
+\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat3}{VMat3}}\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat3_aff728aa11d9e3fff81b730ded5002ad2}{RotationZ}}(\textcolor{keywordtype}{float}\ degrees)\ \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ rad\ =\ degrees\ *\ 3.14159265358979323846f\ /\ 180.f;}
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ c\ \ \ =\ std::cos(rad);}
+\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ s\ \ \ =\ std::sin(rad);}
+\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Math_1_1VMat3}{VMat3}}\ mat\ =\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat3_ae42165d1bee5646ea03d6fda80653d1c}{Identity}}();}
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat3_a5a3da05e5ed1e10e7e64f346c6dffb7d}{m}}[0]\ \ =\ c;}
+\DoxyCodeLine{00251\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat3_a5a3da05e5ed1e10e7e64f346c6dffb7d}{m}}[1]\ \ =\ -\/s;}
+\DoxyCodeLine{00252\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat3_a5a3da05e5ed1e10e7e64f346c6dffb7d}{m}}[3]\ \ =\ s;}
+\DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat3_a5a3da05e5ed1e10e7e64f346c6dffb7d}{m}}[4]\ \ =\ c;}
+\DoxyCodeLine{00254\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ mat;}
+\DoxyCodeLine{00255\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00256\ }
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Create\ a\ LookAt\ rotation\ matrix\ (only\ rotation,\ no\ translation)}}
+\DoxyCodeLine{00258\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat3}{VMat3}}\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat3_a0bfe8ce8f070f57fdc4bd56c53738cde}{LookAt}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VVector3}}\ \&eye,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VVector3}}\ \&center,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VVector3}}\ \&up)\ \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VVector3}}\ f\ =\ (center\ -\/\ eye).Normalized();}
+\DoxyCodeLine{00261\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VVector3}}\ s\ =\ f.\mbox{\hyperlink{structVE_1_1Math_1_1VVector3_a23b7a0a109ecb2e2874c5199acd81575}{Cross}}(up).\mbox{\hyperlink{structVE_1_1Math_1_1VVector3_abd098809cb4cd6df0e51369c1a06bf4f}{Normalized}}();}
+\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VVector3}}\ u\ =\ s.\mbox{\hyperlink{structVE_1_1Math_1_1VVector3_a23b7a0a109ecb2e2874c5199acd81575}{Cross}}(f);}
+\DoxyCodeLine{00263\ }
+\DoxyCodeLine{00264\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Math_1_1VMat3}{VMat3}}\ mat\{\};}
+\DoxyCodeLine{00265\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Each\ row\ is\ a\ basis\ vector\ of\ the\ new\ orientation}}
+\DoxyCodeLine{00266\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat3_a5a3da05e5ed1e10e7e64f346c6dffb7d}{m}}[0]\ =\ s.\mbox{\hyperlink{structVE_1_1Math_1_1VVector3_acfc163e55301288e983c45e7a3aea9a9}{x}};}
+\DoxyCodeLine{00267\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat3_a5a3da05e5ed1e10e7e64f346c6dffb7d}{m}}[1]\ =\ s.\mbox{\hyperlink{structVE_1_1Math_1_1VVector3_a645347944175ba15e6c2b76984d846e1}{y}};}
+\DoxyCodeLine{00268\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat3_a5a3da05e5ed1e10e7e64f346c6dffb7d}{m}}[2]\ =\ s.\mbox{\hyperlink{structVE_1_1Math_1_1VVector3_a69564468328b68d7ecd3703715e1f397}{z}};}
+\DoxyCodeLine{00269\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat3_a5a3da05e5ed1e10e7e64f346c6dffb7d}{m}}[3]\ =\ u.\mbox{\hyperlink{structVE_1_1Math_1_1VVector3_acfc163e55301288e983c45e7a3aea9a9}{x}};}
+\DoxyCodeLine{00270\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat3_a5a3da05e5ed1e10e7e64f346c6dffb7d}{m}}[4]\ =\ u.\mbox{\hyperlink{structVE_1_1Math_1_1VVector3_a645347944175ba15e6c2b76984d846e1}{y}};}
+\DoxyCodeLine{00271\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat3_a5a3da05e5ed1e10e7e64f346c6dffb7d}{m}}[5]\ =\ u.\mbox{\hyperlink{structVE_1_1Math_1_1VVector3_a69564468328b68d7ecd3703715e1f397}{z}};}
+\DoxyCodeLine{00272\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat3_a5a3da05e5ed1e10e7e64f346c6dffb7d}{m}}[6]\ =\ -\/f.\mbox{\hyperlink{structVE_1_1Math_1_1VVector3_acfc163e55301288e983c45e7a3aea9a9}{x}};}
+\DoxyCodeLine{00273\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat3_a5a3da05e5ed1e10e7e64f346c6dffb7d}{m}}[7]\ =\ -\/f.\mbox{\hyperlink{structVE_1_1Math_1_1VVector3_a645347944175ba15e6c2b76984d846e1}{y}};}
+\DoxyCodeLine{00274\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat3_a5a3da05e5ed1e10e7e64f346c6dffb7d}{m}}[8]\ =\ -\/f.\mbox{\hyperlink{structVE_1_1Math_1_1VVector3_a69564468328b68d7ecd3703715e1f397}{z}};}
+\DoxyCodeLine{00275\ }
+\DoxyCodeLine{00276\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ mat;}
+\DoxyCodeLine{00277\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00278\ }
+\DoxyCodeLine{00279\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Transpose\ the\ matrix}}
+\DoxyCodeLine{00280\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Math_1_1VMat3}{VMat3}}\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat3_aba1ce5649fbea0e9e9221b4d5d3ce5b0}{Transpose}}()\ const\ noexcept}
+\DoxyCodeLine{00281\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00282\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Math_1_1VMat3}{VMat3}}\ result\{\};}
+\DoxyCodeLine{00283\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ row\ =\ 0;\ row\ <\ 3;\ ++row)}
+\DoxyCodeLine{00284\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00285\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ col\ =\ 0;\ col\ <\ 3;\ ++col)}
+\DoxyCodeLine{00286\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00287\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ result.\mbox{\hyperlink{structVE_1_1Math_1_1VMat3_a5a3da05e5ed1e10e7e64f346c6dffb7d}{m}}[col\ *\ 3\ +\ row]\ =\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat3_a5a3da05e5ed1e10e7e64f346c6dffb7d}{m}}[row\ *\ 3\ +\ col];}
+\DoxyCodeLine{00288\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00289\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00290\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{00291\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00292\ }
+\DoxyCodeLine{00293\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ *\mbox{\hyperlink{structVE_1_1Math_1_1VMat3_aa91139b21e93a9724b06f2bc671d1ed9}{Data}}()\ const\ noexcept\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat3_a5a3da05e5ed1e10e7e64f346c6dffb7d}{m}}.data();\ \}}
+\DoxyCodeLine{00294\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *\mbox{\hyperlink{structVE_1_1Math_1_1VMat3_a546966848bb1d98731604f75bf3ab28b}{Data}}()\ noexcept\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat3_a5a3da05e5ed1e10e7e64f346c6dffb7d}{m}}.data();\ \}}
+\DoxyCodeLine{00295\ \ \ \ \ \};}
+\DoxyCodeLine{00296\ }
+\DoxyCodeLine{00297\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ VMat2\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00298\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structVE_1_1Math_1_1VMat2}{VMat2}}}
+\DoxyCodeLine{00299\ \ \ \ \ \{}
+\DoxyCodeLine{00300\ }
+\DoxyCodeLine{00301\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 2x2\ matrix\ stored\ in\ column-\/major\ order:}}
+\DoxyCodeLine{00302\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ [\ m[0]\ m[2]\ ]}}
+\DoxyCodeLine{00303\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ [\ m[1]\ m[3]\ ]}}
+\DoxyCodeLine{00304\ \ \ \ \ \ \ \ \ \ \ \ \ std::array<float,\ 4>\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat2_a55129ca196d0942e9af77670d8b693ad}{m}}\{\};}
+\DoxyCodeLine{00305\ }
+\DoxyCodeLine{00306\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Identity\ matrix}}
+\DoxyCodeLine{00307\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat2}{VMat2}}\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat2_a6a26a63efaef1c1f94671a0c203bde85}{Identity}}()\ noexcept}
+\DoxyCodeLine{00308\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00309\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Math_1_1VMat2}{VMat2}}\ mat\{\};}
+\DoxyCodeLine{00310\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat2_a55129ca196d0942e9af77670d8b693ad}{m}}[0]\ =\ 1.f;}
+\DoxyCodeLine{00311\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat2_a55129ca196d0942e9af77670d8b693ad}{m}}[3]\ =\ 1.f;}
+\DoxyCodeLine{00312\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ mat;}
+\DoxyCodeLine{00313\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00314\ }
+\DoxyCodeLine{00315\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Multiply\ two\ 2x2\ matrices}}
+\DoxyCodeLine{00316\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Math_1_1VMat2}{VMat2}}\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat2_ad5dfe944aef0d128da3be5e643ca2587}{operator*}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat2}{VMat2}}\ \&rhs)\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{00317\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00318\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Math_1_1VMat2}{VMat2}}\ result\{\};}
+\DoxyCodeLine{00319\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ result.\mbox{\hyperlink{structVE_1_1Math_1_1VMat2_a55129ca196d0942e9af77670d8b693ad}{m}}[0]\ =\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat2_a55129ca196d0942e9af77670d8b693ad}{m}}[0]\ *\ rhs.m[0]\ +\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat2_a55129ca196d0942e9af77670d8b693ad}{m}}[2]\ *\ rhs.m[1];}
+\DoxyCodeLine{00320\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ result.\mbox{\hyperlink{structVE_1_1Math_1_1VMat2_a55129ca196d0942e9af77670d8b693ad}{m}}[1]\ =\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat2_a55129ca196d0942e9af77670d8b693ad}{m}}[1]\ *\ rhs.m[0]\ +\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat2_a55129ca196d0942e9af77670d8b693ad}{m}}[3]\ *\ rhs.m[1];}
+\DoxyCodeLine{00321\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ result.\mbox{\hyperlink{structVE_1_1Math_1_1VMat2_a55129ca196d0942e9af77670d8b693ad}{m}}[2]\ =\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat2_a55129ca196d0942e9af77670d8b693ad}{m}}[0]\ *\ rhs.m[2]\ +\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat2_a55129ca196d0942e9af77670d8b693ad}{m}}[2]\ *\ rhs.m[3];}
+\DoxyCodeLine{00322\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ result.\mbox{\hyperlink{structVE_1_1Math_1_1VMat2_a55129ca196d0942e9af77670d8b693ad}{m}}[3]\ =\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat2_a55129ca196d0942e9af77670d8b693ad}{m}}[1]\ *\ rhs.m[2]\ +\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat2_a55129ca196d0942e9af77670d8b693ad}{m}}[3]\ *\ rhs.m[3];}
+\DoxyCodeLine{00323\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{00324\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00325\ }
+\DoxyCodeLine{00326\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Multiply\ by\ a\ vector\ (2D)}}
+\DoxyCodeLine{00327\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Math_1_1VVector2}{VVector2}}\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat2_a12bc79351cd302884ea85117413523e0}{operator*}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structVE_1_1Math_1_1VVector2}{VVector2}}\ \&vec)\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}\ \{\ \textcolor{keywordflow}{return}\ \{\mbox{\hyperlink{structVE_1_1Math_1_1VMat2_a55129ca196d0942e9af77670d8b693ad}{m}}[0]\ *\ vec.x\ +\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat2_a55129ca196d0942e9af77670d8b693ad}{m}}[2]\ *\ vec.y,\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat2_a55129ca196d0942e9af77670d8b693ad}{m}}[1]\ *\ vec.x\ +\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat2_a55129ca196d0942e9af77670d8b693ad}{m}}[3]\ *\ vec.y\};\ \}}
+\DoxyCodeLine{00328\ }
+\DoxyCodeLine{00329\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Transpose\ the\ matrix}}
+\DoxyCodeLine{00330\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Math_1_1VMat2}{VMat2}}\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat2_abea59661a9b6ccb837830937e969ac27}{Transposed}}()\ const\ noexcept}
+\DoxyCodeLine{00331\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00332\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Math_1_1VMat2}{VMat2}}\ result\{\};}
+\DoxyCodeLine{00333\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ result.\mbox{\hyperlink{structVE_1_1Math_1_1VMat2_a55129ca196d0942e9af77670d8b693ad}{m}}[0]\ =\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat2_a55129ca196d0942e9af77670d8b693ad}{m}}[0];}
+\DoxyCodeLine{00334\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ result.\mbox{\hyperlink{structVE_1_1Math_1_1VMat2_a55129ca196d0942e9af77670d8b693ad}{m}}[1]\ =\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat2_a55129ca196d0942e9af77670d8b693ad}{m}}[2];}
+\DoxyCodeLine{00335\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ result.\mbox{\hyperlink{structVE_1_1Math_1_1VMat2_a55129ca196d0942e9af77670d8b693ad}{m}}[2]\ =\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat2_a55129ca196d0942e9af77670d8b693ad}{m}}[1];}
+\DoxyCodeLine{00336\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ result.\mbox{\hyperlink{structVE_1_1Math_1_1VMat2_a55129ca196d0942e9af77670d8b693ad}{m}}[3]\ =\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat2_a55129ca196d0942e9af77670d8b693ad}{m}}[3];}
+\DoxyCodeLine{00337\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{00338\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00339\ }
+\DoxyCodeLine{00340\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Compute\ determinant}}
+\DoxyCodeLine{00341\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat2_a1bbf777b899f0c7f4b050703ca2ac0dc}{Determinant}}()\ const\ noexcept\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat2_a55129ca196d0942e9af77670d8b693ad}{m}}[0]\ *\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat2_a55129ca196d0942e9af77670d8b693ad}{m}}[3]\ -\/\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat2_a55129ca196d0942e9af77670d8b693ad}{m}}[2]\ *\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat2_a55129ca196d0942e9af77670d8b693ad}{m}}[1];\ \}}
+\DoxyCodeLine{00342\ }
+\DoxyCodeLine{00343\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Create\ a\ rotation\ matrix\ (in\ degrees)}}
+\DoxyCodeLine{00344\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat2}{VMat2}}\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat2_a790e53746f472d5ff0030fb81ebbe04f}{Rotation}}(\textcolor{keywordtype}{float}\ degrees)\ \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{00345\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00346\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ rad\ =\ degrees\ *\ 3.14159265358979323846f\ /\ 180.f;}
+\DoxyCodeLine{00347\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ c\ \ \ =\ std::cos(rad);}
+\DoxyCodeLine{00348\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ s\ \ \ =\ std::sin(rad);}
+\DoxyCodeLine{00349\ }
+\DoxyCodeLine{00350\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Math_1_1VMat2}{VMat2}}\ mat\{\};}
+\DoxyCodeLine{00351\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat2_a55129ca196d0942e9af77670d8b693ad}{m}}[0]\ =\ c;}
+\DoxyCodeLine{00352\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat2_a55129ca196d0942e9af77670d8b693ad}{m}}[1]\ =\ s;}
+\DoxyCodeLine{00353\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat2_a55129ca196d0942e9af77670d8b693ad}{m}}[2]\ =\ -\/s;}
+\DoxyCodeLine{00354\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat2_a55129ca196d0942e9af77670d8b693ad}{m}}[3]\ =\ c;}
+\DoxyCodeLine{00355\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ mat;}
+\DoxyCodeLine{00356\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00357\ }
+\DoxyCodeLine{00358\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Create\ a\ scaling\ matrix}}
+\DoxyCodeLine{00359\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat2}{VMat2}}\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat2_ab397adc3d456ae0112ee18d13d21b680}{Scale}}(\textcolor{keywordtype}{float}\ scaleX,\ \textcolor{keywordtype}{float}\ scaleY)\ \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{00360\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00361\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Math_1_1VMat2}{VMat2}}\ mat\{\};}
+\DoxyCodeLine{00362\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat2_a55129ca196d0942e9af77670d8b693ad}{m}}[0]\ =\ scaleX;}
+\DoxyCodeLine{00363\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat2_a55129ca196d0942e9af77670d8b693ad}{m}}[3]\ =\ scaleY;}
+\DoxyCodeLine{00364\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ mat;}
+\DoxyCodeLine{00365\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00366\ }
+\DoxyCodeLine{00367\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ *\mbox{\hyperlink{structVE_1_1Math_1_1VMat2_aac1b93f3dec77385c37c2975cdcd8114}{Data}}()\ const\ noexcept\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat2_a55129ca196d0942e9af77670d8b693ad}{m}}.data();\ \}}
+\DoxyCodeLine{00368\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *\mbox{\hyperlink{structVE_1_1Math_1_1VMat2_af7fc70e3b484ed70ea0e6555c42fb29e}{Data}}()\ noexcept\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat2_a55129ca196d0942e9af77670d8b693ad}{m}}.data();\ \}}
+\DoxyCodeLine{00369\ \ \ \ \ \};}
+\DoxyCodeLine{00370\ \}\ \textcolor{comment}{//\ namespace\ VE::Internal::Math}}
+
+\end{DoxyCode}

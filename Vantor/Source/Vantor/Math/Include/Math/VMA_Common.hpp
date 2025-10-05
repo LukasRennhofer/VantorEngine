@@ -11,7 +11,7 @@
 
 #include <cmath>
 
-namespace VE::Internal::Math
+namespace VE::Math
 {
     constexpr float VPI  = 3.14159265358979323846f;
     constexpr float VTAU = 6.28318530717958647692f; // TAU = 2 * PI

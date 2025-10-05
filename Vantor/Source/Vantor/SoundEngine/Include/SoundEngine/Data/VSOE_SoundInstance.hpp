@@ -42,8 +42,8 @@ namespace VE::Internal::SoundEngine {
             void SetAttenuationThreshold(float p_distance);
 
             void SetSpatialParameters(
-                const VE::Internal::Math::VVector3& p_position,
-                const VE::Internal::Math::VVector3& p_velocity
+                const VE::Math::VVector3& p_position,
+                const VE::Math::VVector3& p_velocity
             ) const;
 
             void Play();

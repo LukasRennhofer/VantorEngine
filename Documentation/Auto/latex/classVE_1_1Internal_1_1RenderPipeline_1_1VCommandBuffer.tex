@@ -1,0 +1,81 @@
+\doxysection{VE\+::Internal\+::Render\+Pipeline\+::VCommand\+Buffer Class Reference}
+\hypertarget{classVE_1_1Internal_1_1RenderPipeline_1_1VCommandBuffer}{}\label{classVE_1_1Internal_1_1RenderPipeline_1_1VCommandBuffer}\index{VE::Internal::RenderPipeline::VCommandBuffer@{VE::Internal::RenderPipeline::VCommandBuffer}}
+
+
+{\ttfamily \#include $<$VREP\+\_\+\+Command\+Buffer.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classVE_1_1Internal_1_1RenderPipeline_1_1VCommandBuffer_aba2e42f2530db2c22ee8f437cfe492d2}{VCommand\+Buffer}} ()
+\item 
+\mbox{\hyperlink{classVE_1_1Internal_1_1RenderPipeline_1_1VCommandBuffer_a04cce00496aed6af6917286e68cdb288}{\texorpdfstring{$\sim$}{\string~}\+VCommand\+Buffer}} ()
+\item 
+void \mbox{\hyperlink{classVE_1_1Internal_1_1RenderPipeline_1_1VCommandBuffer_a08478ade2d674b60f77b4a2c3932b4bb}{Push}} (\mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIMesh}{VE\+::\+Internal\+::\+RHI\+::\+IRHIMesh}} \texorpdfstring{$\ast$}{*}mesh, \mbox{\hyperlink{classVE_1_1VMaterial}{VE\+::\+VMaterial}} \texorpdfstring{$\ast$}{*}material, const \mbox{\hyperlink{structVE_1_1Math_1_1VMat4}{VE\+::\+Math\+::\+VMat4}} \&transform)
+\item 
+void \mbox{\hyperlink{classVE_1_1Internal_1_1RenderPipeline_1_1VCommandBuffer_a5e999e7d5ef00ee8e6995ab6055bce16}{Clear}} ()
+\item 
+void \mbox{\hyperlink{classVE_1_1Internal_1_1RenderPipeline_1_1VCommandBuffer_a47652438936486f353a0fec30b84e29e}{Sort}} ()
+\item 
+std\+::vector$<$ \mbox{\hyperlink{structVE_1_1Internal_1_1RenderPipeline_1_1VRenderCommand}{VRender\+Command}} $>$ \mbox{\hyperlink{classVE_1_1Internal_1_1RenderPipeline_1_1VCommandBuffer_ade8206fdb9638bd62383eab77d06719d}{Get\+Forward\+Render\+Commands}} (bool cull=false)
+\item 
+std\+::vector$<$ \mbox{\hyperlink{structVE_1_1Internal_1_1RenderPipeline_1_1VRenderCommand}{VRender\+Command}} $>$ \mbox{\hyperlink{classVE_1_1Internal_1_1RenderPipeline_1_1VCommandBuffer_abf9ffafc7ea82c8e5f6074b5223b2bc7}{Get\+Deffered\+Render\+Commands}} (bool cull=false)
+\end{DoxyCompactItemize}
+
+
+\label{doc-constructors}
+\Hypertarget{classVE_1_1Internal_1_1RenderPipeline_1_1VCommandBuffer_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classVE_1_1Internal_1_1RenderPipeline_1_1VCommandBuffer_aba2e42f2530db2c22ee8f437cfe492d2}\index{VE::Internal::RenderPipeline::VCommandBuffer@{VE::Internal::RenderPipeline::VCommandBuffer}!VCommandBuffer@{VCommandBuffer}}
+\index{VCommandBuffer@{VCommandBuffer}!VE::Internal::RenderPipeline::VCommandBuffer@{VE::Internal::RenderPipeline::VCommandBuffer}}
+\doxysubsubsection{\texorpdfstring{VCommandBuffer()}{VCommandBuffer()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RenderPipeline_1_1VCommandBuffer_aba2e42f2530db2c22ee8f437cfe492d2} 
+VE\+::\+Internal\+::\+Render\+Pipeline\+::\+VCommand\+Buffer\+::\+VCommand\+Buffer (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classVE_1_1Internal_1_1RenderPipeline_1_1VCommandBuffer_a04cce00496aed6af6917286e68cdb288}\index{VE::Internal::RenderPipeline::VCommandBuffer@{VE::Internal::RenderPipeline::VCommandBuffer}!````~VCommandBuffer@{\texorpdfstring{$\sim$}{\string~}VCommandBuffer}}
+\index{````~VCommandBuffer@{\texorpdfstring{$\sim$}{\string~}VCommandBuffer}!VE::Internal::RenderPipeline::VCommandBuffer@{VE::Internal::RenderPipeline::VCommandBuffer}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}VCommandBuffer()}{\string~VCommandBuffer()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RenderPipeline_1_1VCommandBuffer_a04cce00496aed6af6917286e68cdb288} 
+VE\+::\+Internal\+::\+Render\+Pipeline\+::\+VCommand\+Buffer\+::\texorpdfstring{$\sim$}{\string~}\+VCommand\+Buffer (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+\label{doc-func-members}
+\Hypertarget{classVE_1_1Internal_1_1RenderPipeline_1_1VCommandBuffer_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classVE_1_1Internal_1_1RenderPipeline_1_1VCommandBuffer_a5e999e7d5ef00ee8e6995ab6055bce16}\index{VE::Internal::RenderPipeline::VCommandBuffer@{VE::Internal::RenderPipeline::VCommandBuffer}!Clear@{Clear}}
+\index{Clear@{Clear}!VE::Internal::RenderPipeline::VCommandBuffer@{VE::Internal::RenderPipeline::VCommandBuffer}}
+\doxysubsubsection{\texorpdfstring{Clear()}{Clear()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RenderPipeline_1_1VCommandBuffer_a5e999e7d5ef00ee8e6995ab6055bce16} 
+void VE\+::\+Internal\+::\+Render\+Pipeline\+::\+VCommand\+Buffer\+::\+Clear (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classVE_1_1Internal_1_1RenderPipeline_1_1VCommandBuffer_abf9ffafc7ea82c8e5f6074b5223b2bc7}\index{VE::Internal::RenderPipeline::VCommandBuffer@{VE::Internal::RenderPipeline::VCommandBuffer}!GetDefferedRenderCommands@{GetDefferedRenderCommands}}
+\index{GetDefferedRenderCommands@{GetDefferedRenderCommands}!VE::Internal::RenderPipeline::VCommandBuffer@{VE::Internal::RenderPipeline::VCommandBuffer}}
+\doxysubsubsection{\texorpdfstring{GetDefferedRenderCommands()}{GetDefferedRenderCommands()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RenderPipeline_1_1VCommandBuffer_abf9ffafc7ea82c8e5f6074b5223b2bc7} 
+std\+::vector$<$ \mbox{\hyperlink{structVE_1_1Internal_1_1RenderPipeline_1_1VRenderCommand}{VRender\+Command}} $>$ VE\+::\+Internal\+::\+Render\+Pipeline\+::\+VCommand\+Buffer\+::\+Get\+Deffered\+Render\+Commands (\begin{DoxyParamCaption}\item[{bool}]{cull}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+\Hypertarget{classVE_1_1Internal_1_1RenderPipeline_1_1VCommandBuffer_ade8206fdb9638bd62383eab77d06719d}\index{VE::Internal::RenderPipeline::VCommandBuffer@{VE::Internal::RenderPipeline::VCommandBuffer}!GetForwardRenderCommands@{GetForwardRenderCommands}}
+\index{GetForwardRenderCommands@{GetForwardRenderCommands}!VE::Internal::RenderPipeline::VCommandBuffer@{VE::Internal::RenderPipeline::VCommandBuffer}}
+\doxysubsubsection{\texorpdfstring{GetForwardRenderCommands()}{GetForwardRenderCommands()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RenderPipeline_1_1VCommandBuffer_ade8206fdb9638bd62383eab77d06719d} 
+std\+::vector$<$ \mbox{\hyperlink{structVE_1_1Internal_1_1RenderPipeline_1_1VRenderCommand}{VRender\+Command}} $>$ VE\+::\+Internal\+::\+Render\+Pipeline\+::\+VCommand\+Buffer\+::\+Get\+Forward\+Render\+Commands (\begin{DoxyParamCaption}\item[{bool}]{cull}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+\Hypertarget{classVE_1_1Internal_1_1RenderPipeline_1_1VCommandBuffer_a08478ade2d674b60f77b4a2c3932b4bb}\index{VE::Internal::RenderPipeline::VCommandBuffer@{VE::Internal::RenderPipeline::VCommandBuffer}!Push@{Push}}
+\index{Push@{Push}!VE::Internal::RenderPipeline::VCommandBuffer@{VE::Internal::RenderPipeline::VCommandBuffer}}
+\doxysubsubsection{\texorpdfstring{Push()}{Push()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RenderPipeline_1_1VCommandBuffer_a08478ade2d674b60f77b4a2c3932b4bb} 
+void VE\+::\+Internal\+::\+Render\+Pipeline\+::\+VCommand\+Buffer\+::\+Push (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIMesh}{VE\+::\+Internal\+::\+RHI\+::\+IRHIMesh}} \texorpdfstring{$\ast$}{*}}]{mesh}{, }\item[{\mbox{\hyperlink{classVE_1_1VMaterial}{VE\+::\+VMaterial}} \texorpdfstring{$\ast$}{*}}]{material}{, }\item[{const \mbox{\hyperlink{structVE_1_1Math_1_1VMat4}{VE\+::\+Math\+::\+VMat4}} \&}]{transform}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classVE_1_1Internal_1_1RenderPipeline_1_1VCommandBuffer_a47652438936486f353a0fec30b84e29e}\index{VE::Internal::RenderPipeline::VCommandBuffer@{VE::Internal::RenderPipeline::VCommandBuffer}!Sort@{Sort}}
+\index{Sort@{Sort}!VE::Internal::RenderPipeline::VCommandBuffer@{VE::Internal::RenderPipeline::VCommandBuffer}}
+\doxysubsubsection{\texorpdfstring{Sort()}{Sort()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RenderPipeline_1_1VCommandBuffer_a47652438936486f353a0fec30b84e29e} 
+void VE\+::\+Internal\+::\+Render\+Pipeline\+::\+VCommand\+Buffer\+::\+Sort (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Vantor/\+Source/\+Vantor/\+Render\+Pipeline/\+Include/\+Render\+Pipeline/\+Pipeline/\mbox{\hyperlink{VREP__CommandBuffer_8hpp}{VREP\+\_\+\+Command\+Buffer.\+hpp}}\item 
+Vantor/\+Source/\+Vantor/\+Render\+Pipeline/\+Source/\+Render\+Pipeline/\+Pipeline/\mbox{\hyperlink{VREP__CommandBuffer_8cpp}{VREP\+\_\+\+Command\+Buffer.\+cpp}}\end{DoxyCompactItemize}

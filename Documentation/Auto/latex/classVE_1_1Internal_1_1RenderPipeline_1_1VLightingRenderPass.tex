@@ -1,0 +1,109 @@
+\doxysection{VE\+::Internal\+::Render\+Pipeline\+::VLighting\+Render\+Pass Class Reference}
+\hypertarget{classVE_1_1Internal_1_1RenderPipeline_1_1VLightingRenderPass}{}\label{classVE_1_1Internal_1_1RenderPipeline_1_1VLightingRenderPass}\index{VE::Internal::RenderPipeline::VLightingRenderPass@{VE::Internal::RenderPipeline::VLightingRenderPass}}
+
+
+{\ttfamily \#include $<$VREP\+\_\+\+Internal.\+hpp$>$}
+
+Inheritance diagram for VE\+::Internal\+::Render\+Pipeline\+::VLighting\+Render\+Pass\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classVE_1_1Internal_1_1RenderPipeline_1_1VLightingRenderPass}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classVE_1_1Internal_1_1RenderPipeline_1_1VLightingRenderPass_ac7d7472af2d10ff06cbe529d2a008fe8}{VLighting\+Render\+Pass}} ()
+\item 
+\mbox{\hyperlink{classVE_1_1Internal_1_1RenderPipeline_1_1VLightingRenderPass_ab8107b486b84861e8415314cfc05ecc4}{\texorpdfstring{$\sim$}{\string~}\+VLighting\+Render\+Pass}} ()=default
+\item 
+void \mbox{\hyperlink{classVE_1_1Internal_1_1RenderPipeline_1_1VLightingRenderPass_aa58e4fda027524ee10c3373acc2e93e8}{Execute}} () override
+\item 
+void \mbox{\hyperlink{classVE_1_1Internal_1_1RenderPipeline_1_1VLightingRenderPass_a6eba5203406993b67044ef5a90a3f42b}{Cleanup}} () override
+\item 
+\mbox{\hyperlink{namespaceVE_1_1Renderer_aee20b04fc5db494be35be814d420dd3f}{VE\+::\+Renderer\+::\+ERender\+Pass\+Type}} \mbox{\hyperlink{classVE_1_1Internal_1_1RenderPipeline_1_1VLightingRenderPass_a120255f28dc904f34c0145a1ad18c752}{Get\+Type}} () const override
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPass}{VE\+::\+Renderer\+::\+VRender\+Pass}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPass_a1f384ed3ad366ee1885eff3917bdbd73}{\texorpdfstring{$\sim$}{\string~}\+VRender\+Pass}} ()=default
+\item 
+void \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPass_af7bf8cf6a2bc910c2218621b19785e1d}{Initialize}} (\mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPath}{VRender\+Path}} \texorpdfstring{$\ast$}{*}render\+Path)
+\item 
+void \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPass_a2ad8dda420859819891a7e7cdd0d2a90}{Set\+Enabled}} (bool enabled)
+\item 
+bool \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPass_a89d7d5e483cd4058f5b1972ddaea2a9d}{Is\+Enabled}} () const
+\item 
+void \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPass_a3f164bffa5360cab32e420339a5957e3}{Set\+Input\+Target}} (\mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget}{VE\+::\+Internal\+::\+RHI\+::\+IRHIRender\+Target}} \texorpdfstring{$\ast$}{*}input)
+\item 
+\mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget}{VE\+::\+Internal\+::\+RHI\+::\+IRHIRender\+Target}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPass_a35e3e67e3c03bda4bc153fd98acfd51f}{Get\+Output\+Target}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPass}{VE\+::\+Renderer\+::\+VRender\+Pass}}}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPass_afc13a062eac256f2b03a73286d290e8c}{m\+\_\+\+Enabled}} = true
+\item 
+\mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget}{VE\+::\+Internal\+::\+RHI\+::\+IRHIRender\+Target}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPass_aee1e63b69b53b9b897dc80873d774e2a}{m\+\_\+\+IN}} = nullptr
+\item 
+\mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget}{VE\+::\+Internal\+::\+RHI\+::\+IRHIRender\+Target}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPass_ae7a2d430d640fd8b53215bf29f32fbf0}{m\+\_\+\+OUT}} = nullptr
+\item 
+\mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPath}{VRender\+Path}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPass_aafb50d9e0cb834b6a72e1199206fabe8}{m\+\_\+\+Render\+Path}}
+\end{DoxyCompactItemize}
+
+
+\label{doc-constructors}
+\Hypertarget{classVE_1_1Internal_1_1RenderPipeline_1_1VLightingRenderPass_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classVE_1_1Internal_1_1RenderPipeline_1_1VLightingRenderPass_ac7d7472af2d10ff06cbe529d2a008fe8}\index{VE::Internal::RenderPipeline::VLightingRenderPass@{VE::Internal::RenderPipeline::VLightingRenderPass}!VLightingRenderPass@{VLightingRenderPass}}
+\index{VLightingRenderPass@{VLightingRenderPass}!VE::Internal::RenderPipeline::VLightingRenderPass@{VE::Internal::RenderPipeline::VLightingRenderPass}}
+\doxysubsubsection{\texorpdfstring{VLightingRenderPass()}{VLightingRenderPass()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RenderPipeline_1_1VLightingRenderPass_ac7d7472af2d10ff06cbe529d2a008fe8} 
+VE\+::\+Internal\+::\+Render\+Pipeline\+::\+VLighting\+Render\+Pass\+::\+VLighting\+Render\+Pass (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classVE_1_1Internal_1_1RenderPipeline_1_1VLightingRenderPass_ab8107b486b84861e8415314cfc05ecc4}\index{VE::Internal::RenderPipeline::VLightingRenderPass@{VE::Internal::RenderPipeline::VLightingRenderPass}!````~VLightingRenderPass@{\texorpdfstring{$\sim$}{\string~}VLightingRenderPass}}
+\index{````~VLightingRenderPass@{\texorpdfstring{$\sim$}{\string~}VLightingRenderPass}!VE::Internal::RenderPipeline::VLightingRenderPass@{VE::Internal::RenderPipeline::VLightingRenderPass}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}VLightingRenderPass()}{\string~VLightingRenderPass()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RenderPipeline_1_1VLightingRenderPass_ab8107b486b84861e8415314cfc05ecc4} 
+VE\+::\+Internal\+::\+Render\+Pipeline\+::\+VLighting\+Render\+Pass\+::\texorpdfstring{$\sim$}{\string~}\+VLighting\+Render\+Pass (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+\label{doc-func-members}
+\Hypertarget{classVE_1_1Internal_1_1RenderPipeline_1_1VLightingRenderPass_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classVE_1_1Internal_1_1RenderPipeline_1_1VLightingRenderPass_a6eba5203406993b67044ef5a90a3f42b}\index{VE::Internal::RenderPipeline::VLightingRenderPass@{VE::Internal::RenderPipeline::VLightingRenderPass}!Cleanup@{Cleanup}}
+\index{Cleanup@{Cleanup}!VE::Internal::RenderPipeline::VLightingRenderPass@{VE::Internal::RenderPipeline::VLightingRenderPass}}
+\doxysubsubsection{\texorpdfstring{Cleanup()}{Cleanup()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RenderPipeline_1_1VLightingRenderPass_a6eba5203406993b67044ef5a90a3f42b} 
+void VE\+::\+Internal\+::\+Render\+Pipeline\+::\+VLighting\+Render\+Pass\+::\+Cleanup (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPass_af733c405e2e0debabcafcca9a3460ea8}{VE\+::\+Renderer\+::\+VRender\+Pass}}.
+
+\Hypertarget{classVE_1_1Internal_1_1RenderPipeline_1_1VLightingRenderPass_aa58e4fda027524ee10c3373acc2e93e8}\index{VE::Internal::RenderPipeline::VLightingRenderPass@{VE::Internal::RenderPipeline::VLightingRenderPass}!Execute@{Execute}}
+\index{Execute@{Execute}!VE::Internal::RenderPipeline::VLightingRenderPass@{VE::Internal::RenderPipeline::VLightingRenderPass}}
+\doxysubsubsection{\texorpdfstring{Execute()}{Execute()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RenderPipeline_1_1VLightingRenderPass_aa58e4fda027524ee10c3373acc2e93e8} 
+void VE\+::\+Internal\+::\+Render\+Pipeline\+::\+VLighting\+Render\+Pass\+::\+Execute (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPass_a37e852a6ad72122d3c3794eda8bc26d4}{VE\+::\+Renderer\+::\+VRender\+Pass}}.
+
+\Hypertarget{classVE_1_1Internal_1_1RenderPipeline_1_1VLightingRenderPass_a120255f28dc904f34c0145a1ad18c752}\index{VE::Internal::RenderPipeline::VLightingRenderPass@{VE::Internal::RenderPipeline::VLightingRenderPass}!GetType@{GetType}}
+\index{GetType@{GetType}!VE::Internal::RenderPipeline::VLightingRenderPass@{VE::Internal::RenderPipeline::VLightingRenderPass}}
+\doxysubsubsection{\texorpdfstring{GetType()}{GetType()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RenderPipeline_1_1VLightingRenderPass_a120255f28dc904f34c0145a1ad18c752} 
+\mbox{\hyperlink{namespaceVE_1_1Renderer_aee20b04fc5db494be35be814d420dd3f}{VE\+::\+Renderer\+::\+ERender\+Pass\+Type}} VE\+::\+Internal\+::\+Render\+Pipeline\+::\+VLighting\+Render\+Pass\+::\+Get\+Type (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPass_a60341e1eae4fdfef27de133316ce3a3d}{VE\+::\+Renderer\+::\+VRender\+Pass}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Vantor/\+Source/\+Vantor/\+Render\+Pipeline/\+Include/\+Render\+Pipeline/\+Pipeline/\mbox{\hyperlink{VREP__Internal_8hpp}{VREP\+\_\+\+Internal.\+hpp}}\end{DoxyCompactItemize}

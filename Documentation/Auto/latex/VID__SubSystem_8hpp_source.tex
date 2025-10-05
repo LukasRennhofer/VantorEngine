@@ -1,0 +1,53 @@
+\doxysection{VID\+\_\+\+Sub\+System.\+hpp}
+\hypertarget{VID__SubSystem_8hpp_source}{}\label{VID__SubSystem_8hpp_source}\index{Vantor/Source/Vantor/InputDevice/Include/InputDevice/Manager/VID\_SubSystem.hpp@{Vantor/Source/Vantor/InputDevice/Include/InputDevice/Manager/VID\_SubSystem.hpp}}
+\mbox{\hyperlink{VID__SubSystem_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/****************************************************************************}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ Vantor\ Engine™\ -\/\ Source\ Code\ (2025)}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ Author\ \ \ \ :\ Lukas\ Rennhofer\ (@LukasRennhofer),\ Vantor\ Studios™}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ Copyright\ :\ ©\ 2025\ Lukas\ Rennhofer,\ Vantor\ Studios™}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ *\ License\ \ \ :\ GNU\ General\ Public\ License\ v3.0}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ See\ LICENSE\ file\ for\ full\ details.}}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ ****************************************************************************/}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{VID__IDevice_8hpp}{InputDevice/Public/VID\_IDevice.hpp}}>}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceVE_1_1Internal_1_1InputDevice}{VE::Internal::InputDevice}}}
+\DoxyCodeLine{00021\ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classVE_1_1Internal_1_1InputDevice_1_1VInputManager}{VInputManager}}}
+\DoxyCodeLine{00023\ \ \ \ \ \{}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Internal_1_1InputDevice_1_1VInputManager_a8ab3251d07f6a3f23c7696e839e2e03d}{AddDevice}}(std::shared\_ptr<VE::Input::VInputDevice>\ device);}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Map\ a\ named\ action\ to\ physical\ input}}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Internal_1_1InputDevice_1_1VInputManager_a389b01110abd642f6371dfb970cfc391}{MapAction}}(\textcolor{keyword}{const}\ std::string\ \&actionName,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structVE_1_1Input_1_1VInputButton}{VE::Input::VInputButton}}\ \&button);}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Update\ all\ devices}}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Internal_1_1InputDevice_1_1VInputManager_ac09eb2444325f80095bbf6a4d692a3f6}{Update}}();}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Is\ Action\ or\ single\ Input\ at\ this\ moment\ pressed}}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classVE_1_1Internal_1_1InputDevice_1_1VInputManager_ab37b105940f8fed3c62e7414b7835cfb}{IsActionPressed}}(\textcolor{keyword}{const}\ std::string\ \&actionName)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classVE_1_1Internal_1_1InputDevice_1_1VInputManager_a4e366d266bea69a54a22059ddd8a4c4e}{IsPressed}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \&key,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{namespaceVE_1_1Input_ad2052e6ab23b66973ff7443e2109d51a}{VE::Input::EInputDeviceType}}\ \&deviceType)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Was\ the\ Action\ or\ single\ Input\ pressed\ this\ frame}}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classVE_1_1Internal_1_1InputDevice_1_1VInputManager_ad9aa866bc0d579536628d56c43197f5a}{WasActionPressed}}(\textcolor{keyword}{const}\ std::string\ \&actionName)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classVE_1_1Internal_1_1InputDevice_1_1VInputManager_a9585393f23d28436d16bbeccd30d59ef}{WasPressed}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \&key,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{namespaceVE_1_1Input_ad2052e6ab23b66973ff7443e2109d51a}{VE::Input::EInputDeviceType}}\ \&deviceType)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classVE_1_1Internal_1_1InputDevice_1_1VInputManager_aaaec8d72c045c9224250bbab93a588cc}{GetActionAxis}}(\textcolor{keyword}{const}\ std::string\ \&actionName)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<std::shared\_ptr<VE::Input::VInputDevice>>\ \mbox{\hyperlink{classVE_1_1Internal_1_1InputDevice_1_1VInputManager_a09b716c0128ba0c2808b25ed39067f52}{devices}};}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ std::unordered\_map<std::string,\ std::vector<VE::Input::VInputButton>>\ \mbox{\hyperlink{classVE_1_1Internal_1_1InputDevice_1_1VInputManager_a6d62233142e33eebc21e917ddffc1258}{actionMap}};}
+\DoxyCodeLine{00046\ \ \ \ \ \};}
+\DoxyCodeLine{00047\ \}\ \textcolor{comment}{//\ namespace\ VE::Input}}
+
+\end{DoxyCode}

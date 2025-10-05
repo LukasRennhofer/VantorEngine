@@ -32,15 +32,15 @@ public:
     virtual void SetFloat(const std::string& name, float value) = 0;
 
     virtual void SetVec2(const std::string& name, float x, float y) = 0;
-    virtual void SetVec2(const std::string& name, const VE::Internal::Math::VVector2 &value) = 0;
+    virtual void SetVec2(const std::string& name, const VE::Math::VVector2 &value) = 0;
     virtual void SetVec3(const std::string& name, float x, float y, float z) = 0;
-    virtual void SetVec3(const std::string& name, const VE::Internal::Math::VVector3 &value) = 0;
+    virtual void SetVec3(const std::string& name, const VE::Math::VVector3 &value) = 0;
     virtual void SetVec4(const std::string& name, float x, float y, float z, float w) = 0;
-    virtual void SetVec4(const std::string& name, const VE::Internal::Math::VVector4 &value) = 0;
+    virtual void SetVec4(const std::string& name, const VE::Math::VVector4 &value) = 0;
 
-    virtual void SetMat2(const std::string& name, const VE::Internal::Math::VMat2 &mat) = 0;
-    virtual void SetMat3(const std::string& name, const VE::Internal::Math::VMat3 &mat) = 0;
-    virtual void SetMat4(const std::string& name, const VE::Internal::Math::VMat4 &mat) = 0;
+    virtual void SetMat2(const std::string& name, const VE::Math::VMat2 &mat) = 0;
+    virtual void SetMat3(const std::string& name, const VE::Math::VMat3 &mat) = 0;
+    virtual void SetMat4(const std::string& name, const VE::Math::VMat4 &mat) = 0;
 
     // // OpenGL: GLuint ID
     // // Vulkan: VkShaderModule*

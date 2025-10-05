@@ -1,0 +1,33 @@
+\doxysection{VMA\+\_\+\+Common.\+hpp}
+\hypertarget{VMA__Common_8hpp_source}{}\label{VMA__Common_8hpp_source}\index{Vantor/Source/Vantor/Math/Include/Math/VMA\_Common.hpp@{Vantor/Source/Vantor/Math/Include/Math/VMA\_Common.hpp}}
+\mbox{\hyperlink{VMA__Common_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/****************************************************************************}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ Vantor\ Engine™\ -\/\ Source\ Code\ (2025)}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ Author\ \ \ \ :\ Lukas\ Rennhofer\ (@LukasRennhofer),\ Vantor\ Studios™}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ Copyright\ :\ ©\ 2025\ Lukas\ Rennhofer,\ Vantor\ Studios™}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ *\ License\ \ \ :\ GNU\ General\ Public\ License\ v3.0}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ See\ LICENSE\ file\ for\ full\ details.}}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ ****************************************************************************/}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <cmath>}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceVE_1_1Math}{VE::Math}}}
+\DoxyCodeLine{00015\ \{}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{namespaceVE_1_1Math_a1bedb831aa1029b4dd20bc5b1c39e9c5}{VPI}}\ \ =\ 3.14159265358979323846f;}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{namespaceVE_1_1Math_a34e7e448f887d1f27ecde2b86789acbd}{VTAU}}\ =\ 6.28318530717958647692f;\ \textcolor{comment}{//\ TAU\ =\ 2\ *\ PI}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{comment}{//\ Convert\ degrees\ to\ radians}}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{namespaceVE_1_1Math_af64cddfe0b768d399c6638949f211570}{DegToRad}}(\textcolor{keywordtype}{float}\ degrees)\ \{\ \textcolor{keywordflow}{return}\ degrees\ *\ \mbox{\hyperlink{namespaceVE_1_1Math_a1bedb831aa1029b4dd20bc5b1c39e9c5}{VPI}}\ /\ 180.0f;\ \}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{comment}{//\ Convert\ radians\ to\ degrees}}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{namespaceVE_1_1Math_affe729aca8587c772f2911398cca3843}{RadToDeg}}(\textcolor{keywordtype}{float}\ radians)\ \{\ \textcolor{keywordflow}{return}\ radians\ *\ 180.0f\ /\ \mbox{\hyperlink{namespaceVE_1_1Math_a1bedb831aa1029b4dd20bc5b1c39e9c5}{VPI}};\ \}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{comment}{//\ Rounds\ up\ a\ given\ value\ to\ the\ nearest\ multiple\ of\ a\ specified\ alignment}}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>\ \textcolor{keyword}{constexpr}\ T\ \mbox{\hyperlink{namespaceVE_1_1Math_a52ecf0e557b3a3ea804af03b31504b5c}{align}}(T\ value,\ T\ alignment)\ \{\ \textcolor{keywordflow}{return}\ ((value\ +\ alignment\ -\/\ T(1))\ /\ alignment)\ *\ alignment;\ \}}
+\DoxyCodeLine{00027\ \}\ \textcolor{comment}{//\ namespace\ VE::Internal::Math}}
+
+\end{DoxyCode}

@@ -1,0 +1,224 @@
+\doxysection{VIN\+\_\+\+Im\+Gui.\+hpp}
+\hypertarget{VIN__ImGui_8hpp_source}{}\label{VIN__ImGui_8hpp_source}\index{Vantor/Source/Vantor/Integration/Include/Integration/VIN\_ImGui.hpp@{Vantor/Source/Vantor/Integration/Include/Integration/VIN\_ImGui.hpp}}
+\mbox{\hyperlink{VIN__ImGui_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/****************************************************************************}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ Vantor\ Engine™\ -\/\ Source\ Code\ (2025)}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ Author\ \ \ \ :\ Lukas\ Rennhofer\ (@LukasRennhofer),\ Vantor\ Studios™}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ Copyright\ :\ ©\ 2025\ Lukas\ Rennhofer,\ Vantor\ Studios™}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ *\ License\ \ \ :\ GNU\ General\ Public\ License\ v3.0}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ See\ LICENSE\ file\ for\ full\ details.}}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ ****************************************************************************/}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ \#ifdef\ VANTOR\_INTEGRATION\_IMGUI}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#ifdef\ VANTOR\_API\_OPENGL}}
+\DoxyCodeLine{00015\ \textcolor{comment}{//\ Tell\ ImGui\ OpenGL\ backend\ to\ use\ glad\ loader}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#define\ IMGUI\_IMPL\_OPENGL\_LOADER\_GLAD}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <Shared/imgui/imgui.h>}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{VCO__Backlog_8hpp}{Core/BackLog/VCO\_Backlog.hpp}}>}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#ifdef\ VANTOR\_API\_OPENGL}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ <Shared/imgui/Backend/imgui\_impl\_opengl3.h>}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#ifdef\ VANTOR\_WM\_GLFW}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#define\ GLFW\_INCLUDE\_NONE\ }\textcolor{comment}{//\ Prevent\ GLFW\ from\ including\ OpenGL\ headers}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#include\ <Shared/GLFW/glfw3.h>}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#include\ <Shared/imgui/Backend/imgui\_impl\_glfw.h>}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#include\ <cstring>}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceVE_1_1Internal_1_1Integration_1_1Imgui}{VE::Internal::Integration::Imgui}}}
+\DoxyCodeLine{00035\ \{}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#ifdef\ VANTOR\_WM\_GLFW}}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ InitContext(GLFWwindow\ *window)}
+\DoxyCodeLine{00038\ \ \ \ \ \{}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ TODO:\ VE::Internal::Core::Backlog::Log("{}Integration::ImGui"{},\ "{}Initializing\ ImGui\ Context\ for\ GLFW"{},\ VE::Internal::Core::Backlog::ELogLevel::INFO);}}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Get\ content\ scale\ of\ primary\ monitor\ for\ DPI\ scaling}}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ main\_scale\ =\ ImGui\_ImplGlfw\_GetContentScaleForMonitor(glfwGetPrimaryMonitor());}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ ImGui::CreateContext();}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ ImGuiIO\ \&io\ =\ ImGui::GetIO();}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ (void)\ io;}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ io.ConfigFlags\ |=\ ImGuiConfigFlags\_NavEnableKeyboard;\ \textcolor{comment}{//\ Enable\ Keyboard\ Controls}}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ io.ConfigFlags\ |=\ ImGuiConfigFlags\_NavEnableGamepad;\ \ \textcolor{comment}{//\ Enable\ Gamepad\ Controls}}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ io.ConfigFlags\ |=\ ImGuiConfigFlags\_DockingEnable;}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ ImGui::StyleColorsDark();}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ ImGuiStyle\ \&style\ =\ ImGui::GetStyle();}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ style.ScaleAllSizes(main\_scale);}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ style.FontScaleDpi\ =\ main\_scale;}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ style.WindowRounding\ \ \ \ =\ 4.0f;}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ style.ChildRounding\ \ \ \ \ =\ 4.0f;}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ style.FrameRounding\ \ \ \ \ =\ 4.0f;}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ style.GrabRounding\ \ \ \ \ \ =\ 4.0f;}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ style.ScrollbarRounding\ =\ 4.0f;}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ style.FrameBorderSize\ \ \ =\ 1.0f;}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ style.WindowBorderSize\ \ =\ 1.0f;}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ style.WindowPadding\ \ \ \ =\ ImVec2(8,\ 8);}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ style.FramePadding\ \ \ \ \ =\ ImVec2(6,\ 4);}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ style.ItemSpacing\ \ \ \ \ \ =\ ImVec2(6,\ 4);}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ style.ItemInnerSpacing\ =\ ImVec2(6,\ 4);}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Dark\ Theme}}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ ImVec4\ *colors\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ ImGui::GetStyle().Colors;}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ colors[ImGuiCol\_Text]\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ ImVec4(1.00f,\ 1.00f,\ 1.00f,\ 1.00f);}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ colors[ImGuiCol\_TextDisabled]\ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ ImVec4(0.50f,\ 0.50f,\ 0.50f,\ 1.00f);}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ colors[ImGuiCol\_WindowBg]\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ ImVec4(0.04f,\ 0.04f,\ 0.04f,\ 0.94f);}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ colors[ImGuiCol\_ChildBg]\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ ImVec4(0.00f,\ 0.00f,\ 0.00f,\ 0.00f);}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ colors[ImGuiCol\_PopupBg]\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ ImVec4(0.08f,\ 0.08f,\ 0.08f,\ 1.00f);}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ colors[ImGuiCol\_Border]\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ ImVec4(0.43f,\ 0.43f,\ 0.50f,\ 0.50f);}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ colors[ImGuiCol\_BorderShadow]\ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ ImVec4(0.00f,\ 0.00f,\ 0.00f,\ 0.00f);}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ colors[ImGuiCol\_FrameBg]\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ ImVec4(0.15f,\ 0.15f,\ 0.15f,\ 0.54f);}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ colors[ImGuiCol\_FrameBgHovered]\ \ \ \ \ \ \ \ \ \ \ \ =\ ImVec4(0.48f,\ 0.26f,\ 0.98f,\ 0.40f);}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ colors[ImGuiCol\_FrameBgActive]\ \ \ \ \ \ \ \ \ \ \ \ \ =\ ImVec4(0.37f,\ 0.00f,\ 1.00f,\ 1.00f);}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ colors[ImGuiCol\_TitleBg]\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ ImVec4(0.04f,\ 0.04f,\ 0.04f,\ 1.00f);}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ colors[ImGuiCol\_TitleBgActive]\ \ \ \ \ \ \ \ \ \ \ \ \ =\ ImVec4(0.21f,\ 0.16f,\ 0.48f,\ 1.00f);}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ colors[ImGuiCol\_TitleBgCollapsed]\ \ \ \ \ \ \ \ \ \ =\ ImVec4(0.00f,\ 0.00f,\ 0.00f,\ 0.51f);}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ colors[ImGuiCol\_MenuBarBg]\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ ImVec4(0.11f,\ 0.11f,\ 0.11f,\ 1.00f);}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ colors[ImGuiCol\_ScrollbarBg]\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ ImVec4(0.02f,\ 0.02f,\ 0.02f,\ 0.53f);}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ colors[ImGuiCol\_ScrollbarGrab]\ \ \ \ \ \ \ \ \ \ \ \ \ =\ ImVec4(0.31f,\ 0.31f,\ 0.31f,\ 1.00f);}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ colors[ImGuiCol\_ScrollbarGrabHovered]\ \ \ \ \ \ =\ ImVec4(0.41f,\ 0.41f,\ 0.41f,\ 1.00f);}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ colors[ImGuiCol\_ScrollbarGrabActive]\ \ \ \ \ \ \ =\ ImVec4(0.51f,\ 0.51f,\ 0.51f,\ 1.00f);}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ colors[ImGuiCol\_CheckMark]\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ ImVec4(0.45f,\ 0.26f,\ 0.98f,\ 1.00f);}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ colors[ImGuiCol\_SliderGrab]\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ ImVec4(0.41f,\ 0.00f,\ 1.00f,\ 0.40f);}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ colors[ImGuiCol\_SliderGrabActive]\ \ \ \ \ \ \ \ \ \ =\ ImVec4(0.48f,\ 0.26f,\ 0.98f,\ 0.52f);}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ colors[ImGuiCol\_Button]\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ ImVec4(0.20f,\ 0.20f,\ 0.20f,\ 0.40f);}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ colors[ImGuiCol\_ButtonHovered]\ \ \ \ \ \ \ \ \ \ \ \ \ =\ ImVec4(1.00f,\ 1.00f,\ 1.00f,\ 0.04f);}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ colors[ImGuiCol\_ButtonActive]\ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ ImVec4(0.34f,\ 0.06f,\ 0.98f,\ 1.00f);}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ colors[ImGuiCol\_Header]\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ ImVec4(1.00f,\ 1.00f,\ 1.00f,\ 0.04f);}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ colors[ImGuiCol\_HeaderHovered]\ \ \ \ \ \ \ \ \ \ \ \ \ =\ ImVec4(0.15f,\ 0.15f,\ 0.15f,\ 0.80f);}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ colors[ImGuiCol\_HeaderActive]\ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ ImVec4(1.00f,\ 1.00f,\ 1.00f,\ 0.04f);}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ colors[ImGuiCol\_Separator]\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ ImVec4(0.43f,\ 0.43f,\ 0.50f,\ 0.50f);}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ colors[ImGuiCol\_SeparatorHovered]\ \ \ \ \ \ \ \ \ \ =\ ImVec4(0.10f,\ 0.40f,\ 0.75f,\ 0.78f);}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ colors[ImGuiCol\_SeparatorActive]\ \ \ \ \ \ \ \ \ \ \ =\ ImVec4(0.10f,\ 0.40f,\ 0.75f,\ 1.00f);}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ colors[ImGuiCol\_ResizeGrip]\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ ImVec4(1.00f,\ 1.00f,\ 1.00f,\ 0.04f);}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ colors[ImGuiCol\_ResizeGripHovered]\ \ \ \ \ \ \ \ \ =\ ImVec4(1.00f,\ 1.00f,\ 1.00f,\ 0.13f);}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ colors[ImGuiCol\_ResizeGripActive]\ \ \ \ \ \ \ \ \ \ =\ ImVec4(0.38f,\ 0.38f,\ 0.38f,\ 1.00f);}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ colors[ImGuiCol\_TabHovered]\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ ImVec4(0.40f,\ 0.26f,\ 0.98f,\ 0.50f);}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ colors[ImGuiCol\_Tab]\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ ImVec4(0.18f,\ 0.20f,\ 0.58f,\ 0.73f);}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ colors[ImGuiCol\_TabSelected]\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ ImVec4(0.29f,\ 0.20f,\ 0.68f,\ 1.00f);}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ colors[ImGuiCol\_TabSelectedOverline]\ \ \ \ \ \ \ =\ ImVec4(0.26f,\ 0.59f,\ 0.98f,\ 1.00f);}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ colors[ImGuiCol\_TabDimmed]\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ ImVec4(0.07f,\ 0.10f,\ 0.15f,\ 0.97f);}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ colors[ImGuiCol\_TabDimmedSelected]\ \ \ \ \ \ \ \ \ =\ ImVec4(0.14f,\ 0.26f,\ 0.42f,\ 1.00f);}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ colors[ImGuiCol\_TabDimmedSelectedOverline]\ =\ ImVec4(0.50f,\ 0.50f,\ 0.50f,\ 0.00f);}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ colors[ImGuiCol\_PlotLines]\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ ImVec4(0.61f,\ 0.61f,\ 0.61f,\ 1.00f);}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ colors[ImGuiCol\_PlotLinesHovered]\ \ \ \ \ \ \ \ \ \ =\ ImVec4(1.00f,\ 0.43f,\ 0.35f,\ 1.00f);}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ colors[ImGuiCol\_PlotHistogram]\ \ \ \ \ \ \ \ \ \ \ \ \ =\ ImVec4(0.90f,\ 0.70f,\ 0.00f,\ 1.00f);}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ colors[ImGuiCol\_PlotHistogramHovered]\ \ \ \ \ \ =\ ImVec4(1.00f,\ 0.60f,\ 0.00f,\ 1.00f);}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ colors[ImGuiCol\_TableHeaderBg]\ \ \ \ \ \ \ \ \ \ \ \ \ =\ ImVec4(0.19f,\ 0.19f,\ 0.20f,\ 1.00f);}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ colors[ImGuiCol\_TableBorderStrong]\ \ \ \ \ \ \ \ \ =\ ImVec4(0.31f,\ 0.31f,\ 0.35f,\ 1.00f);}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ colors[ImGuiCol\_TableBorderLight]\ \ \ \ \ \ \ \ \ \ =\ ImVec4(0.23f,\ 0.23f,\ 0.25f,\ 1.00f);}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ colors[ImGuiCol\_TableRowBg]\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ ImVec4(0.00f,\ 0.00f,\ 0.00f,\ 0.00f);}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ colors[ImGuiCol\_TableRowBgAlt]\ \ \ \ \ \ \ \ \ \ \ \ \ =\ ImVec4(1.00f,\ 1.00f,\ 1.00f,\ 0.06f);}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ colors[ImGuiCol\_TextLink]\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ ImVec4(0.26f,\ 0.59f,\ 0.98f,\ 1.00f);}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ colors[ImGuiCol\_TextSelectedBg]\ \ \ \ \ \ \ \ \ \ \ \ =\ ImVec4(1.00f,\ 1.00f,\ 1.00f,\ 0.04f);}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ colors[ImGuiCol\_DragDropTarget]\ \ \ \ \ \ \ \ \ \ \ \ =\ ImVec4(1.00f,\ 1.00f,\ 0.00f,\ 0.90f);}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ colors[ImGuiCol\_NavCursor]\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ ImVec4(0.26f,\ 0.59f,\ 0.98f,\ 1.00f);}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ colors[ImGuiCol\_NavWindowingHighlight]\ \ \ \ \ =\ ImVec4(1.00f,\ 1.00f,\ 1.00f,\ 0.70f);}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ colors[ImGuiCol\_NavWindowingDimBg]\ \ \ \ \ \ \ \ \ =\ ImVec4(0.80f,\ 0.80f,\ 0.80f,\ 0.20f);}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ colors[ImGuiCol\_ModalWindowDimBg]\ \ \ \ \ \ \ \ \ \ =\ ImVec4(0.80f,\ 0.80f,\ 0.80f,\ 0.35f);}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00131\ \textcolor{preprocessor}{\#ifdef\ VANTOR\_API\_OPENGL}}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Initialize\ ImGui\ GLFW\ backend\ for\ OpenGL}}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ ImGui\_ImplGlfw\_InitForOpenGL(window,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ ImGui\_ImplOpenGL3\_Init(\textcolor{stringliteral}{"{}\#version\ 330\ core"{}});}
+\DoxyCodeLine{00136\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00137\ \ \ \ \ \}}
+\DoxyCodeLine{00138\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00139\ }
+\DoxyCodeLine{00140\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1Integration_1_1Imgui_af3e24e841c3837f345acea3c82840a6b}{InitMain}}()}
+\DoxyCodeLine{00141\ \ \ \ \ \{}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ TODO}}
+\DoxyCodeLine{00143\ \ \ \ \ \}}
+\DoxyCodeLine{00144\ }
+\DoxyCodeLine{00145\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1Integration_1_1Imgui_a70c313e8c280caf56b9d186b1480fcf7}{NewFrame}}()}
+\DoxyCodeLine{00146\ \ \ \ \ \{}
+\DoxyCodeLine{00147\ \textcolor{preprocessor}{\#ifdef\ VANTOR\_API\_OPENGL}}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ ImGui\_ImplOpenGL3\_NewFrame();}
+\DoxyCodeLine{00149\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00150\ \textcolor{preprocessor}{\#ifdef\ VANTOR\_WM\_GLFW}}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ ImGui\_ImplGlfw\_NewFrame();}
+\DoxyCodeLine{00152\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ ImGui::NewFrame();}
+\DoxyCodeLine{00154\ \ \ \ \ \}}
+\DoxyCodeLine{00155\ }
+\DoxyCodeLine{00156\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1Integration_1_1Imgui_af552608baf5e7a9b829d023630804341}{Render}}()}
+\DoxyCodeLine{00157\ \ \ \ \ \{}
+\DoxyCodeLine{00158\ \textcolor{preprocessor}{\#ifdef\ VANTOR\_API\_OPENGL}}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ ImGui\_ImplOpenGL3\_RenderDrawData(ImGui::GetDrawData());}
+\DoxyCodeLine{00160\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00161\ \ \ \ \ \}}
+\DoxyCodeLine{00162\ }
+\DoxyCodeLine{00163\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1Integration_1_1Imgui_ae8b08cc89571e8818a8b27be061835fc}{BuildUpDocking}}()}
+\DoxyCodeLine{00164\ \ \ \ \ \{}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ dockspaceOpen\ \ \ \ \ \ \ \ \ \ \ \ \ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ opt\_fullscreen\_persistant\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ opt\_fullscreen\ \ \ \ \ \ \ \ \ \ \ \ =\ opt\_fullscreen\_persistant;}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ ImGuiDockNodeFlags\ dockspace\_flags\ \ \ \ \ \ \ \ \ \ \ =\ ImGuiDockNodeFlags\_PassthruCentralNode;}
+\DoxyCodeLine{00169\ }
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ ImGuiWindowFlags\ window\_flags\ =\ ImGuiWindowFlags\_MenuBar\ |\ ImGuiWindowFlags\_NoDocking;}
+\DoxyCodeLine{00171\ }
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (opt\_fullscreen)}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \ \ \ \ ImGuiViewport\ *viewport\ =\ ImGui::GetMainViewport();}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::SetNextWindowPos(viewport-\/>Pos);}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::SetNextWindowSize(viewport-\/>Size);}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::SetNextWindowViewport(viewport-\/>ID);}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::PushStyleVar(ImGuiStyleVar\_WindowRounding,\ 0.0f);}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::PushStyleVar(ImGuiStyleVar\_WindowBorderSize,\ 0.0f);}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \ \ \ \ window\_flags\ |=\ ImGuiWindowFlags\_NoTitleBar\ |\ ImGuiWindowFlags\_NoCollapse\ |\ ImGuiWindowFlags\_NoResize\ |\ ImGuiWindowFlags\_NoMove}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ |\ ImGuiWindowFlags\_NoBringToFrontOnFocus\ |\ ImGuiWindowFlags\_NoNavFocus;}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00183\ }
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (dockspace\_flags\ \&\ ImGuiDockNodeFlags\_PassthruCentralNode)\ window\_flags\ |=\ ImGuiWindowFlags\_NoBackground;}
+\DoxyCodeLine{00185\ }
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ ImGui::Begin(\textcolor{stringliteral}{"{}Vantor\ Dockspace"{}},\ \&dockspaceOpen,\ window\_flags);}
+\DoxyCodeLine{00187\ }
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (opt\_fullscreen)\ ImGui::PopStyleVar(2);}
+\DoxyCodeLine{00189\ }
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ ImGuiIO\ \ \ \ \&io\ \ \ \ \ \ \ \ \ \ =\ ImGui::GetIO();}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ ImGuiStyle\ \&style\ \ \ \ \ \ \ =\ ImGui::GetStyle();}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ minWinSizeX\ =\ style.WindowMinSize.x;}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ style.WindowMinSize.x\ \ \ =\ 370.0f;}
+\DoxyCodeLine{00194\ }
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (io.ConfigFlags\ \&\ ImGuiConfigFlags\_DockingEnable)}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \ \ \ \ ImGuiID\ dockspace\_id\ =\ ImGui::GetID(\textcolor{stringliteral}{"{}MyDockSpace"{}});}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \ \ \ \ ImGui::DockSpace(dockspace\_id,\ ImVec2(0.0f,\ 0.0f),\ dockspace\_flags);}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00200\ }
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ ImGui::End();}
+\DoxyCodeLine{00202\ }
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ style.WindowMinSize.x\ =\ minWinSizeX;}
+\DoxyCodeLine{00204\ \ \ \ \ \}}
+\DoxyCodeLine{00205\ }
+\DoxyCodeLine{00206\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1Integration_1_1Imgui_ad247d9a526e0744e2662ac4a4415aba9}{Destroy}}()}
+\DoxyCodeLine{00207\ \ \ \ \ \{}
+\DoxyCodeLine{00208\ \textcolor{preprocessor}{\#ifdef\ VANTOR\_API\_OPENGL}}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ ImGui\_ImplOpenGL3\_Shutdown();}
+\DoxyCodeLine{00210\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00211\ \textcolor{preprocessor}{\#ifdef\ VANTOR\_WM\_GLFW}}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ ImGui\_ImplGlfw\_Shutdown();}
+\DoxyCodeLine{00213\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ ImGui::DestroyContext();}
+\DoxyCodeLine{00215\ \ \ \ \ \}}
+\DoxyCodeLine{00216\ \}\ \textcolor{comment}{//\ namespace\ VE::Internal::Integration::Imgui}}
+\DoxyCodeLine{00217\ }
+\DoxyCodeLine{00218\ \textcolor{comment}{//\ \#endif\ //\ VANTOR\_INTEGRATION\_IMGUI}}
+
+\end{DoxyCode}

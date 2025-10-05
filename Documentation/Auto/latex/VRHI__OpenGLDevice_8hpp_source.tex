@@ -1,0 +1,70 @@
+\doxysection{VRHI\+\_\+\+Open\+GLDevice.\+hpp}
+\hypertarget{VRHI__OpenGLDevice_8hpp_source}{}\label{VRHI__OpenGLDevice_8hpp_source}\index{Vantor/Source/Vantor/RHI/Include/RHI/OpenGL/VRHI\_OpenGLDevice.hpp@{Vantor/Source/Vantor/RHI/Include/RHI/OpenGL/VRHI\_OpenGLDevice.hpp}}
+\mbox{\hyperlink{VRHI__OpenGLDevice_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/****************************************************************************}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ Vantor\ Engine™\ -\/\ Source\ Code\ (2025)}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ Author\ \ \ \ :\ Lukas\ Rennhofer\ (@LukasRennhofer),\ Vantor\ Studios™}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ Copyright\ :\ ©\ 2025\ Lukas\ Rennhofer,\ Vantor\ Studios™}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ *\ License\ \ \ :\ GNU\ General\ Public\ License\ v3.0}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ See\ LICENSE\ file\ for\ full\ details.}}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ ****************************************************************************/}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{VRHI__Device_8hpp}{RHI/Interface/VRHI\_Device.hpp}}>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{VRHI__Shader_8hpp}{RHI/Interface/VRHI\_Shader.hpp}}>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{VRHI__Texture_8hpp}{RHI/Interface/VRHI\_Texture.hpp}}>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{VRHI__Mesh_8hpp}{RHI/Interface/VRHI\_Mesh.hpp}}>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{VRHI__Buffer_8hpp}{RHI/Interface/VRHI\_Buffer.hpp}}>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{VRHI__RenderTarget_8hpp}{RHI/Interface/VRHI\_RenderTarget.hpp}}>}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <Shared/glad/glad.h>}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI}{VE::Internal::RHI}}}
+\DoxyCodeLine{00025\ \{}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLDevice_a935503af02bed0aaa2cba1444e061430}{OpenGLDevice}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIDevice}{IRHIDevice}}}
+\DoxyCodeLine{00028\ \{}
+\DoxyCodeLine{00029\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00030\ \ \ \ \ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLDevice_a935503af02bed0aaa2cba1444e061430}{OpenGLDevice}}();}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLDevice_ac5c0eb564bc9e70fb7cde41ad48fd6c9}{\string~OpenGLDevice}}();}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{comment}{//\ IRHIDevice\ implementation}}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLDevice_adae2eab0286efc9ae84f12087b345451}{Initialize}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLDevice_a35e511593040f0c186e2d47735906064}{Shutdown}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLDevice_a7d7456b6bf4572c1653beee645df161a}{Present}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLDevice_a5965f8b328daf21f9f3fcff5f48c8435}{Clear}}(\textcolor{keywordtype}{float}\ r\ =\ 0.0f,\ \textcolor{keywordtype}{float}\ g\ =\ 0.0f,\ \textcolor{keywordtype}{float}\ b\ =\ 0.0f,\ \textcolor{keywordtype}{float}\ a\ =\ 1.0f)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ std::shared\_ptr<IRHIShader>\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLDevice_a1b047de9e871e2cea706d2ea323113cd}{CreateShader}}(\textcolor{keyword}{const}\ std::string\&\ vertexSource,\ \textcolor{keyword}{const}\ std::string\&\ fragmentSource)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00040\ \ \ \ \ std::shared\_ptr<IRHITexture>\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLDevice_a3e9701dd82beea9e8d34ed764f523fb7}{CreateTexture}}(uint32\_t\ width,\ uint32\_t\ height,\ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7}{ERHIFormat}}\ format,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ data\ =\ \textcolor{keyword}{nullptr},\ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a79a6d19349d7b5399e5fb907a28fb009}{ETextureType}}\ type\ =\ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a79a6d19349d7b5399e5fb907a28fb009aa6e2bae752d3bf4e34cb392bca789995}{ETextureType::Texture2D}},\ uint32\_t\ depth\ =\ 1)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00041\ \ \ \ \ std::shared\_ptr<IRHIMesh>\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLDevice_a40e7283a78381e86b3775de26de87c8f}{CreateMesh}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ vertexData,\ uint32\_t\ vertexSize,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ indexData,\ uint32\_t\ indexCount,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structVE_1_1Internal_1_1RHI_1_1VVertexLayout}{VVertexLayout}}\&\ layout)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00042\ \ \ \ \ std::shared\_ptr<IRHIBuffer>\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLDevice_a5b52b8f164f0443be595643f1956ff5a}{CreateBuffer}}(\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a52035ddfb13a42298c915d4fd9108b25}{ERHIBufferType}}\ type,\ uint32\_t\ size,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ data\ =\ \textcolor{keyword}{nullptr})\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00043\ \ \ \ \ std::shared\_ptr<IRHIRenderTarget>\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLDevice_a4d7ba5cd0baee35d200a9b482831a878}{CreateRenderTarget}}(uint32\_t\ width,\ uint32\_t\ height,\ uint32\_t\ samples\ =\ 1)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLDevice_a378e13a13396dc428a411097f58ba29e}{SetViewport}}(uint32\_t\ x,\ uint32\_t\ y,\ uint32\_t\ width,\ uint32\_t\ height)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{comment}{//\ void\ BindShader(std::shared\_ptr<IRHIShader>\ shader)\ override;}}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{comment}{//\ void\ BindTexture(std::shared\_ptr<IRHITexture>\ texture,\ uint32\_t\ slot\ =\ 0)\ override;}}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{comment}{//\ void\ BindRenderTarget(std::shared\_ptr<IRHIRenderTarget>\ renderTarget)\ override;}}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{comment}{//\ void\ DrawMesh(std::shared\_ptr<IRHIMesh>\ mesh)\ override;}}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{comment}{//\ OpenGL\ specific\ methods}}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keyword}{static}\ GLenum\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLDevice_acc613437841cb74ab90a1e5d42a7b41d}{RHIFormatToGL}}(\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7}{ERHIFormat}}\ format);}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keyword}{static}\ GLenum\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLDevice_ad7d00f649fc96374f3029549b5767752}{BufferTypeToGL}}(\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a52035ddfb13a42298c915d4fd9108b25}{ERHIBufferType}}\ type);}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_initialized;}
+\DoxyCodeLine{00057\ \ \ \ \ std::shared\_ptr<IRHIShader>\ m\_currentShader;}
+\DoxyCodeLine{00058\ \ \ \ \ std::shared\_ptr<IRHIRenderTarget>\ m\_currentRenderTarget;}
+\DoxyCodeLine{00059\ \ \ \ \ std::unordered\_map<uint32\_t,\ std::shared\_ptr<IRHITexture>>\ m\_boundTextures;}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{void}\ SetupDefaultState();}
+\DoxyCodeLine{00062\ \};}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \}\ \textcolor{comment}{//\ namespace\ VE::Internal::RHI}}
+
+\end{DoxyCode}

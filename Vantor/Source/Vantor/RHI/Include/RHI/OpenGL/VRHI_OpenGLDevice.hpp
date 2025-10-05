@@ -43,10 +43,10 @@ public:
     std::shared_ptr<IRHIRenderTarget> CreateRenderTarget(uint32_t width, uint32_t height, uint32_t samples = 1) override;
 
     void SetViewport(uint32_t x, uint32_t y, uint32_t width, uint32_t height) override;
-    void BindShader(std::shared_ptr<IRHIShader> shader) override;
-    void BindTexture(std::shared_ptr<IRHITexture> texture, uint32_t slot = 0) override;
-    void BindRenderTarget(std::shared_ptr<IRHIRenderTarget> renderTarget) override;
-    void DrawMesh(std::shared_ptr<IRHIMesh> mesh) override;
+    // void BindShader(std::shared_ptr<IRHIShader> shader) override;
+    // void BindTexture(std::shared_ptr<IRHITexture> texture, uint32_t slot = 0) override;
+    // void BindRenderTarget(std::shared_ptr<IRHIRenderTarget> renderTarget) override;
+    // void DrawMesh(std::shared_ptr<IRHIMesh> mesh) override;
 
     // OpenGL specific methods
     static GLenum RHIFormatToGL(ERHIFormat format);

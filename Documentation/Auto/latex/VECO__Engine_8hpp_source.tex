@@ -1,0 +1,54 @@
+\doxysection{VECO\+\_\+\+Engine.\+hpp}
+\hypertarget{VECO__Engine_8hpp_source}{}\label{VECO__Engine_8hpp_source}\index{Vantor/Source/Vantor/EngineCore/Include/EngineCore/Public/VECO\_Engine.hpp@{Vantor/Source/Vantor/EngineCore/Include/EngineCore/Public/VECO\_Engine.hpp}}
+\mbox{\hyperlink{VECO__Engine_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/****************************************************************************}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ Vantor\ Engine™\ -\/\ Source\ Code\ (2025)}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ Author\ \ \ \ :\ Lukas\ Rennhofer\ (@LukasRennhofer),\ Vantor\ Studios™}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ Copyright\ :\ ©\ 2025\ Lukas\ Rennhofer,\ Vantor\ Studios™}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ *\ License\ \ \ :\ GNU\ General\ Public\ License\ v3.0}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ See\ LICENSE\ file\ for\ full\ details.}}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ ****************************************************************************/}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI}{VE::Internal::RHI}}\ \{}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIDevice}{IRHIDevice}};}
+\DoxyCodeLine{00016\ \}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceVE_1_1Internal_1_1InputDevice}{VE::Internal::InputDevice}}\ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classVE_1_1Internal_1_1InputDevice_1_1VInputManager}{VInputManager}};}
+\DoxyCodeLine{00020\ \}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceVE}{VE}}\ \{}
+\DoxyCodeLine{00023\ \ \ \ \ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classVE_1_1VEngine_a1a4f34e2c19dc1a85ca0113768cafda9}{VEngine}}\ \{}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVE_1_1VEngine_a1a4f34e2c19dc1a85ca0113768cafda9}{VEngine}}();}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVE_1_1VEngine_a10207b0c9031f5bfeba3b6466c3ec722}{\string~VEngine}}();}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1VEngine_a12ebc7e7ceadd0df15aecc7b974f8052}{Initialize}}();\ \ \ \ \textcolor{comment}{//\ sets\ up\ subsystems}}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1VEngine_a188a0edd5aa61eeea5655682603c9920}{Update}}();\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Update\ all\ Subsystems}}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1VEngine_a83677428e3549bb645a89bf02c1dd7e4}{Shutdown}}();\ \ \ \ \ \ \textcolor{comment}{//\ cleans\ up}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ RenderDevice,\ that\ gets\ created\ with\ the\ Coordinator}}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIDevice}{VE::Internal::RHI::IRHIDevice}}*\ \mbox{\hyperlink{classVE_1_1VEngine_ad9883053f1cc0d3ea6b63a1d1ac410dd}{GetDevice}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_Device.get();\ \}}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVE_1_1Internal_1_1InputDevice_1_1VInputManager}{VE::Internal::InputDevice::VInputManager}}*\ \mbox{\hyperlink{classVE_1_1VEngine_abc73a283f27869ee75794cf5c8d0f9e1}{GetInputMngr}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_InputManager.get();\ \}}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ TODO:\ Get\ Subsystems}}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ std::shared\_ptr<Internal::RHI::IRHIDevice>\ m\_Device\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ std::shared\_ptr<Internal::InputDevice::VInputManager>\ m\_InputManager\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00042\ \ \ \ \ \};}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{classVE_1_1VEngine}{VEngine}}*\ \mbox{\hyperlink{namespaceVE_a3e3fadb4a27ad6a8efd7df1e086a5e6a}{GEngine}}()\ \{}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classVE_1_1VEngine}{VEngine}}\ instance;\ \textcolor{comment}{//\ constructed\ on\ first\ use}}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \&instance;}
+\DoxyCodeLine{00047\ \ \ \ \ \}}
+\DoxyCodeLine{00048\ \}}
+
+\end{DoxyCode}

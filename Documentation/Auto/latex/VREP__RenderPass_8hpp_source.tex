@@ -1,0 +1,66 @@
+\doxysection{VREP\+\_\+\+Render\+Pass.\+hpp}
+\hypertarget{VREP__RenderPass_8hpp_source}{}\label{VREP__RenderPass_8hpp_source}\index{Vantor/Source/Vantor/RenderPipeline/Include/RenderPipeline/Public/VREP\_RenderPass.hpp@{Vantor/Source/Vantor/RenderPipeline/Include/RenderPipeline/Public/VREP\_RenderPass.hpp}}
+\mbox{\hyperlink{VREP__RenderPass_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/****************************************************************************}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ Vantor\ Engine™\ -\/\ Source\ Code\ (2025)}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ Author\ \ \ \ :\ Lukas\ Rennhofer\ (@LukasRennhofer),\ Vantor\ Studios™}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ Copyright\ :\ ©\ 2025\ Lukas\ Rennhofer,\ Vantor\ Studios™}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ *\ License\ \ \ :\ GNU\ General\ Public\ License\ v3.0}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ See\ LICENSE\ file\ for\ full\ details.}}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ ****************************************************************************/}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <cstdint>}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI}{VE::Internal::RHI}}\ \{}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget}{IRHIRenderTarget}};}
+\DoxyCodeLine{00017\ \}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceVE_1_1Renderer}{VE::Renderer}}\ \{}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPath}{VRenderPath}};}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{namespaceVE_1_1Renderer_aee20b04fc5db494be35be814d420dd3f}{ERenderPassType}}\ :\ uint8\_t}
+\DoxyCodeLine{00024\ \ \ \ \ \{}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Renderer_aee20b04fc5db494be35be814d420dd3fad9c6333623e6357515fcbf17be806273}{Geometry}},}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Renderer_aee20b04fc5db494be35be814d420dd3fa2e4b97fde8cf63085ec969fcc7e490c0}{Lighting}},}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Renderer_aee20b04fc5db494be35be814d420dd3fa67d2f6740a8eaebf4d5c6f79be8da481}{Forward}},}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Renderer_aee20b04fc5db494be35be814d420dd3fa90589c47f06eb971d548591f23c285af}{Custom}}}
+\DoxyCodeLine{00029\ \ \ \ \ \};}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{comment}{//\ Base\ render\ pass\ interface}}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPass}{VRenderPass}}}
+\DoxyCodeLine{00032\ \ \ \ \ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPass_a1f384ed3ad366ee1885eff3917bdbd73}{\string~VRenderPass}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPass_af7bf8cf6a2bc910c2218621b19785e1d}{Initialize}}(\mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPath}{VRenderPath}}*\ renderPath);}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Virtual\ Functions\ to\ override}}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPass_a37e852a6ad72122d3c3794eda8bc26d4}{Execute}}()\ =\ 0;}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPass_af733c405e2e0debabcafcca9a3460ea8}{Cleanup}}()\ =\ 0;}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{namespaceVE_1_1Renderer_aee20b04fc5db494be35be814d420dd3f}{ERenderPassType}}\ \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPass_a60341e1eae4fdfef27de133316ce3a3d}{GetType}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Enable/disable\ the\ pass}}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPass_a2ad8dda420859819891a7e7cdd0d2a90}{SetEnabled}}(\textcolor{keywordtype}{bool}\ enabled)\ \{\ \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPass_afc13a062eac256f2b03a73286d290e8c}{m\_Enabled}}\ =\ enabled;\ \}}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPass_a89d7d5e483cd4058f5b1972ddaea2a9d}{IsEnabled}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPass_afc13a062eac256f2b03a73286d290e8c}{m\_Enabled}};\ \}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Set\ Input/Get\ Ouput\ of\ the\ Pass}}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPass_a3f164bffa5360cab32e420339a5957e3}{SetInputTarget}}(\mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget}{VE::Internal::RHI::IRHIRenderTarget}}*\ input)\ \{\ \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPass_aee1e63b69b53b9b897dc80873d774e2a}{m\_IN}}\ \ =\ input;\ \}}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget}{VE::Internal::RHI::IRHIRenderTarget}}*\ \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPass_a35e3e67e3c03bda4bc153fd98acfd51f}{GetOutputTarget}}()\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPass_ae7a2d430d640fd8b53215bf29f32fbf0}{m\_OUT}};\ \}}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPass_afc13a062eac256f2b03a73286d290e8c}{m\_Enabled}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget}{VE::Internal::RHI::IRHIRenderTarget}}*\ \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPass_aee1e63b69b53b9b897dc80873d774e2a}{m\_IN}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget}{VE::Internal::RHI::IRHIRenderTarget}}*\ \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPass_ae7a2d430d640fd8b53215bf29f32fbf0}{m\_OUT}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPath}{VRenderPath}}*\ \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPass_aafb50d9e0cb834b6a72e1199206fabe8}{m\_RenderPath}};}
+\DoxyCodeLine{00059\ \ \ \ \ \};}
+\DoxyCodeLine{00060\ \}}
+
+\end{DoxyCode}

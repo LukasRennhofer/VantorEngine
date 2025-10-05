@@ -1,0 +1,61 @@
+\doxysection{Vantor/\+Source/\+Vantor/\+VCommon\+Impl.cpp File Reference}
+\hypertarget{VCommonImpl_8cpp}{}\label{VCommonImpl_8cpp}\index{Vantor/Source/Vantor/VCommonImpl.cpp@{Vantor/Source/Vantor/VCommonImpl.cpp}}
+{\ttfamily \#include $<$Shared/\+VGLSL/vglsl.\+h$>$}\newline
+{\ttfamily \#include $<$Shared/tinygltf/tiny\+\_\+gltf.\+h$>$}\newline
+{\ttfamily \#include $<$Shared/tinyobjloader/tiny\+\_\+obj\+\_\+loader.\+hpp$>$}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{VCommonImpl_8cpp_a9aeae02976e1873814b2d1145e09548b}{VGLSL\+\_\+\+MAX\+\_\+\+OUTPUT\+\_\+\+SIZE}}~(1024 \texorpdfstring{$\ast$}{*} 1024 \texorpdfstring{$\ast$}{*} 12)
+\item 
+\#define \mbox{\hyperlink{VCommonImpl_8cpp_a9e255a26b6100827614a7b077527a18c}{VGLSL\+\_\+\+IMPLEMENTATION}}
+\item 
+\#define \mbox{\hyperlink{VCommonImpl_8cpp_a63c030b80427a2ebc129780bc8afb498}{TINYGLTF\+\_\+\+NO\+\_\+\+EXTERNAL\+\_\+\+IMAGE}}
+\item 
+\#define \mbox{\hyperlink{VCommonImpl_8cpp_ac203b64c0edef3702d707aed38ab024a}{TINYGLTF\+\_\+\+IMPLEMENTATION}}
+\item 
+\#define \mbox{\hyperlink{VCommonImpl_8cpp_aefe397a94e8feddc652f92ef40ce9597}{STB\+\_\+\+IMAGE\+\_\+\+WRITE\+\_\+\+IMPLEMENTATION}}
+\item 
+\#define \mbox{\hyperlink{VCommonImpl_8cpp_af14fac7fbc250522a78849d58d5b0811}{TINYOBJLOADER\+\_\+\+IMPLEMENTATION}}
+\end{DoxyCompactItemize}
+
+
+\label{doc-define-members}
+\Hypertarget{VCommonImpl_8cpp_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{VCommonImpl_8cpp_aefe397a94e8feddc652f92ef40ce9597}\index{VCommonImpl.cpp@{VCommonImpl.cpp}!STB\_IMAGE\_WRITE\_IMPLEMENTATION@{STB\_IMAGE\_WRITE\_IMPLEMENTATION}}
+\index{STB\_IMAGE\_WRITE\_IMPLEMENTATION@{STB\_IMAGE\_WRITE\_IMPLEMENTATION}!VCommonImpl.cpp@{VCommonImpl.cpp}}
+\doxysubsubsection{\texorpdfstring{STB\_IMAGE\_WRITE\_IMPLEMENTATION}{STB\_IMAGE\_WRITE\_IMPLEMENTATION}}
+{\footnotesize\ttfamily \label{VCommonImpl_8cpp_aefe397a94e8feddc652f92ef40ce9597} 
+\#define STB\+\_\+\+IMAGE\+\_\+\+WRITE\+\_\+\+IMPLEMENTATION}
+
+\Hypertarget{VCommonImpl_8cpp_ac203b64c0edef3702d707aed38ab024a}\index{VCommonImpl.cpp@{VCommonImpl.cpp}!TINYGLTF\_IMPLEMENTATION@{TINYGLTF\_IMPLEMENTATION}}
+\index{TINYGLTF\_IMPLEMENTATION@{TINYGLTF\_IMPLEMENTATION}!VCommonImpl.cpp@{VCommonImpl.cpp}}
+\doxysubsubsection{\texorpdfstring{TINYGLTF\_IMPLEMENTATION}{TINYGLTF\_IMPLEMENTATION}}
+{\footnotesize\ttfamily \label{VCommonImpl_8cpp_ac203b64c0edef3702d707aed38ab024a} 
+\#define TINYGLTF\+\_\+\+IMPLEMENTATION}
+
+\Hypertarget{VCommonImpl_8cpp_a63c030b80427a2ebc129780bc8afb498}\index{VCommonImpl.cpp@{VCommonImpl.cpp}!TINYGLTF\_NO\_EXTERNAL\_IMAGE@{TINYGLTF\_NO\_EXTERNAL\_IMAGE}}
+\index{TINYGLTF\_NO\_EXTERNAL\_IMAGE@{TINYGLTF\_NO\_EXTERNAL\_IMAGE}!VCommonImpl.cpp@{VCommonImpl.cpp}}
+\doxysubsubsection{\texorpdfstring{TINYGLTF\_NO\_EXTERNAL\_IMAGE}{TINYGLTF\_NO\_EXTERNAL\_IMAGE}}
+{\footnotesize\ttfamily \label{VCommonImpl_8cpp_a63c030b80427a2ebc129780bc8afb498} 
+\#define TINYGLTF\+\_\+\+NO\+\_\+\+EXTERNAL\+\_\+\+IMAGE}
+
+\Hypertarget{VCommonImpl_8cpp_af14fac7fbc250522a78849d58d5b0811}\index{VCommonImpl.cpp@{VCommonImpl.cpp}!TINYOBJLOADER\_IMPLEMENTATION@{TINYOBJLOADER\_IMPLEMENTATION}}
+\index{TINYOBJLOADER\_IMPLEMENTATION@{TINYOBJLOADER\_IMPLEMENTATION}!VCommonImpl.cpp@{VCommonImpl.cpp}}
+\doxysubsubsection{\texorpdfstring{TINYOBJLOADER\_IMPLEMENTATION}{TINYOBJLOADER\_IMPLEMENTATION}}
+{\footnotesize\ttfamily \label{VCommonImpl_8cpp_af14fac7fbc250522a78849d58d5b0811} 
+\#define TINYOBJLOADER\+\_\+\+IMPLEMENTATION}
+
+\Hypertarget{VCommonImpl_8cpp_a9e255a26b6100827614a7b077527a18c}\index{VCommonImpl.cpp@{VCommonImpl.cpp}!VGLSL\_IMPLEMENTATION@{VGLSL\_IMPLEMENTATION}}
+\index{VGLSL\_IMPLEMENTATION@{VGLSL\_IMPLEMENTATION}!VCommonImpl.cpp@{VCommonImpl.cpp}}
+\doxysubsubsection{\texorpdfstring{VGLSL\_IMPLEMENTATION}{VGLSL\_IMPLEMENTATION}}
+{\footnotesize\ttfamily \label{VCommonImpl_8cpp_a9e255a26b6100827614a7b077527a18c} 
+\#define VGLSL\+\_\+\+IMPLEMENTATION}
+
+\Hypertarget{VCommonImpl_8cpp_a9aeae02976e1873814b2d1145e09548b}\index{VCommonImpl.cpp@{VCommonImpl.cpp}!VGLSL\_MAX\_OUTPUT\_SIZE@{VGLSL\_MAX\_OUTPUT\_SIZE}}
+\index{VGLSL\_MAX\_OUTPUT\_SIZE@{VGLSL\_MAX\_OUTPUT\_SIZE}!VCommonImpl.cpp@{VCommonImpl.cpp}}
+\doxysubsubsection{\texorpdfstring{VGLSL\_MAX\_OUTPUT\_SIZE}{VGLSL\_MAX\_OUTPUT\_SIZE}}
+{\footnotesize\ttfamily \label{VCommonImpl_8cpp_a9aeae02976e1873814b2d1145e09548b} 
+\#define VGLSL\+\_\+\+MAX\+\_\+\+OUTPUT\+\_\+\+SIZE~(1024 \texorpdfstring{$\ast$}{*} 1024 \texorpdfstring{$\ast$}{*} 12)}
+

@@ -8,6 +8,7 @@
  ****************************************************************************/
 
 #include <RHI/OpenGL/VRHI_OpenGLBuffer.hpp>
+
 #include <Core/BackLog/VCO_Backlog.hpp>
 
 #include <array>

@@ -1,0 +1,119 @@
+\doxysection{VREP\+\_\+\+Render\+Path.\+hpp}
+\hypertarget{VREP__RenderPath_8hpp_source}{}\label{VREP__RenderPath_8hpp_source}\index{Vantor/Source/Vantor/RenderPipeline/Include/RenderPipeline/Public/VREP\_RenderPath.hpp@{Vantor/Source/Vantor/RenderPipeline/Include/RenderPipeline/Public/VREP\_RenderPath.hpp}}
+\mbox{\hyperlink{VREP__RenderPath_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/****************************************************************************}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ Vantor\ Engine™\ -\/\ Source\ Code\ (2025)}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ Author\ \ \ \ :\ Lukas\ Rennhofer\ (@LukasRennhofer),\ Vantor\ Studios™}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ Copyright\ :\ ©\ 2025\ Lukas\ Rennhofer,\ Vantor\ Studios™}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ *\ License\ \ \ :\ GNU\ General\ Public\ License\ v3.0}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ See\ LICENSE\ file\ for\ full\ details.}}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ ****************************************************************************/}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{VGFX__Camera_8hpp}{Graphics/Public/Camera/VGFX\_Camera.hpp}}>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{VREP__RenderPass_8hpp}{RenderPipeline/Public/VREP\_RenderPass.hpp}}>}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{VMA__Matrix_8hpp}{Math/Linear/VMA\_Matrix.hpp}}>}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{VREP__CommandBuffer_8hpp}{RenderPipeline/Pipeline/VREP\_CommandBuffer.hpp}}>}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <cstdint>}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI}{VE::Internal::RHI}}\ \{}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget}{IRHIRenderTarget}};}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIMesh}{IRHIMesh}};}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIShader}{IRHIShader}};}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIDevice}{IRHIDevice}};}
+\DoxyCodeLine{00027\ \}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceVE}{VE}}\ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classVE_1_1VMaterial}{VMaterial}};}
+\DoxyCodeLine{00031\ \}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceVE_1_1Renderer}{VE::Renderer}}\ \{}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{comment}{//\ Base\ render\ path\ interface}}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPath}{VRenderPath}}}
+\DoxyCodeLine{00037\ \ \ \ \ \{}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPath_a6049556762bc1363d0073377e68b3610}{\string~VRenderPath}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Core\ rendering\ methods}}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPath_a8132da16b2f6d24e0aaebde77acf4aa9}{Initialize}}(\mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIDevice}{VE::Internal::RHI::IRHIDevice}}*\ device)\ =\ 0;}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPath_aaa1467cb5346636e82e448f0cc61460b}{Render}}()\ =\ 0;}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPath_a1072d1a56d87ba8fc274da434f3ab882}{Shutdown}}()\ =\ 0;}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Render\ target\ management}}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPath_a01ea46881aacd32ce507cc9d7732a37d}{SetInputRenderTarget}}(\mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget}{VE::Internal::RHI::IRHIRenderTarget}}\ *target)\ \{\ \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPath_ac8d41c6faa28446c2f805eecfa6d9ea4}{m\_IN}}\ =\ target;\ \};}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget}{VE::Internal::RHI::IRHIRenderTarget}}\ *\mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPath_a3feab2cf05becf52d51c5659840efc07}{GetOutputRenderTarget}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPath_a7fa95653f822abb8adaa458e4ad59e83}{m\_OUT}};\ \};}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Viewport\ configuration}}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPath_a7c15e946f39fb65edaf840c8778d9e3a}{SetViewport}}(uint32\_t\ x,\ uint32\_t\ y,\ uint32\_t\ width,\ uint32\_t\ height)\ \ \ \ \ \ \ \ \ \ \ =\ 0;}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ virtual\ void\ GetViewport(uint32\_t\ \&x,\ uint32\_t\ \&y,\ uint32\_t\ \&width,\ uint32\_t\ \&height)\ const\ =\ 0;}}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Render\ pass\ management}}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPath_a715042ce462b4f640d7a7cb764575ee6}{AddRenderPass}}(std::unique\_ptr<VRenderPass>\ pass)\ =\ 0;}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPass}{VRenderPass}}\ *\mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPath_aa7a21e67b0cbea789eda0f4a0c79612b}{GetRenderPass}}(\mbox{\hyperlink{namespaceVE_1_1Renderer_aee20b04fc5db494be35be814d420dd3f}{ERenderPassType}}\ type)\ \textcolor{keyword}{const}\ \ \ \ \ \ \ \ =\ 0;}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPath_a912dab1cee0d735c74bff2e6be299f80}{SetCamera}}(\mbox{\hyperlink{classVE_1_1Graphics_1_1ACamera}{VE::Graphics::ACamera}}*\ camera)\ \{\ \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPath_aaefdd6da5830752b62397db9ba8f2d82}{m\_Camera}}\ =\ camera;\ \};}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVE_1_1Graphics_1_1ACamera}{VE::Graphics::ACamera}}*\ \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPath_a8551c733f8fd07f0750b3d1c9de1eddf}{GetCamera}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPath_aaefdd6da5830752b62397db9ba8f2d82}{m\_Camera}};\ \};}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVE_1_1Internal_1_1RenderPipeline_1_1VCommandBuffer}{VE::Internal::RenderPipeline::VCommandBuffer}}*\ \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPath_af8ce44d9d0279a548ff7a61a12afadec}{GetCommandBuffer}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPath_a11f2ff5b0f797392097ec8bbf7e5530e}{m\_CommandBuffer}}.get();\ \}}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIDevice}{VE::Internal::RHI::IRHIDevice}}*\ \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPath_aa006fee25f67c32f976eec21d22cb78f}{GetDevice}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPath_a036e40c3c2f49e3c57bc3abb8a320868}{m\_Device}};\ \}}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVE_1_1Graphics_1_1ACamera}{VE::Graphics::ACamera}}*\ \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPath_aaefdd6da5830752b62397db9ba8f2d82}{m\_Camera}};}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ uint32\_t\ \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPath_a6c03d19d956c9597e9ba20eb08da8f40}{m\_ViewportX}}\ \ \ \ \ \ =\ 0;}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ uint32\_t\ \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPath_a26bdb60f703af4066c78a7e8e7fc9ffe}{m\_ViewportY}}\ \ \ \ \ \ =\ 0;}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ uint32\_t\ \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPath_afdce1036f26e5847cb00475357b0a53f}{m\_ViewportWidth}}\ \ =\ 1280;}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ uint32\_t\ \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPath_a0eb29ac0b267e31b37f895bb61e85358}{m\_ViewportHeight}}\ =\ 720;}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget}{VE::Internal::RHI::IRHIRenderTarget}}*\ \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPath_ac8d41c6faa28446c2f805eecfa6d9ea4}{m\_IN}};}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget}{VE::Internal::RHI::IRHIRenderTarget}}*\ \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPath_a7fa95653f822abb8adaa458e4ad59e83}{m\_OUT}};}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIDevice}{VE::Internal::RHI::IRHIDevice}}*\ \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPath_a036e40c3c2f49e3c57bc3abb8a320868}{m\_Device}};}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ std::unique\_ptr<VE::Internal::RenderPipeline::VCommandBuffer>\ \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPath_a11f2ff5b0f797392097ec8bbf7e5530e}{m\_CommandBuffer}};}
+\DoxyCodeLine{00079\ \ \ \ \ \};}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPath3D_ad3bdf3c2691883e98fa2538f56612a3d}{VRenderPath3D}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPath}{VRenderPath}}}
+\DoxyCodeLine{00082\ \ \ \ \ \{}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPath3D_ad3bdf3c2691883e98fa2538f56612a3d}{VRenderPath3D}}();}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPath3D_a54337bec0b4322d44473242ca5ecfd3f}{\string~VRenderPath3D}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Core\ rendering\ methods}}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPath3D_a7b4a313e5b8f3b1ad70ff04ee631b417}{Initialize}}(\mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIDevice}{VE::Internal::RHI::IRHIDevice}}\ *device)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPath3D_a052ee07f3310263b8ab2873d3646fa8f}{Render}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPath3D_a97f06ef73f7b302ceeaae4dee3317c80}{Shutdown}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Push\ to\ CommandBufferr}}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPath3D_a7c7aae1f15c5215c6ee7852b71b713f3}{PushRender}}(\mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIMesh}{VE::Internal::RHI::IRHIMesh}}*\ mesh,\ \mbox{\hyperlink{classVE_1_1VMaterial}{VMaterial}}*\ material,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat4}{VE::Math::VMat4}}\&\ transform);}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ void\ PushRender(Vantor::Object::VObject\ *object)\ override;}}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ void\ PushPointLight(const\ Vantor::Renderer::VPointLightData\ \&pointLightData)\ override;}}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Viewport\ configuration}}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPath3D_af79f38565e3116aa2f6d1ab964e7e4ef}{SetViewport}}(uint32\_t\ x,\ uint32\_t\ y,\ uint32\_t\ width,\ uint32\_t\ height)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ void\ GetViewport(uint32\_t\ \&x,\ uint32\_t\ \&y,\ uint32\_t\ \&width,\ uint32\_t\ \&height)\ const\ override;}}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Render\ pass\ management}}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPath3D_ac7a1918de4bb8087dc7c3115f32ee6a8}{AddRenderPass}}(std::unique\_ptr<VRenderPass>\ pass)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPass}{VRenderPass}}\ *\mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPath3D_aad44dc0c41a9790e3539a26eab2f48c7}{GetRenderPass}}(\mbox{\hyperlink{namespaceVE_1_1Renderer_aee20b04fc5db494be35be814d420dd3f}{ERenderPassType}}\ type)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ SetupDefaultRenderPasses();}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ std::unordered\_map<ERenderPassType,\ std::unique\_ptr<VRenderPass>>\ m\_RenderPasses;}
+\DoxyCodeLine{00110\ \ \ \ \ \};}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00112\ \}}
+\DoxyCodeLine{00113\ }
+
+\end{DoxyCode}

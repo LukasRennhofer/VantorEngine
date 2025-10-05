@@ -1,0 +1,191 @@
+\doxysection{VE\+::Internal\+::RHI\+::Open\+GLDevice Class Reference}
+\hypertarget{classVE_1_1Internal_1_1RHI_1_1OpenGLDevice}{}\label{classVE_1_1Internal_1_1RHI_1_1OpenGLDevice}\index{VE::Internal::RHI::OpenGLDevice@{VE::Internal::RHI::OpenGLDevice}}
+
+
+{\ttfamily \#include $<$VRHI\+\_\+\+Open\+GLDevice.\+hpp$>$}
+
+Inheritance diagram for VE\+::Internal\+::RHI\+::Open\+GLDevice\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classVE_1_1Internal_1_1RHI_1_1OpenGLDevice}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLDevice_a935503af02bed0aaa2cba1444e061430}{Open\+GLDevice}} ()
+\item 
+virtual \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLDevice_ac5c0eb564bc9e70fb7cde41ad48fd6c9}{\texorpdfstring{$\sim$}{\string~}\+Open\+GLDevice}} ()
+\item 
+bool \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLDevice_adae2eab0286efc9ae84f12087b345451}{Initialize}} () override
+\item 
+void \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLDevice_a35e511593040f0c186e2d47735906064}{Shutdown}} () override
+\item 
+void \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLDevice_a7d7456b6bf4572c1653beee645df161a}{Present}} () override
+\item 
+void \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLDevice_a5965f8b328daf21f9f3fcff5f48c8435}{Clear}} (float r=0.\+0f, float g=0.\+0f, float b=0.\+0f, float a=1.\+0f) override
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIShader}{IRHIShader}} $>$ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLDevice_a1b047de9e871e2cea706d2ea323113cd}{Create\+Shader}} (const std\+::string \&vertex\+Source, const std\+::string \&fragment\+Source) override
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHITexture}{IRHITexture}} $>$ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLDevice_a3e9701dd82beea9e8d34ed764f523fb7}{Create\+Texture}} (uint32\+\_\+t width, uint32\+\_\+t height, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7}{ERHIFormat}} format, const void \texorpdfstring{$\ast$}{*}data=nullptr, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a79a6d19349d7b5399e5fb907a28fb009}{ETexture\+Type}} type=\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a79a6d19349d7b5399e5fb907a28fb009aa6e2bae752d3bf4e34cb392bca789995}{ETexture\+Type\+::\+Texture2D}}, uint32\+\_\+t depth=1) override
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIMesh}{IRHIMesh}} $>$ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLDevice_a40e7283a78381e86b3775de26de87c8f}{Create\+Mesh}} (const void \texorpdfstring{$\ast$}{*}vertex\+Data, uint32\+\_\+t vertex\+Size, const void \texorpdfstring{$\ast$}{*}index\+Data, uint32\+\_\+t index\+Count, const \mbox{\hyperlink{structVE_1_1Internal_1_1RHI_1_1VVertexLayout}{VVertex\+Layout}} \&layout) override
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIBuffer}{IRHIBuffer}} $>$ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLDevice_a5b52b8f164f0443be595643f1956ff5a}{Create\+Buffer}} (\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a52035ddfb13a42298c915d4fd9108b25}{ERHIBuffer\+Type}} type, uint32\+\_\+t size, const void \texorpdfstring{$\ast$}{*}data=nullptr) override
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget}{IRHIRender\+Target}} $>$ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLDevice_a4d7ba5cd0baee35d200a9b482831a878}{Create\+Render\+Target}} (uint32\+\_\+t width, uint32\+\_\+t height, uint32\+\_\+t samples=1) override
+\item 
+void \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLDevice_a378e13a13396dc428a411097f58ba29e}{Set\+Viewport}} (uint32\+\_\+t x, uint32\+\_\+t y, uint32\+\_\+t width, uint32\+\_\+t height) override
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIDevice}{VE\+::\+Internal\+::\+RHI\+::\+IRHIDevice}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIDevice_ab7a7273fc04b267fa6056ddc49da8a6d}{\texorpdfstring{$\sim$}{\string~}\+IRHIDevice}} ()=default
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static GLenum \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLDevice_acc613437841cb74ab90a1e5d42a7b41d}{RHIFormat\+To\+GL}} (\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7}{ERHIFormat}} format)
+\item 
+static GLenum \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLDevice_ad7d00f649fc96374f3029549b5767752}{Buffer\+Type\+To\+GL}} (\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a52035ddfb13a42298c915d4fd9108b25}{ERHIBuffer\+Type}} type)
+\end{DoxyCompactItemize}
+
+
+\label{doc-constructors}
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1OpenGLDevice_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1OpenGLDevice_a935503af02bed0aaa2cba1444e061430}\index{VE::Internal::RHI::OpenGLDevice@{VE::Internal::RHI::OpenGLDevice}!OpenGLDevice@{OpenGLDevice}}
+\index{OpenGLDevice@{OpenGLDevice}!VE::Internal::RHI::OpenGLDevice@{VE::Internal::RHI::OpenGLDevice}}
+\doxysubsubsection{\texorpdfstring{OpenGLDevice()}{OpenGLDevice()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RHI_1_1OpenGLDevice_a935503af02bed0aaa2cba1444e061430} 
+VE\+::\+Internal\+::\+RHI\+::\+Open\+GLDevice\+::\+Open\+GLDevice (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1OpenGLDevice_ac5c0eb564bc9e70fb7cde41ad48fd6c9}\index{VE::Internal::RHI::OpenGLDevice@{VE::Internal::RHI::OpenGLDevice}!````~OpenGLDevice@{\texorpdfstring{$\sim$}{\string~}OpenGLDevice}}
+\index{````~OpenGLDevice@{\texorpdfstring{$\sim$}{\string~}OpenGLDevice}!VE::Internal::RHI::OpenGLDevice@{VE::Internal::RHI::OpenGLDevice}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}OpenGLDevice()}{\string~OpenGLDevice()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RHI_1_1OpenGLDevice_ac5c0eb564bc9e70fb7cde41ad48fd6c9} 
+VE\+::\+Internal\+::\+RHI\+::\+Open\+GLDevice\+::\texorpdfstring{$\sim$}{\string~}\+Open\+GLDevice (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+\label{doc-func-members}
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1OpenGLDevice_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1OpenGLDevice_ad7d00f649fc96374f3029549b5767752}\index{VE::Internal::RHI::OpenGLDevice@{VE::Internal::RHI::OpenGLDevice}!BufferTypeToGL@{BufferTypeToGL}}
+\index{BufferTypeToGL@{BufferTypeToGL}!VE::Internal::RHI::OpenGLDevice@{VE::Internal::RHI::OpenGLDevice}}
+\doxysubsubsection{\texorpdfstring{BufferTypeToGL()}{BufferTypeToGL()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RHI_1_1OpenGLDevice_ad7d00f649fc96374f3029549b5767752} 
+GLenum VE\+::\+Internal\+::\+RHI\+::\+Open\+GLDevice\+::\+Buffer\+Type\+To\+GL (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a52035ddfb13a42298c915d4fd9108b25}{ERHIBuffer\+Type}}}]{type}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1OpenGLDevice_a5965f8b328daf21f9f3fcff5f48c8435}\index{VE::Internal::RHI::OpenGLDevice@{VE::Internal::RHI::OpenGLDevice}!Clear@{Clear}}
+\index{Clear@{Clear}!VE::Internal::RHI::OpenGLDevice@{VE::Internal::RHI::OpenGLDevice}}
+\doxysubsubsection{\texorpdfstring{Clear()}{Clear()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RHI_1_1OpenGLDevice_a5965f8b328daf21f9f3fcff5f48c8435} 
+void VE\+::\+Internal\+::\+RHI\+::\+Open\+GLDevice\+::\+Clear (\begin{DoxyParamCaption}\item[{float}]{r}{ = {\ttfamily 0.0f}, }\item[{float}]{g}{ = {\ttfamily 0.0f}, }\item[{float}]{b}{ = {\ttfamily 0.0f}, }\item[{float}]{a}{ = {\ttfamily 1.0f}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIDevice_a56be3e859daf09972f9598d23fff9835}{VE\+::\+Internal\+::\+RHI\+::\+IRHIDevice}}.
+
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1OpenGLDevice_a5b52b8f164f0443be595643f1956ff5a}\index{VE::Internal::RHI::OpenGLDevice@{VE::Internal::RHI::OpenGLDevice}!CreateBuffer@{CreateBuffer}}
+\index{CreateBuffer@{CreateBuffer}!VE::Internal::RHI::OpenGLDevice@{VE::Internal::RHI::OpenGLDevice}}
+\doxysubsubsection{\texorpdfstring{CreateBuffer()}{CreateBuffer()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RHI_1_1OpenGLDevice_a5b52b8f164f0443be595643f1956ff5a} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIBuffer}{IRHIBuffer}} $>$ VE\+::\+Internal\+::\+RHI\+::\+Open\+GLDevice\+::\+Create\+Buffer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a52035ddfb13a42298c915d4fd9108b25}{ERHIBuffer\+Type}}}]{type}{, }\item[{uint32\+\_\+t}]{size}{, }\item[{const void \texorpdfstring{$\ast$}{*}}]{data}{ = {\ttfamily nullptr}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIDevice_a24d08cd3279189d6ab7931aad9bfa0d0}{VE\+::\+Internal\+::\+RHI\+::\+IRHIDevice}}.
+
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1OpenGLDevice_a40e7283a78381e86b3775de26de87c8f}\index{VE::Internal::RHI::OpenGLDevice@{VE::Internal::RHI::OpenGLDevice}!CreateMesh@{CreateMesh}}
+\index{CreateMesh@{CreateMesh}!VE::Internal::RHI::OpenGLDevice@{VE::Internal::RHI::OpenGLDevice}}
+\doxysubsubsection{\texorpdfstring{CreateMesh()}{CreateMesh()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RHI_1_1OpenGLDevice_a40e7283a78381e86b3775de26de87c8f} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIMesh}{IRHIMesh}} $>$ VE\+::\+Internal\+::\+RHI\+::\+Open\+GLDevice\+::\+Create\+Mesh (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\ast$}{*}}]{vertex\+Data}{, }\item[{uint32\+\_\+t}]{vertex\+Size}{, }\item[{const void \texorpdfstring{$\ast$}{*}}]{index\+Data}{, }\item[{uint32\+\_\+t}]{index\+Count}{, }\item[{const \mbox{\hyperlink{structVE_1_1Internal_1_1RHI_1_1VVertexLayout}{VVertex\+Layout}} \&}]{layout}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIDevice_ab91c92fe23c77affec76c1bbe4acc594}{VE\+::\+Internal\+::\+RHI\+::\+IRHIDevice}}.
+
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1OpenGLDevice_a4d7ba5cd0baee35d200a9b482831a878}\index{VE::Internal::RHI::OpenGLDevice@{VE::Internal::RHI::OpenGLDevice}!CreateRenderTarget@{CreateRenderTarget}}
+\index{CreateRenderTarget@{CreateRenderTarget}!VE::Internal::RHI::OpenGLDevice@{VE::Internal::RHI::OpenGLDevice}}
+\doxysubsubsection{\texorpdfstring{CreateRenderTarget()}{CreateRenderTarget()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RHI_1_1OpenGLDevice_a4d7ba5cd0baee35d200a9b482831a878} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget}{IRHIRender\+Target}} $>$ VE\+::\+Internal\+::\+RHI\+::\+Open\+GLDevice\+::\+Create\+Render\+Target (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{width}{, }\item[{uint32\+\_\+t}]{height}{, }\item[{uint32\+\_\+t}]{samples}{ = {\ttfamily 1}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIDevice_a71d8b709197aa99a4384fdfd68e35829}{VE\+::\+Internal\+::\+RHI\+::\+IRHIDevice}}.
+
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1OpenGLDevice_a1b047de9e871e2cea706d2ea323113cd}\index{VE::Internal::RHI::OpenGLDevice@{VE::Internal::RHI::OpenGLDevice}!CreateShader@{CreateShader}}
+\index{CreateShader@{CreateShader}!VE::Internal::RHI::OpenGLDevice@{VE::Internal::RHI::OpenGLDevice}}
+\doxysubsubsection{\texorpdfstring{CreateShader()}{CreateShader()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RHI_1_1OpenGLDevice_a1b047de9e871e2cea706d2ea323113cd} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIShader}{IRHIShader}} $>$ VE\+::\+Internal\+::\+RHI\+::\+Open\+GLDevice\+::\+Create\+Shader (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{vertex\+Source}{, }\item[{const std\+::string \&}]{fragment\+Source}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIDevice_a45ce5a0de822c739dc7ebceea3be1c6a}{VE\+::\+Internal\+::\+RHI\+::\+IRHIDevice}}.
+
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1OpenGLDevice_a3e9701dd82beea9e8d34ed764f523fb7}\index{VE::Internal::RHI::OpenGLDevice@{VE::Internal::RHI::OpenGLDevice}!CreateTexture@{CreateTexture}}
+\index{CreateTexture@{CreateTexture}!VE::Internal::RHI::OpenGLDevice@{VE::Internal::RHI::OpenGLDevice}}
+\doxysubsubsection{\texorpdfstring{CreateTexture()}{CreateTexture()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RHI_1_1OpenGLDevice_a3e9701dd82beea9e8d34ed764f523fb7} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHITexture}{IRHITexture}} $>$ VE\+::\+Internal\+::\+RHI\+::\+Open\+GLDevice\+::\+Create\+Texture (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{width}{, }\item[{uint32\+\_\+t}]{height}{, }\item[{\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7}{ERHIFormat}}}]{format}{, }\item[{const void \texorpdfstring{$\ast$}{*}}]{data}{ = {\ttfamily nullptr}, }\item[{\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a79a6d19349d7b5399e5fb907a28fb009}{ETexture\+Type}}}]{type}{ = {\ttfamily \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a79a6d19349d7b5399e5fb907a28fb009aa6e2bae752d3bf4e34cb392bca789995}{ETexture\+Type\+::\+Texture2D}}}, }\item[{uint32\+\_\+t}]{depth}{ = {\ttfamily 1}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIDevice_ac2d3109128dbd7a5c9cd0e4c0704482d}{VE\+::\+Internal\+::\+RHI\+::\+IRHIDevice}}.
+
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1OpenGLDevice_adae2eab0286efc9ae84f12087b345451}\index{VE::Internal::RHI::OpenGLDevice@{VE::Internal::RHI::OpenGLDevice}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!VE::Internal::RHI::OpenGLDevice@{VE::Internal::RHI::OpenGLDevice}}
+\doxysubsubsection{\texorpdfstring{Initialize()}{Initialize()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RHI_1_1OpenGLDevice_adae2eab0286efc9ae84f12087b345451} 
+bool VE\+::\+Internal\+::\+RHI\+::\+Open\+GLDevice\+::\+Initialize (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIDevice_afaaf572d47cc9d8e3e24e1444da640b6}{VE\+::\+Internal\+::\+RHI\+::\+IRHIDevice}}.
+
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1OpenGLDevice_a7d7456b6bf4572c1653beee645df161a}\index{VE::Internal::RHI::OpenGLDevice@{VE::Internal::RHI::OpenGLDevice}!Present@{Present}}
+\index{Present@{Present}!VE::Internal::RHI::OpenGLDevice@{VE::Internal::RHI::OpenGLDevice}}
+\doxysubsubsection{\texorpdfstring{Present()}{Present()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RHI_1_1OpenGLDevice_a7d7456b6bf4572c1653beee645df161a} 
+void VE\+::\+Internal\+::\+RHI\+::\+Open\+GLDevice\+::\+Present (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIDevice_a979d6a501842c4b0aab71fa81deb81c8}{VE\+::\+Internal\+::\+RHI\+::\+IRHIDevice}}.
+
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1OpenGLDevice_acc613437841cb74ab90a1e5d42a7b41d}\index{VE::Internal::RHI::OpenGLDevice@{VE::Internal::RHI::OpenGLDevice}!RHIFormatToGL@{RHIFormatToGL}}
+\index{RHIFormatToGL@{RHIFormatToGL}!VE::Internal::RHI::OpenGLDevice@{VE::Internal::RHI::OpenGLDevice}}
+\doxysubsubsection{\texorpdfstring{RHIFormatToGL()}{RHIFormatToGL()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RHI_1_1OpenGLDevice_acc613437841cb74ab90a1e5d42a7b41d} 
+GLenum VE\+::\+Internal\+::\+RHI\+::\+Open\+GLDevice\+::\+RHIFormat\+To\+GL (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7}{ERHIFormat}}}]{format}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1OpenGLDevice_a378e13a13396dc428a411097f58ba29e}\index{VE::Internal::RHI::OpenGLDevice@{VE::Internal::RHI::OpenGLDevice}!SetViewport@{SetViewport}}
+\index{SetViewport@{SetViewport}!VE::Internal::RHI::OpenGLDevice@{VE::Internal::RHI::OpenGLDevice}}
+\doxysubsubsection{\texorpdfstring{SetViewport()}{SetViewport()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RHI_1_1OpenGLDevice_a378e13a13396dc428a411097f58ba29e} 
+void VE\+::\+Internal\+::\+RHI\+::\+Open\+GLDevice\+::\+Set\+Viewport (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{x}{, }\item[{uint32\+\_\+t}]{y}{, }\item[{uint32\+\_\+t}]{width}{, }\item[{uint32\+\_\+t}]{height}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIDevice_aa44b7d5dd3b8e37d4c658c8801bfd695}{VE\+::\+Internal\+::\+RHI\+::\+IRHIDevice}}.
+
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1OpenGLDevice_a35e511593040f0c186e2d47735906064}\index{VE::Internal::RHI::OpenGLDevice@{VE::Internal::RHI::OpenGLDevice}!Shutdown@{Shutdown}}
+\index{Shutdown@{Shutdown}!VE::Internal::RHI::OpenGLDevice@{VE::Internal::RHI::OpenGLDevice}}
+\doxysubsubsection{\texorpdfstring{Shutdown()}{Shutdown()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RHI_1_1OpenGLDevice_a35e511593040f0c186e2d47735906064} 
+void VE\+::\+Internal\+::\+RHI\+::\+Open\+GLDevice\+::\+Shutdown (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIDevice_aa55adad13889f35ebaf78d77a56dd617}{VE\+::\+Internal\+::\+RHI\+::\+IRHIDevice}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Vantor/\+Source/\+Vantor/\+RHI/\+Include/\+RHI/\+Open\+GL/\mbox{\hyperlink{VRHI__OpenGLDevice_8hpp}{VRHI\+\_\+\+Open\+GLDevice.\+hpp}}\item 
+Vantor/\+Source/\+Vantor/\+RHI/\+Source/\+RHI/\+Open\+GL/\mbox{\hyperlink{VRHI__OpenGLDevice_8cpp}{VRHI\+\_\+\+Open\+GLDevice.\+cpp}}\end{DoxyCompactItemize}

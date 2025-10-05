@@ -9,7 +9,7 @@
 
 #pragma once
 
-#ifdef VANTOR_INTEGRATION_IMGUI
+// #ifdef VANTOR_INTEGRATION_IMGUI
 
 #ifdef VANTOR_API_OPENGL
 // Tell ImGui OpenGL backend to use glad loader
@@ -155,6 +155,7 @@ namespace VE::Internal::Integration::Imgui
 
     inline void Render()
     {
+        ImGui::Render(); // This was missing! Must be called before getting draw data
 #ifdef VANTOR_API_OPENGL
         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 #endif
@@ -215,4 +216,4 @@ namespace VE::Internal::Integration::Imgui
     }
 } // namespace VE::Internal::Integration::Imgui
 
-#endif // VANTOR_INTEGRATION_IMGUI
+// #endif // VANTOR_INTEGRATION_IMGUI

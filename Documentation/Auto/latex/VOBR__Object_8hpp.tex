@@ -1,0 +1,68 @@
+\doxysection{Vantor/\+Source/\+Vantor/\+Object\+Runtime/\+Include/\+Object\+Runtime/\+Public/\+Classes/\+VOBR\+\_\+\+Object.hpp File Reference}
+\hypertarget{VOBR__Object_8hpp}{}\label{VOBR__Object_8hpp}\index{Vantor/Source/Vantor/ObjectRuntime/Include/ObjectRuntime/Public/Classes/VOBR\_Object.hpp@{Vantor/Source/Vantor/ObjectRuntime/Include/ObjectRuntime/Public/Classes/VOBR\_Object.hpp}}
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$cstdint$>$}\newline
+{\ttfamily \#include $<$atomic$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classVE_1_1Internal_1_1ObjectRuntime_1_1VObject}{VE\+::\+Internal\+::\+Object\+Runtime\+::\+VObject}}
+\item 
+struct \mbox{\hyperlink{structVE_1_1Internal_1_1ObjectRuntime_1_1VObject_1_1Type}{VE\+::\+Internal\+::\+Object\+Runtime\+::\+VObject\+::\+Type}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespaceVE}{VE}}
+\item 
+namespace \mbox{\hyperlink{namespaceVE_1_1Internal}{VE\+::\+Internal}}
+\item 
+namespace \mbox{\hyperlink{namespaceVE_1_1Internal_1_1ObjectRuntime}{VE\+::\+Internal\+::\+Object\+Runtime}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{VOBR__Object_8hpp_a93d26cf81b07625ba8ad36c3872eadfe}{VCLASS\+\_\+\+DECLARE}}(CLASS,  BASE)
+\item 
+\#define \mbox{\hyperlink{VOBR__Object_8hpp_a96f01122565c3be6a05c2b8b4659d6c5}{VCLASS\+\_\+\+DEFINE}}(CLASS,  BASE)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{namespaceVE_1_1Internal_1_1ObjectRuntime_a524ec2223e9957b21d805720caafcc26}{VE\+::\+Internal\+::\+Object\+Runtime\+::\+Generate\+Type\+ID}} ()
+\end{DoxyCompactItemize}
+
+
+\label{doc-define-members}
+\Hypertarget{VOBR__Object_8hpp_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{VOBR__Object_8hpp_a93d26cf81b07625ba8ad36c3872eadfe}\index{VOBR\_Object.hpp@{VOBR\_Object.hpp}!VCLASS\_DECLARE@{VCLASS\_DECLARE}}
+\index{VCLASS\_DECLARE@{VCLASS\_DECLARE}!VOBR\_Object.hpp@{VOBR\_Object.hpp}}
+\doxysubsubsection{\texorpdfstring{VCLASS\_DECLARE}{VCLASS\_DECLARE}}
+{\footnotesize\ttfamily \label{VOBR__Object_8hpp_a93d26cf81b07625ba8ad36c3872eadfe} 
+\#define VCLASS\+\_\+\+DECLARE(\begin{DoxyParamCaption}\item[{}]{CLASS}{, }\item[{}]{BASE}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{public}:\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ const\ ::VE::Internal::ObjectRuntime::VObject::Type\&\ StaticType();\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ const\ ::VE::Internal::ObjectRuntime::VObject::Type\&\ GetType()\textcolor{keyword}{\ const\ override\ }\{\ \textcolor{keywordflow}{return}\ StaticType();\ \}\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{private}:}
+
+\end{DoxyCode}
+\Hypertarget{VOBR__Object_8hpp_a96f01122565c3be6a05c2b8b4659d6c5}\index{VOBR\_Object.hpp@{VOBR\_Object.hpp}!VCLASS\_DEFINE@{VCLASS\_DEFINE}}
+\index{VCLASS\_DEFINE@{VCLASS\_DEFINE}!VOBR\_Object.hpp@{VOBR\_Object.hpp}}
+\doxysubsubsection{\texorpdfstring{VCLASS\_DEFINE}{VCLASS\_DEFINE}}
+{\footnotesize\ttfamily \label{VOBR__Object_8hpp_a96f01122565c3be6a05c2b8b4659d6c5} 
+\#define VCLASS\+\_\+\+DEFINE(\begin{DoxyParamCaption}\item[{}]{CLASS}{, }\item[{}]{BASE}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ const\ ::VE::Internal::ObjectRuntime::VObject::Type\&\ CLASS::StaticType()\ \{\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ const\ ::VE::Internal::ObjectRuntime::VObject::Type\ type\ =\ []()\ -\/>\ \mbox{\hyperlink{structVE_1_1Internal_1_1ObjectRuntime_1_1VObject_1_1Type}{::VE::Internal::ObjectRuntime::VObject::Type}}\ \{\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ return\ ::VE::Internal::ObjectRuntime::VObject::Type\{\ \#CLASS,\ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1ObjectRuntime_a524ec2223e9957b21d805720caafcc26}{::VE::Internal::ObjectRuntime::GenerateTypeID}}(),\ \&BASE::StaticType()\ \};\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}();\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ type;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \}}
+
+\end{DoxyCode}

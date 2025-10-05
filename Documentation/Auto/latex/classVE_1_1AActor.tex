@@ -1,0 +1,146 @@
+\doxysection{VE\+::AActor Class Reference}
+\hypertarget{classVE_1_1AActor}{}\label{classVE_1_1AActor}\index{VE::AActor@{VE::AActor}}
+
+
+{\ttfamily \#include $<$VAR\+\_\+\+Actor.\+hpp$>$}
+
+Inheritance diagram for VE\+::AActor\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{classVE_1_1AActor}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classVE_1_1AActor_a2c8848103c5cb6ac3e521f9029854603}{AActor}} ()
+\item 
+virtual \mbox{\hyperlink{classVE_1_1AActor_a0358b681dc66a00a2f5fc1652a762cb0}{\texorpdfstring{$\sim$}{\string~}\+AActor}} ()=default
+\item 
+\mbox{\hyperlink{namespaceVE_ac71b8b5090760e6e75e30c988d8cf415}{VActor\+ID}} \mbox{\hyperlink{classVE_1_1AActor_a7d3062137fd9915958b554820e7a9612}{Get\+ID}} () const
+\item 
+{\footnotesize template$<$typename T, typename... Args$>$ }\\std\+::shared\+\_\+ptr$<$ T $>$ \mbox{\hyperlink{classVE_1_1AActor_a63ee298b1b66b45790366878c7115f88}{Add\+Component}} (Args \&\&...args)
+\item 
+{\footnotesize template$<$typename T, typename... Args$>$ }\\void \mbox{\hyperlink{classVE_1_1AActor_ad350f451c015260a93c3c907dcb260b1}{Add\+Component\+Void}} (Args \&\&...args)
+\item 
+{\footnotesize template$<$typename T$>$ }\\std\+::shared\+\_\+ptr$<$ T $>$ \mbox{\hyperlink{classVE_1_1AActor_aca075090b624de7aeb5c450fa8e1f904}{Get\+Component}} () const
+\item 
+{\footnotesize template$<$typename T$>$ }\\bool \mbox{\hyperlink{classVE_1_1AActor_a154f2b6ed721179e03dc9ba719b28e41}{Has\+Component}} () const
+\item 
+void \mbox{\hyperlink{classVE_1_1AActor_a57375188c3e86cc3e5687c75bed7a22d}{Remove\+Component}} (std\+::type\+\_\+index comp\+Type)
+\item 
+void \mbox{\hyperlink{classVE_1_1AActor_a6c69cb6928bb7779fde4dceea580d5a2}{Add\+Child}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classVE_1_1AActor}{AActor}} $>$ child)
+\item 
+void \mbox{\hyperlink{classVE_1_1AActor_a7b5d9aa2c85e6ee46b4027e529b7fbb4}{Remove\+Child}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classVE_1_1AActor}{AActor}} $>$ child)
+\item 
+std\+::weak\+\_\+ptr$<$ \mbox{\hyperlink{classVE_1_1AActor}{AActor}} $>$ \mbox{\hyperlink{classVE_1_1AActor_a60e40df831ba8763cb5fdc1c40fd1b1d}{Get\+Parent}} () const
+\item 
+const \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector}{VE\+::\+Internal\+::\+Core\+::\+Container\+::\+TVector}}$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classVE_1_1AActor}{AActor}} $>$ $>$ \& \mbox{\hyperlink{classVE_1_1AActor_af62e2b606388079aaeb4dc4f539362a5}{Get\+Children}} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespaceVE_ac71b8b5090760e6e75e30c988d8cf415}{VActor\+ID}} \mbox{\hyperlink{classVE_1_1AActor_a50c30545fd244374e9e667e51f3f2293}{id}}
+\end{DoxyCompactItemize}
+
+
+\label{doc-constructors}
+\Hypertarget{classVE_1_1AActor_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classVE_1_1AActor_a2c8848103c5cb6ac3e521f9029854603}\index{VE::AActor@{VE::AActor}!AActor@{AActor}}
+\index{AActor@{AActor}!VE::AActor@{VE::AActor}}
+\doxysubsubsection{\texorpdfstring{AActor()}{AActor()}}
+{\footnotesize\ttfamily \label{classVE_1_1AActor_a2c8848103c5cb6ac3e521f9029854603} 
+VE\+::\+AActor\+::\+AActor (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classVE_1_1AActor_a0358b681dc66a00a2f5fc1652a762cb0}\index{VE::AActor@{VE::AActor}!````~AActor@{\texorpdfstring{$\sim$}{\string~}AActor}}
+\index{````~AActor@{\texorpdfstring{$\sim$}{\string~}AActor}!VE::AActor@{VE::AActor}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}AActor()}{\string~AActor()}}
+{\footnotesize\ttfamily \label{classVE_1_1AActor_a0358b681dc66a00a2f5fc1652a762cb0} 
+virtual VE\+::\+AActor\+::\texorpdfstring{$\sim$}{\string~}\+AActor (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+
+
+\label{doc-func-members}
+\Hypertarget{classVE_1_1AActor_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classVE_1_1AActor_a6c69cb6928bb7779fde4dceea580d5a2}\index{VE::AActor@{VE::AActor}!AddChild@{AddChild}}
+\index{AddChild@{AddChild}!VE::AActor@{VE::AActor}}
+\doxysubsubsection{\texorpdfstring{AddChild()}{AddChild()}}
+{\footnotesize\ttfamily \label{classVE_1_1AActor_a6c69cb6928bb7779fde4dceea580d5a2} 
+void VE\+::\+AActor\+::\+Add\+Child (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classVE_1_1AActor}{AActor}} $>$}]{child}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classVE_1_1AActor_a63ee298b1b66b45790366878c7115f88}\index{VE::AActor@{VE::AActor}!AddComponent@{AddComponent}}
+\index{AddComponent@{AddComponent}!VE::AActor@{VE::AActor}}
+\doxysubsubsection{\texorpdfstring{AddComponent()}{AddComponent()}}
+{\footnotesize\ttfamily \label{classVE_1_1AActor_a63ee298b1b66b45790366878c7115f88} 
+template$<$typename T, typename... Args$>$ \\
+std\+::shared\+\_\+ptr$<$ T $>$ VE\+::\+AActor\+::\+Add\+Component (\begin{DoxyParamCaption}\item[{Args \&\&...}]{args}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classVE_1_1AActor_ad350f451c015260a93c3c907dcb260b1}\index{VE::AActor@{VE::AActor}!AddComponentVoid@{AddComponentVoid}}
+\index{AddComponentVoid@{AddComponentVoid}!VE::AActor@{VE::AActor}}
+\doxysubsubsection{\texorpdfstring{AddComponentVoid()}{AddComponentVoid()}}
+{\footnotesize\ttfamily \label{classVE_1_1AActor_ad350f451c015260a93c3c907dcb260b1} 
+template$<$typename T, typename... Args$>$ \\
+void VE\+::\+AActor\+::\+Add\+Component\+Void (\begin{DoxyParamCaption}\item[{Args \&\&...}]{args}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classVE_1_1AActor_af62e2b606388079aaeb4dc4f539362a5}\index{VE::AActor@{VE::AActor}!GetChildren@{GetChildren}}
+\index{GetChildren@{GetChildren}!VE::AActor@{VE::AActor}}
+\doxysubsubsection{\texorpdfstring{GetChildren()}{GetChildren()}}
+{\footnotesize\ttfamily \label{classVE_1_1AActor_af62e2b606388079aaeb4dc4f539362a5} 
+const \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector}{VE\+::\+Internal\+::\+Core\+::\+Container\+::\+TVector}}$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classVE_1_1AActor}{AActor}} $>$ $>$ \& VE\+::\+AActor\+::\+Get\+Children (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classVE_1_1AActor_aca075090b624de7aeb5c450fa8e1f904}\index{VE::AActor@{VE::AActor}!GetComponent@{GetComponent}}
+\index{GetComponent@{GetComponent}!VE::AActor@{VE::AActor}}
+\doxysubsubsection{\texorpdfstring{GetComponent()}{GetComponent()}}
+{\footnotesize\ttfamily \label{classVE_1_1AActor_aca075090b624de7aeb5c450fa8e1f904} 
+template$<$typename T$>$ \\
+std\+::shared\+\_\+ptr$<$ T $>$ VE\+::\+AActor\+::\+Get\+Component (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classVE_1_1AActor_a7d3062137fd9915958b554820e7a9612}\index{VE::AActor@{VE::AActor}!GetID@{GetID}}
+\index{GetID@{GetID}!VE::AActor@{VE::AActor}}
+\doxysubsubsection{\texorpdfstring{GetID()}{GetID()}}
+{\footnotesize\ttfamily \label{classVE_1_1AActor_a7d3062137fd9915958b554820e7a9612} 
+\mbox{\hyperlink{namespaceVE_ac71b8b5090760e6e75e30c988d8cf415}{VActor\+ID}} VE\+::\+AActor\+::\+Get\+ID (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classVE_1_1AActor_a60e40df831ba8763cb5fdc1c40fd1b1d}\index{VE::AActor@{VE::AActor}!GetParent@{GetParent}}
+\index{GetParent@{GetParent}!VE::AActor@{VE::AActor}}
+\doxysubsubsection{\texorpdfstring{GetParent()}{GetParent()}}
+{\footnotesize\ttfamily \label{classVE_1_1AActor_a60e40df831ba8763cb5fdc1c40fd1b1d} 
+std\+::weak\+\_\+ptr$<$ \mbox{\hyperlink{classVE_1_1AActor}{AActor}} $>$ VE\+::\+AActor\+::\+Get\+Parent (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classVE_1_1AActor_a154f2b6ed721179e03dc9ba719b28e41}\index{VE::AActor@{VE::AActor}!HasComponent@{HasComponent}}
+\index{HasComponent@{HasComponent}!VE::AActor@{VE::AActor}}
+\doxysubsubsection{\texorpdfstring{HasComponent()}{HasComponent()}}
+{\footnotesize\ttfamily \label{classVE_1_1AActor_a154f2b6ed721179e03dc9ba719b28e41} 
+template$<$typename T$>$ \\
+bool VE\+::\+AActor\+::\+Has\+Component (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classVE_1_1AActor_a7b5d9aa2c85e6ee46b4027e529b7fbb4}\index{VE::AActor@{VE::AActor}!RemoveChild@{RemoveChild}}
+\index{RemoveChild@{RemoveChild}!VE::AActor@{VE::AActor}}
+\doxysubsubsection{\texorpdfstring{RemoveChild()}{RemoveChild()}}
+{\footnotesize\ttfamily \label{classVE_1_1AActor_a7b5d9aa2c85e6ee46b4027e529b7fbb4} 
+void VE\+::\+AActor\+::\+Remove\+Child (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classVE_1_1AActor}{AActor}} $>$}]{child}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classVE_1_1AActor_a57375188c3e86cc3e5687c75bed7a22d}\index{VE::AActor@{VE::AActor}!RemoveComponent@{RemoveComponent}}
+\index{RemoveComponent@{RemoveComponent}!VE::AActor@{VE::AActor}}
+\doxysubsubsection{\texorpdfstring{RemoveComponent()}{RemoveComponent()}}
+{\footnotesize\ttfamily \label{classVE_1_1AActor_a57375188c3e86cc3e5687c75bed7a22d} 
+void VE\+::\+AActor\+::\+Remove\+Component (\begin{DoxyParamCaption}\item[{std\+::type\+\_\+index}]{comp\+Type}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\label{doc-variable-members}
+\Hypertarget{classVE_1_1AActor_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classVE_1_1AActor_a50c30545fd244374e9e667e51f3f2293}\index{VE::AActor@{VE::AActor}!id@{id}}
+\index{id@{id}!VE::AActor@{VE::AActor}}
+\doxysubsubsection{\texorpdfstring{id}{id}}
+{\footnotesize\ttfamily \label{classVE_1_1AActor_a50c30545fd244374e9e667e51f3f2293} 
+\mbox{\hyperlink{namespaceVE_ac71b8b5090760e6e75e30c988d8cf415}{VActor\+ID}} VE\+::\+AActor\+::id}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Vantor/\+Source/\+Vantor/\+Actor\+Runtime/\+Include/\+Actor\+Runtime/\+Public/\mbox{\hyperlink{VAR__Actor_8hpp}{VAR\+\_\+\+Actor.\+hpp}}\end{DoxyCompactItemize}

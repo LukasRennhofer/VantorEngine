@@ -1,0 +1,247 @@
+\doxysection{VE Namespace Reference}
+\hypertarget{namespaceVE}{}\label{namespaceVE}\index{VE@{VE}}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespaceVE_1_1Components}{Components}}
+\item 
+namespace \mbox{\hyperlink{namespaceVE_1_1GameRuntime}{Game\+Runtime}}
+\item 
+namespace \mbox{\hyperlink{namespaceVE_1_1Graphics}{Graphics}}
+\item 
+namespace \mbox{\hyperlink{namespaceVE_1_1Input}{Input}}
+\item 
+namespace \mbox{\hyperlink{namespaceVE_1_1Internal}{Internal}}
+\item 
+namespace \mbox{\hyperlink{namespaceVE_1_1Math}{Math}}
+\item 
+namespace \mbox{\hyperlink{namespaceVE_1_1Renderer}{Renderer}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classVE_1_1AActor}{AActor}}
+\item 
+class \mbox{\hyperlink{classVE_1_1CComponent}{CComponent}}
+\item 
+class \mbox{\hyperlink{classVE_1_1VEngine}{VEngine}}
+\item 
+class \mbox{\hyperlink{classVE_1_1VMaterial}{VMaterial}}
+\item 
+struct \mbox{\hyperlink{structVE_1_1VUniform}{VUniform}}
+\item 
+struct \mbox{\hyperlink{structVE_1_1VUniformValue}{VUniform\+Value}}
+\item 
+struct \mbox{\hyperlink{structVE_1_1VUniformValueSampler}{VUniform\+Value\+Sampler}}
+\item 
+class \mbox{\hyperlink{classVE_1_1VWorld}{VWorld}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{namespaceVE_ac71b8b5090760e6e75e30c988d8cf415}{VActor\+ID}} = uint64\+\_\+t
+\item 
+using \mbox{\hyperlink{namespaceVE_a4a818d703088c3aae6570c59595f252f}{VComponent\+Ptr}} = std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classVE_1_1CComponent}{CComponent}}$>$
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{namespaceVE_a13bcd480fc5f64f6f9a55a41df2bd2f4}{EMaterial\+Type}} \{ \mbox{\hyperlink{namespaceVE_a13bcd480fc5f64f6f9a55a41df2bd2f4aba997ddef5c1d4ffa5ad6efe696f20d1}{Material\+Default}}
+, \mbox{\hyperlink{namespaceVE_a13bcd480fc5f64f6f9a55a41df2bd2f4ad1478ce8f8d2011532ff014c2fcae04b}{Material\+Post\+Process}}
+, \mbox{\hyperlink{namespaceVE_a13bcd480fc5f64f6f9a55a41df2bd2f4a8accee1152e14c99579ffcd57bf8fe19}{Material\+PBR}}
+, \mbox{\hyperlink{namespaceVE_a13bcd480fc5f64f6f9a55a41df2bd2f4a6e5a8c8798901db625bd9dd2ee8b0c34}{Material\+Custom}}
+ \}
+\item 
+enum class \mbox{\hyperlink{namespaceVE_a42e42aa319840f6446b121f003f5bf9e}{EUniform\+Type}} \{ \newline
+\mbox{\hyperlink{namespaceVE_a42e42aa319840f6446b121f003f5bf9eaf5f62fa8cb9e0488cc3d4733a9fd537a}{Uniform\+Type\+BOOL}}
+, \mbox{\hyperlink{namespaceVE_a42e42aa319840f6446b121f003f5bf9eaf23041300aadbf581353c003f51a2054}{Uniform\+Type\+INT}}
+, \mbox{\hyperlink{namespaceVE_a42e42aa319840f6446b121f003f5bf9eab8337927966f3607b65a1e29549051ea}{Uniform\+Type\+FLOAT}}
+, \mbox{\hyperlink{namespaceVE_a42e42aa319840f6446b121f003f5bf9ea17a0ba4e2f46feed7186112d613c9f6d}{Uniform\+Type\+SAMPLER1D}}
+, \newline
+\mbox{\hyperlink{namespaceVE_a42e42aa319840f6446b121f003f5bf9eae77da5f9e4488a846d5f2fc24200b2bb}{Uniform\+Type\+SAMPLER2D}}
+, \mbox{\hyperlink{namespaceVE_a42e42aa319840f6446b121f003f5bf9ea9e9ff45083dc7f0bfbfa3a0656082065}{Uniform\+Type\+SAMPLER3D}}
+, \mbox{\hyperlink{namespaceVE_a42e42aa319840f6446b121f003f5bf9eac4c023f0ccbc90f37ef4daa1d8e0668b}{Uniform\+Type\+SAMPLERCUBE}}
+, \mbox{\hyperlink{namespaceVE_a42e42aa319840f6446b121f003f5bf9ea5de86b2d5c92d1e4ca09bc165b18ad35}{Uniform\+Type\+VEC2}}
+, \newline
+\mbox{\hyperlink{namespaceVE_a42e42aa319840f6446b121f003f5bf9ea5d2a8575bd0c7baef29d89a8abfcad3b}{Uniform\+Type\+VEC3}}
+, \mbox{\hyperlink{namespaceVE_a42e42aa319840f6446b121f003f5bf9ea96ef581f826b62fc2a8c4f92d44ea656}{Uniform\+Type\+VEC4}}
+, \mbox{\hyperlink{namespaceVE_a42e42aa319840f6446b121f003f5bf9ea2eaddf01a1cb142f150a4f6457cddeab}{Uniform\+Type\+MAT2}}
+, \mbox{\hyperlink{namespaceVE_a42e42aa319840f6446b121f003f5bf9eacf5d4c76738c05ebaa589e58f33efdc4}{Uniform\+Type\+MAT3}}
+, \newline
+\mbox{\hyperlink{namespaceVE_a42e42aa319840f6446b121f003f5bf9ea878ed2822002632e8e2a6a9edd830f10}{Uniform\+Type\+MAT4}}
+ \}
+\item 
+enum class \mbox{\hyperlink{namespaceVE_add30e70a323e219a135e2d4e41525333}{ESampler\+Type}} \{ \newline
+\mbox{\hyperlink{namespaceVE_add30e70a323e219a135e2d4e41525333abb7656d56d2755a2ee1a47b661386625}{Sampler\+Diffuse}}
+, \mbox{\hyperlink{namespaceVE_add30e70a323e219a135e2d4e41525333a63a50c415360a0bfbfa2beb240776e1a}{Sampler\+Specular}}
+, \mbox{\hyperlink{namespaceVE_add30e70a323e219a135e2d4e41525333af79d9a26ca23a9f1364aa5bf9728a575}{Sampler\+Normal}}
+, \mbox{\hyperlink{namespaceVE_add30e70a323e219a135e2d4e41525333a4cb88719136feeef45ebb620899c8664}{Sampler\+Metallic}}
+, \newline
+\mbox{\hyperlink{namespaceVE_add30e70a323e219a135e2d4e41525333a0293add0291216a8625d4f001b0cc441}{Sampler\+Roughness}}
+, \mbox{\hyperlink{namespaceVE_add30e70a323e219a135e2d4e41525333ae0dfcfb090a22adcc29c3a27a9a58eee}{Sampler\+Height}}
+, \mbox{\hyperlink{namespaceVE_add30e70a323e219a135e2d4e41525333a2e957d2800ac49c22fb3db3feb7c09bc}{Sampler\+AO}}
+, \mbox{\hyperlink{namespaceVE_add30e70a323e219a135e2d4e41525333a88ecf7f94c385d825dd54fa2dd261ac7}{Sampler\+Custom}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classVE_1_1VEngine}{VEngine}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespaceVE_a3e3fadb4a27ad6a8efd7df1e086a5e6a}{GEngine}} ()
+\end{DoxyCompactItemize}
+
+
+\label{doc-typedef-members}
+\Hypertarget{namespaceVE_doc-typedef-members}
+\doxysubsection{Typedef Documentation}
+\Hypertarget{namespaceVE_ac71b8b5090760e6e75e30c988d8cf415}\index{VE@{VE}!VActorID@{VActorID}}
+\index{VActorID@{VActorID}!VE@{VE}}
+\doxysubsubsection{\texorpdfstring{VActorID}{VActorID}}
+{\footnotesize\ttfamily \label{namespaceVE_ac71b8b5090760e6e75e30c988d8cf415} 
+using \mbox{\hyperlink{namespaceVE_ac71b8b5090760e6e75e30c988d8cf415}{VE\+::\+VActor\+ID}} = uint64\+\_\+t}
+
+\Hypertarget{namespaceVE_a4a818d703088c3aae6570c59595f252f}\index{VE@{VE}!VComponentPtr@{VComponentPtr}}
+\index{VComponentPtr@{VComponentPtr}!VE@{VE}}
+\doxysubsubsection{\texorpdfstring{VComponentPtr}{VComponentPtr}}
+{\footnotesize\ttfamily \label{namespaceVE_a4a818d703088c3aae6570c59595f252f} 
+using \mbox{\hyperlink{namespaceVE_a4a818d703088c3aae6570c59595f252f}{VE\+::\+VComponent\+Ptr}} = std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classVE_1_1CComponent}{CComponent}}$>$}
+
+
+
+\label{doc-enum-members}
+\Hypertarget{namespaceVE_doc-enum-members}
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{namespaceVE_a13bcd480fc5f64f6f9a55a41df2bd2f4}\index{VE@{VE}!EMaterialType@{EMaterialType}}
+\index{EMaterialType@{EMaterialType}!VE@{VE}}
+\doxysubsubsection{\texorpdfstring{EMaterialType}{EMaterialType}}
+{\footnotesize\ttfamily \label{namespaceVE_a13bcd480fc5f64f6f9a55a41df2bd2f4} 
+enum class \mbox{\hyperlink{namespaceVE_a13bcd480fc5f64f6f9a55a41df2bd2f4}{VE\+::\+EMaterial\+Type}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MaterialDefault@{MaterialDefault}!VE@{VE}}\index{VE@{VE}!MaterialDefault@{MaterialDefault}}}\Hypertarget{namespaceVE_a13bcd480fc5f64f6f9a55a41df2bd2f4aba997ddef5c1d4ffa5ad6efe696f20d1}\label{namespaceVE_a13bcd480fc5f64f6f9a55a41df2bd2f4aba997ddef5c1d4ffa5ad6efe696f20d1} 
+Material\+Default&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MaterialPostProcess@{MaterialPostProcess}!VE@{VE}}\index{VE@{VE}!MaterialPostProcess@{MaterialPostProcess}}}\Hypertarget{namespaceVE_a13bcd480fc5f64f6f9a55a41df2bd2f4ad1478ce8f8d2011532ff014c2fcae04b}\label{namespaceVE_a13bcd480fc5f64f6f9a55a41df2bd2f4ad1478ce8f8d2011532ff014c2fcae04b} 
+Material\+Post\+Process&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MaterialPBR@{MaterialPBR}!VE@{VE}}\index{VE@{VE}!MaterialPBR@{MaterialPBR}}}\Hypertarget{namespaceVE_a13bcd480fc5f64f6f9a55a41df2bd2f4a8accee1152e14c99579ffcd57bf8fe19}\label{namespaceVE_a13bcd480fc5f64f6f9a55a41df2bd2f4a8accee1152e14c99579ffcd57bf8fe19} 
+Material\+PBR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MaterialCustom@{MaterialCustom}!VE@{VE}}\index{VE@{VE}!MaterialCustom@{MaterialCustom}}}\Hypertarget{namespaceVE_a13bcd480fc5f64f6f9a55a41df2bd2f4a6e5a8c8798901db625bd9dd2ee8b0c34}\label{namespaceVE_a13bcd480fc5f64f6f9a55a41df2bd2f4a6e5a8c8798901db625bd9dd2ee8b0c34} 
+Material\+Custom&\\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{namespaceVE_add30e70a323e219a135e2d4e41525333}\index{VE@{VE}!ESamplerType@{ESamplerType}}
+\index{ESamplerType@{ESamplerType}!VE@{VE}}
+\doxysubsubsection{\texorpdfstring{ESamplerType}{ESamplerType}}
+{\footnotesize\ttfamily \label{namespaceVE_add30e70a323e219a135e2d4e41525333} 
+enum class \mbox{\hyperlink{namespaceVE_add30e70a323e219a135e2d4e41525333}{VE\+::\+ESampler\+Type}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SamplerDiffuse@{SamplerDiffuse}!VE@{VE}}\index{VE@{VE}!SamplerDiffuse@{SamplerDiffuse}}}\Hypertarget{namespaceVE_add30e70a323e219a135e2d4e41525333abb7656d56d2755a2ee1a47b661386625}\label{namespaceVE_add30e70a323e219a135e2d4e41525333abb7656d56d2755a2ee1a47b661386625} 
+Sampler\+Diffuse&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SamplerSpecular@{SamplerSpecular}!VE@{VE}}\index{VE@{VE}!SamplerSpecular@{SamplerSpecular}}}\Hypertarget{namespaceVE_add30e70a323e219a135e2d4e41525333a63a50c415360a0bfbfa2beb240776e1a}\label{namespaceVE_add30e70a323e219a135e2d4e41525333a63a50c415360a0bfbfa2beb240776e1a} 
+Sampler\+Specular&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SamplerNormal@{SamplerNormal}!VE@{VE}}\index{VE@{VE}!SamplerNormal@{SamplerNormal}}}\Hypertarget{namespaceVE_add30e70a323e219a135e2d4e41525333af79d9a26ca23a9f1364aa5bf9728a575}\label{namespaceVE_add30e70a323e219a135e2d4e41525333af79d9a26ca23a9f1364aa5bf9728a575} 
+Sampler\+Normal&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SamplerMetallic@{SamplerMetallic}!VE@{VE}}\index{VE@{VE}!SamplerMetallic@{SamplerMetallic}}}\Hypertarget{namespaceVE_add30e70a323e219a135e2d4e41525333a4cb88719136feeef45ebb620899c8664}\label{namespaceVE_add30e70a323e219a135e2d4e41525333a4cb88719136feeef45ebb620899c8664} 
+Sampler\+Metallic&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SamplerRoughness@{SamplerRoughness}!VE@{VE}}\index{VE@{VE}!SamplerRoughness@{SamplerRoughness}}}\Hypertarget{namespaceVE_add30e70a323e219a135e2d4e41525333a0293add0291216a8625d4f001b0cc441}\label{namespaceVE_add30e70a323e219a135e2d4e41525333a0293add0291216a8625d4f001b0cc441} 
+Sampler\+Roughness&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SamplerHeight@{SamplerHeight}!VE@{VE}}\index{VE@{VE}!SamplerHeight@{SamplerHeight}}}\Hypertarget{namespaceVE_add30e70a323e219a135e2d4e41525333ae0dfcfb090a22adcc29c3a27a9a58eee}\label{namespaceVE_add30e70a323e219a135e2d4e41525333ae0dfcfb090a22adcc29c3a27a9a58eee} 
+Sampler\+Height&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SamplerAO@{SamplerAO}!VE@{VE}}\index{VE@{VE}!SamplerAO@{SamplerAO}}}\Hypertarget{namespaceVE_add30e70a323e219a135e2d4e41525333a2e957d2800ac49c22fb3db3feb7c09bc}\label{namespaceVE_add30e70a323e219a135e2d4e41525333a2e957d2800ac49c22fb3db3feb7c09bc} 
+Sampler\+AO&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SamplerCustom@{SamplerCustom}!VE@{VE}}\index{VE@{VE}!SamplerCustom@{SamplerCustom}}}\Hypertarget{namespaceVE_add30e70a323e219a135e2d4e41525333a88ecf7f94c385d825dd54fa2dd261ac7}\label{namespaceVE_add30e70a323e219a135e2d4e41525333a88ecf7f94c385d825dd54fa2dd261ac7} 
+Sampler\+Custom&\\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{namespaceVE_a42e42aa319840f6446b121f003f5bf9e}\index{VE@{VE}!EUniformType@{EUniformType}}
+\index{EUniformType@{EUniformType}!VE@{VE}}
+\doxysubsubsection{\texorpdfstring{EUniformType}{EUniformType}}
+{\footnotesize\ttfamily \label{namespaceVE_a42e42aa319840f6446b121f003f5bf9e} 
+enum class \mbox{\hyperlink{namespaceVE_a42e42aa319840f6446b121f003f5bf9e}{VE\+::\+EUniform\+Type}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{UniformTypeBOOL@{UniformTypeBOOL}!VE@{VE}}\index{VE@{VE}!UniformTypeBOOL@{UniformTypeBOOL}}}\Hypertarget{namespaceVE_a42e42aa319840f6446b121f003f5bf9eaf5f62fa8cb9e0488cc3d4733a9fd537a}\label{namespaceVE_a42e42aa319840f6446b121f003f5bf9eaf5f62fa8cb9e0488cc3d4733a9fd537a} 
+Uniform\+Type\+BOOL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{UniformTypeINT@{UniformTypeINT}!VE@{VE}}\index{VE@{VE}!UniformTypeINT@{UniformTypeINT}}}\Hypertarget{namespaceVE_a42e42aa319840f6446b121f003f5bf9eaf23041300aadbf581353c003f51a2054}\label{namespaceVE_a42e42aa319840f6446b121f003f5bf9eaf23041300aadbf581353c003f51a2054} 
+Uniform\+Type\+INT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{UniformTypeFLOAT@{UniformTypeFLOAT}!VE@{VE}}\index{VE@{VE}!UniformTypeFLOAT@{UniformTypeFLOAT}}}\Hypertarget{namespaceVE_a42e42aa319840f6446b121f003f5bf9eab8337927966f3607b65a1e29549051ea}\label{namespaceVE_a42e42aa319840f6446b121f003f5bf9eab8337927966f3607b65a1e29549051ea} 
+Uniform\+Type\+FLOAT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{UniformTypeSAMPLER1D@{UniformTypeSAMPLER1D}!VE@{VE}}\index{VE@{VE}!UniformTypeSAMPLER1D@{UniformTypeSAMPLER1D}}}\Hypertarget{namespaceVE_a42e42aa319840f6446b121f003f5bf9ea17a0ba4e2f46feed7186112d613c9f6d}\label{namespaceVE_a42e42aa319840f6446b121f003f5bf9ea17a0ba4e2f46feed7186112d613c9f6d} 
+Uniform\+Type\+SAMPLER1D&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{UniformTypeSAMPLER2D@{UniformTypeSAMPLER2D}!VE@{VE}}\index{VE@{VE}!UniformTypeSAMPLER2D@{UniformTypeSAMPLER2D}}}\Hypertarget{namespaceVE_a42e42aa319840f6446b121f003f5bf9eae77da5f9e4488a846d5f2fc24200b2bb}\label{namespaceVE_a42e42aa319840f6446b121f003f5bf9eae77da5f9e4488a846d5f2fc24200b2bb} 
+Uniform\+Type\+SAMPLER2D&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{UniformTypeSAMPLER3D@{UniformTypeSAMPLER3D}!VE@{VE}}\index{VE@{VE}!UniformTypeSAMPLER3D@{UniformTypeSAMPLER3D}}}\Hypertarget{namespaceVE_a42e42aa319840f6446b121f003f5bf9ea9e9ff45083dc7f0bfbfa3a0656082065}\label{namespaceVE_a42e42aa319840f6446b121f003f5bf9ea9e9ff45083dc7f0bfbfa3a0656082065} 
+Uniform\+Type\+SAMPLER3D&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{UniformTypeSAMPLERCUBE@{UniformTypeSAMPLERCUBE}!VE@{VE}}\index{VE@{VE}!UniformTypeSAMPLERCUBE@{UniformTypeSAMPLERCUBE}}}\Hypertarget{namespaceVE_a42e42aa319840f6446b121f003f5bf9eac4c023f0ccbc90f37ef4daa1d8e0668b}\label{namespaceVE_a42e42aa319840f6446b121f003f5bf9eac4c023f0ccbc90f37ef4daa1d8e0668b} 
+Uniform\+Type\+SAMPLERCUBE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{UniformTypeVEC2@{UniformTypeVEC2}!VE@{VE}}\index{VE@{VE}!UniformTypeVEC2@{UniformTypeVEC2}}}\Hypertarget{namespaceVE_a42e42aa319840f6446b121f003f5bf9ea5de86b2d5c92d1e4ca09bc165b18ad35}\label{namespaceVE_a42e42aa319840f6446b121f003f5bf9ea5de86b2d5c92d1e4ca09bc165b18ad35} 
+Uniform\+Type\+VEC2&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{UniformTypeVEC3@{UniformTypeVEC3}!VE@{VE}}\index{VE@{VE}!UniformTypeVEC3@{UniformTypeVEC3}}}\Hypertarget{namespaceVE_a42e42aa319840f6446b121f003f5bf9ea5d2a8575bd0c7baef29d89a8abfcad3b}\label{namespaceVE_a42e42aa319840f6446b121f003f5bf9ea5d2a8575bd0c7baef29d89a8abfcad3b} 
+Uniform\+Type\+VEC3&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{UniformTypeVEC4@{UniformTypeVEC4}!VE@{VE}}\index{VE@{VE}!UniformTypeVEC4@{UniformTypeVEC4}}}\Hypertarget{namespaceVE_a42e42aa319840f6446b121f003f5bf9ea96ef581f826b62fc2a8c4f92d44ea656}\label{namespaceVE_a42e42aa319840f6446b121f003f5bf9ea96ef581f826b62fc2a8c4f92d44ea656} 
+Uniform\+Type\+VEC4&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{UniformTypeMAT2@{UniformTypeMAT2}!VE@{VE}}\index{VE@{VE}!UniformTypeMAT2@{UniformTypeMAT2}}}\Hypertarget{namespaceVE_a42e42aa319840f6446b121f003f5bf9ea2eaddf01a1cb142f150a4f6457cddeab}\label{namespaceVE_a42e42aa319840f6446b121f003f5bf9ea2eaddf01a1cb142f150a4f6457cddeab} 
+Uniform\+Type\+MAT2&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{UniformTypeMAT3@{UniformTypeMAT3}!VE@{VE}}\index{VE@{VE}!UniformTypeMAT3@{UniformTypeMAT3}}}\Hypertarget{namespaceVE_a42e42aa319840f6446b121f003f5bf9eacf5d4c76738c05ebaa589e58f33efdc4}\label{namespaceVE_a42e42aa319840f6446b121f003f5bf9eacf5d4c76738c05ebaa589e58f33efdc4} 
+Uniform\+Type\+MAT3&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{UniformTypeMAT4@{UniformTypeMAT4}!VE@{VE}}\index{VE@{VE}!UniformTypeMAT4@{UniformTypeMAT4}}}\Hypertarget{namespaceVE_a42e42aa319840f6446b121f003f5bf9ea878ed2822002632e8e2a6a9edd830f10}\label{namespaceVE_a42e42aa319840f6446b121f003f5bf9ea878ed2822002632e8e2a6a9edd830f10} 
+Uniform\+Type\+MAT4&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\label{doc-func-members}
+\Hypertarget{namespaceVE_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{namespaceVE_a3e3fadb4a27ad6a8efd7df1e086a5e6a}\index{VE@{VE}!GEngine@{GEngine}}
+\index{GEngine@{GEngine}!VE@{VE}}
+\doxysubsubsection{\texorpdfstring{GEngine()}{GEngine()}}
+{\footnotesize\ttfamily \label{namespaceVE_a3e3fadb4a27ad6a8efd7df1e086a5e6a} 
+\mbox{\hyperlink{classVE_1_1VEngine}{VEngine}} \texorpdfstring{$\ast$}{*} VE\+::\+GEngine (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+

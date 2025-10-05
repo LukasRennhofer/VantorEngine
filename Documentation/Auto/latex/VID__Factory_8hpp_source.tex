@@ -1,0 +1,42 @@
+\doxysection{VID\+\_\+\+Factory.\+hpp}
+\hypertarget{VID__Factory_8hpp_source}{}\label{VID__Factory_8hpp_source}\index{Vantor/Source/Vantor/InputDevice/Include/InputDevice/Public/VID\_Factory.hpp@{Vantor/Source/Vantor/InputDevice/Include/InputDevice/Public/VID\_Factory.hpp}}
+\mbox{\hyperlink{VID__Factory_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/****************************************************************************}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ Vantor\ Engine™\ -\/\ Source\ Code\ (2025)}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ Author\ \ \ \ :\ Lukas\ Rennhofer\ (@LukasRennhofer),\ Vantor\ Studios™}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ Copyright\ :\ ©\ 2025\ Lukas\ Rennhofer,\ Vantor\ Studios™}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ *\ License\ \ \ :\ GNU\ General\ Public\ License\ v3.0}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ See\ LICENSE\ file\ for\ full\ details.}}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ ****************************************************************************/}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{VID__IDevice_8hpp}{InputDevice/Public/VID\_IDevice.hpp}}>}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{VCT__Window_8hpp}{Context/Interface/VCT\_Window.hpp}}>}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#ifdef\ VANTOR\_WM\_GLFW}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{VID__BackendGLFW_8hpp}{InputDevice/Backend/VID\_BackendGLFW.hpp}}>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceVE_1_1Input}{VE::Input}}}
+\DoxyCodeLine{00023\ \{}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{enum}\ \mbox{\hyperlink{namespaceVE_1_1Input_ae107efa80920171f71b119a983edde24}{EInputBackend}}}
+\DoxyCodeLine{00025\ \ \ \ \ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_ae107efa80920171f71b119a983edde24a477b04b3aa48183e43daf2c005fd19ca}{GLFW}}}
+\DoxyCodeLine{00027\ \ \ \ \ \};}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ std::shared\_ptr<VInputDevice>\ \mbox{\hyperlink{namespaceVE_1_1Input_a7579919b224bdab411b608fe05d3f3a3}{CreateInputDevice}}(\mbox{\hyperlink{classVE_1_1Internal_1_1Context_1_1VWindow}{VE::Internal::Context::VWindow}}\ *nativeWindow)}
+\DoxyCodeLine{00030\ \ \ \ \ \{}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#ifdef\ VANTOR\_WM\_GLFW}}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::make\_shared<VGLFWInputDevice>(\textcolor{keyword}{static\_cast<}\mbox{\hyperlink{classVE_1_1Internal_1_1Context_1_1VWindow}{VE::Internal::Context::VWindow}}\ *\textcolor{keyword}{>}(nativeWindow));}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00035\ \ \ \ \ \}}
+\DoxyCodeLine{00036\ \}\ \textcolor{comment}{//\ namespace\ Vantor::Input}}
+
+\end{DoxyCode}

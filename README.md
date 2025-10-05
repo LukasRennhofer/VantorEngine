@@ -1,22 +1,22 @@
 <a id="readme-top"></a>
 
 <!-- Standard Project Badges -->
-[![Issues](https://img.shields.io/github/issues/LukasRennhofer/Vantor.svg?style=for-the-badge)](https://github.com/LukasRennhofer/Vantor/issues)
-[![License](https://img.shields.io/github/license/LukasRennhofer/Vantor.svg?style=for-the-badge)](https://github.com/LukasRennhofer/Vantor/blob/main/LICENSE)
-[![Build Status](https://img.shields.io/github/actions/workflow/status/LukasRennhofer/Vantor/build.yml?branch=main&style=for-the-badge)](https://github.com/LukasRennhofer/Vantor/actions)
-[![Code Quality](https://img.shields.io/codefactor/grade/github/LukasRennhofer/Vantor?style=for-the-badge)](https://www.codefactor.io/repository/github/LukasRennhofer/Vantor)
-[![Last Commit](https://img.shields.io/github/last-commit/LukasRennhofer/Vantor?style=for-the-badge)](https://github.com/LukasRennhofer/Vantor/commits)
+[![Issues](https://img.shields.io/github/issues/LukasRennhofer/Vantor.svg?style=for-the-badge)](https://github.com/LukasRennhofer/VantorEngine/issues)
+[![License](https://img.shields.io/github/license/LukasRennhofer/Vantor.svg?style=for-the-badge)](https://github.com/LukasRennhofer/VantorEngine/blob/main/LICENSE)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/LukasRennhofer/Vantor/build.yml?branch=main&style=for-the-badge)](https://github.com/LukasRennhofer/VantorEngine/actions)
+[![Code Quality](https://img.shields.io/codefactor/grade/github/LukasRennhofer/Vantor?style=for-the-badge)](https://www.codefactor.io/repository/github/LukasRennhofer/VantorEngine/)
+[![Last Commit](https://img.shields.io/github/last-commit/LukasRennhofer/Vantor?style=for-the-badge)](https://github.com/LukasRennhofer/VantorEngine/commits)
 
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/LukasRennhofer/Vantor">
+  <a href="https://github.com/LukasRennhofer/VantorEngine">
     <img src="Assets/Github/Branding/VantorStudiosLogoWhite.png" alt="Vantor Logo" width="200" height="200">
   </a>
 
 <h3 align="center">Vantor Engine™</h3>
   <p align="center">
-    Low-Level Experimental In-House Game Engine for VantorStudios
+    Low-Level Experimental In-House Game Engine for Vantor Studios™
     <br />
     <h5 align="center">
     <strong>v0.20.X - Experimental Build</strong>
@@ -26,9 +26,9 @@
     <br />
     <a href="https://docs.vantor.net/docs/category/getting-started">Get Started</a>
     &middot;
-    <a href="https://github.com/LukasRennhofer/Vantor/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
+    <a href="https://github.com/LukasRennhofer/VantorEngine/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
     &middot;
-    <a href="https://github.com/LukasRennhofer/Vantor/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
+    <a href="https://github.com/LukasRennhofer/VantorEngine/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
     &middot;
     <a href="#vantorstudios">Vantor Studios™</a>
   </p>
@@ -160,7 +160,7 @@ Install MSYS2 from [their website](https://www.msys2.org/) and Python from [pyth
 **Step 1: Clone Repository**
 
 ```bash
-git clone https://github.com/LukasRennhofer/Vantor.git
+git clone https://github.com/LukasRennhofer/VantorEngine.git
 cd Vantor
 ```
 
@@ -191,7 +191,7 @@ sudo apt-get install python3
 
 **Step 1: Clone Repository**
 ```bash
-git clone https://github.com/LukasRennhofer/Vantor.git
+git clone https://github.com/LukasRennhofer/VantorEngine.git
 cd Vantor
 ```
 
@@ -358,7 +358,7 @@ python vtrg.py build --help
 
 > **Note**: Roadmap priorities may change based on VantorStudios' internal development needs.
 
-See the [open issues](https://github.com/LukasRennhofer/Vantor/issues) for detailed feature requests and known issues.
+See the [open issues](https://github.com/LukasRennhofer/VantorEngine/issues) for detailed feature requests and known issues.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -380,9 +380,9 @@ Distributed under the GNU General Public License, v3. See `LICENSE` for more inf
 **Lead Developer:** Lukas Rennhofer  
 📧 Email: lukas.renn@aon.at  
 
-**Project Repository:** [https://github.com/LukasRennhofer/Vantor](https://github.com/LukasRennhofer/Vantor)
+**Project Repository:** [https://github.com/LukasRennhofer/VantorEngine](https://github.com/LukasRennhofer/VantorEngine)
 
-For technical questions, bug reports, or feature requests, please use the [GitHub Issues](https://github.com/LukasRennhofer/Vantor/issues) system.
+For technical questions, bug reports, or feature requests, please use the [GitHub Issues](https://github.com/LukasRennhofer/VantorEngine/issues) system.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -423,15 +423,15 @@ For technical questions, bug reports, or feature requests, please use the [GitHu
 
 <!-- MARKDOWN LINKS & IMAGES -->
 [contributors-shield]: https://img.shields.io/github/contributors/LukasRennhofer/Vantor.svg?style=for-the-badge
-[contributors-url]: https://github.com/LukasRennhofer/Vantor/graphs/contributors
+[contributors-url]: https://github.com/LukasRennhofer/VantorEngine/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/LukasRennhofer/Vantor.svg?style=for-the-badge
-[forks-url]: https://github.com/LukasRennhofer/Vantor/network/members
+[forks-url]: https://github.com/LukasRennhofer/VantorEngine/network/members
 [stars-shield]: https://img.shields.io/github/stars/LukasRennhofer/Vantor.svg?style=for-the-badge
-[stars-url]: https://github.com/LukasRennhofer/Vantor/stargazers
+[stars-url]: https://github.com/LukasRennhofer/VantorEngine/stargazers
 [issues-shield]: https://img.shields.io/github/issues/LukasRennhofer/Vantor.svg?style=for-the-badge
-[issues-url]: https://github.com/LukasRennhofer/Vantor/issues
+[issues-url]: https://github.com/LukasRennhofer/VantorEngine/issues
 [license-shield]: https://img.shields.io/github/license/LukasRennhofer/Vantor.svg?style=for-the-badge
-[license-url]: https://github.com/LukasRennhofer/Vantor/blob/master/LICENSE.txt
+[license-url]: https://github.com/LukasRennhofer/VantorEngine/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/lukas-rennhofer
 [C++-badge]: https://img.shields.io/badge/C%2B%2B-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white

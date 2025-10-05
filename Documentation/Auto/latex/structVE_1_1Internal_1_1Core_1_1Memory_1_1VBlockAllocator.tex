@@ -1,0 +1,78 @@
+\doxysection{VE\+::Internal\+::Core\+::Memory\+::VBlock\+Allocator\texorpdfstring{$<$}{<} T, block\+\_\+size \texorpdfstring{$>$}{>} Struct Template Reference}
+\hypertarget{structVE_1_1Internal_1_1Core_1_1Memory_1_1VBlockAllocator}{}\label{structVE_1_1Internal_1_1Core_1_1Memory_1_1VBlockAllocator}\index{VE::Internal::Core::Memory::VBlockAllocator$<$ T, block\_size $>$@{VE::Internal::Core::Memory::VBlockAllocator$<$ T, block\_size $>$}}
+
+
+{\ttfamily \#include $<$VCO\+\_\+\+Allocator.\+hpp$>$}
+
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VBlockAllocator_1_1Block}{Block}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename... ARG$>$ }\\T \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VBlockAllocator_a75a408d4fe82c82b35bc68e4fe366285}{allocate}} (ARG \&\&...args)
+\item 
+void \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VBlockAllocator_a09e20eb15dc03d5aa5cf04d0c93f61be}{free}} (T \texorpdfstring{$\ast$}{*}ptr)
+\item 
+bool \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VBlockAllocator_ab8100fe1f1e59108d556de37e2b401af}{is\+\_\+empty}} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector}{VE\+::\+Internal\+::\+Core\+::\+Container\+::\+TVector}}$<$ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VBlockAllocator_1_1Block}{Block}} $>$ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VBlockAllocator_ab3fee8a34fbbe088cd069a116baa6fc0}{blocks}}
+\item 
+\mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector}{VE\+::\+Internal\+::\+Core\+::\+Container\+::\+TVector}}$<$ T \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VBlockAllocator_aaf2a263aadb63d0202d12375b27ca2b5}{free\+\_\+list}}
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{structVE_1_1Internal_1_1Core_1_1Memory_1_1VBlockAllocator_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{structVE_1_1Internal_1_1Core_1_1Memory_1_1VBlockAllocator_a75a408d4fe82c82b35bc68e4fe366285}\index{VE::Internal::Core::Memory::VBlockAllocator$<$ T, block\_size $>$@{VE::Internal::Core::Memory::VBlockAllocator$<$ T, block\_size $>$}!allocate@{allocate}}
+\index{allocate@{allocate}!VE::Internal::Core::Memory::VBlockAllocator$<$ T, block\_size $>$@{VE::Internal::Core::Memory::VBlockAllocator$<$ T, block\_size $>$}}
+\doxysubsubsection{\texorpdfstring{allocate()}{allocate()}}
+{\footnotesize\ttfamily \label{structVE_1_1Internal_1_1Core_1_1Memory_1_1VBlockAllocator_a75a408d4fe82c82b35bc68e4fe366285} 
+template$<$typename T, size\+\_\+t block\+\_\+size = 256$>$ \\
+template$<$typename... ARG$>$ \\
+T \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VBlockAllocator}{VE\+::\+Internal\+::\+Core\+::\+Memory\+::\+VBlock\+Allocator}}$<$ T, block\+\_\+size $>$\+::allocate (\begin{DoxyParamCaption}\item[{ARG \&\&...}]{args}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{structVE_1_1Internal_1_1Core_1_1Memory_1_1VBlockAllocator_a09e20eb15dc03d5aa5cf04d0c93f61be}\index{VE::Internal::Core::Memory::VBlockAllocator$<$ T, block\_size $>$@{VE::Internal::Core::Memory::VBlockAllocator$<$ T, block\_size $>$}!free@{free}}
+\index{free@{free}!VE::Internal::Core::Memory::VBlockAllocator$<$ T, block\_size $>$@{VE::Internal::Core::Memory::VBlockAllocator$<$ T, block\_size $>$}}
+\doxysubsubsection{\texorpdfstring{free()}{free()}}
+{\footnotesize\ttfamily \label{structVE_1_1Internal_1_1Core_1_1Memory_1_1VBlockAllocator_a09e20eb15dc03d5aa5cf04d0c93f61be} 
+template$<$typename T, size\+\_\+t block\+\_\+size = 256$>$ \\
+void \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VBlockAllocator}{VE\+::\+Internal\+::\+Core\+::\+Memory\+::\+VBlock\+Allocator}}$<$ T, block\+\_\+size $>$\+::free (\begin{DoxyParamCaption}\item[{T \texorpdfstring{$\ast$}{*}}]{ptr}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{structVE_1_1Internal_1_1Core_1_1Memory_1_1VBlockAllocator_ab8100fe1f1e59108d556de37e2b401af}\index{VE::Internal::Core::Memory::VBlockAllocator$<$ T, block\_size $>$@{VE::Internal::Core::Memory::VBlockAllocator$<$ T, block\_size $>$}!is\_empty@{is\_empty}}
+\index{is\_empty@{is\_empty}!VE::Internal::Core::Memory::VBlockAllocator$<$ T, block\_size $>$@{VE::Internal::Core::Memory::VBlockAllocator$<$ T, block\_size $>$}}
+\doxysubsubsection{\texorpdfstring{is\_empty()}{is\_empty()}}
+{\footnotesize\ttfamily \label{structVE_1_1Internal_1_1Core_1_1Memory_1_1VBlockAllocator_ab8100fe1f1e59108d556de37e2b401af} 
+template$<$typename T, size\+\_\+t block\+\_\+size = 256$>$ \\
+bool \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VBlockAllocator}{VE\+::\+Internal\+::\+Core\+::\+Memory\+::\+VBlock\+Allocator}}$<$ T, block\+\_\+size $>$\+::is\+\_\+empty (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\label{doc-variable-members}
+\Hypertarget{structVE_1_1Internal_1_1Core_1_1Memory_1_1VBlockAllocator_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structVE_1_1Internal_1_1Core_1_1Memory_1_1VBlockAllocator_ab3fee8a34fbbe088cd069a116baa6fc0}\index{VE::Internal::Core::Memory::VBlockAllocator$<$ T, block\_size $>$@{VE::Internal::Core::Memory::VBlockAllocator$<$ T, block\_size $>$}!blocks@{blocks}}
+\index{blocks@{blocks}!VE::Internal::Core::Memory::VBlockAllocator$<$ T, block\_size $>$@{VE::Internal::Core::Memory::VBlockAllocator$<$ T, block\_size $>$}}
+\doxysubsubsection{\texorpdfstring{blocks}{blocks}}
+{\footnotesize\ttfamily \label{structVE_1_1Internal_1_1Core_1_1Memory_1_1VBlockAllocator_ab3fee8a34fbbe088cd069a116baa6fc0} 
+template$<$typename T, size\+\_\+t block\+\_\+size = 256$>$ \\
+\mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector}{VE\+::\+Internal\+::\+Core\+::\+Container\+::\+TVector}}$<$\mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VBlockAllocator_1_1Block}{Block}}$>$ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VBlockAllocator}{VE\+::\+Internal\+::\+Core\+::\+Memory\+::\+VBlock\+Allocator}}$<$ T, block\+\_\+size $>$\+::blocks}
+
+\Hypertarget{structVE_1_1Internal_1_1Core_1_1Memory_1_1VBlockAllocator_aaf2a263aadb63d0202d12375b27ca2b5}\index{VE::Internal::Core::Memory::VBlockAllocator$<$ T, block\_size $>$@{VE::Internal::Core::Memory::VBlockAllocator$<$ T, block\_size $>$}!free\_list@{free\_list}}
+\index{free\_list@{free\_list}!VE::Internal::Core::Memory::VBlockAllocator$<$ T, block\_size $>$@{VE::Internal::Core::Memory::VBlockAllocator$<$ T, block\_size $>$}}
+\doxysubsubsection{\texorpdfstring{free\_list}{free\_list}}
+{\footnotesize\ttfamily \label{structVE_1_1Internal_1_1Core_1_1Memory_1_1VBlockAllocator_aaf2a263aadb63d0202d12375b27ca2b5} 
+template$<$typename T, size\+\_\+t block\+\_\+size = 256$>$ \\
+\mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector}{VE\+::\+Internal\+::\+Core\+::\+Container\+::\+TVector}}$<$T \texorpdfstring{$\ast$}{*}$>$ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VBlockAllocator}{VE\+::\+Internal\+::\+Core\+::\+Memory\+::\+VBlock\+Allocator}}$<$ T, block\+\_\+size $>$\+::free\+\_\+list}
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Vantor/\+Source/\+Vantor/\+Core/\+Include/\+Core/\+Memory/\mbox{\hyperlink{VCO__Allocator_8hpp}{VCO\+\_\+\+Allocator.\+hpp}}\end{DoxyCompactItemize}

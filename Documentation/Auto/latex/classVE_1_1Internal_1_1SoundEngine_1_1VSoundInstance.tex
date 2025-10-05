@@ -1,0 +1,182 @@
+\doxysection{VE\+::Internal\+::Sound\+Engine\+::VSound\+Instance Class Reference}
+\hypertarget{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance}{}\label{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance}\index{VE::Internal::SoundEngine::VSoundInstance@{VE::Internal::SoundEngine::VSoundInstance}}
+
+
+{\ttfamily \#include $<$VSOE\+\_\+\+Sound\+Instance.\+hpp$>$}
+
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_a8ce0105f0dd31a90822a6f1a25fa8ad5}{EAttenuation\+Model}} \+: uint8\+\_\+t \{ \mbox{\hyperlink{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_a8ce0105f0dd31a90822a6f1a25fa8ad5ab50339a10e1de285ac99d4c3990b8693}{NONE}}
+, \mbox{\hyperlink{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_a8ce0105f0dd31a90822a6f1a25fa8ad5a49393aa569124e13bbc29c710fc0bec7}{INVERSE\+\_\+\+DISTANCE}}
+, \mbox{\hyperlink{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_a8ce0105f0dd31a90822a6f1a25fa8ad5accc49dbdbc8f4d63dea7c8ecd6fa9b63}{LINEAR\+\_\+\+DISTANCE}}
+, \mbox{\hyperlink{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_a8ce0105f0dd31a90822a6f1a25fa8ad5a52a4a94743d8087a529f9d3c51b0f08c}{EXPONENTIAL\+\_\+\+DISTANCE}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_acde0f5bbf8bbf73963e68ce74bf56f28}{VSound\+Instance}} (So\+Loud\+::\+Soloud \&p\+\_\+backend, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1SoundEngine_af4e614536953febb080d18e088d76d8b}{VSound\+Handle}} p\+\_\+handle, bool p\+\_\+spatial)
+\item 
+void \mbox{\hyperlink{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_af876f009893710db5a58a8af492213b5}{Set\+Volume}} (float p\+\_\+volume)
+\item 
+void \mbox{\hyperlink{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_afa735d39b29dfa920e337d1ca1f87943}{Set\+Looped}} (bool p\+\_\+looped)
+\item 
+void \mbox{\hyperlink{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_a0c798545ec3aeecd283c12d53b94fb3e}{Set\+Pitch}} (float p\+\_\+pitch)
+\item 
+void \mbox{\hyperlink{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_a23174c10d90c09f9e77e1a798fcf44f0}{Set\+Pan}} (float p\+\_\+pan)
+\item 
+void \mbox{\hyperlink{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_afbf8bcd450b45dd480f84761add62005}{Set\+Attenuation\+Model}} (\mbox{\hyperlink{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_a8ce0105f0dd31a90822a6f1a25fa8ad5}{EAttenuation\+Model}} p\+\_\+model, float p\+\_\+factor=1.\+0f)
+\item 
+void \mbox{\hyperlink{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_a8aff78a25752700f29d39d37949fc2d9}{Set\+Attenuation\+Threshold}} (float p\+\_\+distance)
+\item 
+void \mbox{\hyperlink{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_ac6b2ec959a5abde07d98fe1ccbc6c499}{Set\+Spatial\+Parameters}} (const \mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VE\+::\+Math\+::\+VVector3}} \&p\+\_\+position, const \mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VE\+::\+Math\+::\+VVector3}} \&p\+\_\+velocity) const
+\item 
+void \mbox{\hyperlink{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_a3a727dab379301dbd05a8926a7df0991}{Play}} ()
+\item 
+void \mbox{\hyperlink{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_af874b34a136745f2653c73b03824c0a0}{Pause}} ()
+\item 
+void \mbox{\hyperlink{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_aace373dc5ace0099d5734a1dba5af9a8}{Stop}} ()
+\item 
+bool \mbox{\hyperlink{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_a732103154e2c618a9a9e804ea56b690a}{Is\+Valid}} () const
+\item 
+bool \mbox{\hyperlink{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_a42a3bd00c0e06318f47e8f05bddba6a5}{Is\+Paused}} () const
+\item 
+bool \mbox{\hyperlink{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_ade8f6024373cc02549ccfec6aedf826b}{Is\+Spatial}} () const
+\item 
+\mbox{\hyperlink{namespaceVE_1_1Internal_1_1SoundEngine_af4e614536953febb080d18e088d76d8b}{VSound\+Handle}} \mbox{\hyperlink{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_ada17c6423e243d3d4e271b3a3f3a2c07}{Get\+Handle}} () const
+\end{DoxyCompactItemize}
+
+
+\label{doc-enum-members}
+\Hypertarget{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_doc-enum-members}
+\doxysubsection{Member Enumeration Documentation}
+\Hypertarget{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_a8ce0105f0dd31a90822a6f1a25fa8ad5}\index{VE::Internal::SoundEngine::VSoundInstance@{VE::Internal::SoundEngine::VSoundInstance}!EAttenuationModel@{EAttenuationModel}}
+\index{EAttenuationModel@{EAttenuationModel}!VE::Internal::SoundEngine::VSoundInstance@{VE::Internal::SoundEngine::VSoundInstance}}
+\doxysubsubsection{\texorpdfstring{EAttenuationModel}{EAttenuationModel}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_a8ce0105f0dd31a90822a6f1a25fa8ad5} 
+enum class \mbox{\hyperlink{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_a8ce0105f0dd31a90822a6f1a25fa8ad5}{VE\+::\+Internal\+::\+Sound\+Engine\+::\+VSound\+Instance\+::\+EAttenuation\+Model}} \+: uint8\+\_\+t\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NONE@{NONE}!VE::Internal::SoundEngine::VSoundInstance@{VE::Internal::SoundEngine::VSoundInstance}}\index{VE::Internal::SoundEngine::VSoundInstance@{VE::Internal::SoundEngine::VSoundInstance}!NONE@{NONE}}}\Hypertarget{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_a8ce0105f0dd31a90822a6f1a25fa8ad5ab50339a10e1de285ac99d4c3990b8693}\label{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_a8ce0105f0dd31a90822a6f1a25fa8ad5ab50339a10e1de285ac99d4c3990b8693} 
+NONE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{INVERSE\_DISTANCE@{INVERSE\_DISTANCE}!VE::Internal::SoundEngine::VSoundInstance@{VE::Internal::SoundEngine::VSoundInstance}}\index{VE::Internal::SoundEngine::VSoundInstance@{VE::Internal::SoundEngine::VSoundInstance}!INVERSE\_DISTANCE@{INVERSE\_DISTANCE}}}\Hypertarget{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_a8ce0105f0dd31a90822a6f1a25fa8ad5a49393aa569124e13bbc29c710fc0bec7}\label{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_a8ce0105f0dd31a90822a6f1a25fa8ad5a49393aa569124e13bbc29c710fc0bec7} 
+INVERSE\+\_\+\+DISTANCE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LINEAR\_DISTANCE@{LINEAR\_DISTANCE}!VE::Internal::SoundEngine::VSoundInstance@{VE::Internal::SoundEngine::VSoundInstance}}\index{VE::Internal::SoundEngine::VSoundInstance@{VE::Internal::SoundEngine::VSoundInstance}!LINEAR\_DISTANCE@{LINEAR\_DISTANCE}}}\Hypertarget{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_a8ce0105f0dd31a90822a6f1a25fa8ad5accc49dbdbc8f4d63dea7c8ecd6fa9b63}\label{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_a8ce0105f0dd31a90822a6f1a25fa8ad5accc49dbdbc8f4d63dea7c8ecd6fa9b63} 
+LINEAR\+\_\+\+DISTANCE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EXPONENTIAL\_DISTANCE@{EXPONENTIAL\_DISTANCE}!VE::Internal::SoundEngine::VSoundInstance@{VE::Internal::SoundEngine::VSoundInstance}}\index{VE::Internal::SoundEngine::VSoundInstance@{VE::Internal::SoundEngine::VSoundInstance}!EXPONENTIAL\_DISTANCE@{EXPONENTIAL\_DISTANCE}}}\Hypertarget{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_a8ce0105f0dd31a90822a6f1a25fa8ad5a52a4a94743d8087a529f9d3c51b0f08c}\label{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_a8ce0105f0dd31a90822a6f1a25fa8ad5a52a4a94743d8087a529f9d3c51b0f08c} 
+EXPONENTIAL\+\_\+\+DISTANCE&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\label{doc-constructors}
+\Hypertarget{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_acde0f5bbf8bbf73963e68ce74bf56f28}\index{VE::Internal::SoundEngine::VSoundInstance@{VE::Internal::SoundEngine::VSoundInstance}!VSoundInstance@{VSoundInstance}}
+\index{VSoundInstance@{VSoundInstance}!VE::Internal::SoundEngine::VSoundInstance@{VE::Internal::SoundEngine::VSoundInstance}}
+\doxysubsubsection{\texorpdfstring{VSoundInstance()}{VSoundInstance()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_acde0f5bbf8bbf73963e68ce74bf56f28} 
+VE\+::\+Internal\+::\+Sound\+Engine\+::\+VSound\+Instance\+::\+VSound\+Instance (\begin{DoxyParamCaption}\item[{So\+Loud\+::\+Soloud \&}]{p\+\_\+backend}{, }\item[{\mbox{\hyperlink{namespaceVE_1_1Internal_1_1SoundEngine_af4e614536953febb080d18e088d76d8b}{VSound\+Handle}}}]{p\+\_\+handle}{, }\item[{bool}]{p\+\_\+spatial}{}\end{DoxyParamCaption})}
+
+
+
+\label{doc-func-members}
+\Hypertarget{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_ada17c6423e243d3d4e271b3a3f3a2c07}\index{VE::Internal::SoundEngine::VSoundInstance@{VE::Internal::SoundEngine::VSoundInstance}!GetHandle@{GetHandle}}
+\index{GetHandle@{GetHandle}!VE::Internal::SoundEngine::VSoundInstance@{VE::Internal::SoundEngine::VSoundInstance}}
+\doxysubsubsection{\texorpdfstring{GetHandle()}{GetHandle()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_ada17c6423e243d3d4e271b3a3f3a2c07} 
+\mbox{\hyperlink{namespaceVE_1_1Internal_1_1SoundEngine_af4e614536953febb080d18e088d76d8b}{VSound\+Handle}} VE\+::\+Internal\+::\+Sound\+Engine\+::\+VSound\+Instance\+::\+Get\+Handle (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+\Hypertarget{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_a42a3bd00c0e06318f47e8f05bddba6a5}\index{VE::Internal::SoundEngine::VSoundInstance@{VE::Internal::SoundEngine::VSoundInstance}!IsPaused@{IsPaused}}
+\index{IsPaused@{IsPaused}!VE::Internal::SoundEngine::VSoundInstance@{VE::Internal::SoundEngine::VSoundInstance}}
+\doxysubsubsection{\texorpdfstring{IsPaused()}{IsPaused()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_a42a3bd00c0e06318f47e8f05bddba6a5} 
+bool VE\+::\+Internal\+::\+Sound\+Engine\+::\+VSound\+Instance\+::\+Is\+Paused (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+\Hypertarget{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_ade8f6024373cc02549ccfec6aedf826b}\index{VE::Internal::SoundEngine::VSoundInstance@{VE::Internal::SoundEngine::VSoundInstance}!IsSpatial@{IsSpatial}}
+\index{IsSpatial@{IsSpatial}!VE::Internal::SoundEngine::VSoundInstance@{VE::Internal::SoundEngine::VSoundInstance}}
+\doxysubsubsection{\texorpdfstring{IsSpatial()}{IsSpatial()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_ade8f6024373cc02549ccfec6aedf826b} 
+bool VE\+::\+Internal\+::\+Sound\+Engine\+::\+VSound\+Instance\+::\+Is\+Spatial (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+\Hypertarget{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_a732103154e2c618a9a9e804ea56b690a}\index{VE::Internal::SoundEngine::VSoundInstance@{VE::Internal::SoundEngine::VSoundInstance}!IsValid@{IsValid}}
+\index{IsValid@{IsValid}!VE::Internal::SoundEngine::VSoundInstance@{VE::Internal::SoundEngine::VSoundInstance}}
+\doxysubsubsection{\texorpdfstring{IsValid()}{IsValid()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_a732103154e2c618a9a9e804ea56b690a} 
+bool VE\+::\+Internal\+::\+Sound\+Engine\+::\+VSound\+Instance\+::\+Is\+Valid (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+\Hypertarget{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_af874b34a136745f2653c73b03824c0a0}\index{VE::Internal::SoundEngine::VSoundInstance@{VE::Internal::SoundEngine::VSoundInstance}!Pause@{Pause}}
+\index{Pause@{Pause}!VE::Internal::SoundEngine::VSoundInstance@{VE::Internal::SoundEngine::VSoundInstance}}
+\doxysubsubsection{\texorpdfstring{Pause()}{Pause()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_af874b34a136745f2653c73b03824c0a0} 
+void VE\+::\+Internal\+::\+Sound\+Engine\+::\+VSound\+Instance\+::\+Pause (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_a3a727dab379301dbd05a8926a7df0991}\index{VE::Internal::SoundEngine::VSoundInstance@{VE::Internal::SoundEngine::VSoundInstance}!Play@{Play}}
+\index{Play@{Play}!VE::Internal::SoundEngine::VSoundInstance@{VE::Internal::SoundEngine::VSoundInstance}}
+\doxysubsubsection{\texorpdfstring{Play()}{Play()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_a3a727dab379301dbd05a8926a7df0991} 
+void VE\+::\+Internal\+::\+Sound\+Engine\+::\+VSound\+Instance\+::\+Play (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_afbf8bcd450b45dd480f84761add62005}\index{VE::Internal::SoundEngine::VSoundInstance@{VE::Internal::SoundEngine::VSoundInstance}!SetAttenuationModel@{SetAttenuationModel}}
+\index{SetAttenuationModel@{SetAttenuationModel}!VE::Internal::SoundEngine::VSoundInstance@{VE::Internal::SoundEngine::VSoundInstance}}
+\doxysubsubsection{\texorpdfstring{SetAttenuationModel()}{SetAttenuationModel()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_afbf8bcd450b45dd480f84761add62005} 
+void VE\+::\+Internal\+::\+Sound\+Engine\+::\+VSound\+Instance\+::\+Set\+Attenuation\+Model (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_a8ce0105f0dd31a90822a6f1a25fa8ad5}{EAttenuation\+Model}}}]{p\+\_\+model}{, }\item[{float}]{p\+\_\+factor}{ = {\ttfamily 1.0f}}\end{DoxyParamCaption})}
+
+\Hypertarget{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_a8aff78a25752700f29d39d37949fc2d9}\index{VE::Internal::SoundEngine::VSoundInstance@{VE::Internal::SoundEngine::VSoundInstance}!SetAttenuationThreshold@{SetAttenuationThreshold}}
+\index{SetAttenuationThreshold@{SetAttenuationThreshold}!VE::Internal::SoundEngine::VSoundInstance@{VE::Internal::SoundEngine::VSoundInstance}}
+\doxysubsubsection{\texorpdfstring{SetAttenuationThreshold()}{SetAttenuationThreshold()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_a8aff78a25752700f29d39d37949fc2d9} 
+void VE\+::\+Internal\+::\+Sound\+Engine\+::\+VSound\+Instance\+::\+Set\+Attenuation\+Threshold (\begin{DoxyParamCaption}\item[{float}]{p\+\_\+distance}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_afa735d39b29dfa920e337d1ca1f87943}\index{VE::Internal::SoundEngine::VSoundInstance@{VE::Internal::SoundEngine::VSoundInstance}!SetLooped@{SetLooped}}
+\index{SetLooped@{SetLooped}!VE::Internal::SoundEngine::VSoundInstance@{VE::Internal::SoundEngine::VSoundInstance}}
+\doxysubsubsection{\texorpdfstring{SetLooped()}{SetLooped()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_afa735d39b29dfa920e337d1ca1f87943} 
+void VE\+::\+Internal\+::\+Sound\+Engine\+::\+VSound\+Instance\+::\+Set\+Looped (\begin{DoxyParamCaption}\item[{bool}]{p\+\_\+looped}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_a23174c10d90c09f9e77e1a798fcf44f0}\index{VE::Internal::SoundEngine::VSoundInstance@{VE::Internal::SoundEngine::VSoundInstance}!SetPan@{SetPan}}
+\index{SetPan@{SetPan}!VE::Internal::SoundEngine::VSoundInstance@{VE::Internal::SoundEngine::VSoundInstance}}
+\doxysubsubsection{\texorpdfstring{SetPan()}{SetPan()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_a23174c10d90c09f9e77e1a798fcf44f0} 
+void VE\+::\+Internal\+::\+Sound\+Engine\+::\+VSound\+Instance\+::\+Set\+Pan (\begin{DoxyParamCaption}\item[{float}]{p\+\_\+pan}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_a0c798545ec3aeecd283c12d53b94fb3e}\index{VE::Internal::SoundEngine::VSoundInstance@{VE::Internal::SoundEngine::VSoundInstance}!SetPitch@{SetPitch}}
+\index{SetPitch@{SetPitch}!VE::Internal::SoundEngine::VSoundInstance@{VE::Internal::SoundEngine::VSoundInstance}}
+\doxysubsubsection{\texorpdfstring{SetPitch()}{SetPitch()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_a0c798545ec3aeecd283c12d53b94fb3e} 
+void VE\+::\+Internal\+::\+Sound\+Engine\+::\+VSound\+Instance\+::\+Set\+Pitch (\begin{DoxyParamCaption}\item[{float}]{p\+\_\+pitch}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_ac6b2ec959a5abde07d98fe1ccbc6c499}\index{VE::Internal::SoundEngine::VSoundInstance@{VE::Internal::SoundEngine::VSoundInstance}!SetSpatialParameters@{SetSpatialParameters}}
+\index{SetSpatialParameters@{SetSpatialParameters}!VE::Internal::SoundEngine::VSoundInstance@{VE::Internal::SoundEngine::VSoundInstance}}
+\doxysubsubsection{\texorpdfstring{SetSpatialParameters()}{SetSpatialParameters()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_ac6b2ec959a5abde07d98fe1ccbc6c499} 
+void VE\+::\+Internal\+::\+Sound\+Engine\+::\+VSound\+Instance\+::\+Set\+Spatial\+Parameters (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VE\+::\+Math\+::\+VVector3}} \&}]{p\+\_\+position}{, }\item[{const \mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VE\+::\+Math\+::\+VVector3}} \&}]{p\+\_\+velocity}{}\end{DoxyParamCaption}) const}
+
+\Hypertarget{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_af876f009893710db5a58a8af492213b5}\index{VE::Internal::SoundEngine::VSoundInstance@{VE::Internal::SoundEngine::VSoundInstance}!SetVolume@{SetVolume}}
+\index{SetVolume@{SetVolume}!VE::Internal::SoundEngine::VSoundInstance@{VE::Internal::SoundEngine::VSoundInstance}}
+\doxysubsubsection{\texorpdfstring{SetVolume()}{SetVolume()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_af876f009893710db5a58a8af492213b5} 
+void VE\+::\+Internal\+::\+Sound\+Engine\+::\+VSound\+Instance\+::\+Set\+Volume (\begin{DoxyParamCaption}\item[{float}]{p\+\_\+volume}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_aace373dc5ace0099d5734a1dba5af9a8}\index{VE::Internal::SoundEngine::VSoundInstance@{VE::Internal::SoundEngine::VSoundInstance}!Stop@{Stop}}
+\index{Stop@{Stop}!VE::Internal::SoundEngine::VSoundInstance@{VE::Internal::SoundEngine::VSoundInstance}}
+\doxysubsubsection{\texorpdfstring{Stop()}{Stop()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_aace373dc5ace0099d5734a1dba5af9a8} 
+void VE\+::\+Internal\+::\+Sound\+Engine\+::\+VSound\+Instance\+::\+Stop (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Vantor/\+Source/\+Vantor/\+Sound\+Engine/\+Include/\+Sound\+Engine/\+Data/\mbox{\hyperlink{VSOE__SoundInstance_8hpp}{VSOE\+\_\+\+Sound\+Instance.\+hpp}}\end{DoxyCompactItemize}

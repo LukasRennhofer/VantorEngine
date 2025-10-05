@@ -1,0 +1,73 @@
+\doxysection{VE\+::VWorld Class Reference}
+\hypertarget{classVE_1_1VWorld}{}\label{classVE_1_1VWorld}\index{VE::VWorld@{VE::VWorld}}
+
+
+{\ttfamily \#include $<$VAR\+\_\+\+World.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classVE_1_1VWorld_aa8d215e5cfbcd9fe048c76071c5a2acf}{VWorld}} ()=default
+\item 
+{\footnotesize template$<$typename T, typename... Args$>$ }\\std\+::shared\+\_\+ptr$<$ T $>$ \mbox{\hyperlink{classVE_1_1VWorld_aeccfa9716fd8890faa49fb8d01e75b79}{Create\+Actor}} (Args \&\&...args)
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classVE_1_1AActor}{AActor}} $>$ \mbox{\hyperlink{classVE_1_1VWorld_a34240aadf224bea46d2c64d3eee64358}{Get\+Actor}} (\mbox{\hyperlink{namespaceVE_ac71b8b5090760e6e75e30c988d8cf415}{VActor\+ID}} id)
+\item 
+const std\+::unordered\+\_\+map$<$ \mbox{\hyperlink{namespaceVE_ac71b8b5090760e6e75e30c988d8cf415}{VActor\+ID}}, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classVE_1_1AActor}{AActor}} $>$ $>$ \& \mbox{\hyperlink{classVE_1_1VWorld_aefb6295b3c28dc775753ef771464a6cf}{Get\+All\+Actors}} ()
+\item 
+\mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector}{VE\+::\+Internal\+::\+Core\+::\+Container\+::\+TVector}}$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classVE_1_1AActor}{AActor}} $>$ $>$ \mbox{\hyperlink{classVE_1_1VWorld_abcd0aee023a7d800a8dcf435ec3a17ea}{Get\+All\+Actors\+List}} ()
+\item 
+void \mbox{\hyperlink{classVE_1_1VWorld_a09458dca773765658d422a265fcb7847}{Destroy\+Actor}} (\mbox{\hyperlink{namespaceVE_ac71b8b5090760e6e75e30c988d8cf415}{VActor\+ID}} id)
+\end{DoxyCompactItemize}
+
+
+\label{doc-constructors}
+\Hypertarget{classVE_1_1VWorld_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classVE_1_1VWorld_aa8d215e5cfbcd9fe048c76071c5a2acf}\index{VE::VWorld@{VE::VWorld}!VWorld@{VWorld}}
+\index{VWorld@{VWorld}!VE::VWorld@{VE::VWorld}}
+\doxysubsubsection{\texorpdfstring{VWorld()}{VWorld()}}
+{\footnotesize\ttfamily \label{classVE_1_1VWorld_aa8d215e5cfbcd9fe048c76071c5a2acf} 
+VE\+::\+VWorld\+::\+VWorld (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+\label{doc-func-members}
+\Hypertarget{classVE_1_1VWorld_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classVE_1_1VWorld_aeccfa9716fd8890faa49fb8d01e75b79}\index{VE::VWorld@{VE::VWorld}!CreateActor@{CreateActor}}
+\index{CreateActor@{CreateActor}!VE::VWorld@{VE::VWorld}}
+\doxysubsubsection{\texorpdfstring{CreateActor()}{CreateActor()}}
+{\footnotesize\ttfamily \label{classVE_1_1VWorld_aeccfa9716fd8890faa49fb8d01e75b79} 
+template$<$typename T, typename... Args$>$ \\
+std\+::shared\+\_\+ptr$<$ T $>$ VE\+::\+VWorld\+::\+Create\+Actor (\begin{DoxyParamCaption}\item[{Args \&\&...}]{args}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classVE_1_1VWorld_a09458dca773765658d422a265fcb7847}\index{VE::VWorld@{VE::VWorld}!DestroyActor@{DestroyActor}}
+\index{DestroyActor@{DestroyActor}!VE::VWorld@{VE::VWorld}}
+\doxysubsubsection{\texorpdfstring{DestroyActor()}{DestroyActor()}}
+{\footnotesize\ttfamily \label{classVE_1_1VWorld_a09458dca773765658d422a265fcb7847} 
+void VE\+::\+VWorld\+::\+Destroy\+Actor (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceVE_ac71b8b5090760e6e75e30c988d8cf415}{VActor\+ID}}}]{id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classVE_1_1VWorld_a34240aadf224bea46d2c64d3eee64358}\index{VE::VWorld@{VE::VWorld}!GetActor@{GetActor}}
+\index{GetActor@{GetActor}!VE::VWorld@{VE::VWorld}}
+\doxysubsubsection{\texorpdfstring{GetActor()}{GetActor()}}
+{\footnotesize\ttfamily \label{classVE_1_1VWorld_a34240aadf224bea46d2c64d3eee64358} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classVE_1_1AActor}{AActor}} $>$ VE\+::\+VWorld\+::\+Get\+Actor (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceVE_ac71b8b5090760e6e75e30c988d8cf415}{VActor\+ID}}}]{id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classVE_1_1VWorld_aefb6295b3c28dc775753ef771464a6cf}\index{VE::VWorld@{VE::VWorld}!GetAllActors@{GetAllActors}}
+\index{GetAllActors@{GetAllActors}!VE::VWorld@{VE::VWorld}}
+\doxysubsubsection{\texorpdfstring{GetAllActors()}{GetAllActors()}}
+{\footnotesize\ttfamily \label{classVE_1_1VWorld_aefb6295b3c28dc775753ef771464a6cf} 
+const std\+::unordered\+\_\+map$<$ \mbox{\hyperlink{namespaceVE_ac71b8b5090760e6e75e30c988d8cf415}{VActor\+ID}}, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classVE_1_1AActor}{AActor}} $>$ $>$ \& VE\+::\+VWorld\+::\+Get\+All\+Actors (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classVE_1_1VWorld_abcd0aee023a7d800a8dcf435ec3a17ea}\index{VE::VWorld@{VE::VWorld}!GetAllActorsList@{GetAllActorsList}}
+\index{GetAllActorsList@{GetAllActorsList}!VE::VWorld@{VE::VWorld}}
+\doxysubsubsection{\texorpdfstring{GetAllActorsList()}{GetAllActorsList()}}
+{\footnotesize\ttfamily \label{classVE_1_1VWorld_abcd0aee023a7d800a8dcf435ec3a17ea} 
+\mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector}{VE\+::\+Internal\+::\+Core\+::\+Container\+::\+TVector}}$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classVE_1_1AActor}{AActor}} $>$ $>$ VE\+::\+VWorld\+::\+Get\+All\+Actors\+List (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Vantor/\+Source/\+Vantor/\+Actor\+Runtime/\+Include/\+Actor\+Runtime/\+Public/\+World/\mbox{\hyperlink{VAR__World_8hpp}{VAR\+\_\+\+World.\+hpp}}\end{DoxyCompactItemize}

@@ -193,10 +193,10 @@ public:
 
     // Rendering
     virtual void SetViewport(uint32_t x, uint32_t y, uint32_t width, uint32_t height) = 0;
-    virtual void BindShader(std::shared_ptr<IRHIShader> shader) = 0;
-    virtual void BindTexture(std::shared_ptr<IRHITexture> texture, uint32_t slot = 0) = 0;
-    virtual void BindRenderTarget(std::shared_ptr<IRHIRenderTarget> renderTarget) = 0;
-    virtual void DrawMesh(std::shared_ptr<IRHIMesh> mesh) = 0;
+    // virtual void BindShader(std::shared_ptr<IRHIShader> shader) = 0;
+    // virtual void BindTexture(std::shared_ptr<IRHITexture> texture, uint32_t slot = 0) = 0;
+    // virtual void BindRenderTarget(std::shared_ptr<IRHIRenderTarget> renderTarget) = 0;
+    // virtual void DrawMesh(std::shared_ptr<IRHIMesh> mesh) = 0;
 };
 
 } // namespace VE::Internal::RHI

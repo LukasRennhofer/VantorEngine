@@ -1,0 +1,63 @@
+\doxysection{VRHI\+\_\+\+Texture.\+hpp}
+\hypertarget{VRHI__Texture_8hpp_source}{}\label{VRHI__Texture_8hpp_source}\index{Vantor/Source/Vantor/RHI/Include/RHI/Interface/VRHI\_Texture.hpp@{Vantor/Source/Vantor/RHI/Include/RHI/Interface/VRHI\_Texture.hpp}}
+\mbox{\hyperlink{VRHI__Texture_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/****************************************************************************}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ Vantor\ Engine™\ -\/\ Source\ Code\ (2025)}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ Author\ \ \ \ :\ Lukas\ Rennhofer\ (@LukasRennhofer),\ Vantor\ Studios™}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ Copyright\ :\ ©\ 2025\ Lukas\ Rennhofer,\ Vantor\ Studios™}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ *\ License\ \ \ :\ GNU\ General\ Public\ License\ v3.0}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ See\ LICENSE\ file\ for\ full\ details.}}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ ****************************************************************************/}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <cstdint>}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI}{VE::Internal::RHI}}}
+\DoxyCodeLine{00015\ \{}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a79a6d19349d7b5399e5fb907a28fb009}{ETextureType}};\ \textcolor{comment}{//\ Forward\ Decl.}}
+\DoxyCodeLine{00018\ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7}{ERHIFormat}};\ \textcolor{comment}{//\ Forward\ Decl.}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_acbc77117a5daabd65c97f439aa80020f}{ETextureFilter}}}
+\DoxyCodeLine{00021\ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_acbc77117a5daabd65c97f439aa80020fa60494f02d440f316319dd0fad40ad007}{Nearest}},}
+\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_acbc77117a5daabd65c97f439aa80020fa32a843da6ea40ab3b17a3421ccdf671b}{Linear}}}
+\DoxyCodeLine{00024\ \};}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_abc26d04d9c8a19c57ebbcda98f2d5aea}{ETextureWrap}}}
+\DoxyCodeLine{00027\ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_abc26d04d9c8a19c57ebbcda98f2d5aeaa7020426cfb0a204051be4b3053d2acc8}{Repeat}},}
+\DoxyCodeLine{00029\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_abc26d04d9c8a19c57ebbcda98f2d5aeaa74556551231333c36debc3d373261134}{ClampToEdge}},}
+\DoxyCodeLine{00030\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_abc26d04d9c8a19c57ebbcda98f2d5aeaafb07f88f6f11cc5ab9c951290716f147}{ClampToBorder}}}
+\DoxyCodeLine{00031\ \};}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHITexture}{IRHITexture}}}
+\DoxyCodeLine{00034\ \{}
+\DoxyCodeLine{00035\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHITexture_a8098240c2b877df66d6a93e75e97ca92}{\string~IRHITexture}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHITexture_acc03a3244976502d7836a433dd6e8fa9}{Bind}}(uint32\_t\ slot\ =\ 0)\ =\ 0;}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHITexture_a397938e569f89b5be9bfc6f942867a75}{Unbind}}()\ =\ 0;}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{comment}{//\ For\ 2D/3D/1D/Cube}}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHITexture_acddc9216fce0c3304e3f87f7ddc7e67a}{UpdateData}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ data,\ uint32\_t\ width,\ uint32\_t\ height\ =\ 1,\ uint32\_t\ depth\ =\ 1,\ uint32\_t\ face\ =\ 0)\ =\ 0;}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keyword}{virtual}\ uint32\_t\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHITexture_a6684903b1fd5390e37edef07c24f6fb5}{GetWidth}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keyword}{virtual}\ uint32\_t\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHITexture_a661042543ec5eef91a8bb9a3cdd7fe93}{GetHeight}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keyword}{virtual}\ uint32\_t\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHITexture_a532c391048907954c5414129c1a93a13}{GetDepth}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ 1;\ \}\ \textcolor{comment}{//\ Default\ slices\ for\ 2D/1D\ Textures}}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keyword}{virtual}\ uint32\_t\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHITexture_acfb71d6d98268b626ac0f495ab32ac19}{GetHandle}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7}{ERHIFormat}}\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHITexture_a6d381ea2a2f1c6a8aa92ced73f8d26cf}{GetFormat}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a79a6d19349d7b5399e5fb907a28fb009}{ETextureType}}\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHITexture_a326402a097b5323ac539c82cbbbebc35}{GetType}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHITexture_a712cfa530201a9eb085fe9b87847c8bc}{Resize}}(uint32\_t\ newWidth,\ uint32\_t\ newHeight,\ uint32\_t\ newDepth\ =\ 1)\ =\ 0;}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHITexture_a01b54a561d153edeede3d18220e6f261}{SetFilter}}(\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_acbc77117a5daabd65c97f439aa80020f}{ETextureFilter}}\ minFilter,\ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_acbc77117a5daabd65c97f439aa80020f}{ETextureFilter}}\ magFilter)\ =\ 0;}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHITexture_a9a065f816f2801ad3b6ee395fd6e1040}{SetWrap}}(\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_abc26d04d9c8a19c57ebbcda98f2d5aea}{ETextureWrap}}\ wrapS,\ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_abc26d04d9c8a19c57ebbcda98f2d5aea}{ETextureWrap}}\ wrapT,\ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_abc26d04d9c8a19c57ebbcda98f2d5aea}{ETextureWrap}}\ wrapR\ =\ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_abc26d04d9c8a19c57ebbcda98f2d5aeaa7020426cfb0a204051be4b3053d2acc8}{ETextureWrap::Repeat}})\ =\ 0;}
+\DoxyCodeLine{00055\ \};}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \}\ \textcolor{comment}{//\ namespace\ VE::Internal::RHI}}
+
+\end{DoxyCode}

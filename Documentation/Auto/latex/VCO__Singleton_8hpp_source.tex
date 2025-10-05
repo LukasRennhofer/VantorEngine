@@ -1,0 +1,48 @@
+\doxysection{VCO\+\_\+\+Singleton.\+hpp}
+\hypertarget{VCO__Singleton_8hpp_source}{}\label{VCO__Singleton_8hpp_source}\index{Vantor/Source/Vantor/Core/Include/Core/Types/VCO\_Singleton.hpp@{Vantor/Source/Vantor/Core/Include/Core/Types/VCO\_Singleton.hpp}}
+\mbox{\hyperlink{VCO__Singleton_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/****************************************************************************}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ Vantor\ Engine™\ -\/\ Source\ Code\ (2025)}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ Author\ \ \ \ :\ Lukas\ Rennhofer\ (@LukasRennhofer),\ Vantor\ Studios™}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ Copyright\ :\ ©\ 2025\ Lukas\ Rennhofer,\ Vantor\ Studios™}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ *\ License\ \ \ :\ GNU\ General\ Public\ License\ v3.0}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ See\ LICENSE\ file\ for\ full\ details.}}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ ****************************************************************************/}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceVE_1_1Internal_1_1Core_1_1Types}{VE::Internal::Core::Types}}}
+\DoxyCodeLine{00013\ \{}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{comment}{//\ An\ implementation\ of\ a\ Singleton\ class\ for\ Vantor}}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Types_1_1TSingleton_aa6f2cdd69782ebc9091b561ba0b3c11c}{TSingleton}}}
+\DoxyCodeLine{00016\ \ \ \ \ \{}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Types_1_1TSingleton_aa6f2cdd69782ebc9091b561ba0b3c11c}{TSingleton}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Types_1_1TSingleton_aa6f2cdd69782ebc9091b561ba0b3c11c}{TSingleton}}\ \&)\ \ \ \ \ \ \ \ \ \ \ \ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Types_1_1TSingleton_aa6f2cdd69782ebc9091b561ba0b3c11c}{TSingleton}}\ \&\mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Types_1_1TSingleton_abf2a7e19975681b6feb3029a3293e393}{operator=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Types_1_1TSingleton_aa6f2cdd69782ebc9091b561ba0b3c11c}{TSingleton}}\ \&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ T\ \&\mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Types_1_1TSingleton_abc4bfaac0447c8f26172bed8fe0164cc}{Instance}}()}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ T\ instance;}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ instance;}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Types_1_1TSingleton_a35a02ce2fb5ce230d71470ca7d68874b}{\string~TSingleton}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Types_1_1TSingleton_a35d04405df9a5da4b99765a05b7a4bbe}{TSingleton}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00031\ \ \ \ \ \};}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{comment}{//\ Can\ be\ used\ like\ this:}}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{comment}{//\ class\ AnotherSingletonClass\ :\ public\ TSingleton<AnotherSingletonClass>\ \{}}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ friend\ class\ TSingleton<AnotherSingletonClass>;\ //\ Allow\ access\ to\ constructor}}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{comment}{//\ public:}}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ void\ LoadTexture(const\ std::string\&\ path);}}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{comment}{//\ private:}}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ AnotherSingletonClass()\ =\ default;}}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{comment}{//\ \};}}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \}\ \textcolor{comment}{//\ namespace\ VE::Internal::Core::Types}}
+
+\end{DoxyCode}

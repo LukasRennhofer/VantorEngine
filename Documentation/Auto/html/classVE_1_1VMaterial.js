@@ -1,0 +1,25 @@
+var classVE_1_1VMaterial =
+[
+    [ "VMaterial", "classVE_1_1VMaterial.html#a7be3c38913bdd8f17d1aafd0938c7b82", null ],
+    [ "VMaterial", "classVE_1_1VMaterial.html#ae954991f4ffbdedd6af337b54fd4c0f2", null ],
+    [ "Copy", "classVE_1_1VMaterial.html#a9b3d669c955bbeabe5aaa4c3785a79f8", null ],
+    [ "GetSamplerUniforms", "classVE_1_1VMaterial.html#a60b8c6894bde0b1b11b48fddc4aa72a2", null ],
+    [ "GetShader", "classVE_1_1VMaterial.html#af3be640ec0034d5aeba9edd3ea7a14f3", null ],
+    [ "GetUniforms", "classVE_1_1VMaterial.html#ae7d6911ea0737af5e03275c2a4f05313", null ],
+    [ "IsDefaultMaterial", "classVE_1_1VMaterial.html#ab3a456184969ee6a6d60595502cec1a7", null ],
+    [ "IsPBRMaterial", "classVE_1_1VMaterial.html#a1ec86ecc1648096f79dc4ac164497304", null ],
+    [ "SetBool", "classVE_1_1VMaterial.html#ac678a888bc4a4b52daf249b26ee69aa6", null ],
+    [ "SetFloat", "classVE_1_1VMaterial.html#af05207ad53c889850d2c1caa29b6bdfb", null ],
+    [ "SetInt", "classVE_1_1VMaterial.html#a3c2283a3b184e4d8022003abd4f8575c", null ],
+    [ "SetMatrix", "classVE_1_1VMaterial.html#a59febc1176f6c0f68dd0c908fcad96e3", null ],
+    [ "SetMatrix", "classVE_1_1VMaterial.html#ab336fe77fe98bd5cd65d1cd4875912a5", null ],
+    [ "SetMatrix", "classVE_1_1VMaterial.html#a1c4c0cbf1236990082734fbdd361b28c", null ],
+    [ "SetShader", "classVE_1_1VMaterial.html#abad71513d0f17f98f781738ae15a7e89", null ],
+    [ "SetTexture", "classVE_1_1VMaterial.html#a400a535f8895b99971054d9c44780e06", null ],
+    [ "SetVector", "classVE_1_1VMaterial.html#ab0138a75c9a573c865a225d3bddee65e", null ],
+    [ "SetVector", "classVE_1_1VMaterial.html#ad68cd95feea5f3f5692fb2a110988170", null ],
+    [ "SetVector", "classVE_1_1VMaterial.html#a5868a829e843f333c75cf08f7361c72b", null ],
+    [ "Color", "classVE_1_1VMaterial.html#a1fbb3721003cf0f764036be58b18710a", null ],
+    [ "SpecularStrength", "classVE_1_1VMaterial.html#ad2d3195f64bd0d66393b8839d4f2dada", null ],
+    [ "Type", "classVE_1_1VMaterial.html#a701fcf326eecfb4987c0ea0dc76ca969", null ]
+];

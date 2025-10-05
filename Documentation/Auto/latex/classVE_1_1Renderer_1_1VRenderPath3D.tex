@@ -1,0 +1,166 @@
+\doxysection{VE\+::Renderer\+::VRender\+Path3D Class Reference}
+\hypertarget{classVE_1_1Renderer_1_1VRenderPath3D}{}\label{classVE_1_1Renderer_1_1VRenderPath3D}\index{VE::Renderer::VRenderPath3D@{VE::Renderer::VRenderPath3D}}
+
+
+{\ttfamily \#include $<$VREP\+\_\+\+Render\+Path.\+hpp$>$}
+
+Inheritance diagram for VE\+::Renderer\+::VRender\+Path3D\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classVE_1_1Renderer_1_1VRenderPath3D}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPath3D_ad3bdf3c2691883e98fa2538f56612a3d}{VRender\+Path3D}} ()
+\item 
+virtual \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPath3D_a54337bec0b4322d44473242ca5ecfd3f}{\texorpdfstring{$\sim$}{\string~}\+VRender\+Path3D}} ()=default
+\item 
+void \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPath3D_a7b4a313e5b8f3b1ad70ff04ee631b417}{Initialize}} (\mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIDevice}{VE\+::\+Internal\+::\+RHI\+::\+IRHIDevice}} \texorpdfstring{$\ast$}{*}device) override
+\item 
+void \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPath3D_a052ee07f3310263b8ab2873d3646fa8f}{Render}} () override
+\item 
+void \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPath3D_a97f06ef73f7b302ceeaae4dee3317c80}{Shutdown}} () override
+\item 
+void \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPath3D_a7c7aae1f15c5215c6ee7852b71b713f3}{Push\+Render}} (\mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIMesh}{VE\+::\+Internal\+::\+RHI\+::\+IRHIMesh}} \texorpdfstring{$\ast$}{*}mesh, \mbox{\hyperlink{classVE_1_1VMaterial}{VMaterial}} \texorpdfstring{$\ast$}{*}material, const \mbox{\hyperlink{structVE_1_1Math_1_1VMat4}{VE\+::\+Math\+::\+VMat4}} \&transform)
+\item 
+void \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPath3D_af79f38565e3116aa2f6d1ab964e7e4ef}{Set\+Viewport}} (uint32\+\_\+t x, uint32\+\_\+t y, uint32\+\_\+t width, uint32\+\_\+t height) override
+\item 
+void \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPath3D_ac7a1918de4bb8087dc7c3115f32ee6a8}{Add\+Render\+Pass}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPass}{VRender\+Pass}} $>$ pass) override
+\item 
+\mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPass}{VRender\+Pass}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPath3D_aad44dc0c41a9790e3539a26eab2f48c7}{Get\+Render\+Pass}} (\mbox{\hyperlink{namespaceVE_1_1Renderer_aee20b04fc5db494be35be814d420dd3f}{ERender\+Pass\+Type}} type) const override
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPath}{VE\+::\+Renderer\+::\+VRender\+Path}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPath_a6049556762bc1363d0073377e68b3610}{\texorpdfstring{$\sim$}{\string~}\+VRender\+Path}} ()=default
+\item 
+void \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPath_a01ea46881aacd32ce507cc9d7732a37d}{Set\+Input\+Render\+Target}} (\mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget}{VE\+::\+Internal\+::\+RHI\+::\+IRHIRender\+Target}} \texorpdfstring{$\ast$}{*}target)
+\item 
+\mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget}{VE\+::\+Internal\+::\+RHI\+::\+IRHIRender\+Target}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPath_a3feab2cf05becf52d51c5659840efc07}{Get\+Output\+Render\+Target}} () const
+\item 
+void \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPath_a912dab1cee0d735c74bff2e6be299f80}{Set\+Camera}} (\mbox{\hyperlink{classVE_1_1Graphics_1_1ACamera}{VE\+::\+Graphics\+::\+ACamera}} \texorpdfstring{$\ast$}{*}camera)
+\item 
+\mbox{\hyperlink{classVE_1_1Graphics_1_1ACamera}{VE\+::\+Graphics\+::\+ACamera}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPath_a8551c733f8fd07f0750b3d1c9de1eddf}{Get\+Camera}} () const
+\item 
+\mbox{\hyperlink{classVE_1_1Internal_1_1RenderPipeline_1_1VCommandBuffer}{VE\+::\+Internal\+::\+Render\+Pipeline\+::\+VCommand\+Buffer}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPath_af8ce44d9d0279a548ff7a61a12afadec}{Get\+Command\+Buffer}} () const
+\item 
+\mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIDevice}{VE\+::\+Internal\+::\+RHI\+::\+IRHIDevice}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPath_aa006fee25f67c32f976eec21d22cb78f}{Get\+Device}} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPath}{VE\+::\+Renderer\+::\+VRender\+Path}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classVE_1_1Graphics_1_1ACamera}{VE\+::\+Graphics\+::\+ACamera}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPath_aaefdd6da5830752b62397db9ba8f2d82}{m\+\_\+\+Camera}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPath_a6c03d19d956c9597e9ba20eb08da8f40}{m\+\_\+\+ViewportX}} = 0
+\item 
+uint32\+\_\+t \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPath_a26bdb60f703af4066c78a7e8e7fc9ffe}{m\+\_\+\+ViewportY}} = 0
+\item 
+uint32\+\_\+t \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPath_afdce1036f26e5847cb00475357b0a53f}{m\+\_\+\+Viewport\+Width}} = 1280
+\item 
+uint32\+\_\+t \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPath_a0eb29ac0b267e31b37f895bb61e85358}{m\+\_\+\+Viewport\+Height}} = 720
+\item 
+\mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget}{VE\+::\+Internal\+::\+RHI\+::\+IRHIRender\+Target}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPath_ac8d41c6faa28446c2f805eecfa6d9ea4}{m\+\_\+\+IN}}
+\item 
+\mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget}{VE\+::\+Internal\+::\+RHI\+::\+IRHIRender\+Target}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPath_a7fa95653f822abb8adaa458e4ad59e83}{m\+\_\+\+OUT}}
+\item 
+\mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIDevice}{VE\+::\+Internal\+::\+RHI\+::\+IRHIDevice}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPath_a036e40c3c2f49e3c57bc3abb8a320868}{m\+\_\+\+Device}}
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classVE_1_1Internal_1_1RenderPipeline_1_1VCommandBuffer}{VE\+::\+Internal\+::\+Render\+Pipeline\+::\+VCommand\+Buffer}} $>$ \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPath_a11f2ff5b0f797392097ec8bbf7e5530e}{m\+\_\+\+Command\+Buffer}}
+\end{DoxyCompactItemize}
+
+
+\label{doc-constructors}
+\Hypertarget{classVE_1_1Renderer_1_1VRenderPath3D_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classVE_1_1Renderer_1_1VRenderPath3D_ad3bdf3c2691883e98fa2538f56612a3d}\index{VE::Renderer::VRenderPath3D@{VE::Renderer::VRenderPath3D}!VRenderPath3D@{VRenderPath3D}}
+\index{VRenderPath3D@{VRenderPath3D}!VE::Renderer::VRenderPath3D@{VE::Renderer::VRenderPath3D}}
+\doxysubsubsection{\texorpdfstring{VRenderPath3D()}{VRenderPath3D()}}
+{\footnotesize\ttfamily \label{classVE_1_1Renderer_1_1VRenderPath3D_ad3bdf3c2691883e98fa2538f56612a3d} 
+VE\+::\+Renderer\+::\+VRender\+Path3\+D\+::\+VRender\+Path3D (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classVE_1_1Renderer_1_1VRenderPath3D_a54337bec0b4322d44473242ca5ecfd3f}\index{VE::Renderer::VRenderPath3D@{VE::Renderer::VRenderPath3D}!````~VRenderPath3D@{\texorpdfstring{$\sim$}{\string~}VRenderPath3D}}
+\index{````~VRenderPath3D@{\texorpdfstring{$\sim$}{\string~}VRenderPath3D}!VE::Renderer::VRenderPath3D@{VE::Renderer::VRenderPath3D}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}VRenderPath3D()}{\string~VRenderPath3D()}}
+{\footnotesize\ttfamily \label{classVE_1_1Renderer_1_1VRenderPath3D_a54337bec0b4322d44473242ca5ecfd3f} 
+virtual VE\+::\+Renderer\+::\+VRender\+Path3\+D\+::\texorpdfstring{$\sim$}{\string~}\+VRender\+Path3D (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+
+
+\label{doc-func-members}
+\Hypertarget{classVE_1_1Renderer_1_1VRenderPath3D_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classVE_1_1Renderer_1_1VRenderPath3D_ac7a1918de4bb8087dc7c3115f32ee6a8}\index{VE::Renderer::VRenderPath3D@{VE::Renderer::VRenderPath3D}!AddRenderPass@{AddRenderPass}}
+\index{AddRenderPass@{AddRenderPass}!VE::Renderer::VRenderPath3D@{VE::Renderer::VRenderPath3D}}
+\doxysubsubsection{\texorpdfstring{AddRenderPass()}{AddRenderPass()}}
+{\footnotesize\ttfamily \label{classVE_1_1Renderer_1_1VRenderPath3D_ac7a1918de4bb8087dc7c3115f32ee6a8} 
+void VE\+::\+Renderer\+::\+VRender\+Path3\+D\+::\+Add\+Render\+Pass (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPass}{VRender\+Pass}} $>$}]{pass}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPath_a715042ce462b4f640d7a7cb764575ee6}{VE\+::\+Renderer\+::\+VRender\+Path}}.
+
+\Hypertarget{classVE_1_1Renderer_1_1VRenderPath3D_aad44dc0c41a9790e3539a26eab2f48c7}\index{VE::Renderer::VRenderPath3D@{VE::Renderer::VRenderPath3D}!GetRenderPass@{GetRenderPass}}
+\index{GetRenderPass@{GetRenderPass}!VE::Renderer::VRenderPath3D@{VE::Renderer::VRenderPath3D}}
+\doxysubsubsection{\texorpdfstring{GetRenderPass()}{GetRenderPass()}}
+{\footnotesize\ttfamily \label{classVE_1_1Renderer_1_1VRenderPath3D_aad44dc0c41a9790e3539a26eab2f48c7} 
+\mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPass}{VRender\+Pass}} \texorpdfstring{$\ast$}{*} VE\+::\+Renderer\+::\+VRender\+Path3\+D\+::\+Get\+Render\+Pass (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceVE_1_1Renderer_aee20b04fc5db494be35be814d420dd3f}{ERender\+Pass\+Type}}}]{type}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPath_aa7a21e67b0cbea789eda0f4a0c79612b}{VE\+::\+Renderer\+::\+VRender\+Path}}.
+
+\Hypertarget{classVE_1_1Renderer_1_1VRenderPath3D_a7b4a313e5b8f3b1ad70ff04ee631b417}\index{VE::Renderer::VRenderPath3D@{VE::Renderer::VRenderPath3D}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!VE::Renderer::VRenderPath3D@{VE::Renderer::VRenderPath3D}}
+\doxysubsubsection{\texorpdfstring{Initialize()}{Initialize()}}
+{\footnotesize\ttfamily \label{classVE_1_1Renderer_1_1VRenderPath3D_a7b4a313e5b8f3b1ad70ff04ee631b417} 
+void VE\+::\+Renderer\+::\+VRender\+Path3\+D\+::\+Initialize (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIDevice}{VE\+::\+Internal\+::\+RHI\+::\+IRHIDevice}} \texorpdfstring{$\ast$}{*}}]{device}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPath_a8132da16b2f6d24e0aaebde77acf4aa9}{VE\+::\+Renderer\+::\+VRender\+Path}}.
+
+\Hypertarget{classVE_1_1Renderer_1_1VRenderPath3D_a7c7aae1f15c5215c6ee7852b71b713f3}\index{VE::Renderer::VRenderPath3D@{VE::Renderer::VRenderPath3D}!PushRender@{PushRender}}
+\index{PushRender@{PushRender}!VE::Renderer::VRenderPath3D@{VE::Renderer::VRenderPath3D}}
+\doxysubsubsection{\texorpdfstring{PushRender()}{PushRender()}}
+{\footnotesize\ttfamily \label{classVE_1_1Renderer_1_1VRenderPath3D_a7c7aae1f15c5215c6ee7852b71b713f3} 
+void VE\+::\+Renderer\+::\+VRender\+Path3\+D\+::\+Push\+Render (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIMesh}{VE\+::\+Internal\+::\+RHI\+::\+IRHIMesh}} \texorpdfstring{$\ast$}{*}}]{mesh}{, }\item[{\mbox{\hyperlink{classVE_1_1VMaterial}{VMaterial}} \texorpdfstring{$\ast$}{*}}]{material}{, }\item[{const \mbox{\hyperlink{structVE_1_1Math_1_1VMat4}{VE\+::\+Math\+::\+VMat4}} \&}]{transform}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classVE_1_1Renderer_1_1VRenderPath3D_a052ee07f3310263b8ab2873d3646fa8f}\index{VE::Renderer::VRenderPath3D@{VE::Renderer::VRenderPath3D}!Render@{Render}}
+\index{Render@{Render}!VE::Renderer::VRenderPath3D@{VE::Renderer::VRenderPath3D}}
+\doxysubsubsection{\texorpdfstring{Render()}{Render()}}
+{\footnotesize\ttfamily \label{classVE_1_1Renderer_1_1VRenderPath3D_a052ee07f3310263b8ab2873d3646fa8f} 
+void VE\+::\+Renderer\+::\+VRender\+Path3\+D\+::\+Render (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPath_aaa1467cb5346636e82e448f0cc61460b}{VE\+::\+Renderer\+::\+VRender\+Path}}.
+
+\Hypertarget{classVE_1_1Renderer_1_1VRenderPath3D_af79f38565e3116aa2f6d1ab964e7e4ef}\index{VE::Renderer::VRenderPath3D@{VE::Renderer::VRenderPath3D}!SetViewport@{SetViewport}}
+\index{SetViewport@{SetViewport}!VE::Renderer::VRenderPath3D@{VE::Renderer::VRenderPath3D}}
+\doxysubsubsection{\texorpdfstring{SetViewport()}{SetViewport()}}
+{\footnotesize\ttfamily \label{classVE_1_1Renderer_1_1VRenderPath3D_af79f38565e3116aa2f6d1ab964e7e4ef} 
+void VE\+::\+Renderer\+::\+VRender\+Path3\+D\+::\+Set\+Viewport (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{x}{, }\item[{uint32\+\_\+t}]{y}{, }\item[{uint32\+\_\+t}]{width}{, }\item[{uint32\+\_\+t}]{height}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPath_a7c15e946f39fb65edaf840c8778d9e3a}{VE\+::\+Renderer\+::\+VRender\+Path}}.
+
+\Hypertarget{classVE_1_1Renderer_1_1VRenderPath3D_a97f06ef73f7b302ceeaae4dee3317c80}\index{VE::Renderer::VRenderPath3D@{VE::Renderer::VRenderPath3D}!Shutdown@{Shutdown}}
+\index{Shutdown@{Shutdown}!VE::Renderer::VRenderPath3D@{VE::Renderer::VRenderPath3D}}
+\doxysubsubsection{\texorpdfstring{Shutdown()}{Shutdown()}}
+{\footnotesize\ttfamily \label{classVE_1_1Renderer_1_1VRenderPath3D_a97f06ef73f7b302ceeaae4dee3317c80} 
+void VE\+::\+Renderer\+::\+VRender\+Path3\+D\+::\+Shutdown (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classVE_1_1Renderer_1_1VRenderPath_a1072d1a56d87ba8fc274da434f3ab882}{VE\+::\+Renderer\+::\+VRender\+Path}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Vantor/\+Source/\+Vantor/\+Render\+Pipeline/\+Include/\+Render\+Pipeline/\+Public/\mbox{\hyperlink{VREP__RenderPath_8hpp}{VREP\+\_\+\+Render\+Path.\+hpp}}\item 
+Vantor/\+Source/\+Vantor/\+Render\+Pipeline/\+Source/\+Render\+Pipeline/\+Public/\mbox{\hyperlink{VREP__RenderPath_8cpp}{VREP\+\_\+\+Render\+Path.\+cpp}}\end{DoxyCompactItemize}

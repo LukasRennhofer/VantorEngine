@@ -1,0 +1,59 @@
+\doxysection{VRHI\+\_\+\+Open\+GLBuffer.\+hpp}
+\hypertarget{VRHI__OpenGLBuffer_8hpp_source}{}\label{VRHI__OpenGLBuffer_8hpp_source}\index{Vantor/Source/Vantor/RHI/Include/RHI/OpenGL/VRHI\_OpenGLBuffer.hpp@{Vantor/Source/Vantor/RHI/Include/RHI/OpenGL/VRHI\_OpenGLBuffer.hpp}}
+\mbox{\hyperlink{VRHI__OpenGLBuffer_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/****************************************************************************}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ Vantor\ Engine™\ -\/\ Source\ Code\ (2025)}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ Author\ \ \ \ :\ Lukas\ Rennhofer\ (@LukasRennhofer),\ Vantor\ Studios™}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ Copyright\ :\ ©\ 2025\ Lukas\ Rennhofer,\ Vantor\ Studios™}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ *\ License\ \ \ :\ GNU\ General\ Public\ License\ v3.0}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ See\ LICENSE\ file\ for\ full\ details.}}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ ****************************************************************************/}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{VRHI__Buffer_8hpp}{RHI/Interface/VRHI\_Buffer.hpp}}>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{VRHI__Device_8hpp}{RHI/Interface/VRHI\_Device.hpp}}>}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <Shared/glad/glad.h>}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI}{VE::Internal::RHI}}}
+\DoxyCodeLine{00018\ \{}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLBuffer_a24a19e8c0659be0251ee59e1f0078f48}{OpenGLBuffer}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIBuffer}{IRHIBuffer}}}
+\DoxyCodeLine{00021\ \{}
+\DoxyCodeLine{00022\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLBuffer_a24a19e8c0659be0251ee59e1f0078f48}{OpenGLBuffer}}(\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a52035ddfb13a42298c915d4fd9108b25}{ERHIBufferType}}\ type,\ uint32\_t\ size,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ data\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00024\ \ \ \ \ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLBuffer_a24a19e8c0659be0251ee59e1f0078f48}{OpenGLBuffer}}(\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a52035ddfb13a42298c915d4fd9108b25}{ERHIBufferType}}\ type,\ uint32\_t\ size,\ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_abbf804d42cb99254cfdd8d88d3d1584f}{EBufferUsage}}\ usage,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ data\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLBuffer_a8c95b44d6759e47d272bf2ba36bee051}{\string~OpenGLBuffer}}();}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{comment}{//\ IRHIBuffer\ implementation}}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLBuffer_a5d53955c067e900b87a26c1eba4eba67}{Bind}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLBuffer_a5d53955c067e900b87a26c1eba4eba67}{Bind}}(uint32\_t\ slot)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLBuffer_a0f6392a4fe810a14c403a3898f81fe9e}{Unbind}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLBuffer_aa6d0130fd5e2c3dd6ee3872b47d908b0}{UpdateData}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ data,\ uint32\_t\ size,\ uint32\_t\ offset\ =\ 0)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{void}*\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLBuffer_a2e3843d9467c90cf6b6e385caf68fa37}{Map}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLBuffer_a7009a58266aa0103998d2f4e4eb890f4}{Unmap}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLBuffer_abfb89b595706ff40fb03fbc908665241}{GetSize}}()\textcolor{keyword}{\ const\ override\ }\{\ \textcolor{keywordflow}{return}\ m\_size;\ \}}
+\DoxyCodeLine{00036\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLBuffer_a069df51f5eec4148754b7e094a30053e}{GetHandle}}()\textcolor{keyword}{\ const\ override\ }\{\ \textcolor{keywordflow}{return}\ m\_buffer;\ \}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{comment}{//\ OpenGL\ specific}}
+\DoxyCodeLine{00039\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a52035ddfb13a42298c915d4fd9108b25}{ERHIBufferType}}\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLBuffer_ac7757cdf3cb1456bf316b4cacc3de093}{GetType}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_type;\ \}}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{comment}{//\ Static\ utility\ functions}}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keyword}{static}\ GLenum\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLBuffer_a9a6e515d4b59ddb77ec802e2ad2aab3f}{BufferTypeToGL}}(\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a52035ddfb13a42298c915d4fd9108b25}{ERHIBufferType}}\ type);}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keyword}{static}\ GLenum\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLBuffer_a2443b87edc70ba50f7bae1967c58baf1}{BufferUsageToGL}}(\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_abbf804d42cb99254cfdd8d88d3d1584f}{EBufferUsage}}\ usage);}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00046\ \ \ \ \ uint32\_t\ m\_buffer;}
+\DoxyCodeLine{00047\ \ \ \ \ uint32\_t\ m\_size;}
+\DoxyCodeLine{00048\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a52035ddfb13a42298c915d4fd9108b25}{ERHIBufferType}}\ m\_type;}
+\DoxyCodeLine{00049\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_abbf804d42cb99254cfdd8d88d3d1584f}{EBufferUsage}}\ m\_usage;}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_mapped;}
+\DoxyCodeLine{00051\ \};}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \}}
+
+\end{DoxyCode}

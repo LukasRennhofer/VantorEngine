@@ -1,0 +1,45 @@
+\doxysection{VE\+::Internal\+::Render\+Pipeline Namespace Reference}
+\hypertarget{namespaceVE_1_1Internal_1_1RenderPipeline}{}\label{namespaceVE_1_1Internal_1_1RenderPipeline}\index{VE::Internal::RenderPipeline@{VE::Internal::RenderPipeline}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classVE_1_1Internal_1_1RenderPipeline_1_1VCommandBuffer}{VCommand\+Buffer}}
+\item 
+class \mbox{\hyperlink{classVE_1_1Internal_1_1RenderPipeline_1_1VGeometryRenderPass}{VGeometry\+Render\+Pass}}
+\item 
+class \mbox{\hyperlink{classVE_1_1Internal_1_1RenderPipeline_1_1VLightingRenderPass}{VLighting\+Render\+Pass}}
+\item 
+struct \mbox{\hyperlink{structVE_1_1Internal_1_1RenderPipeline_1_1VRenderCommand}{VRender\+Command}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RenderPipeline_af7ce4037b6d7ee452d8343ec66a2ea6f}{render\+Sort\+Forward}} (const \mbox{\hyperlink{structVE_1_1Internal_1_1RenderPipeline_1_1VRenderCommand}{VRender\+Command}} \&a, const \mbox{\hyperlink{structVE_1_1Internal_1_1RenderPipeline_1_1VRenderCommand}{VRender\+Command}} \&b)
+\item 
+bool \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RenderPipeline_ac612edb04df7ed621b819ff8694da4d3}{render\+Sort\+Custom}} (const \mbox{\hyperlink{structVE_1_1Internal_1_1RenderPipeline_1_1VRenderCommand}{VRender\+Command}} \&a, const \mbox{\hyperlink{structVE_1_1Internal_1_1RenderPipeline_1_1VRenderCommand}{VRender\+Command}} \&b)
+\item 
+bool \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RenderPipeline_afa077d2f727721e0b8a38941c25db324}{render\+Sort\+Shader}} (const \mbox{\hyperlink{structVE_1_1Internal_1_1RenderPipeline_1_1VRenderCommand}{VRender\+Command}} \&a, const \mbox{\hyperlink{structVE_1_1Internal_1_1RenderPipeline_1_1VRenderCommand}{VRender\+Command}} \&b)
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{namespaceVE_1_1Internal_1_1RenderPipeline_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{namespaceVE_1_1Internal_1_1RenderPipeline_ac612edb04df7ed621b819ff8694da4d3}\index{VE::Internal::RenderPipeline@{VE::Internal::RenderPipeline}!renderSortCustom@{renderSortCustom}}
+\index{renderSortCustom@{renderSortCustom}!VE::Internal::RenderPipeline@{VE::Internal::RenderPipeline}}
+\doxysubsubsection{\texorpdfstring{renderSortCustom()}{renderSortCustom()}}
+{\footnotesize\ttfamily \label{namespaceVE_1_1Internal_1_1RenderPipeline_ac612edb04df7ed621b819ff8694da4d3} 
+bool VE\+::\+Internal\+::\+Render\+Pipeline\+::render\+Sort\+Custom (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structVE_1_1Internal_1_1RenderPipeline_1_1VRenderCommand}{VRender\+Command}} \&}]{a}{, }\item[{const \mbox{\hyperlink{structVE_1_1Internal_1_1RenderPipeline_1_1VRenderCommand}{VRender\+Command}} \&}]{b}{}\end{DoxyParamCaption})}
+
+\Hypertarget{namespaceVE_1_1Internal_1_1RenderPipeline_af7ce4037b6d7ee452d8343ec66a2ea6f}\index{VE::Internal::RenderPipeline@{VE::Internal::RenderPipeline}!renderSortForward@{renderSortForward}}
+\index{renderSortForward@{renderSortForward}!VE::Internal::RenderPipeline@{VE::Internal::RenderPipeline}}
+\doxysubsubsection{\texorpdfstring{renderSortForward()}{renderSortForward()}}
+{\footnotesize\ttfamily \label{namespaceVE_1_1Internal_1_1RenderPipeline_af7ce4037b6d7ee452d8343ec66a2ea6f} 
+bool VE\+::\+Internal\+::\+Render\+Pipeline\+::render\+Sort\+Forward (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structVE_1_1Internal_1_1RenderPipeline_1_1VRenderCommand}{VRender\+Command}} \&}]{a}{, }\item[{const \mbox{\hyperlink{structVE_1_1Internal_1_1RenderPipeline_1_1VRenderCommand}{VRender\+Command}} \&}]{b}{}\end{DoxyParamCaption})}
+
+\Hypertarget{namespaceVE_1_1Internal_1_1RenderPipeline_afa077d2f727721e0b8a38941c25db324}\index{VE::Internal::RenderPipeline@{VE::Internal::RenderPipeline}!renderSortShader@{renderSortShader}}
+\index{renderSortShader@{renderSortShader}!VE::Internal::RenderPipeline@{VE::Internal::RenderPipeline}}
+\doxysubsubsection{\texorpdfstring{renderSortShader()}{renderSortShader()}}
+{\footnotesize\ttfamily \label{namespaceVE_1_1Internal_1_1RenderPipeline_afa077d2f727721e0b8a38941c25db324} 
+bool VE\+::\+Internal\+::\+Render\+Pipeline\+::render\+Sort\+Shader (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structVE_1_1Internal_1_1RenderPipeline_1_1VRenderCommand}{VRender\+Command}} \&}]{a}{, }\item[{const \mbox{\hyperlink{structVE_1_1Internal_1_1RenderPipeline_1_1VRenderCommand}{VRender\+Command}} \&}]{b}{}\end{DoxyParamCaption})}
+

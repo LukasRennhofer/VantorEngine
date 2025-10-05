@@ -1,0 +1,101 @@
+\doxysection{VE\+::Internal\+::Core\+::Backlog Namespace Reference}
+\hypertarget{namespaceVE_1_1Internal_1_1Core_1_1Backlog}{}\label{namespaceVE_1_1Internal_1_1Core_1_1Backlog}\index{VE::Internal::Core::Backlog@{VE::Internal::Core::Backlog}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Backlog_1_1VLogEntry}{VLog\+Entry}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{namespaceVE_1_1Internal_1_1Core_1_1Backlog_a81357fc0a1bef89d09a2261c90aa4d5f}{ELog\+Level}} \{ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1Core_1_1Backlog_a81357fc0a1bef89d09a2261c90aa4d5fa551b723eafd6a31d444fcb2f5920fbd3}{INFO}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1Core_1_1Backlog_a81357fc0a1bef89d09a2261c90aa4d5fadc30ec20708ef7b0f641ef78b7880a15}{DEBUG}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1Core_1_1Backlog_a81357fc0a1bef89d09a2261c90aa4d5fa059e9861e0400dfbe05c98a841f3f96b}{WARNING}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1Core_1_1Backlog_a81357fc0a1bef89d09a2261c90aa4d5facd22bad976363fdd1bfbf6759fede482}{ERR}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{namespaceVE_1_1Internal_1_1Core_1_1Backlog_a93f8d7d7330a4e426b12d16449ae42e7}{Log\+Level\+To\+String}} (\mbox{\hyperlink{namespaceVE_1_1Internal_1_1Core_1_1Backlog_a81357fc0a1bef89d09a2261c90aa4d5f}{ELog\+Level}} level)
+\item 
+void \mbox{\hyperlink{namespaceVE_1_1Internal_1_1Core_1_1Backlog_aa6863e27f278d8b147eaf8b2f8ce2022}{Log}} (const std\+::string \&source, const std\+::string \&msg, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1Core_1_1Backlog_a81357fc0a1bef89d09a2261c90aa4d5f}{ELog\+Level}} level=\mbox{\hyperlink{namespaceVE_1_1Internal_1_1Core_1_1Backlog_a81357fc0a1bef89d09a2261c90aa4d5fa551b723eafd6a31d444fcb2f5920fbd3}{ELog\+Level\+::\+INFO}})
+\item 
+std\+::string \mbox{\hyperlink{namespaceVE_1_1Internal_1_1Core_1_1Backlog_ad2a7504bfe4fce78821f1a8e6951a225}{ELog\+Level\+To\+String}} (\mbox{\hyperlink{namespaceVE_1_1Internal_1_1Core_1_1Backlog_a81357fc0a1bef89d09a2261c90aa4d5f}{ELog\+Level}} level)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+std\+::mutex \mbox{\hyperlink{namespaceVE_1_1Internal_1_1Core_1_1Backlog_ac2af0e1e52e56a8346f20e7fda755b5e}{log\+Mutex}}
+\item 
+\mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector}{VE\+::\+Internal\+::\+Core\+::\+Container\+::\+TVector}}$<$ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Backlog_1_1VLogEntry}{VLog\+Entry}} $>$ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1Core_1_1Backlog_a56d7e20500cf8018f96f82403ea698c5}{log\+Entries}}
+\end{DoxyCompactItemize}
+
+
+\label{doc-enum-members}
+\Hypertarget{namespaceVE_1_1Internal_1_1Core_1_1Backlog_doc-enum-members}
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{namespaceVE_1_1Internal_1_1Core_1_1Backlog_a81357fc0a1bef89d09a2261c90aa4d5f}\index{VE::Internal::Core::Backlog@{VE::Internal::Core::Backlog}!ELogLevel@{ELogLevel}}
+\index{ELogLevel@{ELogLevel}!VE::Internal::Core::Backlog@{VE::Internal::Core::Backlog}}
+\doxysubsubsection{\texorpdfstring{ELogLevel}{ELogLevel}}
+{\footnotesize\ttfamily \label{namespaceVE_1_1Internal_1_1Core_1_1Backlog_a81357fc0a1bef89d09a2261c90aa4d5f} 
+enum class \mbox{\hyperlink{namespaceVE_1_1Internal_1_1Core_1_1Backlog_a81357fc0a1bef89d09a2261c90aa4d5f}{VE\+::\+Internal\+::\+Core\+::\+Backlog\+::\+ELog\+Level}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{INFO@{INFO}!VE::Internal::Core::Backlog@{VE::Internal::Core::Backlog}}\index{VE::Internal::Core::Backlog@{VE::Internal::Core::Backlog}!INFO@{INFO}}}\Hypertarget{namespaceVE_1_1Internal_1_1Core_1_1Backlog_a81357fc0a1bef89d09a2261c90aa4d5fa551b723eafd6a31d444fcb2f5920fbd3}\label{namespaceVE_1_1Internal_1_1Core_1_1Backlog_a81357fc0a1bef89d09a2261c90aa4d5fa551b723eafd6a31d444fcb2f5920fbd3} 
+INFO&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DEBUG@{DEBUG}!VE::Internal::Core::Backlog@{VE::Internal::Core::Backlog}}\index{VE::Internal::Core::Backlog@{VE::Internal::Core::Backlog}!DEBUG@{DEBUG}}}\Hypertarget{namespaceVE_1_1Internal_1_1Core_1_1Backlog_a81357fc0a1bef89d09a2261c90aa4d5fadc30ec20708ef7b0f641ef78b7880a15}\label{namespaceVE_1_1Internal_1_1Core_1_1Backlog_a81357fc0a1bef89d09a2261c90aa4d5fadc30ec20708ef7b0f641ef78b7880a15} 
+DEBUG&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{WARNING@{WARNING}!VE::Internal::Core::Backlog@{VE::Internal::Core::Backlog}}\index{VE::Internal::Core::Backlog@{VE::Internal::Core::Backlog}!WARNING@{WARNING}}}\Hypertarget{namespaceVE_1_1Internal_1_1Core_1_1Backlog_a81357fc0a1bef89d09a2261c90aa4d5fa059e9861e0400dfbe05c98a841f3f96b}\label{namespaceVE_1_1Internal_1_1Core_1_1Backlog_a81357fc0a1bef89d09a2261c90aa4d5fa059e9861e0400dfbe05c98a841f3f96b} 
+WARNING&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ERR@{ERR}!VE::Internal::Core::Backlog@{VE::Internal::Core::Backlog}}\index{VE::Internal::Core::Backlog@{VE::Internal::Core::Backlog}!ERR@{ERR}}}\Hypertarget{namespaceVE_1_1Internal_1_1Core_1_1Backlog_a81357fc0a1bef89d09a2261c90aa4d5facd22bad976363fdd1bfbf6759fede482}\label{namespaceVE_1_1Internal_1_1Core_1_1Backlog_a81357fc0a1bef89d09a2261c90aa4d5facd22bad976363fdd1bfbf6759fede482} 
+ERR&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\label{doc-func-members}
+\Hypertarget{namespaceVE_1_1Internal_1_1Core_1_1Backlog_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{namespaceVE_1_1Internal_1_1Core_1_1Backlog_ad2a7504bfe4fce78821f1a8e6951a225}\index{VE::Internal::Core::Backlog@{VE::Internal::Core::Backlog}!ELogLevelToString@{ELogLevelToString}}
+\index{ELogLevelToString@{ELogLevelToString}!VE::Internal::Core::Backlog@{VE::Internal::Core::Backlog}}
+\doxysubsubsection{\texorpdfstring{ELogLevelToString()}{ELogLevelToString()}}
+{\footnotesize\ttfamily \label{namespaceVE_1_1Internal_1_1Core_1_1Backlog_ad2a7504bfe4fce78821f1a8e6951a225} 
+std\+::string VE\+::\+Internal\+::\+Core\+::\+Backlog\+::\+ELog\+Level\+To\+String (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceVE_1_1Internal_1_1Core_1_1Backlog_a81357fc0a1bef89d09a2261c90aa4d5f}{ELog\+Level}}}]{level}{}\end{DoxyParamCaption})}
+
+\Hypertarget{namespaceVE_1_1Internal_1_1Core_1_1Backlog_aa6863e27f278d8b147eaf8b2f8ce2022}\index{VE::Internal::Core::Backlog@{VE::Internal::Core::Backlog}!Log@{Log}}
+\index{Log@{Log}!VE::Internal::Core::Backlog@{VE::Internal::Core::Backlog}}
+\doxysubsubsection{\texorpdfstring{Log()}{Log()}}
+{\footnotesize\ttfamily \label{namespaceVE_1_1Internal_1_1Core_1_1Backlog_aa6863e27f278d8b147eaf8b2f8ce2022} 
+void VE\+::\+Internal\+::\+Core\+::\+Backlog\+::\+Log (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{source}{, }\item[{const std\+::string \&}]{msg}{, }\item[{\mbox{\hyperlink{namespaceVE_1_1Internal_1_1Core_1_1Backlog_a81357fc0a1bef89d09a2261c90aa4d5f}{ELog\+Level}}}]{level}{ = {\ttfamily \mbox{\hyperlink{namespaceVE_1_1Internal_1_1Core_1_1Backlog_a81357fc0a1bef89d09a2261c90aa4d5fa551b723eafd6a31d444fcb2f5920fbd3}{ELog\+Level\+::\+INFO}}}}\end{DoxyParamCaption})}
+
+\Hypertarget{namespaceVE_1_1Internal_1_1Core_1_1Backlog_a93f8d7d7330a4e426b12d16449ae42e7}\index{VE::Internal::Core::Backlog@{VE::Internal::Core::Backlog}!LogLevelToString@{LogLevelToString}}
+\index{LogLevelToString@{LogLevelToString}!VE::Internal::Core::Backlog@{VE::Internal::Core::Backlog}}
+\doxysubsubsection{\texorpdfstring{LogLevelToString()}{LogLevelToString()}}
+{\footnotesize\ttfamily \label{namespaceVE_1_1Internal_1_1Core_1_1Backlog_a93f8d7d7330a4e426b12d16449ae42e7} 
+std\+::string VE\+::\+Internal\+::\+Core\+::\+Backlog\+::\+Log\+Level\+To\+String (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceVE_1_1Internal_1_1Core_1_1Backlog_a81357fc0a1bef89d09a2261c90aa4d5f}{ELog\+Level}}}]{level}{}\end{DoxyParamCaption})}
+
+
+
+\label{doc-var-members}
+\Hypertarget{namespaceVE_1_1Internal_1_1Core_1_1Backlog_doc-var-members}
+\doxysubsection{Variable Documentation}
+\Hypertarget{namespaceVE_1_1Internal_1_1Core_1_1Backlog_a56d7e20500cf8018f96f82403ea698c5}\index{VE::Internal::Core::Backlog@{VE::Internal::Core::Backlog}!logEntries@{logEntries}}
+\index{logEntries@{logEntries}!VE::Internal::Core::Backlog@{VE::Internal::Core::Backlog}}
+\doxysubsubsection{\texorpdfstring{logEntries}{logEntries}}
+{\footnotesize\ttfamily \label{namespaceVE_1_1Internal_1_1Core_1_1Backlog_a56d7e20500cf8018f96f82403ea698c5} 
+\mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector}{VE\+::\+Internal\+::\+Core\+::\+Container\+::\+TVector}}$<$ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Backlog_1_1VLogEntry}{VLog\+Entry}} $>$ VE\+::\+Internal\+::\+Core\+::\+Backlog\+::log\+Entries}
+
+\Hypertarget{namespaceVE_1_1Internal_1_1Core_1_1Backlog_ac2af0e1e52e56a8346f20e7fda755b5e}\index{VE::Internal::Core::Backlog@{VE::Internal::Core::Backlog}!logMutex@{logMutex}}
+\index{logMutex@{logMutex}!VE::Internal::Core::Backlog@{VE::Internal::Core::Backlog}}
+\doxysubsubsection{\texorpdfstring{logMutex}{logMutex}}
+{\footnotesize\ttfamily \label{namespaceVE_1_1Internal_1_1Core_1_1Backlog_ac2af0e1e52e56a8346f20e7fda755b5e} 
+std\+::mutex VE\+::\+Internal\+::\+Core\+::\+Backlog\+::log\+Mutex}
+
