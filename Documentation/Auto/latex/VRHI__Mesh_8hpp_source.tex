@@ -1,0 +1,54 @@
+\doxysection{VRHI\+\_\+\+Mesh.\+hpp}
+\hypertarget{VRHI__Mesh_8hpp_source}{}\label{VRHI__Mesh_8hpp_source}\index{Vantor/Source/Vantor/RHI/Include/RHI/Interface/VRHI\_Mesh.hpp@{Vantor/Source/Vantor/RHI/Include/RHI/Interface/VRHI\_Mesh.hpp}}
+\mbox{\hyperlink{VRHI__Mesh_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/****************************************************************************}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ Vantor\ Engine™\ -\/\ Source\ Code\ (2025)}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ Author\ \ \ \ :\ Lukas\ Rennhofer\ (@LukasRennhofer),\ Vantor\ Studios™}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ Copyright\ :\ ©\ 2025\ Lukas\ Rennhofer,\ Vantor\ Studios™}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ *\ License\ \ \ :\ GNU\ General\ Public\ License\ v3.0}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ See\ LICENSE\ file\ for\ full\ details.}}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ ****************************************************************************/}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <cstdint>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI}{VE::Internal::RHI}}}
+\DoxyCodeLine{00016\ \{}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIBuffer}{IRHIBuffer}};\ \textcolor{comment}{//\ forward\ declaration,\ because\ why\ not}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a2c5cfd4eeba474f2e652bf3bcba13200}{EPrimitiveType}}}
+\DoxyCodeLine{00021\ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a2c5cfd4eeba474f2e652bf3bcba13200a7ca66fdfaad3eb33fc65d7490178f856}{Triangles}},}
+\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a2c5cfd4eeba474f2e652bf3bcba13200a1da0b9ead8b051940a89214bae22831c}{TriangleStrip}},}
+\DoxyCodeLine{00024\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a2c5cfd4eeba474f2e652bf3bcba13200aa0b0293a2db49f5f93c15a62e095c819}{Lines}},}
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a2c5cfd4eeba474f2e652bf3bcba13200ae7f9e73b8edd21f420a63b3ace5768a2}{LineStrip}},}
+\DoxyCodeLine{00026\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a2c5cfd4eeba474f2e652bf3bcba13200a75dd5f1160a3f02b6fae89c54361a1b3}{Points}}}
+\DoxyCodeLine{00027\ \};}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIMesh}{IRHIMesh}}}
+\DoxyCodeLine{00030\ \{}
+\DoxyCodeLine{00031\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIMesh_ab092d1383a76f22731cb9e658a16db50}{\string~IRHIMesh}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIMesh_a3edebeedd1ff2101b378284b166e63b9}{Bind}}()\ =\ 0;}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIMesh_a8e15a68b80036f0d11b08a7466b95909}{Unbind}}()\ =\ 0;}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIMesh_a880b6ec93eb40cbeed96757611482462}{Draw}}()\ =\ 0;}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIMesh_a7a7f7a08ccfc94bb201fe82027c2f44c}{Draw}}(\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a2c5cfd4eeba474f2e652bf3bcba13200}{EPrimitiveType}}\ primitiveType)\ =\ 0;}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keyword}{virtual}\ uint32\_t\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIMesh_aa9b7cdd4af40895d2b24980178e72029}{GetVertexCount}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keyword}{virtual}\ uint32\_t\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIMesh_aa918e5589e70051965677a44818f77b2}{GetIndexCount}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{comment}{//\ IDK\ why\ I\ am\ exposing\ the\ buffers\ so\ early\ }}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{comment}{//\ but\ i\ guess\ Terry\ A.\ Davis\ would\ want\ it}}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keyword}{virtual}\ std::shared\_ptr<IRHIBuffer>\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIMesh_afb28fb055f8ac895d5f60532296b6dab}{GetVertexBuffer}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keyword}{virtual}\ std::shared\_ptr<IRHIBuffer>\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIMesh_a9e0211ca58962b906c6cca1f816ede2a}{GetIndexBuffer}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00046\ \};}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \}\ \textcolor{comment}{//\ namespace\ VE::Internal::RHI}}
+
+\end{DoxyCode}

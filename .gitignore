@@ -2,7 +2,10 @@
 
 # =========== Build ==============
 # Build Path
-./Build/
+/Build/
+
+# Private Folder
+/Private/
 
 # =========== Python ==============
 # Byte-compiled / optimized / DLL files
@@ -66,4 +69,7 @@ venv.bak/
 *.vsix
 
 .idea/
+
+# ========== .ini files ==========
+imgui.ini
 

@@ -1,0 +1,332 @@
+\doxysection{VCO\+\_\+\+Vector.\+hpp}
+\hypertarget{VCO__Vector_8hpp_source}{}\label{VCO__Vector_8hpp_source}\index{Vantor/Source/Vantor/Core/Include/Core/Container/VCO\_Vector.hpp@{Vantor/Source/Vantor/Core/Include/Core/Container/VCO\_Vector.hpp}}
+\mbox{\hyperlink{VCO__Vector_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/****************************************************************************}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ Vantor\ Engine™\ -\/\ Source\ Code\ (2025)}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ Author\ \ \ \ :\ Lukas\ Rennhofer\ (@LukasRennhofer),\ Vantor\ Studios™}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ Copyright\ :\ ©\ 2025\ Lukas\ Rennhofer,\ Vantor\ Studios™}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ *\ License\ \ \ :\ GNU\ General\ Public\ License\ v3.0}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ See\ LICENSE\ file\ for\ full\ details.}}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ ****************************************************************************/}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{comment}{//\ VCO\_TVector.hpp\ -\/\ Custom\ TVector\ implementation\ for\ the\ Vantor\ engine}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//\ This\ is\ a\ simplified\ std::TVector-\/like\ container\ with\ basic\ dynamic\ array\ functionality}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ Provides\ efficient\ memory\ management\ with\ allocator\ support}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <cassert>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <cstdint>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <initializer\_list>}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <new>}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ <utility>}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceVE_1_1Internal_1_1Core_1_1Container}{VE::Internal::Core::Container}}}
+\DoxyCodeLine{00024\ \{}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{comment}{//\ Custom\ TVector\ container\ template\ class}}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{comment}{//\ T:\ element\ type,\ A:\ allocator\ type\ (defaults\ to\ std::allocator<T>)}}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ A\ =\ std::allocator<T>>\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a42ca981fd5efb31183034073676ac838}{TVector}}}
+\DoxyCodeLine{00028\ \ \ \ \ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a34c8db4f66e642939ed38164a0e1f85a}{value\_type}}\ =\ T;}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Default\ constructor\ -\/\ creates\ empty\ TVector\ or\ with\ specified\ initial\ size}}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a42ca981fd5efb31183034073676ac838}{TVector}}(\textcolor{keywordtype}{size\_t}\ initial\_size\ =\ 0)\ \{\ \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a00497e144a84da431a96134fcd9816e7}{resize}}(initial\_size);\ \}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Copy\ constructor\ -\/\ creates\ deep\ copy\ of\ another\ TVector}}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a5724d53c38c993612ab0f1151a9402f9}{TVector}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a42ca981fd5efb31183034073676ac838}{TVector<T>}}\ \&source\_TVector)\ \{\ copy\_from(source\_TVector);\ \}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Move\ constructor\ -\/\ transfers\ ownership\ from\ another\ TVector}}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a35f08e15750a3478604fa3781fa7d354}{TVector}}(\mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a42ca981fd5efb31183034073676ac838}{TVector<T>}}\ \&\&source\_TVector)\ \textcolor{keyword}{noexcept}\ \{\ move\_from(std::move(source\_TVector));\ \}}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Initializer\ list\ constructor\ -\/\ creates\ TVector\ from\ brace-\/enclosed\ list}}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a81f4b2dcf6d20ecbf55d5a6cb9c29da5}{TVector}}(std::initializer\_list<T>\ init\_list)}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a1bd585b39f5882c0af298677a71f734e}{reserve}}(init\_list.size());}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \&element\ :\ init\_list)}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a1d0a156a2cc88d247a5b75a2a101fff7}{push\_back}}(element);}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Destructor\ -\/\ cleans\ up\ all\ elements\ and\ deallocates\ memory}}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a40afeb4048d96b0e1a61acd5d0c732f5}{\string~TVector}}()}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a53f099bedb89e51fe465423f8d3d60e1}{clear}}();}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_data\_ptr\ !=\ \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_allocator.deallocate(m\_data\_ptr,\ m\_capacity);}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Copy\ assignment\ -\/\ replaces\ contents\ with\ deep\ copy\ of\ another\ TVector}}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a42ca981fd5efb31183034073676ac838}{TVector<T>}}\ \&\mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a8b4e297635689836bff3d25c713e0e98}{operator=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a42ca981fd5efb31183034073676ac838}{TVector<T>}}\ \&source\_TVector)}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ copy\_from(source\_TVector);}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Move\ assignment\ -\/\ replaces\ contents\ by\ transferring\ ownership}}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a42ca981fd5efb31183034073676ac838}{TVector<T>}}\ \&\mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_adb11c1fde607829d202ba78a0137a853}{operator=}}(\mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a42ca981fd5efb31183034073676ac838}{TVector<T>}}\ \&\&source\_TVector)}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ move\_from(std::move(source\_TVector));}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Array\ subscript\ operator\ -\/\ provides\ direct\ access\ to\ element\ at\ index\ (no\ bounds\ checking)}}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ T\ \&\mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a7baa59131e651df216ee0d6537d30a30}{operator[]}}(\textcolor{keywordtype}{size\_t}\ element\_index)\ \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ assert(m\_current\_size\ >\ 0\ \&\&\ element\_index\ <\ m\_current\_size);}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_data\_ptr[element\_index];}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Const\ array\ subscript\ operator\ -\/\ provides\ read-\/only\ access\ to\ element\ at\ index}}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{const}\ T\ \&\mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a0282d1b31261041ce3a984521b402e15}{operator[]}}(\textcolor{keywordtype}{size\_t}\ element\_index)\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ assert(m\_current\_size\ >\ 0\ \&\&\ element\_index\ <\ m\_current\_size);}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_data\_ptr[element\_index];}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Reserve\ memory\ for\ at\ least\ the\ specified\ number\ of\ elements\ (doesn't\ change\ size)}}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a1bd585b39f5882c0af298677a71f734e}{reserve}}(\textcolor{keywordtype}{size\_t}\ requested\_capacity)}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (requested\_capacity\ >\ m\_capacity)}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ old\_capacity\ =\ m\_capacity;}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ T\ \ \ \ \ *old\_data\_ptr\ =\ allocate\_and\_move(requested\_capacity);}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (old\_data\_ptr\ !=\ \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_allocator.deallocate(old\_data\_ptr,\ old\_capacity);}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Resize\ TVector\ to\ contain\ exactly\ the\ specified\ number\ of\ elements}}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a00497e144a84da431a96134fcd9816e7}{resize}}(\textcolor{keywordtype}{size\_t}\ new\_size)}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (new\_size\ >\ m\_current\_size)}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a1bd585b39f5882c0af298677a71f734e}{reserve}}(new\_size);}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Expand\ the\ TVector\ -\/\ default-\/construct\ new\ elements}}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ m\_current\_size;\ i\ <\ new\_size;\ ++i)}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ (m\_data\_ptr\ +\ i)\ T();}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_current\_size\ =\ new\_size;}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (new\_size\ <\ m\_current\_size)}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Shrink\ the\ TVector\ -\/\ destroy\ excess\ elements}}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (m\_current\_size\ >\ new\_size)}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_af194807c421491402758ea99fb41574a}{pop\_back}}();}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Reduce\ capacity\ to\ match\ current\ size\ (frees\ unused\ memory)}}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_aa16f87df5929e75dd5d68ab00836cf7f}{shrink\_to\_fit}}()}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_capacity\ >\ m\_current\_size)}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ old\_capacity\ =\ m\_capacity;}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ T\ \ \ \ \ *old\_data\_ptr\ =\ allocate\_and\_move(m\_current\_size);}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (old\_data\_ptr\ !=\ \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_allocator.deallocate(old\_data\_ptr,\ old\_capacity);}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00140\ }
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Construct\ element\ in-\/place\ at\ the\ end\ of\ the\ TVector\ using\ provided\ arguments}}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}...\ ConstructorArgs>\ \textcolor{keyword}{inline}\ T\ \&\mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a25adab1b0745d135c41ec33392d233ac}{emplace\_back}}(ConstructorArgs\ \&\&...constructor\_args)}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \ \ \ \ \ \ old\_capacity\ \ \ \ \ \ =\ m\_capacity;}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ T\ \ \ \ \ \ \ \ \ \ \ *old\_data\_ptr\ \ \ \ \ \ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ required\_capacity\ =\ m\_current\_size\ +\ 1;}
+\DoxyCodeLine{00147\ }
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ if\ we\ need\ to\ grow\ the\ capacity}}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (required\_capacity\ >\ m\_capacity)}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Double\ the\ capacity\ to\ amortize\ future\ allocations}}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ old\_data\_ptr\ =\ allocate\_and\_move(required\_capacity\ *\ 2);}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00154\ }
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Construct\ new\ element\ at\ the\ end}}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ T\ *new\_element\_ptr\ =\ \textcolor{keyword}{new}\ (m\_data\_ptr\ +\ m\_current\_size)\ T(std::forward<ConstructorArgs>(constructor\_args)...);}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_current\_size++;}
+\DoxyCodeLine{00158\ }
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Clean\ up\ old\ allocation\ if\ we\ reallocated}}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (old\_data\_ptr\ !=\ \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_allocator.deallocate(old\_data\_ptr,\ old\_capacity);}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *new\_element\_ptr;}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00166\ }
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Add\ element\ to\ the\ end\ of\ the\ TVector\ (copy\ version)}}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a1d0a156a2cc88d247a5b75a2a101fff7}{push\_back}}(\textcolor{keyword}{const}\ T\ \&element)\ \{\ \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a25adab1b0745d135c41ec33392d233ac}{emplace\_back}}(element);\ \}}
+\DoxyCodeLine{00169\ }
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Add\ element\ to\ the\ end\ of\ the\ TVector\ (move\ version)}}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a7114a238523664d7671e44a2badb029f}{push\_back}}(T\ \&\&element)\ \{\ \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a25adab1b0745d135c41ec33392d233ac}{emplace\_back}}(std::move(element));\ \}}
+\DoxyCodeLine{00172\ }
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Remove\ all\ elements\ from\ the\ TVector\ (calls\ destructors\ but\ doesn't\ deallocate\ memory)}}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a53f099bedb89e51fe465423f8d3d60e1}{clear}}()\ noexcept}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ m\_current\_size;\ ++i)}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_data\_ptr[i].\string~T();}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_current\_size\ =\ 0;}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00182\ }
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Remove\ the\ last\ element\ from\ the\ TVector}}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_af194807c421491402758ea99fb41574a}{pop\_back}}()\ noexcept}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ assert(m\_current\_size\ >\ 0);}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_data\_ptr[-\/-\/m\_current\_size].\string~T();}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00189\ }
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Remove\ element\ at\ specified\ position\ (shifts\ remaining\ elements\ left)}}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a45e54b6bd4d0f4cf87ee96ebc35eea93}{erase}}(T\ *position)\ \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ assert(position\ >=\ \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_aa2723bbbc706bc6313720c79ee9a8ecd}{begin}}());}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ assert(position\ <\ \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_afaf7151bcf3583c31d82efc81a2cd88d}{end}}());}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::move(position\ +\ 1,\ \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_afaf7151bcf3583c31d82efc81a2cd88d}{end}}(),\ position);\ \textcolor{comment}{//\ Shift\ elements\ left\ to\ fill\ gap}}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_af194807c421491402758ea99fb41574a}{pop\_back}}();\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Destroy\ the\ now-\/duplicate\ last\ element}}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00198\ }
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Get\ reference\ to\ the\ last\ element}}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ T\ \&\mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a7a8fe31669a623415c017372d0b5fab6}{back}}()\ noexcept}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ assert(m\_current\_size\ >\ 0);}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_data\_ptr[m\_current\_size\ -\/\ 1];}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00205\ }
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Get\ const\ reference\ to\ the\ last\ element}}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{const}\ T\ \&\mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a8008cd7633d86dc42a0b7170cab791ab}{back}}()\ const\ noexcept}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ assert(m\_current\_size\ >\ 0);}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_data\_ptr[m\_current\_size\ -\/\ 1];}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00212\ }
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Get\ reference\ to\ the\ first\ element}}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ T\ \&\mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_acaba72615d59a2c2035725c6664884d8}{front}}()\ noexcept}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ assert(m\_current\_size\ >\ 0);}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_data\_ptr[0];}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00219\ }
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Get\ const\ reference\ to\ the\ first\ element}}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{const}\ T\ \&\mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a5c019d3dd35b8e43c4afe53dc93e6127}{front}}()\ const\ noexcept}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ assert(m\_current\_size\ >\ 0);}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_data\_ptr[0];}
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00226\ }
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Get\ direct\ pointer\ to\ underlying\ array}}
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ T\ *\mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a0194a740b447c0a3cbe8508b22f1dc76}{data}}()\ noexcept\ \{\ \textcolor{keywordflow}{return}\ m\_data\_ptr;\ \}}
+\DoxyCodeLine{00229\ }
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Get\ const\ pointer\ to\ underlying\ array}}
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{const}\ T\ *\mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a10708fb47182441930df1c42f09780fb}{data}}()\ const\ noexcept\ \{\ \textcolor{keywordflow}{return}\ m\_data\_ptr;\ \}}
+\DoxyCodeLine{00232\ }
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Bounds-\/checked\ element\ access\ (same\ as\ operator[]\ but\ with\ explicit\ assertion)}}
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ T\ \&\mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a042ff8a7426cba44f65de1815998ffe5}{at}}(\textcolor{keywordtype}{size\_t}\ element\_index)\ \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ assert(m\_current\_size\ >\ 0\ \&\&\ element\_index\ <\ m\_current\_size);}
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_data\_ptr[element\_index];}
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00239\ }
+\DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Const\ bounds-\/checked\ element\ access}}
+\DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{const}\ T\ \&\mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a51b9104c7479027efc6351b9deda0656}{at}}(\textcolor{keywordtype}{size\_t}\ element\_index)\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{00242\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ assert(m\_current\_size\ >\ 0\ \&\&\ element\_index\ <\ m\_current\_size);}
+\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_data\_ptr[element\_index];}
+\DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00246\ }
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Get\ the\ number\ of\ elements\ currently\ in\ the\ TVector}}
+\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a7e82fb696fe06b2a6410324547b09323}{size}}()\ const\ noexcept\ \{\ \textcolor{keywordflow}{return}\ m\_current\_size;\ \}}
+\DoxyCodeLine{00249\ }
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ if\ the\ TVector\ contains\ no\ elements}}
+\DoxyCodeLine{00251\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a897bccfaab854defae7fc5d889d2c4b3}{empty}}()\ const\ noexcept\ \{\ \textcolor{keywordflow}{return}\ m\_current\_size\ ==\ 0;\ \}}
+\DoxyCodeLine{00252\ }
+\DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Get\ iterator\ to\ first\ element}}
+\DoxyCodeLine{00254\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ T\ *\mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_aa2723bbbc706bc6313720c79ee9a8ecd}{begin}}()\ noexcept\ \{\ \textcolor{keywordflow}{return}\ m\_data\_ptr;\ \}}
+\DoxyCodeLine{00255\ }
+\DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Get\ const\ iterator\ to\ first\ element}}
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{const}\ T\ *\mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a0cd25f304f1dbbf1ce423824c498548a}{begin}}()\ const\ noexcept\ \{\ \textcolor{keywordflow}{return}\ m\_data\_ptr;\ \}}
+\DoxyCodeLine{00258\ }
+\DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Get\ iterator\ to\ one\ past\ the\ last\ element}}
+\DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ T\ *\mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_afaf7151bcf3583c31d82efc81a2cd88d}{end}}()\ noexcept\ \{\ \textcolor{keywordflow}{return}\ m\_data\_ptr\ +\ m\_current\_size;\ \}}
+\DoxyCodeLine{00261\ }
+\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Get\ const\ iterator\ to\ one\ past\ the\ last\ element}}
+\DoxyCodeLine{00263\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{const}\ T\ *\mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_af9d1e3445a0e20d522a530596502b6f8}{end}}()\ const\ noexcept\ \{\ \textcolor{keywordflow}{return}\ m\_data\_ptr\ +\ m\_current\_size;\ \}}
+\DoxyCodeLine{00264\ }
+\DoxyCodeLine{00265\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00266\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Allocate\ new\ memory\ and\ move\ existing\ elements\ to\ it}}
+\DoxyCodeLine{00267\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Returns\ pointer\ to\ old\ data\ if\ reallocation\ occurred,\ nullptr\ otherwise}}
+\DoxyCodeLine{00268\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ T\ *allocate\_and\_move(\textcolor{keywordtype}{size\_t}\ new\_capacity)}
+\DoxyCodeLine{00269\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00270\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (new\_capacity\ >\ m\_current\_size)}
+\DoxyCodeLine{00271\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00272\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_capacity\ =\ new\_capacity;}
+\DoxyCodeLine{00273\ }
+\DoxyCodeLine{00274\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Allocate\ new\ memory\ block}}
+\DoxyCodeLine{00275\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ T\ *new\_allocation\ =\ m\_allocator.allocate(m\_capacity);}
+\DoxyCodeLine{00276\ }
+\DoxyCodeLine{00277\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Move\ existing\ elements\ to\ new\ location}}
+\DoxyCodeLine{00278\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ m\_current\_size;\ ++i)}
+\DoxyCodeLine{00279\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00280\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ (new\_allocation\ +\ i)\ T(std::move(m\_data\_ptr[i]));}
+\DoxyCodeLine{00281\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00282\ }
+\DoxyCodeLine{00283\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Swap\ data\ pointers\ and\ return\ old\ allocation\ for\ cleanup}}
+\DoxyCodeLine{00284\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::swap(m\_data\_ptr,\ new\_allocation);}
+\DoxyCodeLine{00285\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ new\_allocation;}
+\DoxyCodeLine{00286\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00287\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00288\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00289\ }
+\DoxyCodeLine{00290\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Copy\ all\ elements\ from\ another\ TVector\ (used\ by\ copy\ constructor\ and\ assignment)}}
+\DoxyCodeLine{00291\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ copy\_from(\textcolor{keyword}{const}\ \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a42ca981fd5efb31183034073676ac838}{TVector<T>}}\ \&source\_TVector)}
+\DoxyCodeLine{00292\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00293\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a00497e144a84da431a96134fcd9816e7}{resize}}(source\_TVector.size());}
+\DoxyCodeLine{00294\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ m\_current\_size;\ ++i)}
+\DoxyCodeLine{00295\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00296\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_data\_ptr[i]\ =\ source\_TVector.m\_data\_ptr[i];}
+\DoxyCodeLine{00297\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00298\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00299\ }
+\DoxyCodeLine{00300\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Transfer\ ownership\ from\ another\ TVector\ (used\ by\ move\ constructor\ and\ assignment)}}
+\DoxyCodeLine{00301\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ move\_from(\mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a42ca981fd5efb31183034073676ac838}{TVector<T>}}\ \&\&source\_TVector)}
+\DoxyCodeLine{00302\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00303\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector_a53f099bedb89e51fe465423f8d3d60e1}{clear}}();}
+\DoxyCodeLine{00304\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_data\_ptr\ !=\ \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{00305\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00306\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_allocator.deallocate(m\_data\_ptr,\ m\_capacity);}
+\DoxyCodeLine{00307\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00308\ }
+\DoxyCodeLine{00309\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Take\ ownership\ of\ source\ TVector's\ data}}
+\DoxyCodeLine{00310\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_capacity\ \ \ \ \ =\ source\_TVector.m\_capacity;}
+\DoxyCodeLine{00311\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_current\_size\ =\ source\_TVector.m\_current\_size;}
+\DoxyCodeLine{00312\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_data\_ptr\ \ \ \ \ =\ source\_TVector.m\_data\_ptr;}
+\DoxyCodeLine{00313\ }
+\DoxyCodeLine{00314\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Leave\ source\ TVector\ in\ valid\ empty\ state}}
+\DoxyCodeLine{00315\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ source\_TVector.m\_data\_ptr\ \ \ \ \ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00316\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ source\_TVector.m\_current\_size\ =\ 0;}
+\DoxyCodeLine{00317\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ source\_TVector.m\_capacity\ \ \ \ \ =\ 0;}
+\DoxyCodeLine{00318\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00319\ }
+\DoxyCodeLine{00320\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Members}}
+\DoxyCodeLine{00321\ \ \ \ \ \ \ \ \ \ \ \ \ T\ \ \ \ \ *m\_data\_ptr\ \ \ \ \ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00322\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ m\_current\_size\ =\ 0;}
+\DoxyCodeLine{00323\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ m\_capacity\ \ \ \ \ =\ 0;}
+\DoxyCodeLine{00324\ \ \ \ \ \ \ \ \ \ \ \ \ A\ \ \ \ \ \ m\_allocator;}
+\DoxyCodeLine{00325\ \ \ \ \ \};}
+\DoxyCodeLine{00326\ \}\ \textcolor{comment}{//\ namespace\ VE::Internal::Core}}
+
+\end{DoxyCode}

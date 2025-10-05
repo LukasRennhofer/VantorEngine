@@ -1,0 +1,59 @@
+\doxysection{VREP\+\_\+\+Command\+Buffer.\+hpp}
+\hypertarget{VREP__CommandBuffer_8hpp_source}{}\label{VREP__CommandBuffer_8hpp_source}\index{Vantor/Source/Vantor/RenderPipeline/Include/RenderPipeline/Pipeline/VREP\_CommandBuffer.hpp@{Vantor/Source/Vantor/RenderPipeline/Include/RenderPipeline/Pipeline/VREP\_CommandBuffer.hpp}}
+\mbox{\hyperlink{VREP__CommandBuffer_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/****************************************************************************}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ Vantor\ Engine™\ -\/\ Source\ Code\ (2025)}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ Author\ \ \ \ :\ Lukas\ Rennhofer\ (@LukasRennhofer),\ Vantor\ Studios™}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ Copyright\ :\ ©\ 2025\ Lukas\ Rennhofer,\ Vantor\ Studios™}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ *\ License\ \ \ :\ GNU\ General\ Public\ License\ v3.0}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ See\ LICENSE\ file\ for\ full\ details.}}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ ****************************************************************************/}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{VMA__Matrix_8hpp}{Math/Linear/VMA\_Matrix.hpp}}>}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{VMAS__Material_8hpp}{MaterialSystem/Public/VMAS\_Material.hpp}}>}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI}{VE::Internal::RHI}}\ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIMesh}{IRHIMesh}};}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIShader}{IRHIShader}};}
+\DoxyCodeLine{00021\ \}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RenderPipeline}{VE::Internal::RenderPipeline}}\ \{}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structVE_1_1Internal_1_1RenderPipeline_1_1VRenderCommand}{VRenderCommand}}}
+\DoxyCodeLine{00026\ \ \ \ \ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Math_1_1VMat4}{VE::Math::VMat4}}\ \mbox{\hyperlink{structVE_1_1Internal_1_1RenderPipeline_1_1VRenderCommand_ae5659e729c2fa501e22bca2a133ffd04}{Transform}};}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Vantor::Math::VMat4\ PrevTransform;}}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIMesh}{VE::Internal::RHI::IRHIMesh}}*\ \mbox{\hyperlink{structVE_1_1Internal_1_1RenderPipeline_1_1VRenderCommand_a526294d1190c88851a9f8dc0db61021a}{Mesh}};}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVE_1_1VMaterial}{VE::VMaterial}}*\ \mbox{\hyperlink{structVE_1_1Internal_1_1RenderPipeline_1_1VRenderCommand_aa8ade40a642bf38d67f3ed4b9e031073}{Material}};}
+\DoxyCodeLine{00031\ \ \ \ \ \};}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classVE_1_1Internal_1_1RenderPipeline_1_1VCommandBuffer_aba2e42f2530db2c22ee8f437cfe492d2}{VCommandBuffer}}}
+\DoxyCodeLine{00034\ \ \ \ \ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVE_1_1Internal_1_1RenderPipeline_1_1VCommandBuffer_aba2e42f2530db2c22ee8f437cfe492d2}{VCommandBuffer}}();}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVE_1_1Internal_1_1RenderPipeline_1_1VCommandBuffer_a04cce00496aed6af6917286e68cdb288}{\string~VCommandBuffer}}();}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ pushes\ render\ state\ relevant\ to\ a\ single\ render\ call\ to\ the\ command\ buffer.}}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Internal_1_1RenderPipeline_1_1VCommandBuffer_a08478ade2d674b60f77b4a2c3932b4bb}{Push}}(\mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIMesh}{VE::Internal::RHI::IRHIMesh}}\ *mesh,\ \mbox{\hyperlink{classVE_1_1VMaterial}{VE::VMaterial}}*\ material,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat4}{VE::Math::VMat4}}\&\ transform);}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ clears\ the\ command\ buffer;\ usually\ done\ after\ issuing\ all\ the\ stored\ render\ commands.}}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Internal_1_1RenderPipeline_1_1VCommandBuffer_a5e999e7d5ef00ee8e6995ab6055bce16}{Clear}}();}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ sorts\ the\ command\ buffer;\ first\ by\ shader,\ then\ by\ texture\ bind.}}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Internal_1_1RenderPipeline_1_1VCommandBuffer_a47652438936486f353a0fec30b84e29e}{Sort}}();}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<VRenderCommand>\ \mbox{\hyperlink{classVE_1_1Internal_1_1RenderPipeline_1_1VCommandBuffer_ade8206fdb9638bd62383eab77d06719d}{GetForwardRenderCommands}}(\textcolor{keywordtype}{bool}\ cull\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<VRenderCommand>\ \mbox{\hyperlink{classVE_1_1Internal_1_1RenderPipeline_1_1VCommandBuffer_abf9ffafc7ea82c8e5f6074b5223b2bc7}{GetDefferedRenderCommands}}(\textcolor{keywordtype}{bool}\ cull\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<VRenderCommand>\ m\_ForwardRenderCommands;}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<VRenderCommand>\ m\_DeferredRenderCommands;}
+\DoxyCodeLine{00052\ \ \ \ \ \};}
+\DoxyCodeLine{00053\ \}}
+
+\end{DoxyCode}

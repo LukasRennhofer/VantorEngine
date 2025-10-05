@@ -1,0 +1,46 @@
+\doxysection{VRHI\+\_\+\+Buffer.\+hpp}
+\hypertarget{VRHI__Buffer_8hpp_source}{}\label{VRHI__Buffer_8hpp_source}\index{Vantor/Source/Vantor/RHI/Include/RHI/Interface/VRHI\_Buffer.hpp@{Vantor/Source/Vantor/RHI/Include/RHI/Interface/VRHI\_Buffer.hpp}}
+\mbox{\hyperlink{VRHI__Buffer_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/****************************************************************************}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ Vantor\ Engine™\ -\/\ Source\ Code\ (2025)}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ Author\ \ \ \ :\ Lukas\ Rennhofer\ (@LukasRennhofer),\ Vantor\ Studios™}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ Copyright\ :\ ©\ 2025\ Lukas\ Rennhofer,\ Vantor\ Studios™}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ *\ License\ \ \ :\ GNU\ General\ Public\ License\ v3.0}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ See\ LICENSE\ file\ for\ full\ details.}}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ ****************************************************************************/}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <cstdint>}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI}{VE::Internal::RHI}}}
+\DoxyCodeLine{00015\ \{}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_abbf804d42cb99254cfdd8d88d3d1584f}{EBufferUsage}}}
+\DoxyCodeLine{00018\ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_abbf804d42cb99254cfdd8d88d3d1584fa84a8921b25f505d0d2077aeb5db4bc16}{Static}},\ \ \ \ \textcolor{comment}{//\ Data\ won't\ change}}
+\DoxyCodeLine{00020\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_abbf804d42cb99254cfdd8d88d3d1584fa971fd8cc345d8bd9f92e9f7d88fdf20c}{Dynamic}},\ \ \ \textcolor{comment}{//\ Data\ will\ change\ occasionally}}
+\DoxyCodeLine{00021\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_abbf804d42cb99254cfdd8d88d3d1584faeae835e83c0494a376229f254f7d3392}{Stream}}\ \ \ \ \ \textcolor{comment}{//\ Data\ will\ change\ every\ frame}}
+\DoxyCodeLine{00022\ \};}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIBuffer}{IRHIBuffer}}}
+\DoxyCodeLine{00025\ \{}
+\DoxyCodeLine{00026\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIBuffer_a7311b090e086eee74835073dc30baa03}{\string~IRHIBuffer}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIBuffer_aaba9bb7f47d0a4fe915be188da4dcb0a}{Bind}}()\ =\ 0;}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIBuffer_abac0ab5b9dac322cf4f68d397b495544}{Bind}}(uint32\_t\ slot)\ =\ 0;}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIBuffer_a8fe10065904f34fa1fb9583af91fa763}{Unbind}}()\ =\ 0;}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIBuffer_ae628b0ffe86dc51a41250155392a78c5}{UpdateData}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ data,\ uint32\_t\ size,\ uint32\_t\ offset\ =\ 0)\ =\ 0;}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}*\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIBuffer_a33af555878542cca5b84589d2d4e0c77}{Map}}()\ =\ 0;}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIBuffer_ae71e3f30b1cd64f5215293a8c94e7131}{Unmap}}()\ =\ 0;}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{virtual}\ uint32\_t\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIBuffer_a5363270c15eba069b82bfdfa7e023c38}{GetSize}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keyword}{virtual}\ uint32\_t\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIBuffer_ab4439739068f63004050c0f29e5a62e4}{GetHandle}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00038\ \};}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \}\ \textcolor{comment}{//\ namespace\ VE::Internal::RHI}}
+
+\end{DoxyCode}

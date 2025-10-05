@@ -1,0 +1,94 @@
+\doxysection{VE\+::Graphics\+::VCamera\+Frustum Class Reference}
+\hypertarget{classVE_1_1Graphics_1_1VCameraFrustum}{}\label{classVE_1_1Graphics_1_1VCameraFrustum}\index{VE::Graphics::VCameraFrustum@{VE::Graphics::VCameraFrustum}}
+
+
+{\ttfamily \#include $<$VGFX\+\_\+\+Frustum.\+hpp$>$}
+
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structVE_1_1Graphics_1_1VCameraFrustum_1_1VCamPlanes}{VCam\+Planes}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classVE_1_1Graphics_1_1VCameraFrustum_a3469cb213d52731d39cc8616dacca07d}{VCamera\+Frustum}} ()
+\item 
+void \mbox{\hyperlink{classVE_1_1Graphics_1_1VCameraFrustum_a3f5f0a607e549ff32f84c0b68b3bc7f5}{Update}} (\mbox{\hyperlink{classVE_1_1Graphics_1_1ACamera}{ACamera}} \texorpdfstring{$\ast$}{*}camera)
+\item 
+bool \mbox{\hyperlink{classVE_1_1Graphics_1_1VCameraFrustum_a57c522d70d9b1f8e4528bd342ce4ebdc}{Intersect}} (\mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VE\+::\+Math\+::\+VVector3}} point)
+\item 
+bool \mbox{\hyperlink{classVE_1_1Graphics_1_1VCameraFrustum_a0919a3cfca52ed614b5b1e7b1628dc11}{Intersect}} (\mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VE\+::\+Math\+::\+VVector3}} point, float radius)
+\item 
+bool \mbox{\hyperlink{classVE_1_1Graphics_1_1VCameraFrustum_ae3f947a85c7cb67640e7c8692759473e}{Intersect}} (\mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VE\+::\+Math\+::\+VVector3}} box\+Min, \mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VE\+::\+Math\+::\+VVector3}} box\+Max)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structVE_1_1Graphics_1_1VFrustumPlane}{VFrustum\+Plane}} \mbox{\hyperlink{classVE_1_1Graphics_1_1VCameraFrustum_a595129735984735ef0f5d209568e9cc6}{Planes}} \mbox{[}6\mbox{]}
+\item 
+struct VE\+::\+Graphics\+::\+VCamera\+Frustum\+::\+VCam\+Planes \mbox{\hyperlink{classVE_1_1Graphics_1_1VCameraFrustum_a469f2ea9ba105f8ccebc19dd4a3886c1}{VCam\+Planes}}
+\end{DoxyCompactItemize}
+
+
+\label{doc-constructors}
+\Hypertarget{classVE_1_1Graphics_1_1VCameraFrustum_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classVE_1_1Graphics_1_1VCameraFrustum_a3469cb213d52731d39cc8616dacca07d}\index{VE::Graphics::VCameraFrustum@{VE::Graphics::VCameraFrustum}!VCameraFrustum@{VCameraFrustum}}
+\index{VCameraFrustum@{VCameraFrustum}!VE::Graphics::VCameraFrustum@{VE::Graphics::VCameraFrustum}}
+\doxysubsubsection{\texorpdfstring{VCameraFrustum()}{VCameraFrustum()}}
+{\footnotesize\ttfamily \label{classVE_1_1Graphics_1_1VCameraFrustum_a3469cb213d52731d39cc8616dacca07d} 
+VE\+::\+Graphics\+::\+VCamera\+Frustum\+::\+VCamera\+Frustum (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\label{doc-func-members}
+\Hypertarget{classVE_1_1Graphics_1_1VCameraFrustum_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classVE_1_1Graphics_1_1VCameraFrustum_ae3f947a85c7cb67640e7c8692759473e}\index{VE::Graphics::VCameraFrustum@{VE::Graphics::VCameraFrustum}!Intersect@{Intersect}}
+\index{Intersect@{Intersect}!VE::Graphics::VCameraFrustum@{VE::Graphics::VCameraFrustum}}
+\doxysubsubsection{\texorpdfstring{Intersect()}{Intersect()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{classVE_1_1Graphics_1_1VCameraFrustum_ae3f947a85c7cb67640e7c8692759473e} 
+bool VE\+::\+Graphics\+::\+VCamera\+Frustum\+::\+Intersect (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VE\+::\+Math\+::\+VVector3}}}]{box\+Min}{, }\item[{\mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VE\+::\+Math\+::\+VVector3}}}]{box\+Max}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classVE_1_1Graphics_1_1VCameraFrustum_a57c522d70d9b1f8e4528bd342ce4ebdc}\index{VE::Graphics::VCameraFrustum@{VE::Graphics::VCameraFrustum}!Intersect@{Intersect}}
+\index{Intersect@{Intersect}!VE::Graphics::VCameraFrustum@{VE::Graphics::VCameraFrustum}}
+\doxysubsubsection{\texorpdfstring{Intersect()}{Intersect()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{classVE_1_1Graphics_1_1VCameraFrustum_a57c522d70d9b1f8e4528bd342ce4ebdc} 
+bool VE\+::\+Graphics\+::\+VCamera\+Frustum\+::\+Intersect (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VE\+::\+Math\+::\+VVector3}}}]{point}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classVE_1_1Graphics_1_1VCameraFrustum_a0919a3cfca52ed614b5b1e7b1628dc11}\index{VE::Graphics::VCameraFrustum@{VE::Graphics::VCameraFrustum}!Intersect@{Intersect}}
+\index{Intersect@{Intersect}!VE::Graphics::VCameraFrustum@{VE::Graphics::VCameraFrustum}}
+\doxysubsubsection{\texorpdfstring{Intersect()}{Intersect()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{classVE_1_1Graphics_1_1VCameraFrustum_a0919a3cfca52ed614b5b1e7b1628dc11} 
+bool VE\+::\+Graphics\+::\+VCamera\+Frustum\+::\+Intersect (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VE\+::\+Math\+::\+VVector3}}}]{point}{, }\item[{float}]{radius}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classVE_1_1Graphics_1_1VCameraFrustum_a3f5f0a607e549ff32f84c0b68b3bc7f5}\index{VE::Graphics::VCameraFrustum@{VE::Graphics::VCameraFrustum}!Update@{Update}}
+\index{Update@{Update}!VE::Graphics::VCameraFrustum@{VE::Graphics::VCameraFrustum}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{classVE_1_1Graphics_1_1VCameraFrustum_a3f5f0a607e549ff32f84c0b68b3bc7f5} 
+void VE\+::\+Graphics\+::\+VCamera\+Frustum\+::\+Update (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVE_1_1Graphics_1_1ACamera}{ACamera}} \texorpdfstring{$\ast$}{*}}]{camera}{}\end{DoxyParamCaption})}
+
+
+
+\label{doc-variable-members}
+\Hypertarget{classVE_1_1Graphics_1_1VCameraFrustum_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classVE_1_1Graphics_1_1VCameraFrustum_a595129735984735ef0f5d209568e9cc6}\index{VE::Graphics::VCameraFrustum@{VE::Graphics::VCameraFrustum}!Planes@{Planes}}
+\index{Planes@{Planes}!VE::Graphics::VCameraFrustum@{VE::Graphics::VCameraFrustum}}
+\doxysubsubsection{\texorpdfstring{Planes}{Planes}}
+{\footnotesize\ttfamily \label{classVE_1_1Graphics_1_1VCameraFrustum_a595129735984735ef0f5d209568e9cc6} 
+\mbox{\hyperlink{structVE_1_1Graphics_1_1VFrustumPlane}{VFrustum\+Plane}} VE\+::\+Graphics\+::\+VCamera\+Frustum\+::\+Planes\mbox{[}6\mbox{]}}
+
+\Hypertarget{classVE_1_1Graphics_1_1VCameraFrustum_a469f2ea9ba105f8ccebc19dd4a3886c1}\index{VE::Graphics::VCameraFrustum@{VE::Graphics::VCameraFrustum}!VCamPlanes@{VCamPlanes}}
+\index{VCamPlanes@{VCamPlanes}!VE::Graphics::VCameraFrustum@{VE::Graphics::VCameraFrustum}}
+\doxysubsubsection{\texorpdfstring{VCamPlanes}{VCamPlanes}}
+{\footnotesize\ttfamily \label{classVE_1_1Graphics_1_1VCameraFrustum_a469f2ea9ba105f8ccebc19dd4a3886c1} 
+struct VE\+::\+Graphics\+::\+VCamera\+Frustum\+::\+VCam\+Planes VE\+::\+Graphics\+::\+VCamera\+Frustum\+::\+VCam\+Planes}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Vantor/\+Source/\+Vantor/\+Graphics/\+Include/\+Graphics/\+Public/\+Camera/\mbox{\hyperlink{VGFX__Frustum_8hpp}{VGFX\+\_\+\+Frustum.\+hpp}}\item 
+Vantor/\+Source/\+Vantor/\+Graphics/\+Source/\+Graphics/\+Camera/\mbox{\hyperlink{VGFX__Frustum_8cpp}{VGFX\+\_\+\+Frustum.\+cpp}}\end{DoxyCompactItemize}

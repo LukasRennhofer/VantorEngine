@@ -1,0 +1,183 @@
+\doxysection{VE\+::Internal\+::RHI\+::Open\+GLBuffer Class Reference}
+\hypertarget{classVE_1_1Internal_1_1RHI_1_1OpenGLBuffer}{}\label{classVE_1_1Internal_1_1RHI_1_1OpenGLBuffer}\index{VE::Internal::RHI::OpenGLBuffer@{VE::Internal::RHI::OpenGLBuffer}}
+
+
+{\ttfamily \#include $<$VRHI\+\_\+\+Open\+GLBuffer.\+hpp$>$}
+
+Inheritance diagram for VE\+::Internal\+::RHI\+::Open\+GLBuffer\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classVE_1_1Internal_1_1RHI_1_1OpenGLBuffer}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLBuffer_a24a19e8c0659be0251ee59e1f0078f48}{Open\+GLBuffer}} (\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a52035ddfb13a42298c915d4fd9108b25}{ERHIBuffer\+Type}} type, uint32\+\_\+t size, const void \texorpdfstring{$\ast$}{*}data=nullptr)
+\item 
+\mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLBuffer_a3cc4c0b4530a4c9a15eec4703c9c50d5}{Open\+GLBuffer}} (\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a52035ddfb13a42298c915d4fd9108b25}{ERHIBuffer\+Type}} type, uint32\+\_\+t size, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_abbf804d42cb99254cfdd8d88d3d1584f}{EBuffer\+Usage}} usage, const void \texorpdfstring{$\ast$}{*}data=nullptr)
+\item 
+virtual \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLBuffer_a8c95b44d6759e47d272bf2ba36bee051}{\texorpdfstring{$\sim$}{\string~}\+Open\+GLBuffer}} ()
+\item 
+void \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLBuffer_a5d53955c067e900b87a26c1eba4eba67}{Bind}} () override
+\item 
+void \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLBuffer_a1c656820150043e4efff5dfc8e43baf4}{Bind}} (uint32\+\_\+t slot) override
+\item 
+void \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLBuffer_a0f6392a4fe810a14c403a3898f81fe9e}{Unbind}} () override
+\item 
+void \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLBuffer_aa6d0130fd5e2c3dd6ee3872b47d908b0}{Update\+Data}} (const void \texorpdfstring{$\ast$}{*}data, uint32\+\_\+t size, uint32\+\_\+t offset=0) override
+\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLBuffer_a2e3843d9467c90cf6b6e385caf68fa37}{Map}} () override
+\item 
+void \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLBuffer_a7009a58266aa0103998d2f4e4eb890f4}{Unmap}} () override
+\item 
+uint32\+\_\+t \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLBuffer_abfb89b595706ff40fb03fbc908665241}{Get\+Size}} () const override
+\item 
+uint32\+\_\+t \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLBuffer_a069df51f5eec4148754b7e094a30053e}{Get\+Handle}} () const override
+\item 
+\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a52035ddfb13a42298c915d4fd9108b25}{ERHIBuffer\+Type}} \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLBuffer_ac7757cdf3cb1456bf316b4cacc3de093}{Get\+Type}} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIBuffer}{VE\+::\+Internal\+::\+RHI\+::\+IRHIBuffer}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIBuffer_a7311b090e086eee74835073dc30baa03}{\texorpdfstring{$\sim$}{\string~}\+IRHIBuffer}} ()=default
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static GLenum \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLBuffer_a9a6e515d4b59ddb77ec802e2ad2aab3f}{Buffer\+Type\+To\+GL}} (\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a52035ddfb13a42298c915d4fd9108b25}{ERHIBuffer\+Type}} type)
+\item 
+static GLenum \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLBuffer_a2443b87edc70ba50f7bae1967c58baf1}{Buffer\+Usage\+To\+GL}} (\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_abbf804d42cb99254cfdd8d88d3d1584f}{EBuffer\+Usage}} usage)
+\end{DoxyCompactItemize}
+
+
+\label{doc-constructors}
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1OpenGLBuffer_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1OpenGLBuffer_a24a19e8c0659be0251ee59e1f0078f48}\index{VE::Internal::RHI::OpenGLBuffer@{VE::Internal::RHI::OpenGLBuffer}!OpenGLBuffer@{OpenGLBuffer}}
+\index{OpenGLBuffer@{OpenGLBuffer}!VE::Internal::RHI::OpenGLBuffer@{VE::Internal::RHI::OpenGLBuffer}}
+\doxysubsubsection{\texorpdfstring{OpenGLBuffer()}{OpenGLBuffer()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RHI_1_1OpenGLBuffer_a24a19e8c0659be0251ee59e1f0078f48} 
+VE\+::\+Internal\+::\+RHI\+::\+Open\+GLBuffer\+::\+Open\+GLBuffer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a52035ddfb13a42298c915d4fd9108b25}{ERHIBuffer\+Type}}}]{type}{, }\item[{uint32\+\_\+t}]{size}{, }\item[{const void \texorpdfstring{$\ast$}{*}}]{data}{ = {\ttfamily nullptr}}\end{DoxyParamCaption})}
+
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1OpenGLBuffer_a3cc4c0b4530a4c9a15eec4703c9c50d5}\index{VE::Internal::RHI::OpenGLBuffer@{VE::Internal::RHI::OpenGLBuffer}!OpenGLBuffer@{OpenGLBuffer}}
+\index{OpenGLBuffer@{OpenGLBuffer}!VE::Internal::RHI::OpenGLBuffer@{VE::Internal::RHI::OpenGLBuffer}}
+\doxysubsubsection{\texorpdfstring{OpenGLBuffer()}{OpenGLBuffer()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RHI_1_1OpenGLBuffer_a3cc4c0b4530a4c9a15eec4703c9c50d5} 
+VE\+::\+Internal\+::\+RHI\+::\+Open\+GLBuffer\+::\+Open\+GLBuffer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a52035ddfb13a42298c915d4fd9108b25}{ERHIBuffer\+Type}}}]{type}{, }\item[{uint32\+\_\+t}]{size}{, }\item[{\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_abbf804d42cb99254cfdd8d88d3d1584f}{EBuffer\+Usage}}}]{usage}{, }\item[{const void \texorpdfstring{$\ast$}{*}}]{data}{ = {\ttfamily nullptr}}\end{DoxyParamCaption})}
+
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1OpenGLBuffer_a8c95b44d6759e47d272bf2ba36bee051}\index{VE::Internal::RHI::OpenGLBuffer@{VE::Internal::RHI::OpenGLBuffer}!````~OpenGLBuffer@{\texorpdfstring{$\sim$}{\string~}OpenGLBuffer}}
+\index{````~OpenGLBuffer@{\texorpdfstring{$\sim$}{\string~}OpenGLBuffer}!VE::Internal::RHI::OpenGLBuffer@{VE::Internal::RHI::OpenGLBuffer}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}OpenGLBuffer()}{\string~OpenGLBuffer()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RHI_1_1OpenGLBuffer_a8c95b44d6759e47d272bf2ba36bee051} 
+VE\+::\+Internal\+::\+RHI\+::\+Open\+GLBuffer\+::\texorpdfstring{$\sim$}{\string~}\+Open\+GLBuffer (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+\label{doc-func-members}
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1OpenGLBuffer_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1OpenGLBuffer_a5d53955c067e900b87a26c1eba4eba67}\index{VE::Internal::RHI::OpenGLBuffer@{VE::Internal::RHI::OpenGLBuffer}!Bind@{Bind}}
+\index{Bind@{Bind}!VE::Internal::RHI::OpenGLBuffer@{VE::Internal::RHI::OpenGLBuffer}}
+\doxysubsubsection{\texorpdfstring{Bind()}{Bind()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RHI_1_1OpenGLBuffer_a5d53955c067e900b87a26c1eba4eba67} 
+void VE\+::\+Internal\+::\+RHI\+::\+Open\+GLBuffer\+::\+Bind (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIBuffer_aaba9bb7f47d0a4fe915be188da4dcb0a}{VE\+::\+Internal\+::\+RHI\+::\+IRHIBuffer}}.
+
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1OpenGLBuffer_a1c656820150043e4efff5dfc8e43baf4}\index{VE::Internal::RHI::OpenGLBuffer@{VE::Internal::RHI::OpenGLBuffer}!Bind@{Bind}}
+\index{Bind@{Bind}!VE::Internal::RHI::OpenGLBuffer@{VE::Internal::RHI::OpenGLBuffer}}
+\doxysubsubsection{\texorpdfstring{Bind()}{Bind()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RHI_1_1OpenGLBuffer_a1c656820150043e4efff5dfc8e43baf4} 
+void VE\+::\+Internal\+::\+RHI\+::\+Open\+GLBuffer\+::\+Bind (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{slot}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIBuffer_abac0ab5b9dac322cf4f68d397b495544}{VE\+::\+Internal\+::\+RHI\+::\+IRHIBuffer}}.
+
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1OpenGLBuffer_a9a6e515d4b59ddb77ec802e2ad2aab3f}\index{VE::Internal::RHI::OpenGLBuffer@{VE::Internal::RHI::OpenGLBuffer}!BufferTypeToGL@{BufferTypeToGL}}
+\index{BufferTypeToGL@{BufferTypeToGL}!VE::Internal::RHI::OpenGLBuffer@{VE::Internal::RHI::OpenGLBuffer}}
+\doxysubsubsection{\texorpdfstring{BufferTypeToGL()}{BufferTypeToGL()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RHI_1_1OpenGLBuffer_a9a6e515d4b59ddb77ec802e2ad2aab3f} 
+GLenum VE\+::\+Internal\+::\+RHI\+::\+Open\+GLBuffer\+::\+Buffer\+Type\+To\+GL (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a52035ddfb13a42298c915d4fd9108b25}{ERHIBuffer\+Type}}}]{type}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1OpenGLBuffer_a2443b87edc70ba50f7bae1967c58baf1}\index{VE::Internal::RHI::OpenGLBuffer@{VE::Internal::RHI::OpenGLBuffer}!BufferUsageToGL@{BufferUsageToGL}}
+\index{BufferUsageToGL@{BufferUsageToGL}!VE::Internal::RHI::OpenGLBuffer@{VE::Internal::RHI::OpenGLBuffer}}
+\doxysubsubsection{\texorpdfstring{BufferUsageToGL()}{BufferUsageToGL()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RHI_1_1OpenGLBuffer_a2443b87edc70ba50f7bae1967c58baf1} 
+GLenum VE\+::\+Internal\+::\+RHI\+::\+Open\+GLBuffer\+::\+Buffer\+Usage\+To\+GL (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_abbf804d42cb99254cfdd8d88d3d1584f}{EBuffer\+Usage}}}]{usage}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1OpenGLBuffer_a069df51f5eec4148754b7e094a30053e}\index{VE::Internal::RHI::OpenGLBuffer@{VE::Internal::RHI::OpenGLBuffer}!GetHandle@{GetHandle}}
+\index{GetHandle@{GetHandle}!VE::Internal::RHI::OpenGLBuffer@{VE::Internal::RHI::OpenGLBuffer}}
+\doxysubsubsection{\texorpdfstring{GetHandle()}{GetHandle()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RHI_1_1OpenGLBuffer_a069df51f5eec4148754b7e094a30053e} 
+uint32\+\_\+t VE\+::\+Internal\+::\+RHI\+::\+Open\+GLBuffer\+::\+Get\+Handle (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIBuffer_ab4439739068f63004050c0f29e5a62e4}{VE\+::\+Internal\+::\+RHI\+::\+IRHIBuffer}}.
+
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1OpenGLBuffer_abfb89b595706ff40fb03fbc908665241}\index{VE::Internal::RHI::OpenGLBuffer@{VE::Internal::RHI::OpenGLBuffer}!GetSize@{GetSize}}
+\index{GetSize@{GetSize}!VE::Internal::RHI::OpenGLBuffer@{VE::Internal::RHI::OpenGLBuffer}}
+\doxysubsubsection{\texorpdfstring{GetSize()}{GetSize()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RHI_1_1OpenGLBuffer_abfb89b595706ff40fb03fbc908665241} 
+uint32\+\_\+t VE\+::\+Internal\+::\+RHI\+::\+Open\+GLBuffer\+::\+Get\+Size (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIBuffer_a5363270c15eba069b82bfdfa7e023c38}{VE\+::\+Internal\+::\+RHI\+::\+IRHIBuffer}}.
+
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1OpenGLBuffer_ac7757cdf3cb1456bf316b4cacc3de093}\index{VE::Internal::RHI::OpenGLBuffer@{VE::Internal::RHI::OpenGLBuffer}!GetType@{GetType}}
+\index{GetType@{GetType}!VE::Internal::RHI::OpenGLBuffer@{VE::Internal::RHI::OpenGLBuffer}}
+\doxysubsubsection{\texorpdfstring{GetType()}{GetType()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RHI_1_1OpenGLBuffer_ac7757cdf3cb1456bf316b4cacc3de093} 
+\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a52035ddfb13a42298c915d4fd9108b25}{ERHIBuffer\+Type}} VE\+::\+Internal\+::\+RHI\+::\+Open\+GLBuffer\+::\+Get\+Type (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1OpenGLBuffer_a2e3843d9467c90cf6b6e385caf68fa37}\index{VE::Internal::RHI::OpenGLBuffer@{VE::Internal::RHI::OpenGLBuffer}!Map@{Map}}
+\index{Map@{Map}!VE::Internal::RHI::OpenGLBuffer@{VE::Internal::RHI::OpenGLBuffer}}
+\doxysubsubsection{\texorpdfstring{Map()}{Map()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RHI_1_1OpenGLBuffer_a2e3843d9467c90cf6b6e385caf68fa37} 
+void \texorpdfstring{$\ast$}{*} VE\+::\+Internal\+::\+RHI\+::\+Open\+GLBuffer\+::\+Map (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIBuffer_a33af555878542cca5b84589d2d4e0c77}{VE\+::\+Internal\+::\+RHI\+::\+IRHIBuffer}}.
+
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1OpenGLBuffer_a0f6392a4fe810a14c403a3898f81fe9e}\index{VE::Internal::RHI::OpenGLBuffer@{VE::Internal::RHI::OpenGLBuffer}!Unbind@{Unbind}}
+\index{Unbind@{Unbind}!VE::Internal::RHI::OpenGLBuffer@{VE::Internal::RHI::OpenGLBuffer}}
+\doxysubsubsection{\texorpdfstring{Unbind()}{Unbind()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RHI_1_1OpenGLBuffer_a0f6392a4fe810a14c403a3898f81fe9e} 
+void VE\+::\+Internal\+::\+RHI\+::\+Open\+GLBuffer\+::\+Unbind (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIBuffer_a8fe10065904f34fa1fb9583af91fa763}{VE\+::\+Internal\+::\+RHI\+::\+IRHIBuffer}}.
+
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1OpenGLBuffer_a7009a58266aa0103998d2f4e4eb890f4}\index{VE::Internal::RHI::OpenGLBuffer@{VE::Internal::RHI::OpenGLBuffer}!Unmap@{Unmap}}
+\index{Unmap@{Unmap}!VE::Internal::RHI::OpenGLBuffer@{VE::Internal::RHI::OpenGLBuffer}}
+\doxysubsubsection{\texorpdfstring{Unmap()}{Unmap()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RHI_1_1OpenGLBuffer_a7009a58266aa0103998d2f4e4eb890f4} 
+void VE\+::\+Internal\+::\+RHI\+::\+Open\+GLBuffer\+::\+Unmap (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIBuffer_ae71e3f30b1cd64f5215293a8c94e7131}{VE\+::\+Internal\+::\+RHI\+::\+IRHIBuffer}}.
+
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1OpenGLBuffer_aa6d0130fd5e2c3dd6ee3872b47d908b0}\index{VE::Internal::RHI::OpenGLBuffer@{VE::Internal::RHI::OpenGLBuffer}!UpdateData@{UpdateData}}
+\index{UpdateData@{UpdateData}!VE::Internal::RHI::OpenGLBuffer@{VE::Internal::RHI::OpenGLBuffer}}
+\doxysubsubsection{\texorpdfstring{UpdateData()}{UpdateData()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RHI_1_1OpenGLBuffer_aa6d0130fd5e2c3dd6ee3872b47d908b0} 
+void VE\+::\+Internal\+::\+RHI\+::\+Open\+GLBuffer\+::\+Update\+Data (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\ast$}{*}}]{data}{, }\item[{uint32\+\_\+t}]{size}{, }\item[{uint32\+\_\+t}]{offset}{ = {\ttfamily 0}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIBuffer_ae628b0ffe86dc51a41250155392a78c5}{VE\+::\+Internal\+::\+RHI\+::\+IRHIBuffer}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Vantor/\+Source/\+Vantor/\+RHI/\+Include/\+RHI/\+Open\+GL/\mbox{\hyperlink{VRHI__OpenGLBuffer_8hpp}{VRHI\+\_\+\+Open\+GLBuffer.\+hpp}}\item 
+Vantor/\+Source/\+Vantor/\+RHI/\+Source/\+RHI/\+Open\+GL/\mbox{\hyperlink{VRHI__OpenGLBuffer_8cpp}{VRHI\+\_\+\+Open\+GLBuffer.\+cpp}}\end{DoxyCompactItemize}

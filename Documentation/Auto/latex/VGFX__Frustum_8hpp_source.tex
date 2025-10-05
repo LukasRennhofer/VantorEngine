@@ -1,0 +1,62 @@
+\doxysection{VGFX\+\_\+\+Frustum.\+hpp}
+\hypertarget{VGFX__Frustum_8hpp_source}{}\label{VGFX__Frustum_8hpp_source}\index{Vantor/Source/Vantor/Graphics/Include/Graphics/Public/Camera/VGFX\_Frustum.hpp@{Vantor/Source/Vantor/Graphics/Include/Graphics/Public/Camera/VGFX\_Frustum.hpp}}
+\mbox{\hyperlink{VGFX__Frustum_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/****************************************************************************}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ Vantor\ Engine™\ -\/\ Source\ Code\ (2025)}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ Author\ \ \ \ :\ Lukas\ Rennhofer\ (@LukasRennhofer),\ Vantor\ Studios™}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ Copyright\ :\ ©\ 2025\ Lukas\ Rennhofer,\ Vantor\ Studios™}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ *\ License\ \ \ :\ GNU\ General\ Public\ License\ v3.0}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ See\ LICENSE\ file\ for\ full\ details.}}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ ****************************************************************************/}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{VMA__Vector_8hpp}{Math/Linear/VMA\_Vector.hpp}}>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{VMA__Matrix_8hpp}{Math/Linear/VMA\_Matrix.hpp}}>}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceVE_1_1Graphics}{VE::Graphics}}}
+\DoxyCodeLine{00016\ \{}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classVE_1_1Graphics_1_1ACamera}{ACamera}};}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structVE_1_1Graphics_1_1VFrustumPlane}{VFrustumPlane}}}
+\DoxyCodeLine{00020\ \ \ \ \ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VE::Math::VVector3}}\ \mbox{\hyperlink{structVE_1_1Graphics_1_1VFrustumPlane_a5892d82f765877a131131fec2cd0e906}{Normal}};}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Graphics_1_1VFrustumPlane_a13e05475e2259016786940f8476ee0c5}{D}};}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{structVE_1_1Graphics_1_1VFrustumPlane_ac487b8e7e9762049b64be9af25f20c4d}{SetNormalD}}(\mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VE::Math::VVector3}}\ normal,\ \mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VE::Math::VVector3}}\ point)}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Graphics_1_1VFrustumPlane_a5892d82f765877a131131fec2cd0e906}{Normal}}\ =\ normal.\mbox{\hyperlink{structVE_1_1Math_1_1VVector3_abd098809cb4cd6df0e51369c1a06bf4f}{Normalized}}();}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Graphics_1_1VFrustumPlane_a13e05475e2259016786940f8476ee0c5}{D}}\ \ \ \ \ \ =\ -\/\mbox{\hyperlink{structVE_1_1Graphics_1_1VFrustumPlane_a5892d82f765877a131131fec2cd0e906}{Normal}}.Dot(point);}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{structVE_1_1Graphics_1_1VFrustumPlane_a373bed6ae3d5219c3473de337c1e7c2a}{Distance}}(\mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VE::Math::VVector3}}\ point)\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structVE_1_1Graphics_1_1VFrustumPlane_a5892d82f765877a131131fec2cd0e906}{Normal}}.Dot(point)\ +\ \mbox{\hyperlink{structVE_1_1Graphics_1_1VFrustumPlane_a13e05475e2259016786940f8476ee0c5}{D}};\ \}}
+\DoxyCodeLine{00031\ \ \ \ \ \};}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classVE_1_1Graphics_1_1VCameraFrustum_a3469cb213d52731d39cc8616dacca07d}{VCameraFrustum}}}
+\DoxyCodeLine{00034\ \ \ \ \ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Graphics_1_1VFrustumPlane}{VFrustumPlane}}\ \mbox{\hyperlink{classVE_1_1Graphics_1_1VCameraFrustum_a595129735984735ef0f5d209568e9cc6}{Planes}}[6];}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structVE_1_1Graphics_1_1VCameraFrustum_1_1VCamPlanes}{VCamPlanes}}}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Graphics_1_1VFrustumPlane}{VFrustumPlane}}\ \mbox{\hyperlink{structVE_1_1Graphics_1_1VCameraFrustum_1_1VCamPlanes_a9265b9b3a38272fafc94ae14af962e6b}{Left}};}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Graphics_1_1VFrustumPlane}{VFrustumPlane}}\ \mbox{\hyperlink{structVE_1_1Graphics_1_1VCameraFrustum_1_1VCamPlanes_a065de9818b2b1c6cc84bd38d9243df09}{Right}};}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Graphics_1_1VFrustumPlane}{VFrustumPlane}}\ \mbox{\hyperlink{structVE_1_1Graphics_1_1VCameraFrustum_1_1VCamPlanes_afec0c48f088763423d2066f92c0bcf27}{Top}};}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Graphics_1_1VFrustumPlane}{VFrustumPlane}}\ \mbox{\hyperlink{structVE_1_1Graphics_1_1VCameraFrustum_1_1VCamPlanes_a2cfb5f9c00ca86348544952fe9c873a7}{Bottom}};}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Graphics_1_1VFrustumPlane}{VFrustumPlane}}\ \mbox{\hyperlink{structVE_1_1Graphics_1_1VCameraFrustum_1_1VCamPlanes_aa2d58729cf3433fef30cac04a8b95212}{Near}};}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Graphics_1_1VFrustumPlane}{VFrustumPlane}}\ \mbox{\hyperlink{structVE_1_1Graphics_1_1VCameraFrustum_1_1VCamPlanes_afbd488b0b43dd649492914bb9e833cb0}{Far}};}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \mbox{\hyperlink{classVE_1_1Graphics_1_1VCameraFrustum_a469f2ea9ba105f8ccebc19dd4a3886c1}{VCamPlanes}};}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVE_1_1Graphics_1_1VCameraFrustum_a3469cb213d52731d39cc8616dacca07d}{VCameraFrustum}}()\ \{\}}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Graphics_1_1VCameraFrustum_a3f5f0a607e549ff32f84c0b68b3bc7f5}{Update}}(\mbox{\hyperlink{classVE_1_1Graphics_1_1ACamera}{ACamera}}\ *camera);}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classVE_1_1Graphics_1_1VCameraFrustum_a57c522d70d9b1f8e4528bd342ce4ebdc}{Intersect}}(\mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VE::Math::VVector3}}\ point);}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classVE_1_1Graphics_1_1VCameraFrustum_a57c522d70d9b1f8e4528bd342ce4ebdc}{Intersect}}(\mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VE::Math::VVector3}}\ point,\ \textcolor{keywordtype}{float}\ radius);}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classVE_1_1Graphics_1_1VCameraFrustum_a57c522d70d9b1f8e4528bd342ce4ebdc}{Intersect}}(\mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VE::Math::VVector3}}\ boxMin,\ \mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VE::Math::VVector3}}\ boxMax);}
+\DoxyCodeLine{00055\ \ \ \ \ \};}
+\DoxyCodeLine{00056\ \}\ \textcolor{comment}{//\ namespace\ VE::Internal::Graphics}}
+
+\end{DoxyCode}

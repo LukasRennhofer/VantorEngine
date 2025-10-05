@@ -1,0 +1,328 @@
+\doxysection{VE\+::Internal\+::Core\+::Types\+::VColor Struct Reference}
+\hypertarget{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor}{}\label{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor}\index{VE::Internal::Core::Types::VColor@{VE::Internal::Core::Types::VColor}}
+
+
+{\ttfamily \#include $<$VCO\+\_\+\+Color.\+hpp$>$}
+
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_1_1char__return}{char\+\_\+return}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+constexpr \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_af7c99b1ce2f0e18cdc846e5d5369ba30}{VColor}} (uint32\+\_\+t \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_a8e9211c181bf7f21b1a4b50329700d83}{rgba}})
+\item 
+constexpr \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_a8332cdf1094d606a63801d5acef17e9d}{VColor}} (uint8\+\_\+t r=0, uint8\+\_\+t g=0, uint8\+\_\+t b=0, uint8\+\_\+t a=255)
+\item 
+constexpr \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_a14729d22339e122a6641789396064d89}{VColor}} (const char \texorpdfstring{$\ast$}{*}hex)
+\item 
+constexpr uint8\+\_\+t \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_aced772262e7255445f586db6f09bd171}{getR}} () const
+\item 
+constexpr uint8\+\_\+t \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_aadece59599c280813543d214bb2fbe2f}{getG}} () const
+\item 
+constexpr uint8\+\_\+t \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_a5d652f42b3723fa1afab09e57b26ebb7}{getB}} () const
+\item 
+constexpr uint8\+\_\+t \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_a6282e5d2259c0e1dea34e6967cea977d}{getA}} () const
+\item 
+constexpr void \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_af0e9203811eebda4914d5df0660c346b}{setR}} (uint8\+\_\+t value)
+\item 
+constexpr void \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_a7caa11c04bc0c410044d976c61cac4e6}{setG}} (uint8\+\_\+t value)
+\item 
+constexpr void \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_a9113a719dd776601cbc342e869a8d74a}{setB}} (uint8\+\_\+t value)
+\item 
+constexpr void \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_ae3bafeb349dc71e9490950caec8e8ea9}{setA}} (uint8\+\_\+t value)
+\item 
+\mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VE\+::\+Math\+::\+VVector3}} \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_a03f5739cf5a9dba2aaaaa5c326340731}{to\+Float3}} () const
+\item 
+\mbox{\hyperlink{structVE_1_1Math_1_1VVector4}{VE\+::\+Math\+::\+VVector4}} \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_af4243a9e4b7e31a0adbc9feae9b0b10a}{to\+Float4}} () const
+\item 
+\mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_a9a4ea0387b6ff01fa25a2eb033986d24}{operator VE\+::\+Math\+::\+VVector3}} () const
+\item 
+\mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_ad771349946e054fc0d387e20a987eede}{operator VE\+::\+Math\+::\+VVector4}} () const
+\item 
+\mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_ae16fb932b09b4660c33f768aced7d9d6}{operator uint32\+\_\+t}} () const
+\item 
+constexpr const \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_1_1char__return}{char\+\_\+return}}$<$ 9 $>$ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_afaa1f063a8af71c80437da8e02633254}{to\+\_\+hex}} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static constexpr \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor}{VColor}} \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_a6455c4bb03cfd12799151b8e4557c2ca}{from\+Float4}} (const \mbox{\hyperlink{structVE_1_1Math_1_1VVector4}{VE\+::\+Math\+::\+VVector4}} \&value)
+\item 
+static constexpr \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor}{VColor}} \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_ad59e33716a092089d41ed65dc1d115db}{from\+Float3}} (const \mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VE\+::\+Math\+::\+VVector3}} \&value)
+\item 
+static \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor}{VColor}} \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_a6afe80ff930d57a45c8306d7b412227e}{lerp}} (\mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor}{VColor}} a, \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor}{VColor}} b, float i)
+\item 
+static constexpr \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor}{VColor}} \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_a48431983327656cd721c09b0e45b1cbc}{Red}} ()
+\item 
+static constexpr \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor}{VColor}} \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_a180fca5e7fc7bbc78db1174f306e6e44}{Green}} ()
+\item 
+static constexpr \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor}{VColor}} \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_a87582c0d783d1ee30250967415144fef}{Blue}} ()
+\item 
+static constexpr \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor}{VColor}} \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_ae0c0780c368f60b2bc133894a8965e86}{Black}} ()
+\item 
+static constexpr \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor}{VColor}} \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_a07da6d4010dffbf7077da50050903ebb}{White}} ()
+\item 
+static constexpr \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor}{VColor}} \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_a05c48c65cb385728682867bde019335c}{Yellow}} ()
+\item 
+static constexpr \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor}{VColor}} \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_ae94962cbfeea2bce111ddc4b26219fad}{Purple}} ()
+\item 
+static constexpr \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor}{VColor}} \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_ae1062d37c789caba99d52b938810c1d7}{Cyan}} ()
+\item 
+static constexpr \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor}{VColor}} \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_a7ba5ed748843a8289ac6f62c91fe8028}{Transparent}} ()
+\item 
+static constexpr \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor}{VColor}} \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_a3a2d8f52b9e23ba4fd684c75c48296b3}{Gray}} ()
+\item 
+static constexpr \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor}{VColor}} \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_a94c43423b2ec1943cda98a0b76cc206e}{Ghost}} ()
+\item 
+static constexpr \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor}{VColor}} \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_a6fa1dba9e5bb7725860c30945c8152a8}{Booger}} ()
+\item 
+static constexpr \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor}{VColor}} \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_ae7d63c4acb2c652e9e51316cbd5c34b0}{Shadow}} ()
+\item 
+static constexpr \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor}{VColor}} \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_abc73e36b348ec25df447bf095d21441b}{Warning}} ()
+\item 
+static constexpr \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor}{VColor}} \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_a24275d50c1a3a2ab53c54e8551e2a2f6}{Error}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_a8e9211c181bf7f21b1a4b50329700d83}{rgba}} = 0
+\end{DoxyCompactItemize}
+
+
+\label{doc-constructors}
+\Hypertarget{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_af7c99b1ce2f0e18cdc846e5d5369ba30}\index{VE::Internal::Core::Types::VColor@{VE::Internal::Core::Types::VColor}!VColor@{VColor}}
+\index{VColor@{VColor}!VE::Internal::Core::Types::VColor@{VE::Internal::Core::Types::VColor}}
+\doxysubsubsection{\texorpdfstring{VColor()}{VColor()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_af7c99b1ce2f0e18cdc846e5d5369ba30} 
+VE\+::\+Internal\+::\+Core\+::\+Types\+::\+VColor\+::\+VColor (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{rgba}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+\Hypertarget{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_a8332cdf1094d606a63801d5acef17e9d}\index{VE::Internal::Core::Types::VColor@{VE::Internal::Core::Types::VColor}!VColor@{VColor}}
+\index{VColor@{VColor}!VE::Internal::Core::Types::VColor@{VE::Internal::Core::Types::VColor}}
+\doxysubsubsection{\texorpdfstring{VColor()}{VColor()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_a8332cdf1094d606a63801d5acef17e9d} 
+VE\+::\+Internal\+::\+Core\+::\+Types\+::\+VColor\+::\+VColor (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{r}{ = {\ttfamily 0}, }\item[{uint8\+\_\+t}]{g}{ = {\ttfamily 0}, }\item[{uint8\+\_\+t}]{b}{ = {\ttfamily 0}, }\item[{uint8\+\_\+t}]{a}{ = {\ttfamily 255}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+\Hypertarget{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_a14729d22339e122a6641789396064d89}\index{VE::Internal::Core::Types::VColor@{VE::Internal::Core::Types::VColor}!VColor@{VColor}}
+\index{VColor@{VColor}!VE::Internal::Core::Types::VColor@{VE::Internal::Core::Types::VColor}}
+\doxysubsubsection{\texorpdfstring{VColor()}{VColor()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_a14729d22339e122a6641789396064d89} 
+VE\+::\+Internal\+::\+Core\+::\+Types\+::\+VColor\+::\+VColor (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{hex}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+\label{doc-func-members}
+\Hypertarget{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_ae0c0780c368f60b2bc133894a8965e86}\index{VE::Internal::Core::Types::VColor@{VE::Internal::Core::Types::VColor}!Black@{Black}}
+\index{Black@{Black}!VE::Internal::Core::Types::VColor@{VE::Internal::Core::Types::VColor}}
+\doxysubsubsection{\texorpdfstring{Black()}{Black()}}
+{\footnotesize\ttfamily \label{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_ae0c0780c368f60b2bc133894a8965e86} 
+constexpr \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor}{VColor}} VE\+::\+Internal\+::\+Core\+::\+Types\+::\+VColor\+::\+Black (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}}
+
+\Hypertarget{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_a87582c0d783d1ee30250967415144fef}\index{VE::Internal::Core::Types::VColor@{VE::Internal::Core::Types::VColor}!Blue@{Blue}}
+\index{Blue@{Blue}!VE::Internal::Core::Types::VColor@{VE::Internal::Core::Types::VColor}}
+\doxysubsubsection{\texorpdfstring{Blue()}{Blue()}}
+{\footnotesize\ttfamily \label{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_a87582c0d783d1ee30250967415144fef} 
+constexpr \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor}{VColor}} VE\+::\+Internal\+::\+Core\+::\+Types\+::\+VColor\+::\+Blue (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}}
+
+\Hypertarget{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_a6fa1dba9e5bb7725860c30945c8152a8}\index{VE::Internal::Core::Types::VColor@{VE::Internal::Core::Types::VColor}!Booger@{Booger}}
+\index{Booger@{Booger}!VE::Internal::Core::Types::VColor@{VE::Internal::Core::Types::VColor}}
+\doxysubsubsection{\texorpdfstring{Booger()}{Booger()}}
+{\footnotesize\ttfamily \label{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_a6fa1dba9e5bb7725860c30945c8152a8} 
+constexpr \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor}{VColor}} VE\+::\+Internal\+::\+Core\+::\+Types\+::\+VColor\+::\+Booger (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}}
+
+\Hypertarget{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_ae1062d37c789caba99d52b938810c1d7}\index{VE::Internal::Core::Types::VColor@{VE::Internal::Core::Types::VColor}!Cyan@{Cyan}}
+\index{Cyan@{Cyan}!VE::Internal::Core::Types::VColor@{VE::Internal::Core::Types::VColor}}
+\doxysubsubsection{\texorpdfstring{Cyan()}{Cyan()}}
+{\footnotesize\ttfamily \label{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_ae1062d37c789caba99d52b938810c1d7} 
+constexpr \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor}{VColor}} VE\+::\+Internal\+::\+Core\+::\+Types\+::\+VColor\+::\+Cyan (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}}
+
+\Hypertarget{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_a24275d50c1a3a2ab53c54e8551e2a2f6}\index{VE::Internal::Core::Types::VColor@{VE::Internal::Core::Types::VColor}!Error@{Error}}
+\index{Error@{Error}!VE::Internal::Core::Types::VColor@{VE::Internal::Core::Types::VColor}}
+\doxysubsubsection{\texorpdfstring{Error()}{Error()}}
+{\footnotesize\ttfamily \label{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_a24275d50c1a3a2ab53c54e8551e2a2f6} 
+constexpr \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor}{VColor}} VE\+::\+Internal\+::\+Core\+::\+Types\+::\+VColor\+::\+Error (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}}
+
+\Hypertarget{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_ad59e33716a092089d41ed65dc1d115db}\index{VE::Internal::Core::Types::VColor@{VE::Internal::Core::Types::VColor}!fromFloat3@{fromFloat3}}
+\index{fromFloat3@{fromFloat3}!VE::Internal::Core::Types::VColor@{VE::Internal::Core::Types::VColor}}
+\doxysubsubsection{\texorpdfstring{fromFloat3()}{fromFloat3()}}
+{\footnotesize\ttfamily \label{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_ad59e33716a092089d41ed65dc1d115db} 
+constexpr \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor}{VColor}} VE\+::\+Internal\+::\+Core\+::\+Types\+::\+VColor\+::from\+Float3 (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VE\+::\+Math\+::\+VVector3}} \&}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}}
+
+\Hypertarget{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_a6455c4bb03cfd12799151b8e4557c2ca}\index{VE::Internal::Core::Types::VColor@{VE::Internal::Core::Types::VColor}!fromFloat4@{fromFloat4}}
+\index{fromFloat4@{fromFloat4}!VE::Internal::Core::Types::VColor@{VE::Internal::Core::Types::VColor}}
+\doxysubsubsection{\texorpdfstring{fromFloat4()}{fromFloat4()}}
+{\footnotesize\ttfamily \label{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_a6455c4bb03cfd12799151b8e4557c2ca} 
+constexpr \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor}{VColor}} VE\+::\+Internal\+::\+Core\+::\+Types\+::\+VColor\+::from\+Float4 (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structVE_1_1Math_1_1VVector4}{VE\+::\+Math\+::\+VVector4}} \&}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}}
+
+\Hypertarget{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_a6282e5d2259c0e1dea34e6967cea977d}\index{VE::Internal::Core::Types::VColor@{VE::Internal::Core::Types::VColor}!getA@{getA}}
+\index{getA@{getA}!VE::Internal::Core::Types::VColor@{VE::Internal::Core::Types::VColor}}
+\doxysubsubsection{\texorpdfstring{getA()}{getA()}}
+{\footnotesize\ttfamily \label{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_a6282e5d2259c0e1dea34e6967cea977d} 
+uint8\+\_\+t VE\+::\+Internal\+::\+Core\+::\+Types\+::\+VColor\+::getA (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+\Hypertarget{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_a5d652f42b3723fa1afab09e57b26ebb7}\index{VE::Internal::Core::Types::VColor@{VE::Internal::Core::Types::VColor}!getB@{getB}}
+\index{getB@{getB}!VE::Internal::Core::Types::VColor@{VE::Internal::Core::Types::VColor}}
+\doxysubsubsection{\texorpdfstring{getB()}{getB()}}
+{\footnotesize\ttfamily \label{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_a5d652f42b3723fa1afab09e57b26ebb7} 
+uint8\+\_\+t VE\+::\+Internal\+::\+Core\+::\+Types\+::\+VColor\+::getB (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+\Hypertarget{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_aadece59599c280813543d214bb2fbe2f}\index{VE::Internal::Core::Types::VColor@{VE::Internal::Core::Types::VColor}!getG@{getG}}
+\index{getG@{getG}!VE::Internal::Core::Types::VColor@{VE::Internal::Core::Types::VColor}}
+\doxysubsubsection{\texorpdfstring{getG()}{getG()}}
+{\footnotesize\ttfamily \label{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_aadece59599c280813543d214bb2fbe2f} 
+uint8\+\_\+t VE\+::\+Internal\+::\+Core\+::\+Types\+::\+VColor\+::getG (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+\Hypertarget{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_aced772262e7255445f586db6f09bd171}\index{VE::Internal::Core::Types::VColor@{VE::Internal::Core::Types::VColor}!getR@{getR}}
+\index{getR@{getR}!VE::Internal::Core::Types::VColor@{VE::Internal::Core::Types::VColor}}
+\doxysubsubsection{\texorpdfstring{getR()}{getR()}}
+{\footnotesize\ttfamily \label{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_aced772262e7255445f586db6f09bd171} 
+uint8\+\_\+t VE\+::\+Internal\+::\+Core\+::\+Types\+::\+VColor\+::getR (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+\Hypertarget{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_a94c43423b2ec1943cda98a0b76cc206e}\index{VE::Internal::Core::Types::VColor@{VE::Internal::Core::Types::VColor}!Ghost@{Ghost}}
+\index{Ghost@{Ghost}!VE::Internal::Core::Types::VColor@{VE::Internal::Core::Types::VColor}}
+\doxysubsubsection{\texorpdfstring{Ghost()}{Ghost()}}
+{\footnotesize\ttfamily \label{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_a94c43423b2ec1943cda98a0b76cc206e} 
+constexpr \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor}{VColor}} VE\+::\+Internal\+::\+Core\+::\+Types\+::\+VColor\+::\+Ghost (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}}
+
+\Hypertarget{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_a3a2d8f52b9e23ba4fd684c75c48296b3}\index{VE::Internal::Core::Types::VColor@{VE::Internal::Core::Types::VColor}!Gray@{Gray}}
+\index{Gray@{Gray}!VE::Internal::Core::Types::VColor@{VE::Internal::Core::Types::VColor}}
+\doxysubsubsection{\texorpdfstring{Gray()}{Gray()}}
+{\footnotesize\ttfamily \label{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_a3a2d8f52b9e23ba4fd684c75c48296b3} 
+constexpr \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor}{VColor}} VE\+::\+Internal\+::\+Core\+::\+Types\+::\+VColor\+::\+Gray (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}}
+
+\Hypertarget{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_a180fca5e7fc7bbc78db1174f306e6e44}\index{VE::Internal::Core::Types::VColor@{VE::Internal::Core::Types::VColor}!Green@{Green}}
+\index{Green@{Green}!VE::Internal::Core::Types::VColor@{VE::Internal::Core::Types::VColor}}
+\doxysubsubsection{\texorpdfstring{Green()}{Green()}}
+{\footnotesize\ttfamily \label{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_a180fca5e7fc7bbc78db1174f306e6e44} 
+constexpr \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor}{VColor}} VE\+::\+Internal\+::\+Core\+::\+Types\+::\+VColor\+::\+Green (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}}
+
+\Hypertarget{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_a6afe80ff930d57a45c8306d7b412227e}\index{VE::Internal::Core::Types::VColor@{VE::Internal::Core::Types::VColor}!lerp@{lerp}}
+\index{lerp@{lerp}!VE::Internal::Core::Types::VColor@{VE::Internal::Core::Types::VColor}}
+\doxysubsubsection{\texorpdfstring{lerp()}{lerp()}}
+{\footnotesize\ttfamily \label{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_a6afe80ff930d57a45c8306d7b412227e} 
+\mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor}{VColor}} VE\+::\+Internal\+::\+Core\+::\+Types\+::\+VColor\+::lerp (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor}{VColor}}}]{a}{, }\item[{\mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor}{VColor}}}]{b}{, }\item[{float}]{i}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+\Hypertarget{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_ae16fb932b09b4660c33f768aced7d9d6}\index{VE::Internal::Core::Types::VColor@{VE::Internal::Core::Types::VColor}!operator uint32\_t@{operator uint32\_t}}
+\index{operator uint32\_t@{operator uint32\_t}!VE::Internal::Core::Types::VColor@{VE::Internal::Core::Types::VColor}}
+\doxysubsubsection{\texorpdfstring{operator uint32\_t()}{operator uint32\_t()}}
+{\footnotesize\ttfamily \label{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_ae16fb932b09b4660c33f768aced7d9d6} 
+VE\+::\+Internal\+::\+Core\+::\+Types\+::\+VColor\+::operator uint32\+\_\+t (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_a9a4ea0387b6ff01fa25a2eb033986d24}\index{VE::Internal::Core::Types::VColor@{VE::Internal::Core::Types::VColor}!operator VE::Math::VVector3@{operator VE::Math::VVector3}}
+\index{operator VE::Math::VVector3@{operator VE::Math::VVector3}!VE::Internal::Core::Types::VColor@{VE::Internal::Core::Types::VColor}}
+\doxysubsubsection{\texorpdfstring{operator VE::Math::VVector3()}{operator VE::Math::VVector3()}}
+{\footnotesize\ttfamily \label{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_a9a4ea0387b6ff01fa25a2eb033986d24} 
+VE\+::\+Internal\+::\+Core\+::\+Types\+::\+VColor\+::operator \mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VE\+::\+Math\+::\+VVector3}} (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_ad771349946e054fc0d387e20a987eede}\index{VE::Internal::Core::Types::VColor@{VE::Internal::Core::Types::VColor}!operator VE::Math::VVector4@{operator VE::Math::VVector4}}
+\index{operator VE::Math::VVector4@{operator VE::Math::VVector4}!VE::Internal::Core::Types::VColor@{VE::Internal::Core::Types::VColor}}
+\doxysubsubsection{\texorpdfstring{operator VE::Math::VVector4()}{operator VE::Math::VVector4()}}
+{\footnotesize\ttfamily \label{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_ad771349946e054fc0d387e20a987eede} 
+VE\+::\+Internal\+::\+Core\+::\+Types\+::\+VColor\+::operator \mbox{\hyperlink{structVE_1_1Math_1_1VVector4}{VE\+::\+Math\+::\+VVector4}} (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_ae94962cbfeea2bce111ddc4b26219fad}\index{VE::Internal::Core::Types::VColor@{VE::Internal::Core::Types::VColor}!Purple@{Purple}}
+\index{Purple@{Purple}!VE::Internal::Core::Types::VColor@{VE::Internal::Core::Types::VColor}}
+\doxysubsubsection{\texorpdfstring{Purple()}{Purple()}}
+{\footnotesize\ttfamily \label{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_ae94962cbfeea2bce111ddc4b26219fad} 
+constexpr \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor}{VColor}} VE\+::\+Internal\+::\+Core\+::\+Types\+::\+VColor\+::\+Purple (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}}
+
+\Hypertarget{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_a48431983327656cd721c09b0e45b1cbc}\index{VE::Internal::Core::Types::VColor@{VE::Internal::Core::Types::VColor}!Red@{Red}}
+\index{Red@{Red}!VE::Internal::Core::Types::VColor@{VE::Internal::Core::Types::VColor}}
+\doxysubsubsection{\texorpdfstring{Red()}{Red()}}
+{\footnotesize\ttfamily \label{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_a48431983327656cd721c09b0e45b1cbc} 
+constexpr \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor}{VColor}} VE\+::\+Internal\+::\+Core\+::\+Types\+::\+VColor\+::\+Red (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}}
+
+\Hypertarget{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_ae3bafeb349dc71e9490950caec8e8ea9}\index{VE::Internal::Core::Types::VColor@{VE::Internal::Core::Types::VColor}!setA@{setA}}
+\index{setA@{setA}!VE::Internal::Core::Types::VColor@{VE::Internal::Core::Types::VColor}}
+\doxysubsubsection{\texorpdfstring{setA()}{setA()}}
+{\footnotesize\ttfamily \label{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_ae3bafeb349dc71e9490950caec8e8ea9} 
+void VE\+::\+Internal\+::\+Core\+::\+Types\+::\+VColor\+::setA (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+\Hypertarget{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_a9113a719dd776601cbc342e869a8d74a}\index{VE::Internal::Core::Types::VColor@{VE::Internal::Core::Types::VColor}!setB@{setB}}
+\index{setB@{setB}!VE::Internal::Core::Types::VColor@{VE::Internal::Core::Types::VColor}}
+\doxysubsubsection{\texorpdfstring{setB()}{setB()}}
+{\footnotesize\ttfamily \label{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_a9113a719dd776601cbc342e869a8d74a} 
+void VE\+::\+Internal\+::\+Core\+::\+Types\+::\+VColor\+::setB (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+\Hypertarget{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_a7caa11c04bc0c410044d976c61cac4e6}\index{VE::Internal::Core::Types::VColor@{VE::Internal::Core::Types::VColor}!setG@{setG}}
+\index{setG@{setG}!VE::Internal::Core::Types::VColor@{VE::Internal::Core::Types::VColor}}
+\doxysubsubsection{\texorpdfstring{setG()}{setG()}}
+{\footnotesize\ttfamily \label{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_a7caa11c04bc0c410044d976c61cac4e6} 
+void VE\+::\+Internal\+::\+Core\+::\+Types\+::\+VColor\+::setG (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+\Hypertarget{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_af0e9203811eebda4914d5df0660c346b}\index{VE::Internal::Core::Types::VColor@{VE::Internal::Core::Types::VColor}!setR@{setR}}
+\index{setR@{setR}!VE::Internal::Core::Types::VColor@{VE::Internal::Core::Types::VColor}}
+\doxysubsubsection{\texorpdfstring{setR()}{setR()}}
+{\footnotesize\ttfamily \label{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_af0e9203811eebda4914d5df0660c346b} 
+void VE\+::\+Internal\+::\+Core\+::\+Types\+::\+VColor\+::setR (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+\Hypertarget{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_ae7d63c4acb2c652e9e51316cbd5c34b0}\index{VE::Internal::Core::Types::VColor@{VE::Internal::Core::Types::VColor}!Shadow@{Shadow}}
+\index{Shadow@{Shadow}!VE::Internal::Core::Types::VColor@{VE::Internal::Core::Types::VColor}}
+\doxysubsubsection{\texorpdfstring{Shadow()}{Shadow()}}
+{\footnotesize\ttfamily \label{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_ae7d63c4acb2c652e9e51316cbd5c34b0} 
+constexpr \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor}{VColor}} VE\+::\+Internal\+::\+Core\+::\+Types\+::\+VColor\+::\+Shadow (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}}
+
+\Hypertarget{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_afaa1f063a8af71c80437da8e02633254}\index{VE::Internal::Core::Types::VColor@{VE::Internal::Core::Types::VColor}!to\_hex@{to\_hex}}
+\index{to\_hex@{to\_hex}!VE::Internal::Core::Types::VColor@{VE::Internal::Core::Types::VColor}}
+\doxysubsubsection{\texorpdfstring{to\_hex()}{to\_hex()}}
+{\footnotesize\ttfamily \label{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_afaa1f063a8af71c80437da8e02633254} 
+const \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_1_1char__return}{char\+\_\+return}}$<$ 9 $>$ VE\+::\+Internal\+::\+Core\+::\+Types\+::\+VColor\+::to\+\_\+hex (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+\Hypertarget{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_a03f5739cf5a9dba2aaaaa5c326340731}\index{VE::Internal::Core::Types::VColor@{VE::Internal::Core::Types::VColor}!toFloat3@{toFloat3}}
+\index{toFloat3@{toFloat3}!VE::Internal::Core::Types::VColor@{VE::Internal::Core::Types::VColor}}
+\doxysubsubsection{\texorpdfstring{toFloat3()}{toFloat3()}}
+{\footnotesize\ttfamily \label{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_a03f5739cf5a9dba2aaaaa5c326340731} 
+\mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VE\+::\+Math\+::\+VVector3}} VE\+::\+Internal\+::\+Core\+::\+Types\+::\+VColor\+::to\+Float3 (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_af4243a9e4b7e31a0adbc9feae9b0b10a}\index{VE::Internal::Core::Types::VColor@{VE::Internal::Core::Types::VColor}!toFloat4@{toFloat4}}
+\index{toFloat4@{toFloat4}!VE::Internal::Core::Types::VColor@{VE::Internal::Core::Types::VColor}}
+\doxysubsubsection{\texorpdfstring{toFloat4()}{toFloat4()}}
+{\footnotesize\ttfamily \label{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_af4243a9e4b7e31a0adbc9feae9b0b10a} 
+\mbox{\hyperlink{structVE_1_1Math_1_1VVector4}{VE\+::\+Math\+::\+VVector4}} VE\+::\+Internal\+::\+Core\+::\+Types\+::\+VColor\+::to\+Float4 (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_a7ba5ed748843a8289ac6f62c91fe8028}\index{VE::Internal::Core::Types::VColor@{VE::Internal::Core::Types::VColor}!Transparent@{Transparent}}
+\index{Transparent@{Transparent}!VE::Internal::Core::Types::VColor@{VE::Internal::Core::Types::VColor}}
+\doxysubsubsection{\texorpdfstring{Transparent()}{Transparent()}}
+{\footnotesize\ttfamily \label{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_a7ba5ed748843a8289ac6f62c91fe8028} 
+constexpr \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor}{VColor}} VE\+::\+Internal\+::\+Core\+::\+Types\+::\+VColor\+::\+Transparent (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}}
+
+\Hypertarget{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_abc73e36b348ec25df447bf095d21441b}\index{VE::Internal::Core::Types::VColor@{VE::Internal::Core::Types::VColor}!Warning@{Warning}}
+\index{Warning@{Warning}!VE::Internal::Core::Types::VColor@{VE::Internal::Core::Types::VColor}}
+\doxysubsubsection{\texorpdfstring{Warning()}{Warning()}}
+{\footnotesize\ttfamily \label{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_abc73e36b348ec25df447bf095d21441b} 
+constexpr \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor}{VColor}} VE\+::\+Internal\+::\+Core\+::\+Types\+::\+VColor\+::\+Warning (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}}
+
+\Hypertarget{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_a07da6d4010dffbf7077da50050903ebb}\index{VE::Internal::Core::Types::VColor@{VE::Internal::Core::Types::VColor}!White@{White}}
+\index{White@{White}!VE::Internal::Core::Types::VColor@{VE::Internal::Core::Types::VColor}}
+\doxysubsubsection{\texorpdfstring{White()}{White()}}
+{\footnotesize\ttfamily \label{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_a07da6d4010dffbf7077da50050903ebb} 
+constexpr \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor}{VColor}} VE\+::\+Internal\+::\+Core\+::\+Types\+::\+VColor\+::\+White (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}}
+
+\Hypertarget{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_a05c48c65cb385728682867bde019335c}\index{VE::Internal::Core::Types::VColor@{VE::Internal::Core::Types::VColor}!Yellow@{Yellow}}
+\index{Yellow@{Yellow}!VE::Internal::Core::Types::VColor@{VE::Internal::Core::Types::VColor}}
+\doxysubsubsection{\texorpdfstring{Yellow()}{Yellow()}}
+{\footnotesize\ttfamily \label{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_a05c48c65cb385728682867bde019335c} 
+constexpr \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor}{VColor}} VE\+::\+Internal\+::\+Core\+::\+Types\+::\+VColor\+::\+Yellow (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}}
+
+
+
+\label{doc-variable-members}
+\Hypertarget{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_a8e9211c181bf7f21b1a4b50329700d83}\index{VE::Internal::Core::Types::VColor@{VE::Internal::Core::Types::VColor}!rgba@{rgba}}
+\index{rgba@{rgba}!VE::Internal::Core::Types::VColor@{VE::Internal::Core::Types::VColor}}
+\doxysubsubsection{\texorpdfstring{rgba}{rgba}}
+{\footnotesize\ttfamily \label{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_a8e9211c181bf7f21b1a4b50329700d83} 
+uint32\+\_\+t VE\+::\+Internal\+::\+Core\+::\+Types\+::\+VColor\+::rgba = 0}
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Vantor/\+Source/\+Vantor/\+Core/\+Include/\+Core/\+Types/\mbox{\hyperlink{VCO__Color_8hpp}{VCO\+\_\+\+Color.\+hpp}}\end{DoxyCompactItemize}

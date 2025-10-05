@@ -1,0 +1,108 @@
+\doxysection{VE\+::Internal\+::Input\+Device\+::VInput\+Manager Class Reference}
+\hypertarget{classVE_1_1Internal_1_1InputDevice_1_1VInputManager}{}\label{classVE_1_1Internal_1_1InputDevice_1_1VInputManager}\index{VE::Internal::InputDevice::VInputManager@{VE::Internal::InputDevice::VInputManager}}
+
+
+{\ttfamily \#include $<$VID\+\_\+\+Sub\+System.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classVE_1_1Internal_1_1InputDevice_1_1VInputManager_a8ab3251d07f6a3f23c7696e839e2e03d}{Add\+Device}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classVE_1_1Input_1_1VInputDevice}{VE\+::\+Input\+::\+VInput\+Device}} $>$ device)
+\item 
+void \mbox{\hyperlink{classVE_1_1Internal_1_1InputDevice_1_1VInputManager_a389b01110abd642f6371dfb970cfc391}{Map\+Action}} (const std\+::string \&action\+Name, const \mbox{\hyperlink{structVE_1_1Input_1_1VInputButton}{VE\+::\+Input\+::\+VInput\+Button}} \&button)
+\item 
+void \mbox{\hyperlink{classVE_1_1Internal_1_1InputDevice_1_1VInputManager_ac09eb2444325f80095bbf6a4d692a3f6}{Update}} ()
+\item 
+bool \mbox{\hyperlink{classVE_1_1Internal_1_1InputDevice_1_1VInputManager_ab37b105940f8fed3c62e7414b7835cfb}{Is\+Action\+Pressed}} (const std\+::string \&action\+Name) const
+\item 
+bool \mbox{\hyperlink{classVE_1_1Internal_1_1InputDevice_1_1VInputManager_a4e366d266bea69a54a22059ddd8a4c4e}{Is\+Pressed}} (const int \&key, const \mbox{\hyperlink{namespaceVE_1_1Input_ad2052e6ab23b66973ff7443e2109d51a}{VE\+::\+Input\+::\+EInput\+Device\+Type}} \&device\+Type) const
+\item 
+bool \mbox{\hyperlink{classVE_1_1Internal_1_1InputDevice_1_1VInputManager_ad9aa866bc0d579536628d56c43197f5a}{Was\+Action\+Pressed}} (const std\+::string \&action\+Name) const
+\item 
+bool \mbox{\hyperlink{classVE_1_1Internal_1_1InputDevice_1_1VInputManager_a9585393f23d28436d16bbeccd30d59ef}{Was\+Pressed}} (const int \&key, const \mbox{\hyperlink{namespaceVE_1_1Input_ad2052e6ab23b66973ff7443e2109d51a}{VE\+::\+Input\+::\+EInput\+Device\+Type}} \&device\+Type) const
+\item 
+float \mbox{\hyperlink{classVE_1_1Internal_1_1InputDevice_1_1VInputManager_aaaec8d72c045c9224250bbab93a588cc}{Get\+Action\+Axis}} (const std\+::string \&action\+Name) const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classVE_1_1Input_1_1VInputDevice}{VE\+::\+Input\+::\+VInput\+Device}} $>$ $>$ \mbox{\hyperlink{classVE_1_1Internal_1_1InputDevice_1_1VInputManager_a09b716c0128ba0c2808b25ed39067f52}{devices}}
+\item 
+std\+::unordered\+\_\+map$<$ std\+::string, std\+::vector$<$ \mbox{\hyperlink{structVE_1_1Input_1_1VInputButton}{VE\+::\+Input\+::\+VInput\+Button}} $>$ $>$ \mbox{\hyperlink{classVE_1_1Internal_1_1InputDevice_1_1VInputManager_a6d62233142e33eebc21e917ddffc1258}{action\+Map}}
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{classVE_1_1Internal_1_1InputDevice_1_1VInputManager_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classVE_1_1Internal_1_1InputDevice_1_1VInputManager_a8ab3251d07f6a3f23c7696e839e2e03d}\index{VE::Internal::InputDevice::VInputManager@{VE::Internal::InputDevice::VInputManager}!AddDevice@{AddDevice}}
+\index{AddDevice@{AddDevice}!VE::Internal::InputDevice::VInputManager@{VE::Internal::InputDevice::VInputManager}}
+\doxysubsubsection{\texorpdfstring{AddDevice()}{AddDevice()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1InputDevice_1_1VInputManager_a8ab3251d07f6a3f23c7696e839e2e03d} 
+void VE\+::\+Internal\+::\+Input\+Device\+::\+VInput\+Manager\+::\+Add\+Device (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classVE_1_1Input_1_1VInputDevice}{VE\+::\+Input\+::\+VInput\+Device}} $>$}]{device}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classVE_1_1Internal_1_1InputDevice_1_1VInputManager_aaaec8d72c045c9224250bbab93a588cc}\index{VE::Internal::InputDevice::VInputManager@{VE::Internal::InputDevice::VInputManager}!GetActionAxis@{GetActionAxis}}
+\index{GetActionAxis@{GetActionAxis}!VE::Internal::InputDevice::VInputManager@{VE::Internal::InputDevice::VInputManager}}
+\doxysubsubsection{\texorpdfstring{GetActionAxis()}{GetActionAxis()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1InputDevice_1_1VInputManager_aaaec8d72c045c9224250bbab93a588cc} 
+float VE\+::\+Internal\+::\+Input\+Device\+::\+VInput\+Manager\+::\+Get\+Action\+Axis (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{action\+Name}{}\end{DoxyParamCaption}) const}
+
+\Hypertarget{classVE_1_1Internal_1_1InputDevice_1_1VInputManager_ab37b105940f8fed3c62e7414b7835cfb}\index{VE::Internal::InputDevice::VInputManager@{VE::Internal::InputDevice::VInputManager}!IsActionPressed@{IsActionPressed}}
+\index{IsActionPressed@{IsActionPressed}!VE::Internal::InputDevice::VInputManager@{VE::Internal::InputDevice::VInputManager}}
+\doxysubsubsection{\texorpdfstring{IsActionPressed()}{IsActionPressed()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1InputDevice_1_1VInputManager_ab37b105940f8fed3c62e7414b7835cfb} 
+bool VE\+::\+Internal\+::\+Input\+Device\+::\+VInput\+Manager\+::\+Is\+Action\+Pressed (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{action\+Name}{}\end{DoxyParamCaption}) const}
+
+\Hypertarget{classVE_1_1Internal_1_1InputDevice_1_1VInputManager_a4e366d266bea69a54a22059ddd8a4c4e}\index{VE::Internal::InputDevice::VInputManager@{VE::Internal::InputDevice::VInputManager}!IsPressed@{IsPressed}}
+\index{IsPressed@{IsPressed}!VE::Internal::InputDevice::VInputManager@{VE::Internal::InputDevice::VInputManager}}
+\doxysubsubsection{\texorpdfstring{IsPressed()}{IsPressed()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1InputDevice_1_1VInputManager_a4e366d266bea69a54a22059ddd8a4c4e} 
+bool VE\+::\+Internal\+::\+Input\+Device\+::\+VInput\+Manager\+::\+Is\+Pressed (\begin{DoxyParamCaption}\item[{const int \&}]{key}{, }\item[{const \mbox{\hyperlink{namespaceVE_1_1Input_ad2052e6ab23b66973ff7443e2109d51a}{VE\+::\+Input\+::\+EInput\+Device\+Type}} \&}]{device\+Type}{}\end{DoxyParamCaption}) const}
+
+\Hypertarget{classVE_1_1Internal_1_1InputDevice_1_1VInputManager_a389b01110abd642f6371dfb970cfc391}\index{VE::Internal::InputDevice::VInputManager@{VE::Internal::InputDevice::VInputManager}!MapAction@{MapAction}}
+\index{MapAction@{MapAction}!VE::Internal::InputDevice::VInputManager@{VE::Internal::InputDevice::VInputManager}}
+\doxysubsubsection{\texorpdfstring{MapAction()}{MapAction()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1InputDevice_1_1VInputManager_a389b01110abd642f6371dfb970cfc391} 
+void VE\+::\+Internal\+::\+Input\+Device\+::\+VInput\+Manager\+::\+Map\+Action (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{action\+Name}{, }\item[{const \mbox{\hyperlink{structVE_1_1Input_1_1VInputButton}{VE\+::\+Input\+::\+VInput\+Button}} \&}]{button}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classVE_1_1Internal_1_1InputDevice_1_1VInputManager_ac09eb2444325f80095bbf6a4d692a3f6}\index{VE::Internal::InputDevice::VInputManager@{VE::Internal::InputDevice::VInputManager}!Update@{Update}}
+\index{Update@{Update}!VE::Internal::InputDevice::VInputManager@{VE::Internal::InputDevice::VInputManager}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1InputDevice_1_1VInputManager_ac09eb2444325f80095bbf6a4d692a3f6} 
+void VE\+::\+Internal\+::\+Input\+Device\+::\+VInput\+Manager\+::\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classVE_1_1Internal_1_1InputDevice_1_1VInputManager_ad9aa866bc0d579536628d56c43197f5a}\index{VE::Internal::InputDevice::VInputManager@{VE::Internal::InputDevice::VInputManager}!WasActionPressed@{WasActionPressed}}
+\index{WasActionPressed@{WasActionPressed}!VE::Internal::InputDevice::VInputManager@{VE::Internal::InputDevice::VInputManager}}
+\doxysubsubsection{\texorpdfstring{WasActionPressed()}{WasActionPressed()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1InputDevice_1_1VInputManager_ad9aa866bc0d579536628d56c43197f5a} 
+bool VE\+::\+Internal\+::\+Input\+Device\+::\+VInput\+Manager\+::\+Was\+Action\+Pressed (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{action\+Name}{}\end{DoxyParamCaption}) const}
+
+\Hypertarget{classVE_1_1Internal_1_1InputDevice_1_1VInputManager_a9585393f23d28436d16bbeccd30d59ef}\index{VE::Internal::InputDevice::VInputManager@{VE::Internal::InputDevice::VInputManager}!WasPressed@{WasPressed}}
+\index{WasPressed@{WasPressed}!VE::Internal::InputDevice::VInputManager@{VE::Internal::InputDevice::VInputManager}}
+\doxysubsubsection{\texorpdfstring{WasPressed()}{WasPressed()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1InputDevice_1_1VInputManager_a9585393f23d28436d16bbeccd30d59ef} 
+bool VE\+::\+Internal\+::\+Input\+Device\+::\+VInput\+Manager\+::\+Was\+Pressed (\begin{DoxyParamCaption}\item[{const int \&}]{key}{, }\item[{const \mbox{\hyperlink{namespaceVE_1_1Input_ad2052e6ab23b66973ff7443e2109d51a}{VE\+::\+Input\+::\+EInput\+Device\+Type}} \&}]{device\+Type}{}\end{DoxyParamCaption}) const}
+
+
+
+\label{doc-variable-members}
+\Hypertarget{classVE_1_1Internal_1_1InputDevice_1_1VInputManager_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classVE_1_1Internal_1_1InputDevice_1_1VInputManager_a6d62233142e33eebc21e917ddffc1258}\index{VE::Internal::InputDevice::VInputManager@{VE::Internal::InputDevice::VInputManager}!actionMap@{actionMap}}
+\index{actionMap@{actionMap}!VE::Internal::InputDevice::VInputManager@{VE::Internal::InputDevice::VInputManager}}
+\doxysubsubsection{\texorpdfstring{actionMap}{actionMap}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1InputDevice_1_1VInputManager_a6d62233142e33eebc21e917ddffc1258} 
+std\+::unordered\+\_\+map$<$std\+::string, std\+::vector$<$\mbox{\hyperlink{structVE_1_1Input_1_1VInputButton}{VE\+::\+Input\+::\+VInput\+Button}}$>$ $>$ VE\+::\+Internal\+::\+Input\+Device\+::\+VInput\+Manager\+::action\+Map}
+
+\Hypertarget{classVE_1_1Internal_1_1InputDevice_1_1VInputManager_a09b716c0128ba0c2808b25ed39067f52}\index{VE::Internal::InputDevice::VInputManager@{VE::Internal::InputDevice::VInputManager}!devices@{devices}}
+\index{devices@{devices}!VE::Internal::InputDevice::VInputManager@{VE::Internal::InputDevice::VInputManager}}
+\doxysubsubsection{\texorpdfstring{devices}{devices}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1InputDevice_1_1VInputManager_a09b716c0128ba0c2808b25ed39067f52} 
+std\+::vector$<$std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classVE_1_1Input_1_1VInputDevice}{VE\+::\+Input\+::\+VInput\+Device}}$>$ $>$ VE\+::\+Internal\+::\+Input\+Device\+::\+VInput\+Manager\+::devices}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Vantor/\+Source/\+Vantor/\+Input\+Device/\+Include/\+Input\+Device/\+Manager/\mbox{\hyperlink{VID__SubSystem_8hpp}{VID\+\_\+\+Sub\+System.\+hpp}}\item 
+Vantor/\+Source/\+Vantor/\+Input\+Device/\+Source/\+Input\+Device/\+Manager/\mbox{\hyperlink{VID__SubSystem_8cpp}{VID\+\_\+\+Sub\+System.\+cpp}}\end{DoxyCompactItemize}

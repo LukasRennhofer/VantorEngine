@@ -16,7 +16,7 @@
 #include "VMA_Vector.hpp"
 #include <cmath>
 
-namespace VE::Internal::Math
+namespace VE::Math
 {
     struct VQuaternion
     {

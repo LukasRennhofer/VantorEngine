@@ -1,0 +1,160 @@
+\doxysection{VE\+::Internal\+::Context\+::VWindow Class Reference}
+\hypertarget{classVE_1_1Internal_1_1Context_1_1VWindow}{}\label{classVE_1_1Internal_1_1Context_1_1VWindow}\index{VE::Internal::Context::VWindow@{VE::Internal::Context::VWindow}}
+
+
+{\ttfamily \#include $<$VCT\+\_\+\+Window.\+hpp$>$}
+
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+typedef void(\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classVE_1_1Internal_1_1Context_1_1VWindow_ac264758a499436458a025347be118f08}{resize\+Callback\+Func\+\_\+t}}) (int, int)
+\item 
+typedef void \texorpdfstring{$\ast$}{*}(\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classVE_1_1Internal_1_1Context_1_1VWindow_aac2def5a9c75eae4265fe7674038f1ec}{load\+Proc}}) (const char \texorpdfstring{$\ast$}{*})
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classVE_1_1Internal_1_1Context_1_1VWindow_a945bc622dffb1e6d2abe7cbc1f587719}{VWindow}} ()=default
+\item 
+\mbox{\hyperlink{classVE_1_1Internal_1_1Context_1_1VWindow_acb30df7ca480470dfec79508371afe68}{VWindow}} (int width, int height, const char \texorpdfstring{$\ast$}{*}title)
+\item 
+\mbox{\hyperlink{classVE_1_1Internal_1_1Context_1_1VWindow_a7109893e361fe5cb96755e0aa5d8d2a0}{\texorpdfstring{$\sim$}{\string~}\+VWindow}} ()
+\item 
+void \mbox{\hyperlink{classVE_1_1Internal_1_1Context_1_1VWindow_aa3bb02db1c6358b9a925a1ac3d435b24}{close}} ()
+\item 
+void \mbox{\hyperlink{classVE_1_1Internal_1_1Context_1_1VWindow_afe83a656d1f60cbb882a07d20c5756cf}{set\+Resize\+Callback}} (\mbox{\hyperlink{classVE_1_1Internal_1_1Context_1_1VWindow_ac264758a499436458a025347be118f08}{resize\+Callback\+Func\+\_\+t}})
+\item 
+\mbox{\hyperlink{classVE_1_1Internal_1_1Context_1_1VWindow_aac2def5a9c75eae4265fe7674038f1ec}{load\+Proc}} \mbox{\hyperlink{classVE_1_1Internal_1_1Context_1_1VWindow_a9e10a1dd922bdb621f20dd5eb9ddc575}{get\+Load\+Proc}} () const
+\item 
+void \mbox{\hyperlink{classVE_1_1Internal_1_1Context_1_1VWindow_a23c6b009cc476577ad9b3f866eabdcad}{swap\+Buffers}} ()
+\item 
+void \mbox{\hyperlink{classVE_1_1Internal_1_1Context_1_1VWindow_a4ef0c6cb01180945ca95f5c1e7235750}{poll\+Events}} ()
+\item 
+bool \mbox{\hyperlink{classVE_1_1Internal_1_1Context_1_1VWindow_a8295e0d70aa02651fe5ae3470dc1b5fd}{should\+Window\+Close}} ()
+\item 
+int \mbox{\hyperlink{classVE_1_1Internal_1_1Context_1_1VWindow_a47ff3b1081e0dad9ef4a79aad30ad071}{get\+Max\+Width}} ()
+\item 
+int \mbox{\hyperlink{classVE_1_1Internal_1_1Context_1_1VWindow_aa6185ca2959d355075aa9e5da01daa8e}{get\+Max\+Height}} ()
+\item 
+int \mbox{\hyperlink{classVE_1_1Internal_1_1Context_1_1VWindow_a0a30373063571744a8a4817c520231fd}{get\+Width}} ()
+\item 
+int \mbox{\hyperlink{classVE_1_1Internal_1_1Context_1_1VWindow_a917c69a6c3992fe001516b92484c13e6}{get\+Height}} ()
+\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classVE_1_1Internal_1_1Context_1_1VWindow_ad254fa11b310b0c3cd66b240f7ef3b18}{Get\+Native\+Handle}} ()
+\end{DoxyCompactItemize}
+
+
+\label{doc-typedef-members}
+\Hypertarget{classVE_1_1Internal_1_1Context_1_1VWindow_doc-typedef-members}
+\doxysubsection{Member Typedef Documentation}
+\Hypertarget{classVE_1_1Internal_1_1Context_1_1VWindow_aac2def5a9c75eae4265fe7674038f1ec}\index{VE::Internal::Context::VWindow@{VE::Internal::Context::VWindow}!loadProc@{loadProc}}
+\index{loadProc@{loadProc}!VE::Internal::Context::VWindow@{VE::Internal::Context::VWindow}}
+\doxysubsubsection{\texorpdfstring{loadProc}{loadProc}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1Context_1_1VWindow_aac2def5a9c75eae4265fe7674038f1ec} 
+typedef void \texorpdfstring{$\ast$}{*}(\texorpdfstring{$\ast$}{*} VE\+::\+Internal\+::\+Context\+::\+VWindow\+::load\+Proc) (const char \texorpdfstring{$\ast$}{*})}
+
+\Hypertarget{classVE_1_1Internal_1_1Context_1_1VWindow_ac264758a499436458a025347be118f08}\index{VE::Internal::Context::VWindow@{VE::Internal::Context::VWindow}!resizeCallbackFunc\_t@{resizeCallbackFunc\_t}}
+\index{resizeCallbackFunc\_t@{resizeCallbackFunc\_t}!VE::Internal::Context::VWindow@{VE::Internal::Context::VWindow}}
+\doxysubsubsection{\texorpdfstring{resizeCallbackFunc\_t}{resizeCallbackFunc\_t}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1Context_1_1VWindow_ac264758a499436458a025347be118f08} 
+typedef void(\texorpdfstring{$\ast$}{*} VE\+::\+Internal\+::\+Context\+::\+VWindow\+::resize\+Callback\+Func\+\_\+t) (int, int)}
+
+
+
+\label{doc-constructors}
+\Hypertarget{classVE_1_1Internal_1_1Context_1_1VWindow_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classVE_1_1Internal_1_1Context_1_1VWindow_a945bc622dffb1e6d2abe7cbc1f587719}\index{VE::Internal::Context::VWindow@{VE::Internal::Context::VWindow}!VWindow@{VWindow}}
+\index{VWindow@{VWindow}!VE::Internal::Context::VWindow@{VE::Internal::Context::VWindow}}
+\doxysubsubsection{\texorpdfstring{VWindow()}{VWindow()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1Context_1_1VWindow_a945bc622dffb1e6d2abe7cbc1f587719} 
+VE\+::\+Internal\+::\+Context\+::\+VWindow\+::\+VWindow (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+\Hypertarget{classVE_1_1Internal_1_1Context_1_1VWindow_acb30df7ca480470dfec79508371afe68}\index{VE::Internal::Context::VWindow@{VE::Internal::Context::VWindow}!VWindow@{VWindow}}
+\index{VWindow@{VWindow}!VE::Internal::Context::VWindow@{VE::Internal::Context::VWindow}}
+\doxysubsubsection{\texorpdfstring{VWindow()}{VWindow()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1Context_1_1VWindow_acb30df7ca480470dfec79508371afe68} 
+VE\+::\+Internal\+::\+Context\+::\+VWindow\+::\+VWindow (\begin{DoxyParamCaption}\item[{int}]{width}{, }\item[{int}]{height}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{title}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classVE_1_1Internal_1_1Context_1_1VWindow_a7109893e361fe5cb96755e0aa5d8d2a0}\index{VE::Internal::Context::VWindow@{VE::Internal::Context::VWindow}!````~VWindow@{\texorpdfstring{$\sim$}{\string~}VWindow}}
+\index{````~VWindow@{\texorpdfstring{$\sim$}{\string~}VWindow}!VE::Internal::Context::VWindow@{VE::Internal::Context::VWindow}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}VWindow()}{\string~VWindow()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1Context_1_1VWindow_a7109893e361fe5cb96755e0aa5d8d2a0} 
+VE\+::\+Internal\+::\+Context\+::\+VWindow\+::\texorpdfstring{$\sim$}{\string~}\+VWindow (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\label{doc-func-members}
+\Hypertarget{classVE_1_1Internal_1_1Context_1_1VWindow_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classVE_1_1Internal_1_1Context_1_1VWindow_aa3bb02db1c6358b9a925a1ac3d435b24}\index{VE::Internal::Context::VWindow@{VE::Internal::Context::VWindow}!close@{close}}
+\index{close@{close}!VE::Internal::Context::VWindow@{VE::Internal::Context::VWindow}}
+\doxysubsubsection{\texorpdfstring{close()}{close()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1Context_1_1VWindow_aa3bb02db1c6358b9a925a1ac3d435b24} 
+void VE\+::\+Internal\+::\+Context\+::\+VWindow\+::close (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classVE_1_1Internal_1_1Context_1_1VWindow_a917c69a6c3992fe001516b92484c13e6}\index{VE::Internal::Context::VWindow@{VE::Internal::Context::VWindow}!getHeight@{getHeight}}
+\index{getHeight@{getHeight}!VE::Internal::Context::VWindow@{VE::Internal::Context::VWindow}}
+\doxysubsubsection{\texorpdfstring{getHeight()}{getHeight()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1Context_1_1VWindow_a917c69a6c3992fe001516b92484c13e6} 
+int VE\+::\+Internal\+::\+Context\+::\+VWindow\+::get\+Height (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classVE_1_1Internal_1_1Context_1_1VWindow_a9e10a1dd922bdb621f20dd5eb9ddc575}\index{VE::Internal::Context::VWindow@{VE::Internal::Context::VWindow}!getLoadProc@{getLoadProc}}
+\index{getLoadProc@{getLoadProc}!VE::Internal::Context::VWindow@{VE::Internal::Context::VWindow}}
+\doxysubsubsection{\texorpdfstring{getLoadProc()}{getLoadProc()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1Context_1_1VWindow_a9e10a1dd922bdb621f20dd5eb9ddc575} 
+\mbox{\hyperlink{classVE_1_1Internal_1_1Context_1_1VWindow_aac2def5a9c75eae4265fe7674038f1ec}{load\+Proc}} VE\+::\+Internal\+::\+Context\+::\+VWindow\+::get\+Load\+Proc (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+\Hypertarget{classVE_1_1Internal_1_1Context_1_1VWindow_aa6185ca2959d355075aa9e5da01daa8e}\index{VE::Internal::Context::VWindow@{VE::Internal::Context::VWindow}!getMaxHeight@{getMaxHeight}}
+\index{getMaxHeight@{getMaxHeight}!VE::Internal::Context::VWindow@{VE::Internal::Context::VWindow}}
+\doxysubsubsection{\texorpdfstring{getMaxHeight()}{getMaxHeight()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1Context_1_1VWindow_aa6185ca2959d355075aa9e5da01daa8e} 
+int VE\+::\+Internal\+::\+Context\+::\+VWindow\+::get\+Max\+Height (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classVE_1_1Internal_1_1Context_1_1VWindow_a47ff3b1081e0dad9ef4a79aad30ad071}\index{VE::Internal::Context::VWindow@{VE::Internal::Context::VWindow}!getMaxWidth@{getMaxWidth}}
+\index{getMaxWidth@{getMaxWidth}!VE::Internal::Context::VWindow@{VE::Internal::Context::VWindow}}
+\doxysubsubsection{\texorpdfstring{getMaxWidth()}{getMaxWidth()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1Context_1_1VWindow_a47ff3b1081e0dad9ef4a79aad30ad071} 
+int VE\+::\+Internal\+::\+Context\+::\+VWindow\+::get\+Max\+Width (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classVE_1_1Internal_1_1Context_1_1VWindow_ad254fa11b310b0c3cd66b240f7ef3b18}\index{VE::Internal::Context::VWindow@{VE::Internal::Context::VWindow}!GetNativeHandle@{GetNativeHandle}}
+\index{GetNativeHandle@{GetNativeHandle}!VE::Internal::Context::VWindow@{VE::Internal::Context::VWindow}}
+\doxysubsubsection{\texorpdfstring{GetNativeHandle()}{GetNativeHandle()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1Context_1_1VWindow_ad254fa11b310b0c3cd66b240f7ef3b18} 
+void \texorpdfstring{$\ast$}{*} VE\+::\+Internal\+::\+Context\+::\+VWindow\+::\+Get\+Native\+Handle (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classVE_1_1Internal_1_1Context_1_1VWindow_a0a30373063571744a8a4817c520231fd}\index{VE::Internal::Context::VWindow@{VE::Internal::Context::VWindow}!getWidth@{getWidth}}
+\index{getWidth@{getWidth}!VE::Internal::Context::VWindow@{VE::Internal::Context::VWindow}}
+\doxysubsubsection{\texorpdfstring{getWidth()}{getWidth()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1Context_1_1VWindow_a0a30373063571744a8a4817c520231fd} 
+int VE\+::\+Internal\+::\+Context\+::\+VWindow\+::get\+Width (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classVE_1_1Internal_1_1Context_1_1VWindow_a4ef0c6cb01180945ca95f5c1e7235750}\index{VE::Internal::Context::VWindow@{VE::Internal::Context::VWindow}!pollEvents@{pollEvents}}
+\index{pollEvents@{pollEvents}!VE::Internal::Context::VWindow@{VE::Internal::Context::VWindow}}
+\doxysubsubsection{\texorpdfstring{pollEvents()}{pollEvents()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1Context_1_1VWindow_a4ef0c6cb01180945ca95f5c1e7235750} 
+void VE\+::\+Internal\+::\+Context\+::\+VWindow\+::poll\+Events (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classVE_1_1Internal_1_1Context_1_1VWindow_afe83a656d1f60cbb882a07d20c5756cf}\index{VE::Internal::Context::VWindow@{VE::Internal::Context::VWindow}!setResizeCallback@{setResizeCallback}}
+\index{setResizeCallback@{setResizeCallback}!VE::Internal::Context::VWindow@{VE::Internal::Context::VWindow}}
+\doxysubsubsection{\texorpdfstring{setResizeCallback()}{setResizeCallback()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1Context_1_1VWindow_afe83a656d1f60cbb882a07d20c5756cf} 
+void VE\+::\+Internal\+::\+Context\+::\+VWindow\+::set\+Resize\+Callback (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVE_1_1Internal_1_1Context_1_1VWindow_ac264758a499436458a025347be118f08}{resize\+Callback\+Func\+\_\+t}}}]{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classVE_1_1Internal_1_1Context_1_1VWindow_a8295e0d70aa02651fe5ae3470dc1b5fd}\index{VE::Internal::Context::VWindow@{VE::Internal::Context::VWindow}!shouldWindowClose@{shouldWindowClose}}
+\index{shouldWindowClose@{shouldWindowClose}!VE::Internal::Context::VWindow@{VE::Internal::Context::VWindow}}
+\doxysubsubsection{\texorpdfstring{shouldWindowClose()}{shouldWindowClose()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1Context_1_1VWindow_a8295e0d70aa02651fe5ae3470dc1b5fd} 
+bool VE\+::\+Internal\+::\+Context\+::\+VWindow\+::should\+Window\+Close (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classVE_1_1Internal_1_1Context_1_1VWindow_a23c6b009cc476577ad9b3f866eabdcad}\index{VE::Internal::Context::VWindow@{VE::Internal::Context::VWindow}!swapBuffers@{swapBuffers}}
+\index{swapBuffers@{swapBuffers}!VE::Internal::Context::VWindow@{VE::Internal::Context::VWindow}}
+\doxysubsubsection{\texorpdfstring{swapBuffers()}{swapBuffers()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1Context_1_1VWindow_a23c6b009cc476577ad9b3f866eabdcad} 
+void VE\+::\+Internal\+::\+Context\+::\+VWindow\+::swap\+Buffers (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Vantor/\+Source/\+Vantor/\+Context/\+Include/\+Context/\+Interface/\mbox{\hyperlink{VCT__Window_8hpp}{VCT\+\_\+\+Window.\+hpp}}\end{DoxyCompactItemize}

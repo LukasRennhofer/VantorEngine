@@ -9,13 +9,13 @@
 
 #include <Math/VMA_Common.hpp>
 
-#include <Graphics/Camera/VGFX_Camera.hpp>
+#include <Graphics/Public/Camera/VGFX_Camera.hpp>
 
-namespace VE::Internal::Graphics
+namespace VE::Graphics
 {
     ACamera::ACamera() {}
 
-    ACamera::ACamera(VE::Internal::Math::VVector3 position, VE::Internal::Math::VVector3 forward, VE::Internal::Math::VVector3 up) : Position(position), Forward(forward), Up(up)
+    ACamera::ACamera(VE::Math::VVector3 position, VE::Math::VVector3 forward, VE::Math::VVector3 up) : Position(position), Forward(forward), Up(up)
     {
         UpdateView();
     }
@@ -25,7 +25,7 @@ namespace VE::Internal::Graphics
     void ACamera::SetPerspective(float fov, float aspect, float near, float far)
     {
         Perspective = true;
-        Projection  = VE::Internal::Math::VMat4::Perspective(fov, aspect, near, far);
+        Projection  = VE::Math::VMat4::Perspective(fov, aspect, near, far);
         FOV         = fov;
         Aspect      = aspect;
         Near        = near;
@@ -35,18 +35,18 @@ namespace VE::Internal::Graphics
     void ACamera::SetOrthographic(float left, float right, float top, float bottom, float near, float far)
     {
         Perspective = false;
-        Projection  = VE::Internal::Math::VMat4::Orthographic(left, right, top, bottom, near, far);
+        Projection  = VE::Math::VMat4::Orthographic(left, right, top, bottom, near, far);
         Near        = near;
         Far         = far;
     }
 
-    void ACamera::UpdateView() { View = VE::Internal::Math::VMat4::LookAt(Position, Position + Forward, Up); }
+    void ACamera::UpdateView() { View = VE::Math::VMat4::LookAt(Position, Position + Forward, Up); }
 
     float ACamera::FrustumHeightAtDistance(float distance)
     {
         if (Perspective)
         {
-            return 2.0f * distance * tanf(VE::Internal::Math::DegToRad(FOV * 0.5));
+            return 2.0f * distance * tanf(VE::Math::DegToRad(FOV * 0.5));
         }
         else
         {
@@ -58,7 +58,7 @@ namespace VE::Internal::Graphics
     {
         if (Perspective)
         {
-            return frustumHeight * 0.5f / tanf(VE::Internal::Math::DegToRad(FOV * 0.5f));
+            return frustumHeight * 0.5f / tanf(VE::Math::DegToRad(FOV * 0.5f));
         }
         else
         {

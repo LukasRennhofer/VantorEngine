@@ -14,7 +14,7 @@
 
 #include "VMA_Vector.hpp"
 
-namespace VE::Internal::Math
+namespace VE::Math
 {
 
     // ----------------- VMat4 -----------------

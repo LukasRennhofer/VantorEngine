@@ -1,0 +1,67 @@
+\doxysection{VE\+::Internal\+::Core\+::Memory\+::VPage\+Allocator\+::Allocator\+Internal Struct Reference}
+\hypertarget{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1AllocatorInternal}{}\label{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1AllocatorInternal}\index{VE::Internal::Core::Memory::VPageAllocator::AllocatorInternal@{VE::Internal::Core::Memory::VPageAllocator::AllocatorInternal}}
+
+
+{\ttfamily \#include $<$VCO\+\_\+\+Allocator.\+hpp$>$}
+
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::mutex \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1AllocatorInternal_a530d59ae0fba05184c75da07c8a23ac5}{locker}}
+\item 
+Offset\+Allocator\+::\+Allocator \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1AllocatorInternal_a46571e0ff8fff8a0fded379cf9e7df2d}{allocator}}
+\item 
+\mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VBlockAllocator}{VBlock\+Allocator}}$<$ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1AllocationInternal}{Allocation\+Internal}} $>$ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1AllocatorInternal_aa5864c57871ba76b587c458783bb82c7}{internal\+\_\+blocks}}
+\item 
+bool \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1AllocatorInternal_ae34d42cc883f312b36d003793a002f64}{deferred\+\_\+release\+\_\+enabled}} = false
+\item 
+uint64\+\_\+t \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1AllocatorInternal_ae4bf7a1550afc444de99c12213ccc66e}{deferred\+\_\+release\+\_\+frame}} = 0
+\item 
+std\+::deque$<$ std\+::pair$<$ Offset\+Allocator\+::\+Allocation, uint64\+\_\+t $>$ $>$ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1AllocatorInternal_aa2d8521481827f3aab93244517950044}{deferred\+\_\+release\+\_\+queue}}
+\end{DoxyCompactItemize}
+
+
+\label{doc-variable-members}
+\Hypertarget{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1AllocatorInternal_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1AllocatorInternal_a46571e0ff8fff8a0fded379cf9e7df2d}\index{VE::Internal::Core::Memory::VPageAllocator::AllocatorInternal@{VE::Internal::Core::Memory::VPageAllocator::AllocatorInternal}!allocator@{allocator}}
+\index{allocator@{allocator}!VE::Internal::Core::Memory::VPageAllocator::AllocatorInternal@{VE::Internal::Core::Memory::VPageAllocator::AllocatorInternal}}
+\doxysubsubsection{\texorpdfstring{allocator}{allocator}}
+{\footnotesize\ttfamily \label{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1AllocatorInternal_a46571e0ff8fff8a0fded379cf9e7df2d} 
+Offset\+Allocator\+::\+Allocator VE\+::\+Internal\+::\+Core\+::\+Memory\+::\+VPage\+Allocator\+::\+Allocator\+Internal\+::allocator}
+
+\Hypertarget{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1AllocatorInternal_ae34d42cc883f312b36d003793a002f64}\index{VE::Internal::Core::Memory::VPageAllocator::AllocatorInternal@{VE::Internal::Core::Memory::VPageAllocator::AllocatorInternal}!deferred\_release\_enabled@{deferred\_release\_enabled}}
+\index{deferred\_release\_enabled@{deferred\_release\_enabled}!VE::Internal::Core::Memory::VPageAllocator::AllocatorInternal@{VE::Internal::Core::Memory::VPageAllocator::AllocatorInternal}}
+\doxysubsubsection{\texorpdfstring{deferred\_release\_enabled}{deferred\_release\_enabled}}
+{\footnotesize\ttfamily \label{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1AllocatorInternal_ae34d42cc883f312b36d003793a002f64} 
+bool VE\+::\+Internal\+::\+Core\+::\+Memory\+::\+VPage\+Allocator\+::\+Allocator\+Internal\+::deferred\+\_\+release\+\_\+enabled = false}
+
+\Hypertarget{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1AllocatorInternal_ae4bf7a1550afc444de99c12213ccc66e}\index{VE::Internal::Core::Memory::VPageAllocator::AllocatorInternal@{VE::Internal::Core::Memory::VPageAllocator::AllocatorInternal}!deferred\_release\_frame@{deferred\_release\_frame}}
+\index{deferred\_release\_frame@{deferred\_release\_frame}!VE::Internal::Core::Memory::VPageAllocator::AllocatorInternal@{VE::Internal::Core::Memory::VPageAllocator::AllocatorInternal}}
+\doxysubsubsection{\texorpdfstring{deferred\_release\_frame}{deferred\_release\_frame}}
+{\footnotesize\ttfamily \label{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1AllocatorInternal_ae4bf7a1550afc444de99c12213ccc66e} 
+uint64\+\_\+t VE\+::\+Internal\+::\+Core\+::\+Memory\+::\+VPage\+Allocator\+::\+Allocator\+Internal\+::deferred\+\_\+release\+\_\+frame = 0}
+
+\Hypertarget{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1AllocatorInternal_aa2d8521481827f3aab93244517950044}\index{VE::Internal::Core::Memory::VPageAllocator::AllocatorInternal@{VE::Internal::Core::Memory::VPageAllocator::AllocatorInternal}!deferred\_release\_queue@{deferred\_release\_queue}}
+\index{deferred\_release\_queue@{deferred\_release\_queue}!VE::Internal::Core::Memory::VPageAllocator::AllocatorInternal@{VE::Internal::Core::Memory::VPageAllocator::AllocatorInternal}}
+\doxysubsubsection{\texorpdfstring{deferred\_release\_queue}{deferred\_release\_queue}}
+{\footnotesize\ttfamily \label{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1AllocatorInternal_aa2d8521481827f3aab93244517950044} 
+std\+::deque$<$std\+::pair$<$Offset\+Allocator\+::\+Allocation, uint64\+\_\+t$>$ $>$ VE\+::\+Internal\+::\+Core\+::\+Memory\+::\+VPage\+Allocator\+::\+Allocator\+Internal\+::deferred\+\_\+release\+\_\+queue}
+
+\Hypertarget{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1AllocatorInternal_aa5864c57871ba76b587c458783bb82c7}\index{VE::Internal::Core::Memory::VPageAllocator::AllocatorInternal@{VE::Internal::Core::Memory::VPageAllocator::AllocatorInternal}!internal\_blocks@{internal\_blocks}}
+\index{internal\_blocks@{internal\_blocks}!VE::Internal::Core::Memory::VPageAllocator::AllocatorInternal@{VE::Internal::Core::Memory::VPageAllocator::AllocatorInternal}}
+\doxysubsubsection{\texorpdfstring{internal\_blocks}{internal\_blocks}}
+{\footnotesize\ttfamily \label{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1AllocatorInternal_aa5864c57871ba76b587c458783bb82c7} 
+\mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VBlockAllocator}{VBlock\+Allocator}}$<$\mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1AllocationInternal}{Allocation\+Internal}}$>$ VE\+::\+Internal\+::\+Core\+::\+Memory\+::\+VPage\+Allocator\+::\+Allocator\+Internal\+::internal\+\_\+blocks}
+
+\Hypertarget{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1AllocatorInternal_a530d59ae0fba05184c75da07c8a23ac5}\index{VE::Internal::Core::Memory::VPageAllocator::AllocatorInternal@{VE::Internal::Core::Memory::VPageAllocator::AllocatorInternal}!locker@{locker}}
+\index{locker@{locker}!VE::Internal::Core::Memory::VPageAllocator::AllocatorInternal@{VE::Internal::Core::Memory::VPageAllocator::AllocatorInternal}}
+\doxysubsubsection{\texorpdfstring{locker}{locker}}
+{\footnotesize\ttfamily \label{structVE_1_1Internal_1_1Core_1_1Memory_1_1VPageAllocator_1_1AllocatorInternal_a530d59ae0fba05184c75da07c8a23ac5} 
+std\+::mutex VE\+::\+Internal\+::\+Core\+::\+Memory\+::\+VPage\+Allocator\+::\+Allocator\+Internal\+::locker}
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Vantor/\+Source/\+Vantor/\+Core/\+Include/\+Core/\+Memory/\mbox{\hyperlink{VCO__Allocator_8hpp}{VCO\+\_\+\+Allocator.\+hpp}}\end{DoxyCompactItemize}

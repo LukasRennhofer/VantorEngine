@@ -1,0 +1,746 @@
+\doxysection{VE\+::Internal\+::RHI Namespace Reference}
+\hypertarget{namespaceVE_1_1Internal_1_1RHI}{}\label{namespaceVE_1_1Internal_1_1RHI}\index{VE::Internal::RHI@{VE::Internal::RHI}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIBuffer}{IRHIBuffer}}
+\item 
+class \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIDevice}{IRHIDevice}}
+\item 
+class \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIMesh}{IRHIMesh}}
+\item 
+class \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget}{IRHIRender\+Target}}
+\item 
+class \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIShader}{IRHIShader}}
+\item 
+class \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHITexture}{IRHITexture}}
+\item 
+class \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLBuffer}{Open\+GLBuffer}}
+\item 
+class \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLDevice}{Open\+GLDevice}}
+\item 
+class \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLMesh}{Open\+GLMesh}}
+\item 
+class \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLRenderTarget}{Open\+GLRender\+Target}}
+\item 
+class \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLShader}{Open\+GLShader}}
+\item 
+class \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLTexture}{Open\+GLTexture}}
+\item 
+class \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1VRDCoordinator}{VRDCoordinator}}
+\item 
+struct \mbox{\hyperlink{structVE_1_1Internal_1_1RHI_1_1VRenderCommand}{VRender\+Command}}
+\item 
+struct \mbox{\hyperlink{structVE_1_1Internal_1_1RHI_1_1VRenderTargetAttachment}{VRender\+Target\+Attachment}}
+\item 
+struct \mbox{\hyperlink{structVE_1_1Internal_1_1RHI_1_1VVertexAttribute}{VVertex\+Attribute}}
+\item 
+struct \mbox{\hyperlink{structVE_1_1Internal_1_1RHI_1_1VVertexLayout}{VVertex\+Layout}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_abbf804d42cb99254cfdd8d88d3d1584f}{EBuffer\+Usage}} \{ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_abbf804d42cb99254cfdd8d88d3d1584fa84a8921b25f505d0d2077aeb5db4bc16}{Static}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_abbf804d42cb99254cfdd8d88d3d1584fa971fd8cc345d8bd9f92e9f7d88fdf20c}{Dynamic}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_abbf804d42cb99254cfdd8d88d3d1584faeae835e83c0494a376229f254f7d3392}{Stream}}
+ \}
+\item 
+enum class \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a6c768fe17cced6f287c31b77e5e1bb6a}{EGraphics\+API}} \{ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a6c768fe17cced6f287c31b77e5e1bb6aac0ad831a34c4633bee584066cfcc5040}{OPENGL}}
+ \}
+\item 
+enum class \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7}{ERHIFormat}} \{ \newline
+\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a6ee77dd485809c93542e95acf222420c}{R8\+\_\+\+UNORM}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7afb68704b014646b912f3d2471ce2a53f}{R8\+\_\+\+SNORM}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a99f9bb6daa4c8f9ea6744ca176038180}{R8\+\_\+\+UINT}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7afb3d9b81391ab907186bd39d1e0ec06b}{R8\+\_\+\+SINT}}
+, \newline
+\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a74b8cc492d3b8df6a7c4f2573e751f65}{R8\+G8\+\_\+\+UNORM}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a2d06ea062c979e905e69c932828929e6}{R8\+G8\+\_\+\+SNORM}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a68e4bb37495d561f4939031d2b1adbae}{R8\+G8\+\_\+\+UINT}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7ad865c8685eaca0a8002ebae3e41927d0}{R8\+G8\+\_\+\+SINT}}
+, \newline
+\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a510cef4c9832a8b4e6fcad93f2927142}{R8\+G8\+B8\+\_\+\+UNORM}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a7dcad0f51a66fb306712a17887d28f20}{R8\+G8\+B8\+\_\+\+SNORM}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a27742f2c14c784edbbc18f650ffd3e91}{R8\+G8\+B8\+\_\+\+UINT}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7aa0203efb56d9533eb903960af0f91e96}{R8\+G8\+B8\+\_\+\+SINT}}
+, \newline
+\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7af55c1c722034e92213df328d31e33c62}{R8\+G8\+B8\+A8\+\_\+\+UNORM}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a3f078e8cba824b14d56a1de8ce6e93ef}{R8\+G8\+B8\+A8\+\_\+\+SNORM}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a67db604c7206857ceb4fe94ee620cae4}{R8\+G8\+B8\+A8\+\_\+\+UINT}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a371d6f9af5590e4d6f25cdb002854ef0}{R8\+G8\+B8\+A8\+\_\+\+SINT}}
+, \newline
+\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a5c835c7ea238d0796853827ce416a5e2}{R8\+G8\+B8\+A8\+\_\+\+SRGB}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a7b38e5acb78095aade73a5a9737eac04}{R16\+\_\+\+UNORM}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a3b0f40db5c8bdec8cc984a8998650318}{R16\+\_\+\+SNORM}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7ad8187d21ed6dc3072e4c8e819e202c05}{R16\+\_\+\+UINT}}
+, \newline
+\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a261d1e0997b29130ae82f9722f7bcebf}{R16\+\_\+\+SINT}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a1a8b847ff6031e79477869e481aff272}{R16\+\_\+\+FLOAT}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a9330163522c11f1879d051de71aaf4cc}{R16\+G16\+\_\+\+UNORM}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7aaf5b25237ef4bc08c7d4e902d87fa191}{R16\+G16\+\_\+\+SNORM}}
+, \newline
+\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a01aa628941c3b48fea869c081e0611a3}{R16\+G16\+\_\+\+UINT}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a9d7ccb74bbc2a2aca0d0688f85266a08}{R16\+G16\+\_\+\+SINT}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a4f5847ebfcf03e87d28d26da8e7c8280}{R16\+G16\+\_\+\+FLOAT}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a69b3ab5e66e03b0dd25f21107ff04da4}{R16\+G16\+B16\+A16\+\_\+\+UNORM}}
+, \newline
+\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a6395668b27c2bf19e4eaa4dbb06c0d22}{R16\+G16\+B16\+A16\+\_\+\+SNORM}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a9e1fb7eae42b4f0b636e6bde9a33cf4b}{R16\+G16\+B16\+A16\+\_\+\+UINT}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a5700a5767ec14fdb361879186ff5d242}{R16\+G16\+B16\+A16\+\_\+\+SINT}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a8877c88854b09a122f3533a4de543629}{R16\+G16\+B16\+A16\+\_\+\+FLOAT}}
+, \newline
+\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7af010bb9e5a699e4cb9c80b2f5d982218}{R32\+\_\+\+UINT}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a99d5ccfc1a21572c753cbf0640bd2565}{R32\+\_\+\+SINT}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a2598f201b222b270e09b7913987d7272}{R32\+\_\+\+FLOAT}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7ad0a8fa71e3197bbf9b23d6d93235f3ca}{R32\+G32\+\_\+\+UINT}}
+, \newline
+\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7ae00f80e3640e18f2997325c36fe0ef90}{R32\+G32\+\_\+\+SINT}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a034e2a26f1b92822236e0095a5ca1848}{R32\+G32\+\_\+\+FLOAT}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a8a0c94872edade84a5320f3cb31ac6a8}{R32\+G32\+B32\+\_\+\+UINT}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7ae53d190f1e9fa67fb47bc8c053b53278}{R32\+G32\+B32\+\_\+\+SINT}}
+, \newline
+\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7ad05d603c5884ae9ccc392513becba305}{R32\+G32\+B32\+\_\+\+FLOAT}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a0b993e1cc925013e7f5aff710f0033e9}{R32\+G32\+B32\+A32\+\_\+\+UINT}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7afd9ca5bb13785040311bc3b0dbe4f192}{R32\+G32\+B32\+A32\+\_\+\+SINT}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a82bb90f92345314d9299d3e77d87f259}{R32\+G32\+B32\+A32\+\_\+\+FLOAT}}
+, \newline
+\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a0f09a2e0cf764ef602b892fc70b817bf}{B8\+G8\+R8\+A8\+\_\+\+UNORM}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7af76dbb655425d5bbcf8f4b8f5d316960}{B8\+G8\+R8\+A8\+\_\+\+SRGB}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a03e5886d3d7216eed4f577937132b20f}{D16\+\_\+\+UNORM}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7aa6dc4e4319b85984a4ab81ae89949f88}{D24\+\_\+\+UNORM\+\_\+\+S8\+\_\+\+UINT}}
+, \newline
+\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a0cd740d22f1f39e5fe71d013370a8e5a}{D32\+\_\+\+FLOAT}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a481a5c582adebb30a78e392634507d42}{D32\+\_\+\+FLOAT\+\_\+\+S8\+X24\+\_\+\+UINT}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a2bf258d56516a808aa0fd289ce318aa1}{S8\+\_\+\+UINT}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a8843e4734dea21b13b2ff0d5576255bb}{R8\+\_\+\+SRGB}}
+, \newline
+\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a6e1f40da52eb29e8460f2b06ff3e03e7}{R8\+G8\+\_\+\+SRGB}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a5e929290af698da7f6b4447e4f3644ff}{R8\+G8\+B8\+\_\+\+SRGB}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a67b8d2cdb9467c6a0f2c0b9979710c57}{R8\+\_\+\+TYPELESS}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7aca8bed2b7c36d9c779235cef4bde40ac}{R8\+G8\+\_\+\+TYPELESS}}
+, \newline
+\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a7ce44714caf70c8eac3c1291b69d1b43}{R8\+G8\+B8\+\_\+\+TYPELESS}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7af72fa791516c793594b5f4f943af6315}{R8\+G8\+B8\+A8\+\_\+\+TYPELESS}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7ab01ca458c0fc604ee2469af68374927f}{R16\+\_\+\+TYPELESS}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a53a4c970b36e5e0760b5d709b8ca8099}{R16\+G16\+\_\+\+TYPELESS}}
+, \newline
+\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a095ead84ae8cfa2a1c13fdc0fa2648af}{R16\+G16\+B16\+A16\+\_\+\+TYPELESS}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a5b48989c0201198bda57a0024e2e2bd9}{R32\+\_\+\+TYPELESS}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7af9bab926eae737c9f0e718c7aeb6de70}{R32\+G32\+\_\+\+TYPELESS}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a17112b4511323fc3d9688260830843a2}{R32\+G32\+B32\+\_\+\+TYPELESS}}
+, \newline
+\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7afc92334bd9da483bc6a45e1b6b4d24e7}{R32\+G32\+B32\+A32\+\_\+\+TYPELESS}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7ae14e5656bbf934f7293d1ee0d6f9b6f3}{D24\+\_\+\+UNORM\+\_\+\+S8\+\_\+\+UINT\+\_\+\+TYPELESS}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a26efc2d4b28e74bb2c61f7cd5f58bfe6}{D32\+\_\+\+FLOAT\+\_\+\+TYPELESS}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a2cc5af205e0371a4b749ce70593809c4}{D32\+\_\+\+FLOAT\+\_\+\+S8\+X24\+\_\+\+UINT\+\_\+\+TYPELESS}}
+, \newline
+\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a0df888027c6054f964cc7f4dda6186b1}{BC1\+\_\+\+UNORM}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a8728d460624388e7fcd0b5ea21b7e996}{BC1\+\_\+\+SRGB}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a91ea56b5a9dbf93b5ea9441bcd0832d2}{BC2\+\_\+\+UNORM}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7ad8823158bc0323e65b353b99dbec42c8}{BC2\+\_\+\+SRGB}}
+, \newline
+\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7ae946a5bbd9a4713e23a0c13fab8db7e9}{BC3\+\_\+\+UNORM}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a02bf65916f20a9561b709107c60cccf2}{BC3\+\_\+\+SRGB}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7aa5e2d3e34dacb2ca384e7fd215ca447e}{BC4\+\_\+\+UNORM}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a939fd457c7554c01a0bc0554a17f707a}{BC4\+\_\+\+SNORM}}
+, \newline
+\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a82ff4c8fe84975ed353e8de9d5714b90}{BC5\+\_\+\+UNORM}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a82e090c9814840994b9e585466e86c2e}{BC5\+\_\+\+SNORM}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7af7a3553aad8a76fafd60af100bff76ab}{BC6\+H\+\_\+\+UF16}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a1db3e465765a54678e709ead147be4cf}{BC6\+H\+\_\+\+SF16}}
+, \newline
+\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7ae08f6c609116e1f505b1f512b481b278}{BC7\+\_\+\+UNORM}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a1f2d0087f03ce3d88e442258ccd7c898}{BC7\+\_\+\+SRGB}}
+ \}
+\item 
+enum class \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a52035ddfb13a42298c915d4fd9108b25}{ERHIBuffer\+Type}} \{ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a52035ddfb13a42298c915d4fd9108b25ab22b929ba52471a02d18bb3a4e4472e6}{Vertex}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a52035ddfb13a42298c915d4fd9108b25a88fa71f0a6e0dfedbb46d91cc0b37a50}{Index}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a52035ddfb13a42298c915d4fd9108b25af19516d11f2946f894070e92fcb56b6d}{Uniform}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a52035ddfb13a42298c915d4fd9108b25a63d204f04170f5bbf958083589f6572f}{Shader\+Storage}}
+ \}
+\item 
+enum class \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a79a6d19349d7b5399e5fb907a28fb009}{ETexture\+Type}} \{ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a79a6d19349d7b5399e5fb907a28fb009adc7f989aa32631adaea4eb6a609b0de4}{Texture1D}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a79a6d19349d7b5399e5fb907a28fb009aa6e2bae752d3bf4e34cb392bca789995}{Texture2D}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a79a6d19349d7b5399e5fb907a28fb009a89c915587e16bcf8963be7cf41a0d9fd}{Texture3D}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a79a6d19349d7b5399e5fb907a28fb009a0a152d9f3e1df14068c5857fb3352505}{Texture\+Cube}}
+ \}
+\item 
+enum class \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_ad9c14037f07f1e5fb2257b518b4c78ba}{ERHIShader\+Type}} \{ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_ad9c14037f07f1e5fb2257b518b4c78baab22b929ba52471a02d18bb3a4e4472e6}{Vertex}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_ad9c14037f07f1e5fb2257b518b4c78baa37d01b98065725fe3a1d30acf3a0064a}{Fragment}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_ad9c14037f07f1e5fb2257b518b4c78baad9c6333623e6357515fcbf17be806273}{Geometry}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_ad9c14037f07f1e5fb2257b518b4c78baaa623a8d0366bf079411aa30be45b2d10}{Compute}}
+ \}
+\item 
+enum class \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a2c5cfd4eeba474f2e652bf3bcba13200}{EPrimitive\+Type}} \{ \newline
+\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a2c5cfd4eeba474f2e652bf3bcba13200a7ca66fdfaad3eb33fc65d7490178f856}{Triangles}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a2c5cfd4eeba474f2e652bf3bcba13200a1da0b9ead8b051940a89214bae22831c}{Triangle\+Strip}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a2c5cfd4eeba474f2e652bf3bcba13200aa0b0293a2db49f5f93c15a62e095c819}{Lines}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a2c5cfd4eeba474f2e652bf3bcba13200ae7f9e73b8edd21f420a63b3ace5768a2}{Line\+Strip}}
+, \newline
+\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a2c5cfd4eeba474f2e652bf3bcba13200a75dd5f1160a3f02b6fae89c54361a1b3}{Points}}
+ \}
+\item 
+enum class \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aeb91f0e4b6f5f79c7b1978d3ad39eebb}{EAttachment\+Type}} \{ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aeb91f0e4b6f5f79c7b1978d3ad39eebbacb5feb1b7314637725a2e73bdc9f7295}{Color}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aeb91f0e4b6f5f79c7b1978d3ad39eebba675056ad1441b6375b2c5abd48c27ef1}{Depth}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aeb91f0e4b6f5f79c7b1978d3ad39eebbad821e7ccd4d4c25a491ba1a9ea248895}{Stencil}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aeb91f0e4b6f5f79c7b1978d3ad39eebba2fa8076285272883c91e14402975a441}{Depth\+Stencil}}
+ \}
+\item 
+enum class \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_acbc77117a5daabd65c97f439aa80020f}{ETexture\+Filter}} \{ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_acbc77117a5daabd65c97f439aa80020fa60494f02d440f316319dd0fad40ad007}{Nearest}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_acbc77117a5daabd65c97f439aa80020fa32a843da6ea40ab3b17a3421ccdf671b}{Linear}}
+ \}
+\item 
+enum class \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_abc26d04d9c8a19c57ebbcda98f2d5aea}{ETexture\+Wrap}} \{ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_abc26d04d9c8a19c57ebbcda98f2d5aeaa7020426cfb0a204051be4b3053d2acc8}{Repeat}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_abc26d04d9c8a19c57ebbcda98f2d5aeaa74556551231333c36debc3d373261134}{Clamp\+To\+Edge}}
+, \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_abc26d04d9c8a19c57ebbcda98f2d5aeaafb07f88f6f11cc5ab9c951290716f147}{Clamp\+To\+Border}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+GLenum \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a6626d74130e5412273972b2e9b592ebf}{Get\+GLTarget}} (\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a79a6d19349d7b5399e5fb907a28fb009}{ETexture\+Type}} type)
+\end{DoxyCompactItemize}
+
+
+\label{doc-enum-members}
+\Hypertarget{namespaceVE_1_1Internal_1_1RHI_doc-enum-members}
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aeb91f0e4b6f5f79c7b1978d3ad39eebb}\index{VE::Internal::RHI@{VE::Internal::RHI}!EAttachmentType@{EAttachmentType}}
+\index{EAttachmentType@{EAttachmentType}!VE::Internal::RHI@{VE::Internal::RHI}}
+\doxysubsubsection{\texorpdfstring{EAttachmentType}{EAttachmentType}}
+{\footnotesize\ttfamily \label{namespaceVE_1_1Internal_1_1RHI_aeb91f0e4b6f5f79c7b1978d3ad39eebb} 
+enum class \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aeb91f0e4b6f5f79c7b1978d3ad39eebb}{VE\+::\+Internal\+::\+RHI\+::\+EAttachment\+Type}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Color@{Color}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!Color@{Color}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aeb91f0e4b6f5f79c7b1978d3ad39eebbacb5feb1b7314637725a2e73bdc9f7295}\label{namespaceVE_1_1Internal_1_1RHI_aeb91f0e4b6f5f79c7b1978d3ad39eebbacb5feb1b7314637725a2e73bdc9f7295} 
+Color&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Depth@{Depth}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!Depth@{Depth}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aeb91f0e4b6f5f79c7b1978d3ad39eebba675056ad1441b6375b2c5abd48c27ef1}\label{namespaceVE_1_1Internal_1_1RHI_aeb91f0e4b6f5f79c7b1978d3ad39eebba675056ad1441b6375b2c5abd48c27ef1} 
+Depth&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Stencil@{Stencil}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!Stencil@{Stencil}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aeb91f0e4b6f5f79c7b1978d3ad39eebbad821e7ccd4d4c25a491ba1a9ea248895}\label{namespaceVE_1_1Internal_1_1RHI_aeb91f0e4b6f5f79c7b1978d3ad39eebbad821e7ccd4d4c25a491ba1a9ea248895} 
+Stencil&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DepthStencil@{DepthStencil}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!DepthStencil@{DepthStencil}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aeb91f0e4b6f5f79c7b1978d3ad39eebba2fa8076285272883c91e14402975a441}\label{namespaceVE_1_1Internal_1_1RHI_aeb91f0e4b6f5f79c7b1978d3ad39eebba2fa8076285272883c91e14402975a441} 
+Depth\+Stencil&\\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{namespaceVE_1_1Internal_1_1RHI_abbf804d42cb99254cfdd8d88d3d1584f}\index{VE::Internal::RHI@{VE::Internal::RHI}!EBufferUsage@{EBufferUsage}}
+\index{EBufferUsage@{EBufferUsage}!VE::Internal::RHI@{VE::Internal::RHI}}
+\doxysubsubsection{\texorpdfstring{EBufferUsage}{EBufferUsage}}
+{\footnotesize\ttfamily \label{namespaceVE_1_1Internal_1_1RHI_abbf804d42cb99254cfdd8d88d3d1584f} 
+enum class \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_abbf804d42cb99254cfdd8d88d3d1584f}{VE\+::\+Internal\+::\+RHI\+::\+EBuffer\+Usage}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Static@{Static}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!Static@{Static}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_abbf804d42cb99254cfdd8d88d3d1584fa84a8921b25f505d0d2077aeb5db4bc16}\label{namespaceVE_1_1Internal_1_1RHI_abbf804d42cb99254cfdd8d88d3d1584fa84a8921b25f505d0d2077aeb5db4bc16} 
+Static&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Dynamic@{Dynamic}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!Dynamic@{Dynamic}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_abbf804d42cb99254cfdd8d88d3d1584fa971fd8cc345d8bd9f92e9f7d88fdf20c}\label{namespaceVE_1_1Internal_1_1RHI_abbf804d42cb99254cfdd8d88d3d1584fa971fd8cc345d8bd9f92e9f7d88fdf20c} 
+Dynamic&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Stream@{Stream}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!Stream@{Stream}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_abbf804d42cb99254cfdd8d88d3d1584faeae835e83c0494a376229f254f7d3392}\label{namespaceVE_1_1Internal_1_1RHI_abbf804d42cb99254cfdd8d88d3d1584faeae835e83c0494a376229f254f7d3392} 
+Stream&\\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{namespaceVE_1_1Internal_1_1RHI_a6c768fe17cced6f287c31b77e5e1bb6a}\index{VE::Internal::RHI@{VE::Internal::RHI}!EGraphicsAPI@{EGraphicsAPI}}
+\index{EGraphicsAPI@{EGraphicsAPI}!VE::Internal::RHI@{VE::Internal::RHI}}
+\doxysubsubsection{\texorpdfstring{EGraphicsAPI}{EGraphicsAPI}}
+{\footnotesize\ttfamily \label{namespaceVE_1_1Internal_1_1RHI_a6c768fe17cced6f287c31b77e5e1bb6a} 
+enum class \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a6c768fe17cced6f287c31b77e5e1bb6a}{VE\+::\+Internal\+::\+RHI\+::\+EGraphics\+API}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{OPENGL@{OPENGL}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!OPENGL@{OPENGL}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_a6c768fe17cced6f287c31b77e5e1bb6aac0ad831a34c4633bee584066cfcc5040}\label{namespaceVE_1_1Internal_1_1RHI_a6c768fe17cced6f287c31b77e5e1bb6aac0ad831a34c4633bee584066cfcc5040} 
+OPENGL&\\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{namespaceVE_1_1Internal_1_1RHI_a2c5cfd4eeba474f2e652bf3bcba13200}\index{VE::Internal::RHI@{VE::Internal::RHI}!EPrimitiveType@{EPrimitiveType}}
+\index{EPrimitiveType@{EPrimitiveType}!VE::Internal::RHI@{VE::Internal::RHI}}
+\doxysubsubsection{\texorpdfstring{EPrimitiveType}{EPrimitiveType}}
+{\footnotesize\ttfamily \label{namespaceVE_1_1Internal_1_1RHI_a2c5cfd4eeba474f2e652bf3bcba13200} 
+enum class \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a2c5cfd4eeba474f2e652bf3bcba13200}{VE\+::\+Internal\+::\+RHI\+::\+EPrimitive\+Type}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Triangles@{Triangles}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!Triangles@{Triangles}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_a2c5cfd4eeba474f2e652bf3bcba13200a7ca66fdfaad3eb33fc65d7490178f856}\label{namespaceVE_1_1Internal_1_1RHI_a2c5cfd4eeba474f2e652bf3bcba13200a7ca66fdfaad3eb33fc65d7490178f856} 
+Triangles&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TriangleStrip@{TriangleStrip}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!TriangleStrip@{TriangleStrip}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_a2c5cfd4eeba474f2e652bf3bcba13200a1da0b9ead8b051940a89214bae22831c}\label{namespaceVE_1_1Internal_1_1RHI_a2c5cfd4eeba474f2e652bf3bcba13200a1da0b9ead8b051940a89214bae22831c} 
+Triangle\+Strip&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Lines@{Lines}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!Lines@{Lines}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_a2c5cfd4eeba474f2e652bf3bcba13200aa0b0293a2db49f5f93c15a62e095c819}\label{namespaceVE_1_1Internal_1_1RHI_a2c5cfd4eeba474f2e652bf3bcba13200aa0b0293a2db49f5f93c15a62e095c819} 
+Lines&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LineStrip@{LineStrip}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!LineStrip@{LineStrip}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_a2c5cfd4eeba474f2e652bf3bcba13200ae7f9e73b8edd21f420a63b3ace5768a2}\label{namespaceVE_1_1Internal_1_1RHI_a2c5cfd4eeba474f2e652bf3bcba13200ae7f9e73b8edd21f420a63b3ace5768a2} 
+Line\+Strip&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Points@{Points}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!Points@{Points}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_a2c5cfd4eeba474f2e652bf3bcba13200a75dd5f1160a3f02b6fae89c54361a1b3}\label{namespaceVE_1_1Internal_1_1RHI_a2c5cfd4eeba474f2e652bf3bcba13200a75dd5f1160a3f02b6fae89c54361a1b3} 
+Points&\\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{namespaceVE_1_1Internal_1_1RHI_a52035ddfb13a42298c915d4fd9108b25}\index{VE::Internal::RHI@{VE::Internal::RHI}!ERHIBufferType@{ERHIBufferType}}
+\index{ERHIBufferType@{ERHIBufferType}!VE::Internal::RHI@{VE::Internal::RHI}}
+\doxysubsubsection{\texorpdfstring{ERHIBufferType}{ERHIBufferType}}
+{\footnotesize\ttfamily \label{namespaceVE_1_1Internal_1_1RHI_a52035ddfb13a42298c915d4fd9108b25} 
+enum class \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a52035ddfb13a42298c915d4fd9108b25}{VE\+::\+Internal\+::\+RHI\+::\+ERHIBuffer\+Type}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Vertex@{Vertex}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!Vertex@{Vertex}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_a52035ddfb13a42298c915d4fd9108b25ab22b929ba52471a02d18bb3a4e4472e6}\label{namespaceVE_1_1Internal_1_1RHI_a52035ddfb13a42298c915d4fd9108b25ab22b929ba52471a02d18bb3a4e4472e6} 
+Vertex&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Index@{Index}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!Index@{Index}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_a52035ddfb13a42298c915d4fd9108b25a88fa71f0a6e0dfedbb46d91cc0b37a50}\label{namespaceVE_1_1Internal_1_1RHI_a52035ddfb13a42298c915d4fd9108b25a88fa71f0a6e0dfedbb46d91cc0b37a50} 
+Index&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Uniform@{Uniform}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!Uniform@{Uniform}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_a52035ddfb13a42298c915d4fd9108b25af19516d11f2946f894070e92fcb56b6d}\label{namespaceVE_1_1Internal_1_1RHI_a52035ddfb13a42298c915d4fd9108b25af19516d11f2946f894070e92fcb56b6d} 
+Uniform&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ShaderStorage@{ShaderStorage}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!ShaderStorage@{ShaderStorage}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_a52035ddfb13a42298c915d4fd9108b25a63d204f04170f5bbf958083589f6572f}\label{namespaceVE_1_1Internal_1_1RHI_a52035ddfb13a42298c915d4fd9108b25a63d204f04170f5bbf958083589f6572f} 
+Shader\+Storage&\\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7}\index{VE::Internal::RHI@{VE::Internal::RHI}!ERHIFormat@{ERHIFormat}}
+\index{ERHIFormat@{ERHIFormat}!VE::Internal::RHI@{VE::Internal::RHI}}
+\doxysubsubsection{\texorpdfstring{ERHIFormat}{ERHIFormat}}
+{\footnotesize\ttfamily \label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7} 
+enum class \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7}{VE\+::\+Internal\+::\+RHI\+::\+ERHIFormat}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R8\_UNORM@{R8\_UNORM}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!R8\_UNORM@{R8\_UNORM}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a6ee77dd485809c93542e95acf222420c}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a6ee77dd485809c93542e95acf222420c} 
+R8\+\_\+\+UNORM&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R8\_SNORM@{R8\_SNORM}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!R8\_SNORM@{R8\_SNORM}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7afb68704b014646b912f3d2471ce2a53f}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7afb68704b014646b912f3d2471ce2a53f} 
+R8\+\_\+\+SNORM&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R8\_UINT@{R8\_UINT}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!R8\_UINT@{R8\_UINT}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a99f9bb6daa4c8f9ea6744ca176038180}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a99f9bb6daa4c8f9ea6744ca176038180} 
+R8\+\_\+\+UINT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R8\_SINT@{R8\_SINT}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!R8\_SINT@{R8\_SINT}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7afb3d9b81391ab907186bd39d1e0ec06b}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7afb3d9b81391ab907186bd39d1e0ec06b} 
+R8\+\_\+\+SINT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R8G8\_UNORM@{R8G8\_UNORM}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!R8G8\_UNORM@{R8G8\_UNORM}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a74b8cc492d3b8df6a7c4f2573e751f65}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a74b8cc492d3b8df6a7c4f2573e751f65} 
+R8\+G8\+\_\+\+UNORM&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R8G8\_SNORM@{R8G8\_SNORM}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!R8G8\_SNORM@{R8G8\_SNORM}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a2d06ea062c979e905e69c932828929e6}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a2d06ea062c979e905e69c932828929e6} 
+R8\+G8\+\_\+\+SNORM&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R8G8\_UINT@{R8G8\_UINT}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!R8G8\_UINT@{R8G8\_UINT}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a68e4bb37495d561f4939031d2b1adbae}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a68e4bb37495d561f4939031d2b1adbae} 
+R8\+G8\+\_\+\+UINT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R8G8\_SINT@{R8G8\_SINT}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!R8G8\_SINT@{R8G8\_SINT}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7ad865c8685eaca0a8002ebae3e41927d0}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7ad865c8685eaca0a8002ebae3e41927d0} 
+R8\+G8\+\_\+\+SINT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R8G8B8\_UNORM@{R8G8B8\_UNORM}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!R8G8B8\_UNORM@{R8G8B8\_UNORM}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a510cef4c9832a8b4e6fcad93f2927142}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a510cef4c9832a8b4e6fcad93f2927142} 
+R8\+G8\+B8\+\_\+\+UNORM&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R8G8B8\_SNORM@{R8G8B8\_SNORM}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!R8G8B8\_SNORM@{R8G8B8\_SNORM}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a7dcad0f51a66fb306712a17887d28f20}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a7dcad0f51a66fb306712a17887d28f20} 
+R8\+G8\+B8\+\_\+\+SNORM&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R8G8B8\_UINT@{R8G8B8\_UINT}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!R8G8B8\_UINT@{R8G8B8\_UINT}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a27742f2c14c784edbbc18f650ffd3e91}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a27742f2c14c784edbbc18f650ffd3e91} 
+R8\+G8\+B8\+\_\+\+UINT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R8G8B8\_SINT@{R8G8B8\_SINT}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!R8G8B8\_SINT@{R8G8B8\_SINT}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7aa0203efb56d9533eb903960af0f91e96}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7aa0203efb56d9533eb903960af0f91e96} 
+R8\+G8\+B8\+\_\+\+SINT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R8G8B8A8\_UNORM@{R8G8B8A8\_UNORM}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!R8G8B8A8\_UNORM@{R8G8B8A8\_UNORM}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7af55c1c722034e92213df328d31e33c62}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7af55c1c722034e92213df328d31e33c62} 
+R8\+G8\+B8\+A8\+\_\+\+UNORM&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R8G8B8A8\_SNORM@{R8G8B8A8\_SNORM}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!R8G8B8A8\_SNORM@{R8G8B8A8\_SNORM}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a3f078e8cba824b14d56a1de8ce6e93ef}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a3f078e8cba824b14d56a1de8ce6e93ef} 
+R8\+G8\+B8\+A8\+\_\+\+SNORM&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R8G8B8A8\_UINT@{R8G8B8A8\_UINT}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!R8G8B8A8\_UINT@{R8G8B8A8\_UINT}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a67db604c7206857ceb4fe94ee620cae4}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a67db604c7206857ceb4fe94ee620cae4} 
+R8\+G8\+B8\+A8\+\_\+\+UINT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R8G8B8A8\_SINT@{R8G8B8A8\_SINT}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!R8G8B8A8\_SINT@{R8G8B8A8\_SINT}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a371d6f9af5590e4d6f25cdb002854ef0}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a371d6f9af5590e4d6f25cdb002854ef0} 
+R8\+G8\+B8\+A8\+\_\+\+SINT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R8G8B8A8\_SRGB@{R8G8B8A8\_SRGB}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!R8G8B8A8\_SRGB@{R8G8B8A8\_SRGB}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a5c835c7ea238d0796853827ce416a5e2}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a5c835c7ea238d0796853827ce416a5e2} 
+R8\+G8\+B8\+A8\+\_\+\+SRGB&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R16\_UNORM@{R16\_UNORM}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!R16\_UNORM@{R16\_UNORM}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a7b38e5acb78095aade73a5a9737eac04}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a7b38e5acb78095aade73a5a9737eac04} 
+R16\+\_\+\+UNORM&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R16\_SNORM@{R16\_SNORM}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!R16\_SNORM@{R16\_SNORM}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a3b0f40db5c8bdec8cc984a8998650318}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a3b0f40db5c8bdec8cc984a8998650318} 
+R16\+\_\+\+SNORM&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R16\_UINT@{R16\_UINT}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!R16\_UINT@{R16\_UINT}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7ad8187d21ed6dc3072e4c8e819e202c05}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7ad8187d21ed6dc3072e4c8e819e202c05} 
+R16\+\_\+\+UINT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R16\_SINT@{R16\_SINT}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!R16\_SINT@{R16\_SINT}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a261d1e0997b29130ae82f9722f7bcebf}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a261d1e0997b29130ae82f9722f7bcebf} 
+R16\+\_\+\+SINT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R16\_FLOAT@{R16\_FLOAT}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!R16\_FLOAT@{R16\_FLOAT}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a1a8b847ff6031e79477869e481aff272}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a1a8b847ff6031e79477869e481aff272} 
+R16\+\_\+\+FLOAT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R16G16\_UNORM@{R16G16\_UNORM}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!R16G16\_UNORM@{R16G16\_UNORM}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a9330163522c11f1879d051de71aaf4cc}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a9330163522c11f1879d051de71aaf4cc} 
+R16\+G16\+\_\+\+UNORM&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R16G16\_SNORM@{R16G16\_SNORM}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!R16G16\_SNORM@{R16G16\_SNORM}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7aaf5b25237ef4bc08c7d4e902d87fa191}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7aaf5b25237ef4bc08c7d4e902d87fa191} 
+R16\+G16\+\_\+\+SNORM&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R16G16\_UINT@{R16G16\_UINT}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!R16G16\_UINT@{R16G16\_UINT}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a01aa628941c3b48fea869c081e0611a3}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a01aa628941c3b48fea869c081e0611a3} 
+R16\+G16\+\_\+\+UINT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R16G16\_SINT@{R16G16\_SINT}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!R16G16\_SINT@{R16G16\_SINT}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a9d7ccb74bbc2a2aca0d0688f85266a08}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a9d7ccb74bbc2a2aca0d0688f85266a08} 
+R16\+G16\+\_\+\+SINT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R16G16\_FLOAT@{R16G16\_FLOAT}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!R16G16\_FLOAT@{R16G16\_FLOAT}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a4f5847ebfcf03e87d28d26da8e7c8280}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a4f5847ebfcf03e87d28d26da8e7c8280} 
+R16\+G16\+\_\+\+FLOAT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R16G16B16A16\_UNORM@{R16G16B16A16\_UNORM}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!R16G16B16A16\_UNORM@{R16G16B16A16\_UNORM}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a69b3ab5e66e03b0dd25f21107ff04da4}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a69b3ab5e66e03b0dd25f21107ff04da4} 
+R16\+G16\+B16\+A16\+\_\+\+UNORM&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R16G16B16A16\_SNORM@{R16G16B16A16\_SNORM}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!R16G16B16A16\_SNORM@{R16G16B16A16\_SNORM}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a6395668b27c2bf19e4eaa4dbb06c0d22}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a6395668b27c2bf19e4eaa4dbb06c0d22} 
+R16\+G16\+B16\+A16\+\_\+\+SNORM&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R16G16B16A16\_UINT@{R16G16B16A16\_UINT}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!R16G16B16A16\_UINT@{R16G16B16A16\_UINT}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a9e1fb7eae42b4f0b636e6bde9a33cf4b}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a9e1fb7eae42b4f0b636e6bde9a33cf4b} 
+R16\+G16\+B16\+A16\+\_\+\+UINT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R16G16B16A16\_SINT@{R16G16B16A16\_SINT}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!R16G16B16A16\_SINT@{R16G16B16A16\_SINT}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a5700a5767ec14fdb361879186ff5d242}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a5700a5767ec14fdb361879186ff5d242} 
+R16\+G16\+B16\+A16\+\_\+\+SINT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R16G16B16A16\_FLOAT@{R16G16B16A16\_FLOAT}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!R16G16B16A16\_FLOAT@{R16G16B16A16\_FLOAT}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a8877c88854b09a122f3533a4de543629}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a8877c88854b09a122f3533a4de543629} 
+R16\+G16\+B16\+A16\+\_\+\+FLOAT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R32\_UINT@{R32\_UINT}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!R32\_UINT@{R32\_UINT}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7af010bb9e5a699e4cb9c80b2f5d982218}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7af010bb9e5a699e4cb9c80b2f5d982218} 
+R32\+\_\+\+UINT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R32\_SINT@{R32\_SINT}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!R32\_SINT@{R32\_SINT}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a99d5ccfc1a21572c753cbf0640bd2565}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a99d5ccfc1a21572c753cbf0640bd2565} 
+R32\+\_\+\+SINT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R32\_FLOAT@{R32\_FLOAT}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!R32\_FLOAT@{R32\_FLOAT}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a2598f201b222b270e09b7913987d7272}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a2598f201b222b270e09b7913987d7272} 
+R32\+\_\+\+FLOAT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R32G32\_UINT@{R32G32\_UINT}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!R32G32\_UINT@{R32G32\_UINT}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7ad0a8fa71e3197bbf9b23d6d93235f3ca}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7ad0a8fa71e3197bbf9b23d6d93235f3ca} 
+R32\+G32\+\_\+\+UINT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R32G32\_SINT@{R32G32\_SINT}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!R32G32\_SINT@{R32G32\_SINT}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7ae00f80e3640e18f2997325c36fe0ef90}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7ae00f80e3640e18f2997325c36fe0ef90} 
+R32\+G32\+\_\+\+SINT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R32G32\_FLOAT@{R32G32\_FLOAT}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!R32G32\_FLOAT@{R32G32\_FLOAT}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a034e2a26f1b92822236e0095a5ca1848}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a034e2a26f1b92822236e0095a5ca1848} 
+R32\+G32\+\_\+\+FLOAT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R32G32B32\_UINT@{R32G32B32\_UINT}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!R32G32B32\_UINT@{R32G32B32\_UINT}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a8a0c94872edade84a5320f3cb31ac6a8}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a8a0c94872edade84a5320f3cb31ac6a8} 
+R32\+G32\+B32\+\_\+\+UINT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R32G32B32\_SINT@{R32G32B32\_SINT}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!R32G32B32\_SINT@{R32G32B32\_SINT}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7ae53d190f1e9fa67fb47bc8c053b53278}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7ae53d190f1e9fa67fb47bc8c053b53278} 
+R32\+G32\+B32\+\_\+\+SINT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R32G32B32\_FLOAT@{R32G32B32\_FLOAT}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!R32G32B32\_FLOAT@{R32G32B32\_FLOAT}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7ad05d603c5884ae9ccc392513becba305}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7ad05d603c5884ae9ccc392513becba305} 
+R32\+G32\+B32\+\_\+\+FLOAT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R32G32B32A32\_UINT@{R32G32B32A32\_UINT}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!R32G32B32A32\_UINT@{R32G32B32A32\_UINT}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a0b993e1cc925013e7f5aff710f0033e9}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a0b993e1cc925013e7f5aff710f0033e9} 
+R32\+G32\+B32\+A32\+\_\+\+UINT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R32G32B32A32\_SINT@{R32G32B32A32\_SINT}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!R32G32B32A32\_SINT@{R32G32B32A32\_SINT}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7afd9ca5bb13785040311bc3b0dbe4f192}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7afd9ca5bb13785040311bc3b0dbe4f192} 
+R32\+G32\+B32\+A32\+\_\+\+SINT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R32G32B32A32\_FLOAT@{R32G32B32A32\_FLOAT}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!R32G32B32A32\_FLOAT@{R32G32B32A32\_FLOAT}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a82bb90f92345314d9299d3e77d87f259}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a82bb90f92345314d9299d3e77d87f259} 
+R32\+G32\+B32\+A32\+\_\+\+FLOAT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{B8G8R8A8\_UNORM@{B8G8R8A8\_UNORM}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!B8G8R8A8\_UNORM@{B8G8R8A8\_UNORM}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a0f09a2e0cf764ef602b892fc70b817bf}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a0f09a2e0cf764ef602b892fc70b817bf} 
+B8\+G8\+R8\+A8\+\_\+\+UNORM&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{B8G8R8A8\_SRGB@{B8G8R8A8\_SRGB}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!B8G8R8A8\_SRGB@{B8G8R8A8\_SRGB}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7af76dbb655425d5bbcf8f4b8f5d316960}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7af76dbb655425d5bbcf8f4b8f5d316960} 
+B8\+G8\+R8\+A8\+\_\+\+SRGB&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{D16\_UNORM@{D16\_UNORM}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!D16\_UNORM@{D16\_UNORM}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a03e5886d3d7216eed4f577937132b20f}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a03e5886d3d7216eed4f577937132b20f} 
+D16\+\_\+\+UNORM&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{D24\_UNORM\_S8\_UINT@{D24\_UNORM\_S8\_UINT}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!D24\_UNORM\_S8\_UINT@{D24\_UNORM\_S8\_UINT}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7aa6dc4e4319b85984a4ab81ae89949f88}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7aa6dc4e4319b85984a4ab81ae89949f88} 
+D24\+\_\+\+UNORM\+\_\+\+S8\+\_\+\+UINT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{D32\_FLOAT@{D32\_FLOAT}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!D32\_FLOAT@{D32\_FLOAT}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a0cd740d22f1f39e5fe71d013370a8e5a}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a0cd740d22f1f39e5fe71d013370a8e5a} 
+D32\+\_\+\+FLOAT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{D32\_FLOAT\_S8X24\_UINT@{D32\_FLOAT\_S8X24\_UINT}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!D32\_FLOAT\_S8X24\_UINT@{D32\_FLOAT\_S8X24\_UINT}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a481a5c582adebb30a78e392634507d42}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a481a5c582adebb30a78e392634507d42} 
+D32\+\_\+\+FLOAT\+\_\+\+S8\+X24\+\_\+\+UINT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{S8\_UINT@{S8\_UINT}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!S8\_UINT@{S8\_UINT}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a2bf258d56516a808aa0fd289ce318aa1}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a2bf258d56516a808aa0fd289ce318aa1} 
+S8\+\_\+\+UINT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R8\_SRGB@{R8\_SRGB}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!R8\_SRGB@{R8\_SRGB}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a8843e4734dea21b13b2ff0d5576255bb}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a8843e4734dea21b13b2ff0d5576255bb} 
+R8\+\_\+\+SRGB&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R8G8\_SRGB@{R8G8\_SRGB}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!R8G8\_SRGB@{R8G8\_SRGB}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a6e1f40da52eb29e8460f2b06ff3e03e7}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a6e1f40da52eb29e8460f2b06ff3e03e7} 
+R8\+G8\+\_\+\+SRGB&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R8G8B8\_SRGB@{R8G8B8\_SRGB}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!R8G8B8\_SRGB@{R8G8B8\_SRGB}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a5e929290af698da7f6b4447e4f3644ff}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a5e929290af698da7f6b4447e4f3644ff} 
+R8\+G8\+B8\+\_\+\+SRGB&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R8\_TYPELESS@{R8\_TYPELESS}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!R8\_TYPELESS@{R8\_TYPELESS}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a67b8d2cdb9467c6a0f2c0b9979710c57}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a67b8d2cdb9467c6a0f2c0b9979710c57} 
+R8\+\_\+\+TYPELESS&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R8G8\_TYPELESS@{R8G8\_TYPELESS}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!R8G8\_TYPELESS@{R8G8\_TYPELESS}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7aca8bed2b7c36d9c779235cef4bde40ac}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7aca8bed2b7c36d9c779235cef4bde40ac} 
+R8\+G8\+\_\+\+TYPELESS&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R8G8B8\_TYPELESS@{R8G8B8\_TYPELESS}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!R8G8B8\_TYPELESS@{R8G8B8\_TYPELESS}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a7ce44714caf70c8eac3c1291b69d1b43}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a7ce44714caf70c8eac3c1291b69d1b43} 
+R8\+G8\+B8\+\_\+\+TYPELESS&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R8G8B8A8\_TYPELESS@{R8G8B8A8\_TYPELESS}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!R8G8B8A8\_TYPELESS@{R8G8B8A8\_TYPELESS}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7af72fa791516c793594b5f4f943af6315}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7af72fa791516c793594b5f4f943af6315} 
+R8\+G8\+B8\+A8\+\_\+\+TYPELESS&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R16\_TYPELESS@{R16\_TYPELESS}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!R16\_TYPELESS@{R16\_TYPELESS}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7ab01ca458c0fc604ee2469af68374927f}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7ab01ca458c0fc604ee2469af68374927f} 
+R16\+\_\+\+TYPELESS&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R16G16\_TYPELESS@{R16G16\_TYPELESS}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!R16G16\_TYPELESS@{R16G16\_TYPELESS}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a53a4c970b36e5e0760b5d709b8ca8099}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a53a4c970b36e5e0760b5d709b8ca8099} 
+R16\+G16\+\_\+\+TYPELESS&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R16G16B16A16\_TYPELESS@{R16G16B16A16\_TYPELESS}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!R16G16B16A16\_TYPELESS@{R16G16B16A16\_TYPELESS}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a095ead84ae8cfa2a1c13fdc0fa2648af}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a095ead84ae8cfa2a1c13fdc0fa2648af} 
+R16\+G16\+B16\+A16\+\_\+\+TYPELESS&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R32\_TYPELESS@{R32\_TYPELESS}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!R32\_TYPELESS@{R32\_TYPELESS}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a5b48989c0201198bda57a0024e2e2bd9}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a5b48989c0201198bda57a0024e2e2bd9} 
+R32\+\_\+\+TYPELESS&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R32G32\_TYPELESS@{R32G32\_TYPELESS}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!R32G32\_TYPELESS@{R32G32\_TYPELESS}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7af9bab926eae737c9f0e718c7aeb6de70}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7af9bab926eae737c9f0e718c7aeb6de70} 
+R32\+G32\+\_\+\+TYPELESS&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R32G32B32\_TYPELESS@{R32G32B32\_TYPELESS}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!R32G32B32\_TYPELESS@{R32G32B32\_TYPELESS}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a17112b4511323fc3d9688260830843a2}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a17112b4511323fc3d9688260830843a2} 
+R32\+G32\+B32\+\_\+\+TYPELESS&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R32G32B32A32\_TYPELESS@{R32G32B32A32\_TYPELESS}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!R32G32B32A32\_TYPELESS@{R32G32B32A32\_TYPELESS}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7afc92334bd9da483bc6a45e1b6b4d24e7}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7afc92334bd9da483bc6a45e1b6b4d24e7} 
+R32\+G32\+B32\+A32\+\_\+\+TYPELESS&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{D24\_UNORM\_S8\_UINT\_TYPELESS@{D24\_UNORM\_S8\_UINT\_TYPELESS}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!D24\_UNORM\_S8\_UINT\_TYPELESS@{D24\_UNORM\_S8\_UINT\_TYPELESS}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7ae14e5656bbf934f7293d1ee0d6f9b6f3}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7ae14e5656bbf934f7293d1ee0d6f9b6f3} 
+D24\+\_\+\+UNORM\+\_\+\+S8\+\_\+\+UINT\+\_\+\+TYPELESS&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{D32\_FLOAT\_TYPELESS@{D32\_FLOAT\_TYPELESS}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!D32\_FLOAT\_TYPELESS@{D32\_FLOAT\_TYPELESS}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a26efc2d4b28e74bb2c61f7cd5f58bfe6}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a26efc2d4b28e74bb2c61f7cd5f58bfe6} 
+D32\+\_\+\+FLOAT\+\_\+\+TYPELESS&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{D32\_FLOAT\_S8X24\_UINT\_TYPELESS@{D32\_FLOAT\_S8X24\_UINT\_TYPELESS}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!D32\_FLOAT\_S8X24\_UINT\_TYPELESS@{D32\_FLOAT\_S8X24\_UINT\_TYPELESS}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a2cc5af205e0371a4b749ce70593809c4}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a2cc5af205e0371a4b749ce70593809c4} 
+D32\+\_\+\+FLOAT\+\_\+\+S8\+X24\+\_\+\+UINT\+\_\+\+TYPELESS&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BC1\_UNORM@{BC1\_UNORM}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!BC1\_UNORM@{BC1\_UNORM}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a0df888027c6054f964cc7f4dda6186b1}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a0df888027c6054f964cc7f4dda6186b1} 
+BC1\+\_\+\+UNORM&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BC1\_SRGB@{BC1\_SRGB}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!BC1\_SRGB@{BC1\_SRGB}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a8728d460624388e7fcd0b5ea21b7e996}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a8728d460624388e7fcd0b5ea21b7e996} 
+BC1\+\_\+\+SRGB&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BC2\_UNORM@{BC2\_UNORM}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!BC2\_UNORM@{BC2\_UNORM}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a91ea56b5a9dbf93b5ea9441bcd0832d2}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a91ea56b5a9dbf93b5ea9441bcd0832d2} 
+BC2\+\_\+\+UNORM&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BC2\_SRGB@{BC2\_SRGB}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!BC2\_SRGB@{BC2\_SRGB}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7ad8823158bc0323e65b353b99dbec42c8}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7ad8823158bc0323e65b353b99dbec42c8} 
+BC2\+\_\+\+SRGB&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BC3\_UNORM@{BC3\_UNORM}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!BC3\_UNORM@{BC3\_UNORM}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7ae946a5bbd9a4713e23a0c13fab8db7e9}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7ae946a5bbd9a4713e23a0c13fab8db7e9} 
+BC3\+\_\+\+UNORM&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BC3\_SRGB@{BC3\_SRGB}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!BC3\_SRGB@{BC3\_SRGB}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a02bf65916f20a9561b709107c60cccf2}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a02bf65916f20a9561b709107c60cccf2} 
+BC3\+\_\+\+SRGB&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BC4\_UNORM@{BC4\_UNORM}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!BC4\_UNORM@{BC4\_UNORM}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7aa5e2d3e34dacb2ca384e7fd215ca447e}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7aa5e2d3e34dacb2ca384e7fd215ca447e} 
+BC4\+\_\+\+UNORM&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BC4\_SNORM@{BC4\_SNORM}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!BC4\_SNORM@{BC4\_SNORM}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a939fd457c7554c01a0bc0554a17f707a}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a939fd457c7554c01a0bc0554a17f707a} 
+BC4\+\_\+\+SNORM&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BC5\_UNORM@{BC5\_UNORM}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!BC5\_UNORM@{BC5\_UNORM}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a82ff4c8fe84975ed353e8de9d5714b90}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a82ff4c8fe84975ed353e8de9d5714b90} 
+BC5\+\_\+\+UNORM&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BC5\_SNORM@{BC5\_SNORM}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!BC5\_SNORM@{BC5\_SNORM}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a82e090c9814840994b9e585466e86c2e}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a82e090c9814840994b9e585466e86c2e} 
+BC5\+\_\+\+SNORM&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BC6H\_UF16@{BC6H\_UF16}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!BC6H\_UF16@{BC6H\_UF16}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7af7a3553aad8a76fafd60af100bff76ab}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7af7a3553aad8a76fafd60af100bff76ab} 
+BC6\+H\+\_\+\+UF16&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BC6H\_SF16@{BC6H\_SF16}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!BC6H\_SF16@{BC6H\_SF16}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a1db3e465765a54678e709ead147be4cf}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a1db3e465765a54678e709ead147be4cf} 
+BC6\+H\+\_\+\+SF16&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BC7\_UNORM@{BC7\_UNORM}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!BC7\_UNORM@{BC7\_UNORM}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7ae08f6c609116e1f505b1f512b481b278}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7ae08f6c609116e1f505b1f512b481b278} 
+BC7\+\_\+\+UNORM&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BC7\_SRGB@{BC7\_SRGB}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!BC7\_SRGB@{BC7\_SRGB}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a1f2d0087f03ce3d88e442258ccd7c898}\label{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a1f2d0087f03ce3d88e442258ccd7c898} 
+BC7\+\_\+\+SRGB&\\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{namespaceVE_1_1Internal_1_1RHI_ad9c14037f07f1e5fb2257b518b4c78ba}\index{VE::Internal::RHI@{VE::Internal::RHI}!ERHIShaderType@{ERHIShaderType}}
+\index{ERHIShaderType@{ERHIShaderType}!VE::Internal::RHI@{VE::Internal::RHI}}
+\doxysubsubsection{\texorpdfstring{ERHIShaderType}{ERHIShaderType}}
+{\footnotesize\ttfamily \label{namespaceVE_1_1Internal_1_1RHI_ad9c14037f07f1e5fb2257b518b4c78ba} 
+enum class \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_ad9c14037f07f1e5fb2257b518b4c78ba}{VE\+::\+Internal\+::\+RHI\+::\+ERHIShader\+Type}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Vertex@{Vertex}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!Vertex@{Vertex}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_ad9c14037f07f1e5fb2257b518b4c78baab22b929ba52471a02d18bb3a4e4472e6}\label{namespaceVE_1_1Internal_1_1RHI_ad9c14037f07f1e5fb2257b518b4c78baab22b929ba52471a02d18bb3a4e4472e6} 
+Vertex&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Fragment@{Fragment}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!Fragment@{Fragment}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_ad9c14037f07f1e5fb2257b518b4c78baa37d01b98065725fe3a1d30acf3a0064a}\label{namespaceVE_1_1Internal_1_1RHI_ad9c14037f07f1e5fb2257b518b4c78baa37d01b98065725fe3a1d30acf3a0064a} 
+Fragment&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Geometry@{Geometry}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!Geometry@{Geometry}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_ad9c14037f07f1e5fb2257b518b4c78baad9c6333623e6357515fcbf17be806273}\label{namespaceVE_1_1Internal_1_1RHI_ad9c14037f07f1e5fb2257b518b4c78baad9c6333623e6357515fcbf17be806273} 
+Geometry&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Compute@{Compute}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!Compute@{Compute}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_ad9c14037f07f1e5fb2257b518b4c78baaa623a8d0366bf079411aa30be45b2d10}\label{namespaceVE_1_1Internal_1_1RHI_ad9c14037f07f1e5fb2257b518b4c78baaa623a8d0366bf079411aa30be45b2d10} 
+Compute&\\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{namespaceVE_1_1Internal_1_1RHI_acbc77117a5daabd65c97f439aa80020f}\index{VE::Internal::RHI@{VE::Internal::RHI}!ETextureFilter@{ETextureFilter}}
+\index{ETextureFilter@{ETextureFilter}!VE::Internal::RHI@{VE::Internal::RHI}}
+\doxysubsubsection{\texorpdfstring{ETextureFilter}{ETextureFilter}}
+{\footnotesize\ttfamily \label{namespaceVE_1_1Internal_1_1RHI_acbc77117a5daabd65c97f439aa80020f} 
+enum class \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_acbc77117a5daabd65c97f439aa80020f}{VE\+::\+Internal\+::\+RHI\+::\+ETexture\+Filter}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Nearest@{Nearest}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!Nearest@{Nearest}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_acbc77117a5daabd65c97f439aa80020fa60494f02d440f316319dd0fad40ad007}\label{namespaceVE_1_1Internal_1_1RHI_acbc77117a5daabd65c97f439aa80020fa60494f02d440f316319dd0fad40ad007} 
+Nearest&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Linear@{Linear}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!Linear@{Linear}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_acbc77117a5daabd65c97f439aa80020fa32a843da6ea40ab3b17a3421ccdf671b}\label{namespaceVE_1_1Internal_1_1RHI_acbc77117a5daabd65c97f439aa80020fa32a843da6ea40ab3b17a3421ccdf671b} 
+Linear&\\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{namespaceVE_1_1Internal_1_1RHI_a79a6d19349d7b5399e5fb907a28fb009}\index{VE::Internal::RHI@{VE::Internal::RHI}!ETextureType@{ETextureType}}
+\index{ETextureType@{ETextureType}!VE::Internal::RHI@{VE::Internal::RHI}}
+\doxysubsubsection{\texorpdfstring{ETextureType}{ETextureType}}
+{\footnotesize\ttfamily \label{namespaceVE_1_1Internal_1_1RHI_a79a6d19349d7b5399e5fb907a28fb009} 
+enum class \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a79a6d19349d7b5399e5fb907a28fb009}{VE\+::\+Internal\+::\+RHI\+::\+ETexture\+Type}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Texture1D@{Texture1D}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!Texture1D@{Texture1D}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_a79a6d19349d7b5399e5fb907a28fb009adc7f989aa32631adaea4eb6a609b0de4}\label{namespaceVE_1_1Internal_1_1RHI_a79a6d19349d7b5399e5fb907a28fb009adc7f989aa32631adaea4eb6a609b0de4} 
+Texture1D&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Texture2D@{Texture2D}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!Texture2D@{Texture2D}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_a79a6d19349d7b5399e5fb907a28fb009aa6e2bae752d3bf4e34cb392bca789995}\label{namespaceVE_1_1Internal_1_1RHI_a79a6d19349d7b5399e5fb907a28fb009aa6e2bae752d3bf4e34cb392bca789995} 
+Texture2D&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Texture3D@{Texture3D}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!Texture3D@{Texture3D}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_a79a6d19349d7b5399e5fb907a28fb009a89c915587e16bcf8963be7cf41a0d9fd}\label{namespaceVE_1_1Internal_1_1RHI_a79a6d19349d7b5399e5fb907a28fb009a89c915587e16bcf8963be7cf41a0d9fd} 
+Texture3D&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TextureCube@{TextureCube}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!TextureCube@{TextureCube}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_a79a6d19349d7b5399e5fb907a28fb009a0a152d9f3e1df14068c5857fb3352505}\label{namespaceVE_1_1Internal_1_1RHI_a79a6d19349d7b5399e5fb907a28fb009a0a152d9f3e1df14068c5857fb3352505} 
+Texture\+Cube&\\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{namespaceVE_1_1Internal_1_1RHI_abc26d04d9c8a19c57ebbcda98f2d5aea}\index{VE::Internal::RHI@{VE::Internal::RHI}!ETextureWrap@{ETextureWrap}}
+\index{ETextureWrap@{ETextureWrap}!VE::Internal::RHI@{VE::Internal::RHI}}
+\doxysubsubsection{\texorpdfstring{ETextureWrap}{ETextureWrap}}
+{\footnotesize\ttfamily \label{namespaceVE_1_1Internal_1_1RHI_abc26d04d9c8a19c57ebbcda98f2d5aea} 
+enum class \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_abc26d04d9c8a19c57ebbcda98f2d5aea}{VE\+::\+Internal\+::\+RHI\+::\+ETexture\+Wrap}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Repeat@{Repeat}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!Repeat@{Repeat}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_abc26d04d9c8a19c57ebbcda98f2d5aeaa7020426cfb0a204051be4b3053d2acc8}\label{namespaceVE_1_1Internal_1_1RHI_abc26d04d9c8a19c57ebbcda98f2d5aeaa7020426cfb0a204051be4b3053d2acc8} 
+Repeat&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ClampToEdge@{ClampToEdge}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!ClampToEdge@{ClampToEdge}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_abc26d04d9c8a19c57ebbcda98f2d5aeaa74556551231333c36debc3d373261134}\label{namespaceVE_1_1Internal_1_1RHI_abc26d04d9c8a19c57ebbcda98f2d5aeaa74556551231333c36debc3d373261134} 
+Clamp\+To\+Edge&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ClampToBorder@{ClampToBorder}!VE::Internal::RHI@{VE::Internal::RHI}}\index{VE::Internal::RHI@{VE::Internal::RHI}!ClampToBorder@{ClampToBorder}}}\Hypertarget{namespaceVE_1_1Internal_1_1RHI_abc26d04d9c8a19c57ebbcda98f2d5aeaafb07f88f6f11cc5ab9c951290716f147}\label{namespaceVE_1_1Internal_1_1RHI_abc26d04d9c8a19c57ebbcda98f2d5aeaafb07f88f6f11cc5ab9c951290716f147} 
+Clamp\+To\+Border&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\label{doc-func-members}
+\Hypertarget{namespaceVE_1_1Internal_1_1RHI_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{namespaceVE_1_1Internal_1_1RHI_a6626d74130e5412273972b2e9b592ebf}\index{VE::Internal::RHI@{VE::Internal::RHI}!GetGLTarget@{GetGLTarget}}
+\index{GetGLTarget@{GetGLTarget}!VE::Internal::RHI@{VE::Internal::RHI}}
+\doxysubsubsection{\texorpdfstring{GetGLTarget()}{GetGLTarget()}}
+{\footnotesize\ttfamily \label{namespaceVE_1_1Internal_1_1RHI_a6626d74130e5412273972b2e9b592ebf} 
+GLenum VE\+::\+Internal\+::\+RHI\+::\+Get\+GLTarget (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a79a6d19349d7b5399e5fb907a28fb009}{ETexture\+Type}}}]{type}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+

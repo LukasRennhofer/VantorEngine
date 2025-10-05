@@ -47,7 +47,6 @@
 #include "../../Source/Vantor/RHI/Include/RHI/Interface/VRHI_Texture.hpp"
 #include "../../Source/Vantor/RHI/Include/RHI/Interface/VRHI_Mesh.hpp"
 #include "../../Source/Vantor/RHI/Include/RHI/Interface/VRHI_RenderTarget.hpp"
-#include "../../Source/Vantor/RHI/Include/RHI/Interface/VRHI_RenderPass.hpp"
 
 // =============================================================================
 // Context and Window Management
@@ -57,7 +56,10 @@
 // =============================================================================
 // Input Device Management
 // =============================================================================
-// #include "../../Source/Vantor/InputDevice/Include/InputDevice/VID_Factory.hpp"
+#include "../../Source/Vantor/InputDevice/Include/InputDevice/Public/VID_Factory.hpp"
+#include "../../Source/Vantor/InputDevice/Include/InputDevice/Public/VID_Common.hpp"
+#include "../../Source/Vantor/InputDevice/Include/InputDevice/Public/VID_IDevice.hpp"
+#include "../../Source/Vantor/InputDevice/Include/InputDevice/Manager/VID_SubSystem.hpp"
 // #include "../../Source/Vantor/InputDevice/Include/InputDevice/VID_System.hpp"
 // #include "../../Source/Vantor/InputDevice/Include/InputDevice/VID_MappingContext.hpp"
 // #include "../../Source/Vantor/InputDevice/Include/InputDevice/VID_Common.hpp"
@@ -69,33 +71,39 @@
 // =============================================================================
 // Actor Runtime System
 // =============================================================================
-#include "../../Source/Vantor/ActorRuntime/Include/ActorRuntime/VAR_Actor.hpp"
-#include "../../Source/Vantor/ActorRuntime/Include/ActorRuntime/VAR_Component.hpp"
-#include "../../Source/Vantor/ActorRuntime/Include/ActorRuntime/Register/VAR_Registry.hpp"
-#include "../../Source/Vantor/ActorRuntime/Include/ActorRuntime/Components/VAR_Base.hpp"
+#include "../../Source/Vantor/ActorRuntime/Include/ActorRuntime/Public/VAR_Actor.hpp"
+#include "../../Source/Vantor/ActorRuntime/Include/ActorRuntime/Public/VAR_Component.hpp"
+#include "../../Source/Vantor/ActorRuntime/Include/ActorRuntime/Public/Components/VAR_Base.hpp"
 
 // =============================================================================
 // Graphics System
 // =============================================================================
-#include "../../Source/Vantor/Graphics/Include/Graphics/VGFX_Material.hpp"
-#include "../../Source/Vantor/Graphics/Include/Graphics/VGFX_Uniform.hpp"
 
 // Camera System
-#include "../../Source/Vantor/Graphics/Include/Graphics/Camera/VGFX_Camera.hpp"
-#include "../../Source/Vantor/Graphics/Include/Graphics/Camera/VGFX_Frustum.hpp"
+#include "../../Source/Vantor/Graphics/Include/Graphics/Public/Camera/VGFX_Camera.hpp"
+#include "../../Source/Vantor/Graphics/Include/Graphics/Public/Camera/VGFX_Frustum.hpp"
+#include "../../Source/Vantor/Graphics/Include/Graphics/Public/Camera/VGFX_FlyCamera.hpp"
+
+// Models
+#include "../../Source/Vantor/Graphics/Include/Graphics/Public/Model/VGFX_Model.hpp"
 
 // Lighting
 #include "../../Source/Vantor/Graphics/Include/Graphics/Light/VGFX_LightData.hpp"
 
 // =============================================================================
-// Render Modules
-// =============================================================================
-#include "../../Source/Vantor/RenderModules/Include/RenderModules/Camera/VRM_FlyCamera.hpp"
-
-// =============================================================================
 // Integration Layer
 // =============================================================================
 #include "../../Source/Vantor/Integration/Include/Integration/VIN_ImGui.hpp"
+
+// Asset Manager
+#include "../../Source/Vantor/AssetManager/Include/AssetManager/Manager/VAM_AssetManager.hpp"
+#include "../../Source/Vantor/AssetManager/Include/AssetManager/Public/VAM_Asset.hpp"
+#include "../../Source/Vantor/AssetManager/Include/AssetManager/Public/VAM_TextureAsset.hpp"
+#include "../../Source/Vantor/AssetManager/Include/AssetManager/Public/VAM_ModelAsset.hpp"
+
+// =============================================================================
+// Material System
+// =============================================================================
 
 // =============================================================================
 // Studio Components (Editor)
@@ -109,9 +117,8 @@
     #include "../../Studio/Panels/VSTD_Backlog.hpp"
 #endif
 
-// =============================================================================
-// Convenience Macros for Common Operations
-// =============================================================================
+// RenderPipeline
+#include "../../Source/Vantor/RenderPipeline/Include/RenderPipeline/Public/VREP_RenderPath.hpp"
 
-// Quick access to commonly used components
-#define VANTOR_VERSION() VE::Internal::Core::Version::GetVersionString()
+// Engine Core
+#include "../../Source/Vantor/EngineCore/Include/EngineCore/Public/VECO_Engine.hpp"

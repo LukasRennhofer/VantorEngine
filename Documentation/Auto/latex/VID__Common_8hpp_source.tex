@@ -1,0 +1,153 @@
+\doxysection{VID\+\_\+\+Common.\+hpp}
+\hypertarget{VID__Common_8hpp_source}{}\label{VID__Common_8hpp_source}\index{Vantor/Source/Vantor/InputDevice/Include/InputDevice/Public/VID\_Common.hpp@{Vantor/Source/Vantor/InputDevice/Include/InputDevice/Public/VID\_Common.hpp}}
+\mbox{\hyperlink{VID__Common_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/****************************************************************************}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ Vantor\ Engine™\ -\/\ Source\ Code\ (2025)}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ Author\ \ \ \ :\ Lukas\ Rennhofer\ (@LukasRennhofer),\ Vantor\ Studios™}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ Copyright\ :\ ©\ 2025\ Lukas\ Rennhofer,\ Vantor\ Studios™}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ *\ License\ \ \ :\ GNU\ General\ Public\ License\ v3.0}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ See\ LICENSE\ file\ for\ full\ details.}}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ ****************************************************************************/}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceVE_1_1Input}{VE::Input}}\ \{}
+\DoxyCodeLine{00013\ \ \ \ \ \ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085af}{EInputKey}}\ :\ int32\_t}
+\DoxyCodeLine{00014\ \ \ \ \ \{}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/\ Keyboard\ -\/-\/-\/}}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa5df3f2093c573770f204c77c0dd75a31}{KEY\_A}},}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa27e8a917c5d5e4c440c4dbc160e96f45}{KEY\_B}},}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa9aa5b26f3b76b219ab08fe0259df2483}{KEY\_C}},}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afaffb9d8d5d9b1e0c548cb91307952398c}{KEY\_D}},}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afaa526cf087f5ab1a7827d014e3bd10725}{KEY\_E}},}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afaf18702c2cfdc53d0f23aef91ff685693}{KEY\_F}},}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa31b0d3badb0ecf74610af9069b83c30d}{KEY\_G}},}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa71704324bc9bf0e734aa5056feb20edb}{KEY\_H}},}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afad37b53647f287184f8dc54fb01a9e209}{KEY\_I}},}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa89b46dbd5707c5009f5c5d5bdd989c37}{KEY\_J}},}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa7a5c55ed490b51b0b92a22b7228adb0c}{KEY\_K}},}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afaf22f455c52a93c78475964ecfb381c36}{KEY\_L}},}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afac332c432b41a7b3e844025b9e5c590f1}{KEY\_M}},}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa885f51d482d335f77ba1421700f48368}{KEY\_N}},}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afaca5eda3cb7ef69f041e555aa4f0fe876}{KEY\_O}},}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa912b7b4b72393278cbe174fef3b40745}{KEY\_P}},}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa8133433c20f714c5a0fd3d878fae6f8c}{KEY\_Q}},}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa01371b7a167b1216dea813305ed91b2d}{KEY\_R}},}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afab0c514a9a11ed6a9b20285c1bf615cd6}{KEY\_S}},}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa5906c66cc4ebc14298b7412d1c643c66}{KEY\_T}},}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa5e16613aa5304abcfa26ba1698510cbb}{KEY\_U}},}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa52f17fd10c9aa000f4df7075d3ef3f45}{KEY\_V}},}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afaae848ca92fa46bd4bf34b825f757a527}{KEY\_W}},}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afadf3153982c2e083bc603f505d69e7956}{KEY\_X}},}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa045fb70fafbcaf257eff3209601153ff}{KEY\_Y}},}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa40a30d27cd7724dbd18532078cb6d22a}{KEY\_Z}},}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa8350baa5fded880538b27097753a9ce8}{KEY\_0}},}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa43f1c1b2bb217aa04013aa12fb9695a8}{KEY\_1}},}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa20032871e1dec9155433946ecbfbcf61}{KEY\_2}},}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afab53b75d7f6543b71273a9e4f58d54046}{KEY\_3}},}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa954e8b825fe85b083fbc2b64edad125e}{KEY\_4}},}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa5117a084c57c2ab875e0bfe86c4a638d}{KEY\_5}},}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa318bd217f20261f6eec3f4afbf965f9c}{KEY\_6}},}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa56ee05d27060b80811d25784a5cce206}{KEY\_7}},}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa85de2b5ecd586b46d5cea0015a15afac}{KEY\_8}},}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afaa4a7bcce597644128fbeb7cdebbeb666}{KEY\_9}},}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afacbc55a981874476c41bbc954dfe3ec6e}{KEY\_ESCAPE}},}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa6c577a7f141e65f0179d9a5f7448600b}{KEY\_TAB}},}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa64ff3fb5cb0d086ced450b32d71572de}{KEY\_CAPS\_LOCK}},}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afaf5a7a601b343674d48b0733a9ff83769}{KEY\_LEFT\_SHIFT}},}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afad77f79f22dbff84d60f17735b20d1314}{KEY\_LEFT\_CTRL}},}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa5663eaca1f79b78ebb57f62ff897b173}{KEY\_LEFT\_ALT}},}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa9eef027fe3d51dc434f92ce3a54fd361}{KEY\_RIGHT\_SHIFT}},}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afafd1f9b73f395a59bf2b27644364fa1bf}{KEY\_RIGHT\_CTRL}},}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa3e5c0293091cb077fcf3a86191b39cbf}{KEY\_RIGHT\_ALT}},}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afaf901e86c24f8627786390b9e1a158310}{KEY\_SPACE}},}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa39b26c85a5cec1375a8efffbb538b1a1}{KEY\_ENTER}},}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa5953bf72e4e1cee4aa6cd7142762f077}{KEY\_BACKSPACE}},}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa199730aec8ce398d74880833785a8b79}{KEY\_LEFT}},}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa8e25f52bf32130ac4a96fb5447a35e40}{KEY\_RIGHT}},}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afac248b44c41333613a8ad29b656f8950e}{KEY\_UP}},}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afae27439eebd778013c33fbb14dd19fd04}{KEY\_DOWN}},}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa09051ab75e2658aa9c25e5e89402413f}{KEY\_F1}},}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa2e45b57904c831150fb002bd0b3c98d5}{KEY\_F2}},}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa2e12c9274ce8e2f09de6aff642692b45}{KEY\_F3}},}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa126c6be5f82a5d28208b095c9e45f4b0}{KEY\_F4}},}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afae9a8bd6bb2335bd6923de36bf63e2ebf}{KEY\_F5}},}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afac7adf60d3b33fb6a9f464bb6f15488dc}{KEY\_F6}},}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afaf9c0282c9e9ec14a6936deb101c156a0}{KEY\_F7}},}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa115e2285c81211c38c6a470c0440d9a1}{KEY\_F8}},}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa99cc0a9d07d59e7ecae1a1b2fe7b19ee}{KEY\_F9}},}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afaa1635f4bc5fff540881ce6d11e64acd6}{KEY\_F10}},}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa98816004c1056a2dca9aa6bcbb3248c8}{KEY\_F11}},}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afabe8c42628328fa071e92e9d714c92e3a}{KEY\_F12}},}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afaa3f39e5eeb1c1413926327e5f216b1c6}{KEY\_INSERT}},}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afae9780b848469996b656d19e311fa74d9}{KEY\_DELETE}},}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afad5092007c60718ba001b56c06967fa6a}{KEY\_HOME}},}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa02faa88a42bb6e5e1f2c62db6520e1b6}{KEY\_END}},}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa884e34db06d6dd2aa2fdd0f3aca07469}{KEY\_PAGE\_UP}},}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afaf94feff3c41111a35d2e0676dc68f835}{KEY\_PAGE\_DOWN}},}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/\ Mouse\ -\/-\/-\/}}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afad8623959cda31be076c2427a296a0771}{MOUSE\_LEFT}},}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa07aa42ab66eda239b22a5015717a3fc3}{MOUSE\_RIGHT}},}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afab77474e5ee4befc27731cdff693df7c4}{MOUSE\_MIDDLE}},}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa9ac2c3cda0c5d9ac57f256db5cbd0fc0}{MOUSE\_BUTTON\_4}},}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa4cf244e87cfadc4576d28949c02d5a43}{MOUSE\_BUTTON\_5}},}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa8411901096e2876e53a0e05f87e2dff8}{MOUSE\_SCROLL\_X}},}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa226a0a2f36824d9ee591cd0306b4ad24}{MOUSE\_SCROLL\_Y}},}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afae20e082249dab2054f7024077cd42677}{MOUSE\_POSITION\_X}},}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afac5839ac1d67e246722c29e1213c4549c}{MOUSE\_POSITION\_Y}},}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/\ Gamepad\ Buttons\ (Generic\ Layout)\ -\/-\/-\/}}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afadd009d5c237b55959df83b5b9f889aaf}{GAMEPAD\_BUTTON\_A}},\ \textcolor{comment}{//\ Bottom\ face\ button\ (Xbox:\ A,\ DS:\ Cross)}}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa6658fa4126e568e1edf86c77c74b2d42}{GAMEPAD\_BUTTON\_B}},\ \textcolor{comment}{//\ Right\ face\ button\ (Xbox:\ B,\ DS:\ Circle)}}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afafc971a583eb17585b0e72f02a6a3bc54}{GAMEPAD\_BUTTON\_X}},\ \textcolor{comment}{//\ Left\ face\ button\ (Xbox:\ X,\ DS:\ Square)}}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afad2994926b58a386e70a002c38ebffeed}{GAMEPAD\_BUTTON\_Y}},\ \textcolor{comment}{//\ Top\ face\ button\ (Xbox:\ Y,\ DS:\ Triangle)}}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa92c1f530493e707ad760cdbd00d81461}{GAMEPAD\_BUTTON\_BACK}},}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa816559064310fbed7c5cbcf956bb6d43}{GAMEPAD\_BUTTON\_START}},}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa787021b538521406e07a51c5d042a201}{GAMEPAD\_BUTTON\_GUIDE}},\ \textcolor{comment}{//\ Xbox\ logo\ /\ PS\ button}}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa52d4af87600233ca51f4a030f6a9acef}{GAMEPAD\_BUTTON\_LEFT\_BUMPER}},}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa9cb2119e21ea55544a160b55d5574228}{GAMEPAD\_BUTTON\_RIGHT\_BUMPER}},}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa490654c1b4dd90e363384910368c4903}{GAMEPAD\_BUTTON\_LEFT\_STICK}},}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa484e20bc011804c22d1ee5405382bbb2}{GAMEPAD\_BUTTON\_RIGHT\_STICK}},}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afad517c771eb0c2560f0d2f8d8fa374f2c}{GAMEPAD\_DPAD\_UP}},}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa7418da6184cff0a3b6b98545224354a8}{GAMEPAD\_DPAD\_DOWN}},}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa7eaa1ea23ce8640215b77869c6833ae3}{GAMEPAD\_DPAD\_LEFT}},}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afab94c8bcad705ff3e66537788866d81c7}{GAMEPAD\_DPAD\_RIGHT}},}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/\ Gamepad\ Axes\ -\/-\/-\/}}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa770bcebaeb13214896eb50df56dce8f9}{GAMEPAD\_AXIS\_LEFT\_X}},}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afabf2d13688642928b428e29d20f64169b}{GAMEPAD\_AXIS\_LEFT\_Y}},}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa8adc31e292267a1a259c62c4d4a5db87}{GAMEPAD\_AXIS\_RIGHT\_X}},}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa4b668a22d2d7e941a517a267d37ccbbe}{GAMEPAD\_AXIS\_RIGHT\_Y}},}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afad754cdd0fbf05ad9b2a2752286611090}{GAMEPAD\_AXIS\_LEFT\_TRIGGER}},\ \textcolor{comment}{//\ Typically\ 0.0–1.0}}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afaf39d3c756d3e39900e80bcabc2e063e9}{GAMEPAD\_AXIS\_RIGHT\_TRIGGER}}}
+\DoxyCodeLine{00129\ \ \ \ \ \};}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00131\ \ \ \ \ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{namespaceVE_1_1Input_ad2052e6ab23b66973ff7443e2109d51a}{EInputDeviceType}}}
+\DoxyCodeLine{00132\ \ \ \ \ \{}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_ad2052e6ab23b66973ff7443e2109d51aa6ce4d85a628a88bbdb3ac24a8e5a9c2e}{Keyboard}},}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_ad2052e6ab23b66973ff7443e2109d51aaf2a47c6809d88e175dade0ef7b16aa13}{Mouse}},}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_ad2052e6ab23b66973ff7443e2109d51aa221f6781b4faa2d321ca0d928f518d6e}{Gamepad}},}
+\DoxyCodeLine{00136\ \ \ \ \ \};}
+\DoxyCodeLine{00137\ }
+\DoxyCodeLine{00138\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structVE_1_1Input_1_1VInputButton}{VInputButton}}}
+\DoxyCodeLine{00139\ \ \ \ \ \{}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Input_ad2052e6ab23b66973ff7443e2109d51a}{EInputDeviceType}}\ \mbox{\hyperlink{structVE_1_1Input_1_1VInputButton_a465add8286d54a5eb78e348bafde93be}{deviceType}};}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Input_1_1VInputButton_ad3679aa3f5a0d7510a44cf29599d4d15}{id}};\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ keycode,\ mouse\ button,\ gamepad\ button\ index}}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Input_1_1VInputButton_ae3561a494247cdb1b25f1c5d121d2905}{axisId}}\ =\ -\/1;\ \textcolor{comment}{//\ axis\ index\ (if\ applicable)}}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Input_1_1VInputButton_a9ba87be7248c22aeb344a397855b528c}{isAxis}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00144\ \ \ \ \ \};}
+\DoxyCodeLine{00145\ }
+\DoxyCodeLine{00146\ }
+\DoxyCodeLine{00147\ \}}
+
+\end{DoxyCode}

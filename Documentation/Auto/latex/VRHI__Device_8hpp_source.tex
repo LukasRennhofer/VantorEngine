@@ -1,0 +1,208 @@
+\doxysection{VRHI\+\_\+\+Device.\+hpp}
+\hypertarget{VRHI__Device_8hpp_source}{}\label{VRHI__Device_8hpp_source}\index{Vantor/Source/Vantor/RHI/Include/RHI/Interface/VRHI\_Device.hpp@{Vantor/Source/Vantor/RHI/Include/RHI/Interface/VRHI\_Device.hpp}}
+\mbox{\hyperlink{VRHI__Device_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/****************************************************************************}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ Vantor\ Engine™\ -\/\ Source\ Code\ (2025)}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ Author\ \ \ \ :\ Lukas\ Rennhofer\ (@LukasRennhofer),\ Vantor\ Studios™}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ Copyright\ :\ ©\ 2025\ Lukas\ Rennhofer,\ Vantor\ Studios™}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ *\ License\ \ \ :\ GNU\ General\ Public\ License\ v3.0}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ See\ LICENSE\ file\ for\ full\ details.}}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ ****************************************************************************/}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{VCO__Vector_8hpp}{Core/Container/VCO\_Vector.hpp}}>}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <cstdint>}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI}{VE::Internal::RHI}}}
+\DoxyCodeLine{00019\ \{}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{comment}{//\ Forward\ declarations}}
+\DoxyCodeLine{00022\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIShader}{IRHIShader}};}
+\DoxyCodeLine{00023\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHITexture}{IRHITexture}};}
+\DoxyCodeLine{00024\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIMesh}{IRHIMesh}};}
+\DoxyCodeLine{00025\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIBuffer}{IRHIBuffer}};}
+\DoxyCodeLine{00026\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget}{IRHIRenderTarget}};}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a6c768fe17cced6f287c31b77e5e1bb6a}{EGraphicsAPI}}\ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a6c768fe17cced6f287c31b77e5e1bb6aac0ad831a34c4633bee584066cfcc5040}{OPENGL}}}
+\DoxyCodeLine{00030\ \};}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7}{ERHIFormat}}}
+\DoxyCodeLine{00033\ \{}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{comment}{//\ 8-\/bit\ formats}}
+\DoxyCodeLine{00035\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a6ee77dd485809c93542e95acf222420c}{R8\_UNORM}},}
+\DoxyCodeLine{00036\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7afb68704b014646b912f3d2471ce2a53f}{R8\_SNORM}},}
+\DoxyCodeLine{00037\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a99f9bb6daa4c8f9ea6744ca176038180}{R8\_UINT}},}
+\DoxyCodeLine{00038\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7afb3d9b81391ab907186bd39d1e0ec06b}{R8\_SINT}},}
+\DoxyCodeLine{00039\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a74b8cc492d3b8df6a7c4f2573e751f65}{R8G8\_UNORM}},}
+\DoxyCodeLine{00040\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a2d06ea062c979e905e69c932828929e6}{R8G8\_SNORM}},}
+\DoxyCodeLine{00041\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a68e4bb37495d561f4939031d2b1adbae}{R8G8\_UINT}},}
+\DoxyCodeLine{00042\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7ad865c8685eaca0a8002ebae3e41927d0}{R8G8\_SINT}},}
+\DoxyCodeLine{00043\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a510cef4c9832a8b4e6fcad93f2927142}{R8G8B8\_UNORM}},}
+\DoxyCodeLine{00044\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a7dcad0f51a66fb306712a17887d28f20}{R8G8B8\_SNORM}},}
+\DoxyCodeLine{00045\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a27742f2c14c784edbbc18f650ffd3e91}{R8G8B8\_UINT}},}
+\DoxyCodeLine{00046\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7aa0203efb56d9533eb903960af0f91e96}{R8G8B8\_SINT}},}
+\DoxyCodeLine{00047\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7af55c1c722034e92213df328d31e33c62}{R8G8B8A8\_UNORM}},}
+\DoxyCodeLine{00048\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a3f078e8cba824b14d56a1de8ce6e93ef}{R8G8B8A8\_SNORM}},}
+\DoxyCodeLine{00049\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a67db604c7206857ceb4fe94ee620cae4}{R8G8B8A8\_UINT}},}
+\DoxyCodeLine{00050\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a371d6f9af5590e4d6f25cdb002854ef0}{R8G8B8A8\_SINT}},}
+\DoxyCodeLine{00051\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a5c835c7ea238d0796853827ce416a5e2}{R8G8B8A8\_SRGB}},}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{comment}{//\ 16-\/bit\ formats}}
+\DoxyCodeLine{00054\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a7b38e5acb78095aade73a5a9737eac04}{R16\_UNORM}},}
+\DoxyCodeLine{00055\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a3b0f40db5c8bdec8cc984a8998650318}{R16\_SNORM}},}
+\DoxyCodeLine{00056\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7ad8187d21ed6dc3072e4c8e819e202c05}{R16\_UINT}},}
+\DoxyCodeLine{00057\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a261d1e0997b29130ae82f9722f7bcebf}{R16\_SINT}},}
+\DoxyCodeLine{00058\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a1a8b847ff6031e79477869e481aff272}{R16\_FLOAT}},}
+\DoxyCodeLine{00059\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a9330163522c11f1879d051de71aaf4cc}{R16G16\_UNORM}},}
+\DoxyCodeLine{00060\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7aaf5b25237ef4bc08c7d4e902d87fa191}{R16G16\_SNORM}},}
+\DoxyCodeLine{00061\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a01aa628941c3b48fea869c081e0611a3}{R16G16\_UINT}},}
+\DoxyCodeLine{00062\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a9d7ccb74bbc2a2aca0d0688f85266a08}{R16G16\_SINT}},}
+\DoxyCodeLine{00063\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a4f5847ebfcf03e87d28d26da8e7c8280}{R16G16\_FLOAT}},}
+\DoxyCodeLine{00064\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a69b3ab5e66e03b0dd25f21107ff04da4}{R16G16B16A16\_UNORM}},}
+\DoxyCodeLine{00065\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a6395668b27c2bf19e4eaa4dbb06c0d22}{R16G16B16A16\_SNORM}},}
+\DoxyCodeLine{00066\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a9e1fb7eae42b4f0b636e6bde9a33cf4b}{R16G16B16A16\_UINT}},}
+\DoxyCodeLine{00067\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a5700a5767ec14fdb361879186ff5d242}{R16G16B16A16\_SINT}},}
+\DoxyCodeLine{00068\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a8877c88854b09a122f3533a4de543629}{R16G16B16A16\_FLOAT}},}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{comment}{//\ 32-\/bit\ formats}}
+\DoxyCodeLine{00071\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7af010bb9e5a699e4cb9c80b2f5d982218}{R32\_UINT}},}
+\DoxyCodeLine{00072\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a99d5ccfc1a21572c753cbf0640bd2565}{R32\_SINT}},}
+\DoxyCodeLine{00073\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a2598f201b222b270e09b7913987d7272}{R32\_FLOAT}},}
+\DoxyCodeLine{00074\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7ad0a8fa71e3197bbf9b23d6d93235f3ca}{R32G32\_UINT}},}
+\DoxyCodeLine{00075\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7ae00f80e3640e18f2997325c36fe0ef90}{R32G32\_SINT}},}
+\DoxyCodeLine{00076\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a034e2a26f1b92822236e0095a5ca1848}{R32G32\_FLOAT}},}
+\DoxyCodeLine{00077\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a8a0c94872edade84a5320f3cb31ac6a8}{R32G32B32\_UINT}},}
+\DoxyCodeLine{00078\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7ae53d190f1e9fa67fb47bc8c053b53278}{R32G32B32\_SINT}},}
+\DoxyCodeLine{00079\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7ad05d603c5884ae9ccc392513becba305}{R32G32B32\_FLOAT}},}
+\DoxyCodeLine{00080\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a0b993e1cc925013e7f5aff710f0033e9}{R32G32B32A32\_UINT}},}
+\DoxyCodeLine{00081\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7afd9ca5bb13785040311bc3b0dbe4f192}{R32G32B32A32\_SINT}},}
+\DoxyCodeLine{00082\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a82bb90f92345314d9299d3e77d87f259}{R32G32B32A32\_FLOAT}},}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{comment}{//\ Packed\ formats}}
+\DoxyCodeLine{00085\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a0f09a2e0cf764ef602b892fc70b817bf}{B8G8R8A8\_UNORM}},}
+\DoxyCodeLine{00086\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7af76dbb655425d5bbcf8f4b8f5d316960}{B8G8R8A8\_SRGB}},}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{comment}{//\ Depth/Stencil}}
+\DoxyCodeLine{00089\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a03e5886d3d7216eed4f577937132b20f}{D16\_UNORM}},}
+\DoxyCodeLine{00090\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7aa6dc4e4319b85984a4ab81ae89949f88}{D24\_UNORM\_S8\_UINT}},}
+\DoxyCodeLine{00091\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a0cd740d22f1f39e5fe71d013370a8e5a}{D32\_FLOAT}},}
+\DoxyCodeLine{00092\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a481a5c582adebb30a78e392634507d42}{D32\_FLOAT\_S8X24\_UINT}},}
+\DoxyCodeLine{00093\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a2bf258d56516a808aa0fd289ce318aa1}{S8\_UINT}},}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{comment}{//\ sRGB}}
+\DoxyCodeLine{00096\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a8843e4734dea21b13b2ff0d5576255bb}{R8\_SRGB}},}
+\DoxyCodeLine{00097\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a6e1f40da52eb29e8460f2b06ff3e03e7}{R8G8\_SRGB}},}
+\DoxyCodeLine{00098\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a5e929290af698da7f6b4447e4f3644ff}{R8G8B8\_SRGB}},}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{comment}{//\ Typeless\ (for\ resource\ views)}}
+\DoxyCodeLine{00101\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a67b8d2cdb9467c6a0f2c0b9979710c57}{R8\_TYPELESS}},}
+\DoxyCodeLine{00102\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7aca8bed2b7c36d9c779235cef4bde40ac}{R8G8\_TYPELESS}},}
+\DoxyCodeLine{00103\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a7ce44714caf70c8eac3c1291b69d1b43}{R8G8B8\_TYPELESS}},}
+\DoxyCodeLine{00104\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7af72fa791516c793594b5f4f943af6315}{R8G8B8A8\_TYPELESS}},}
+\DoxyCodeLine{00105\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7ab01ca458c0fc604ee2469af68374927f}{R16\_TYPELESS}},}
+\DoxyCodeLine{00106\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a53a4c970b36e5e0760b5d709b8ca8099}{R16G16\_TYPELESS}},}
+\DoxyCodeLine{00107\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a095ead84ae8cfa2a1c13fdc0fa2648af}{R16G16B16A16\_TYPELESS}},}
+\DoxyCodeLine{00108\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a5b48989c0201198bda57a0024e2e2bd9}{R32\_TYPELESS}},}
+\DoxyCodeLine{00109\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7af9bab926eae737c9f0e718c7aeb6de70}{R32G32\_TYPELESS}},}
+\DoxyCodeLine{00110\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a17112b4511323fc3d9688260830843a2}{R32G32B32\_TYPELESS}},}
+\DoxyCodeLine{00111\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7afc92334bd9da483bc6a45e1b6b4d24e7}{R32G32B32A32\_TYPELESS}},}
+\DoxyCodeLine{00112\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7ae14e5656bbf934f7293d1ee0d6f9b6f3}{D24\_UNORM\_S8\_UINT\_TYPELESS}},}
+\DoxyCodeLine{00113\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a26efc2d4b28e74bb2c61f7cd5f58bfe6}{D32\_FLOAT\_TYPELESS}},}
+\DoxyCodeLine{00114\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a2cc5af205e0371a4b749ce70593809c4}{D32\_FLOAT\_S8X24\_UINT\_TYPELESS}},}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00116\ \ \ \ \ \textcolor{comment}{//\ Compressed\ (examples)}}
+\DoxyCodeLine{00117\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a0df888027c6054f964cc7f4dda6186b1}{BC1\_UNORM}},}
+\DoxyCodeLine{00118\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a8728d460624388e7fcd0b5ea21b7e996}{BC1\_SRGB}},}
+\DoxyCodeLine{00119\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a91ea56b5a9dbf93b5ea9441bcd0832d2}{BC2\_UNORM}},}
+\DoxyCodeLine{00120\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7ad8823158bc0323e65b353b99dbec42c8}{BC2\_SRGB}},}
+\DoxyCodeLine{00121\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7ae946a5bbd9a4713e23a0c13fab8db7e9}{BC3\_UNORM}},}
+\DoxyCodeLine{00122\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a02bf65916f20a9561b709107c60cccf2}{BC3\_SRGB}},}
+\DoxyCodeLine{00123\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7aa5e2d3e34dacb2ca384e7fd215ca447e}{BC4\_UNORM}},}
+\DoxyCodeLine{00124\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a939fd457c7554c01a0bc0554a17f707a}{BC4\_SNORM}},}
+\DoxyCodeLine{00125\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a82ff4c8fe84975ed353e8de9d5714b90}{BC5\_UNORM}},}
+\DoxyCodeLine{00126\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a82e090c9814840994b9e585466e86c2e}{BC5\_SNORM}},}
+\DoxyCodeLine{00127\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7af7a3553aad8a76fafd60af100bff76ab}{BC6H\_UF16}},}
+\DoxyCodeLine{00128\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a1db3e465765a54678e709ead147be4cf}{BC6H\_SF16}},}
+\DoxyCodeLine{00129\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7ae08f6c609116e1f505b1f512b481b278}{BC7\_UNORM}},}
+\DoxyCodeLine{00130\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7a1f2d0087f03ce3d88e442258ccd7c898}{BC7\_SRGB}}}
+\DoxyCodeLine{00131\ \};}
+\DoxyCodeLine{00132\ }
+\DoxyCodeLine{00133\ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a52035ddfb13a42298c915d4fd9108b25}{ERHIBufferType}}}
+\DoxyCodeLine{00134\ \{}
+\DoxyCodeLine{00135\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a52035ddfb13a42298c915d4fd9108b25ab22b929ba52471a02d18bb3a4e4472e6}{Vertex}},}
+\DoxyCodeLine{00136\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a52035ddfb13a42298c915d4fd9108b25a88fa71f0a6e0dfedbb46d91cc0b37a50}{Index}},}
+\DoxyCodeLine{00137\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a52035ddfb13a42298c915d4fd9108b25af19516d11f2946f894070e92fcb56b6d}{Uniform}},}
+\DoxyCodeLine{00138\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a52035ddfb13a42298c915d4fd9108b25a63d204f04170f5bbf958083589f6572f}{ShaderStorage}}}
+\DoxyCodeLine{00139\ \};}
+\DoxyCodeLine{00140\ }
+\DoxyCodeLine{00141\ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a79a6d19349d7b5399e5fb907a28fb009}{ETextureType}}}
+\DoxyCodeLine{00142\ \{}
+\DoxyCodeLine{00143\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a79a6d19349d7b5399e5fb907a28fb009adc7f989aa32631adaea4eb6a609b0de4}{Texture1D}},}
+\DoxyCodeLine{00144\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a79a6d19349d7b5399e5fb907a28fb009aa6e2bae752d3bf4e34cb392bca789995}{Texture2D}},}
+\DoxyCodeLine{00145\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a79a6d19349d7b5399e5fb907a28fb009a89c915587e16bcf8963be7cf41a0d9fd}{Texture3D}},}
+\DoxyCodeLine{00146\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a79a6d19349d7b5399e5fb907a28fb009a0a152d9f3e1df14068c5857fb3352505}{TextureCube}}}
+\DoxyCodeLine{00147\ \};}
+\DoxyCodeLine{00148\ }
+\DoxyCodeLine{00149\ }
+\DoxyCodeLine{00150\ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_ad9c14037f07f1e5fb2257b518b4c78ba}{ERHIShaderType}}}
+\DoxyCodeLine{00151\ \{}
+\DoxyCodeLine{00152\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a52035ddfb13a42298c915d4fd9108b25ab22b929ba52471a02d18bb3a4e4472e6}{Vertex}},}
+\DoxyCodeLine{00153\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_ad9c14037f07f1e5fb2257b518b4c78baa37d01b98065725fe3a1d30acf3a0064a}{Fragment}},}
+\DoxyCodeLine{00154\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_ad9c14037f07f1e5fb2257b518b4c78baad9c6333623e6357515fcbf17be806273}{Geometry}},}
+\DoxyCodeLine{00155\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_ad9c14037f07f1e5fb2257b518b4c78baaa623a8d0366bf079411aa30be45b2d10}{Compute}}}
+\DoxyCodeLine{00156\ \};}
+\DoxyCodeLine{00157\ }
+\DoxyCodeLine{00158\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structVE_1_1Internal_1_1RHI_1_1VVertexAttribute}{VVertexAttribute}}}
+\DoxyCodeLine{00159\ \{}
+\DoxyCodeLine{00160\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{structVE_1_1Internal_1_1RHI_1_1VVertexAttribute_acc7cd9c6d77dc88ac3223c835869b465}{location}};}
+\DoxyCodeLine{00161\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7}{ERHIFormat}}\ \mbox{\hyperlink{structVE_1_1Internal_1_1RHI_1_1VVertexAttribute_a0751956b771db18da6c4793a1eede0cf}{format}};}
+\DoxyCodeLine{00162\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{structVE_1_1Internal_1_1RHI_1_1VVertexAttribute_a87a6b60de083bc8645111b22498fb8b0}{offset}};}
+\DoxyCodeLine{00163\ \};}
+\DoxyCodeLine{00164\ }
+\DoxyCodeLine{00165\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structVE_1_1Internal_1_1RHI_1_1VVertexLayout}{VVertexLayout}}}
+\DoxyCodeLine{00166\ \{}
+\DoxyCodeLine{00167\ \ \ \ \ \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector}{VE::Internal::Core::Container::TVector<VVertexAttribute>}}\ \mbox{\hyperlink{structVE_1_1Internal_1_1RHI_1_1VVertexLayout_a6c6d881311aa8a5f18257833a330e3cf}{attributes}};}
+\DoxyCodeLine{00168\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{structVE_1_1Internal_1_1RHI_1_1VVertexLayout_a4210a8248ee9a984300135a345eb42d5}{stride}};}
+\DoxyCodeLine{00169\ \};}
+\DoxyCodeLine{00170\ }
+\DoxyCodeLine{00171\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structVE_1_1Internal_1_1RHI_1_1VRenderCommand}{VRenderCommand}}\ \{}
+\DoxyCodeLine{00172\ \ \ \ \ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIMesh}{IRHIMesh}}*\ \mbox{\hyperlink{structVE_1_1Internal_1_1RHI_1_1VRenderCommand_abc4573f07859fa091d16f1af433040fc}{mesh}};}
+\DoxyCodeLine{00173\ \ \ \ \ \textcolor{comment}{//\ TODO:\ Add\ Material\ and\ Transform}}
+\DoxyCodeLine{00174\ \};}
+\DoxyCodeLine{00175\ }
+\DoxyCodeLine{00176\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIDevice}{IRHIDevice}}}
+\DoxyCodeLine{00177\ \{}
+\DoxyCodeLine{00178\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00179\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIDevice_ab7a7273fc04b267fa6056ddc49da8a6d}{\string~IRHIDevice}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00180\ }
+\DoxyCodeLine{00181\ \ \ \ \ \textcolor{comment}{//\ Device\ management}}
+\DoxyCodeLine{00182\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIDevice_afaaf572d47cc9d8e3e24e1444da640b6}{Initialize}}()\ =\ 0;}
+\DoxyCodeLine{00183\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIDevice_aa55adad13889f35ebaf78d77a56dd617}{Shutdown}}()\ =\ 0;}
+\DoxyCodeLine{00184\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIDevice_a979d6a501842c4b0aab71fa81deb81c8}{Present}}()\ =\ 0;}
+\DoxyCodeLine{00185\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIDevice_a56be3e859daf09972f9598d23fff9835}{Clear}}(\textcolor{keywordtype}{float}\ r\ =\ 0.0f,\ \textcolor{keywordtype}{float}\ g\ =\ 0.0f,\ \textcolor{keywordtype}{float}\ b\ =\ 0.0f,\ \textcolor{keywordtype}{float}\ a\ =\ 1.0f)\ =\ 0;}
+\DoxyCodeLine{00186\ }
+\DoxyCodeLine{00187\ \ \ \ \ \textcolor{comment}{//\ Resource\ creation}}
+\DoxyCodeLine{00188\ \ \ \ \ \textcolor{keyword}{virtual}\ std::shared\_ptr<IRHIShader>\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIDevice_a45ce5a0de822c739dc7ebceea3be1c6a}{CreateShader}}(\textcolor{keyword}{const}\ std::string\&\ vertexSource,\ \textcolor{keyword}{const}\ std::string\&\ fragmentSource)\ =\ 0;}
+\DoxyCodeLine{00189\ \ \ \ \ \textcolor{keyword}{virtual}\ std::shared\_ptr<IRHITexture>\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIDevice_ac2d3109128dbd7a5c9cd0e4c0704482d}{CreateTexture}}(uint32\_t\ width,\ uint32\_t\ height,\ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7}{ERHIFormat}}\ format,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ data\ =\ \textcolor{keyword}{nullptr},\ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a79a6d19349d7b5399e5fb907a28fb009}{ETextureType}}\ type\ =\ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a79a6d19349d7b5399e5fb907a28fb009aa6e2bae752d3bf4e34cb392bca789995}{ETextureType::Texture2D}},\ uint32\_t\ depth\ =\ 1)\ =\ 0;}
+\DoxyCodeLine{00190\ \ \ \ \ \textcolor{keyword}{virtual}\ std::shared\_ptr<IRHIMesh>\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIDevice_ab91c92fe23c77affec76c1bbe4acc594}{CreateMesh}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ vertexData,\ uint32\_t\ vertexSize,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ indexData,\ uint32\_t\ indexCount,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structVE_1_1Internal_1_1RHI_1_1VVertexLayout}{VVertexLayout}}\&\ layout)\ =\ 0;}
+\DoxyCodeLine{00191\ \ \ \ \ \textcolor{keyword}{virtual}\ std::shared\_ptr<IRHIBuffer>\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIDevice_a24d08cd3279189d6ab7931aad9bfa0d0}{CreateBuffer}}(\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a52035ddfb13a42298c915d4fd9108b25}{ERHIBufferType}}\ type,\ uint32\_t\ size,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ data\ =\ \textcolor{keyword}{nullptr})\ =\ 0;}
+\DoxyCodeLine{00192\ \ \ \ \ \textcolor{keyword}{virtual}\ std::shared\_ptr<IRHIRenderTarget>\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIDevice_a71d8b709197aa99a4384fdfd68e35829}{CreateRenderTarget}}(uint32\_t\ width,\ uint32\_t\ height,\ uint32\_t\ samples\ =\ 1)\ =\ 0;}
+\DoxyCodeLine{00193\ }
+\DoxyCodeLine{00194\ \ \ \ \ \textcolor{comment}{//\ Rendering}}
+\DoxyCodeLine{00195\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIDevice_aa44b7d5dd3b8e37d4c658c8801bfd695}{SetViewport}}(uint32\_t\ x,\ uint32\_t\ y,\ uint32\_t\ width,\ uint32\_t\ height)\ =\ 0;}
+\DoxyCodeLine{00196\ \ \ \ \ \textcolor{comment}{//\ virtual\ void\ BindShader(std::shared\_ptr<IRHIShader>\ shader)\ =\ 0;}}
+\DoxyCodeLine{00197\ \ \ \ \ \textcolor{comment}{//\ virtual\ void\ BindTexture(std::shared\_ptr<IRHITexture>\ texture,\ uint32\_t\ slot\ =\ 0)\ =\ 0;}}
+\DoxyCodeLine{00198\ \ \ \ \ \textcolor{comment}{//\ virtual\ void\ BindRenderTarget(std::shared\_ptr<IRHIRenderTarget>\ renderTarget)\ =\ 0;}}
+\DoxyCodeLine{00199\ \ \ \ \ \textcolor{comment}{//\ virtual\ void\ DrawMesh(std::shared\_ptr<IRHIMesh>\ mesh)\ =\ 0;}}
+\DoxyCodeLine{00200\ \};}
+\DoxyCodeLine{00201\ }
+\DoxyCodeLine{00202\ \}\ \textcolor{comment}{//\ namespace\ VE::Internal::RHI}}
+
+\end{DoxyCode}

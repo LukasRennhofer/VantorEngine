@@ -19,51 +19,51 @@ namespace VE::Internal::Graphics
 
     struct VPointLightData
     {
-            VE::Internal::Math::VVector3 position;
+            VE::Math::VVector3 position;
 
             float constant;
 
-            VE::Internal::Math::VVector3 ambient;
+            VE::Math::VVector3 ambient;
 
             float linear;
 
-            VE::Internal::Math::VVector3 diffuse;
+            VE::Math::VVector3 diffuse;
 
             float quadratic;
 
-            VE::Internal::Math::VVector3 specular;
+            VE::Math::VVector3 specular;
 
             float radius; // the light radius
     };
 
     struct VDirectionalLightData {
-        VE::Internal::Math::VVector3 direction; // Light direction
+        VE::Math::VVector3 direction; // Light direction
         float padding1 = 0.0f;            // Padding for std140
 
-        VE::Internal::Math::VVector3 ambient;   // Ambient color
+        VE::Math::VVector3 ambient;   // Ambient color
         float padding2 = 0.0f;
 
-        VE::Internal::Math::VVector3 diffuse;   // Diffuse color
+        VE::Math::VVector3 diffuse;   // Diffuse color
         float padding3 = 0.0f;
 
-        VE::Internal::Math::VVector3 specular;  // Specular color
+        VE::Math::VVector3 specular;  // Specular color
         float padding4 = 0.0f;
     };
 
     struct VSpotLightData {
-        VE::Internal::Math::VVector3 position;  // Light position
+        VE::Math::VVector3 position;  // Light position
         float constant = 1.0f;            // Attenuation
 
-        VE::Internal::Math::VVector3 direction; // Direction (normalized)
+        VE::Math::VVector3 direction; // Direction (normalized)
         float linear = 0.0f;              // Attenuation
 
-        VE::Internal::Math::VVector3 ambient;   // Ambient color
+        VE::Math::VVector3 ambient;   // Ambient color
         float quadratic = 0.0f;           // Attenuation
 
-        VE::Internal::Math::VVector3 diffuse;   // Diffuse color
+        VE::Math::VVector3 diffuse;   // Diffuse color
         float cutOff = 0.0f;              // Cosine of inner angle
 
-        VE::Internal::Math::VVector3 specular;  // Specular color
+        VE::Math::VVector3 specular;  // Specular color
         float outerCutOff = 0.0f;         // Cosine of outer angle
 
         float radius = 0.0f;              // Light range
@@ -71,7 +71,7 @@ namespace VE::Internal::Graphics
     };
 
     struct VAmbientLightData {
-        VE::Internal::Math::VVector3 ambientColor;
+        VE::Math::VVector3 ambientColor;
         float padding = 0.0f; // Align to 16 bytes
     };
 

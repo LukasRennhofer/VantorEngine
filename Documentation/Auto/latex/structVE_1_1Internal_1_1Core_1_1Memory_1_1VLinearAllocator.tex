@@ -1,0 +1,83 @@
+\doxysection{VE\+::Internal\+::Core\+::Memory\+::VLinear\+Allocator Struct Reference}
+\hypertarget{structVE_1_1Internal_1_1Core_1_1Memory_1_1VLinearAllocator}{}\label{structVE_1_1Internal_1_1Core_1_1Memory_1_1VLinearAllocator}\index{VE::Internal::Core::Memory::VLinearAllocator@{VE::Internal::Core::Memory::VLinearAllocator}}
+
+
+{\ttfamily \#include $<$VCO\+\_\+\+Allocator.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+constexpr void \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VLinearAllocator_afa61d1171192b634fbe0d1d618e45259}{init}} (void \texorpdfstring{$\ast$}{*}mem, size\+\_\+t size)
+\item 
+constexpr uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VLinearAllocator_aac9c9064039ea332912d5e245a4ec4d9}{allocate}} (size\+\_\+t size)
+\item 
+constexpr void \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VLinearAllocator_a94a3bcc40fdad818192785cf8add1e8f}{free}} (size\+\_\+t size)
+\item 
+constexpr void \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VLinearAllocator_aa6755ba899982917a10a511f3c0db75d}{reset}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VLinearAllocator_a0b479f67a50fb7f613e93de28f2f9063}{data}} = nullptr
+\item 
+size\+\_\+t \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VLinearAllocator_a28bb2dea2c1e83318730e68988a94560}{capacity}} = 0
+\item 
+size\+\_\+t \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Memory_1_1VLinearAllocator_a952ee223c019a8eb4db04ed5ce3b2f39}{offset}} = 0
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{structVE_1_1Internal_1_1Core_1_1Memory_1_1VLinearAllocator_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{structVE_1_1Internal_1_1Core_1_1Memory_1_1VLinearAllocator_aac9c9064039ea332912d5e245a4ec4d9}\index{VE::Internal::Core::Memory::VLinearAllocator@{VE::Internal::Core::Memory::VLinearAllocator}!allocate@{allocate}}
+\index{allocate@{allocate}!VE::Internal::Core::Memory::VLinearAllocator@{VE::Internal::Core::Memory::VLinearAllocator}}
+\doxysubsubsection{\texorpdfstring{allocate()}{allocate()}}
+{\footnotesize\ttfamily \label{structVE_1_1Internal_1_1Core_1_1Memory_1_1VLinearAllocator_aac9c9064039ea332912d5e245a4ec4d9} 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} VE\+::\+Internal\+::\+Core\+::\+Memory\+::\+VLinear\+Allocator\+::allocate (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{size}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+\Hypertarget{structVE_1_1Internal_1_1Core_1_1Memory_1_1VLinearAllocator_a94a3bcc40fdad818192785cf8add1e8f}\index{VE::Internal::Core::Memory::VLinearAllocator@{VE::Internal::Core::Memory::VLinearAllocator}!free@{free}}
+\index{free@{free}!VE::Internal::Core::Memory::VLinearAllocator@{VE::Internal::Core::Memory::VLinearAllocator}}
+\doxysubsubsection{\texorpdfstring{free()}{free()}}
+{\footnotesize\ttfamily \label{structVE_1_1Internal_1_1Core_1_1Memory_1_1VLinearAllocator_a94a3bcc40fdad818192785cf8add1e8f} 
+void VE\+::\+Internal\+::\+Core\+::\+Memory\+::\+VLinear\+Allocator\+::free (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{size}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+\Hypertarget{structVE_1_1Internal_1_1Core_1_1Memory_1_1VLinearAllocator_afa61d1171192b634fbe0d1d618e45259}\index{VE::Internal::Core::Memory::VLinearAllocator@{VE::Internal::Core::Memory::VLinearAllocator}!init@{init}}
+\index{init@{init}!VE::Internal::Core::Memory::VLinearAllocator@{VE::Internal::Core::Memory::VLinearAllocator}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily \label{structVE_1_1Internal_1_1Core_1_1Memory_1_1VLinearAllocator_afa61d1171192b634fbe0d1d618e45259} 
+void VE\+::\+Internal\+::\+Core\+::\+Memory\+::\+VLinear\+Allocator\+::init (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{mem}{, }\item[{size\+\_\+t}]{size}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+\Hypertarget{structVE_1_1Internal_1_1Core_1_1Memory_1_1VLinearAllocator_aa6755ba899982917a10a511f3c0db75d}\index{VE::Internal::Core::Memory::VLinearAllocator@{VE::Internal::Core::Memory::VLinearAllocator}!reset@{reset}}
+\index{reset@{reset}!VE::Internal::Core::Memory::VLinearAllocator@{VE::Internal::Core::Memory::VLinearAllocator}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily \label{structVE_1_1Internal_1_1Core_1_1Memory_1_1VLinearAllocator_aa6755ba899982917a10a511f3c0db75d} 
+void VE\+::\+Internal\+::\+Core\+::\+Memory\+::\+VLinear\+Allocator\+::reset (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+\label{doc-variable-members}
+\Hypertarget{structVE_1_1Internal_1_1Core_1_1Memory_1_1VLinearAllocator_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structVE_1_1Internal_1_1Core_1_1Memory_1_1VLinearAllocator_a28bb2dea2c1e83318730e68988a94560}\index{VE::Internal::Core::Memory::VLinearAllocator@{VE::Internal::Core::Memory::VLinearAllocator}!capacity@{capacity}}
+\index{capacity@{capacity}!VE::Internal::Core::Memory::VLinearAllocator@{VE::Internal::Core::Memory::VLinearAllocator}}
+\doxysubsubsection{\texorpdfstring{capacity}{capacity}}
+{\footnotesize\ttfamily \label{structVE_1_1Internal_1_1Core_1_1Memory_1_1VLinearAllocator_a28bb2dea2c1e83318730e68988a94560} 
+size\+\_\+t VE\+::\+Internal\+::\+Core\+::\+Memory\+::\+VLinear\+Allocator\+::capacity = 0}
+
+\Hypertarget{structVE_1_1Internal_1_1Core_1_1Memory_1_1VLinearAllocator_a0b479f67a50fb7f613e93de28f2f9063}\index{VE::Internal::Core::Memory::VLinearAllocator@{VE::Internal::Core::Memory::VLinearAllocator}!data@{data}}
+\index{data@{data}!VE::Internal::Core::Memory::VLinearAllocator@{VE::Internal::Core::Memory::VLinearAllocator}}
+\doxysubsubsection{\texorpdfstring{data}{data}}
+{\footnotesize\ttfamily \label{structVE_1_1Internal_1_1Core_1_1Memory_1_1VLinearAllocator_a0b479f67a50fb7f613e93de28f2f9063} 
+uint8\+\_\+t\texorpdfstring{$\ast$}{*} VE\+::\+Internal\+::\+Core\+::\+Memory\+::\+VLinear\+Allocator\+::data = nullptr}
+
+\Hypertarget{structVE_1_1Internal_1_1Core_1_1Memory_1_1VLinearAllocator_a952ee223c019a8eb4db04ed5ce3b2f39}\index{VE::Internal::Core::Memory::VLinearAllocator@{VE::Internal::Core::Memory::VLinearAllocator}!offset@{offset}}
+\index{offset@{offset}!VE::Internal::Core::Memory::VLinearAllocator@{VE::Internal::Core::Memory::VLinearAllocator}}
+\doxysubsubsection{\texorpdfstring{offset}{offset}}
+{\footnotesize\ttfamily \label{structVE_1_1Internal_1_1Core_1_1Memory_1_1VLinearAllocator_a952ee223c019a8eb4db04ed5ce3b2f39} 
+size\+\_\+t VE\+::\+Internal\+::\+Core\+::\+Memory\+::\+VLinear\+Allocator\+::offset = 0}
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Vantor/\+Source/\+Vantor/\+Core/\+Include/\+Core/\+Memory/\mbox{\hyperlink{VCO__Allocator_8hpp}{VCO\+\_\+\+Allocator.\+hpp}}\end{DoxyCompactItemize}

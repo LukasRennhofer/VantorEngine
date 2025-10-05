@@ -1,0 +1,231 @@
+\doxysection{VE\+::Graphics\+::ACamera Class Reference}
+\hypertarget{classVE_1_1Graphics_1_1ACamera}{}\label{classVE_1_1Graphics_1_1ACamera}\index{VE::Graphics::ACamera@{VE::Graphics::ACamera}}
+
+
+{\ttfamily \#include $<$VGFX\+\_\+\+Camera.\+hpp$>$}
+
+Inheritance diagram for VE\+::Graphics\+::ACamera\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{classVE_1_1Graphics_1_1ACamera}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classVE_1_1Graphics_1_1ACamera_a6e431fe85a95b144aec29a0801ef80c6}{ACamera}} ()
+\item 
+\mbox{\hyperlink{classVE_1_1Graphics_1_1ACamera_acbeb166222469d133af48fbfc2208f5f}{ACamera}} (\mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VE\+::\+Math\+::\+VVector3}} position, \mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VE\+::\+Math\+::\+VVector3}} forward, \mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VE\+::\+Math\+::\+VVector3}} up)
+\item 
+void \mbox{\hyperlink{classVE_1_1Graphics_1_1ACamera_aec7848df228cf425fca44fb3e44bdbae}{Update}} (float dt)
+\item 
+void \mbox{\hyperlink{classVE_1_1Graphics_1_1ACamera_a27ee74c8b5c54388940d451f0acdd709}{Set\+Perspective}} (float fov, float aspect, float near, float far)
+\item 
+void \mbox{\hyperlink{classVE_1_1Graphics_1_1ACamera_ae3d1e772947f3053ca7fd4e9080b9a73}{Set\+Orthographic}} (float left, float right, float top, float bottom, float near, float far)
+\item 
+void \mbox{\hyperlink{classVE_1_1Graphics_1_1ACamera_ac4857da3b47c21eb579765daf7c7db97}{Update\+View}} ()
+\item 
+float \mbox{\hyperlink{classVE_1_1Graphics_1_1ACamera_ab2404b1242d3a12b6b1174b4353d9806}{Frustum\+Height\+At\+Distance}} (float distance)
+\item 
+float \mbox{\hyperlink{classVE_1_1Graphics_1_1ACamera_a7ea6453502145d722332577c8e5348bc}{Distance\+At\+Frustum\+Height}} (float frustum\+Height)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classVE_1_1AActor}{VE\+::\+AActor}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classVE_1_1AActor_a2c8848103c5cb6ac3e521f9029854603}{AActor}} ()
+\item 
+virtual \mbox{\hyperlink{classVE_1_1AActor_a0358b681dc66a00a2f5fc1652a762cb0}{\texorpdfstring{$\sim$}{\string~}\+AActor}} ()=default
+\item 
+\mbox{\hyperlink{namespaceVE_ac71b8b5090760e6e75e30c988d8cf415}{VActor\+ID}} \mbox{\hyperlink{classVE_1_1AActor_a7d3062137fd9915958b554820e7a9612}{Get\+ID}} () const
+\item 
+{\footnotesize template$<$typename T, typename... Args$>$ }\\std\+::shared\+\_\+ptr$<$ T $>$ \mbox{\hyperlink{classVE_1_1AActor_a63ee298b1b66b45790366878c7115f88}{Add\+Component}} (Args \&\&...args)
+\item 
+{\footnotesize template$<$typename T, typename... Args$>$ }\\void \mbox{\hyperlink{classVE_1_1AActor_ad350f451c015260a93c3c907dcb260b1}{Add\+Component\+Void}} (Args \&\&...args)
+\item 
+{\footnotesize template$<$typename T$>$ }\\std\+::shared\+\_\+ptr$<$ T $>$ \mbox{\hyperlink{classVE_1_1AActor_aca075090b624de7aeb5c450fa8e1f904}{Get\+Component}} () const
+\item 
+{\footnotesize template$<$typename T$>$ }\\bool \mbox{\hyperlink{classVE_1_1AActor_a154f2b6ed721179e03dc9ba719b28e41}{Has\+Component}} () const
+\item 
+void \mbox{\hyperlink{classVE_1_1AActor_a57375188c3e86cc3e5687c75bed7a22d}{Remove\+Component}} (std\+::type\+\_\+index comp\+Type)
+\item 
+void \mbox{\hyperlink{classVE_1_1AActor_a6c69cb6928bb7779fde4dceea580d5a2}{Add\+Child}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classVE_1_1AActor}{AActor}} $>$ child)
+\item 
+void \mbox{\hyperlink{classVE_1_1AActor_a7b5d9aa2c85e6ee46b4027e529b7fbb4}{Remove\+Child}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classVE_1_1AActor}{AActor}} $>$ child)
+\item 
+std\+::weak\+\_\+ptr$<$ \mbox{\hyperlink{classVE_1_1AActor}{AActor}} $>$ \mbox{\hyperlink{classVE_1_1AActor_a60e40df831ba8763cb5fdc1c40fd1b1d}{Get\+Parent}} () const
+\item 
+const \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TVector}{VE\+::\+Internal\+::\+Core\+::\+Container\+::\+TVector}}$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classVE_1_1AActor}{AActor}} $>$ $>$ \& \mbox{\hyperlink{classVE_1_1AActor_af62e2b606388079aaeb4dc4f539362a5}{Get\+Children}} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structVE_1_1Math_1_1VMat4}{VE\+::\+Math\+::\+VMat4}} \mbox{\hyperlink{classVE_1_1Graphics_1_1ACamera_a86d27cd742f1583c28de73cc4dedee8e}{Projection}}
+\item 
+\mbox{\hyperlink{structVE_1_1Math_1_1VMat4}{VE\+::\+Math\+::\+VMat4}} \mbox{\hyperlink{classVE_1_1Graphics_1_1ACamera_a1daa773ba5d3e0105574a5ad81c26e3f}{View}}
+\item 
+\mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VE\+::\+Math\+::\+VVector3}} \mbox{\hyperlink{classVE_1_1Graphics_1_1ACamera_a76e575fc227376080b5c45db74dff6d0}{Position}} = \mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VE\+::\+Math\+::\+VVector3}}(0.\+0f, 0.\+0f, 0.\+0f)
+\item 
+\mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VE\+::\+Math\+::\+VVector3}} \mbox{\hyperlink{classVE_1_1Graphics_1_1ACamera_a599ca5d9b5bfcfdcdae9a45374eeff27}{Forward}} = \mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VE\+::\+Math\+::\+VVector3}}(0.\+0f, 0.\+0f, -\/1.\+0f)
+\item 
+\mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VE\+::\+Math\+::\+VVector3}} \mbox{\hyperlink{classVE_1_1Graphics_1_1ACamera_a81ecbad55e90ae7baf874d1553c285d1}{Up}} = \mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VE\+::\+Math\+::\+VVector3}}(0.\+0f, 1.\+0f, 0.\+0f)
+\item 
+\mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VE\+::\+Math\+::\+VVector3}} \mbox{\hyperlink{classVE_1_1Graphics_1_1ACamera_aca9cc2feb9cee42763a604da767e3134}{Right}} = \mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VE\+::\+Math\+::\+VVector3}}(1.\+0f, 0.\+0f, 0.\+0f)
+\item 
+float \mbox{\hyperlink{classVE_1_1Graphics_1_1ACamera_a3cfec371c95acbc646da0b28f3d0e6ea}{FOV}}
+\item 
+float \mbox{\hyperlink{classVE_1_1Graphics_1_1ACamera_ac740e3904631ffaa82580a926bd9a51b}{Aspect}}
+\item 
+float \mbox{\hyperlink{classVE_1_1Graphics_1_1ACamera_a794b8d066a0fccc8a6383695f555d540}{Near}}
+\item 
+float \mbox{\hyperlink{classVE_1_1Graphics_1_1ACamera_a4ac1ffc16a48fcbeb0dba7a2357b6776}{Far}}
+\item 
+bool \mbox{\hyperlink{classVE_1_1Graphics_1_1ACamera_a2735d8fe9af9093b1dc9955e964f23e0}{Perspective}}
+\item 
+\mbox{\hyperlink{classVE_1_1Graphics_1_1VCameraFrustum}{VCamera\+Frustum}} \mbox{\hyperlink{classVE_1_1Graphics_1_1ACamera_ada20fd04a1b03994fa3391093a3bb55f}{Frustum}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classVE_1_1AActor}{VE\+::\+AActor}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespaceVE_ac71b8b5090760e6e75e30c988d8cf415}{VActor\+ID}} \mbox{\hyperlink{classVE_1_1AActor_a50c30545fd244374e9e667e51f3f2293}{id}}
+\end{DoxyCompactItemize}
+
+
+\label{doc-constructors}
+\Hypertarget{classVE_1_1Graphics_1_1ACamera_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classVE_1_1Graphics_1_1ACamera_a6e431fe85a95b144aec29a0801ef80c6}\index{VE::Graphics::ACamera@{VE::Graphics::ACamera}!ACamera@{ACamera}}
+\index{ACamera@{ACamera}!VE::Graphics::ACamera@{VE::Graphics::ACamera}}
+\doxysubsubsection{\texorpdfstring{ACamera()}{ACamera()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classVE_1_1Graphics_1_1ACamera_a6e431fe85a95b144aec29a0801ef80c6} 
+VE\+::\+Graphics\+::\+ACamera\+::\+ACamera (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classVE_1_1Graphics_1_1ACamera_acbeb166222469d133af48fbfc2208f5f}\index{VE::Graphics::ACamera@{VE::Graphics::ACamera}!ACamera@{ACamera}}
+\index{ACamera@{ACamera}!VE::Graphics::ACamera@{VE::Graphics::ACamera}}
+\doxysubsubsection{\texorpdfstring{ACamera()}{ACamera()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classVE_1_1Graphics_1_1ACamera_acbeb166222469d133af48fbfc2208f5f} 
+VE\+::\+Graphics\+::\+ACamera\+::\+ACamera (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VE\+::\+Math\+::\+VVector3}}}]{position}{, }\item[{\mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VE\+::\+Math\+::\+VVector3}}}]{forward}{, }\item[{\mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VE\+::\+Math\+::\+VVector3}}}]{up}{}\end{DoxyParamCaption})}
+
+
+
+\label{doc-func-members}
+\Hypertarget{classVE_1_1Graphics_1_1ACamera_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classVE_1_1Graphics_1_1ACamera_a7ea6453502145d722332577c8e5348bc}\index{VE::Graphics::ACamera@{VE::Graphics::ACamera}!DistanceAtFrustumHeight@{DistanceAtFrustumHeight}}
+\index{DistanceAtFrustumHeight@{DistanceAtFrustumHeight}!VE::Graphics::ACamera@{VE::Graphics::ACamera}}
+\doxysubsubsection{\texorpdfstring{DistanceAtFrustumHeight()}{DistanceAtFrustumHeight()}}
+{\footnotesize\ttfamily \label{classVE_1_1Graphics_1_1ACamera_a7ea6453502145d722332577c8e5348bc} 
+float VE\+::\+Graphics\+::\+ACamera\+::\+Distance\+At\+Frustum\+Height (\begin{DoxyParamCaption}\item[{float}]{frustum\+Height}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classVE_1_1Graphics_1_1ACamera_ab2404b1242d3a12b6b1174b4353d9806}\index{VE::Graphics::ACamera@{VE::Graphics::ACamera}!FrustumHeightAtDistance@{FrustumHeightAtDistance}}
+\index{FrustumHeightAtDistance@{FrustumHeightAtDistance}!VE::Graphics::ACamera@{VE::Graphics::ACamera}}
+\doxysubsubsection{\texorpdfstring{FrustumHeightAtDistance()}{FrustumHeightAtDistance()}}
+{\footnotesize\ttfamily \label{classVE_1_1Graphics_1_1ACamera_ab2404b1242d3a12b6b1174b4353d9806} 
+float VE\+::\+Graphics\+::\+ACamera\+::\+Frustum\+Height\+At\+Distance (\begin{DoxyParamCaption}\item[{float}]{distance}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classVE_1_1Graphics_1_1ACamera_ae3d1e772947f3053ca7fd4e9080b9a73}\index{VE::Graphics::ACamera@{VE::Graphics::ACamera}!SetOrthographic@{SetOrthographic}}
+\index{SetOrthographic@{SetOrthographic}!VE::Graphics::ACamera@{VE::Graphics::ACamera}}
+\doxysubsubsection{\texorpdfstring{SetOrthographic()}{SetOrthographic()}}
+{\footnotesize\ttfamily \label{classVE_1_1Graphics_1_1ACamera_ae3d1e772947f3053ca7fd4e9080b9a73} 
+void VE\+::\+Graphics\+::\+ACamera\+::\+Set\+Orthographic (\begin{DoxyParamCaption}\item[{float}]{left}{, }\item[{float}]{right}{, }\item[{float}]{top}{, }\item[{float}]{bottom}{, }\item[{float}]{near}{, }\item[{float}]{far}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classVE_1_1Graphics_1_1ACamera_a27ee74c8b5c54388940d451f0acdd709}\index{VE::Graphics::ACamera@{VE::Graphics::ACamera}!SetPerspective@{SetPerspective}}
+\index{SetPerspective@{SetPerspective}!VE::Graphics::ACamera@{VE::Graphics::ACamera}}
+\doxysubsubsection{\texorpdfstring{SetPerspective()}{SetPerspective()}}
+{\footnotesize\ttfamily \label{classVE_1_1Graphics_1_1ACamera_a27ee74c8b5c54388940d451f0acdd709} 
+void VE\+::\+Graphics\+::\+ACamera\+::\+Set\+Perspective (\begin{DoxyParamCaption}\item[{float}]{fov}{, }\item[{float}]{aspect}{, }\item[{float}]{near}{, }\item[{float}]{far}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classVE_1_1Graphics_1_1ACamera_aec7848df228cf425fca44fb3e44bdbae}\index{VE::Graphics::ACamera@{VE::Graphics::ACamera}!Update@{Update}}
+\index{Update@{Update}!VE::Graphics::ACamera@{VE::Graphics::ACamera}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{classVE_1_1Graphics_1_1ACamera_aec7848df228cf425fca44fb3e44bdbae} 
+void VE\+::\+Graphics\+::\+ACamera\+::\+Update (\begin{DoxyParamCaption}\item[{float}]{dt}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classVE_1_1Graphics_1_1ACamera_ac4857da3b47c21eb579765daf7c7db97}\index{VE::Graphics::ACamera@{VE::Graphics::ACamera}!UpdateView@{UpdateView}}
+\index{UpdateView@{UpdateView}!VE::Graphics::ACamera@{VE::Graphics::ACamera}}
+\doxysubsubsection{\texorpdfstring{UpdateView()}{UpdateView()}}
+{\footnotesize\ttfamily \label{classVE_1_1Graphics_1_1ACamera_ac4857da3b47c21eb579765daf7c7db97} 
+void VE\+::\+Graphics\+::\+ACamera\+::\+Update\+View (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+\label{doc-variable-members}
+\Hypertarget{classVE_1_1Graphics_1_1ACamera_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classVE_1_1Graphics_1_1ACamera_ac740e3904631ffaa82580a926bd9a51b}\index{VE::Graphics::ACamera@{VE::Graphics::ACamera}!Aspect@{Aspect}}
+\index{Aspect@{Aspect}!VE::Graphics::ACamera@{VE::Graphics::ACamera}}
+\doxysubsubsection{\texorpdfstring{Aspect}{Aspect}}
+{\footnotesize\ttfamily \label{classVE_1_1Graphics_1_1ACamera_ac740e3904631ffaa82580a926bd9a51b} 
+float VE\+::\+Graphics\+::\+ACamera\+::\+Aspect}
+
+\Hypertarget{classVE_1_1Graphics_1_1ACamera_a4ac1ffc16a48fcbeb0dba7a2357b6776}\index{VE::Graphics::ACamera@{VE::Graphics::ACamera}!Far@{Far}}
+\index{Far@{Far}!VE::Graphics::ACamera@{VE::Graphics::ACamera}}
+\doxysubsubsection{\texorpdfstring{Far}{Far}}
+{\footnotesize\ttfamily \label{classVE_1_1Graphics_1_1ACamera_a4ac1ffc16a48fcbeb0dba7a2357b6776} 
+float VE\+::\+Graphics\+::\+ACamera\+::\+Far}
+
+\Hypertarget{classVE_1_1Graphics_1_1ACamera_a599ca5d9b5bfcfdcdae9a45374eeff27}\index{VE::Graphics::ACamera@{VE::Graphics::ACamera}!Forward@{Forward}}
+\index{Forward@{Forward}!VE::Graphics::ACamera@{VE::Graphics::ACamera}}
+\doxysubsubsection{\texorpdfstring{Forward}{Forward}}
+{\footnotesize\ttfamily \label{classVE_1_1Graphics_1_1ACamera_a599ca5d9b5bfcfdcdae9a45374eeff27} 
+\mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VE\+::\+Math\+::\+VVector3}} VE\+::\+Graphics\+::\+ACamera\+::\+Forward = \mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VE\+::\+Math\+::\+VVector3}}(0.\+0f, 0.\+0f, -\/1.\+0f)}
+
+\Hypertarget{classVE_1_1Graphics_1_1ACamera_a3cfec371c95acbc646da0b28f3d0e6ea}\index{VE::Graphics::ACamera@{VE::Graphics::ACamera}!FOV@{FOV}}
+\index{FOV@{FOV}!VE::Graphics::ACamera@{VE::Graphics::ACamera}}
+\doxysubsubsection{\texorpdfstring{FOV}{FOV}}
+{\footnotesize\ttfamily \label{classVE_1_1Graphics_1_1ACamera_a3cfec371c95acbc646da0b28f3d0e6ea} 
+float VE\+::\+Graphics\+::\+ACamera\+::\+FOV}
+
+\Hypertarget{classVE_1_1Graphics_1_1ACamera_ada20fd04a1b03994fa3391093a3bb55f}\index{VE::Graphics::ACamera@{VE::Graphics::ACamera}!Frustum@{Frustum}}
+\index{Frustum@{Frustum}!VE::Graphics::ACamera@{VE::Graphics::ACamera}}
+\doxysubsubsection{\texorpdfstring{Frustum}{Frustum}}
+{\footnotesize\ttfamily \label{classVE_1_1Graphics_1_1ACamera_ada20fd04a1b03994fa3391093a3bb55f} 
+\mbox{\hyperlink{classVE_1_1Graphics_1_1VCameraFrustum}{VCamera\+Frustum}} VE\+::\+Graphics\+::\+ACamera\+::\+Frustum}
+
+\Hypertarget{classVE_1_1Graphics_1_1ACamera_a794b8d066a0fccc8a6383695f555d540}\index{VE::Graphics::ACamera@{VE::Graphics::ACamera}!Near@{Near}}
+\index{Near@{Near}!VE::Graphics::ACamera@{VE::Graphics::ACamera}}
+\doxysubsubsection{\texorpdfstring{Near}{Near}}
+{\footnotesize\ttfamily \label{classVE_1_1Graphics_1_1ACamera_a794b8d066a0fccc8a6383695f555d540} 
+float VE\+::\+Graphics\+::\+ACamera\+::\+Near}
+
+\Hypertarget{classVE_1_1Graphics_1_1ACamera_a2735d8fe9af9093b1dc9955e964f23e0}\index{VE::Graphics::ACamera@{VE::Graphics::ACamera}!Perspective@{Perspective}}
+\index{Perspective@{Perspective}!VE::Graphics::ACamera@{VE::Graphics::ACamera}}
+\doxysubsubsection{\texorpdfstring{Perspective}{Perspective}}
+{\footnotesize\ttfamily \label{classVE_1_1Graphics_1_1ACamera_a2735d8fe9af9093b1dc9955e964f23e0} 
+bool VE\+::\+Graphics\+::\+ACamera\+::\+Perspective}
+
+\Hypertarget{classVE_1_1Graphics_1_1ACamera_a76e575fc227376080b5c45db74dff6d0}\index{VE::Graphics::ACamera@{VE::Graphics::ACamera}!Position@{Position}}
+\index{Position@{Position}!VE::Graphics::ACamera@{VE::Graphics::ACamera}}
+\doxysubsubsection{\texorpdfstring{Position}{Position}}
+{\footnotesize\ttfamily \label{classVE_1_1Graphics_1_1ACamera_a76e575fc227376080b5c45db74dff6d0} 
+\mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VE\+::\+Math\+::\+VVector3}} VE\+::\+Graphics\+::\+ACamera\+::\+Position = \mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VE\+::\+Math\+::\+VVector3}}(0.\+0f, 0.\+0f, 0.\+0f)}
+
+\Hypertarget{classVE_1_1Graphics_1_1ACamera_a86d27cd742f1583c28de73cc4dedee8e}\index{VE::Graphics::ACamera@{VE::Graphics::ACamera}!Projection@{Projection}}
+\index{Projection@{Projection}!VE::Graphics::ACamera@{VE::Graphics::ACamera}}
+\doxysubsubsection{\texorpdfstring{Projection}{Projection}}
+{\footnotesize\ttfamily \label{classVE_1_1Graphics_1_1ACamera_a86d27cd742f1583c28de73cc4dedee8e} 
+\mbox{\hyperlink{structVE_1_1Math_1_1VMat4}{VE\+::\+Math\+::\+VMat4}} VE\+::\+Graphics\+::\+ACamera\+::\+Projection}
+
+\Hypertarget{classVE_1_1Graphics_1_1ACamera_aca9cc2feb9cee42763a604da767e3134}\index{VE::Graphics::ACamera@{VE::Graphics::ACamera}!Right@{Right}}
+\index{Right@{Right}!VE::Graphics::ACamera@{VE::Graphics::ACamera}}
+\doxysubsubsection{\texorpdfstring{Right}{Right}}
+{\footnotesize\ttfamily \label{classVE_1_1Graphics_1_1ACamera_aca9cc2feb9cee42763a604da767e3134} 
+\mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VE\+::\+Math\+::\+VVector3}} VE\+::\+Graphics\+::\+ACamera\+::\+Right = \mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VE\+::\+Math\+::\+VVector3}}(1.\+0f, 0.\+0f, 0.\+0f)}
+
+\Hypertarget{classVE_1_1Graphics_1_1ACamera_a81ecbad55e90ae7baf874d1553c285d1}\index{VE::Graphics::ACamera@{VE::Graphics::ACamera}!Up@{Up}}
+\index{Up@{Up}!VE::Graphics::ACamera@{VE::Graphics::ACamera}}
+\doxysubsubsection{\texorpdfstring{Up}{Up}}
+{\footnotesize\ttfamily \label{classVE_1_1Graphics_1_1ACamera_a81ecbad55e90ae7baf874d1553c285d1} 
+\mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VE\+::\+Math\+::\+VVector3}} VE\+::\+Graphics\+::\+ACamera\+::\+Up = \mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VE\+::\+Math\+::\+VVector3}}(0.\+0f, 1.\+0f, 0.\+0f)}
+
+\Hypertarget{classVE_1_1Graphics_1_1ACamera_a1daa773ba5d3e0105574a5ad81c26e3f}\index{VE::Graphics::ACamera@{VE::Graphics::ACamera}!View@{View}}
+\index{View@{View}!VE::Graphics::ACamera@{VE::Graphics::ACamera}}
+\doxysubsubsection{\texorpdfstring{View}{View}}
+{\footnotesize\ttfamily \label{classVE_1_1Graphics_1_1ACamera_a1daa773ba5d3e0105574a5ad81c26e3f} 
+\mbox{\hyperlink{structVE_1_1Math_1_1VMat4}{VE\+::\+Math\+::\+VMat4}} VE\+::\+Graphics\+::\+ACamera\+::\+View}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Vantor/\+Source/\+Vantor/\+Graphics/\+Include/\+Graphics/\+Public/\+Camera/\mbox{\hyperlink{VGFX__Camera_8hpp}{VGFX\+\_\+\+Camera.\+hpp}}\item 
+Vantor/\+Source/\+Vantor/\+Graphics/\+Source/\+Graphics/\+Camera/\mbox{\hyperlink{VGFX__Camera_8cpp}{VGFX\+\_\+\+Camera.\+cpp}}\end{DoxyCompactItemize}

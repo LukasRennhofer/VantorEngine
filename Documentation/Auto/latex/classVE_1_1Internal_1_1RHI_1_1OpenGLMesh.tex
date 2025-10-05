@@ -1,0 +1,175 @@
+\doxysection{VE\+::Internal\+::RHI\+::Open\+GLMesh Class Reference}
+\hypertarget{classVE_1_1Internal_1_1RHI_1_1OpenGLMesh}{}\label{classVE_1_1Internal_1_1RHI_1_1OpenGLMesh}\index{VE::Internal::RHI::OpenGLMesh@{VE::Internal::RHI::OpenGLMesh}}
+
+
+{\ttfamily \#include $<$VRHI\+\_\+\+Open\+GLMesh.\+hpp$>$}
+
+Inheritance diagram for VE\+::Internal\+::RHI\+::Open\+GLMesh\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classVE_1_1Internal_1_1RHI_1_1OpenGLMesh}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLMesh_ae7234dd960d86c2a9a7973696cf8c949}{Open\+GLMesh}} (const void \texorpdfstring{$\ast$}{*}vertex\+Data, uint32\+\_\+t vertex\+Size, const void \texorpdfstring{$\ast$}{*}index\+Data, uint32\+\_\+t index\+Count, const \mbox{\hyperlink{structVE_1_1Internal_1_1RHI_1_1VVertexLayout}{VVertex\+Layout}} \&layout)
+\item 
+virtual \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLMesh_ad60b2785899509b26d037bf058c09634}{\texorpdfstring{$\sim$}{\string~}\+Open\+GLMesh}} ()
+\item 
+void \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLMesh_ab9f59f3bdf1aaf76c62383188025c0d6}{Bind}} () override
+\item 
+void \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLMesh_aba5f6edfb7fc9f71f3a485b1f91412ed}{Unbind}} () override
+\item 
+void \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLMesh_ad0a35e0512c4e5e2895dc9451b7d4034}{Draw}} () override
+\item 
+void \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLMesh_a9ad96b5eb526f2fd93ef9e8c1ef9b6bb}{Draw}} (\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a2c5cfd4eeba474f2e652bf3bcba13200}{EPrimitive\+Type}} primitive\+Type) override
+\item 
+uint32\+\_\+t \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLMesh_abd4f16e4bc2e8435f46f8679264aa20e}{Get\+Vertex\+Count}} () const override
+\item 
+uint32\+\_\+t \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLMesh_a7ac409c8004ceeb1c48fd7b1d0495495}{Get\+Index\+Count}} () const override
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIBuffer}{IRHIBuffer}} $>$ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLMesh_ae0724a3fa06d47a3bd976b15af33874b}{Get\+Vertex\+Buffer}} () const override
+\item 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIBuffer}{IRHIBuffer}} $>$ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLMesh_a946e191bd08a9b7e350f3d664453bfac}{Get\+Index\+Buffer}} () const override
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIMesh}{VE\+::\+Internal\+::\+RHI\+::\+IRHIMesh}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIMesh_ab092d1383a76f22731cb9e658a16db50}{\texorpdfstring{$\sim$}{\string~}\+IRHIMesh}} ()=default
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static GLenum \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLMesh_a3058156c8c7e9773c014f94bd0250dbb}{Primitive\+Type\+To\+GL}} (\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a2c5cfd4eeba474f2e652bf3bcba13200}{EPrimitive\+Type}} type)
+\item 
+static GLenum \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLMesh_acf2fa076d8037897b747bf119db0a207}{RHIFormat\+To\+GL}} (\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7}{ERHIFormat}} format)
+\item 
+static uint32\+\_\+t \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLMesh_a125806997b1b99ec49039c33c74ea764}{Get\+Format\+Size}} (\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7}{ERHIFormat}} format)
+\end{DoxyCompactItemize}
+
+
+\label{doc-constructors}
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1OpenGLMesh_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1OpenGLMesh_ae7234dd960d86c2a9a7973696cf8c949}\index{VE::Internal::RHI::OpenGLMesh@{VE::Internal::RHI::OpenGLMesh}!OpenGLMesh@{OpenGLMesh}}
+\index{OpenGLMesh@{OpenGLMesh}!VE::Internal::RHI::OpenGLMesh@{VE::Internal::RHI::OpenGLMesh}}
+\doxysubsubsection{\texorpdfstring{OpenGLMesh()}{OpenGLMesh()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RHI_1_1OpenGLMesh_ae7234dd960d86c2a9a7973696cf8c949} 
+VE\+::\+Internal\+::\+RHI\+::\+Open\+GLMesh\+::\+Open\+GLMesh (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\ast$}{*}}]{vertex\+Data}{, }\item[{uint32\+\_\+t}]{vertex\+Size}{, }\item[{const void \texorpdfstring{$\ast$}{*}}]{index\+Data}{, }\item[{uint32\+\_\+t}]{index\+Count}{, }\item[{const \mbox{\hyperlink{structVE_1_1Internal_1_1RHI_1_1VVertexLayout}{VVertex\+Layout}} \&}]{layout}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1OpenGLMesh_ad60b2785899509b26d037bf058c09634}\index{VE::Internal::RHI::OpenGLMesh@{VE::Internal::RHI::OpenGLMesh}!````~OpenGLMesh@{\texorpdfstring{$\sim$}{\string~}OpenGLMesh}}
+\index{````~OpenGLMesh@{\texorpdfstring{$\sim$}{\string~}OpenGLMesh}!VE::Internal::RHI::OpenGLMesh@{VE::Internal::RHI::OpenGLMesh}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}OpenGLMesh()}{\string~OpenGLMesh()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RHI_1_1OpenGLMesh_ad60b2785899509b26d037bf058c09634} 
+VE\+::\+Internal\+::\+RHI\+::\+Open\+GLMesh\+::\texorpdfstring{$\sim$}{\string~}\+Open\+GLMesh (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+\label{doc-func-members}
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1OpenGLMesh_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1OpenGLMesh_ab9f59f3bdf1aaf76c62383188025c0d6}\index{VE::Internal::RHI::OpenGLMesh@{VE::Internal::RHI::OpenGLMesh}!Bind@{Bind}}
+\index{Bind@{Bind}!VE::Internal::RHI::OpenGLMesh@{VE::Internal::RHI::OpenGLMesh}}
+\doxysubsubsection{\texorpdfstring{Bind()}{Bind()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RHI_1_1OpenGLMesh_ab9f59f3bdf1aaf76c62383188025c0d6} 
+void VE\+::\+Internal\+::\+RHI\+::\+Open\+GLMesh\+::\+Bind (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIMesh_a3edebeedd1ff2101b378284b166e63b9}{VE\+::\+Internal\+::\+RHI\+::\+IRHIMesh}}.
+
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1OpenGLMesh_ad0a35e0512c4e5e2895dc9451b7d4034}\index{VE::Internal::RHI::OpenGLMesh@{VE::Internal::RHI::OpenGLMesh}!Draw@{Draw}}
+\index{Draw@{Draw}!VE::Internal::RHI::OpenGLMesh@{VE::Internal::RHI::OpenGLMesh}}
+\doxysubsubsection{\texorpdfstring{Draw()}{Draw()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RHI_1_1OpenGLMesh_ad0a35e0512c4e5e2895dc9451b7d4034} 
+void VE\+::\+Internal\+::\+RHI\+::\+Open\+GLMesh\+::\+Draw (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIMesh_a880b6ec93eb40cbeed96757611482462}{VE\+::\+Internal\+::\+RHI\+::\+IRHIMesh}}.
+
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1OpenGLMesh_a9ad96b5eb526f2fd93ef9e8c1ef9b6bb}\index{VE::Internal::RHI::OpenGLMesh@{VE::Internal::RHI::OpenGLMesh}!Draw@{Draw}}
+\index{Draw@{Draw}!VE::Internal::RHI::OpenGLMesh@{VE::Internal::RHI::OpenGLMesh}}
+\doxysubsubsection{\texorpdfstring{Draw()}{Draw()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RHI_1_1OpenGLMesh_a9ad96b5eb526f2fd93ef9e8c1ef9b6bb} 
+void VE\+::\+Internal\+::\+RHI\+::\+Open\+GLMesh\+::\+Draw (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a2c5cfd4eeba474f2e652bf3bcba13200}{EPrimitive\+Type}}}]{primitive\+Type}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIMesh_a7a7f7a08ccfc94bb201fe82027c2f44c}{VE\+::\+Internal\+::\+RHI\+::\+IRHIMesh}}.
+
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1OpenGLMesh_a125806997b1b99ec49039c33c74ea764}\index{VE::Internal::RHI::OpenGLMesh@{VE::Internal::RHI::OpenGLMesh}!GetFormatSize@{GetFormatSize}}
+\index{GetFormatSize@{GetFormatSize}!VE::Internal::RHI::OpenGLMesh@{VE::Internal::RHI::OpenGLMesh}}
+\doxysubsubsection{\texorpdfstring{GetFormatSize()}{GetFormatSize()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RHI_1_1OpenGLMesh_a125806997b1b99ec49039c33c74ea764} 
+uint32\+\_\+t VE\+::\+Internal\+::\+RHI\+::\+Open\+GLMesh\+::\+Get\+Format\+Size (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7}{ERHIFormat}}}]{format}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1OpenGLMesh_a946e191bd08a9b7e350f3d664453bfac}\index{VE::Internal::RHI::OpenGLMesh@{VE::Internal::RHI::OpenGLMesh}!GetIndexBuffer@{GetIndexBuffer}}
+\index{GetIndexBuffer@{GetIndexBuffer}!VE::Internal::RHI::OpenGLMesh@{VE::Internal::RHI::OpenGLMesh}}
+\doxysubsubsection{\texorpdfstring{GetIndexBuffer()}{GetIndexBuffer()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RHI_1_1OpenGLMesh_a946e191bd08a9b7e350f3d664453bfac} 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIBuffer}{IRHIBuffer}} $>$ VE\+::\+Internal\+::\+RHI\+::\+Open\+GLMesh\+::\+Get\+Index\+Buffer (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIMesh_a9e0211ca58962b906c6cca1f816ede2a}{VE\+::\+Internal\+::\+RHI\+::\+IRHIMesh}}.
+
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1OpenGLMesh_a7ac409c8004ceeb1c48fd7b1d0495495}\index{VE::Internal::RHI::OpenGLMesh@{VE::Internal::RHI::OpenGLMesh}!GetIndexCount@{GetIndexCount}}
+\index{GetIndexCount@{GetIndexCount}!VE::Internal::RHI::OpenGLMesh@{VE::Internal::RHI::OpenGLMesh}}
+\doxysubsubsection{\texorpdfstring{GetIndexCount()}{GetIndexCount()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RHI_1_1OpenGLMesh_a7ac409c8004ceeb1c48fd7b1d0495495} 
+uint32\+\_\+t VE\+::\+Internal\+::\+RHI\+::\+Open\+GLMesh\+::\+Get\+Index\+Count (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIMesh_aa918e5589e70051965677a44818f77b2}{VE\+::\+Internal\+::\+RHI\+::\+IRHIMesh}}.
+
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1OpenGLMesh_ae0724a3fa06d47a3bd976b15af33874b}\index{VE::Internal::RHI::OpenGLMesh@{VE::Internal::RHI::OpenGLMesh}!GetVertexBuffer@{GetVertexBuffer}}
+\index{GetVertexBuffer@{GetVertexBuffer}!VE::Internal::RHI::OpenGLMesh@{VE::Internal::RHI::OpenGLMesh}}
+\doxysubsubsection{\texorpdfstring{GetVertexBuffer()}{GetVertexBuffer()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RHI_1_1OpenGLMesh_ae0724a3fa06d47a3bd976b15af33874b} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIBuffer}{IRHIBuffer}} $>$ VE\+::\+Internal\+::\+RHI\+::\+Open\+GLMesh\+::\+Get\+Vertex\+Buffer (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIMesh_afb28fb055f8ac895d5f60532296b6dab}{VE\+::\+Internal\+::\+RHI\+::\+IRHIMesh}}.
+
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1OpenGLMesh_abd4f16e4bc2e8435f46f8679264aa20e}\index{VE::Internal::RHI::OpenGLMesh@{VE::Internal::RHI::OpenGLMesh}!GetVertexCount@{GetVertexCount}}
+\index{GetVertexCount@{GetVertexCount}!VE::Internal::RHI::OpenGLMesh@{VE::Internal::RHI::OpenGLMesh}}
+\doxysubsubsection{\texorpdfstring{GetVertexCount()}{GetVertexCount()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RHI_1_1OpenGLMesh_abd4f16e4bc2e8435f46f8679264aa20e} 
+uint32\+\_\+t VE\+::\+Internal\+::\+RHI\+::\+Open\+GLMesh\+::\+Get\+Vertex\+Count (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIMesh_aa9b7cdd4af40895d2b24980178e72029}{VE\+::\+Internal\+::\+RHI\+::\+IRHIMesh}}.
+
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1OpenGLMesh_a3058156c8c7e9773c014f94bd0250dbb}\index{VE::Internal::RHI::OpenGLMesh@{VE::Internal::RHI::OpenGLMesh}!PrimitiveTypeToGL@{PrimitiveTypeToGL}}
+\index{PrimitiveTypeToGL@{PrimitiveTypeToGL}!VE::Internal::RHI::OpenGLMesh@{VE::Internal::RHI::OpenGLMesh}}
+\doxysubsubsection{\texorpdfstring{PrimitiveTypeToGL()}{PrimitiveTypeToGL()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RHI_1_1OpenGLMesh_a3058156c8c7e9773c014f94bd0250dbb} 
+GLenum VE\+::\+Internal\+::\+RHI\+::\+Open\+GLMesh\+::\+Primitive\+Type\+To\+GL (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_a2c5cfd4eeba474f2e652bf3bcba13200}{EPrimitive\+Type}}}]{type}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1OpenGLMesh_acf2fa076d8037897b747bf119db0a207}\index{VE::Internal::RHI::OpenGLMesh@{VE::Internal::RHI::OpenGLMesh}!RHIFormatToGL@{RHIFormatToGL}}
+\index{RHIFormatToGL@{RHIFormatToGL}!VE::Internal::RHI::OpenGLMesh@{VE::Internal::RHI::OpenGLMesh}}
+\doxysubsubsection{\texorpdfstring{RHIFormatToGL()}{RHIFormatToGL()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RHI_1_1OpenGLMesh_acf2fa076d8037897b747bf119db0a207} 
+GLenum VE\+::\+Internal\+::\+RHI\+::\+Open\+GLMesh\+::\+RHIFormat\+To\+GL (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aa7407daede2ab74be573295075835cd7}{ERHIFormat}}}]{format}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1OpenGLMesh_aba5f6edfb7fc9f71f3a485b1f91412ed}\index{VE::Internal::RHI::OpenGLMesh@{VE::Internal::RHI::OpenGLMesh}!Unbind@{Unbind}}
+\index{Unbind@{Unbind}!VE::Internal::RHI::OpenGLMesh@{VE::Internal::RHI::OpenGLMesh}}
+\doxysubsubsection{\texorpdfstring{Unbind()}{Unbind()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RHI_1_1OpenGLMesh_aba5f6edfb7fc9f71f3a485b1f91412ed} 
+void VE\+::\+Internal\+::\+RHI\+::\+Open\+GLMesh\+::\+Unbind (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIMesh_a8e15a68b80036f0d11b08a7466b95909}{VE\+::\+Internal\+::\+RHI\+::\+IRHIMesh}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Vantor/\+Source/\+Vantor/\+RHI/\+Include/\+RHI/\+Open\+GL/\mbox{\hyperlink{VRHI__OpenGLMesh_8hpp}{VRHI\+\_\+\+Open\+GLMesh.\+hpp}}\item 
+Vantor/\+Source/\+Vantor/\+RHI/\+Source/\+RHI/\+Open\+GL/\mbox{\hyperlink{VRHI__OpenGLMesh_8cpp}{VRHI\+\_\+\+Open\+GLMesh.\+cpp}}\end{DoxyCompactItemize}

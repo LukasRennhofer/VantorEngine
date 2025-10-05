@@ -13,7 +13,7 @@
 #include <cassert>
 #include <cmath>
 
-namespace VE::Internal::Math
+namespace VE::Math
 {
 
     // ----------------- VVector2 -----------------

@@ -1,0 +1,98 @@
+\doxysection{VMAS\+\_\+\+Uniform.\+hpp}
+\hypertarget{VMAS__Uniform_8hpp_source}{}\label{VMAS__Uniform_8hpp_source}\index{Vantor/Source/Vantor/MaterialSystem/Include/MaterialSystem/Public/VMAS\_Uniform.hpp@{Vantor/Source/Vantor/MaterialSystem/Include/MaterialSystem/Public/VMAS\_Uniform.hpp}}
+\mbox{\hyperlink{VMAS__Uniform_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/****************************************************************************}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ Vantor\ Engine™\ -\/\ Source\ Code\ (2025)}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ Author\ \ \ \ :\ Lukas\ Rennhofer\ (@LukasRennhofer),\ Vantor\ Studios™}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ Copyright\ :\ ©\ 2025\ Lukas\ Rennhofer,\ Vantor\ Studios™}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ *\ License\ \ \ :\ GNU\ General\ Public\ License\ v3.0}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ See\ LICENSE\ file\ for\ full\ details.}}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ ****************************************************************************/}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{VMA__Vector_8hpp}{Math/Linear/VMA\_Vector.hpp}}>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{VMA__Matrix_8hpp}{Math/Linear/VMA\_Matrix.hpp}}>}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{VRHI__Texture_8hpp}{RHI/Interface/VRHI\_Texture.hpp}}>}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceVE}{VE}}}
+\DoxyCodeLine{00020\ \{}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{namespaceVE_a42e42aa319840f6446b121f003f5bf9e}{EUniformType}}}
+\DoxyCodeLine{00023\ \ \ \ \ \{}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_a42e42aa319840f6446b121f003f5bf9eaf5f62fa8cb9e0488cc3d4733a9fd537a}{UniformTypeBOOL}},}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_a42e42aa319840f6446b121f003f5bf9eaf23041300aadbf581353c003f51a2054}{UniformTypeINT}},}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_a42e42aa319840f6446b121f003f5bf9eab8337927966f3607b65a1e29549051ea}{UniformTypeFLOAT}},}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_a42e42aa319840f6446b121f003f5bf9ea17a0ba4e2f46feed7186112d613c9f6d}{UniformTypeSAMPLER1D}},}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_a42e42aa319840f6446b121f003f5bf9eae77da5f9e4488a846d5f2fc24200b2bb}{UniformTypeSAMPLER2D}},}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_a42e42aa319840f6446b121f003f5bf9ea9e9ff45083dc7f0bfbfa3a0656082065}{UniformTypeSAMPLER3D}},}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_a42e42aa319840f6446b121f003f5bf9eac4c023f0ccbc90f37ef4daa1d8e0668b}{UniformTypeSAMPLERCUBE}},}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_a42e42aa319840f6446b121f003f5bf9ea5de86b2d5c92d1e4ca09bc165b18ad35}{UniformTypeVEC2}},}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_a42e42aa319840f6446b121f003f5bf9ea5d2a8575bd0c7baef29d89a8abfcad3b}{UniformTypeVEC3}},}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_a42e42aa319840f6446b121f003f5bf9ea96ef581f826b62fc2a8c4f92d44ea656}{UniformTypeVEC4}},}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_a42e42aa319840f6446b121f003f5bf9ea2eaddf01a1cb142f150a4f6457cddeab}{UniformTypeMAT2}},}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_a42e42aa319840f6446b121f003f5bf9eacf5d4c76738c05ebaa589e58f33efdc4}{UniformTypeMAT3}},}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_a42e42aa319840f6446b121f003f5bf9ea878ed2822002632e8e2a6a9edd830f10}{UniformTypeMAT4}},}
+\DoxyCodeLine{00037\ \ \ \ \ \};}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{namespaceVE_add30e70a323e219a135e2d4e41525333}{ESamplerType}}\ \{}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_add30e70a323e219a135e2d4e41525333abb7656d56d2755a2ee1a47b661386625}{SamplerDiffuse}},}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_add30e70a323e219a135e2d4e41525333a63a50c415360a0bfbfa2beb240776e1a}{SamplerSpecular}},}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_add30e70a323e219a135e2d4e41525333af79d9a26ca23a9f1364aa5bf9728a575}{SamplerNormal}},}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_add30e70a323e219a135e2d4e41525333a4cb88719136feeef45ebb620899c8664}{SamplerMetallic}},}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_add30e70a323e219a135e2d4e41525333a0293add0291216a8625d4f001b0cc441}{SamplerRoughness}},}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_add30e70a323e219a135e2d4e41525333ae0dfcfb090a22adcc29c3a27a9a58eee}{SamplerHeight}},\ \textcolor{comment}{//\ For\ parallax\ mapping}}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_add30e70a323e219a135e2d4e41525333a2e957d2800ac49c22fb3db3feb7c09bc}{SamplerAO}},}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_add30e70a323e219a135e2d4e41525333a88ecf7f94c385d825dd54fa2dd261ac7}{SamplerCustom}}}
+\DoxyCodeLine{00048\ \ \ \ \ \};}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structVE_1_1VUniform}{VUniform}}}
+\DoxyCodeLine{00051\ \ \ \ \ \{}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_a42e42aa319840f6446b121f003f5bf9e}{EUniformType}}\ \mbox{\hyperlink{structVE_1_1VUniform_ad7a7c56b1025aab23fee5b7e44d01723}{Type}};}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ \ \ \mbox{\hyperlink{structVE_1_1VUniform_a64b499eede95189c28d1337ccdb228ca}{Name}};}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1VUniform_a851c6327d311f0d487b6f4546b681cf7}{Size}};}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \ \mbox{\hyperlink{structVE_1_1VUniform_ae74008a22efcbe8c2b1cae1739adcb37}{Location}};}
+\DoxyCodeLine{00056\ \ \ \ \ \};}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structVE_1_1VUniformValue_ae6d9e94a103431e773314ccbfdcb2019}{VUniformValue}}}
+\DoxyCodeLine{00059\ \ \ \ \ \{}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_a42e42aa319840f6446b121f003f5bf9e}{EUniformType}}\ \mbox{\hyperlink{structVE_1_1VUniformValue_a9f718accd26215491c4af3cda3e97b1a}{Type}};}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{union}}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \mbox{\hyperlink{structVE_1_1VUniformValue_a9bb6c48e74901edfc53d5e3d32f0a2ff}{Bool}};}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \mbox{\hyperlink{structVE_1_1VUniformValue_a6662976beb25ca6b8b1d1ca1938c08a9}{Int}};}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{structVE_1_1VUniformValue_a84edc9a113f8e73f01c4af7f96b24a19}{Float}};}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Math_1_1VVector2}{VE::Math::VVector2}}\ \mbox{\hyperlink{structVE_1_1VUniformValue_aa8698f1bfe5d1f9587b169cae424992a}{Vec2}};}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VE::Math::VVector3}}\ \mbox{\hyperlink{structVE_1_1VUniformValue_a783c35f3009f0639932706b50c00a90f}{Vec3}};}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Math_1_1VVector4}{VE::Math::VVector4}}\ \mbox{\hyperlink{structVE_1_1VUniformValue_a7a738e8f39a618a9b2130c447377fca8}{Vec4}};}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Math_1_1VMat2}{VE::Math::VMat2}}\ \ \ \ \mbox{\hyperlink{structVE_1_1VUniformValue_ab456093be5be889468cf8ee05a3c30bc}{Mat2}};}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Math_1_1VMat3}{VE::Math::VMat3}}\ \ \ \ \mbox{\hyperlink{structVE_1_1VUniformValue_a52f75ac7c3b96cb49c6e3b08964f4418}{Mat3}};}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Math_1_1VMat4}{VE::Math::VMat4}}\ \ \ \ \mbox{\hyperlink{structVE_1_1VUniformValue_ae1c4e467a090f79129196b7efb259462}{Mat4}};}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1VUniformValue_ae6d9e94a103431e773314ccbfdcb2019}{VUniformValue}}()\ \{\}}
+\DoxyCodeLine{00077\ \ \ \ \ \};}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structVE_1_1VUniformValueSampler_ab6cb2b89b2a7bf5a3da8b1af5b0526ed}{VUniformValueSampler}}}
+\DoxyCodeLine{00080\ \ \ \ \ \{}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_a42e42aa319840f6446b121f003f5bf9e}{EUniformType}}\ \mbox{\hyperlink{structVE_1_1VUniformValueSampler_a6b3179025dfbd03c513cc68660a49c08}{Type}};}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_add30e70a323e219a135e2d4e41525333}{ESamplerType}}\ \mbox{\hyperlink{structVE_1_1VUniformValueSampler_a6c7615404df28ea62e7f99b02c685a90}{SType}};}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \ \mbox{\hyperlink{structVE_1_1VUniformValueSampler_a56ea96a364cf4aa483ad9e083095f0b3}{Unit}};}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{union}}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHITexture}{VE::Internal::RHI::IRHITexture}}\ \ \ \ \ *\mbox{\hyperlink{structVE_1_1VUniformValueSampler_a5a26263b46e68b7c5f55caed22e50415}{Texture}};}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ TODO:\ TextureCube}}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1VUniformValueSampler_ab6cb2b89b2a7bf5a3da8b1af5b0526ed}{VUniformValueSampler}}()\ \{\}}
+\DoxyCodeLine{00091\ \ \ \ \ \};}
+\DoxyCodeLine{00092\ \}\ \textcolor{comment}{//\ namespace\ VE}}
+
+\end{DoxyCode}

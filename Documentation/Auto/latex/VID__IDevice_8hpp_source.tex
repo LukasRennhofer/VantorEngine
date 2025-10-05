@@ -1,0 +1,62 @@
+\doxysection{VID\+\_\+\+IDevice.\+hpp}
+\hypertarget{VID__IDevice_8hpp_source}{}\label{VID__IDevice_8hpp_source}\index{Vantor/Source/Vantor/InputDevice/Include/InputDevice/Public/VID\_IDevice.hpp@{Vantor/Source/Vantor/InputDevice/Include/InputDevice/Public/VID\_IDevice.hpp}}
+\mbox{\hyperlink{VID__IDevice_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/****************************************************************************}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ Vantor\ Engine™\ -\/\ Source\ Code\ (2025)}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ Author\ \ \ \ :\ Lukas\ Rennhofer\ (@LukasRennhofer),\ Vantor\ Studios™}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ Copyright\ :\ ©\ 2025\ Lukas\ Rennhofer,\ Vantor\ Studios™}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ *\ License\ \ \ :\ GNU\ General\ Public\ License\ v3.0}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ See\ LICENSE\ file\ for\ full\ details.}}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ ****************************************************************************/}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{VMA__Vector_8hpp}{Math/Linear/VMA\_Vector.hpp}}>}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{VID__Common_8hpp}{InputDevice/Public/VID\_Common.hpp}}>}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceVE_1_1Input}{VE::Input}}}
+\DoxyCodeLine{00021\ \{}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classVE_1_1Input_1_1VInputDevice}{VInputDevice}}}
+\DoxyCodeLine{00024\ \ \ \ \ \{}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classVE_1_1Input_1_1VInputDevice_a5a9215f33bd8ee1f59a2bfb9294e4a3c}{\string~VInputDevice}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Poll/update\ internal\ state}}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Input_1_1VInputDevice_aef6b6bbb8c2152c7a0e68be7021e1583}{Update}}()\ =\ 0;}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ if\ button\ is\ currently\ pressed}}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classVE_1_1Input_1_1VInputDevice_a32ca0fa44eb26ea1d6c3f6285a26ef5b}{IsPressed}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structVE_1_1Input_1_1VInputButton}{VInputButton}}\ \&button)\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ virtual\ bool\ IsPressed(const\ VEInputKey\ \&key)\ const\ =\ 0;}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ if\ button\ was\ just\ pressed\ this\ frame\ (edge\ trigger)}}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classVE_1_1Input_1_1VInputDevice_ac771a516595723b5fb968773bce7d51c}{WasPressed}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structVE_1_1Input_1_1VInputButton}{VInputButton}}\ \&button)\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ virtual\ bool\ WasPressed(const\ VEInputKey\ \&key)\ const\ =\ 0;}}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ For\ axis\ inputs\ (gamepads,\ analog\ sticks\ etc)}}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classVE_1_1Input_1_1VInputDevice_a338f05f3089eb392aa405f67ae6a456f}{GetAxis}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structVE_1_1Input_1_1VInputButton}{VInputButton}}\ \&axis)\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Input_1_1VInputDevice_a63467c1da9133eb5bb000fdc82fc861d}{SetMouseCursorState}}(\textcolor{keywordtype}{bool}\ visible)\ =\ 0;}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classVE_1_1Input_1_1VInputDevice_aab8d07de645d85b636742306b330b46c}{GetMouseCursorState}}()\ \textcolor{keyword}{const}\ \ \ \ \ \ \ =\ 0;}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{structVE_1_1Math_1_1VVector2}{VE::Math::VVector2}}\ \mbox{\hyperlink{classVE_1_1Input_1_1VInputDevice_a417a6d44bce3c1af751995c5e07955f9}{GetMousePosition}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{structVE_1_1Math_1_1VVector2}{VE::Math::VVector2}}\ \mbox{\hyperlink{classVE_1_1Input_1_1VInputDevice_abc37e625771001e1141201ae3cc5c5f0}{GetMouseDelta}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{structVE_1_1Math_1_1VVector2}{VE::Math::VVector2}}\ \mbox{\hyperlink{classVE_1_1Input_1_1VInputDevice_a618204dbe6754112a72eef847127ab69}{GetScrollOffset}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ std::string\ \mbox{\hyperlink{classVE_1_1Input_1_1VInputDevice_a5eb4144aa0ebb67f217923b3bc69dbb5}{GetDeviceName}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classVE_1_1Input_1_1VInputDevice_a48ff8e726cc0aede07cdb004c4054ef4}{m\_CursorState}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00055\ \ \ \ \ \};}
+\DoxyCodeLine{00056\ \}\ \textcolor{comment}{//\ namespace\ VE::Input}}
+
+\end{DoxyCode}

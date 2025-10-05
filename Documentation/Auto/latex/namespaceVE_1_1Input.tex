@@ -1,0 +1,608 @@
+\doxysection{VE\+::Input Namespace Reference}
+\hypertarget{namespaceVE_1_1Input}{}\label{namespaceVE_1_1Input}\index{VE::Input@{VE::Input}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structVE_1_1Input_1_1VInputButton}{VInput\+Button}}
+\item 
+class \mbox{\hyperlink{classVE_1_1Input_1_1VInputDevice}{VInput\+Device}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085af}{EInput\+Key}} \+: int32\+\_\+t \{ \newline
+\mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa5df3f2093c573770f204c77c0dd75a31}{KEY\+\_\+A}}
+, \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa27e8a917c5d5e4c440c4dbc160e96f45}{KEY\+\_\+B}}
+, \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa9aa5b26f3b76b219ab08fe0259df2483}{KEY\+\_\+C}}
+, \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afaffb9d8d5d9b1e0c548cb91307952398c}{KEY\+\_\+D}}
+, \newline
+\mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afaa526cf087f5ab1a7827d014e3bd10725}{KEY\+\_\+E}}
+, \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afaf18702c2cfdc53d0f23aef91ff685693}{KEY\+\_\+F}}
+, \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa31b0d3badb0ecf74610af9069b83c30d}{KEY\+\_\+G}}
+, \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa71704324bc9bf0e734aa5056feb20edb}{KEY\+\_\+H}}
+, \newline
+\mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afad37b53647f287184f8dc54fb01a9e209}{KEY\+\_\+I}}
+, \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa89b46dbd5707c5009f5c5d5bdd989c37}{KEY\+\_\+J}}
+, \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa7a5c55ed490b51b0b92a22b7228adb0c}{KEY\+\_\+K}}
+, \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afaf22f455c52a93c78475964ecfb381c36}{KEY\+\_\+L}}
+, \newline
+\mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afac332c432b41a7b3e844025b9e5c590f1}{KEY\+\_\+M}}
+, \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa885f51d482d335f77ba1421700f48368}{KEY\+\_\+N}}
+, \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afaca5eda3cb7ef69f041e555aa4f0fe876}{KEY\+\_\+O}}
+, \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa912b7b4b72393278cbe174fef3b40745}{KEY\+\_\+P}}
+, \newline
+\mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa8133433c20f714c5a0fd3d878fae6f8c}{KEY\+\_\+Q}}
+, \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa01371b7a167b1216dea813305ed91b2d}{KEY\+\_\+R}}
+, \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afab0c514a9a11ed6a9b20285c1bf615cd6}{KEY\+\_\+S}}
+, \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa5906c66cc4ebc14298b7412d1c643c66}{KEY\+\_\+T}}
+, \newline
+\mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa5e16613aa5304abcfa26ba1698510cbb}{KEY\+\_\+U}}
+, \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa52f17fd10c9aa000f4df7075d3ef3f45}{KEY\+\_\+V}}
+, \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afaae848ca92fa46bd4bf34b825f757a527}{KEY\+\_\+W}}
+, \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afadf3153982c2e083bc603f505d69e7956}{KEY\+\_\+X}}
+, \newline
+\mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa045fb70fafbcaf257eff3209601153ff}{KEY\+\_\+Y}}
+, \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa40a30d27cd7724dbd18532078cb6d22a}{KEY\+\_\+Z}}
+, \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa8350baa5fded880538b27097753a9ce8}{KEY\+\_\+0}}
+, \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa43f1c1b2bb217aa04013aa12fb9695a8}{KEY\+\_\+1}}
+, \newline
+\mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa20032871e1dec9155433946ecbfbcf61}{KEY\+\_\+2}}
+, \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afab53b75d7f6543b71273a9e4f58d54046}{KEY\+\_\+3}}
+, \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa954e8b825fe85b083fbc2b64edad125e}{KEY\+\_\+4}}
+, \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa5117a084c57c2ab875e0bfe86c4a638d}{KEY\+\_\+5}}
+, \newline
+\mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa318bd217f20261f6eec3f4afbf965f9c}{KEY\+\_\+6}}
+, \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa56ee05d27060b80811d25784a5cce206}{KEY\+\_\+7}}
+, \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa85de2b5ecd586b46d5cea0015a15afac}{KEY\+\_\+8}}
+, \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afaa4a7bcce597644128fbeb7cdebbeb666}{KEY\+\_\+9}}
+, \newline
+\mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afacbc55a981874476c41bbc954dfe3ec6e}{KEY\+\_\+\+ESCAPE}}
+, \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa6c577a7f141e65f0179d9a5f7448600b}{KEY\+\_\+\+TAB}}
+, \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa64ff3fb5cb0d086ced450b32d71572de}{KEY\+\_\+\+CAPS\+\_\+\+LOCK}}
+, \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afaf5a7a601b343674d48b0733a9ff83769}{KEY\+\_\+\+LEFT\+\_\+\+SHIFT}}
+, \newline
+\mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afad77f79f22dbff84d60f17735b20d1314}{KEY\+\_\+\+LEFT\+\_\+\+CTRL}}
+, \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa5663eaca1f79b78ebb57f62ff897b173}{KEY\+\_\+\+LEFT\+\_\+\+ALT}}
+, \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa9eef027fe3d51dc434f92ce3a54fd361}{KEY\+\_\+\+RIGHT\+\_\+\+SHIFT}}
+, \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afafd1f9b73f395a59bf2b27644364fa1bf}{KEY\+\_\+\+RIGHT\+\_\+\+CTRL}}
+, \newline
+\mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa3e5c0293091cb077fcf3a86191b39cbf}{KEY\+\_\+\+RIGHT\+\_\+\+ALT}}
+, \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afaf901e86c24f8627786390b9e1a158310}{KEY\+\_\+\+SPACE}}
+, \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa39b26c85a5cec1375a8efffbb538b1a1}{KEY\+\_\+\+ENTER}}
+, \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa5953bf72e4e1cee4aa6cd7142762f077}{KEY\+\_\+\+BACKSPACE}}
+, \newline
+\mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa199730aec8ce398d74880833785a8b79}{KEY\+\_\+\+LEFT}}
+, \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa8e25f52bf32130ac4a96fb5447a35e40}{KEY\+\_\+\+RIGHT}}
+, \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afac248b44c41333613a8ad29b656f8950e}{KEY\+\_\+\+UP}}
+, \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afae27439eebd778013c33fbb14dd19fd04}{KEY\+\_\+\+DOWN}}
+, \newline
+\mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa09051ab75e2658aa9c25e5e89402413f}{KEY\+\_\+\+F1}}
+, \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa2e45b57904c831150fb002bd0b3c98d5}{KEY\+\_\+\+F2}}
+, \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa2e12c9274ce8e2f09de6aff642692b45}{KEY\+\_\+\+F3}}
+, \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa126c6be5f82a5d28208b095c9e45f4b0}{KEY\+\_\+\+F4}}
+, \newline
+\mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afae9a8bd6bb2335bd6923de36bf63e2ebf}{KEY\+\_\+\+F5}}
+, \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afac7adf60d3b33fb6a9f464bb6f15488dc}{KEY\+\_\+\+F6}}
+, \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afaf9c0282c9e9ec14a6936deb101c156a0}{KEY\+\_\+\+F7}}
+, \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa115e2285c81211c38c6a470c0440d9a1}{KEY\+\_\+\+F8}}
+, \newline
+\mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa99cc0a9d07d59e7ecae1a1b2fe7b19ee}{KEY\+\_\+\+F9}}
+, \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afaa1635f4bc5fff540881ce6d11e64acd6}{KEY\+\_\+\+F10}}
+, \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa98816004c1056a2dca9aa6bcbb3248c8}{KEY\+\_\+\+F11}}
+, \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afabe8c42628328fa071e92e9d714c92e3a}{KEY\+\_\+\+F12}}
+, \newline
+\mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afaa3f39e5eeb1c1413926327e5f216b1c6}{KEY\+\_\+\+INSERT}}
+, \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afae9780b848469996b656d19e311fa74d9}{KEY\+\_\+\+DELETE}}
+, \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afad5092007c60718ba001b56c06967fa6a}{KEY\+\_\+\+HOME}}
+, \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa02faa88a42bb6e5e1f2c62db6520e1b6}{KEY\+\_\+\+END}}
+, \newline
+\mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa884e34db06d6dd2aa2fdd0f3aca07469}{KEY\+\_\+\+PAGE\+\_\+\+UP}}
+, \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afaf94feff3c41111a35d2e0676dc68f835}{KEY\+\_\+\+PAGE\+\_\+\+DOWN}}
+, \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afad8623959cda31be076c2427a296a0771}{MOUSE\+\_\+\+LEFT}}
+, \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa07aa42ab66eda239b22a5015717a3fc3}{MOUSE\+\_\+\+RIGHT}}
+, \newline
+\mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afab77474e5ee4befc27731cdff693df7c4}{MOUSE\+\_\+\+MIDDLE}}
+, \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa9ac2c3cda0c5d9ac57f256db5cbd0fc0}{MOUSE\+\_\+\+BUTTON\+\_\+4}}
+, \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa4cf244e87cfadc4576d28949c02d5a43}{MOUSE\+\_\+\+BUTTON\+\_\+5}}
+, \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa8411901096e2876e53a0e05f87e2dff8}{MOUSE\+\_\+\+SCROLL\+\_\+X}}
+, \newline
+\mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa226a0a2f36824d9ee591cd0306b4ad24}{MOUSE\+\_\+\+SCROLL\+\_\+Y}}
+, \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afae20e082249dab2054f7024077cd42677}{MOUSE\+\_\+\+POSITION\+\_\+X}}
+, \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afac5839ac1d67e246722c29e1213c4549c}{MOUSE\+\_\+\+POSITION\+\_\+Y}}
+, \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afadd009d5c237b55959df83b5b9f889aaf}{GAMEPAD\+\_\+\+BUTTON\+\_\+A}}
+, \newline
+\mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa6658fa4126e568e1edf86c77c74b2d42}{GAMEPAD\+\_\+\+BUTTON\+\_\+B}}
+, \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afafc971a583eb17585b0e72f02a6a3bc54}{GAMEPAD\+\_\+\+BUTTON\+\_\+X}}
+, \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afad2994926b58a386e70a002c38ebffeed}{GAMEPAD\+\_\+\+BUTTON\+\_\+Y}}
+, \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa92c1f530493e707ad760cdbd00d81461}{GAMEPAD\+\_\+\+BUTTON\+\_\+\+BACK}}
+, \newline
+\mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa816559064310fbed7c5cbcf956bb6d43}{GAMEPAD\+\_\+\+BUTTON\+\_\+\+START}}
+, \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa787021b538521406e07a51c5d042a201}{GAMEPAD\+\_\+\+BUTTON\+\_\+\+GUIDE}}
+, \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa52d4af87600233ca51f4a030f6a9acef}{GAMEPAD\+\_\+\+BUTTON\+\_\+\+LEFT\+\_\+\+BUMPER}}
+, \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa9cb2119e21ea55544a160b55d5574228}{GAMEPAD\+\_\+\+BUTTON\+\_\+\+RIGHT\+\_\+\+BUMPER}}
+, \newline
+\mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa490654c1b4dd90e363384910368c4903}{GAMEPAD\+\_\+\+BUTTON\+\_\+\+LEFT\+\_\+\+STICK}}
+, \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa484e20bc011804c22d1ee5405382bbb2}{GAMEPAD\+\_\+\+BUTTON\+\_\+\+RIGHT\+\_\+\+STICK}}
+, \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afad517c771eb0c2560f0d2f8d8fa374f2c}{GAMEPAD\+\_\+\+DPAD\+\_\+\+UP}}
+, \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa7418da6184cff0a3b6b98545224354a8}{GAMEPAD\+\_\+\+DPAD\+\_\+\+DOWN}}
+, \newline
+\mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa7eaa1ea23ce8640215b77869c6833ae3}{GAMEPAD\+\_\+\+DPAD\+\_\+\+LEFT}}
+, \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afab94c8bcad705ff3e66537788866d81c7}{GAMEPAD\+\_\+\+DPAD\+\_\+\+RIGHT}}
+, \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa770bcebaeb13214896eb50df56dce8f9}{GAMEPAD\+\_\+\+AXIS\+\_\+\+LEFT\+\_\+X}}
+, \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afabf2d13688642928b428e29d20f64169b}{GAMEPAD\+\_\+\+AXIS\+\_\+\+LEFT\+\_\+Y}}
+, \newline
+\mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa8adc31e292267a1a259c62c4d4a5db87}{GAMEPAD\+\_\+\+AXIS\+\_\+\+RIGHT\+\_\+X}}
+, \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa4b668a22d2d7e941a517a267d37ccbbe}{GAMEPAD\+\_\+\+AXIS\+\_\+\+RIGHT\+\_\+Y}}
+, \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afad754cdd0fbf05ad9b2a2752286611090}{GAMEPAD\+\_\+\+AXIS\+\_\+\+LEFT\+\_\+\+TRIGGER}}
+, \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085afaf39d3c756d3e39900e80bcabc2e063e9}{GAMEPAD\+\_\+\+AXIS\+\_\+\+RIGHT\+\_\+\+TRIGGER}}
+ \}
+\item 
+enum class \mbox{\hyperlink{namespaceVE_1_1Input_ad2052e6ab23b66973ff7443e2109d51a}{EInput\+Device\+Type}} \{ \mbox{\hyperlink{namespaceVE_1_1Input_ad2052e6ab23b66973ff7443e2109d51aa6ce4d85a628a88bbdb3ac24a8e5a9c2e}{Keyboard}}
+, \mbox{\hyperlink{namespaceVE_1_1Input_ad2052e6ab23b66973ff7443e2109d51aaf2a47c6809d88e175dade0ef7b16aa13}{Mouse}}
+, \mbox{\hyperlink{namespaceVE_1_1Input_ad2052e6ab23b66973ff7443e2109d51aa221f6781b4faa2d321ca0d928f518d6e}{Gamepad}}
+ \}
+\item 
+enum \mbox{\hyperlink{namespaceVE_1_1Input_ae107efa80920171f71b119a983edde24}{EInput\+Backend}} \{ \mbox{\hyperlink{namespaceVE_1_1Input_ae107efa80920171f71b119a983edde24a477b04b3aa48183e43daf2c005fd19ca}{GLFW}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classVE_1_1Input_1_1VInputDevice}{VInput\+Device}} $>$ \mbox{\hyperlink{namespaceVE_1_1Input_a7579919b224bdab411b608fe05d3f3a3}{Create\+Input\+Device}} (\mbox{\hyperlink{classVE_1_1Internal_1_1Context_1_1VWindow}{VE\+::\+Internal\+::\+Context\+::\+VWindow}} \texorpdfstring{$\ast$}{*}native\+Window)
+\end{DoxyCompactItemize}
+
+
+\label{doc-enum-members}
+\Hypertarget{namespaceVE_1_1Input_doc-enum-members}
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{namespaceVE_1_1Input_ae107efa80920171f71b119a983edde24}\index{VE::Input@{VE::Input}!EInputBackend@{EInputBackend}}
+\index{EInputBackend@{EInputBackend}!VE::Input@{VE::Input}}
+\doxysubsubsection{\texorpdfstring{EInputBackend}{EInputBackend}}
+{\footnotesize\ttfamily \label{namespaceVE_1_1Input_ae107efa80920171f71b119a983edde24} 
+enum \mbox{\hyperlink{namespaceVE_1_1Input_ae107efa80920171f71b119a983edde24}{VE\+::\+Input\+::\+EInput\+Backend}}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GLFW@{GLFW}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!GLFW@{GLFW}}}\Hypertarget{namespaceVE_1_1Input_ae107efa80920171f71b119a983edde24a477b04b3aa48183e43daf2c005fd19ca}\label{namespaceVE_1_1Input_ae107efa80920171f71b119a983edde24a477b04b3aa48183e43daf2c005fd19ca} 
+GLFW&\\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{namespaceVE_1_1Input_ad2052e6ab23b66973ff7443e2109d51a}\index{VE::Input@{VE::Input}!EInputDeviceType@{EInputDeviceType}}
+\index{EInputDeviceType@{EInputDeviceType}!VE::Input@{VE::Input}}
+\doxysubsubsection{\texorpdfstring{EInputDeviceType}{EInputDeviceType}}
+{\footnotesize\ttfamily \label{namespaceVE_1_1Input_ad2052e6ab23b66973ff7443e2109d51a} 
+enum class \mbox{\hyperlink{namespaceVE_1_1Input_ad2052e6ab23b66973ff7443e2109d51a}{VE\+::\+Input\+::\+EInput\+Device\+Type}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Keyboard@{Keyboard}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!Keyboard@{Keyboard}}}\Hypertarget{namespaceVE_1_1Input_ad2052e6ab23b66973ff7443e2109d51aa6ce4d85a628a88bbdb3ac24a8e5a9c2e}\label{namespaceVE_1_1Input_ad2052e6ab23b66973ff7443e2109d51aa6ce4d85a628a88bbdb3ac24a8e5a9c2e} 
+Keyboard&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Mouse@{Mouse}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!Mouse@{Mouse}}}\Hypertarget{namespaceVE_1_1Input_ad2052e6ab23b66973ff7443e2109d51aaf2a47c6809d88e175dade0ef7b16aa13}\label{namespaceVE_1_1Input_ad2052e6ab23b66973ff7443e2109d51aaf2a47c6809d88e175dade0ef7b16aa13} 
+Mouse&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Gamepad@{Gamepad}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!Gamepad@{Gamepad}}}\Hypertarget{namespaceVE_1_1Input_ad2052e6ab23b66973ff7443e2109d51aa221f6781b4faa2d321ca0d928f518d6e}\label{namespaceVE_1_1Input_ad2052e6ab23b66973ff7443e2109d51aa221f6781b4faa2d321ca0d928f518d6e} 
+Gamepad&\\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085af}\index{VE::Input@{VE::Input}!EInputKey@{EInputKey}}
+\index{EInputKey@{EInputKey}!VE::Input@{VE::Input}}
+\doxysubsubsection{\texorpdfstring{EInputKey}{EInputKey}}
+{\footnotesize\ttfamily \label{namespaceVE_1_1Input_a80857dda30716162d7665329059085af} 
+enum class \mbox{\hyperlink{namespaceVE_1_1Input_a80857dda30716162d7665329059085af}{VE\+::\+Input\+::\+EInput\+Key}} \+: int32\+\_\+t\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_A@{KEY\_A}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!KEY\_A@{KEY\_A}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa5df3f2093c573770f204c77c0dd75a31}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa5df3f2093c573770f204c77c0dd75a31} 
+KEY\+\_\+A&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_B@{KEY\_B}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!KEY\_B@{KEY\_B}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa27e8a917c5d5e4c440c4dbc160e96f45}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa27e8a917c5d5e4c440c4dbc160e96f45} 
+KEY\+\_\+B&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_C@{KEY\_C}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!KEY\_C@{KEY\_C}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa9aa5b26f3b76b219ab08fe0259df2483}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa9aa5b26f3b76b219ab08fe0259df2483} 
+KEY\+\_\+C&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_D@{KEY\_D}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!KEY\_D@{KEY\_D}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afaffb9d8d5d9b1e0c548cb91307952398c}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afaffb9d8d5d9b1e0c548cb91307952398c} 
+KEY\+\_\+D&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_E@{KEY\_E}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!KEY\_E@{KEY\_E}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afaa526cf087f5ab1a7827d014e3bd10725}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afaa526cf087f5ab1a7827d014e3bd10725} 
+KEY\+\_\+E&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_F@{KEY\_F}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!KEY\_F@{KEY\_F}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afaf18702c2cfdc53d0f23aef91ff685693}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afaf18702c2cfdc53d0f23aef91ff685693} 
+KEY\+\_\+F&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_G@{KEY\_G}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!KEY\_G@{KEY\_G}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa31b0d3badb0ecf74610af9069b83c30d}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa31b0d3badb0ecf74610af9069b83c30d} 
+KEY\+\_\+G&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_H@{KEY\_H}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!KEY\_H@{KEY\_H}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa71704324bc9bf0e734aa5056feb20edb}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa71704324bc9bf0e734aa5056feb20edb} 
+KEY\+\_\+H&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_I@{KEY\_I}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!KEY\_I@{KEY\_I}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afad37b53647f287184f8dc54fb01a9e209}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afad37b53647f287184f8dc54fb01a9e209} 
+KEY\+\_\+I&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_J@{KEY\_J}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!KEY\_J@{KEY\_J}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa89b46dbd5707c5009f5c5d5bdd989c37}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa89b46dbd5707c5009f5c5d5bdd989c37} 
+KEY\+\_\+J&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_K@{KEY\_K}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!KEY\_K@{KEY\_K}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa7a5c55ed490b51b0b92a22b7228adb0c}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa7a5c55ed490b51b0b92a22b7228adb0c} 
+KEY\+\_\+K&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_L@{KEY\_L}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!KEY\_L@{KEY\_L}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afaf22f455c52a93c78475964ecfb381c36}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afaf22f455c52a93c78475964ecfb381c36} 
+KEY\+\_\+L&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_M@{KEY\_M}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!KEY\_M@{KEY\_M}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afac332c432b41a7b3e844025b9e5c590f1}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afac332c432b41a7b3e844025b9e5c590f1} 
+KEY\+\_\+M&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_N@{KEY\_N}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!KEY\_N@{KEY\_N}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa885f51d482d335f77ba1421700f48368}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa885f51d482d335f77ba1421700f48368} 
+KEY\+\_\+N&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_O@{KEY\_O}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!KEY\_O@{KEY\_O}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afaca5eda3cb7ef69f041e555aa4f0fe876}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afaca5eda3cb7ef69f041e555aa4f0fe876} 
+KEY\+\_\+O&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_P@{KEY\_P}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!KEY\_P@{KEY\_P}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa912b7b4b72393278cbe174fef3b40745}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa912b7b4b72393278cbe174fef3b40745} 
+KEY\+\_\+P&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_Q@{KEY\_Q}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!KEY\_Q@{KEY\_Q}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa8133433c20f714c5a0fd3d878fae6f8c}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa8133433c20f714c5a0fd3d878fae6f8c} 
+KEY\+\_\+Q&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_R@{KEY\_R}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!KEY\_R@{KEY\_R}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa01371b7a167b1216dea813305ed91b2d}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa01371b7a167b1216dea813305ed91b2d} 
+KEY\+\_\+R&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_S@{KEY\_S}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!KEY\_S@{KEY\_S}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afab0c514a9a11ed6a9b20285c1bf615cd6}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afab0c514a9a11ed6a9b20285c1bf615cd6} 
+KEY\+\_\+S&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_T@{KEY\_T}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!KEY\_T@{KEY\_T}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa5906c66cc4ebc14298b7412d1c643c66}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa5906c66cc4ebc14298b7412d1c643c66} 
+KEY\+\_\+T&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_U@{KEY\_U}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!KEY\_U@{KEY\_U}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa5e16613aa5304abcfa26ba1698510cbb}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa5e16613aa5304abcfa26ba1698510cbb} 
+KEY\+\_\+U&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_V@{KEY\_V}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!KEY\_V@{KEY\_V}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa52f17fd10c9aa000f4df7075d3ef3f45}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa52f17fd10c9aa000f4df7075d3ef3f45} 
+KEY\+\_\+V&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_W@{KEY\_W}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!KEY\_W@{KEY\_W}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afaae848ca92fa46bd4bf34b825f757a527}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afaae848ca92fa46bd4bf34b825f757a527} 
+KEY\+\_\+W&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_X@{KEY\_X}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!KEY\_X@{KEY\_X}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afadf3153982c2e083bc603f505d69e7956}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afadf3153982c2e083bc603f505d69e7956} 
+KEY\+\_\+X&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_Y@{KEY\_Y}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!KEY\_Y@{KEY\_Y}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa045fb70fafbcaf257eff3209601153ff}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa045fb70fafbcaf257eff3209601153ff} 
+KEY\+\_\+Y&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_Z@{KEY\_Z}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!KEY\_Z@{KEY\_Z}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa40a30d27cd7724dbd18532078cb6d22a}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa40a30d27cd7724dbd18532078cb6d22a} 
+KEY\+\_\+Z&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_0@{KEY\_0}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!KEY\_0@{KEY\_0}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa8350baa5fded880538b27097753a9ce8}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa8350baa5fded880538b27097753a9ce8} 
+KEY\+\_\+0&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_1@{KEY\_1}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!KEY\_1@{KEY\_1}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa43f1c1b2bb217aa04013aa12fb9695a8}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa43f1c1b2bb217aa04013aa12fb9695a8} 
+KEY\+\_\+1&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_2@{KEY\_2}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!KEY\_2@{KEY\_2}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa20032871e1dec9155433946ecbfbcf61}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa20032871e1dec9155433946ecbfbcf61} 
+KEY\+\_\+2&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_3@{KEY\_3}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!KEY\_3@{KEY\_3}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afab53b75d7f6543b71273a9e4f58d54046}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afab53b75d7f6543b71273a9e4f58d54046} 
+KEY\+\_\+3&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_4@{KEY\_4}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!KEY\_4@{KEY\_4}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa954e8b825fe85b083fbc2b64edad125e}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa954e8b825fe85b083fbc2b64edad125e} 
+KEY\+\_\+4&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_5@{KEY\_5}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!KEY\_5@{KEY\_5}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa5117a084c57c2ab875e0bfe86c4a638d}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa5117a084c57c2ab875e0bfe86c4a638d} 
+KEY\+\_\+5&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_6@{KEY\_6}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!KEY\_6@{KEY\_6}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa318bd217f20261f6eec3f4afbf965f9c}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa318bd217f20261f6eec3f4afbf965f9c} 
+KEY\+\_\+6&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_7@{KEY\_7}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!KEY\_7@{KEY\_7}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa56ee05d27060b80811d25784a5cce206}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa56ee05d27060b80811d25784a5cce206} 
+KEY\+\_\+7&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_8@{KEY\_8}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!KEY\_8@{KEY\_8}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa85de2b5ecd586b46d5cea0015a15afac}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa85de2b5ecd586b46d5cea0015a15afac} 
+KEY\+\_\+8&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_9@{KEY\_9}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!KEY\_9@{KEY\_9}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afaa4a7bcce597644128fbeb7cdebbeb666}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afaa4a7bcce597644128fbeb7cdebbeb666} 
+KEY\+\_\+9&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_ESCAPE@{KEY\_ESCAPE}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!KEY\_ESCAPE@{KEY\_ESCAPE}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afacbc55a981874476c41bbc954dfe3ec6e}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afacbc55a981874476c41bbc954dfe3ec6e} 
+KEY\+\_\+\+ESCAPE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_TAB@{KEY\_TAB}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!KEY\_TAB@{KEY\_TAB}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa6c577a7f141e65f0179d9a5f7448600b}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa6c577a7f141e65f0179d9a5f7448600b} 
+KEY\+\_\+\+TAB&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_CAPS\_LOCK@{KEY\_CAPS\_LOCK}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!KEY\_CAPS\_LOCK@{KEY\_CAPS\_LOCK}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa64ff3fb5cb0d086ced450b32d71572de}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa64ff3fb5cb0d086ced450b32d71572de} 
+KEY\+\_\+\+CAPS\+\_\+\+LOCK&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_LEFT\_SHIFT@{KEY\_LEFT\_SHIFT}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!KEY\_LEFT\_SHIFT@{KEY\_LEFT\_SHIFT}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afaf5a7a601b343674d48b0733a9ff83769}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afaf5a7a601b343674d48b0733a9ff83769} 
+KEY\+\_\+\+LEFT\+\_\+\+SHIFT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_LEFT\_CTRL@{KEY\_LEFT\_CTRL}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!KEY\_LEFT\_CTRL@{KEY\_LEFT\_CTRL}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afad77f79f22dbff84d60f17735b20d1314}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afad77f79f22dbff84d60f17735b20d1314} 
+KEY\+\_\+\+LEFT\+\_\+\+CTRL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_LEFT\_ALT@{KEY\_LEFT\_ALT}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!KEY\_LEFT\_ALT@{KEY\_LEFT\_ALT}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa5663eaca1f79b78ebb57f62ff897b173}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa5663eaca1f79b78ebb57f62ff897b173} 
+KEY\+\_\+\+LEFT\+\_\+\+ALT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_RIGHT\_SHIFT@{KEY\_RIGHT\_SHIFT}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!KEY\_RIGHT\_SHIFT@{KEY\_RIGHT\_SHIFT}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa9eef027fe3d51dc434f92ce3a54fd361}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa9eef027fe3d51dc434f92ce3a54fd361} 
+KEY\+\_\+\+RIGHT\+\_\+\+SHIFT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_RIGHT\_CTRL@{KEY\_RIGHT\_CTRL}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!KEY\_RIGHT\_CTRL@{KEY\_RIGHT\_CTRL}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afafd1f9b73f395a59bf2b27644364fa1bf}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afafd1f9b73f395a59bf2b27644364fa1bf} 
+KEY\+\_\+\+RIGHT\+\_\+\+CTRL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_RIGHT\_ALT@{KEY\_RIGHT\_ALT}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!KEY\_RIGHT\_ALT@{KEY\_RIGHT\_ALT}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa3e5c0293091cb077fcf3a86191b39cbf}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa3e5c0293091cb077fcf3a86191b39cbf} 
+KEY\+\_\+\+RIGHT\+\_\+\+ALT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_SPACE@{KEY\_SPACE}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!KEY\_SPACE@{KEY\_SPACE}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afaf901e86c24f8627786390b9e1a158310}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afaf901e86c24f8627786390b9e1a158310} 
+KEY\+\_\+\+SPACE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_ENTER@{KEY\_ENTER}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!KEY\_ENTER@{KEY\_ENTER}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa39b26c85a5cec1375a8efffbb538b1a1}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa39b26c85a5cec1375a8efffbb538b1a1} 
+KEY\+\_\+\+ENTER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_BACKSPACE@{KEY\_BACKSPACE}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!KEY\_BACKSPACE@{KEY\_BACKSPACE}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa5953bf72e4e1cee4aa6cd7142762f077}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa5953bf72e4e1cee4aa6cd7142762f077} 
+KEY\+\_\+\+BACKSPACE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_LEFT@{KEY\_LEFT}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!KEY\_LEFT@{KEY\_LEFT}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa199730aec8ce398d74880833785a8b79}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa199730aec8ce398d74880833785a8b79} 
+KEY\+\_\+\+LEFT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_RIGHT@{KEY\_RIGHT}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!KEY\_RIGHT@{KEY\_RIGHT}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa8e25f52bf32130ac4a96fb5447a35e40}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa8e25f52bf32130ac4a96fb5447a35e40} 
+KEY\+\_\+\+RIGHT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_UP@{KEY\_UP}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!KEY\_UP@{KEY\_UP}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afac248b44c41333613a8ad29b656f8950e}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afac248b44c41333613a8ad29b656f8950e} 
+KEY\+\_\+\+UP&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_DOWN@{KEY\_DOWN}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!KEY\_DOWN@{KEY\_DOWN}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afae27439eebd778013c33fbb14dd19fd04}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afae27439eebd778013c33fbb14dd19fd04} 
+KEY\+\_\+\+DOWN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_F1@{KEY\_F1}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!KEY\_F1@{KEY\_F1}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa09051ab75e2658aa9c25e5e89402413f}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa09051ab75e2658aa9c25e5e89402413f} 
+KEY\+\_\+\+F1&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_F2@{KEY\_F2}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!KEY\_F2@{KEY\_F2}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa2e45b57904c831150fb002bd0b3c98d5}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa2e45b57904c831150fb002bd0b3c98d5} 
+KEY\+\_\+\+F2&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_F3@{KEY\_F3}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!KEY\_F3@{KEY\_F3}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa2e12c9274ce8e2f09de6aff642692b45}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa2e12c9274ce8e2f09de6aff642692b45} 
+KEY\+\_\+\+F3&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_F4@{KEY\_F4}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!KEY\_F4@{KEY\_F4}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa126c6be5f82a5d28208b095c9e45f4b0}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa126c6be5f82a5d28208b095c9e45f4b0} 
+KEY\+\_\+\+F4&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_F5@{KEY\_F5}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!KEY\_F5@{KEY\_F5}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afae9a8bd6bb2335bd6923de36bf63e2ebf}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afae9a8bd6bb2335bd6923de36bf63e2ebf} 
+KEY\+\_\+\+F5&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_F6@{KEY\_F6}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!KEY\_F6@{KEY\_F6}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afac7adf60d3b33fb6a9f464bb6f15488dc}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afac7adf60d3b33fb6a9f464bb6f15488dc} 
+KEY\+\_\+\+F6&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_F7@{KEY\_F7}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!KEY\_F7@{KEY\_F7}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afaf9c0282c9e9ec14a6936deb101c156a0}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afaf9c0282c9e9ec14a6936deb101c156a0} 
+KEY\+\_\+\+F7&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_F8@{KEY\_F8}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!KEY\_F8@{KEY\_F8}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa115e2285c81211c38c6a470c0440d9a1}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa115e2285c81211c38c6a470c0440d9a1} 
+KEY\+\_\+\+F8&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_F9@{KEY\_F9}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!KEY\_F9@{KEY\_F9}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa99cc0a9d07d59e7ecae1a1b2fe7b19ee}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa99cc0a9d07d59e7ecae1a1b2fe7b19ee} 
+KEY\+\_\+\+F9&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_F10@{KEY\_F10}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!KEY\_F10@{KEY\_F10}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afaa1635f4bc5fff540881ce6d11e64acd6}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afaa1635f4bc5fff540881ce6d11e64acd6} 
+KEY\+\_\+\+F10&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_F11@{KEY\_F11}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!KEY\_F11@{KEY\_F11}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa98816004c1056a2dca9aa6bcbb3248c8}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa98816004c1056a2dca9aa6bcbb3248c8} 
+KEY\+\_\+\+F11&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_F12@{KEY\_F12}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!KEY\_F12@{KEY\_F12}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afabe8c42628328fa071e92e9d714c92e3a}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afabe8c42628328fa071e92e9d714c92e3a} 
+KEY\+\_\+\+F12&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_INSERT@{KEY\_INSERT}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!KEY\_INSERT@{KEY\_INSERT}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afaa3f39e5eeb1c1413926327e5f216b1c6}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afaa3f39e5eeb1c1413926327e5f216b1c6} 
+KEY\+\_\+\+INSERT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_DELETE@{KEY\_DELETE}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!KEY\_DELETE@{KEY\_DELETE}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afae9780b848469996b656d19e311fa74d9}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afae9780b848469996b656d19e311fa74d9} 
+KEY\+\_\+\+DELETE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_HOME@{KEY\_HOME}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!KEY\_HOME@{KEY\_HOME}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afad5092007c60718ba001b56c06967fa6a}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afad5092007c60718ba001b56c06967fa6a} 
+KEY\+\_\+\+HOME&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_END@{KEY\_END}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!KEY\_END@{KEY\_END}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa02faa88a42bb6e5e1f2c62db6520e1b6}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa02faa88a42bb6e5e1f2c62db6520e1b6} 
+KEY\+\_\+\+END&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_PAGE\_UP@{KEY\_PAGE\_UP}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!KEY\_PAGE\_UP@{KEY\_PAGE\_UP}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa884e34db06d6dd2aa2fdd0f3aca07469}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa884e34db06d6dd2aa2fdd0f3aca07469} 
+KEY\+\_\+\+PAGE\+\_\+\+UP&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_PAGE\_DOWN@{KEY\_PAGE\_DOWN}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!KEY\_PAGE\_DOWN@{KEY\_PAGE\_DOWN}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afaf94feff3c41111a35d2e0676dc68f835}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afaf94feff3c41111a35d2e0676dc68f835} 
+KEY\+\_\+\+PAGE\+\_\+\+DOWN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MOUSE\_LEFT@{MOUSE\_LEFT}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!MOUSE\_LEFT@{MOUSE\_LEFT}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afad8623959cda31be076c2427a296a0771}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afad8623959cda31be076c2427a296a0771} 
+MOUSE\+\_\+\+LEFT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MOUSE\_RIGHT@{MOUSE\_RIGHT}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!MOUSE\_RIGHT@{MOUSE\_RIGHT}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa07aa42ab66eda239b22a5015717a3fc3}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa07aa42ab66eda239b22a5015717a3fc3} 
+MOUSE\+\_\+\+RIGHT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MOUSE\_MIDDLE@{MOUSE\_MIDDLE}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!MOUSE\_MIDDLE@{MOUSE\_MIDDLE}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afab77474e5ee4befc27731cdff693df7c4}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afab77474e5ee4befc27731cdff693df7c4} 
+MOUSE\+\_\+\+MIDDLE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MOUSE\_BUTTON\_4@{MOUSE\_BUTTON\_4}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!MOUSE\_BUTTON\_4@{MOUSE\_BUTTON\_4}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa9ac2c3cda0c5d9ac57f256db5cbd0fc0}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa9ac2c3cda0c5d9ac57f256db5cbd0fc0} 
+MOUSE\+\_\+\+BUTTON\+\_\+4&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MOUSE\_BUTTON\_5@{MOUSE\_BUTTON\_5}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!MOUSE\_BUTTON\_5@{MOUSE\_BUTTON\_5}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa4cf244e87cfadc4576d28949c02d5a43}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa4cf244e87cfadc4576d28949c02d5a43} 
+MOUSE\+\_\+\+BUTTON\+\_\+5&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MOUSE\_SCROLL\_X@{MOUSE\_SCROLL\_X}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!MOUSE\_SCROLL\_X@{MOUSE\_SCROLL\_X}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa8411901096e2876e53a0e05f87e2dff8}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa8411901096e2876e53a0e05f87e2dff8} 
+MOUSE\+\_\+\+SCROLL\+\_\+X&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MOUSE\_SCROLL\_Y@{MOUSE\_SCROLL\_Y}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!MOUSE\_SCROLL\_Y@{MOUSE\_SCROLL\_Y}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa226a0a2f36824d9ee591cd0306b4ad24}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa226a0a2f36824d9ee591cd0306b4ad24} 
+MOUSE\+\_\+\+SCROLL\+\_\+Y&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MOUSE\_POSITION\_X@{MOUSE\_POSITION\_X}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!MOUSE\_POSITION\_X@{MOUSE\_POSITION\_X}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afae20e082249dab2054f7024077cd42677}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afae20e082249dab2054f7024077cd42677} 
+MOUSE\+\_\+\+POSITION\+\_\+X&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MOUSE\_POSITION\_Y@{MOUSE\_POSITION\_Y}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!MOUSE\_POSITION\_Y@{MOUSE\_POSITION\_Y}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afac5839ac1d67e246722c29e1213c4549c}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afac5839ac1d67e246722c29e1213c4549c} 
+MOUSE\+\_\+\+POSITION\+\_\+Y&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GAMEPAD\_BUTTON\_A@{GAMEPAD\_BUTTON\_A}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!GAMEPAD\_BUTTON\_A@{GAMEPAD\_BUTTON\_A}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afadd009d5c237b55959df83b5b9f889aaf}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afadd009d5c237b55959df83b5b9f889aaf} 
+GAMEPAD\+\_\+\+BUTTON\+\_\+A&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GAMEPAD\_BUTTON\_B@{GAMEPAD\_BUTTON\_B}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!GAMEPAD\_BUTTON\_B@{GAMEPAD\_BUTTON\_B}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa6658fa4126e568e1edf86c77c74b2d42}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa6658fa4126e568e1edf86c77c74b2d42} 
+GAMEPAD\+\_\+\+BUTTON\+\_\+B&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GAMEPAD\_BUTTON\_X@{GAMEPAD\_BUTTON\_X}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!GAMEPAD\_BUTTON\_X@{GAMEPAD\_BUTTON\_X}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afafc971a583eb17585b0e72f02a6a3bc54}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afafc971a583eb17585b0e72f02a6a3bc54} 
+GAMEPAD\+\_\+\+BUTTON\+\_\+X&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GAMEPAD\_BUTTON\_Y@{GAMEPAD\_BUTTON\_Y}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!GAMEPAD\_BUTTON\_Y@{GAMEPAD\_BUTTON\_Y}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afad2994926b58a386e70a002c38ebffeed}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afad2994926b58a386e70a002c38ebffeed} 
+GAMEPAD\+\_\+\+BUTTON\+\_\+Y&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GAMEPAD\_BUTTON\_BACK@{GAMEPAD\_BUTTON\_BACK}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!GAMEPAD\_BUTTON\_BACK@{GAMEPAD\_BUTTON\_BACK}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa92c1f530493e707ad760cdbd00d81461}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa92c1f530493e707ad760cdbd00d81461} 
+GAMEPAD\+\_\+\+BUTTON\+\_\+\+BACK&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GAMEPAD\_BUTTON\_START@{GAMEPAD\_BUTTON\_START}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!GAMEPAD\_BUTTON\_START@{GAMEPAD\_BUTTON\_START}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa816559064310fbed7c5cbcf956bb6d43}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa816559064310fbed7c5cbcf956bb6d43} 
+GAMEPAD\+\_\+\+BUTTON\+\_\+\+START&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GAMEPAD\_BUTTON\_GUIDE@{GAMEPAD\_BUTTON\_GUIDE}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!GAMEPAD\_BUTTON\_GUIDE@{GAMEPAD\_BUTTON\_GUIDE}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa787021b538521406e07a51c5d042a201}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa787021b538521406e07a51c5d042a201} 
+GAMEPAD\+\_\+\+BUTTON\+\_\+\+GUIDE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GAMEPAD\_BUTTON\_LEFT\_BUMPER@{GAMEPAD\_BUTTON\_LEFT\_BUMPER}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!GAMEPAD\_BUTTON\_LEFT\_BUMPER@{GAMEPAD\_BUTTON\_LEFT\_BUMPER}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa52d4af87600233ca51f4a030f6a9acef}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa52d4af87600233ca51f4a030f6a9acef} 
+GAMEPAD\+\_\+\+BUTTON\+\_\+\+LEFT\+\_\+\+BUMPER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GAMEPAD\_BUTTON\_RIGHT\_BUMPER@{GAMEPAD\_BUTTON\_RIGHT\_BUMPER}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!GAMEPAD\_BUTTON\_RIGHT\_BUMPER@{GAMEPAD\_BUTTON\_RIGHT\_BUMPER}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa9cb2119e21ea55544a160b55d5574228}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa9cb2119e21ea55544a160b55d5574228} 
+GAMEPAD\+\_\+\+BUTTON\+\_\+\+RIGHT\+\_\+\+BUMPER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GAMEPAD\_BUTTON\_LEFT\_STICK@{GAMEPAD\_BUTTON\_LEFT\_STICK}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!GAMEPAD\_BUTTON\_LEFT\_STICK@{GAMEPAD\_BUTTON\_LEFT\_STICK}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa490654c1b4dd90e363384910368c4903}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa490654c1b4dd90e363384910368c4903} 
+GAMEPAD\+\_\+\+BUTTON\+\_\+\+LEFT\+\_\+\+STICK&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GAMEPAD\_BUTTON\_RIGHT\_STICK@{GAMEPAD\_BUTTON\_RIGHT\_STICK}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!GAMEPAD\_BUTTON\_RIGHT\_STICK@{GAMEPAD\_BUTTON\_RIGHT\_STICK}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa484e20bc011804c22d1ee5405382bbb2}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa484e20bc011804c22d1ee5405382bbb2} 
+GAMEPAD\+\_\+\+BUTTON\+\_\+\+RIGHT\+\_\+\+STICK&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GAMEPAD\_DPAD\_UP@{GAMEPAD\_DPAD\_UP}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!GAMEPAD\_DPAD\_UP@{GAMEPAD\_DPAD\_UP}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afad517c771eb0c2560f0d2f8d8fa374f2c}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afad517c771eb0c2560f0d2f8d8fa374f2c} 
+GAMEPAD\+\_\+\+DPAD\+\_\+\+UP&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GAMEPAD\_DPAD\_DOWN@{GAMEPAD\_DPAD\_DOWN}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!GAMEPAD\_DPAD\_DOWN@{GAMEPAD\_DPAD\_DOWN}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa7418da6184cff0a3b6b98545224354a8}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa7418da6184cff0a3b6b98545224354a8} 
+GAMEPAD\+\_\+\+DPAD\+\_\+\+DOWN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GAMEPAD\_DPAD\_LEFT@{GAMEPAD\_DPAD\_LEFT}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!GAMEPAD\_DPAD\_LEFT@{GAMEPAD\_DPAD\_LEFT}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa7eaa1ea23ce8640215b77869c6833ae3}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa7eaa1ea23ce8640215b77869c6833ae3} 
+GAMEPAD\+\_\+\+DPAD\+\_\+\+LEFT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GAMEPAD\_DPAD\_RIGHT@{GAMEPAD\_DPAD\_RIGHT}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!GAMEPAD\_DPAD\_RIGHT@{GAMEPAD\_DPAD\_RIGHT}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afab94c8bcad705ff3e66537788866d81c7}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afab94c8bcad705ff3e66537788866d81c7} 
+GAMEPAD\+\_\+\+DPAD\+\_\+\+RIGHT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GAMEPAD\_AXIS\_LEFT\_X@{GAMEPAD\_AXIS\_LEFT\_X}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!GAMEPAD\_AXIS\_LEFT\_X@{GAMEPAD\_AXIS\_LEFT\_X}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa770bcebaeb13214896eb50df56dce8f9}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa770bcebaeb13214896eb50df56dce8f9} 
+GAMEPAD\+\_\+\+AXIS\+\_\+\+LEFT\+\_\+X&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GAMEPAD\_AXIS\_LEFT\_Y@{GAMEPAD\_AXIS\_LEFT\_Y}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!GAMEPAD\_AXIS\_LEFT\_Y@{GAMEPAD\_AXIS\_LEFT\_Y}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afabf2d13688642928b428e29d20f64169b}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afabf2d13688642928b428e29d20f64169b} 
+GAMEPAD\+\_\+\+AXIS\+\_\+\+LEFT\+\_\+Y&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GAMEPAD\_AXIS\_RIGHT\_X@{GAMEPAD\_AXIS\_RIGHT\_X}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!GAMEPAD\_AXIS\_RIGHT\_X@{GAMEPAD\_AXIS\_RIGHT\_X}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa8adc31e292267a1a259c62c4d4a5db87}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa8adc31e292267a1a259c62c4d4a5db87} 
+GAMEPAD\+\_\+\+AXIS\+\_\+\+RIGHT\+\_\+X&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GAMEPAD\_AXIS\_RIGHT\_Y@{GAMEPAD\_AXIS\_RIGHT\_Y}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!GAMEPAD\_AXIS\_RIGHT\_Y@{GAMEPAD\_AXIS\_RIGHT\_Y}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa4b668a22d2d7e941a517a267d37ccbbe}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afa4b668a22d2d7e941a517a267d37ccbbe} 
+GAMEPAD\+\_\+\+AXIS\+\_\+\+RIGHT\+\_\+Y&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GAMEPAD\_AXIS\_LEFT\_TRIGGER@{GAMEPAD\_AXIS\_LEFT\_TRIGGER}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!GAMEPAD\_AXIS\_LEFT\_TRIGGER@{GAMEPAD\_AXIS\_LEFT\_TRIGGER}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afad754cdd0fbf05ad9b2a2752286611090}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afad754cdd0fbf05ad9b2a2752286611090} 
+GAMEPAD\+\_\+\+AXIS\+\_\+\+LEFT\+\_\+\+TRIGGER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GAMEPAD\_AXIS\_RIGHT\_TRIGGER@{GAMEPAD\_AXIS\_RIGHT\_TRIGGER}!VE::Input@{VE::Input}}\index{VE::Input@{VE::Input}!GAMEPAD\_AXIS\_RIGHT\_TRIGGER@{GAMEPAD\_AXIS\_RIGHT\_TRIGGER}}}\Hypertarget{namespaceVE_1_1Input_a80857dda30716162d7665329059085afaf39d3c756d3e39900e80bcabc2e063e9}\label{namespaceVE_1_1Input_a80857dda30716162d7665329059085afaf39d3c756d3e39900e80bcabc2e063e9} 
+GAMEPAD\+\_\+\+AXIS\+\_\+\+RIGHT\+\_\+\+TRIGGER&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\label{doc-func-members}
+\Hypertarget{namespaceVE_1_1Input_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{namespaceVE_1_1Input_a7579919b224bdab411b608fe05d3f3a3}\index{VE::Input@{VE::Input}!CreateInputDevice@{CreateInputDevice}}
+\index{CreateInputDevice@{CreateInputDevice}!VE::Input@{VE::Input}}
+\doxysubsubsection{\texorpdfstring{CreateInputDevice()}{CreateInputDevice()}}
+{\footnotesize\ttfamily \label{namespaceVE_1_1Input_a7579919b224bdab411b608fe05d3f3a3} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classVE_1_1Input_1_1VInputDevice}{VInput\+Device}} $>$ VE\+::\+Input\+::\+Create\+Input\+Device (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVE_1_1Internal_1_1Context_1_1VWindow}{VE\+::\+Internal\+::\+Context\+::\+VWindow}} \texorpdfstring{$\ast$}{*}}]{native\+Window}{}\end{DoxyParamCaption})}
+

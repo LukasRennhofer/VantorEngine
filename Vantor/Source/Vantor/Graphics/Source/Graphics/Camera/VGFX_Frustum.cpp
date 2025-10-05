@@ -7,12 +7,12 @@
  *             See LICENSE file for full details.
  ****************************************************************************/
 
-#include <Graphics/Camera/VGFX_Camera.hpp>
-#include <Graphics/Camera/VGFX_Frustum.hpp>
+#include <Graphics/Public/Camera/VGFX_Camera.hpp>
+#include <Graphics/Public/Camera/VGFX_Frustum.hpp>
 
-namespace VE::Internal::Graphics
+namespace VE::Graphics
 {
-    // ------------------------------------------------------------------------
+
     void VCameraFrustum::Update(ACamera *camera)
     {
         float tan        = 2.0 * std::tan(camera->FOV * 0.5); // TODO: Write own Tan func
@@ -21,10 +21,10 @@ namespace VE::Internal::Graphics
         float farHeight  = tan * camera->Far;
         float farWidth   = farHeight * camera->Aspect;
 
-        VE::Internal::Math::VVector3 nearCenter = camera->Position + camera->Forward * camera->Near;
-        VE::Internal::Math::VVector3 farCenter  = camera->Position + camera->Forward * camera->Far;
+        VE::Math::VVector3 nearCenter = camera->Position + camera->Forward * camera->Near;
+        VE::Math::VVector3 farCenter  = camera->Position + camera->Forward * camera->Far;
 
-        VE::Internal::Math::VVector3 v;
+        VE::Math::VVector3 v;
         // left plane
         v = (nearCenter - camera->Right * nearWidth * 0.5f) - camera->Position;
         VCamPlanes.Left.SetNormalD((v.Normalized()).Cross(camera->Up), nearCenter - camera->Right * nearWidth * 0.5f);
@@ -43,7 +43,7 @@ namespace VE::Internal::Graphics
         VCamPlanes.Far.SetNormalD(camera->Forward * -1, farCenter);
     }
     // ------------------------------------------------------------------------
-    bool VCameraFrustum::Intersect(VE::Internal::Math::VVector3 point)
+    bool VCameraFrustum::Intersect(VE::Math::VVector3 point)
     {
         for (int i = 0; i < 6; ++i)
         {
@@ -55,7 +55,7 @@ namespace VE::Internal::Graphics
         return true;
     }
     // ------------------------------------------------------------------------
-    bool VCameraFrustum::Intersect(VE::Internal::Math::VVector3 point, float radius)
+    bool VCameraFrustum::Intersect(VE::Math::VVector3 point, float radius)
     {
         for (int i = 0; i < 6; ++i)
         {
@@ -67,11 +67,11 @@ namespace VE::Internal::Graphics
         return true;
     }
     // ------------------------------------------------------------------------
-    bool VCameraFrustum::Intersect(VE::Internal::Math::VVector3 boxMin, VE::Internal::Math::VVector3 boxMax)
+    bool VCameraFrustum::Intersect(VE::Math::VVector3 boxMin, VE::Math::VVector3 boxMax)
     {
         for (int i = 0; i < 6; ++i)
         {
-            VE::Internal::Math::VVector3 positive = boxMin;
+            VE::Math::VVector3 positive = boxMin;
             if (Planes[i].Normal.x >= 0)
             {
                 positive.x = boxMax.x;

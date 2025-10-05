@@ -1,0 +1,103 @@
+\doxysection{VMAS\+\_\+\+Material.\+hpp}
+\hypertarget{VMAS__Material_8hpp_source}{}\label{VMAS__Material_8hpp_source}\index{Vantor/Source/Vantor/MaterialSystem/Include/MaterialSystem/Public/VMAS\_Material.hpp@{Vantor/Source/Vantor/MaterialSystem/Include/MaterialSystem/Public/VMAS\_Material.hpp}}
+\mbox{\hyperlink{VMAS__Material_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/****************************************************************************}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ Vantor\ Engine™\ -\/\ Source\ Code\ (2025)}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ Author\ \ \ \ :\ Lukas\ Rennhofer\ (@LukasRennhofer),\ Vantor\ Studios™}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ Copyright\ :\ ©\ 2025\ Lukas\ Rennhofer,\ Vantor\ Studios™}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ *\ License\ \ \ :\ GNU\ General\ Public\ License\ v3.0}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ See\ LICENSE\ file\ for\ full\ details.}}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ ****************************************************************************/}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{VCO__Color_8hpp}{Core/Types/VCO\_Color.hpp}}>}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{VRHI__Shader_8hpp}{RHI/Interface/VRHI\_Shader.hpp}}>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{VRHI__Texture_8hpp}{RHI/Interface/VRHI\_Texture.hpp}}>}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{VMAS__Uniform_8hpp}{MaterialSystem/Public/VMAS\_Uniform.hpp}}>}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00022\ \textcolor{comment}{\ \ \ \ VMaterial\ represents\ the\ complete\ render\ state\ configuration\ necessary\ for\ rendering\ a\ mesh.}}
+\DoxyCodeLine{00023\ \textcolor{comment}{\ \ \ \ This\ includes\ shader\ programs,\ texture\ bindings,\ sampler\ states,\ and\ any\ relevant\ GPU\ state.}}
+\DoxyCodeLine{00024\ \textcolor{comment}{}}
+\DoxyCodeLine{00025\ \textcolor{comment}{\ \ \ \ Each\ mesh\ rendered\ in\ the\ scene\ must\ be\ associated\ with\ a\ material.\ VMaterial\ instances\ manage}}
+\DoxyCodeLine{00026\ \textcolor{comment}{\ \ \ \ the\ link\ between\ shader\ resources\ and\ their\ required\ parameters.}}
+\DoxyCodeLine{00027\ \textcolor{comment}{}}
+\DoxyCodeLine{00028\ \textcolor{comment}{\ \ \ \ The\ renderer\ maintains\ a\ library\ of\ default\ materials\ and\ templates\ that\ can\ be\ used\ as\ a\ base}}
+\DoxyCodeLine{00029\ \textcolor{comment}{\ \ \ \ for\ creating\ customized\ materials\ specific\ to\ an\ entity\ or\ render\ pass.}}
+\DoxyCodeLine{00030\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceVE}{VE}}}
+\DoxyCodeLine{00033\ \{}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{comment}{//\ Material\ Types}}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{namespaceVE_a13bcd480fc5f64f6f9a55a41df2bd2f4}{EMaterialType}}}
+\DoxyCodeLine{00036\ \ \ \ \ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_a13bcd480fc5f64f6f9a55a41df2bd2f4aba997ddef5c1d4ffa5ad6efe696f20d1}{MaterialDefault}},}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_a13bcd480fc5f64f6f9a55a41df2bd2f4ad1478ce8f8d2011532ff014c2fcae04b}{MaterialPostProcess}},\ \textcolor{comment}{//\ TODO}}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_a13bcd480fc5f64f6f9a55a41df2bd2f4a8accee1152e14c99579ffcd57bf8fe19}{MaterialPBR}},}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_a13bcd480fc5f64f6f9a55a41df2bd2f4a6e5a8c8798901db625bd9dd2ee8b0c34}{MaterialCustom}}\ \ \ \ \ \ \ \textcolor{comment}{//\ TODO}}
+\DoxyCodeLine{00041\ \ \ \ \ \};}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classVE_1_1VMaterial_a7be3c38913bdd8f17d1aafd0938c7b82}{VMaterial}}}
+\DoxyCodeLine{00044\ \ \ \ \ \{}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIShader}{VE::Internal::RHI::IRHIShader}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ *m\_Shader;\ \textcolor{comment}{//\ Base\ Shader\ program}}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ std::map<std::string,\ VUniformValue>\ \ \ \ \ \ \ \ m\_Uniforms;}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ std::map<std::string,\ VUniformValueSampler>\ m\_SamplerUniforms;}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_a13bcd480fc5f64f6f9a55a41df2bd2f4}{EMaterialType}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVE_1_1VMaterial_a701fcf326eecfb4987c0ea0dc76ca969}{Type}}\ \ \ \ \ \ =\ \mbox{\hyperlink{namespaceVE_a13bcd480fc5f64f6f9a55a41df2bd2f4aba997ddef5c1d4ffa5ad6efe696f20d1}{EMaterialType::MaterialDefault}};}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Fallbacks}}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ These\ Fallbacks\ will\ be\ applied\ in\ the\ Shader,\ if\ VTextureDiffuse}}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ or\ VSpecularDiffuse\ are\ not\ given}}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor}{VE::Internal::Core::Types::VColor}}\ \mbox{\hyperlink{classVE_1_1VMaterial_a1fbb3721003cf0f764036be58b18710a}{Color}}\ \ \ \ \ =\ \mbox{\hyperlink{structVE_1_1Internal_1_1Core_1_1Types_1_1VColor_a3a2d8f52b9e23ba4fd684c75c48296b3}{VE::Internal::Core::Types::VColor::Gray}}();\ \textcolor{comment}{//\ Standart\ Color\ is\ gray}}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classVE_1_1VMaterial_ad2d3195f64bd0d66393b8839d4f2dada}{SpecularStrength}}\ =\ 0.5;\ \textcolor{comment}{//\ Standart\ is\ 0.5\ (so\ in\ the\ middle)}}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ TODO:\ Implement\ States,\ to\ represent\ the\ sate\ of\ a\ single\ Mesh}}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ shadow\ state}}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ bool\ ShadowCast\ \ \ \ =\ true;}}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ bool\ ShadowReceive\ =\ true;}}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVE_1_1VMaterial_a7be3c38913bdd8f17d1aafd0938c7b82}{VMaterial}}();}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVE_1_1VMaterial_a7be3c38913bdd8f17d1aafd0938c7b82}{VMaterial}}(\mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIShader}{VE::Internal::RHI::IRHIShader}}\ *shader);}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIShader}{VE::Internal::RHI::IRHIShader}}\ *\mbox{\hyperlink{classVE_1_1VMaterial_af3be640ec0034d5aeba9edd3ea7a14f3}{GetShader}}();}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVE_1_1VMaterial_abad71513d0f17f98f781738ae15a7e89}{SetShader}}(\mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIShader}{VE::Internal::RHI::IRHIShader}}\ *shader);}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVE_1_1VMaterial_a7be3c38913bdd8f17d1aafd0938c7b82}{VMaterial}}\ \mbox{\hyperlink{classVE_1_1VMaterial_a9b3d669c955bbeabe5aaa4c3785a79f8}{Copy}}();}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classVE_1_1VMaterial_ab3a456184969ee6a6d60595502cec1a7}{IsDefaultMaterial}}()\ \{\textcolor{keywordflow}{return}\ \mbox{\hyperlink{classVE_1_1VMaterial_a701fcf326eecfb4987c0ea0dc76ca969}{Type}}\ ==\ \mbox{\hyperlink{namespaceVE_a13bcd480fc5f64f6f9a55a41df2bd2f4aba997ddef5c1d4ffa5ad6efe696f20d1}{EMaterialType::MaterialDefault}};\ \}}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classVE_1_1VMaterial_a1ec86ecc1648096f79dc4ac164497304}{IsPBRMaterial}}()\ \{\textcolor{keywordflow}{return}\ \mbox{\hyperlink{classVE_1_1VMaterial_a701fcf326eecfb4987c0ea0dc76ca969}{Type}}\ ==\ \mbox{\hyperlink{namespaceVE_a13bcd480fc5f64f6f9a55a41df2bd2f4a8accee1152e14c99579ffcd57bf8fe19}{EMaterialType::MaterialPBR}};\ \}}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1VMaterial_ac678a888bc4a4b52daf249b26ee69aa6}{SetBool}}(std::string\ name,\ \textcolor{keywordtype}{bool}\ value);}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1VMaterial_a3c2283a3b184e4d8022003abd4f8575c}{SetInt}}(std::string\ name,\ \textcolor{keywordtype}{int}\ value);}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1VMaterial_af05207ad53c889850d2c1caa29b6bdfb}{SetFloat}}(std::string\ name,\ \textcolor{keywordtype}{float}\ value);}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1VMaterial_a400a535f8895b99971054d9c44780e06}{SetTexture}}(std::string\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ name,}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHITexture}{VE::Internal::RHI::IRHITexture}}\ *value,}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ unit\ \ \ =\ 0,}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_a42e42aa319840f6446b121f003f5bf9e}{EUniformType}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ target\ =\ \mbox{\hyperlink{namespaceVE_a42e42aa319840f6446b121f003f5bf9eae77da5f9e4488a846d5f2fc24200b2bb}{EUniformType::UniformTypeSAMPLER2D}},\ \mbox{\hyperlink{namespaceVE_add30e70a323e219a135e2d4e41525333}{ESamplerType}}\ type\ =\ \mbox{\hyperlink{namespaceVE_add30e70a323e219a135e2d4e41525333abb7656d56d2755a2ee1a47b661386625}{ESamplerType::SamplerDiffuse}});}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ TODO:\ void\ SetTextureCube(std::string\ name,\ VE::Internal::RenderDevice::VTextureCube\ *value,\ unsigned\ int\ unit\ =\ 0);}}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1VMaterial_ab0138a75c9a573c865a225d3bddee65e}{SetVector}}(std::string\ name,\ \mbox{\hyperlink{structVE_1_1Math_1_1VVector2}{VE::Math::VVector2}}\ value);}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1VMaterial_ab0138a75c9a573c865a225d3bddee65e}{SetVector}}(std::string\ name,\ \mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VE::Math::VVector3}}\ value);}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1VMaterial_ab0138a75c9a573c865a225d3bddee65e}{SetVector}}(std::string\ name,\ \mbox{\hyperlink{structVE_1_1Math_1_1VVector4}{VE::Math::VVector4}}\ value);}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1VMaterial_a59febc1176f6c0f68dd0c908fcad96e3}{SetMatrix}}(std::string\ name,\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat2}{VE::Math::VMat2}}\ value);}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1VMaterial_a59febc1176f6c0f68dd0c908fcad96e3}{SetMatrix}}(std::string\ name,\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat3}{VE::Math::VMat3}}\ value);}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1VMaterial_a59febc1176f6c0f68dd0c908fcad96e3}{SetMatrix}}(std::string\ name,\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat4}{VE::Math::VMat4}}\ value);}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ TODO:\ make\ \ the\ names\ SetVector3,\ etc.}}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ std::map<std::string,\ VUniformValue>\ \ \ \ \ \ \ \ *\mbox{\hyperlink{classVE_1_1VMaterial_ae7d6911ea0737af5e03275c2a4f05313}{GetUniforms}}();}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ std::map<std::string,\ VUniformValueSampler>\ *\mbox{\hyperlink{classVE_1_1VMaterial_a60b8c6894bde0b1b11b48fddc4aa72a2}{GetSamplerUniforms}}();}
+\DoxyCodeLine{00096\ \ \ \ \ \};}
+\DoxyCodeLine{00097\ \}\ \textcolor{comment}{//\ namespace\ VE}}
+
+\end{DoxyCode}

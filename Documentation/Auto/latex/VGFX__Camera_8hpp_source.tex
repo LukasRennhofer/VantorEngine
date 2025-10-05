@@ -1,0 +1,73 @@
+\doxysection{VGFX\+\_\+\+Camera.\+hpp}
+\hypertarget{VGFX__Camera_8hpp_source}{}\label{VGFX__Camera_8hpp_source}\index{Vantor/Source/Vantor/Graphics/Include/Graphics/Public/Camera/VGFX\_Camera.hpp@{Vantor/Source/Vantor/Graphics/Include/Graphics/Public/Camera/VGFX\_Camera.hpp}}
+\mbox{\hyperlink{VGFX__Camera_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/****************************************************************************}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ Vantor\ Engine™\ -\/\ Source\ Code\ (2025)}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ Author\ \ \ \ :\ Lukas\ Rennhofer\ (@LukasRennhofer),\ Vantor\ Studios™}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ Copyright\ :\ ©\ 2025\ Lukas\ Rennhofer,\ Vantor\ Studios™}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ *\ License\ \ \ :\ GNU\ General\ Public\ License\ v3.0}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ See\ LICENSE\ file\ for\ full\ details.}}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ ****************************************************************************/}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{VMA__Vector_8hpp}{Math/Linear/VMA\_Vector.hpp}}>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{VMA__Matrix_8hpp}{Math/Linear/VMA\_Matrix.hpp}}>}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{VAR__Actor_8hpp}{ActorRuntime/Public/VAR\_Actor.hpp}}>}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{VGFX__Frustum_8hpp}{Graphics/Public/Camera/VGFX\_Frustum.hpp}}>}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceVE_1_1Graphics}{VE::Graphics}}}
+\DoxyCodeLine{00020\ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{comment}{//\ TODO:\ Refactor}}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{namespaceVE_1_1Graphics_a3e374ac9bd681c8f3afd378a7fb948fd}{ECameraMovement}}}
+\DoxyCodeLine{00023\ \ \ \ \ \{}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Graphics_a3e374ac9bd681c8f3afd378a7fb948fda7c2469798a63b528b3c9713984ab022d}{CAMERA\_FORWARD}},}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Graphics_a3e374ac9bd681c8f3afd378a7fb948fdad3448f3b54fce0a760bc6a651ae83c92}{CAMERA\_BACK}},}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Graphics_a3e374ac9bd681c8f3afd378a7fb948fda3fd62c036129d785bbbcd1a87eb94850}{CAMERA\_LEFT}},}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Graphics_a3e374ac9bd681c8f3afd378a7fb948fda83540ae4d74597968e52c63998cf4e5b}{CAMERA\_RIGHT}},}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Graphics_a3e374ac9bd681c8f3afd378a7fb948fdae77a4b68a788df519bab2b8e041e3bba}{CAMERA\_UP}},}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Graphics_a3e374ac9bd681c8f3afd378a7fb948fda49ce38190a05ea16be0cd56a56c8f279}{CAMERA\_DOWN}},}
+\DoxyCodeLine{00030\ \ \ \ \ \};}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{comment}{//\ Camera\ is\ a\ standalone\ registered\ Entity}}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classVE_1_1Graphics_1_1ACamera_a6e431fe85a95b144aec29a0801ef80c6}{ACamera}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classVE_1_1AActor}{VE::AActor}}}
+\DoxyCodeLine{00034\ \ \ \ \ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Math_1_1VMat4}{VE::Math::VMat4}}\ \mbox{\hyperlink{classVE_1_1Graphics_1_1ACamera_a86d27cd742f1583c28de73cc4dedee8e}{Projection}};}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Math_1_1VMat4}{VE::Math::VMat4}}\ \mbox{\hyperlink{classVE_1_1Graphics_1_1ACamera_a1daa773ba5d3e0105574a5ad81c26e3f}{View}};}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VE::Math::VVector3}}\ \mbox{\hyperlink{classVE_1_1Graphics_1_1ACamera_a76e575fc227376080b5c45db74dff6d0}{Position}}\ =\ \mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VE::Math::VVector3}}(0.0f,\ 0.0f,\ 0.0f);}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VE::Math::VVector3}}\ \mbox{\hyperlink{classVE_1_1Graphics_1_1ACamera_a599ca5d9b5bfcfdcdae9a45374eeff27}{Forward}}\ \ =\ \mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VE::Math::VVector3}}(0.0f,\ 0.0f,\ -\/1.0f);}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VE::Math::VVector3}}\ \mbox{\hyperlink{classVE_1_1Graphics_1_1ACamera_a81ecbad55e90ae7baf874d1553c285d1}{Up}}\ \ \ \ \ \ \ =\ \mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VE::Math::VVector3}}(0.0f,\ 1.0f,\ 0.0f);}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VE::Math::VVector3}}\ \mbox{\hyperlink{classVE_1_1Graphics_1_1ACamera_aca9cc2feb9cee42763a604da767e3134}{Right}}\ \ \ \ =\ \mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VE::Math::VVector3}}(1.0f,\ 0.0f,\ 0.0f);}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classVE_1_1Graphics_1_1ACamera_a3cfec371c95acbc646da0b28f3d0e6ea}{FOV}};}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classVE_1_1Graphics_1_1ACamera_ac740e3904631ffaa82580a926bd9a51b}{Aspect}};}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classVE_1_1Graphics_1_1ACamera_a794b8d066a0fccc8a6383695f555d540}{Near}};}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classVE_1_1Graphics_1_1ACamera_a4ac1ffc16a48fcbeb0dba7a2357b6776}{Far}};}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \mbox{\hyperlink{classVE_1_1Graphics_1_1ACamera_a2735d8fe9af9093b1dc9955e964f23e0}{Perspective}};}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVE_1_1Graphics_1_1VCameraFrustum}{VCameraFrustum}}\ \mbox{\hyperlink{classVE_1_1Graphics_1_1ACamera_ada20fd04a1b03994fa3391093a3bb55f}{Frustum}};\ \textcolor{comment}{//\ For\ LOD}}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVE_1_1Graphics_1_1ACamera_a6e431fe85a95b144aec29a0801ef80c6}{ACamera}}();}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVE_1_1Graphics_1_1ACamera_a6e431fe85a95b144aec29a0801ef80c6}{ACamera}}(\mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VE::Math::VVector3}}\ position,\ \mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VE::Math::VVector3}}\ forward,\ \mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VE::Math::VVector3}}\ up);}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Graphics_1_1ACamera_aec7848df228cf425fca44fb3e44bdbae}{Update}}(\textcolor{keywordtype}{float}\ dt);}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Graphics_1_1ACamera_a27ee74c8b5c54388940d451f0acdd709}{SetPerspective}}(\textcolor{keywordtype}{float}\ fov,\ \textcolor{keywordtype}{float}\ aspect,\ \textcolor{keywordtype}{float}\ near,\ \textcolor{keywordtype}{float}\ far);}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Graphics_1_1ACamera_ae3d1e772947f3053ca7fd4e9080b9a73}{SetOrthographic}}(\textcolor{keywordtype}{float}\ left,\ \textcolor{keywordtype}{float}\ right,\ \textcolor{keywordtype}{float}\ top,\ \textcolor{keywordtype}{float}\ bottom,\ \textcolor{keywordtype}{float}\ near,\ \textcolor{keywordtype}{float}\ far);}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Graphics_1_1ACamera_ac4857da3b47c21eb579765daf7c7db97}{UpdateView}}();}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classVE_1_1Graphics_1_1ACamera_ab2404b1242d3a12b6b1174b4353d9806}{FrustumHeightAtDistance}}(\textcolor{keywordtype}{float}\ distance);}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classVE_1_1Graphics_1_1ACamera_a7ea6453502145d722332577c8e5348bc}{DistanceAtFrustumHeight}}(\textcolor{keywordtype}{float}\ frustumHeight);}
+\DoxyCodeLine{00066\ \ \ \ \ \};}
+\DoxyCodeLine{00067\ \}\ \textcolor{comment}{//\ namespace\ VE::Internal::Graphics}}
+
+\end{DoxyCode}

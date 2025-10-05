@@ -1,0 +1,76 @@
+\doxysection{VRHI\+\_\+\+Render\+Target.\+hpp}
+\hypertarget{VRHI__RenderTarget_8hpp_source}{}\label{VRHI__RenderTarget_8hpp_source}\index{Vantor/Source/Vantor/RHI/Include/RHI/Interface/VRHI\_RenderTarget.hpp@{Vantor/Source/Vantor/RHI/Include/RHI/Interface/VRHI\_RenderTarget.hpp}}
+\mbox{\hyperlink{VRHI__RenderTarget_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/****************************************************************************}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ Vantor\ Engine™\ -\/\ Source\ Code\ (2025)}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ Author\ \ \ \ :\ Lukas\ Rennhofer\ (@LukasRennhofer),\ Vantor\ Studios™}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ Copyright\ :\ ©\ 2025\ Lukas\ Rennhofer,\ Vantor\ Studios™}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ *\ License\ \ \ :\ GNU\ General\ Public\ License\ v3.0}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ See\ LICENSE\ file\ for\ full\ details.}}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ ****************************************************************************/}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <cstdint>}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI}{VE::Internal::RHI}}}
+\DoxyCodeLine{00016\ \{}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{comment}{//\ Forward\ declarations}}
+\DoxyCodeLine{00019\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHITexture}{IRHITexture}};}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aeb91f0e4b6f5f79c7b1978d3ad39eebb}{EAttachmentType}}}
+\DoxyCodeLine{00022\ \{}
+\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aeb91f0e4b6f5f79c7b1978d3ad39eebbacb5feb1b7314637725a2e73bdc9f7295}{Color}},}
+\DoxyCodeLine{00024\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aeb91f0e4b6f5f79c7b1978d3ad39eebba675056ad1441b6375b2c5abd48c27ef1}{Depth}},}
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aeb91f0e4b6f5f79c7b1978d3ad39eebbad821e7ccd4d4c25a491ba1a9ea248895}{Stencil}},}
+\DoxyCodeLine{00026\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aeb91f0e4b6f5f79c7b1978d3ad39eebba2fa8076285272883c91e14402975a441}{DepthStencil}}}
+\DoxyCodeLine{00027\ \};}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structVE_1_1Internal_1_1RHI_1_1VRenderTargetAttachment}{VRenderTargetAttachment}}}
+\DoxyCodeLine{00030\ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aeb91f0e4b6f5f79c7b1978d3ad39eebb}{EAttachmentType}}\ \mbox{\hyperlink{structVE_1_1Internal_1_1RHI_1_1VRenderTargetAttachment_a04be8314653bee350ed6e0f5c825fb04}{type}};}
+\DoxyCodeLine{00032\ \ \ \ \ std::shared\_ptr<IRHITexture>\ \mbox{\hyperlink{structVE_1_1Internal_1_1RHI_1_1VRenderTargetAttachment_a3a30fe7864d733b1cc0551be0b6ad00e}{texture}};}
+\DoxyCodeLine{00033\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{structVE_1_1Internal_1_1RHI_1_1VRenderTargetAttachment_a9d59ffe440e0827fc497dea003ace262}{mipLevel}}\ =\ 0;}
+\DoxyCodeLine{00034\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{structVE_1_1Internal_1_1RHI_1_1VRenderTargetAttachment_a146b9e33920f71c0505018aa53eda714}{layer}}\ =\ 0;\ \textcolor{comment}{//\ For\ array\ textures\ or\ cubemaps}}
+\DoxyCodeLine{00035\ \};}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget}{IRHIRenderTarget}}}
+\DoxyCodeLine{00038\ \{}
+\DoxyCodeLine{00039\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget_a0b51357d8d50c4ccaf7e6bd614407789}{\string~IRHIRenderTarget}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{comment}{//\ Render\ target\ management}}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget_acac517eadb48b104c96e92cf5b6cdf55}{Bind}}()\ =\ 0;}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget_ad0048dea278dd48a2dd0ac683c643ef0}{Unbind}}()\ =\ 0;}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget_a28b01ea45da980ec4b7990b0b03987f4}{IsComplete}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00046\ \ \ \ \ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{comment}{//\ Attachment\ management}}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget_a23eade524575b3e9af7bd49d3e569b95}{AttachTexture}}(\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aeb91f0e4b6f5f79c7b1978d3ad39eebb}{EAttachmentType}}\ type,\ std::shared\_ptr<IRHITexture>\ texture,\ uint32\_t\ mipLevel\ =\ 0,\ uint32\_t\ layer\ =\ 0)\ =\ 0;}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget_a40b50988ab5abdd9526aa309378fd805}{DetachTexture}}(\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aeb91f0e4b6f5f79c7b1978d3ad39eebb}{EAttachmentType}}\ type)\ =\ 0;}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keyword}{virtual}\ std::shared\_ptr<IRHITexture>\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget_a39588295378815f068e2778e340ced04}{GetAttachment}}(\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aeb91f0e4b6f5f79c7b1978d3ad39eebb}{EAttachmentType}}\ type)\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00051\ \ \ \ \ }
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{comment}{//\ Clear\ operations}}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget_a851bd324014baf9f1eee6aa8b9da8a7f}{Clear}}(\textcolor{keywordtype}{float}\ r\ =\ 0.0f,\ \textcolor{keywordtype}{float}\ g\ =\ 0.0f,\ \textcolor{keywordtype}{float}\ b\ =\ 0.0f,\ \textcolor{keywordtype}{float}\ a\ =\ 1.0f)\ =\ 0;}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget_a967cca73b0e5c8a801b9320ebd287233}{ClearDepth}}(\textcolor{keywordtype}{float}\ depth\ =\ 1.0f)\ =\ 0;}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget_a6919dc25bca31d8614b891d177adc35d}{ClearStencil}}(int32\_t\ stencil\ =\ 0)\ =\ 0;}
+\DoxyCodeLine{00056\ \ \ \ \ }
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{comment}{//\ Properties}}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keyword}{virtual}\ uint32\_t\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget_a6dd7ec7a036b26c23aab90851d1d8682}{GetWidth}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keyword}{virtual}\ uint32\_t\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget_a87c57620418a4b1fe2b452141f465405}{GetHeight}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keyword}{virtual}\ uint32\_t\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget_a23ca77b24e3d45842f189817730eb3d6}{GetHandle}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00061\ \ \ \ \ }
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{comment}{//\ Viewport\ management}}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget_a5d5c75f2f4d817c5bad9a2669f99a055}{SetViewport}}(uint32\_t\ x,\ uint32\_t\ y,\ uint32\_t\ width,\ uint32\_t\ height)\ =\ 0;}
+\DoxyCodeLine{00064\ \ \ \ \ }
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{comment}{//\ Multi-\/sample\ support}}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keyword}{virtual}\ uint32\_t\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget_a94691734f0269f5f8d23aedf677beeb7}{GetSampleCount}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget_a2a258f6a9edd7e01f280e6cbdd031c7e}{IsMultisampled}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00068\ \};}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \}\ \textcolor{comment}{//\ namespace\ VE::Internal::RHI}}
+
+\end{DoxyCode}

@@ -46,14 +46,29 @@ file(GLOB_RECURSE VANTOR_CORE_SOURCES
     # ActorRuntime
     ${CMAKE_CURRENT_LIST_DIR}/ActorRuntime/Source/*.cpp
 
+    # AssetManager
+    ${CMAKE_CURRENT_LIST_DIR}/AssetManager/Source/*.cpp
+
     # Context
     ${CMAKE_CURRENT_LIST_DIR}/Context/Source/*.cpp
 
     # Graphics
     ${CMAKE_CURRENT_LIST_DIR}/Graphics/Source/*.cpp
 
+    # InputDevice
+    ${CMAKE_CURRENT_LIST_DIR}/InputDevice/Source/*.cpp
+
+    # RenderPipeline
+    ${CMAKE_CURRENT_LIST_DIR}/RenderPipeline/Source/*.cpp
+
+    # Material System
+    ${CMAKE_CURRENT_LIST_DIR}/MaterialSystem/Source/*.cpp
+
     # Math
     ${CMAKE_CURRENT_LIST_DIR}/Math/Source/*.cpp
+
+    # Engine Core
+    ${CMAKE_CURRENT_LIST_DIR}/EngineCore/Source/*.cpp
 )
 
 # ==============================================================================
@@ -83,12 +98,6 @@ set(IMGUI_CORE_SOURCES
 file(GLOB OPENGL_RENDER_SOURCES
     ${CMAKE_CURRENT_LIST_DIR}/RHI/Source/RHI/OpenGL/*.cpp
 )
-
-# Render Modules (TODO: Make configurable)
-set(RENDER_MODULE_SOURCES
-    RenderModules/Source/RenderModules/Camera/VRM_FlyCamera.cpp
-)
-
 # ==============================================================================
 # Platform-Specific Configuration Functions
 # ==============================================================================
@@ -151,7 +160,7 @@ elseif(PLATFORM STREQUAL "Linux")
     message(STATUS "Configuring for Linux platform")
     
     # Base Linux libraries
-    set(PLATFORM_LIBRARIES X11 pthread dl EGL GLESv2 gbm drm)
+    set(PLATFORM_LIBRARIES X11 pthread dl EGL GLESv2 gbm drm assimp)
 
     # OpenGL Configuration
     if(VANTOR_API_OPENGL)
@@ -197,7 +206,6 @@ endif()
 add_library(Vantor STATIC
     ${VANTOR_CORE_SOURCES}
     ${RENDER_DEVICE_SOURCES}
-    ${RENDER_MODULE_SOURCES}
     ${PLATFORM_GRAPHICS_SOURCES}
     ${CONTEXT_SOURCES}
 )
@@ -231,14 +239,17 @@ target_include_directories(Vantor PUBLIC
 target_include_directories(Vantor
     PUBLIC
         ${CMAKE_CURRENT_LIST_DIR}/ActorRuntime/Include/
+        ${CMAKE_CURRENT_LIST_DIR}/AssetManager/Include/
         ${CMAKE_CURRENT_LIST_DIR}/Context/Include/
         ${CMAKE_CURRENT_LIST_DIR}/Core/Include/
+        ${CMAKE_CURRENT_LIST_DIR}/EngineCore/Include/
         ${CMAKE_CURRENT_LIST_DIR}/Graphics/Include/
         ${CMAKE_CURRENT_LIST_DIR}/InputDevice/Include/
         ${CMAKE_CURRENT_LIST_DIR}/Integration/Include/
         ${CMAKE_CURRENT_LIST_DIR}/Math/Include/
-        ${CMAKE_CURRENT_LIST_DIR}/RenderModules/Include/
+        ${CMAKE_CURRENT_LIST_DIR}/RenderPipeline/Include/
         ${CMAKE_CURRENT_LIST_DIR}/RHI/Include/
+        ${CMAKE_CURRENT_LIST_DIR}/MaterialSystem/Include/
 )
 
 # Apply Vantor-specific definitions

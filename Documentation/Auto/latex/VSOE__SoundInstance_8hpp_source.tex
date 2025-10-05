@@ -1,0 +1,74 @@
+\doxysection{VSOE\+\_\+\+Sound\+Instance.\+hpp}
+\hypertarget{VSOE__SoundInstance_8hpp_source}{}\label{VSOE__SoundInstance_8hpp_source}\index{Vantor/Source/Vantor/SoundEngine/Include/SoundEngine/Data/VSOE\_SoundInstance.hpp@{Vantor/Source/Vantor/SoundEngine/Include/SoundEngine/Data/VSOE\_SoundInstance.hpp}}
+\mbox{\hyperlink{VSOE__SoundInstance_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/****************************************************************************}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ Vantor\ Engine™\ -\/\ Source\ Code\ (2025)}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ Author\ \ \ \ :\ Lukas\ Rennhofer\ (@LukasRennhofer),\ Vantor\ Studios™}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ Copyright\ :\ ©\ 2025\ Lukas\ Rennhofer,\ Vantor\ Studios™}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ *\ License\ \ \ :\ GNU\ General\ Public\ License\ v3.0}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ See\ LICENSE\ file\ for\ full\ details.}}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ ****************************************************************************/}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{VMA__Vector_8hpp}{Math/Linear/VMA\_Vector.hpp}}>}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <cstdint>}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceSoLoud}{SoLoud}}\ \{\ \textcolor{keyword}{class\ }Soloud;\ \}\ \textcolor{comment}{//\ Soloud\ Forward\ Decl.}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceVE_1_1Internal_1_1SoundEngine}{VE::Internal::SoundEngine}}\ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespaceVE_1_1Internal_1_1SoundEngine_af4e614536953febb080d18e088d76d8b}{VSoundHandle}}\ =\ \textcolor{keywordtype}{unsigned}\ int;}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_acde0f5bbf8bbf73963e68ce74bf56f28}{VSoundInstance}}\ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_acde0f5bbf8bbf73963e68ce74bf56f28}{VSoundInstance}}(}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SoLoud::Soloud\&\ p\_backend,}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1SoundEngine_af4e614536953febb080d18e088d76d8b}{VSoundHandle}}\ p\_handle,}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ p\_spatial}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_a8ce0105f0dd31a90822a6f1a25fa8ad5}{EAttenuationModel}}\ :\ uint8\_t}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_a8ce0105f0dd31a90822a6f1a25fa8ad5ab50339a10e1de285ac99d4c3990b8693}{NONE}},}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_a8ce0105f0dd31a90822a6f1a25fa8ad5a49393aa569124e13bbc29c710fc0bec7}{INVERSE\_DISTANCE}},}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_a8ce0105f0dd31a90822a6f1a25fa8ad5accc49dbdbc8f4d63dea7c8ecd6fa9b63}{LINEAR\_DISTANCE}},}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_a8ce0105f0dd31a90822a6f1a25fa8ad5a52a4a94743d8087a529f9d3c51b0f08c}{EXPONENTIAL\_DISTANCE}}}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_af876f009893710db5a58a8af492213b5}{SetVolume}}(\textcolor{keywordtype}{float}\ p\_volume);}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_afa735d39b29dfa920e337d1ca1f87943}{SetLooped}}(\textcolor{keywordtype}{bool}\ p\_looped);}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_a0c798545ec3aeecd283c12d53b94fb3e}{SetPitch}}(\textcolor{keywordtype}{float}\ p\_pitch);}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_a23174c10d90c09f9e77e1a798fcf44f0}{SetPan}}(\textcolor{keywordtype}{float}\ p\_pan);}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_afbf8bcd450b45dd480f84761add62005}{SetAttenuationModel}}(\mbox{\hyperlink{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_a8ce0105f0dd31a90822a6f1a25fa8ad5}{EAttenuationModel}}\ p\_model,\ \textcolor{keywordtype}{float}\ p\_factor\ =\ 1.0f);}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_a8aff78a25752700f29d39d37949fc2d9}{SetAttenuationThreshold}}(\textcolor{keywordtype}{float}\ p\_distance);}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_ac6b2ec959a5abde07d98fe1ccbc6c499}{SetSpatialParameters}}(}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VE::Math::VVector3}}\&\ p\_position,}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VE::Math::VVector3}}\&\ p\_velocity}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ )\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_a3a727dab379301dbd05a8926a7df0991}{Play}}();}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_af874b34a136745f2653c73b03824c0a0}{Pause}}();}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_aace373dc5ace0099d5734a1dba5af9a8}{Stop}}();}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_a732103154e2c618a9a9e804ea56b690a}{IsValid}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_a42a3bd00c0e06318f47e8f05bddba6a5}{IsPaused}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_ade8f6024373cc02549ccfec6aedf826b}{IsSpatial}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1SoundEngine_af4e614536953febb080d18e088d76d8b}{VSoundHandle}}\ \mbox{\hyperlink{classVE_1_1Internal_1_1SoundEngine_1_1VSoundInstance_ada17c6423e243d3d4e271b3a3f3a2c07}{GetHandle}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ Validate()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ SoLoud::Soloud\&\ m\_backend;}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceVE_1_1Internal_1_1SoundEngine_af4e614536953febb080d18e088d76d8b}{VSoundHandle}}\ m\_handle;}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_spatial;}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \ \ \};}
+\DoxyCodeLine{00068\ \}\ \textcolor{comment}{//\ namespace\ VE::Internal::SoundEngine}}
+
+\end{DoxyCode}

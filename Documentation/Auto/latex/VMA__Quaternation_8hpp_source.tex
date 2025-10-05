@@ -1,0 +1,189 @@
+\doxysection{VMA\+\_\+\+Quaternation.\+hpp}
+\hypertarget{VMA__Quaternation_8hpp_source}{}\label{VMA__Quaternation_8hpp_source}\index{Vantor/Source/Vantor/Math/Include/Math/Linear/VMA\_Quaternation.hpp@{Vantor/Source/Vantor/Math/Include/Math/Linear/VMA\_Quaternation.hpp}}
+\mbox{\hyperlink{VMA__Quaternation_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/****************************************************************************}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ Vantor\ Engine™\ -\/\ Source\ Code\ (2025)}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ Author\ \ \ \ :\ Lukas\ Rennhofer\ (@LukasRennhofer),\ Vantor\ Studios™}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ Copyright\ :\ ©\ 2025\ Lukas\ Rennhofer,\ Vantor\ Studios™}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ *\ License\ \ \ :\ GNU\ General\ Public\ License\ v3.0}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ See\ LICENSE\ file\ for\ full\ details.}}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ ****************************************************************************/}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <cmath>}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{VMA__Common_8hpp}{../VMA\_Common.hpp}}"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{VMA__Matrix_8hpp}{VMA\_Matrix.hpp}}"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{VMA__Vector_8hpp}{VMA\_Vector.hpp}}"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <cmath>}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceVE_1_1Math}{VE::Math}}}
+\DoxyCodeLine{00020\ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_a6408e3525bfaeef00ee241bcd4163a38}{VQuaternion}}}
+\DoxyCodeLine{00022\ \ \ \ \ \{}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_aacd07a9d5ff31f0a8c46774bfac392a8}{x}}\ =\ 0,\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_aa12a96487828e11a23702d552ddd8cb2}{y}}\ =\ 0,\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_ad54a2282399bc851279aafceba7ea493}{z}}\ =\ 0,\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_a997d938162a842923e8965852154b7ae}{w}}\ =\ 1;}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_a6408e3525bfaeef00ee241bcd4163a38}{VQuaternion}}(\textcolor{keywordtype}{float}\ x\_,\ \textcolor{keywordtype}{float}\ y\_,\ \textcolor{keywordtype}{float}\ z\_,\ \textcolor{keywordtype}{float}\ w\_)\ noexcept\ :\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_aacd07a9d5ff31f0a8c46774bfac392a8}{x}}(x\_),\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_aa12a96487828e11a23702d552ddd8cb2}{y}}(y\_),\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_ad54a2282399bc851279aafceba7ea493}{z}}(z\_),\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_a997d938162a842923e8965852154b7ae}{w}}(w\_)\ \{\}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Identity\ quaternion}}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_a6408e3525bfaeef00ee241bcd4163a38}{VQuaternion}}\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_a584730c5e78911255626337a12f38f86}{Identity}}()\ noexcept\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_a6408e3525bfaeef00ee241bcd4163a38}{VQuaternion}}\{0,\ 0,\ 0,\ 1\};\ \}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Constructor\ from\ axis-\/angle\ (degrees)}}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_a6408e3525bfaeef00ee241bcd4163a38}{VQuaternion}}\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_a033b556aa6e5bdf6e87b3e51385db51a}{FromAxisAngle}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VVector3}}\ \&axis,\ \textcolor{keywordtype}{float}\ degrees)\ \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ rad\ \ =\ degrees\ *\ \mbox{\hyperlink{namespaceVE_1_1Math_a1bedb831aa1029b4dd20bc5b1c39e9c5}{VPI}}\ /\ 180.f;}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ half\ =\ rad\ *\ 0.5f;}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ sinH\ =\ std::sin(half);}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VVector3}}\ n\ \ \ \ =\ axis.\mbox{\hyperlink{structVE_1_1Math_1_1VVector3_abd098809cb4cd6df0e51369c1a06bf4f}{Normalized}}();}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_a6408e3525bfaeef00ee241bcd4163a38}{VQuaternion}}\{n.\mbox{\hyperlink{structVE_1_1Math_1_1VVector3_acfc163e55301288e983c45e7a3aea9a9}{x}}\ *\ sinH,\ n.\mbox{\hyperlink{structVE_1_1Math_1_1VVector3_a645347944175ba15e6c2b76984d846e1}{y}}\ *\ sinH,\ n.\mbox{\hyperlink{structVE_1_1Math_1_1VVector3_a69564468328b68d7ecd3703715e1f397}{z}}\ *\ sinH,\ std::cos(half)\};}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Normalize}}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_a6408e3525bfaeef00ee241bcd4163a38}{VQuaternion}}\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_ad95f1ebd733436ed51fddbb00aab0c58}{Normalized}}()\ const\ noexcept}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ mag\ =\ std::sqrt(\mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_aacd07a9d5ff31f0a8c46774bfac392a8}{x}}\ *\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_aacd07a9d5ff31f0a8c46774bfac392a8}{x}}\ +\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_aa12a96487828e11a23702d552ddd8cb2}{y}}\ *\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_aa12a96487828e11a23702d552ddd8cb2}{y}}\ +\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_ad54a2282399bc851279aafceba7ea493}{z}}\ *\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_ad54a2282399bc851279aafceba7ea493}{z}}\ +\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_a997d938162a842923e8965852154b7ae}{w}}\ *\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_a997d938162a842923e8965852154b7ae}{w}});}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_a6408e3525bfaeef00ee241bcd4163a38}{VQuaternion}}\{\mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_aacd07a9d5ff31f0a8c46774bfac392a8}{x}}\ /\ mag,\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_aa12a96487828e11a23702d552ddd8cb2}{y}}\ /\ mag,\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_ad54a2282399bc851279aafceba7ea493}{z}}\ /\ mag,\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_a997d938162a842923e8965852154b7ae}{w}}\ /\ mag\};}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Conjugate}}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_a6408e3525bfaeef00ee241bcd4163a38}{VQuaternion}}\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_a4a783358264f1237275f2367a66e805d}{Conjugated}}()\ const\ noexcept\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_a6408e3525bfaeef00ee241bcd4163a38}{VQuaternion}}\{-\/\mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_aacd07a9d5ff31f0a8c46774bfac392a8}{x}},\ -\/\mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_aa12a96487828e11a23702d552ddd8cb2}{y}},\ -\/\mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_ad54a2282399bc851279aafceba7ea493}{z}},\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_a997d938162a842923e8965852154b7ae}{w}}\};\ \}}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Inverse}}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_a6408e3525bfaeef00ee241bcd4163a38}{VQuaternion}}\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_a74c6ff393b87cff189bad6a6c592b70e}{Inverted}}()\ const\ noexcept}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ normSq\ =\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_aacd07a9d5ff31f0a8c46774bfac392a8}{x}}\ *\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_aacd07a9d5ff31f0a8c46774bfac392a8}{x}}\ +\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_aa12a96487828e11a23702d552ddd8cb2}{y}}\ *\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_aa12a96487828e11a23702d552ddd8cb2}{y}}\ +\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_ad54a2282399bc851279aafceba7ea493}{z}}\ *\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_ad54a2282399bc851279aafceba7ea493}{z}}\ +\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_a997d938162a842923e8965852154b7ae}{w}}\ *\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_a997d938162a842923e8965852154b7ae}{w}};}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_a4a783358264f1237275f2367a66e805d}{Conjugated}}()\ *\ (1.0f\ /\ normSq);}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Quaternion\ multiplication}}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_a6408e3525bfaeef00ee241bcd4163a38}{VQuaternion}}\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_a0343eb6b19f87fdcabac6d3654e75ee4}{operator*}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_a6408e3525bfaeef00ee241bcd4163a38}{VQuaternion}}\ \&rhs)\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_a6408e3525bfaeef00ee241bcd4163a38}{VQuaternion}}\{\mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_a997d938162a842923e8965852154b7ae}{w}}\ *\ rhs.x\ +\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_aacd07a9d5ff31f0a8c46774bfac392a8}{x}}\ *\ rhs.w\ +\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_aa12a96487828e11a23702d552ddd8cb2}{y}}\ *\ rhs.z\ -\/\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_ad54a2282399bc851279aafceba7ea493}{z}}\ *\ rhs.y,\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_a997d938162a842923e8965852154b7ae}{w}}\ *\ rhs.y\ -\/\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_aacd07a9d5ff31f0a8c46774bfac392a8}{x}}\ *\ rhs.z\ +\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_aa12a96487828e11a23702d552ddd8cb2}{y}}\ *\ rhs.w\ +\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_ad54a2282399bc851279aafceba7ea493}{z}}\ *\ rhs.x,}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_a997d938162a842923e8965852154b7ae}{w}}\ *\ rhs.z\ +\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_aacd07a9d5ff31f0a8c46774bfac392a8}{x}}\ *\ rhs.y\ -\/\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_aa12a96487828e11a23702d552ddd8cb2}{y}}\ *\ rhs.x\ +\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_ad54a2282399bc851279aafceba7ea493}{z}}\ *\ rhs.w,\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_a997d938162a842923e8965852154b7ae}{w}}\ *\ rhs.w\ -\/\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_aacd07a9d5ff31f0a8c46774bfac392a8}{x}}\ *\ rhs.x\ -\/\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_aa12a96487828e11a23702d552ddd8cb2}{y}}\ *\ rhs.y\ -\/\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_ad54a2282399bc851279aafceba7ea493}{z}}\ *\ rhs.z\};}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Scale\ quaternion}}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_a6408e3525bfaeef00ee241bcd4163a38}{VQuaternion}}\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_a2afda122f6acd0d90db414fa192765e3}{operator*}}(\textcolor{keywordtype}{float}\ scalar)\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_a6408e3525bfaeef00ee241bcd4163a38}{VQuaternion}}\{\mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_aacd07a9d5ff31f0a8c46774bfac392a8}{x}}\ *\ scalar,\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_aa12a96487828e11a23702d552ddd8cb2}{y}}\ *\ scalar,\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_ad54a2282399bc851279aafceba7ea493}{z}}\ *\ scalar,\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_a997d938162a842923e8965852154b7ae}{w}}\ *\ scalar\};\ \}}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Apply\ quaternion\ rotation\ to\ a\ vector}}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VVector3}}\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_a0caed1a8af6d59c499570e769c03bcd4}{Rotate}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VVector3}}\ \&v)\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_a6408e3525bfaeef00ee241bcd4163a38}{VQuaternion}}\ qv\{v.x,\ v.y,\ v.z,\ 0\};}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_a6408e3525bfaeef00ee241bcd4163a38}{VQuaternion}}\ result\ =\ (*this)\ *\ qv\ *\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_a74c6ff393b87cff189bad6a6c592b70e}{Inverted}}();}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{result.\mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_aacd07a9d5ff31f0a8c46774bfac392a8}{x}},\ result.\mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_aa12a96487828e11a23702d552ddd8cb2}{y}},\ result.\mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_ad54a2282399bc851279aafceba7ea493}{z}}\};}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Convert\ to\ 3x3\ matrix}}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Math_1_1VMat3}{VMat3}}\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_ad15c63e44373df485ce0466c06bba41b}{ToMat3}}()\ const\ noexcept}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ xx\ =\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_aacd07a9d5ff31f0a8c46774bfac392a8}{x}}\ *\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_aacd07a9d5ff31f0a8c46774bfac392a8}{x}},\ yy\ =\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_aa12a96487828e11a23702d552ddd8cb2}{y}}\ *\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_aa12a96487828e11a23702d552ddd8cb2}{y}},\ zz\ =\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_ad54a2282399bc851279aafceba7ea493}{z}}\ *\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_ad54a2282399bc851279aafceba7ea493}{z}};}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ xy\ =\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_aacd07a9d5ff31f0a8c46774bfac392a8}{x}}\ *\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_aa12a96487828e11a23702d552ddd8cb2}{y}},\ xz\ =\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_aacd07a9d5ff31f0a8c46774bfac392a8}{x}}\ *\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_ad54a2282399bc851279aafceba7ea493}{z}},\ yz\ =\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_aa12a96487828e11a23702d552ddd8cb2}{y}}\ *\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_ad54a2282399bc851279aafceba7ea493}{z}};}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ wx\ =\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_a997d938162a842923e8965852154b7ae}{w}}\ *\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_aacd07a9d5ff31f0a8c46774bfac392a8}{x}},\ wy\ =\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_a997d938162a842923e8965852154b7ae}{w}}\ *\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_aa12a96487828e11a23702d552ddd8cb2}{y}},\ wz\ =\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_a997d938162a842923e8965852154b7ae}{w}}\ *\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_ad54a2282399bc851279aafceba7ea493}{z}};}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Math_1_1VMat3}{VMat3}}\ mat;}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat3_a5a3da05e5ed1e10e7e64f346c6dffb7d}{m}}[0]\ =\ 1\ -\/\ 2\ *\ (yy\ +\ zz);}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat3_a5a3da05e5ed1e10e7e64f346c6dffb7d}{m}}[1]\ =\ 2\ *\ (xy\ -\/\ wz);}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat3_a5a3da05e5ed1e10e7e64f346c6dffb7d}{m}}[2]\ =\ 2\ *\ (xz\ +\ wy);}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat3_a5a3da05e5ed1e10e7e64f346c6dffb7d}{m}}[3]\ =\ 2\ *\ (xy\ +\ wz);}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat3_a5a3da05e5ed1e10e7e64f346c6dffb7d}{m}}[4]\ =\ 1\ -\/\ 2\ *\ (xx\ +\ zz);}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat3_a5a3da05e5ed1e10e7e64f346c6dffb7d}{m}}[5]\ =\ 2\ *\ (yz\ -\/\ wx);}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat3_a5a3da05e5ed1e10e7e64f346c6dffb7d}{m}}[6]\ =\ 2\ *\ (xz\ -\/\ wy);}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat3_a5a3da05e5ed1e10e7e64f346c6dffb7d}{m}}[7]\ =\ 2\ *\ (yz\ +\ wx);}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat3_a5a3da05e5ed1e10e7e64f346c6dffb7d}{m}}[8]\ =\ 1\ -\/\ 2\ *\ (xx\ +\ yy);}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ mat;}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Convert\ to\ 4x4\ matrix}}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Math_1_1VMat4}{VMat4}}\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_ad62139719c73588aad5bade72208a311}{ToMat4}}()\ const\ noexcept}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Math_1_1VMat3}{VMat3}}\ rot\ =\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_ad15c63e44373df485ce0466c06bba41b}{ToMat3}}();}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Math_1_1VMat4}{VMat4}}\ mat\ =\ \mbox{\hyperlink{structVE_1_1Math_1_1VMat4_abf6c85826bca4b302fbd656d06062268}{VMat4::Identity}}();}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat4_a4aeca468454c64f69b1ecd807c862d15}{m}}[0]\ =\ rot.\mbox{\hyperlink{structVE_1_1Math_1_1VMat3_a5a3da05e5ed1e10e7e64f346c6dffb7d}{m}}[0];}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat4_a4aeca468454c64f69b1ecd807c862d15}{m}}[1]\ =\ rot.\mbox{\hyperlink{structVE_1_1Math_1_1VMat3_a5a3da05e5ed1e10e7e64f346c6dffb7d}{m}}[1];}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat4_a4aeca468454c64f69b1ecd807c862d15}{m}}[2]\ =\ rot.\mbox{\hyperlink{structVE_1_1Math_1_1VMat3_a5a3da05e5ed1e10e7e64f346c6dffb7d}{m}}[2];}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat4_a4aeca468454c64f69b1ecd807c862d15}{m}}[4]\ =\ rot.\mbox{\hyperlink{structVE_1_1Math_1_1VMat3_a5a3da05e5ed1e10e7e64f346c6dffb7d}{m}}[3];}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat4_a4aeca468454c64f69b1ecd807c862d15}{m}}[5]\ =\ rot.\mbox{\hyperlink{structVE_1_1Math_1_1VMat3_a5a3da05e5ed1e10e7e64f346c6dffb7d}{m}}[4];}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat4_a4aeca468454c64f69b1ecd807c862d15}{m}}[6]\ =\ rot.\mbox{\hyperlink{structVE_1_1Math_1_1VMat3_a5a3da05e5ed1e10e7e64f346c6dffb7d}{m}}[5];}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat4_a4aeca468454c64f69b1ecd807c862d15}{m}}[8]\ \ =\ rot.\mbox{\hyperlink{structVE_1_1Math_1_1VMat3_a5a3da05e5ed1e10e7e64f346c6dffb7d}{m}}[6];}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat4_a4aeca468454c64f69b1ecd807c862d15}{m}}[9]\ \ =\ rot.\mbox{\hyperlink{structVE_1_1Math_1_1VMat3_a5a3da05e5ed1e10e7e64f346c6dffb7d}{m}}[7];}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mat.\mbox{\hyperlink{structVE_1_1Math_1_1VMat4_a4aeca468454c64f69b1ecd807c862d15}{m}}[10]\ =\ rot.\mbox{\hyperlink{structVE_1_1Math_1_1VMat3_a5a3da05e5ed1e10e7e64f346c6dffb7d}{m}}[8];}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ mat;}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Construct\ from\ Euler\ angles\ (in\ degrees):\ Vpitch\ (X),\ yaw\ (Y),\ roll\ (Z)}}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_a6408e3525bfaeef00ee241bcd4163a38}{VQuaternion}}\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_ae249db32728a08d237e4f7d4f6b823f3}{FromEulerAngles}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VVector3}}\ \&eulerDegrees)\ \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ Vpitch\ =\ eulerDegrees.x\ *\ \mbox{\hyperlink{namespaceVE_1_1Math_a1bedb831aa1029b4dd20bc5b1c39e9c5}{VPI}}\ /\ 180.0f;}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ yaw\ \ \ =\ eulerDegrees.y\ *\ \mbox{\hyperlink{namespaceVE_1_1Math_a1bedb831aa1029b4dd20bc5b1c39e9c5}{VPI}}\ /\ 180.0f;}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ roll\ \ =\ eulerDegrees.z\ *\ \mbox{\hyperlink{namespaceVE_1_1Math_a1bedb831aa1029b4dd20bc5b1c39e9c5}{VPI}}\ /\ 180.0f;}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ cy\ =\ std::cos(yaw\ *\ 0.5f);}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ sy\ =\ std::sin(yaw\ *\ 0.5f);}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ cp\ =\ std::cos(Vpitch\ *\ 0.5f);}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ sp\ =\ std::sin(Vpitch\ *\ 0.5f);}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ cr\ =\ std::cos(roll\ *\ 0.5f);}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ sr\ =\ std::sin(roll\ *\ 0.5f);}
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_a6408e3525bfaeef00ee241bcd4163a38}{VQuaternion}}\ q(0,\ 0,\ 0,\ 0);}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ q.\mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_a997d938162a842923e8965852154b7ae}{w}}\ =\ cr\ *\ cp\ *\ cy\ +\ sr\ *\ sp\ *\ sy;}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ q.\mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_aacd07a9d5ff31f0a8c46774bfac392a8}{x}}\ =\ sr\ *\ cp\ *\ cy\ -\/\ cr\ *\ sp\ *\ sy;}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ q.\mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_aa12a96487828e11a23702d552ddd8cb2}{y}}\ =\ cr\ *\ sp\ *\ cy\ +\ sr\ *\ cp\ *\ sy;}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ q.\mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_ad54a2282399bc851279aafceba7ea493}{z}}\ =\ cr\ *\ cp\ *\ sy\ -\/\ sr\ *\ sp\ *\ cy;}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ q;}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00139\ }
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Spherical\ linear\ interpolation}}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_a6408e3525bfaeef00ee241bcd4163a38}{VQuaternion}}\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_a631b261088e4b029d0849431d8a57c00}{Slerp}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_a6408e3525bfaeef00ee241bcd4163a38}{VQuaternion}}\&\ other,\ \textcolor{keywordtype}{float}\ t)\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Compute\ the\ cosine\ of\ the\ angle\ between\ the\ two\ vectors}}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ dot\ =\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_aacd07a9d5ff31f0a8c46774bfac392a8}{x}}\ *\ other.x\ +\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_aa12a96487828e11a23702d552ddd8cb2}{y}}\ *\ other.y\ +\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_ad54a2282399bc851279aafceba7ea493}{z}}\ *\ other.z\ +\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_a997d938162a842923e8965852154b7ae}{w}}\ *\ other.w;}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ If\ the\ dot\ product\ is\ negative,\ slerp\ won't\ take\ the\ shorter\ path}}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ So\ negate\ one\ quaternion\ to\ correct\ this}}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_a6408e3525bfaeef00ee241bcd4163a38}{VQuaternion}}\ q2\ =\ other;}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (dot\ <\ 0.0f)\ \{}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ q2\ =\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_a6408e3525bfaeef00ee241bcd4163a38}{VQuaternion}}(-\/other.x,\ -\/other.y,\ -\/other.z,\ -\/other.w);}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ dot\ =\ -\/dot;}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ If\ the\ quaternions\ are\ very\ close,\ use\ linear\ interpolation}}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (dot\ >\ 0.9995f)\ \{}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_a6408e3525bfaeef00ee241bcd4163a38}{VQuaternion}}\ result(}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_aacd07a9d5ff31f0a8c46774bfac392a8}{x}}\ +\ t\ *\ (q2.\mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_aacd07a9d5ff31f0a8c46774bfac392a8}{x}}\ -\/\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_aacd07a9d5ff31f0a8c46774bfac392a8}{x}}),}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_aa12a96487828e11a23702d552ddd8cb2}{y}}\ +\ t\ *\ (q2.\mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_aa12a96487828e11a23702d552ddd8cb2}{y}}\ -\/\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_aa12a96487828e11a23702d552ddd8cb2}{y}}),}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_ad54a2282399bc851279aafceba7ea493}{z}}\ +\ t\ *\ (q2.\mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_ad54a2282399bc851279aafceba7ea493}{z}}\ -\/\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_ad54a2282399bc851279aafceba7ea493}{z}}),}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_a997d938162a842923e8965852154b7ae}{w}}\ +\ t\ *\ (q2.\mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_a997d938162a842923e8965852154b7ae}{w}}\ -\/\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_a997d938162a842923e8965852154b7ae}{w}})}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result.\mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_ad95f1ebd733436ed51fddbb00aab0c58}{Normalized}}();}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Calculate\ the\ angle\ between\ the\ quaternions}}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ theta\_0\ =\ std::acos(std::abs(dot));}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ theta\ =\ theta\_0\ *\ t;}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ sin\_theta\ =\ std::sin(theta);}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ sin\_theta\_0\ =\ std::sin(theta\_0);}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ s0\ =\ std::cos(theta)\ -\/\ dot\ *\ sin\_theta\ /\ sin\_theta\_0;}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ s1\ =\ sin\_theta\ /\ sin\_theta\_0;}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_a6408e3525bfaeef00ee241bcd4163a38}{VQuaternion}}(}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ s0\ *\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_aacd07a9d5ff31f0a8c46774bfac392a8}{x}}\ +\ s1\ *\ q2.\mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_aacd07a9d5ff31f0a8c46774bfac392a8}{x}},}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ s0\ *\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_aa12a96487828e11a23702d552ddd8cb2}{y}}\ +\ s1\ *\ q2.\mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_aa12a96487828e11a23702d552ddd8cb2}{y}},}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ s0\ *\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_ad54a2282399bc851279aafceba7ea493}{z}}\ +\ s1\ *\ q2.\mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_ad54a2282399bc851279aafceba7ea493}{z}},}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ s0\ *\ \mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_a997d938162a842923e8965852154b7ae}{w}}\ +\ s1\ *\ q2.\mbox{\hyperlink{structVE_1_1Math_1_1VQuaternion_a997d938162a842923e8965852154b7ae}{w}}}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00181\ }
+\DoxyCodeLine{00182\ \ \ \ \ \};}
+\DoxyCodeLine{00183\ \}\ \textcolor{comment}{//\ namespace\ VE::Internal::Math}}
+
+\end{DoxyCode}

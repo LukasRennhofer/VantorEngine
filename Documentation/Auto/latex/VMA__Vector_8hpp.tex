@@ -1,0 +1,54 @@
+\doxysection{Vantor/\+Source/\+Vantor/\+Math/\+Include/\+Math/\+Linear/\+VMA\+\_\+\+Vector.hpp File Reference}
+\hypertarget{VMA__Vector_8hpp}{}\label{VMA__Vector_8hpp}\index{Vantor/Source/Vantor/Math/Include/Math/Linear/VMA\_Vector.hpp@{Vantor/Source/Vantor/Math/Include/Math/Linear/VMA\_Vector.hpp}}
+{\ttfamily \#include $<$array$>$}\newline
+{\ttfamily \#include $<$cassert$>$}\newline
+{\ttfamily \#include $<$cmath$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structVE_1_1Math_1_1VVector2}{VE\+::\+Math\+::\+VVector2}}
+\item 
+struct \mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VE\+::\+Math\+::\+VVector3}}
+\item 
+struct \mbox{\hyperlink{structVE_1_1Math_1_1VVector4}{VE\+::\+Math\+::\+VVector4}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespaceVE}{VE}}
+\item 
+namespace \mbox{\hyperlink{namespaceVE_1_1Math}{VE\+::\+Math}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structVE_1_1Math_1_1VVector2}{VVector2}} \mbox{\hyperlink{namespaceVE_1_1Math_a17e52f3bc77719ccf7bec1dacbc82cb2}{VE\+::\+Math\+::operator\texorpdfstring{$\ast$}{*}}} (float scalar, const \mbox{\hyperlink{structVE_1_1Math_1_1VVector2}{VVector2}} \&vec) noexcept
+\item 
+\mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VVector3}} \mbox{\hyperlink{namespaceVE_1_1Math_a803e60be0b2dce12c62b830d67661cd5}{VE\+::\+Math\+::operator\texorpdfstring{$\ast$}{*}}} (float scalar, const \mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VVector3}} \&vec) noexcept
+\item 
+\mbox{\hyperlink{structVE_1_1Math_1_1VVector4}{VVector4}} \mbox{\hyperlink{namespaceVE_1_1Math_a20d30d8b5d4cfa857905ddaa3317e72d}{VE\+::\+Math\+::operator\texorpdfstring{$\ast$}{*}}} (float scalar, const \mbox{\hyperlink{structVE_1_1Math_1_1VVector4}{VVector4}} \&vec) noexcept
+\item 
+float \mbox{\hyperlink{namespaceVE_1_1Math_acad915b19f78dacb5c9add4357f43b94}{VE\+::\+Math\+::\+Clamp}} (float value, float min\+Val, float max\+Val) noexcept
+\item 
+float \mbox{\hyperlink{namespaceVE_1_1Math_a67f699ace51cdf17107fd971a4bdd647}{VE\+::\+Math\+::\+Clamp01}} (float value) noexcept
+\item 
+float \mbox{\hyperlink{namespaceVE_1_1Math_af6789daea65ff70cb94a0c7bd8b8724d}{VE\+::\+Math\+::\+Lerp}} (float a, float b, float t) noexcept
+\item 
+\mbox{\hyperlink{structVE_1_1Math_1_1VVector2}{VVector2}} \mbox{\hyperlink{namespaceVE_1_1Math_a82a96b54e43f780b844e4010119c0b4b}{VE\+::\+Math\+::\+Clamp}} (const \mbox{\hyperlink{structVE_1_1Math_1_1VVector2}{VVector2}} \&v, const \mbox{\hyperlink{structVE_1_1Math_1_1VVector2}{VVector2}} \&min, const \mbox{\hyperlink{structVE_1_1Math_1_1VVector2}{VVector2}} \&max) noexcept
+\item 
+\mbox{\hyperlink{structVE_1_1Math_1_1VVector2}{VVector2}} \mbox{\hyperlink{namespaceVE_1_1Math_ada1d5a797801fd47a8f2ff51faf40197}{VE\+::\+Math\+::\+Clamp01}} (const \mbox{\hyperlink{structVE_1_1Math_1_1VVector2}{VVector2}} \&v) noexcept
+\item 
+\mbox{\hyperlink{structVE_1_1Math_1_1VVector2}{VVector2}} \mbox{\hyperlink{namespaceVE_1_1Math_ab07563f6760ad1c26e0058386c4e7bae}{VE\+::\+Math\+::\+Lerp}} (const \mbox{\hyperlink{structVE_1_1Math_1_1VVector2}{VVector2}} \&a, const \mbox{\hyperlink{structVE_1_1Math_1_1VVector2}{VVector2}} \&b, float t) noexcept
+\item 
+\mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VVector3}} \mbox{\hyperlink{namespaceVE_1_1Math_a71977d35e2cc223e561e689b40557baa}{VE\+::\+Math\+::\+Clamp}} (const \mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VVector3}} \&v, const \mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VVector3}} \&min, const \mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VVector3}} \&max) noexcept
+\item 
+\mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VVector3}} \mbox{\hyperlink{namespaceVE_1_1Math_aac07da21e679bda6d58a6cc0fab106d7}{VE\+::\+Math\+::\+Clamp01}} (const \mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VVector3}} \&v) noexcept
+\item 
+\mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VVector3}} \mbox{\hyperlink{namespaceVE_1_1Math_a52921cb55c92c1d9558cc30eef9cb6af}{VE\+::\+Math\+::\+Lerp}} (const \mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VVector3}} \&a, const \mbox{\hyperlink{structVE_1_1Math_1_1VVector3}{VVector3}} \&b, float t) noexcept
+\item 
+\mbox{\hyperlink{structVE_1_1Math_1_1VVector4}{VVector4}} \mbox{\hyperlink{namespaceVE_1_1Math_a5dd90b43e65a02a3c9cfc2cca70fac55}{VE\+::\+Math\+::\+Clamp}} (const \mbox{\hyperlink{structVE_1_1Math_1_1VVector4}{VVector4}} \&v, const \mbox{\hyperlink{structVE_1_1Math_1_1VVector4}{VVector4}} \&min, const \mbox{\hyperlink{structVE_1_1Math_1_1VVector4}{VVector4}} \&max) noexcept
+\item 
+\mbox{\hyperlink{structVE_1_1Math_1_1VVector4}{VVector4}} \mbox{\hyperlink{namespaceVE_1_1Math_aae18b1dcf31ab7c138c7652c41101be2}{VE\+::\+Math\+::\+Clamp01}} (const \mbox{\hyperlink{structVE_1_1Math_1_1VVector4}{VVector4}} \&v) noexcept
+\item 
+\mbox{\hyperlink{structVE_1_1Math_1_1VVector4}{VVector4}} \mbox{\hyperlink{namespaceVE_1_1Math_a199324bd893e88eea56493b9ce4f1554}{VE\+::\+Math\+::\+Lerp}} (const \mbox{\hyperlink{structVE_1_1Math_1_1VVector4}{VVector4}} \&a, const \mbox{\hyperlink{structVE_1_1Math_1_1VVector4}{VVector4}} \&b, float t) noexcept
+\end{DoxyCompactItemize}

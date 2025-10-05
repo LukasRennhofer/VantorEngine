@@ -1,0 +1,208 @@
+\doxysection{VE\+::Internal\+::Core\+::Container\+::TSafe\+String\texorpdfstring{$<$}{<} Alloc \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString}{}\label{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString}\index{VE::Internal::Core::Container::TSafeString$<$ Alloc $>$@{VE::Internal::Core::Container::TSafeString$<$ Alloc $>$}}
+
+
+{\ttfamily \#include $<$VCO\+\_\+\+Safe\+String.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString_ae52ff279b8baf68669f7971673763552}{TSafe\+String}} () noexcept
+\item 
+\mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString_ab1402b7bb540cd26a9f028387c42161b}{TSafe\+String}} (const char \texorpdfstring{$\ast$}{*}str)
+\item 
+\mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString_ad989bd34820eb16909af5d11ff33f8ec}{\texorpdfstring{$\sim$}{\string~}\+TSafe\+String}} ()
+\item 
+void \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString_abe640fe21bd9e9d60930381c3df9ffee}{assign}} (const char \texorpdfstring{$\ast$}{*}str)
+\item 
+size\+\_\+t \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString_a6f52c027b1f490e446788abe20ed9b8a}{size}} () const
+\item 
+const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString_aede9229b473baf0c5506be537a978c8c}{c\+\_\+str}} () const
+\item 
+size\+\_\+t \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString_a8e56b5421dbd9dab13e56bd87fb90488}{find}} (const char \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString_afa9e452e5c07446f3496a8cefc56b8f9}{substr}}) const
+\item 
+\mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString}{TSafe\+String}} \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString_afa9e452e5c07446f3496a8cefc56b8f9}{substr}} (size\+\_\+t pos, size\+\_\+t len) const
+\item 
+u\+\_\+int32\+\_\+t \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString_ade0c05b6f66edad6b386541d55d97788}{hash}} () const noexcept
+\item 
+void \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString_a2f5572b2a74e47889164ea8c3588e285}{replace}} (size\+\_\+t pos, size\+\_\+t len, const char \texorpdfstring{$\ast$}{*}str)
+\item 
+\mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString}{TSafe\+String}} \& \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString_a5712c2c3ce57a2b51f137fcae2f25e8b}{operator+=}} (const char \texorpdfstring{$\ast$}{*}str)
+\item 
+const char \& \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString_acf37b012f9200768947e72099583d483}{operator\mbox{[}$\,$\mbox{]}}} (size\+\_\+t i) const
+\item 
+char \& \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString_aa9d097bf6319ae17443725d152e5d77a}{operator\mbox{[}$\,$\mbox{]}}} (size\+\_\+t i)
+\item 
+const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString_ab6711e8c5e1c8fddbeef07dc7f9cb204}{begin}} () const
+\item 
+const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString_ae2fbb2236132bd8c9324704675d3522c}{end}} () const
+\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString_af6946706530c51a5f622ddbbcdafe48a}{begin}} ()
+\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString_a386d2c77d8f0f715112f4e0d882bec3e}{end}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static constexpr size\+\_\+t \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString_a7dd5f428fd842d60efc764dfee20218b}{SSO\+\_\+\+THRESHOLD}} = 23
+\end{DoxyCompactItemize}
+
+
+\label{doc-constructors}
+\Hypertarget{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString_ae52ff279b8baf68669f7971673763552}\index{VE::Internal::Core::Container::TSafeString$<$ Alloc $>$@{VE::Internal::Core::Container::TSafeString$<$ Alloc $>$}!TSafeString@{TSafeString}}
+\index{TSafeString@{TSafeString}!VE::Internal::Core::Container::TSafeString$<$ Alloc $>$@{VE::Internal::Core::Container::TSafeString$<$ Alloc $>$}}
+\doxysubsubsection{\texorpdfstring{TSafeString()}{TSafeString()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString_ae52ff279b8baf68669f7971673763552} 
+template$<$typename Alloc = std\+::allocator$<$char$>$$>$ \\
+\mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString}{VE\+::\+Internal\+::\+Core\+::\+Container\+::\+TSafe\+String}}$<$ Alloc $>$\+::\+TSafe\+String (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString_ab1402b7bb540cd26a9f028387c42161b}\index{VE::Internal::Core::Container::TSafeString$<$ Alloc $>$@{VE::Internal::Core::Container::TSafeString$<$ Alloc $>$}!TSafeString@{TSafeString}}
+\index{TSafeString@{TSafeString}!VE::Internal::Core::Container::TSafeString$<$ Alloc $>$@{VE::Internal::Core::Container::TSafeString$<$ Alloc $>$}}
+\doxysubsubsection{\texorpdfstring{TSafeString()}{TSafeString()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString_ab1402b7bb540cd26a9f028387c42161b} 
+template$<$typename Alloc = std\+::allocator$<$char$>$$>$ \\
+\mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString}{VE\+::\+Internal\+::\+Core\+::\+Container\+::\+TSafe\+String}}$<$ Alloc $>$\+::\+TSafe\+String (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{str}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString_ad989bd34820eb16909af5d11ff33f8ec}\index{VE::Internal::Core::Container::TSafeString$<$ Alloc $>$@{VE::Internal::Core::Container::TSafeString$<$ Alloc $>$}!````~TSafeString@{\texorpdfstring{$\sim$}{\string~}TSafeString}}
+\index{````~TSafeString@{\texorpdfstring{$\sim$}{\string~}TSafeString}!VE::Internal::Core::Container::TSafeString$<$ Alloc $>$@{VE::Internal::Core::Container::TSafeString$<$ Alloc $>$}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}TSafeString()}{\string~TSafeString()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString_ad989bd34820eb16909af5d11ff33f8ec} 
+template$<$typename Alloc = std\+::allocator$<$char$>$$>$ \\
+\mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString}{VE\+::\+Internal\+::\+Core\+::\+Container\+::\+TSafe\+String}}$<$ Alloc $>$\+::\texorpdfstring{$\sim$}{\string~}\mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString}{TSafe\+String}} (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\label{doc-func-members}
+\Hypertarget{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString_abe640fe21bd9e9d60930381c3df9ffee}\index{VE::Internal::Core::Container::TSafeString$<$ Alloc $>$@{VE::Internal::Core::Container::TSafeString$<$ Alloc $>$}!assign@{assign}}
+\index{assign@{assign}!VE::Internal::Core::Container::TSafeString$<$ Alloc $>$@{VE::Internal::Core::Container::TSafeString$<$ Alloc $>$}}
+\doxysubsubsection{\texorpdfstring{assign()}{assign()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString_abe640fe21bd9e9d60930381c3df9ffee} 
+template$<$typename Alloc = std\+::allocator$<$char$>$$>$ \\
+void \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString}{VE\+::\+Internal\+::\+Core\+::\+Container\+::\+TSafe\+String}}$<$ Alloc $>$\+::assign (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{str}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString_af6946706530c51a5f622ddbbcdafe48a}\index{VE::Internal::Core::Container::TSafeString$<$ Alloc $>$@{VE::Internal::Core::Container::TSafeString$<$ Alloc $>$}!begin@{begin}}
+\index{begin@{begin}!VE::Internal::Core::Container::TSafeString$<$ Alloc $>$@{VE::Internal::Core::Container::TSafeString$<$ Alloc $>$}}
+\doxysubsubsection{\texorpdfstring{begin()}{begin()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString_af6946706530c51a5f622ddbbcdafe48a} 
+template$<$typename Alloc = std\+::allocator$<$char$>$$>$ \\
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString}{VE\+::\+Internal\+::\+Core\+::\+Container\+::\+TSafe\+String}}$<$ Alloc $>$\+::begin (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString_ab6711e8c5e1c8fddbeef07dc7f9cb204}\index{VE::Internal::Core::Container::TSafeString$<$ Alloc $>$@{VE::Internal::Core::Container::TSafeString$<$ Alloc $>$}!begin@{begin}}
+\index{begin@{begin}!VE::Internal::Core::Container::TSafeString$<$ Alloc $>$@{VE::Internal::Core::Container::TSafeString$<$ Alloc $>$}}
+\doxysubsubsection{\texorpdfstring{begin()}{begin()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString_ab6711e8c5e1c8fddbeef07dc7f9cb204} 
+template$<$typename Alloc = std\+::allocator$<$char$>$$>$ \\
+const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString}{VE\+::\+Internal\+::\+Core\+::\+Container\+::\+TSafe\+String}}$<$ Alloc $>$\+::begin (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString_aede9229b473baf0c5506be537a978c8c}\index{VE::Internal::Core::Container::TSafeString$<$ Alloc $>$@{VE::Internal::Core::Container::TSafeString$<$ Alloc $>$}!c\_str@{c\_str}}
+\index{c\_str@{c\_str}!VE::Internal::Core::Container::TSafeString$<$ Alloc $>$@{VE::Internal::Core::Container::TSafeString$<$ Alloc $>$}}
+\doxysubsubsection{\texorpdfstring{c\_str()}{c\_str()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString_aede9229b473baf0c5506be537a978c8c} 
+template$<$typename Alloc = std\+::allocator$<$char$>$$>$ \\
+const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString}{VE\+::\+Internal\+::\+Core\+::\+Container\+::\+TSafe\+String}}$<$ Alloc $>$\+::c\+\_\+str (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString_a386d2c77d8f0f715112f4e0d882bec3e}\index{VE::Internal::Core::Container::TSafeString$<$ Alloc $>$@{VE::Internal::Core::Container::TSafeString$<$ Alloc $>$}!end@{end}}
+\index{end@{end}!VE::Internal::Core::Container::TSafeString$<$ Alloc $>$@{VE::Internal::Core::Container::TSafeString$<$ Alloc $>$}}
+\doxysubsubsection{\texorpdfstring{end()}{end()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString_a386d2c77d8f0f715112f4e0d882bec3e} 
+template$<$typename Alloc = std\+::allocator$<$char$>$$>$ \\
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString}{VE\+::\+Internal\+::\+Core\+::\+Container\+::\+TSafe\+String}}$<$ Alloc $>$\+::end (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString_ae2fbb2236132bd8c9324704675d3522c}\index{VE::Internal::Core::Container::TSafeString$<$ Alloc $>$@{VE::Internal::Core::Container::TSafeString$<$ Alloc $>$}!end@{end}}
+\index{end@{end}!VE::Internal::Core::Container::TSafeString$<$ Alloc $>$@{VE::Internal::Core::Container::TSafeString$<$ Alloc $>$}}
+\doxysubsubsection{\texorpdfstring{end()}{end()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString_ae2fbb2236132bd8c9324704675d3522c} 
+template$<$typename Alloc = std\+::allocator$<$char$>$$>$ \\
+const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString}{VE\+::\+Internal\+::\+Core\+::\+Container\+::\+TSafe\+String}}$<$ Alloc $>$\+::end (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString_a8e56b5421dbd9dab13e56bd87fb90488}\index{VE::Internal::Core::Container::TSafeString$<$ Alloc $>$@{VE::Internal::Core::Container::TSafeString$<$ Alloc $>$}!find@{find}}
+\index{find@{find}!VE::Internal::Core::Container::TSafeString$<$ Alloc $>$@{VE::Internal::Core::Container::TSafeString$<$ Alloc $>$}}
+\doxysubsubsection{\texorpdfstring{find()}{find()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString_a8e56b5421dbd9dab13e56bd87fb90488} 
+template$<$typename Alloc = std\+::allocator$<$char$>$$>$ \\
+size\+\_\+t \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString}{VE\+::\+Internal\+::\+Core\+::\+Container\+::\+TSafe\+String}}$<$ Alloc $>$\+::find (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{substr}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString_ade0c05b6f66edad6b386541d55d97788}\index{VE::Internal::Core::Container::TSafeString$<$ Alloc $>$@{VE::Internal::Core::Container::TSafeString$<$ Alloc $>$}!hash@{hash}}
+\index{hash@{hash}!VE::Internal::Core::Container::TSafeString$<$ Alloc $>$@{VE::Internal::Core::Container::TSafeString$<$ Alloc $>$}}
+\doxysubsubsection{\texorpdfstring{hash()}{hash()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString_ade0c05b6f66edad6b386541d55d97788} 
+template$<$typename Alloc = std\+::allocator$<$char$>$$>$ \\
+u\+\_\+int32\+\_\+t \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString}{VE\+::\+Internal\+::\+Core\+::\+Container\+::\+TSafe\+String}}$<$ Alloc $>$\+::hash (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString_a5712c2c3ce57a2b51f137fcae2f25e8b}\index{VE::Internal::Core::Container::TSafeString$<$ Alloc $>$@{VE::Internal::Core::Container::TSafeString$<$ Alloc $>$}!operator+=@{operator+=}}
+\index{operator+=@{operator+=}!VE::Internal::Core::Container::TSafeString$<$ Alloc $>$@{VE::Internal::Core::Container::TSafeString$<$ Alloc $>$}}
+\doxysubsubsection{\texorpdfstring{operator+=()}{operator+=()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString_a5712c2c3ce57a2b51f137fcae2f25e8b} 
+template$<$typename Alloc = std\+::allocator$<$char$>$$>$ \\
+\mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString}{TSafe\+String}} \& \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString}{VE\+::\+Internal\+::\+Core\+::\+Container\+::\+TSafe\+String}}$<$ Alloc $>$\+::operator+= (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{str}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString_aa9d097bf6319ae17443725d152e5d77a}\index{VE::Internal::Core::Container::TSafeString$<$ Alloc $>$@{VE::Internal::Core::Container::TSafeString$<$ Alloc $>$}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!VE::Internal::Core::Container::TSafeString$<$ Alloc $>$@{VE::Internal::Core::Container::TSafeString$<$ Alloc $>$}}
+\doxysubsubsection{\texorpdfstring{operator[]()}{operator[]()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString_aa9d097bf6319ae17443725d152e5d77a} 
+template$<$typename Alloc = std\+::allocator$<$char$>$$>$ \\
+char \& \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString}{VE\+::\+Internal\+::\+Core\+::\+Container\+::\+TSafe\+String}}$<$ Alloc $>$\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{i}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString_acf37b012f9200768947e72099583d483}\index{VE::Internal::Core::Container::TSafeString$<$ Alloc $>$@{VE::Internal::Core::Container::TSafeString$<$ Alloc $>$}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!VE::Internal::Core::Container::TSafeString$<$ Alloc $>$@{VE::Internal::Core::Container::TSafeString$<$ Alloc $>$}}
+\doxysubsubsection{\texorpdfstring{operator[]()}{operator[]()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString_acf37b012f9200768947e72099583d483} 
+template$<$typename Alloc = std\+::allocator$<$char$>$$>$ \\
+const char \& \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString}{VE\+::\+Internal\+::\+Core\+::\+Container\+::\+TSafe\+String}}$<$ Alloc $>$\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{i}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString_a2f5572b2a74e47889164ea8c3588e285}\index{VE::Internal::Core::Container::TSafeString$<$ Alloc $>$@{VE::Internal::Core::Container::TSafeString$<$ Alloc $>$}!replace@{replace}}
+\index{replace@{replace}!VE::Internal::Core::Container::TSafeString$<$ Alloc $>$@{VE::Internal::Core::Container::TSafeString$<$ Alloc $>$}}
+\doxysubsubsection{\texorpdfstring{replace()}{replace()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString_a2f5572b2a74e47889164ea8c3588e285} 
+template$<$typename Alloc = std\+::allocator$<$char$>$$>$ \\
+void \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString}{VE\+::\+Internal\+::\+Core\+::\+Container\+::\+TSafe\+String}}$<$ Alloc $>$\+::replace (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{pos}{, }\item[{size\+\_\+t}]{len}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{str}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString_a6f52c027b1f490e446788abe20ed9b8a}\index{VE::Internal::Core::Container::TSafeString$<$ Alloc $>$@{VE::Internal::Core::Container::TSafeString$<$ Alloc $>$}!size@{size}}
+\index{size@{size}!VE::Internal::Core::Container::TSafeString$<$ Alloc $>$@{VE::Internal::Core::Container::TSafeString$<$ Alloc $>$}}
+\doxysubsubsection{\texorpdfstring{size()}{size()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString_a6f52c027b1f490e446788abe20ed9b8a} 
+template$<$typename Alloc = std\+::allocator$<$char$>$$>$ \\
+size\+\_\+t \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString}{VE\+::\+Internal\+::\+Core\+::\+Container\+::\+TSafe\+String}}$<$ Alloc $>$\+::size (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString_afa9e452e5c07446f3496a8cefc56b8f9}\index{VE::Internal::Core::Container::TSafeString$<$ Alloc $>$@{VE::Internal::Core::Container::TSafeString$<$ Alloc $>$}!substr@{substr}}
+\index{substr@{substr}!VE::Internal::Core::Container::TSafeString$<$ Alloc $>$@{VE::Internal::Core::Container::TSafeString$<$ Alloc $>$}}
+\doxysubsubsection{\texorpdfstring{substr()}{substr()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString_afa9e452e5c07446f3496a8cefc56b8f9} 
+template$<$typename Alloc = std\+::allocator$<$char$>$$>$ \\
+\mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString}{TSafe\+String}} \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString}{VE\+::\+Internal\+::\+Core\+::\+Container\+::\+TSafe\+String}}$<$ Alloc $>$\+::substr (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{pos}{, }\item[{size\+\_\+t}]{len}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\label{doc-variable-members}
+\Hypertarget{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString_aae5458bf88ecb8ae459c6d67654b41cb}\index{VE::Internal::Core::Container::TSafeString$<$ Alloc $>$@{VE::Internal::Core::Container::TSafeString$<$ Alloc $>$}!m\_data@{m\_data}}
+\index{m\_data@{m\_data}!VE::Internal::Core::Container::TSafeString$<$ Alloc $>$@{VE::Internal::Core::Container::TSafeString$<$ Alloc $>$}}
+\doxysubsubsection{\texorpdfstring{m\_data}{m\_data}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString_aae5458bf88ecb8ae459c6d67654b41cb} 
+template$<$typename Alloc = std\+::allocator$<$char$>$$>$ \\
+char\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString}{VE\+::\+Internal\+::\+Core\+::\+Container\+::\+TSafe\+String}}$<$ Alloc $>$\+::m\+\_\+data}
+
+\Hypertarget{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString_aab787ecd4b982a8914ff070d982ab5fb}\index{VE::Internal::Core::Container::TSafeString$<$ Alloc $>$@{VE::Internal::Core::Container::TSafeString$<$ Alloc $>$}!m\_sso\_data@{m\_sso\_data}}
+\index{m\_sso\_data@{m\_sso\_data}!VE::Internal::Core::Container::TSafeString$<$ Alloc $>$@{VE::Internal::Core::Container::TSafeString$<$ Alloc $>$}}
+\doxysubsubsection{\texorpdfstring{m\_sso\_data}{m\_sso\_data}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString_aab787ecd4b982a8914ff070d982ab5fb} 
+template$<$typename Alloc = std\+::allocator$<$char$>$$>$ \\
+char \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString}{VE\+::\+Internal\+::\+Core\+::\+Container\+::\+TSafe\+String}}$<$ Alloc $>$\+::m\+\_\+sso\+\_\+data\mbox{[}\mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString_a7dd5f428fd842d60efc764dfee20218b}{SSO\+\_\+\+THRESHOLD}}+1\mbox{]}}
+
+\Hypertarget{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString_a7dd5f428fd842d60efc764dfee20218b}\index{VE::Internal::Core::Container::TSafeString$<$ Alloc $>$@{VE::Internal::Core::Container::TSafeString$<$ Alloc $>$}!SSO\_THRESHOLD@{SSO\_THRESHOLD}}
+\index{SSO\_THRESHOLD@{SSO\_THRESHOLD}!VE::Internal::Core::Container::TSafeString$<$ Alloc $>$@{VE::Internal::Core::Container::TSafeString$<$ Alloc $>$}}
+\doxysubsubsection{\texorpdfstring{SSO\_THRESHOLD}{SSO\_THRESHOLD}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString_a7dd5f428fd842d60efc764dfee20218b} 
+template$<$typename Alloc = std\+::allocator$<$char$>$$>$ \\
+size\+\_\+t \mbox{\hyperlink{classVE_1_1Internal_1_1Core_1_1Container_1_1TSafeString}{VE\+::\+Internal\+::\+Core\+::\+Container\+::\+TSafe\+String}}$<$ Alloc $>$\+::\+SSO\+\_\+\+THRESHOLD = 23\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Vantor/\+Source/\+Vantor/\+Core/\+Include/\+Core/\+Container/\mbox{\hyperlink{VCO__SafeString_8hpp}{VCO\+\_\+\+Safe\+String.\+hpp}}\end{DoxyCompactItemize}

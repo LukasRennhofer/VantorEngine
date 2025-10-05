@@ -104,56 +104,57 @@ void OpenGLDevice::SetViewport(uint32_t x, uint32_t y, uint32_t width, uint32_t 
     glViewport(x, y, width, height);
 }
 
-void OpenGLDevice::BindShader(std::shared_ptr<IRHIShader> shader)
-{
-    if (shader != m_currentShader)
-    {
-        m_currentShader = shader;
-        if (shader)
-        {
-            shader->Use();
-        }
-    }
-}
+// void OpenGLDevice::BindShader(std::shared_ptr<IRHIShader> shader)
+// {
+//     if (shader != m_currentShader)
+//     {
+//         m_currentShader = shader;
+//         if (shader)
+//         {
+//             shader->Use();
+//         }
+//     }
+// }
 
-void OpenGLDevice::BindTexture(std::shared_ptr<IRHITexture> texture, uint32_t slot)
-{
-    auto it = m_boundTextures.find(slot);
-    if (it == m_boundTextures.end() || it->second != texture)
-    {
-        m_boundTextures[slot] = texture;
-        if (texture)
-        {
-            texture->Bind(slot);
-        }
-    }
-}
+// void OpenGLDevice::BindTexture(std::shared_ptr<IRHITexture> texture, uint32_t slot)
+// {
+//     auto it = m_boundTextures.find(slot);
+//     if (it == m_boundTextures.end() || it->second != texture)
+//     {
+//         m_boundTextures[slot] = texture;
+//         if (texture)
+//         {
+//             texture->Bind(slot);
+//         }
+//     }
+// }
 
-void OpenGLDevice::BindRenderTarget(std::shared_ptr<IRHIRenderTarget> renderTarget)
-{
-    if (renderTarget != m_currentRenderTarget)
-    {
-        m_currentRenderTarget = renderTarget;
-        if (renderTarget)
-        {
-            renderTarget->Bind();
-        }
-        else
-        {
-            // Bind default framebuffer (backbuffer)
-            glBindFramebuffer(GL_FRAMEBUFFER, 0);
-        }
-    }
-}
+// void OpenGLDevice::BindRenderTarget(std::shared_ptr<IRHIRenderTarget> renderTarget)
+// {
+//     if (renderTarget != m_currentRenderTarget)
+//     {
+//         m_currentRenderTarget = renderTarget;
+//         if (renderTarget)
+//         {
+//             renderTarget->Bind();
+//         }
+//         else
+//         {
+//             // Bind default framebuffer (backbuffer)
+//             glBindFramebuffer(GL_FRAMEBUFFER, 0);
+//         }
+//     }
+// }
 
-void OpenGLDevice::DrawMesh(std::shared_ptr<IRHIMesh> mesh)
-{
-    if (mesh)
-    {
-        mesh->Bind();
-        mesh->Draw();
-    }
-}
+// void OpenGLDevice::DrawMesh(std::shared_ptr<IRHIMesh> mesh)
+// {
+//     if (mesh)
+//     {
+//         mesh->Bind();
+//         mesh->Draw();
+//         mesh->Unbind();
+//     }
+// }
 
 // TODO: Only Use OpenGLTexture Function in here!
 GLenum OpenGLDevice::RHIFormatToGL(ERHIFormat format)
@@ -283,9 +284,9 @@ void OpenGLDevice::SetupDefaultState()
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
     // Enable backface culling
-    glEnable(GL_CULL_FACE);
-    glCullFace(GL_BACK);
-    glFrontFace(GL_CCW);
+    // glDisable(GL_CULL_FACE); // Just for now
+    // glCullFace(GL_BACK);
+    // glFrontFace(GL_CCW);
 }
 
 } // namespace VE::Internal::RHI

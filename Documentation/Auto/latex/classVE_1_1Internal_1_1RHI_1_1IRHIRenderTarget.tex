@@ -1,0 +1,218 @@
+\doxysection{VE\+::Internal\+::RHI\+::IRHIRender\+Target Class Reference}
+\hypertarget{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget}{}\label{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget}\index{VE::Internal::RHI::IRHIRenderTarget@{VE::Internal::RHI::IRHIRenderTarget}}
+
+
+{\ttfamily \#include $<$VRHI\+\_\+\+Render\+Target.\+hpp$>$}
+
+Inheritance diagram for VE\+::Internal\+::RHI\+::IRHIRender\+Target\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget_a0b51357d8d50c4ccaf7e6bd614407789}{\texorpdfstring{$\sim$}{\string~}\+IRHIRender\+Target}} ()=default
+\item 
+virtual void \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget_acac517eadb48b104c96e92cf5b6cdf55}{Bind}} ()=0
+\item 
+virtual void \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget_ad0048dea278dd48a2dd0ac683c643ef0}{Unbind}} ()=0
+\item 
+virtual bool \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget_a28b01ea45da980ec4b7990b0b03987f4}{Is\+Complete}} () const =0
+\item 
+virtual void \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget_a23eade524575b3e9af7bd49d3e569b95}{Attach\+Texture}} (\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aeb91f0e4b6f5f79c7b1978d3ad39eebb}{EAttachment\+Type}} type, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHITexture}{IRHITexture}} $>$ texture, uint32\+\_\+t mip\+Level=0, uint32\+\_\+t layer=0)=0
+\item 
+virtual void \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget_a40b50988ab5abdd9526aa309378fd805}{Detach\+Texture}} (\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aeb91f0e4b6f5f79c7b1978d3ad39eebb}{EAttachment\+Type}} type)=0
+\item 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHITexture}{IRHITexture}} $>$ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget_a39588295378815f068e2778e340ced04}{Get\+Attachment}} (\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aeb91f0e4b6f5f79c7b1978d3ad39eebb}{EAttachment\+Type}} type) const =0
+\item 
+virtual void \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget_a851bd324014baf9f1eee6aa8b9da8a7f}{Clear}} (float r=0.\+0f, float g=0.\+0f, float b=0.\+0f, float a=1.\+0f)=0
+\item 
+virtual void \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget_a967cca73b0e5c8a801b9320ebd287233}{Clear\+Depth}} (float depth=1.\+0f)=0
+\item 
+virtual void \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget_a6919dc25bca31d8614b891d177adc35d}{Clear\+Stencil}} (int32\+\_\+t stencil=0)=0
+\item 
+virtual uint32\+\_\+t \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget_a6dd7ec7a036b26c23aab90851d1d8682}{Get\+Width}} () const =0
+\item 
+virtual uint32\+\_\+t \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget_a87c57620418a4b1fe2b452141f465405}{Get\+Height}} () const =0
+\item 
+virtual uint32\+\_\+t \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget_a23ca77b24e3d45842f189817730eb3d6}{Get\+Handle}} () const =0
+\item 
+virtual void \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget_a5d5c75f2f4d817c5bad9a2669f99a055}{Set\+Viewport}} (uint32\+\_\+t x, uint32\+\_\+t y, uint32\+\_\+t width, uint32\+\_\+t height)=0
+\item 
+virtual uint32\+\_\+t \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget_a94691734f0269f5f8d23aedf677beeb7}{Get\+Sample\+Count}} () const =0
+\item 
+virtual bool \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget_a2a258f6a9edd7e01f280e6cbdd031c7e}{Is\+Multisampled}} () const =0
+\end{DoxyCompactItemize}
+
+
+\label{doc-constructors}
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget_a0b51357d8d50c4ccaf7e6bd614407789}\index{VE::Internal::RHI::IRHIRenderTarget@{VE::Internal::RHI::IRHIRenderTarget}!````~IRHIRenderTarget@{\texorpdfstring{$\sim$}{\string~}IRHIRenderTarget}}
+\index{````~IRHIRenderTarget@{\texorpdfstring{$\sim$}{\string~}IRHIRenderTarget}!VE::Internal::RHI::IRHIRenderTarget@{VE::Internal::RHI::IRHIRenderTarget}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}IRHIRenderTarget()}{\string~IRHIRenderTarget()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget_a0b51357d8d50c4ccaf7e6bd614407789} 
+virtual VE\+::\+Internal\+::\+RHI\+::\+IRHIRender\+Target\+::\texorpdfstring{$\sim$}{\string~}\+IRHIRender\+Target (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+
+
+\label{doc-func-members}
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget_a23eade524575b3e9af7bd49d3e569b95}\index{VE::Internal::RHI::IRHIRenderTarget@{VE::Internal::RHI::IRHIRenderTarget}!AttachTexture@{AttachTexture}}
+\index{AttachTexture@{AttachTexture}!VE::Internal::RHI::IRHIRenderTarget@{VE::Internal::RHI::IRHIRenderTarget}}
+\doxysubsubsection{\texorpdfstring{AttachTexture()}{AttachTexture()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget_a23eade524575b3e9af7bd49d3e569b95} 
+virtual void VE\+::\+Internal\+::\+RHI\+::\+IRHIRender\+Target\+::\+Attach\+Texture (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aeb91f0e4b6f5f79c7b1978d3ad39eebb}{EAttachment\+Type}}}]{type}{, }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHITexture}{IRHITexture}} $>$}]{texture}{, }\item[{uint32\+\_\+t}]{mip\+Level}{ = {\ttfamily 0}, }\item[{uint32\+\_\+t}]{layer}{ = {\ttfamily 0}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLRenderTarget_a847c93e3600b0276da57a7d7d9b5a370}{VE\+::\+Internal\+::\+RHI\+::\+Open\+GLRender\+Target}}.
+
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget_acac517eadb48b104c96e92cf5b6cdf55}\index{VE::Internal::RHI::IRHIRenderTarget@{VE::Internal::RHI::IRHIRenderTarget}!Bind@{Bind}}
+\index{Bind@{Bind}!VE::Internal::RHI::IRHIRenderTarget@{VE::Internal::RHI::IRHIRenderTarget}}
+\doxysubsubsection{\texorpdfstring{Bind()}{Bind()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget_acac517eadb48b104c96e92cf5b6cdf55} 
+virtual void VE\+::\+Internal\+::\+RHI\+::\+IRHIRender\+Target\+::\+Bind (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLRenderTarget_afa8ddf660677a628e287a993840ed9f4}{VE\+::\+Internal\+::\+RHI\+::\+Open\+GLRender\+Target}}.
+
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget_a851bd324014baf9f1eee6aa8b9da8a7f}\index{VE::Internal::RHI::IRHIRenderTarget@{VE::Internal::RHI::IRHIRenderTarget}!Clear@{Clear}}
+\index{Clear@{Clear}!VE::Internal::RHI::IRHIRenderTarget@{VE::Internal::RHI::IRHIRenderTarget}}
+\doxysubsubsection{\texorpdfstring{Clear()}{Clear()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget_a851bd324014baf9f1eee6aa8b9da8a7f} 
+virtual void VE\+::\+Internal\+::\+RHI\+::\+IRHIRender\+Target\+::\+Clear (\begin{DoxyParamCaption}\item[{float}]{r}{ = {\ttfamily 0.0f}, }\item[{float}]{g}{ = {\ttfamily 0.0f}, }\item[{float}]{b}{ = {\ttfamily 0.0f}, }\item[{float}]{a}{ = {\ttfamily 1.0f}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLRenderTarget_a8d4a60a8311b19315f32c474ce37332a}{VE\+::\+Internal\+::\+RHI\+::\+Open\+GLRender\+Target}}.
+
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget_a967cca73b0e5c8a801b9320ebd287233}\index{VE::Internal::RHI::IRHIRenderTarget@{VE::Internal::RHI::IRHIRenderTarget}!ClearDepth@{ClearDepth}}
+\index{ClearDepth@{ClearDepth}!VE::Internal::RHI::IRHIRenderTarget@{VE::Internal::RHI::IRHIRenderTarget}}
+\doxysubsubsection{\texorpdfstring{ClearDepth()}{ClearDepth()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget_a967cca73b0e5c8a801b9320ebd287233} 
+virtual void VE\+::\+Internal\+::\+RHI\+::\+IRHIRender\+Target\+::\+Clear\+Depth (\begin{DoxyParamCaption}\item[{float}]{depth}{ = {\ttfamily 1.0f}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLRenderTarget_a2f4fc5bacf69ab5d14b98f25002792d4}{VE\+::\+Internal\+::\+RHI\+::\+Open\+GLRender\+Target}}.
+
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget_a6919dc25bca31d8614b891d177adc35d}\index{VE::Internal::RHI::IRHIRenderTarget@{VE::Internal::RHI::IRHIRenderTarget}!ClearStencil@{ClearStencil}}
+\index{ClearStencil@{ClearStencil}!VE::Internal::RHI::IRHIRenderTarget@{VE::Internal::RHI::IRHIRenderTarget}}
+\doxysubsubsection{\texorpdfstring{ClearStencil()}{ClearStencil()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget_a6919dc25bca31d8614b891d177adc35d} 
+virtual void VE\+::\+Internal\+::\+RHI\+::\+IRHIRender\+Target\+::\+Clear\+Stencil (\begin{DoxyParamCaption}\item[{int32\+\_\+t}]{stencil}{ = {\ttfamily 0}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLRenderTarget_a1b0b18f48632a9e9815499711dbd4b58}{VE\+::\+Internal\+::\+RHI\+::\+Open\+GLRender\+Target}}.
+
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget_a40b50988ab5abdd9526aa309378fd805}\index{VE::Internal::RHI::IRHIRenderTarget@{VE::Internal::RHI::IRHIRenderTarget}!DetachTexture@{DetachTexture}}
+\index{DetachTexture@{DetachTexture}!VE::Internal::RHI::IRHIRenderTarget@{VE::Internal::RHI::IRHIRenderTarget}}
+\doxysubsubsection{\texorpdfstring{DetachTexture()}{DetachTexture()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget_a40b50988ab5abdd9526aa309378fd805} 
+virtual void VE\+::\+Internal\+::\+RHI\+::\+IRHIRender\+Target\+::\+Detach\+Texture (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aeb91f0e4b6f5f79c7b1978d3ad39eebb}{EAttachment\+Type}}}]{type}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLRenderTarget_a22c7c0213c8645af562eb3c545a22161}{VE\+::\+Internal\+::\+RHI\+::\+Open\+GLRender\+Target}}.
+
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget_a39588295378815f068e2778e340ced04}\index{VE::Internal::RHI::IRHIRenderTarget@{VE::Internal::RHI::IRHIRenderTarget}!GetAttachment@{GetAttachment}}
+\index{GetAttachment@{GetAttachment}!VE::Internal::RHI::IRHIRenderTarget@{VE::Internal::RHI::IRHIRenderTarget}}
+\doxysubsubsection{\texorpdfstring{GetAttachment()}{GetAttachment()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget_a39588295378815f068e2778e340ced04} 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1IRHITexture}{IRHITexture}} $>$ VE\+::\+Internal\+::\+RHI\+::\+IRHIRender\+Target\+::\+Get\+Attachment (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceVE_1_1Internal_1_1RHI_aeb91f0e4b6f5f79c7b1978d3ad39eebb}{EAttachment\+Type}}}]{type}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLRenderTarget_aad45c8807b24e32c48cc7793ce7282be}{VE\+::\+Internal\+::\+RHI\+::\+Open\+GLRender\+Target}}.
+
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget_a23ca77b24e3d45842f189817730eb3d6}\index{VE::Internal::RHI::IRHIRenderTarget@{VE::Internal::RHI::IRHIRenderTarget}!GetHandle@{GetHandle}}
+\index{GetHandle@{GetHandle}!VE::Internal::RHI::IRHIRenderTarget@{VE::Internal::RHI::IRHIRenderTarget}}
+\doxysubsubsection{\texorpdfstring{GetHandle()}{GetHandle()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget_a23ca77b24e3d45842f189817730eb3d6} 
+virtual uint32\+\_\+t VE\+::\+Internal\+::\+RHI\+::\+IRHIRender\+Target\+::\+Get\+Handle (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLRenderTarget_a225b6522e9eb7d61282eddb854e87dcc}{VE\+::\+Internal\+::\+RHI\+::\+Open\+GLRender\+Target}}.
+
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget_a87c57620418a4b1fe2b452141f465405}\index{VE::Internal::RHI::IRHIRenderTarget@{VE::Internal::RHI::IRHIRenderTarget}!GetHeight@{GetHeight}}
+\index{GetHeight@{GetHeight}!VE::Internal::RHI::IRHIRenderTarget@{VE::Internal::RHI::IRHIRenderTarget}}
+\doxysubsubsection{\texorpdfstring{GetHeight()}{GetHeight()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget_a87c57620418a4b1fe2b452141f465405} 
+virtual uint32\+\_\+t VE\+::\+Internal\+::\+RHI\+::\+IRHIRender\+Target\+::\+Get\+Height (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLRenderTarget_a0a917b0089f382ede3be7cbcebbf0ce8}{VE\+::\+Internal\+::\+RHI\+::\+Open\+GLRender\+Target}}.
+
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget_a94691734f0269f5f8d23aedf677beeb7}\index{VE::Internal::RHI::IRHIRenderTarget@{VE::Internal::RHI::IRHIRenderTarget}!GetSampleCount@{GetSampleCount}}
+\index{GetSampleCount@{GetSampleCount}!VE::Internal::RHI::IRHIRenderTarget@{VE::Internal::RHI::IRHIRenderTarget}}
+\doxysubsubsection{\texorpdfstring{GetSampleCount()}{GetSampleCount()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget_a94691734f0269f5f8d23aedf677beeb7} 
+virtual uint32\+\_\+t VE\+::\+Internal\+::\+RHI\+::\+IRHIRender\+Target\+::\+Get\+Sample\+Count (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLRenderTarget_a88956ff0b28191a37fb54c576c175fcf}{VE\+::\+Internal\+::\+RHI\+::\+Open\+GLRender\+Target}}.
+
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget_a6dd7ec7a036b26c23aab90851d1d8682}\index{VE::Internal::RHI::IRHIRenderTarget@{VE::Internal::RHI::IRHIRenderTarget}!GetWidth@{GetWidth}}
+\index{GetWidth@{GetWidth}!VE::Internal::RHI::IRHIRenderTarget@{VE::Internal::RHI::IRHIRenderTarget}}
+\doxysubsubsection{\texorpdfstring{GetWidth()}{GetWidth()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget_a6dd7ec7a036b26c23aab90851d1d8682} 
+virtual uint32\+\_\+t VE\+::\+Internal\+::\+RHI\+::\+IRHIRender\+Target\+::\+Get\+Width (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLRenderTarget_a50430f6c016e4a6166a288b4e4d5394b}{VE\+::\+Internal\+::\+RHI\+::\+Open\+GLRender\+Target}}.
+
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget_a28b01ea45da980ec4b7990b0b03987f4}\index{VE::Internal::RHI::IRHIRenderTarget@{VE::Internal::RHI::IRHIRenderTarget}!IsComplete@{IsComplete}}
+\index{IsComplete@{IsComplete}!VE::Internal::RHI::IRHIRenderTarget@{VE::Internal::RHI::IRHIRenderTarget}}
+\doxysubsubsection{\texorpdfstring{IsComplete()}{IsComplete()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget_a28b01ea45da980ec4b7990b0b03987f4} 
+virtual bool VE\+::\+Internal\+::\+RHI\+::\+IRHIRender\+Target\+::\+Is\+Complete (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLRenderTarget_aa9914c29c10fb17c88ae7bf78b5d0387}{VE\+::\+Internal\+::\+RHI\+::\+Open\+GLRender\+Target}}.
+
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget_a2a258f6a9edd7e01f280e6cbdd031c7e}\index{VE::Internal::RHI::IRHIRenderTarget@{VE::Internal::RHI::IRHIRenderTarget}!IsMultisampled@{IsMultisampled}}
+\index{IsMultisampled@{IsMultisampled}!VE::Internal::RHI::IRHIRenderTarget@{VE::Internal::RHI::IRHIRenderTarget}}
+\doxysubsubsection{\texorpdfstring{IsMultisampled()}{IsMultisampled()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget_a2a258f6a9edd7e01f280e6cbdd031c7e} 
+virtual bool VE\+::\+Internal\+::\+RHI\+::\+IRHIRender\+Target\+::\+Is\+Multisampled (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLRenderTarget_a2d45e860da0ae8166218d54d395540af}{VE\+::\+Internal\+::\+RHI\+::\+Open\+GLRender\+Target}}.
+
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget_a5d5c75f2f4d817c5bad9a2669f99a055}\index{VE::Internal::RHI::IRHIRenderTarget@{VE::Internal::RHI::IRHIRenderTarget}!SetViewport@{SetViewport}}
+\index{SetViewport@{SetViewport}!VE::Internal::RHI::IRHIRenderTarget@{VE::Internal::RHI::IRHIRenderTarget}}
+\doxysubsubsection{\texorpdfstring{SetViewport()}{SetViewport()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget_a5d5c75f2f4d817c5bad9a2669f99a055} 
+virtual void VE\+::\+Internal\+::\+RHI\+::\+IRHIRender\+Target\+::\+Set\+Viewport (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{x}{, }\item[{uint32\+\_\+t}]{y}{, }\item[{uint32\+\_\+t}]{width}{, }\item[{uint32\+\_\+t}]{height}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLRenderTarget_a73208cf495e216eef42ead610a9896c9}{VE\+::\+Internal\+::\+RHI\+::\+Open\+GLRender\+Target}}.
+
+\Hypertarget{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget_ad0048dea278dd48a2dd0ac683c643ef0}\index{VE::Internal::RHI::IRHIRenderTarget@{VE::Internal::RHI::IRHIRenderTarget}!Unbind@{Unbind}}
+\index{Unbind@{Unbind}!VE::Internal::RHI::IRHIRenderTarget@{VE::Internal::RHI::IRHIRenderTarget}}
+\doxysubsubsection{\texorpdfstring{Unbind()}{Unbind()}}
+{\footnotesize\ttfamily \label{classVE_1_1Internal_1_1RHI_1_1IRHIRenderTarget_ad0048dea278dd48a2dd0ac683c643ef0} 
+virtual void VE\+::\+Internal\+::\+RHI\+::\+IRHIRender\+Target\+::\+Unbind (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classVE_1_1Internal_1_1RHI_1_1OpenGLRenderTarget_af7db37b0160aa6167dfc460bffd39eac}{VE\+::\+Internal\+::\+RHI\+::\+Open\+GLRender\+Target}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Vantor/\+Source/\+Vantor/\+RHI/\+Include/\+RHI/\+Interface/\mbox{\hyperlink{VRHI__RenderTarget_8hpp}{VRHI\+\_\+\+Render\+Target.\+hpp}}\end{DoxyCompactItemize}
